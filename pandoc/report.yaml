@@ -1,0 +1,34 @@
+from: markdown
+standalone: true
+toc: false
+toc-depth: 3
+number-sections: true
+citeproc: true
+template: pandoc/templates/eisvogel.tex
+pdf-engine: xelatex
+
+resource-path:
+  - .
+  - report
+  - report/assets
+
+variables:
+  graphics: true
+  multirow: true
+  linestretch: 1.5
+  geometry:
+    - margin=1in
+  papersize: a4
+  lang: es
+  toc-title: "Tabla de Contenidos"
+  header-includes: |
+    \usepackage[document]{ragged2e}
+    \setlength{\parindent}{0.5in}
+
+bibliography:
+  - report/bibliography/references.bib
+
+csl: pandoc/csl/apa-7.csl
+
+
+
