@@ -8,9 +8,13 @@
 [Lean UX Process details]
 
 #### Lean UX Problem Statements
+&nbsp;
+
 [Brand new initiative template problem statement]
 
 #### Lean UX Assumptions
+&nbsp;
+
 - Business Assumptions
 - Business Outcome Assumptions
 - User Assumptions
@@ -18,7 +22,11 @@
 - Feature Assumptions
 
 #### Lean UX Hypothesis Statements
+&nbsp;
+
 [Hypothesis statements based on assumptions]
 
 #### Lean UX Canvas
+&nbsp;
+
 [Canvas representation]
