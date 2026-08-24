@@ -12,23 +12,23 @@ nocite: '[@*]'
 
 \includegraphics[width=2.0cm]{report/assets/logos/upc.png}
 
-\vspace{0.8cm}
+\vspace{0.4cm}
 
-{\Large \textbf{Universidad Peruana de Ciencias Aplicadas}\par} \vspace{0.2cm} {\large Carrera de Ingeniería de Software\par}
+{\Large Universidad Peruana de Ciencias Aplicadas\par} \vspace{0.2cm} {\large Carrera de Ingeniería de Software\par}
 
-\vspace{1.5cm}
+\vspace{0.75cm}
 
-{\Large \textbf{1ASI0729}\par} {\large \textbf{Desarrollo de Aplicaciones Open Source}\par}
+{\Large \textbf{1ACC0238}\par} {\large \textbf{Aplicaciones para Dispositivos Móviles}\par}
 
-\vspace{0.3cm}
+\vspace{0.15cm}
 
-{\large NRC\par} \vspace{0.1cm} {\Large \textbf{4951}\par}
+{\large NRC\par} \vspace{0.05cm} {\Large \textbf{4951}\par}
 
-\vspace{0.5cm}
+\vspace{0.13cm}
 
 {\LARGE \textbf{Informe del Trabajo Final}\par}
 
-\vspace{0.5cm}
+\vspace{0.25cm}
 
 {\large Docente\par} \vspace{0.1cm} {\Large \textbf{Mayta Guillermo, Jorge Luis}\par}
 
@@ -60,6 +60,6 @@ U202412248 & Trinidad León, Jahat Jassiel \tabularnewline
 
 \vspace{1.0cm}
 
-{\large \textbf{Periodo 202610}\par} \vspace{0.1cm} {\normalsize Setiembre, 2026\par}
+{\large \textbf{Periodo 202620}\par} \vspace{0.1cm} {\normalsize \textbf{Setiembre, 2026}\par}
 
 \end{titlepage} \restoregeometry \newpage

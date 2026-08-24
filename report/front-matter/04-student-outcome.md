@@ -23,8 +23,6 @@ EAC - Student Outcome 7.
 | | **AV1**: | |
 | | **Trinidad Leon, Jahat Jassiel (U202412248)**  | |
 | | **AV1**: | |  
-| |  **AV2**: | |
-| | **TB2**: | |
 | **Reconoce la necesidad del aprendizaje permanente para el desempeño profesional y el desarrollo de proyectos en soluciones de software.** | **Li Gayoso, Diana Carolina (U202415749)** | |
 | | **AV1**: | **AV1**:  |
 | | **Paredes Maza, Victor Juan De Dios (U202416274)** | |
@@ -35,7 +33,5 @@ EAC - Student Outcome 7.
 | | **AV1**: | |
 | | **Trinidad Leon, Jahat Jassiel (U202412248)**  | |
 | | **AV1**: | |  
-| |  **AV2**: | |
-| | **TB2**: | |
 
 \clearpage

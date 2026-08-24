@@ -1,2 +1,4 @@
-## 1.3. Segmentos objetivo
+## Segmentos objetivo
 [Descripción demográfica y estadística de los segmentos del problema]
+
+\newpage
