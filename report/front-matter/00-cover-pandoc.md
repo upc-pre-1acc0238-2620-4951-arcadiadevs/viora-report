@@ -62,4 +62,7 @@ U202412248 & Trinidad León, Jahat Jassiel \tabularnewline
 
 {\large \textbf{Periodo 202620}\par} \vspace{0.1cm} {\normalsize \textbf{Setiembre, 2026}\par}
 
-\end{titlepage} \restoregeometry \newpage
+\end{titlepage}
+\restoregeometry
+\setstretch{1.5}
+\newpage

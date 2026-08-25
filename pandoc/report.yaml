@@ -1,7 +1,7 @@
 from: markdown
 standalone: true
 toc: false
-toc-depth: 3
+toc-depth: 4
 number-sections: true
 citeproc: true
 template: pandoc/templates/eisvogel.tex
@@ -22,8 +22,11 @@ variables:
   lang: es
   toc-title: "Tabla de Contenidos"
   header-includes: |
-    \usepackage[document]{ragged2e}
-    \setlength{\parindent}{0.5in}
+    \usepackage{ragged2e}
+    % Parrafos en bloque (sin sangria de primera linea), igual que la
+    % referencia: se dejan los valores por defecto de eisvogel.
+    % Con lang=es, babel rotula las tablas como "Cuadro"; APA pide "Tabla".
+    \AtBeginDocument{\renewcommand{\tablename}{Tabla}}
 
 bibliography:
   - report/bibliography/references.bib
