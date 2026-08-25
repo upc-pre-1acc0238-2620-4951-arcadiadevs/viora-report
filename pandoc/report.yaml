@@ -22,16 +22,16 @@ variables:
   lang: es
   toc-title: "Tabla de Contenidos"
   header-includes: |
-    \usepackage{ragged2e}
-    % Parrafos en bloque (sin sangria de primera linea), igual que la
-    % referencia: se dejan los valores por defecto de eisvogel.
-    % Con lang=es, babel rotula las tablas como "Cuadro"; APA pide "Tabla".
+    \usepackage[document]{ragged2e}
+    \AtBeginDocument{\setlength{\parindent}{0.5in}}
     \AtBeginDocument{\renewcommand{\tablename}{Tabla}}
 
 bibliography:
   - report/bibliography/references.bib
 
 csl: pandoc/csl/apa-7.csl
+
+
 
 
 

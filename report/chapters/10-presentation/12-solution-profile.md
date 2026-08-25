@@ -82,71 +82,95 @@ La investigación aplicada confirma el mecanismo. Un evento ENOS fuerte se asoci
 
 ---
 
-**Problemática (5W + 2H)**
-**What (Qué)**
+\noindent \textbf{Problemática (5W + 2H)}
 
-*¿Cuál es el problema?*
+\vspace{0.15cm}
+\noindent \textbf{What (Qué)}
 
-El olivar del sur del Perú opera atrapado en un ciclo de alternancia productiva (vecería) que nadie gestiona de forma deliberada. La carga frutal excesiva de un año ON agota reservas de carbohidratos, drena nitrógeno y potasio foliar e inhibe hormonalmente la diferenciación floral del año siguiente, produciendo un año OFF de cosecha marginal (Lavee, 2007). El productor no dispone de un criterio cuantitativo sobre **cuánta carga debe llevar su parcela**, ni de una señal oportuna sobre **cuándo intervenir** (aclareo, poda de despunte, cosecha temprana, riego y nutrición correctivos), por lo que la alternancia se perpetúa campaña tras campaña y se agrava con cada anomalía térmica.
+\vspace{0.15cm}
 
-**Who (Quién)**
+\noindent ¿Cuál es el problema?
 
-*¿Quiénes son los usuarios?*
+El olivar del sur del Perú opera atrapado en un ciclo de alternancia productiva (vecería) que nadie gestiona de forma deliberada. La carga frutal excesiva de un año ON agota reservas de carbohidratos, drena nitrógeno y potasio foliar e inhibe hormonalmente la diferenciación floral del año siguiente, produciendo un año OFF de cosecha marginal (Lavee, 2007). El productor no dispone de un criterio cuantitativo sobre cuánta carga debe llevar su parcela, ni de una señal oportuna sobre cuándo intervenir (aclareo, poda de despunte, cosecha temprana, riego y nutrición correctivos), por lo que la alternancia se perpetúa campaña tras campaña y se agrava con cada anomalía térmica.
+
+\noindent \textbf{Who (Quién)}
+
+\vspace{0.15cm}
+
+\noindent ¿Quiénes son los usuarios?
 
 - **Productores olivareros de la macro-región sur.** Gestores de parcelas —desde agricultura familiar asociada en cooperativas hasta fundos agroindustriales tecnificados— que sufren directamente la oscilación de ingresos. Su dolor es la imposibilidad de predecir y de estabilizar la cosecha: en años OFF pierden hasta el 90 % del volumen (Andina, 2024) y en años ON obtienen fruta pequeña, de menor calibre y menor valor comercial que además condena la campaña siguiente.
 - **Gestores técnicos de organizaciones olivareras** (cooperativas, asociaciones de productores y acopiadores/agroindustrias procesadoras). Responsables de planificar acopio, capacidad de proceso, calibres y compromisos comerciales sobre un volumen agregado que hoy no pueden proyectar. Requieren visibilidad anticipada del estado ON/OFF de su cartera de proveedores y capacidad de impulsar un protocolo homogéneo de manejo de carga entre sus socios.
 
-**When (Cuándo)**
+\noindent \textbf{When (Cuándo)}
 
-*¿Cuándo sucede el problema?*
+\vspace{0.15cm}
 
-El problema se decide en ventanas fenológicas estrechas y se manifiesta un año después. La ventana de **aclareo** se abre en las semanas posteriores a la plena floración de un año ON y se cierra antes del crecimiento vegetativo principal; la de **acumulación de frío** transcurre en el invierno (aproximadamente mayo a septiembre en el hemisferio sur) y determina la ruptura de latencia de yemas; la de **poda de despunte** se abre inmediatamente después de la cosecha. El daño, en cambio, se hace visible recién en la floración de la campaña siguiente, cuando ya no existe acción correctiva posible. Esta **asincronía entre la decisión y su consecuencia** es la razón de fondo por la que el manejo empírico fracasa.
+\noindent ¿Cuándo sucede el problema?
 
-**Where (Dónde)**
+El problema se decide en ventanas fenológicas estrechas y se manifiesta un año después. La ventana de aclareo se abre en las semanas posteriores a la plena floración de un año ON y se cierra antes del crecimiento vegetativo principal; la de acumulación de frío transcurre en el invierno (aproximadamente mayo a septiembre en el hemisferio sur) y determina la ruptura de latencia de yemas; la de poda de despunte se abre inmediatamente después de la cosecha. El daño, en cambio, se hace visible recién en la floración de la campaña siguiente, cuando ya no existe acción correctiva posible. Esta asincronía entre la decisión y su consecuencia es la razón de fondo por la que el manejo empírico fracasa.
 
-*¿Dónde ocurre?*
+\noindent \textbf{Where (Dónde)}
+
+\vspace{0.15cm}
+
+\noindent ¿Dónde ocurre?
 
 En la macro-región sur del Perú, con epicentro en Tacna —que concentra cerca del 81 % del área olivarera nacional (Agraria.pe, 2021)— y particularmente en el distrito de La Yarada Los Palos, donde la agricultura se desarrolla en condiciones desérticas costeras bajo riego presurizado y con presión creciente sobre los acuíferos subterráneos (Contraloría, 2023), lo que amplifica el estrés hídrico durante los años de alta carga.
 
-**Why (Por qué)**
+\noindent \textbf{Why (Por qué)}
 
-*¿Por qué ocurre?*
+\vspace{0.15cm}
 
-Porque la decisión más determinante del ciclo —**cuánta fruta dejar en el árbol**— se toma sin medición y sin referencia. No existe un registro sistemático del rendimiento histórico por parcela que permita cuantificar la severidad de la alternancia, ni un protocolo de muestreo que estime la carga frutal real, ni umbrales de riego y nutrición vinculados al estado fisiológico de la planta. En ausencia de estos elementos, el productor aplica calendarios fijos heredados y reacciona al daño visible, mientras que la organización acopiadora descubre el año OFF cuando la fruta no llega a planta.
+\noindent ¿Por qué ocurre?
 
-**How (Cómo)**
+Porque la decisión más determinante del ciclo —cuánta fruta dejar en el árbol— se toma sin medición y sin referencia. No existe un registro sistemático del rendimiento histórico por parcela que permita cuantificar la severidad de la alternancia, ni un protocolo de muestreo que estime la carga frutal real, ni umbrales de riego y nutrición vinculados al estado fisiológico de la planta. En ausencia de estos elementos, el productor aplica calendarios fijos heredados y reacciona al daño visible, mientras que la organización acopiadora descubre el año OFF cuando la fruta no llega a planta.
 
-*¿Cómo surge el problema?*
+\noindent \textbf{How (Cómo)}
+
+\vspace{0.15cm}
+
+\noindent ¿Cómo surge el problema?
 
 Surge por un encadenamiento fisiológico: (1) la carga frutal excesiva convierte al fruto en sumidero dominante; (2) las semillas en desarrollo emiten señales hormonales que bloquean la diferenciación floral de las yemas; (3) el almidón y los azúcares de reserva se consumen en la acumulación de aceite, dejando a las yemas sin energía para diferenciarse en invierno; (4) el nitrógeno y el potasio foliares caen por debajo de los niveles de suficiencia; (5) la demanda hídrica se incrementa cerca de un 30 % en el año ON, elevando la tensión en el xilema y frenando el crecimiento de los brotes de reemplazo que sostendrían la cosecha siguiente. El resultado es un año OFF estructural. Si además el invierno no acumula el frío necesario, la floración se vuelve escasa y desuniforme, y la amplitud del ciclo se profundiza (Calvo et al., 2024).
 
-*¿En qué condición?*
+\noindent ¿En qué condición?
 
 Bajo eventos ENOS o El Niño costero, cuando el aumento de temperaturas invernales reduce entre 15 % y 23 % la acumulación de frío (Calvo et al., 2024), y en contextos de restricción hídrica donde el productor no puede compensar la mayor demanda del año ON.
 
-**How much (Cuánto)**
+\noindent \textbf{How much (Cuánto)}
 
-*¿Cuál es la magnitud del problema?*
+\vspace{0.15cm}
+
+\noindent ¿Cuál es la magnitud del problema?
 
 La oscilación documentada en Tacna es de una magnitud difícil de sostener financieramente: mermas de hasta 90 % con proyecciones de cosecha de apenas 10 % a 20 % del año previo en campañas adversas (Andina, 2024), frente a un incremento reportado de 18 615 % en septiembre de 2025 respecto al mismo mes del año anterior (MIDAGRI, 2025). Bajo escenarios ENOS fuertes se advierten reducciones de rendimiento de aceite superiores al 85 % (Calvo et al., 2024). A esto se suma la pérdida de valor comercial dentro del propio año ON, donde el exceso de carga produce fruta de menor calibre, maduración más tardía y menor precio por kilo.
  
 ---
 
-**Enunciado del problema (Problem Statement)**
+\noindent \textbf{Enunciado del problema (Problem Statement)}
+
+\vspace{0.15cm}
 
 Los productores olivareros de la macro-región sur y las organizaciones que acopian y transforman su producción enfrentan un problema de negocio: la cosecha alterna entre años de sobreproducción de baja calidad y años de cosecha marginal, y ni el productor ni la organización disponen de un criterio cuantitativo para gestionar la carga frutal ni de una señal oportuna dentro de las ventanas fenológicas donde la intervención todavía es posible. Aunque existe evidencia agronómica consolidada sobre cómo mitigar la alternancia —regulación de carga, poda de renovación, cosecha temprana, riego por potencial hídrico y nutrición por análisis foliar—, esa evidencia no llega traducida en decisiones fechadas y dimensionadas para una parcela concreta. Como consecuencia, los ingresos del productor oscilan de forma insostenible y la organización no puede planificar capacidad ni comprometer volúmenes de venta.
  
 ---
 
-**Objetivos del proyecto**
+\noindent \textbf{Objetivos del proyecto}
 
-Objetivos generales
+\vspace{0.15cm}
+
+\noindent \textbf{Objetivos generales}
+
+\vspace{0.15cm}
 
 1. **Quebrar el ciclo de alternancia a nivel de parcela.** Reducir de forma medible el índice de alternancia (BBI) de las parcelas gestionadas mediante la regulación deliberada de la carga frutal y de las prácticas asociadas.
 2. **Convertir la evidencia agronómica en decisiones fechadas.** Entregar al productor, dentro de la ventana fisiológica útil, la acción concreta y dimensionada que corresponde al estado real de su parcela.
 3. **Dar previsibilidad de volumen a la cadena de valor.** Proveer a las organizaciones olivareras una proyección agregada del acopio esperado que permita planificar capacidad, calibres y compromisos comerciales.
 
-Objetivos específicos
+\noindent \textbf{Objetivos específicos}
+
+\vspace{0.15cm}
 
 - Lograr que al menos el 60 % de las parcelas registradas cuente con un historial de al menos tres campañas y un índice de alternancia calculado durante los primeros 60 días de uso.
 - Conseguir que al menos el 50 % de las parcelas clasificadas en año ON ejecute y certifique una acción de regulación de carga dentro de la ventana recomendada por el sistema.
@@ -157,11 +181,13 @@ Objetivos específicos
 
 ---
 
-**Restricciones**
+\noindent \textbf{Restricciones}
 
-- **Alcance tecnológico.** La solución se compone de una aplicación móvil nativa, una aplicación móvil multiplataforma, un servicio web RESTful de desarrollo interno y un sitio web estático para el Landing Page. La aplicación nativa se desarrolla en **Kotlin sobre Android**; la estrategia cross-platform se implementa con **Flutter y Dart** o, alternativamente, con **Kotlin Multiplatform (KMP)**. El servicio web se construye bajo estilo arquitectónico RESTful con **Spring Boot y Java**, documentado mediante OpenAPI Specification vía Swagger. El Landing Page se desarrolla en HTML5, CSS3 y JavaScript.
+\vspace{0.15cm}
+
+- **Alcance tecnológico.** La solución se compone de una aplicación móvil nativa, una aplicación móvil multiplataforma, un servicio web RESTful de desarrollo interno y un sitio web estático para el Landing Page. La aplicación nativa se desarrolla en Kotlin sobre Android; la estrategia cross-platform se implementa con Flutter y Dart o, alternativamente, con Kotlin Multiplatform (KMP). El servicio web se construye bajo estilo arquitectónico RESTful con Spring Boot y Java, documentado mediante OpenAPI Specification vía Swagger. El Landing Page se desarrolla en HTML5, CSS3 y JavaScript.
 - **Capacidades obligatorias de la aplicación móvil.** La solución debe incorporar almacenamiento local de información en el dispositivo, acceso a al menos un recurso interno del dispositivo, integración con el servicio RESTful de desarrollo interno y consumo de al menos un servicio externo de terceros. **Aplicación al dominio:** el almacenamiento local sostiene el trabajo sin conectividad durante el muestreo de carga frutal en parcela; el recurso interno del dispositivo se emplea en la georreferenciación de la parcela y en la captura de evidencia del muestreo; el servicio externo de terceros provee los datos meteorológicos horarios requeridos para el cálculo de acumulación de frío.
-- **Telemetría IoT con datos simulados.** El proyecto no contempla la implementación de hardware ni de sensores físicos de campo. La capa de telemetría se resuelve mediante un **simulador de datos de estación agrometeorológica y de sensores de parcela**, que alimenta al servicio RESTful con lecturas sintéticas coherentes con los rangos documentados para la zona de estudio. Esta decisión no compromete el núcleo funcional: las variables fisiológicas determinantes de la vecería —potencial hídrico del tallo, concentración foliar de nitrógeno y potasio, y conteo de frutos— se incorporan mediante **registro manual guiado** de mediciones que el productor o su técnico ya realizan con instrumental convencional (cámara de presión, análisis de laboratorio, muestreo de ramas marcadas).
+- **Telemetría IoT con datos simulados.** El proyecto no contempla la implementación de hardware ni de sensores físicos de campo. La capa de telemetría se resuelve mediante un simulador de datos de estación agrometeorológica y de sensores de parcela, que alimenta al servicio RESTful con lecturas sintéticas coherentes con los rangos documentados para la zona de estudio. Esta decisión no compromete el núcleo funcional: las variables fisiológicas determinantes de la vecería —potencial hídrico del tallo, concentración foliar de nitrógeno y potasio, y conteo de frutos— se incorporan mediante registro manual guiado de mediciones que el productor o su técnico ya realizan con instrumental convencional (cámara de presión, análisis de laboratorio, muestreo de ramas marcadas).
 - **Feature de aprendizaje autónomo.** El alcance incluye la investigación, evaluación e integración de una tecnología, biblioteca o servicio no abordado en clase, con justificación de su selección y documentación del proceso de aprendizaje y aplicación.
 - **Demostración en dispositivo físico.** La presentación final se realiza sobre un dispositivo físico con la aplicación previamente instalada y operativa, distribuida mediante Firebase App Distribution u otro servicio equivalente.
 - **Fidelidad arquitectónica.** El diseño de todos los productos de la solución sigue Domain-Driven Design (DDD) y se documenta bajo Modelo C4 (Context, Container, Component, Code).
@@ -169,7 +195,7 @@ Objetivos específicos
 - **Estandarización de idioma.** El idioma por defecto de mensajes, interfaz de usuario e interfaz de documentación en todos los productos de la solución es el inglés.
 - **Disponibilidad en la nube.** El Landing Page y los Web Services se despliegan en plataformas Server-Side o Cloud con acceso público mediante URL.
 
-  \clearpage
+\clearpage
 
 ### Lean UX Process
 
@@ -189,9 +215,13 @@ Sabremos que estamos teniendo éxito cuando observemos que el índice de alterna
 
 #### Lean UX Assumptions
 
+&nbsp;
+
 A continuación se enumeran las creencias resultantes de la sesión de discusión del equipo, organizadas según los cinco tipos de assumptions establecidos en Lean UX.
 
-**Business Assumptions**
+\noindent \textbf{Business Assumptions}
+
+\vspace{0.15cm}
 
 1. Creemos que el olivar de la macro-región sur opera bajo un ciclo de alternancia productiva que nadie gestiona de forma deliberada, y que esa omisión —y no únicamente la variabilidad climática— es la causa de la oscilación extrema de los ingresos del productor (Calvo et al., 2024; MIDAGRI, 2025).
 2. Creemos que la carga frutal es la única variable de este sistema que el productor controla efectivamente, por lo que un producto que la gestione tiene una ventaja competitiva sostenible frente a las plataformas que se limitan a monitorear el clima.
@@ -201,7 +231,9 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 6. Creemos que el equipo cuenta con la capacidad técnica para construir la solución móvil, pero no con capacidad agronómica propia, por lo que la validez de los umbrales dependerá de fuentes académicas y de la validación con especialistas del sector.
 7. Creemos que la mayor amenaza del negocio es el horizonte de validación, ya que el resultado de fondo se observa en la campaña siguiente y el producto debe entregar valor percibible antes de ese plazo.
 
-**Business Outcome Assumptions**
+\noindent \textbf{Business Outcome Assumptions}
+
+\vspace{0.15cm}
 
 1. Creemos que firmaremos al menos 2 convenios con cooperativas, asociaciones o agroindustrias de la macro-región sur dentro de los 6 meses posteriores al lanzamiento.
 2. Creemos que al menos el 60 % de los nuevos suscriptores registrará su parcela y cargará el historial de al menos tres campañas durante los primeros 30 días de uso.
@@ -213,7 +245,9 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 8. Creemos que al menos el 55 % de las parcelas en año ON contará con una estimación de carga frutal registrada en el sistema.
 9. Creemos que al menos el 40 % de las decisiones de riego y nutrición registradas se sustentará en una medición de potencial hídrico o de análisis foliar, y no en calendario.
 
-**User Assumptions**
+\noindent \textbf{User Assumptions}
+
+\vspace{0.15cm}
 
 1. Creemos que nuestro usuario principal es el productor olivarero de la macro-región sur, que administra entre 3 y 30 hectáreas y decide poda, riego, nutrición y fecha de cosecha sobre la base de la costumbre heredada y con poco tiempo disponible.
 2. Creemos que este productor reconoce el patrón de "un año carga y otro no", pero lo asume como una fatalidad del cultivo y no como una variable sobre la que pueda intervenir.
@@ -222,7 +256,9 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 5. Creemos que este gestor descubre la magnitud real de la campaña cuando la fruta llega, o no llega, a planta, y que esa falta de anticipación le impide comprometer volúmenes con seguridad.
 6. Creemos que el gestor tiene incentivo económico directo en que sus socios estabilicen la producción, por lo que actuará como promotor de la adopción dentro de su cartera.
 
-**User Outcome and Benefit Assumptions**
+\noindent \textbf{User Outcome and Benefit Assumptions}
+
+\vspace{0.15cm}
 
 1. Creemos que el productor busca reducir la amplitud entre su mejor y su peor campaña, y que valorará dejar de financiar los años OFF con la caja del año ON.
 2. Creemos que el productor obtendrá un beneficio percibible dentro del mismo año ON, mediante mayor calibre, maduración más oportuna y mejor precio por kilo al regular la carga.
@@ -231,15 +267,17 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 5. Creemos que ambos usuarios valorarán observar la evolución del índice de alternancia como prueba objetiva del efecto de las intervenciones ejecutadas.
 6. Creemos que ambos usuarios requieren que el esfuerzo de registro sea mínimo y guiado, dado que las mediciones necesarias son pocas pero deben realizarse en fechas precisas.
 
-**Feature Assumptions**
+\noindent \textbf{Feature Assumptions}
 
-1. Creemos que una **línea base de alternancia por parcela**, construida a partir del historial de rendimiento, permitirá al productor dimensionar por primera vez la severidad real de su problema (Hoblyn et al., 1936).
-2. Creemos que un **seguimiento de acumulación de frío con simulación de escenario ENOS** permitirá anticipar la calidad y uniformidad de la floración de la campaña (Calvo et al., 2024).
-3. Creemos que un **muestreo guiado de carga frutal contrastado contra una carga objetivo** convertirá la variable de decisión central en un número accionable y comparable.
-4. Creemos que un **plan de manejo de carga con ventanas fechadas** entregará el aclareo, la poda de despunte y la fecha límite de cosecha dimensionados y ubicados en el calendario (Fernández et al., 2015; UC IPM, s.f.).
-5. Creemos que un **registro de potencial hídrico del tallo y de análisis foliar contrastado contra umbrales de suficiencia** reemplazará el calendario fijo como criterio de riego y nutrición (Shackel et al., 2021; UC ANR, 2010).
-6. Creemos que una **bitácora de trazabilidad que realimente el índice de alternancia** permitirá sostener el protocolo campaña tras campaña al hacer visible su efecto.
-7. Creemos que un **portafolio de parcelas con proyección agregada de acopio** trasladará el valor del dato de parcela a la planificación de la organización.
+\vspace{0.15cm}
+
+1. Creemos que una línea base de alternancia por parcela, construida a partir del historial de rendimiento, permitirá al productor dimensionar por primera vez la severidad real de su problema (Hoblyn et al., 1936).
+2. Creemos que un seguimiento de acumulación de frío con simulación de escenario ENOS  permitirá anticipar la calidad y uniformidad de la floración de la campaña (Calvo et al., 2024).
+3. Creemos que un muestreo guiado de carga frutal contrastado contra una carga objetivo convertirá la variable de decisión central en un número accionable y comparable.
+4. Creemos que un plan de manejo de carga con ventanas fechadas entregará el aclareo, la poda de despunte y la fecha límite de cosecha dimensionados y ubicados en el calendario (Fernández et al., 2015; UC IPM, s.f.).
+5. Creemos que un registro de potencial hídrico del tallo y de análisis foliar contrastado contra umbrales de suficiencia reemplazará el calendario fijo como criterio de riego y nutrición (Shackel et al., 2021; UC ANR, 2010).
+6. Creemos que una bitácora de trazabilidad que realimente el índice de alternancia permitirá sostener el protocolo campaña tras campaña al hacer visible su efecto.
+7. Creemos que un portafolio de parcelas con proyección agregada de acopio trasladará el valor del dato de parcela a la planificación de la organización.
 
 
 #### Lean UX Hypothesis Statements

@@ -1,6 +1,8 @@
 # Project Report Collaboration Insights {-}
 
-**Enlaces a la organización de github y sus repositorios**
+\noindent \textbf{Enlaces a la organización de github y sus repositorios}
+
+\vspace{0.15cm}
 
 - **Organizacion de GitHub** upc-pre-1acc0238-2620-4951-arcadiadevs:
 
@@ -31,6 +33,8 @@
   [https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform](https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform)
   
 
-**Estadísticas de colaboración**
+\noindent \textbf{Estadísticas de colaboración}
+
+\vspace{0.15cm}
 
 \clearpage
