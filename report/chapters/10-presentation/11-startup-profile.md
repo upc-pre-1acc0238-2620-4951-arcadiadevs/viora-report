@@ -99,6 +99,7 @@ Soy Víctor Paredes Maza, tengo 19 años, estudio Ingeniería de Software en la 
 \hfill
 \begin{minipage}[c]{0.74\textwidth}
 \raggedright
+Soy Fabrizio Santi Guerrero, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CPO de Viora. Me apasiona el diseño de sistemas eficientes y escalables, así como la programación competitiva, disciplina que ha desarrollado mi capacidad lógica para resolver problemas complejos. Me enfoco principalmente en la arquitectura de software y desarrollo backend, con sólidos conocimientos técnicos en SQL, C++, Python, Java, JavaScript y herramientas de Data Science, aportando al equipo habilidades de alto nivel. Me considero una persona perseverante, disciplinada y comprometida con el esfuerzo constante, siempre buscando optimizar procesos y construir soluciones de software innovadoras, limpias y robustas.
 \end{minipage}
 
 \vspace{0.6cm}
