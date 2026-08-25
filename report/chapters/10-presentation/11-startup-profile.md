@@ -144,7 +144,8 @@ Somos un equipo de ingeniería y diseño que convierte evidencia agronómica dis
 \hfill
 \begin{minipage}[c]{0.74\textwidth}
 \raggedright
-\hspace*{0.5in}Soy Diana Li Gayoso, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CMO Viora. ...
+\hspace*{0.5in}Soy Diana Li Gayoso, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CMO Viora. Cuento con conocimientos en arquitectura de software y desarrollo backend, así como en SQL y C++. Me considero una persona responsable, disciplinada y perseverante, con capacidad para afrontar retos y adaptarme a diferentes situaciones. Me caracterizo por mi compromiso, resiliencia y puntualidad, además de mi constante interés por seguir aprendiendo y mejorar mis habilidades.
+
 \end{minipage}
 ```
 
