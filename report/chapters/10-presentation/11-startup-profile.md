@@ -88,7 +88,7 @@ Somos un equipo de ingeniería y diseño que convierte evidencia agronómica dis
 \hfill
 \begin{minipage}[c]{0.74\textwidth}
 \raggedright
-\hspace*{0.5in}Soy Víctor Paredes Maza, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CEO de Viora. Elegí esta carrera porque me permite volver realidad grandes ideas. Lidero con visión estratégica, criterio, innovación, orden y enfoque en la calidad. Trabajo en equipo, escucho y ejecuto con disciplina. Busco mejorar cada día y alcanzar metas grandes, construyendo productos útiles y confiables.
+\hspace*{0.5in}Soy Víctor Paredes Maza, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CEO de Viora. Me especializo en diseño de producto y desarrollo frontend, con conocimientos en Angular, TypeScript, HTML/CSS y herramientas de diseño como Figma, además de motion graphics con GSAP y Three.js. Aporto al equipo la definición de la visión del producto, la construcción del sistema de diseño y la coordinación de sprints bajo GitFlow y Conventional Commits. Me caracterizo por mi criterio estético y mi atención al detalle, enfocado en construir productos útiles, consistentes y confiables. Actualmente amplío mi dominio hacia el backend con Spring Boot para liderar el producto de extremo a extremo.
 \end{minipage}
 
 \vspace{0.6cm}
