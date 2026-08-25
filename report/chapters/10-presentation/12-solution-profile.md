@@ -187,9 +187,6 @@ Nuestro foco inicial serán los productores olivareros de Tacna y los gestores t
 
 Sabremos que estamos teniendo éxito cuando observemos que el índice de alternancia promedio de las parcelas gestionadas se reduce en al menos 0,10 puntos tras dos campañas, que al menos el 50 % de las parcelas en año ON certifica una acción de regulación de carga dentro de la ventana recomendada, que al menos el 40 % de las decisiones de riego y nutrición se sustenta en una medición y no en calendario, y que las organizaciones proyectan su volumen de acopio con un error inferior al 25 % frente al volumen realmente recibido.
 
-
-[Brand new initiative template problem statement]
-
 #### Lean UX Assumptions
 
 A continuación se enumeran las creencias resultantes de la sesión de discusión del equipo, organizadas según los cinco tipos de assumptions establecidos en Lean UX.
@@ -247,7 +244,7 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 
 #### Lean UX Hypothesis Statements
 
-Se formula un hypothesis statement por cada feature assumption identificada.
+&nbsp;
 
 - **H1. Creemos que lograremos** que el 60 % de las parcelas registradas cuente con línea base calculada en 60 días. **Si** los productores olivareros **logran** dimensionar por primera vez la severidad real de su alternancia productiva **con** el registro del historial de rendimiento y el cálculo automático del índice de alternancia.
 - **H2. Creemos que lograremos** que el 45 % de los productores ajuste su plan de campaña antes de la floración. **Si** los productores olivareros **logran** anticipar una floración escasa o desuniforme **con** el seguimiento de acumulación de frío y la simulación de escenario ENOS.
