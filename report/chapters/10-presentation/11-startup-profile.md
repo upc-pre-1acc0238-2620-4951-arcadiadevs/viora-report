@@ -130,7 +130,7 @@ Somos un equipo de ingeniería y diseño que convierte evidencia agronómica dis
 \hfill
 \begin{minipage}[c]{0.74\textwidth}
 \raggedright
-\hspace*{0.5in}Soy Piero Espada Lazo, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy COO de Viora. ...
+\hspace*{0.5in}Soy Piero Espada Lazo, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy COO de Viora. Cuento con sólidos conocimientos en arquitectura de software y experiencia en tecnologías como Angular, Spring Boot y SQL. Me caracterizo por mi compromiso, responsabilidad y enfoque constante en aportar valor e impacto positivo en cada proyecto en el que participo.
 \end{minipage}
 
 \vspace{0.6cm}
