@@ -10,11 +10,11 @@
 \hline
 \multicolumn{6}{|c|}{\textbf{Competitive analysis landscape}} \\ \hline
 \multicolumn{2}{|p{3.2cm}|}{¿Por qué llevar a cabo este análisis?} & \multicolumn{4}{p{10.8cm}|}{\vspace{1.5cm}} \\ \hline
-\multicolumn{2}{|c|}{Criterios} & \multicolumn{1}{c|}{Viora} & \multicolumn{1}{c|}{Competidor 1} & \multicolumn{1}{c|}{Competidor 2} & \multicolumn{1}{c|}{Competidor 3} \\ \hline
+\multicolumn{2}{|c|}{Criterios} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Viora \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/viora-brand/viora-isologotipo-green.png} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Agrigenio Olivo \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/logos/competitors/agrigenio.png} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Agroptima \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/logos/competitors/agroptima.jpg} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} RawData \\ \vspace{0.15cm} \includegraphics[height=1.0cm]{report/assets/logos/competitors/rawData.jpg} \vspace{0.2cm}}} \\ \hline
 \endfirsthead
 \hline
 \multicolumn{6}{|c|}{\textbf{Competitive analysis landscape (Continuación)}} \\ \hline
-\multicolumn{2}{|c|}{Criterios} & \multicolumn{1}{c|}{Viora} & \multicolumn{1}{c|}{Competidor 1} & \multicolumn{1}{c|}{Competidor 2} & \multicolumn{1}{c|}{Competidor 3} \\ \hline
+\multicolumn{2}{|c|}{Criterios} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Viora \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/viora-brand/viora-isologotipo-green.png} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Agrigenio Olivo \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/logos/competitors/agrigenio.png} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Agroptima \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/logos/competitors/agroptima.jpg} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} RawData \\ \vspace{0.15cm} \includegraphics[height=1.0cm]{report/assets/logos/competitors/rawData.jpg} \vspace{0.2cm}}} \\ \hline
 \endhead
 \hline
 \multirow{2.2}{0.8cm}{\centering\rotatebox{90}{Perfil}} & Overview & & & & \\ \cline{2-6} 
