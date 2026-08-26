@@ -295,6 +295,11 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 #### Lean UX Canvas
 &nbsp;
 
-[Canvas representation]
+\begin{figure}[H]
+\caption{Lean UX Canvas de la solución Viora.}
+\centering
+\includegraphics[width=0.9\textwidth]{report/assets/lean-ux-canvas/lean-ux-canvas-viora.png}
+\caption*{\textit{Nota.} El diagrama presenta el Lean UX Canvas formulado para Viora, estructurando el problema de la alternancia productiva en olivos, los perfiles de productores y gestores técnicos, las soluciones propuestas, las métricas de negocio, los beneficios esperados y las hipótesis clave para la validación del MVP. Elaboración propia.}
+\end{figure}
 
 \clearpage
