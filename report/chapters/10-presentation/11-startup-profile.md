@@ -116,7 +116,7 @@ Somos un equipo de ingeniería y diseño que convierte evidencia agronómica dis
 \hfill
 \begin{minipage}[c]{0.74\textwidth}
 \raggedright
-\hspace*{0.5in}Soy Jahat Trinidad León, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CTO de Viora. ...
+\hspace*{0.5in}Soy Jahat Trinidad, tengo 25 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CTO de Viora. Me especializo en desarrollo backend con C++ y bases de datos, con conocimientos en SQL, Java y JavaScript, además de experiencia en frontend con Angular y React. Aporto al equipo la capacidad de convertir problemas ambiguos en diseños claros y robustos, el liderazgo técnico del flujo de trabajo bajo GitFlow con gestión por sprints y la integración continua de las entregas desde mi rol de Integrador DevOps. Me caracterizo por mi pensamiento lógico, mi enfoque en abstracciones claras y mi perseverancia para construir sistemas eficientes y confiables. Actualmente profundizo en arquitectura de software y prácticas de automatización para liderar la evolución técnica del producto.
 \end{minipage}
 
 \vspace{0.6cm}
