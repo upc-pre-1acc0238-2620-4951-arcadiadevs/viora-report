@@ -1,9 +1,13 @@
 # Anexos {-}
 
-**Anexo A. Videos de Exposiciones**
+\noindent \textbf{Anexo A. Videos de Exposiciones}
+
+\vspace{0.15cm}
 
 \clearpage
 
-**Anexo B. Video de Entrevistas**
+\noindent \textbf{Anexo B. Video de Entrevistas}
+
+\vspace{0.15cm}
 
 \newpage

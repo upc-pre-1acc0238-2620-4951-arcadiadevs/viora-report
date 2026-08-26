@@ -1,6 +1,3 @@
----
-nocite: '[@*]'
----
 \newgeometry{top=1.5cm,bottom=1.7cm,left=2.3cm,right=2.3cm}
 \begin{titlepage}
 \thispagestyle{empty}
@@ -62,4 +59,7 @@ U202412248 & Trinidad León, Jahat Jassiel \tabularnewline
 
 {\large \textbf{Periodo 202620}\par} \vspace{0.1cm} {\normalsize \textbf{Setiembre, 2026}\par}
 
-\end{titlepage} \restoregeometry \newpage
+\end{titlepage}
+\restoregeometry
+\setstretch{1.5}
+\newpage
