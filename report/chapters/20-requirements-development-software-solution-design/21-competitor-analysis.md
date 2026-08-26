@@ -32,4 +32,16 @@
 \end{center}
 
 ### Estrategias y tácticas frente a competidores
-[Estrategias de la startup frente a las fortalezas/debilidades de la competencia]
+
+Para viabilizar el ingreso de Viora al sector olivarero y posicionarnos frente a competidores establecidos, estructuramos una matriz de estrategias cruzadas. Esta matriz define las tácticas iniciales para mitigar la presencia de herramientas como Agrigenio, Agroptima y RawData, aprovechando sus limitaciones en soporte de campo y su enfoque en cultivos masivos para destacar la alta especialización de nuestra plataforma en la alternancia productiva del olivo.
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.5}
+\begin{longtable}{|p{3.0cm}|p{5.5cm}|p{5.5cm}|}
+\hline
+\textbf{Matriz FODA Cruzada} & \textbf{Fortalezas (F)} \par \vspace{0.1cm} \scriptsize - F1: Lorem ipsum dolor sit amet. \par - F2: Consectetur adipiscing elit. & \textbf{Debilidades (D)} \par \vspace{0.1cm} \scriptsize - D1: Sed do eiusmod tempor. \par - D2: Ut labore et dolore magna. \\ \hline
+\textbf{Oportunidades (O)} \par \vspace{0.1cm} \scriptsize - O1: Quis nostrud exercitation. \par - O2: Ullamco laboris nisi ut. & \textbf{Estrategias FO (Ofensivas)} \par \vspace{0.1cm} \scriptsize - FO1 (F1, O1): Lorem ipsum dolor sit amet, consectetur adipiscing elit. \par - FO2 (F2, O2): Sed do eiusmod tempor incididunt ut labore et dolore. & \textbf{Estrategias DO (Reorientación)} \par \vspace{0.1cm} \scriptsize - DO1 (D1, O2): Ut enim ad minim veniam, quis nostrud exercitation. \par - DO2 (D2, O1): Ullamco laboris nisi ut aliquip ex ea commodo. \\ \hline
+\textbf{Amenazas (A)} \par \vspace{0.1cm} \scriptsize - A1: Duis aute irure dolor in. \par - A2: Reprehenderit in voluptate. & \textbf{Estrategias FA (Defensivas)} \par \vspace{0.1cm} \scriptsize - FA1 (F1, A1): Lorem ipsum dolor sit amet, consectetur adipiscing. \par - FA2 (F2, A2): Ut enim ad minim veniam, quis nostrud. & \textbf{Estrategias DA (Supervivencia)} \par \vspace{0.1cm} \scriptsize - DA1 (D1, A1): Duis aute irure dolor in reprehenderit in voluptate. \par - DA2 (D2, A2): Excepteur sint occaecat cupidatat non proident. \\ \hline
+\end{longtable}
+\end{center}
