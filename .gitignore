@@ -2,6 +2,7 @@
 .antigravitycli
 .mimocode/
 .vscode/
+.atl/
 build/
 notes/
 AGENTS.md
