@@ -17,14 +17,14 @@
 \multicolumn{2}{|c|}{Criterios} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Viora \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/viora-brand/viora-isologotipo-green.png} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Agrigenio Olivo \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/logos/competitors/agrigenio.png} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Agroptima \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/logos/competitors/agroptima.jpg} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} RawData \\ \vspace{0.15cm} \includegraphics[height=1.0cm]{report/assets/logos/competitors/rawData.jpg} \vspace{0.2cm}}} \\ \hline
 \endhead
 \hline
-\multirow{2.2}{0.8cm}{\centering\rotatebox{90}{Perfil}} & Overview & & & & \\ \cline{2-6} 
+\multirow{5}{0.8cm}{\centering\rotatebox{90}{Perfil}} & Overview & & & & \\ \cline{2-6} 
  & Ventaja competitiva ¿Qué valor ofrece a los clientes? & & & & \\ \hline
-\multirow{2.2}{0.8cm}{\centering\rotatebox{90}{\parbox{2.0cm}{\centering Perfil de\\Marketing}}} & Mercado objetivo & & & & \\ \cline{2-6} 
+\multirow{4}{0.8cm}{\centering\rotatebox{90}{\parbox{2.0cm}{\centering Perfil de\\Marketing}}} & Mercado objetivo & & & & \\ \cline{2-6} 
  & Estrategias de marketing & & & & \\ \hline
-\multirow{3.2}{0.8cm}{\centering\rotatebox{90}{\parbox{2.4cm}{\centering Perfil de\\Producto}}} & Productos \& Servicios & & & & \\ \cline{2-6} 
+\multirow{7.5}{0.8cm}{\centering\rotatebox{90}{\parbox{2.4cm}{\centering Perfil de\\Producto}}} & Productos \& Servicios & & & & \\ \cline{2-6} 
  & Precios \& Costos & & & & \\ \cline{2-6} 
  & Canales de distribución (Web y/o Móvil) & & & & \\ \hline
-\multirow{4.2}{0.8cm}{\centering\rotatebox{90}{\parbox{2.2cm}{\centering Análisis\\SWOT}}} & Fortalezas & & & & \\ \cline{2-6} 
+\multirow{4}{0.8cm}{\centering\rotatebox{90}{\parbox{2.2cm}{\centering Análisis\\SWOT}}} & Fortalezas & & & & \\ \cline{2-6} 
  & Debilidades & & & & \\ \cline{2-6} 
  & Oportunidades & & & & \\ \cline{2-6} 
  & Amenazas & & & & \\ \hline
