@@ -23,6 +23,9 @@ variables:
   toc-title: "Tabla de Contenidos"
   header-includes: |
     \usepackage[document]{ragged2e}
+    \usepackage{pdflscape}
+    \usepackage{multirow}
+    \usepackage{longtable}
     \AtBeginDocument{\setlength{\parindent}{0.5in}}
     \AtBeginDocument{\renewcommand{\tablename}{Tabla}}
 
