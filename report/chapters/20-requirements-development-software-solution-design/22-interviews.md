@@ -63,7 +63,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 *   ¿Qué formación técnica, universitaria y trayectoria profesional en agronomía lo llevaron a desempeñarse en su actual rol de gestor técnico en la organización? (Antecedentes / Biografía)
 *   ¿Cómo describiría la rutina habitual de su trabajo durante una campaña olivarera activa? (Contexto de rutina)
     *   *Pregunta complementaria:* ¿Qué porcentaje de su tiempo divide entre el trabajo administrativo en oficina y las visitas técnicas de inspección de campos?
-*   ¿Cuál es su ocupación exacta dentro de la organización y cuántos socios o hectáreas bajo producción de olivo administra bajo su supervisión directa durante la campaña? (Ocupación y socios activos)
+*   ¿Cuántos socios productores y/o hectáreas de olivo se encuentran actualmente bajo su supervisión técnica durante una campaña? (Ocupación y socios activos)
 
 \noindent \textbf{2. Dispositivos, canales digitales e influencias}
 
