@@ -49,7 +49,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 \noindent \textbf{6. Cierre y datos demográficos}
 
 *   Para finalizar la entrevista y con fines estrictamente estadísticos para el arquetipo, ¿en qué rango de edad se encuentra? (Edad)
-*   ¿Con qué género se identifica y cuál es su distrito de residencia exacto? (Género y ubicación)
+*   ¿Cuál es su distrito de residencia exacto? (Ubicación)
 *   ¿Cuál es su estado civil y cómo está conformada su familia? (Familia)
 *   Además de la agricultura en sus parcelas, ¿tiene alguna otra ocupación principal que complemente sus ingresos? (Ocupación)
 
@@ -63,7 +63,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 *   ¿Qué formación técnica, universitaria y trayectoria profesional en agronomía lo llevaron a desempeñarse en su actual rol de gestor técnico en la organización? (Antecedentes / Biografía)
 *   ¿Cómo describiría la rutina habitual de su trabajo durante una campaña olivarera activa? (Contexto de rutina)
     *   *Pregunta complementaria:* ¿Qué porcentaje de su tiempo divide entre el trabajo administrativo en oficina y las visitas técnicas de inspección de campos?
-*   ¿Cuál es su ocupación exacta dentro de la organización y cuántos socios o hectáreas bajo producción de olivo administra bajo su supervisión directa durante la campaña? (Ocupación y socios activos)
+*   ¿Cuántos socios productores y/o hectáreas de olivo se encuentran actualmente bajo su supervisión técnica durante una campaña? (Ocupación y socios activos)
 
 \noindent \textbf{2. Dispositivos, canales digitales e influencias}
 
@@ -99,7 +99,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 \noindent \textbf{6. Cierre y datos demográficos}
 
 *   Para finalizar la entrevista y con fines estrictamente estadísticos para el arquetipo, ¿en qué rango de edad se encuentra? (Edad)
-*   ¿Con qué género se identifica y cuál es su zona principal de operación en la región? (Género y ubicación)
+*   ¿Cuál es su zona principal de operación en la región? (Ubicación)
 *   ¿Cuál es su estado civil y composición de su familia? (Familia)
 *   ¿Cuántos años de experiencia tiene trabajando en el sector agropecuario y cuál es su grado de estudios o especialización técnica? (Ocupación y educación)
 

@@ -21,6 +21,7 @@ v0.1.0 & 24/08/26 & Santi Guerrero, Fabrizio Alonso & Inicialización de la estr
 v0.2.0 & 25/08/26 & Paredes Maza, Victor Juan de Dios & Creación del capítulo 1 \tabularnewline \hline
 v0.3.0 & 26/08/26 & Santi Guerrero, Fabrizio Alonso & Redacción del diseño de entrevistas \tabularnewline \hline
 v0.4.0 & 26/08/26 & Espada Lazo, Piero Anthony & Investigación de competidores \tabularnewline \hline
+v0.4.1 & 30/08/26 & Santi Guerrero, Fabrizio Alonso & Correción de preguntas en el diseño de entrevistas \tabularnewline \hline
 \end{longtable}
 
 \newpage
