@@ -142,5 +142,44 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 \hline 
 \end{tabular}
 
+\vspace{1.5cm}
+
+#### **Segmento 2: Gestores técnicos de organizaciones olivareras**
+&nbsp;
+
+\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista \#3} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Juan Maquera & \textbf{Edad} & 55 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Técnico Agrónomo e Ingeniero Civil} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{11:21 - 16:50} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/viora-interviews-requirements}} \\ 
+\hline 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 55 años, casado con un hijo. Ingeniero Civil con más de 30 años en el sector, labora en La Yarada Los Palos (Tacna). Monitorea desarrollo, plagas y nutrición en 20 ha de olivo. Usa celular Android, Google Chrome y WhatsApp (grupos y llamadas) para asistencia técnica. En oficina solo usa Excel y terceriza análisis por falta de laboratorios. Su personalidad destaca por serenidad y organización. Sus metas son lograr calibres comerciales idóneos para exportación ante bajos precios locales. Su dolor es la inestabilidad por el ENOS que tira la flor, y la falta de alertas climáticas tempranas. Proyecta de forma simple ("un año sí, otro no"), aunque el uso de hormonas mitiga la vecería. Valora un panel digital predictivo basado en estadísticas para control fenológico y de plagas, pero ve barreras en los costos de laboratorios.} \\ 
+[10pt] 
+\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview4.png}} \\ 
+\hline 
+\end{tabular}
+
+\vspace{1.5cm}
+
+\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista \#4} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Daniel Estrada & \textbf{Edad} & 44 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Jefe Técnico de Cooperativa (Ing. Agrónomo)} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{16:51 - 24:30} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/viora-interviews-requirements}} \\ 
+\hline 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 44 años, casado con tres hijos. Ingeniero Agrónomo con 18 años de experiencia, jefe técnico en cooperativa con 68 socios y 420 ha (90\% Criolla) en Tacna. Su rutina varía: 75\% en campo monitoreando frío y poda en pre-cosecha; y en cosecha coordina acopio, salmueras y oficina. Usa Windows 11, Google Chrome, Excel y Google Earth. En campo usa celular y WhatsApp. Monitorea frío con estación climática y tensiómetros en pilotos, pero la salinidad del agua, mala cobertura y robos limitan expandir sensores. Su personalidad es analítica y paciente. Su meta es estabilizar el acopio (1800-2200 t) reduciendo la alternancia. Sufre de "ceguera logística" (error del 35\%-55\% por aforos visuales) que subutiliza salmueras (70\% vacías) y genera penalidades de exportación. Confiaría en la app si cruza conteo, frío y visión artificial con 60-75 días de anticipación. Sugiere incentivar el registro con sobreprecios y descarga prioritaria.} \\ 
+[10pt] 
+\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview5.png}} \\ 
+\hline 
+\end{tabular}
+
 ### Análisis de entrevistas
 [Análisis estadístico de características comunes identificadas]
