@@ -28,7 +28,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 
 *   ¿Cómo se describiría usted al momento de tomar decisiones críticas en su campo (ej. arriesgado, conservador, metódico)? (Personalidad)
 *   ¿Qué habilidad o conocimiento práctico considera que le da mayor ventaja para mantener sano su fundo? (Habilidades)
-*   ¿Qué meta u objetivo concreto espera alcanzar en su fundo olivarero de cara a las próximas tres campañas agrícolas? (Objetivos)
+*   ¿Qué meta u objetivo concreto espero alcanzar en su fundo olivarero de cara a las próximas tres campañas agrícolas? (Objetivos)
 
 \noindent \textbf{4. Exploración del problema (Vecería, decisiones y frustraciones)}
 
@@ -104,7 +104,43 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 *   ¿Cuántos años de experiencia tiene trabajando en el sector agropecuario y cuál es su grado de estudios o especialización técnica? (Ocupación y educación)
 
 ### Registro de entrevistas
-[3-5 entrevistas por segmento con capturas, timings, y resúmenes descriptivos de las respuestas]
+
+#### **Segmento 1: Productores olivareros de la macro-región sur**
+&nbsp;
+
+\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista \#1} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Gustavo Calizaga Limache & \textbf{Edad} & 30 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor Olivarero} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{00:00 - 05:30} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/viora-interviews-requirements}} \\ 
+\hline 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 30 años, soltero con pareja y una hija. Gestiona hace 5 años un fundo de 4 ha. Cultiva Sevillana, con rendimientos de 15,000 kg/ha en años ON y 5,000 kg/ha en años OFF (caída del 66\%). Su rutina diaria en La Yarada (Tacna) es física bajo el sol intenso. Utiliza un celular Samsung Android y WhatsApp para comunicarse con su ingeniero asesor, quien influye en su dosificación química y abonos. Desconoce la tecnología IoT, pero considera "muy útil" una app con alertas que contabilice las horas de frío acumuladas para mitigar el impacto de El Niño. Su personalidad es precavida, enfocada en la prevención de plagas para mantener bien nutridos los árboles. Su meta es lanzar su propia marca de aceitunas de mesa. La vecería no le genera frustración económica porque la escasez eleva los precios locales (hasta 13 soles/kg). Realiza la poda en junio/julio, retrasándose en años de sobrecarga. Confía en el sistema en un 40\%-50\%, priorizando la observación directa en campo.} \\ 
+[10pt] 
+\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview1.png}} \\ 
+\hline 
+\end{tabular}
+
+\vspace{1.5cm}
+
+\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista \#2} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Cristóbal Barrientos Carrillo & \textbf{Edad} & 51 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{Valle de Yauca, Arequipa / Chorrillos, Lima} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor Olivarero} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{05:31 - 11:20} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/viora-interviews-requirements}} \\ 
+\hline 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 51 años, casado con dos hijos. Produce en el Valle de Yauca y comercializa en Lima (Chorrillos). Gestiona 1 ha propia y compra a terceros. Destina el 80\% a aceitunas de mesa y el 20\% a aceite. Su testimonio valida las estadísticas de la sección 1.3: la vecería reduce su producción al 50\% en año regular (frente al 80\% de año ON), y el ENOS severo causó caídas extremas al 20\% hace dos campañas y al 10\% en la actual (mermas del 80\%-90\%). Ante la inestabilidad, economiza insumos en años OFF (usa urea, guano de isla y de corral) para no sobreexigir los árboles y compra stock a familiares. Poda 15 días después de la cosecha, variando la fecha según la carga. Regula el riego por observación y carece de experiencia en sensores IoT. Usa un celular Samsung Android y WhatsApp como canal exclusivo. Su personalidad es arriesgada en años favorables para invertir en nutrición profunda. Valora positivamente una app móvil sin conexión para mitigar variaciones térmicas bruscas, aunque exige un proceso de adopción progresivo para confiar.} \\ 
+[10pt] 
+\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview2.png}} \\ 
+\hline 
+\end{tabular}
 
 ### Análisis de entrevistas
 [Análisis estadístico de características comunes identificadas]
