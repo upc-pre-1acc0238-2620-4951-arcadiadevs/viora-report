@@ -67,7 +67,28 @@ Las diferencias más marcadas aparecen en el foco de trabajo. Teodoro Mamani con
 
 
 ### User Journey Mapping
-[As-Is User Journey Maps diagrams]
+
+En esta sección se presentan los User Journey Maps en su versión actual (*As-Is*) para los dos segmentos del proyecto: Teodoro Mamani (productor olivarero) y Rubén Ticona (gestor técnico de organizaciones olivareras). Estos mapas ilustran el recorrido integral de una campaña olivarera tradicional de principio a fin, abarcando desde las primeras evaluaciones climáticas en invierno y la preparación de insumos, hasta las labores de campo, la recolección escalonada y la comercialización final. Este análisis permite comprender cómo los usuarios interactúan hoy en día con su entorno mediante métodos empíricos, identificando las dificultades operativas y emocionales que experimentan antes de contar con una solución tecnológica especializada.
+
+El User Journey Map de Teodoro Mamani describe el día a día de un productor familiar en La Yarada Los Palos a lo largo de una campaña agrícola. El mapa explica cómo Teodoro inicia la temporada con la constante inquietud de si sus olivos repetirán un año de baja cosecha tras campañas difíciles, tomando decisiones de fertilización y poda basadas en la observación visual y consejos al paso. Asimismo, expone las complicaciones que surgen cuando el exceso de fruta retrasa la maduración y extiende la recolección en varias pasadas, obligándolo a podar fuera de tiempo y dejando al árbol desgastado para la siguiente floración. Finalmente, muestra su esfuerzo por mantener a flote el negocio familiar comprando aceituna a terceros en los años de escasez, quedando atrapado en una inestabilidad donde los ingresos de una buena cosecha terminan financiando las pérdidas de la siguiente.
+
+\begin{figure}[H]
+\caption{User Journey Map del segmento Productor Olivarero (Teodoro Mamani).}
+\centering
+\includegraphics[width=0.9\textwidth]{report/assets/needfinding/ujm-teodoro.png}
+\caption*{\textit{Nota.} Diagrama del User Journey Map (As-Is) para Teodoro Mamani, que describe las etapas de la campaña olivarera tradicional, sus dificultades cotidianas y las oportunidades de mejora identificadas en campo. Elaboración propia.}
+\end{figure}
+
+El User Journey Map de Rubén Ticona explica la labor del gestor técnico al coordinar la asistencia técnica y la recepción de aceituna con los socios de la organización olivarera. El recorrido muestra la incertidumbre que experimenta al intentar prever el acopio de la temporada apoyándose en hojas de cálculo y en la regla tradicional de que a un año bueno le sigue uno malo, criterio que falla cuando los inviernos cálidos provocan la caída de la flor. De igual manera, ilustra la dificultad de supervisar a agricultores dispersos geográficamente y la demora de varias semanas para recibir análisis de suelo de laboratorios externos, lo que impide corregir a tiempo deficiencias en los cultivos. El mapa concluye reflejando las tensiones de cierre de campaña provocadas por las diferencias entre el volumen proyectado y el efectivamente recibido en planta, lo que complica sostener compromisos de exportación a precios rentables.
+
+\begin{figure}[H]
+\caption{User Journey Map del segmento Gestor Técnico de Organización Olivarera (Rubén Ticona).}
+\centering
+\includegraphics[width=0.9\textwidth]{report/assets/needfinding/ujm-ruben.png}
+\caption*{\textit{Nota.} Diagrama del User Journey Map (As-Is) para Rubén Ticona, que describe las actividades de coordinación técnica, las fricciones en la estimación de acopio y las oportunidades de optimización en la gestión de socios. Elaboración propia.}
+\end{figure}
+
+\clearpage
 
 ### Empathy Mapping
 [Empathy Maps diagrams]
