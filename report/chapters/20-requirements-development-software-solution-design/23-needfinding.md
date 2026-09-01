@@ -91,7 +91,28 @@ El User Journey Map de Rubén Ticona explica la labor del gestor técnico al coo
 \clearpage
 
 ### Empathy Mapping
-[Empathy Maps diagrams]
+
+En esta sección se presenta el espectro emocional, cognitivo y vivencial que define la realidad de los dos segmentos objetivo del proyecto: Teodoro Mamani, en representación del productor olivarero familiar, y Rubén Ticona, como gestor técnico de organizaciones olivareras. A través de esta caracterización, se exponen las percepciones cotidianas que tienen sobre su entorno productivo, sus círculos de influencia y los dilemas que enfrentan durante la campaña agrícola. Asimismo, se condensan sus puntos de dolor (Pains), marcados por la incertidumbre ante la vecería y las dificultades de planificación, y sus ganancias esperadas (Gains), enfocadas en la previsibilidad de cosecha, la estabilidad económica y la sostenibilidad del cultivo.
+
+La vivencia de Teodoro Mamani expone la vulnerabilidad que atraviesa el productor familiar en La Yarada Los Palos debido a las oscilaciones de cosecha y a las alteraciones del clima. El análisis visibiliza su constante preocupación por la acumulación de frío invernal, el temor a que la sobrecarga frutal atrase la maduración y agote al árbol para la siguiente floración, y la zozobra de no saber si economizar en abonos o arriesgar capital en fertilizantes costosos. Frente a la inestabilidad de ingresos y la necesidad recurrente de comprar fruta a terceros para mantener abastecidos a sus clientes, destaca su aspiración de lograr cosechas regulares con calibres comerciales óptimos que le permitan consolidar una marca propia de aceituna de mesa. Elaboración propia.
+
+\begin{figure}[H]
+\caption{Empathy Map del segmento Productor Olivarero - Teodoro Mamani.}
+\centering
+\includegraphics[width=0.3\textwidth]{report/assets/needfinding/em-teodoro.png}
+\caption*{\textit{Nota.} Síntesis del entorno, percepciones, conducta y aspiraciones de Teodoro Mamani en la gestión de su parcela familiar frente a la alternancia productiva. Elaboración propia.}
+\end{figure}
+
+La perspectiva de Rubén Ticona expone las tensiones logísticas y operativas que asume el gestor técnico al articular la producción de decenas de agricultores con la planta de proceso. Se manifiesta la presión constante por estimar los volúmenes de acopio basándose en hojas de cálculo y reglas empíricas que pierden precisión ante inviernos cálidos, arriesgando costos fijos elevados por salmueras vacías o incumplimientos de exportación. Asimismo, se evidencia el desgaste de coordinar parcelas dispersas con manejos agronómicos heterogéneos y la impotencia ante la lentitud de los análisis de laboratorio externos, en contraste con su firme objetivo de alcanzar una oferta homogénea y predecible que fortalezca la competitividad internacional de la organización. Elaboración propia.
+
+\begin{figure}[H]
+\caption{Empathy Map del segmento Gestor Técnico de Organización Olivarera - Rubén Ticona.}
+\centering
+\includegraphics[width=0.3\textwidth]{report/assets/needfinding/em-ruben.png}
+\caption*{\textit{Nota.} Síntesis de las responsabilidades técnicas, preocupaciones de acopio, barreras organizativas y metas de competitividad de Rubén Ticona en la articulación de la cartera olivarera. Elaboración propia.}
+\end{figure}
+
+\clearpage
 
 ### Big Picture EventStorming
 [Capturas del EventStorming colaborativo inicial]
