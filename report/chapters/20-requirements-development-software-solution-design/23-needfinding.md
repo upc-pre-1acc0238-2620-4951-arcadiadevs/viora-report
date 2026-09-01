@@ -33,7 +33,38 @@ El User Persona de Rubén Ticona representa al gestor técnico de organizaciones
 \clearpage
 
 ### User Task Matrix
-[User Task Matrix table with Frequency and Importance columns]
+
+En esta sección se presenta la User Task Matrix, que concentra las tareas actuales que los User Persona realizan para cumplir sus objetivos agronómicos y comerciales. Para este análisis se consideran dos segmentos: Teodoro Mamani, productor olivarero de la macro-región sur, y Rubén Ticona, gestor técnico de organizaciones olivareras.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{|p{5.6cm}|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Tarea (Task)}} & \multicolumn{2}{c|}{\textbf{Teodoro Mamani}} & \multicolumn{2}{c|}{\textbf{Rubén Ticona}} \\ \cline{2-5}
+& \textbf{Frecuencia} & \textbf{Importancia} & \textbf{Frecuencia} & \textbf{Importancia} \\ \hline
+Monitoreo de variables climáticas y frío invernal & Alta & \textbf{Crítica} & Alta & \textbf{Crítica} \\ \hline
+Inspección física de parcelas (plagas y nutrición) & Alta & \textbf{Alta} & Media & \textbf{Alta} \\ \hline
+Planificación y aplicación de fertirriego & Media & \textbf{Alta} & Media & \textbf{Alta} \\ \hline
+Programación y ejecución de poda y aclareo & Media & \textbf{Crítica} & Media & \textbf{Crítica} \\ \hline
+Evaluación fenológica y proyección de cosecha & Media & \textbf{Crítica} & Alta & \textbf{Crítica} \\ \hline
+Registro y análisis de trazabilidad agronómica & Baja & \textbf{Baja} & Alta & \textbf{Crítica} \\ \hline
+Coordinación y homologación con socios & Baja & \textbf{Baja} & Alta & \textbf{Crítica} \\ \hline
+Logística de cosecha escalonada & Media & \textbf{Alta} & Media & \textbf{Alta} \\ \hline
+Comercialización, acopio y colocación en mercado & Alta & \textbf{Crítica} & Media & \textbf{Crítica} \\ \hline
+\end{tabular}
+\caption{User Task Matrix de los segmentos considerados.}
+\end{table}
+
+La matriz muestra una coincidencia clara entre ambos perfiles en tareas determinantes del estado actual: el monitoreo de variables climáticas y acumulación de frío invernal, la programación de podas y regulación de carga, y la estimación de volumen de cosecha frente a la vecería, las cuales concentran una importancia crítica para la sostenibilidad del cultivo y la toma de decisiones. Asimismo, comparten la ejecución de inspecciones en campo y la logística de cosecha, indispensables para asegurar la calidad de la fruta tanto verde como negra.
+
+En términos de apoyo para la ejecución, Teodoro Mamani requiere alertas agroclimáticas tempranas, orientación cuantitativa simple para decidir poda o aclareo y referencias claras para proyectar su ingreso de campaña sin depender exclusivamente de la memoria o la intuición; Rubén Ticona, en cambio, necesita información técnica consolidada, trazabilidad estandarizada por predio socio, registros históricos de campo y herramientas que le permitan proyectar volúmenes agregados de acopio y emitir recomendaciones técnicas con rapidez.
+
+Las diferencias más marcadas aparecen en el foco de trabajo. Teodoro Mamani concentra mayor frecuencia e intensidad en la comercialización directa y compra a terceros para sostener su cartera comercial, así como en la inspección física diaria de su parcela familiar de 4 hectáreas, prescindiendo del registro documental formal. Rubén Ticona, por el contrario, asigna alta frecuencia y criticidad al registro y análisis de trazabilidad agronómica y a la coordinación y homologación de protocolos entre múltiples socios dispersos (aprox. 20 ha), reflejando una rutina orientada a la supervisión técnica, aseguramiento de calidad y cumplimiento de compromisos agroindustriales y de exportación.
+
+\clearpage
+
+
 
 ### User Journey Mapping
 [As-Is User Journey Maps diagrams]
