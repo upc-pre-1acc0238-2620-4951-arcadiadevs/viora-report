@@ -114,8 +114,186 @@ La perspectiva de Rubén Ticona expone las tensiones logísticas y operativas qu
 
 \clearpage
 
-### Big Picture EventStorming
-[Capturas del EventStorming colaborativo inicial]
+### Big Picture Event Storming
+
+En esta sección se presenta el Big Picture Event Storming, una metodología de modelado colaborativo empleada por el equipo para explorar el dominio del negocio de manera holística. Para el contexto de nuestro proyecto —una startup en fase de concepción—, este ejercicio adopta un enfoque **"As-Is"** (Estado Actual). El objetivo primario no es traducir requisitos de una plataforma de software inexistente, sino realizar un acto de descubrimiento colectivo sobre cómo los productores de olivo de la macro-región sur y los asesores técnicos de sus organizaciones enfrentan actualmente la alternancia productiva (*vecería*). De esta manera, el modelo refleja la situación real y los puntos de dolor que justifican la creación de Viora.
+
+El taller se estructuró en seis fases que corresponden a los pasos de contenido del *Step-by-Step Guide* referido en el enunciado, desde la generación de Domain Events hasta el cierre. Se adoptó la siguiente convención cromática, mantenida de forma uniforme en todo el tablero: naranja para los Domain Events, naranja rotado 45° para los eventos genéricos que ocultan complejidad, amarillo para los actores, azul para los sistemas externos, morado para los Hotspots, verde para las oportunidades y lila para las políticas empíricas. La asignación del azul a los sistemas externos sigue la convención de la guía de referencia citada en el enunciado.
+
+#### Fase 1: Exploración Caótica y Generación de Domain Events
+
+En la primera fase, el proceso comenzó con lo que la metodología denomina el "caos silencioso". Aplicando la regla de "Adivinar Primero" (*Guess First*) —típica en entornos de startup para extraer suposiciones—, el equipo se enfocó en la identificación de los Domain Events actuales, definidos como hechos relevantes que ocurren en el ecosistema agrícola sin la intervención de Viora. Se estableció la regla de redactar los eventos en inglés y en tiempo pasado para asegurar que representen cambios de estado verificables. Siguiendo la recomendación de la guía, el facilitador sembró el tablero con un evento preparado, *OffYearYieldCollapsed*, alrededor del cual los participantes construyeron el resto.
+
+Se generaron 34 eventos que evidencian lo empírico y reactivo del manejo actual, tales como *ClimaticAnomalyPerceived*, *ThinningWindowMissed*, *HarvestEstimatedByEye* y *CooperativeVolumeCommitmentBroken*. Adicionalmente, cuatro eventos resultaron demasiado genéricos y fueron rotados 45° (en forma de rombo) para registrar la pregunta del facilitador sobre la complejidad que ocultan: *AlternateBearingTriggered*, *CropWeakened*, *ProductionAffected* y *AdverseProgressNoted*. La disposición en grilla que muestra la captura corresponde a una normalización posterior del tablero para efectos de documentación.
+
+<br>
+\begin{figure}[H]
+\caption{Fase 1: Exploración no estructurada de eventos de dominio actuales.}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-1.png}
+\caption*{\textit{Nota.} Captura de la lluvia de ideas inicial sobre los eventos significativos del ciclo productivo del olivo. Elaboración propia.}
+\end{figure}
+
+<br>
+
+#### Fase 2: Imponer la Línea de Tiempo
+
+Una vez superada la exploración caótica, se procedió a imponer una validación cronológica. Para lograr consistencia de izquierda a derecha sin forzar una secuencia irreal e ininterrumpida, se fijaron grandes **Hitos Temporales** (*Temporal Milestones*) correspondientes al ciclo agrícola real: Letargo Invernal y Acumulación de Frío, Floración y Cuajado, Crecimiento del Fruto y Competencia Fuente-Sumidero, Búsqueda Reactiva de Asistencia Técnica, Cosecha del Año ON y Campaña Siguiente (Año OFF).
+
+Bajo cada hito se estructuraron los eventos como "islas" independientes que solo utilizan flechas cuando existe una relación estricta de causa y efecto en el mundo físico (ej. *ThinningWindowMissed* → *AlternateBearingTriggered*). Al ordenar el tablero, la discusión permitió fusionar eventos duplicados, reduciendo el total de 34 a 33. Conforme a la recomendación de la guía sobre flujos alternos y concurrentes, el hito de Búsqueda Reactiva se representó mediante alineación vertical: la verificación de disponibilidad del asesor bifurca hacia una visita agendada o hacia una visita postergada, mientras un carril paralelo muestra la acumulación simultánea de solicitudes sobre el asesor técnico.
+
+La decisión de modelado más relevante de esta fase fue extender la línea de tiempo más allá de una sola campaña. Dado que la vecería es un fenómeno bianual, el tablero se cierra con una flecha de retorno desde el hito del Año OFF hacia el hito inicial, evidenciando que el ciclo se autoperpetúa. Asimismo, los eventos climáticos (*ClimaticAnomalyPerceived*, *ChillHoursMissed*, *AgriculturalAlertReceived*) se posicionaron deliberadamente como islas de contexto, sin flecha causal hacia *AlternateBearingTriggered*: la única cadena que desemboca en la alternancia proviene de la regulación de carga frutal, coherente con el planteamiento del problema.
+
+<br>
+\begin{figure}[H]
+\caption{Fase 2: Línea de tiempo estructurada mediante Hitos Temporales (Vista general).}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-2-vista-general.png}
+\caption*{\textit{Nota.} Organización cronológica de los eventos reales mediante anclas temporales y cierre del ciclo bianual. Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Fase 2: Detalle de flujos por Hitos Temporales.}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-2-1.png}
+\vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-2-2.png}
+\caption*{\textit{Nota.} Acercamiento a los clústeres estructurados en islas y a la bifurcación del hito de búsqueda reactiva. Elaboración propia.}
+\end{figure}
+
+<br>
+
+#### Fase 3: Integración de Personas y Sistemas Externos
+
+En la fase de estructuración lógica, el equipo mapeó los roles humanos y las herramientas externas que intervienen activamente en el día a día. Se constató que los productores dependen netamente de mecanismos básicos e informales. Siguiendo la guía, no se asignó un actor a cada evento: basta con uno al inicio de cada cadena y uno adicional cuando cambia quién actúa.
+
+**Personas (Actores):**
+- **Olive Farmer:** Productor perteneciente a una cooperativa. Depende de su experiencia y de la observación visual in situ.
+- **Technical Advisor:** Asesor técnico o gestor de la organización olivícola. Sobreexigido de tiempo y sin datos de parcela para priorizar.
+- **Neighbor:** Ejerce el rol de "soporte de campo" inexperto ante la demora del asesor.
+  **Sistemas Externos:**
+- **Phone y WhatsApp:** Medios reactivos de ayuda inicial.
+- **SENAMHI:** Fuente macro de clima y alertas, sin granularidad a nivel de parcela.
+- **Field Notebook:** Cuaderno físico vulnerable y no analítico.
+- **Cooperativa:** Organización que consolida el volumen comprometido de la campaña.
+- **Acopiador:** Agente comercial que fija el precio de compra de la aceituna.
+  Un hallazgo relevante de esta fase fue la existencia de cinco eventos que no admiten actor alguno: *ShootGrowthStalled*, *OffYearYieldCollapsed* y los rombos *AlternateBearingTriggered*, *CropWeakened* y *ProductionAffected*. Se trata de respuestas fisiológicas del árbol frente a la carga que soporta, y su ausencia deliberada de actor evidencia visualmente que el productor queda fuera del circuito justamente donde se determina su cosecha.
+
+<br>
+\begin{figure}[H]
+\caption{Fase 3: Línea de tiempo validada con External Systems y Personas (Vista general).}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-3-vista-general.png}
+\caption*{\textit{Nota.} Mapeo general que vincula a productores y asesores técnicos con sus flujos de trabajo físico. Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Fase 3: Detalle de integración de Actores y Sistemas Externos.}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-3-1.png}
+\vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-3-2.png}
+\caption*{\textit{Nota.} Acercamiento a la ubicación de Actores (amarillo) y Sistemas Externos (azul) dentro del flujo. Elaboración propia.}
+\end{figure}
+
+<br>
+
+#### Fase 4: Storytelling y Narrativa Reversa (Verificación de Solidez)
+
+Esta fase comprendió dos recorridos complementarios. En el primero, el equipo narró el tablero de izquierda a derecha para verificar que la historia se sostuviera sin saltos. Este recorrido expuso que *AgriculturalAlertReceived* permanece como una isla que no desemboca en ninguna acción, lo cual no constituye un error del modelo sino un hallazgo sobre la naturaleza no accionable de la información climática macro disponible hoy.
+
+En el segundo recorrido, para evitar el sesgo de optimismo, el equipo transitó el tablero de derecha a izquierda partiendo del evento más alejado de su causa (*CooperativeVolumeCommitmentBroken*), cuestionando paso a paso qué eventos intermedios fueron omitidos. Esta técnica permitió descubrir flujo oculto, integrando cuatro nuevos eventos:
+
+- *CarbohydrateReservesDepleted* (Agotamiento de las reservas del árbol tras el año de alta carga).
+- *FloweringFailedNextSeason* (Floración insuficiente en la campaña siguiente).
+- *HarvestLaborContracted* (Contratación de cuadrilla dimensionada sin estimación previa).
+- *PreviousSeasonRecordsSearched* (Búsqueda infructuosa de los registros de la campaña anterior).
+  Los dos primeros resultaron especialmente relevantes porque constituyen el mecanismo fisiológico que explica el colapso del Año OFF, ausente hasta entonces del tablero. Con estas incorporaciones, el modelo alcanzó un total de 37 Domain Events.
+
+<br>
+\begin{figure}[H]
+\caption{Fase 4: Narrativa reversa y descubrimiento de eventos perdidos (Vista general).}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-4-vista-general.png}
+\caption*{\textit{Nota.} Tablero tras la aplicación de ambos recorridos narrativos para descubrir flujos ocultos. Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Fase 4: Detalle de los nuevos eventos descubiertos.}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-4-1.png}
+\vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-4-2.png}
+\caption*{\textit{Nota.} Acercamiento a los eventos integrados tras verificar la solidez del flujo hacia atrás. Elaboración propia.}
+\end{figure}
+
+<br>
+
+#### Fase 5: Puntos Calientes, Oportunidades y Políticas
+
+Al consolidar la narrativa, el equipo identificó los vacíos de valor actuales categorizándolos visualmente en el tablero. Cada sticky se ubicó directamente sobre el evento donde la fricción se manifiesta, sin conectores.
+
+**Hotspots (Morado — Riesgos y Fricciones):**
+- **Hotspot 1 (Unmeasured Crop Load):** La carga frutal, única variable bajo control del productor, no se cuantifica en ningún momento del ciclo. Anclado en *ThinningWindowMissed*.
+- **Hotspot 2 (Lack of History):** El registro manual impide comparar campañas y detectar el patrón de alternancia. Anclado en *HarvestDataWrittenInNotebook*.
+- **Hotspot 3 (Reactive Advisory):** El asesor técnico llega fuera de la ventana fenológica de intervención. Anclado en *VisitDelayed*.
+- **Hotspot 4 (Campaign Uncertainty):** El productor no dispone de información propia para anticipar el comportamiento de la campaña. Anclado en *PreviousSeasonRecordsSearched*.
+- **Hotspot 5 (Income Volatility):** La variabilidad de ingresos derivada de la alternancia es absorbida íntegramente por la unidad productiva. Anclado en *CropSoldAtLowerMargin*.
+  Cabe precisar que el equipo descartó deliberadamente el clima como Hotspot. Si bien la falta de visibilidad climática a nivel de fundo constituye una limitación real, el clima opera como disparador y amplificador de la vecería, no como su causa raíz, por lo que situarlo como foco de acción desviaría el producto de la variable efectivamente controlable.
+
+**Oportunidades (Verde):**
+- Alerta de ventana de aclareo según estado fenológico de la parcela.
+- Registro digital de carga y peso por parcela.
+- Cálculo automático del Biennial Bearing Index (BBI) a partir del histórico acumulado.
+- Priorización de visitas del asesor técnico con datos reales de parcela.
+  **Políticas Empíricas (Lila):**
+- "*Si el año anterior fue de alta carga, se asume que este será bajo y no se invierte en poda ni fertilización*".
+  <br>
+  \begin{figure}[H]
+  \caption{Fase 5: Mapeo de Puntos Calientes, Oportunidades y Políticas (Vista general).}
+  \centering
+  \includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-5-vista-general.png}
+  \caption*{\textit{Nota.} Categorización visual de los riesgos (morado), oportunidades (verde) y políticas (lila). Elaboración propia.}
+  \end{figure}
+
+\begin{figure}[H]
+\caption{Fase 5: Detalle de fricciones agronómicas y comerciales.}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-5-1.png}
+\vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-5-2.png}
+\caption*{\textit{Nota.} Acercamiento a los Hotspots identificados en las islas temporales críticas. Elaboración propia.}
+\end{figure}
+
+<br>
+
+#### Fase 6: Definición del MVP (Votación)
+
+A diferencia de la modernización de sistemas heredados, donde se votan características funcionales, en este entorno de startup se utilizaron votos de dirección (flechas azules) para determinar qué **hipótesis de negocio representaban el mayor riesgo** y debían por tanto conformar el MVP. La pregunta que guio la votación fue cuál de las hipótesis, de resultar falsa, comprometería la viabilidad del producto.
+
+La mayoría de los votos se concentró en **Unmeasured Crop Load**, que encierra la apuesta central del proyecto: que el productor esté dispuesto a registrar sistemáticamente la carga frutal de sus parcelas. Se trata del riesgo más alto porque no depende de una capacidad técnica sino de un cambio de hábito, y sin ese dato no existe cálculo de BBI ni alerta de aclareo posible. En segundo lugar se votó **Lack of History**, que recoge la hipótesis de que dos o tres campañas de registro produzcan un histórico con valor real de decisión, con el riesgo asociado a que el beneficio para el productor es diferido.
+
+Los tres Hotspots restantes no recibieron votos. Reactive Advisory constituye un problema de coordinación abordable en etapas posteriores; Campaign Uncertainty resulta consecuencia de los dos anteriores más que causa independiente; e Income Volatility escapa al alcance de la solución, dado que el precio lo determina el mercado regional.
+
+<br>
+\begin{figure}[H]
+\caption{Fase 6: Votación de Riesgos e Hipótesis del MVP (Vista general).}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-6-vista-general.png}
+\caption*{\textit{Nota.} Distribución final de los votos del equipo sobre las áreas de mayor fricción. Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Fase 6: Detalle de las áreas prioritarias seleccionadas.}
+\centering
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-6-1.png}
+\vspace{0.5cm}
+\includegraphics[width=0.8\textwidth]{report/assets/needfinding/fase-6-2.png}
+\caption*{\textit{Nota.} Acercamiento a los Hotspots con mayor concentración de votos azules. Elaboración propia.}
+\end{figure}
+
+<br>
+Como resultado de este taller de visualización del "As-Is", el equipo logró transformar suposiciones vagas en un mapa de fricciones reales y estructuradas. El tablero final consolida 37 Domain Events distribuidos en seis hitos temporales, tres actores, seis sistemas externos, cinco Hotspots, cuatro oportunidades y una política empírica, con el ciclo bianual explícitamente cerrado. De esta manera se delimitan los focos de acción primarios que Viora buscará resolver: la cuantificación de la carga frutal y la construcción de un histórico productivo por parcela.
 
 ### Ubiquitous Language
 [Glosario de términos en inglés con definiciones en español]
