@@ -144,12 +144,30 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 
 \vspace{1.5cm}
 
+\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista \#3} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Alexandra Rosas & \textbf{Edad} & 50 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productora Olivarera y Comercializadora} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{00:01 - 17:13} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/viora-interviews-requirements}} \\ 
+\hline 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Mujer de 50 años, casada con tres hijos. Administra una parcela familiar de 3 ha en La Yarada Los Palos (Tacna) cultivando variedad Criolla/Sevillana (80\% a aceituna de mesa y 20\% a aceite). Reporta rendimientos de 14,000 kg/ha en años de alta carga (ON) y 4,500 kg/ha en años de descanso (OFF), con mermas críticas de hasta 1,500 kg/ha durante inviernos cálidos por El Niño (2 campañas consecutivas con caídas $>70\%$). Ante la inestabilidad económica, economiza fertilizantes en años malos (usa urea y guano de corral) y compensa ingresos por la subida de precios en chacra (S/. 10--12/kg) y la compra de fruta a terceros para venta en salmuera. Poda a término de cosecha en julio y regula el riego tecnificado por observación diaria. Utiliza un celular Samsung Galaxy Android y WhatsApp como canal exclusivo, sin experiencia en sensores IoT. Su personalidad es conservadora y precavida. Valora como indispensable el soporte sin conexión (offline) y las alertas de acumulación de horas de frío para no abonar a ciegas. Su confianza inicial en la plataforma es del 40\%--50\%, exigiendo validación práctica y testimonios de otros agricultores de la zona.} \\ 
+[10pt] 
+\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview3.png}} \\ 
+\hline 
+\end{tabular}
+
+\vspace{1.5cm}
+
 #### **Segmento 2: Gestores técnicos de organizaciones olivareras**
 &nbsp;
 
 \noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
 \hline 
-\multicolumn{4}{l}{\textbf{Entrevista \#3} \hfill \textbf{Detalles}} \\ 
+\multicolumn{4}{l}{\textbf{Entrevista \#4} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Juan Maquera & \textbf{Edad} & 55 \\ 
 \textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos, Tacna} \\ 
@@ -167,7 +185,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 
 \noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
 \hline 
-\multicolumn{4}{l}{\textbf{Entrevista \#4} \hfill \textbf{Detalles}} \\ 
+\multicolumn{4}{l}{\textbf{Entrevista \#5} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Daniel Estrada & \textbf{Edad} & 44 \\ 
 \textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
