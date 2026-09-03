@@ -2322,7 +2322,52 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \vspace{1.5em}
 
 ### Impact Mapping
-[Impact Map diagram linking Goals, Actors, Impacts, and Deliverables]
+
+En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual articula los objetivos estratégicos de negocio con las funcionalidades y requerimientos de software a desarrollar. Mediante este mapa se conectan las metas de validación comercial, tracción del modelo SaaS y fidelización de convenios institucionales con los User Personas definidos (Teodoro Mamani como productor olivarero y Rubén Ticona como gestor técnico de cooperativa), identificando los impactos conductuales y los entregables de software necesarios para mitigar la vecería prolongada y brindar soporte agronómico y logístico en campo.
+
+\begin{figure}[H]
+\caption{Impact Mapping de Viora - Parte 1.}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.38\textheight,keepaspectratio]{report/assets/impact-mapping/im-1.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Impact Mapping de Viora - Parte 2.}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.38\textheight,keepaspectratio]{report/assets/impact-mapping/im-2.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Impact Mapping de Viora - Parte 3.}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.38\textheight,keepaspectratio]{report/assets/impact-mapping/im-3.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Impact Mapping de Viora - Parte 4.}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.38\textheight,keepaspectratio]{report/assets/impact-mapping/im-4.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Impact Mapping de Viora - Parte 5.}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.38\textheight,keepaspectratio]{report/assets/impact-mapping/im-5.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Impact Mapping de Viora - Parte 6.}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.38\textheight,keepaspectratio]{report/assets/impact-mapping/im-6.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+\vspace{1.5em}
 
 ### Product Backlog
 [Product Backlog table with Order, Story ID, Title, Story Points, and Sprint]
