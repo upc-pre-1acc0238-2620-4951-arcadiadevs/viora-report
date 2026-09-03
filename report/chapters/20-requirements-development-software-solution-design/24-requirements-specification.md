@@ -960,3 +960,60 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \end{longtable}
 \endgroup
 
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US27} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP06} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Prescripción técnica in-app de porcentaje y ventana fenológica de aclareo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} recibir una prescripción agronómica con el porcentaje exacto de frutos a remover y la ventana de fechas límite de ejecución, \textbf{para} remover el exceso de fruta a tiempo antes del endurecimiento del carozo y asegurar un buen calibre comercial sin inducir vecería en el siguiente año.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Prescripción de aclareo ante sobrecarga frutal}\newline
+\textbf{Given} una parcela con diagnóstico de sobrecarga frutal procesado durante la fase previa al endurecimiento del carozo.\newline
+\textbf{When} el productor consulta la recomendación de regulación de carga.\newline
+\textbf{Then} el sistema prescribe el porcentaje óptimo de remoción de fruta (ej. 30\% de aclareo).\newline
+\textbf{And} define la ventana temporal recomendada con fecha de inicio y fecha límite de ejecución antes de la lignificación del carozo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela con carga frutal equilibrada que no requiere aclareo}\newline
+\textbf{Given} una parcela cuya carga estimada se encuentra dentro del rango fisiológico óptimo.\newline
+\textbf{When} el productor consulta la prescripción de regulación.\newline
+\textbf{Then} el sistema determina un porcentaje de aclareo del 0\%.\newline
+\textbf{And} notifica que la carga frutal es óptima y no requiere intervención para sostener la productividad interanual.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Advertencia por consulta posterior al endurecimiento del carozo}\newline
+\textbf{Given} una parcela donde la fecha de consulta supera la ventana fenológica de aclareo con el carozo ya endurecido (lignificado).\newline
+\textbf{When} el productor solicita la prescripción de aclareo.\newline
+\textbf{Then} el sistema advierte que la ventana óptima de aclareo ha concluido.\newline
+\textbf{And} notifica que la remoción tardía de fruto ya no evitará la inhibición hormonal de la floración de la siguiente campaña.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US28} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP06} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro y confirmación de ejecución de aclareo en campo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} registrar la fecha y el porcentaje real de frutos removidos durante las labores de aclareo en mi parcela, \textbf{para} asentar la ejecución de la práctica de manejo en la bitácora del lote y permitir al sistema actualizar la estimación de calibre y cosecha final.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro exitoso de intervención de aclareo ejecutada}\newline
+\textbf{Given} un productor con una prescripción de aclareo activa para su predio.\newline
+\textbf{When} registra la fecha de intervención en campo y confirma el porcentaje de fruta removido según la recomendación.\newline
+\textbf{Then} el sistema actualiza la bitácora agronómica del lote marcando la labor como ejecutada.\newline
+\textbf{And} recalcula la proyección de calibre comercial de aceituna esperado para la cosecha.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Notificación por ejecución registrada fuera de la ventana fenológica}\newline
+\textbf{Given} un productor registrando la ejecución de aclareo.\newline
+\textbf{When} la fecha ingresada es posterior a la fecha límite prescrita por endurecimiento del carozo.\newline
+\textbf{Then} el sistema guarda el registro de la labor en la bitácora.\newline
+\textbf{And} notifica una advertencia indicando que la eficacia para mitigar la vecería será reducida debido a la lignificación del carozo.} \\ \hline
+\end{longtable}
+\endgroup
+
