@@ -872,3 +872,91 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \end{longtable}
 \endgroup
 
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US24} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP06} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} registrar los conteos de brotes y frutos de muestra a pie de árbol sin requerir conexión a internet, \textbf{para} asentar la densidad real de cuajado directamente en el olivar y sincronizar automáticamente las observaciones al restablecer la conectividad celular o de red.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro offline de conteo de frutos a pie de árbol}\newline
+\textbf{Given} un productor olivarero ubicado en campo sin cobertura celular ni acceso a internet.\newline
+\textbf{When} registra el número de árbol muestreado, total de brotes observados y frutos cuajados en la muestra y confirma el guardado.\newline
+\textbf{Then} la aplicación móvil almacena el registro en la base de datos local del dispositivo.\newline
+\textbf{And} clasifica el muestreo como pendiente de sincronización permitiendo continuar con la evaluación de los siguientes árboles.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Sincronización automática de muestreos al recuperar conexión}\newline
+\textbf{Given} un dispositivo con muestreos de cuajado pendientes de sincronización en su almacenamiento local.\newline
+\textbf{When} el dispositivo restablece la conectividad a internet.\newline
+\textbf{Then} el sistema transmite de manera automática el lote de registros al servidor de Viora.\newline
+\textbf{And} actualiza el estado de los muestreos a sincronizados sin requerir intervención manual del usuario.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por conteos fuera de rango biológico}\newline
+\textbf{Given} un productor registrando datos en el protocolo de muestreo.\newline
+\textbf{When} ingresa valores negativos o una cantidad de frutos cuajados que supera físicamente la capacidad biológica del brote evaluado.\newline
+\textbf{Then} el sistema rechaza el ingreso impidiendo registrar mediciones inverosímiles.\newline
+\textbf{And} notifica los rangos biológicos admisibles para el conteo de frutos por brote.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US25} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP06} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta e historial de árboles muestreados en campo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} consultar el consolidado y el detalle de los árboles muestreados en mi parcela durante la campaña, \textbf{para} comprobar el grado de avance del recorrido de campo y verificar que la muestra vegetal sea representativa de todo el lote.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Visualización del listado de árboles evaluados y promedio de cuajado}\newline
+\textbf{Given} un productor que ha registrado árboles de muestra en su parcela.\newline
+\textbf{When} consulta el historial de muestreos de la temporada activa.\newline
+\textbf{Then} el sistema presenta la relación de árboles evaluados detallando fecha, frutos por brote y estado de sincronización de cada uno.\newline
+\textbf{And} calcula el promedio global de frutos cuajados por brote acumulado en la muestra.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Indicador de representatividad estadística del muestreo}\newline
+\textbf{Given} un productor realizando el protocolo de muestreo en un predio.\newline
+\textbf{When} el número de árboles registrados es inferior al mínimo requerido (mínimo 5 árboles distribuidos en el lote).\newline
+\textbf{Then} el sistema muestra el contador de árboles completados frente a la meta recomendada.\newline
+\textbf{And} notifica que se requieren muestras adicionales para alcanzar validez estadística en el cálculo de carga.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US26} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP06} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Cálculo de carga frutal objetivo sostenible y rendimiento potencial de campaña} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} que el sistema procese los muestreos de cuajado, la densidad de plantación y el área de mi predio para calcular la carga frutal máxima sostenible en frutos por árbol y kilogramos por hectárea, \textbf{para} conocer el límite productivo que el olivo puede soportar sin agotar sus reservas y evitar el colapso vegetativo de la siguiente campaña.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Cálculo exitoso de carga admisible con muestra representativa}\newline
+\textbf{Given} una parcela con al menos 5 árboles representativos muestreados en campo.\newline
+\textbf{When} el productor solicita el balance de carga frutal de la temporada.\newline
+\textbf{Then} el sistema procesa el promedio de frutos cuajados y proyecta la carga total estimada en frutos por árbol.\newline
+\textbf{And} determina la carga frutal objetivo sostenible y el rendimiento en kilogramos por hectárea según el marco de plantación del lote.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Detección de sobrecarga frutal con riesgo de vecería severa}\newline
+\textbf{Given} una parcela cuyo cálculo de carga estimada supera en más del 30\% la capacidad de carga biológica calibrada para la variedad registrada en el predio.\newline
+\textbf{When} se genera el cálculo de rendimiento potencial.\newline
+\textbf{Then} el sistema clasifica el lote en estado de sobrecarga severa.\newline
+\textbf{And} notifica al productor que el exceso de fruta inducirá una vecería prolongada si no se regula la carga a tiempo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Bloqueo de cálculo por cantidad insuficiente de árboles evaluados}\newline
+\textbf{Given} una parcela con menos de 5 árboles muestreados.\newline
+\textbf{When} el productor solicita el dimensionamiento productivo.\newline
+\textbf{Then} el sistema deniega el cálculo automático por falta de representatividad muestral.\newline
+\textbf{And} notifica la cantidad de árboles adicionales requeridos para completar el diagnóstico.} \\ \hline
+\end{longtable}
+\endgroup
+
