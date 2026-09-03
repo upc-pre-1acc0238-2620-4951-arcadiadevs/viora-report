@@ -178,6 +178,18 @@ A continuación, se presentan las 14 Épicas definidas para el ecosistema Viora,
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{EP15} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Usuario del Ecosistema Viora} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP15} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Internacionalización y Localización del Ecosistema (i18n / l10n)} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario del ecosistema digital de Viora (Visitante, Productor Olivarero o Gestor Técnico), \textbf{quiero} acceder a la plataforma web y móvil en mi idioma de preferencia (Español o Inglés) con adaptación de contenidos y formatos regionales, \textbf{para} interactuar con las herramientas agronómicas y comerciales en un entorno comprensible que facilite la adopción y la expansión internacional de la plataforma.} \\ \hline
+\end{tabular}
+\end{table}
+
 \clearpage
 
 A continuación, se presentan las Historias de Usuario desarrolladas para el ecosistema Viora, formuladas con sus respectivos criterios de aceptación BDD:
@@ -1138,7 +1150,8 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{Given} un visitante que accede al sitio web informativo de la plataforma.\newline
 \textbf{When} consulta la presentación inicial de la propuesta de valor.\newline
 \textbf{Then} el sistema expone la relación entre acumulación de frío, riesgo fenológico y decisiones preventivas de aclareo basadas en datos.\newline
-\textbf{And} resalta el objetivo agronómico de atenuar la severidad de la vecería y sostener un piso productivo viable en los años de menor cosecha sin comprometer la longevidad del olivar.} \\
+\textbf{And} resalta el objetivo agronómico de atenuar la severidad de la vecería y sostener un piso productivo viable en los años de menor cosecha sin comprometer la longevidad del olivar.\newline
+\textbf{And} la interfaz responde con diseño adaptativo fluido (\textit{mobile-first}), reordenando los bloques visuales y garantizando legibilidad en pantallas móviles ($\le 480$px), tablets y escritorio sin desbordamiento horizontal.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Adaptabilidad a diversas variedades de olivar y aptitudes comerciales}\newline
 \textbf{Given} un visitante evaluando la pertinencia técnica de la plataforma para su predio.\newline
 \textbf{When} explora los fundamentos del modelo de estabilización productiva.\newline
@@ -1314,7 +1327,8 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{Given} un visitante que decide adoptar la solución móvil de Viora.\newline
 \textbf{When} solicita el acceso a la descarga de la aplicación.\newline
 \textbf{Then} el sistema provee el enlace directo y verificado hacia la tienda oficial de distribución de aplicaciones correspondiente al sistema operativo del usuario.\newline
-\textbf{And} confirma los requerimientos mínimos de compatibilidad del sistema operativo para una instalación exitosa.} \\
+\textbf{And} confirma los requerimientos mínimos de compatibilidad del sistema operativo para una instalación exitosa.\newline
+\textbf{And} los botones y badges de descarga se adaptan al ancho de pantalla manteniendo un área táctil mínima de 48 por 48 píxeles en dispositivos móviles.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Orientación de primeros pasos al completar la instalación}\newline
 \textbf{Given} un visitante que finaliza la instalación de la aplicación móvil.\newline
 \textbf{When} abre la aplicación por primera vez en su dispositivo.\newline
@@ -1322,9 +1336,60 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \end{longtable}
 \endgroup
 
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US41} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Visitante} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP15} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Selección de idioma y localización de contenidos en la Landing Page} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Visitante, \textbf{quiero} alternar el idioma de los contenidos entre Español e Inglés mediante un selector visible en la cabecera, \textbf{para} consultar la propuesta de valor, los beneficios agronómicos y las tarifas en mi idioma preferido.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Detección automática del idioma del navegador}\newline
+\textbf{Given} un visitante que accede al sitio web público de Viora.\newline
+\textbf{When} la página carga en el navegador del dispositivo.\newline
+\textbf{Then} el sistema detecta la configuración regional del navegador y presenta los contenidos en idioma inglés si el navegador utiliza dicho idioma, o en español de forma predeterminada.\newline
+\textbf{And} el selector de cabecera refleja visualmente la opción de idioma activa.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cambio manual interactivo y persistencia local}\newline
+\textbf{Given} un visitante explorando cualquier sección de la landing page.\newline
+\textbf{When} selecciona un idioma distinto a través del componente selector en la barra superior.\newline
+\textbf{Then} la interfaz traduce instantáneamente todos los textos, menús y tarifas sin requerir la recarga completa del sitio web.\newline
+\textbf{And} persiste la preferencia en el almacenamiento local (\texttt{localStorage}) para conservar la configuración en visitas sucesivas.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US42} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP15} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Configuración y cambio de idioma de la interfaz en la aplicación móvil} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario autenticado de la aplicación móvil de Viora (Productor Olivarero o Gestor Técnico), \textbf{quiero} seleccionar mi idioma de preferencia (Español o Inglés) desde el panel de ajustes de la aplicación, \textbf{para} visualizar todos los menús, diagnósticos y alertas en el idioma con el que tenga mayor familiaridad.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Cambio de idioma en caliente sin reinicio de sesión}\newline
+\textbf{Given} un usuario autenticado navegando dentro de la aplicación móvil.\newline
+\textbf{When} ingresa a la configuración de preferencias y selecciona una nueva opción de idioma (Español o Inglés).\newline
+\textbf{Then} la aplicación actualiza en caliente todas las etiquetas, títulos, botones y mensajes de alerta al idioma seleccionado sin cerrar la sesión activa del usuario.\newline
+\textbf{And} adapta los separadores de miles y fechas según la convención regional correspondiente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Persistencia local de la preferencia de idioma en el dispositivo}\newline
+\textbf{Given} un usuario que configuró previamente su preferencia de idioma en la app.\newline
+\textbf{When} cierra la aplicación y vuelve a iniciarla o reinicia el dispositivo móvil.\newline
+\textbf{Then} la aplicación móvil recupera el ajuste persistido desde el almacenamiento local seguro y levanta directamente en el idioma seleccionado.} \\ \hline
+\end{longtable}
+\endgroup
+
 \clearpage
 
-A continuación, se presentan las Historias Técnicas (\textit{Technical Stories}) orientadas al equipo de desarrollo de backend, correspondientes a los servicios de integración RESTful y arquitectura de soporte (\textbf{EP10}, \textbf{EP11}, \textbf{EP12} y \textbf{EP13}), así como los Spikes técnicos de investigación (\textbf{EP14}). Conforme a las buenas prácticas de diseño de software y requerimientos de desarrollo, cada historia técnica comprende exactamente un único endpoint HTTP con sus respectivos escenarios BDD basados en los códigos de respuesta RESTful:
+A continuación, se presentan las Historias Técnicas (\textit{Technical Stories}) orientadas al equipo de desarrollo de backend, correspondientes a los servicios de integración RESTful y arquitectura de soporte (\textbf{EP10}, \textbf{EP11}, \textbf{EP12}, \textbf{EP13} y \textbf{EP15}), así como los Spikes técnicos de investigación (\textbf{EP14}). Conforme a las buenas prácticas de diseño de software y requerimientos de desarrollo, cada historia técnica comprende exactamente un único endpoint HTTP con sus respectivos escenarios BDD basados en los códigos de respuesta RESTful:
 
 \begingroup
 \renewcommand{\arraystretch}{1.15}
@@ -2147,6 +2212,30 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \textbf{Given} una solicitud GET a \url{/v3/api-docs}.\newline
 \textbf{When} se consulta el endpoint de especificación.\newline
 \textbf{Then} la API responde \texttt{200 OK} con el documento OpenAPI 3.0 completo en formato JSON para pruebas automatizadas y generación de SDKs.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS34} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Ingeniero de Plataforma Core} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP15} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Resolución de localización y mensajes internacionalizados mediante cabecera Accept-Language} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} ingeniero de plataforma core, \textbf{quiero} configurar el resolvedor de localización y los catálogos de recursos MessageSource en el backend, \textbf{para} interceptar el encabezado HTTP Accept-Language y entregar mensajes de validación y errores RFC 7807 traducidos en Español o Inglés.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Respuesta localizada en base a la cabecera HTTP}\newline
+\textbf{Given} una solicitud a cualquier endpoint de la API con el encabezado \texttt{Accept-Language: en} que dispara una excepción de validación o dominio.\newline
+\textbf{When} el interceptor centralizado captura la excepción e invoca el resolvedor de mensajes \texttt{MessageSource}.\newline
+\textbf{Then} responde con el código HTTP correspondiente y cuerpo RFC 7807 conteniendo el detalle y descripción traducidos en idioma inglés.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Aplicación del idioma predeterminado ante omisión o valor no soportado}\newline
+\textbf{Given} una solicitud HTTP recibida sin encabezado \texttt{Accept-Language} o con un código de idioma no configurado en el backend.\newline
+\textbf{When} el interceptor procesa el fallo.\newline
+\textbf{Then} el sistema aplica Español (\texttt{es}) como localización por defecto y entrega los mensajes en idioma español.} \\ \hline
 \end{longtable}
 \endgroup
 
