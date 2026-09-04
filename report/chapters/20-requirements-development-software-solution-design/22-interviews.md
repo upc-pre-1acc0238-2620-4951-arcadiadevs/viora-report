@@ -105,7 +105,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 
 ### Registro de entrevistas
 
-#### **Segmento 1: Productores olivareros de la macro-región sur**
+#### Segmento 1: Productores olivareros de la macro-región sur
 &nbsp;
 
 \noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
@@ -118,7 +118,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 \textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{00:00 - 05:30} \\ 
 \textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/viora-interviews-requirements}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 30 años, soltero con pareja y una hija. Gestiona hace 5 años un fundo de 4 ha. Cultiva Sevillana, con rendimientos de 15,000 kg/ha en años ON y 5,000 kg/ha en años OFF (caída del 66\%). Su rutina diaria en La Yarada (Tacna) es física bajo el sol intenso. Utiliza un celular Samsung Android y WhatsApp para comunicarse con su ingeniero asesor, quien influye en su dosificación química y abonos. Desconoce la tecnología IoT, pero considera "muy útil" una app con alertas que contabilice las horas de frío acumuladas para mitigar el impacto de El Niño. Su personalidad es precavida, enfocada en la prevención de plagas para mantener bien nutridos los árboles. Su meta es lanzar su propia marca de aceitunas de mesa. La vecería no le genera frustración económica porque la escasez eleva los precios locales (hasta 13 soles/kg). Realiza la poda en junio/julio, retrasándose en años de sobrecarga. Confía en el sistema en un 40\%-50\%, priorizando la observación directa en campo.} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 30 años, soltero con pareja y una hija. Gestiona hace 5 años un fundo de 4 ha. Cultiva Sevillana, con rendimientos de 15,000 kg/ha en años ON y 5,000 kg/ha en años OFF (caída del 66\%). Su rutina diaria en La Yarada (Tacna) es física bajo el sol intenso. Utiliza un celular Samsung Android, Google Chrome como navegador y WhatsApp para comunicarse con su ingeniero asesor, quien influye en su dosificación química y abonos. Desconoce la tecnología IoT, pero considera "muy útil" una app con alertas que contabilice las horas de frío acumuladas para mitigar el impacto de El Niño. Su personalidad es precavida, enfocada en la prevención de plagas para mantener bien nutridos los árboles. Su meta es lanzar su propia marca de aceitunas de mesa. La vecería no le genera frustración económica porque la escasez eleva los precios locales (hasta 13 soles/kg). Realiza la poda en junio/julio, retrasándose en años de sobrecarga. Confía en el sistema en un 40\%-50\%, priorizando la observación directa en campo.} \\ 
 [10pt] 
 \multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview1.png}} \\ 
 \hline 
@@ -136,7 +136,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 \textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{05:31 - 11:20} \\ 
 \textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/viora-interviews-requirements}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 51 años, casado con dos hijos. Produce en el Valle de Yauca y comercializa en Lima (Chorrillos). Gestiona 1 ha propia y compra a terceros. Destina el 80\% a aceitunas de mesa y el 20\% a aceite. Su testimonio valida las estadísticas de la sección 1.3: la vecería reduce su producción al 50\% en año regular (frente al 80\% de año ON), y el ENOS severo causó caídas extremas al 20\% hace dos campañas y al 10\% en la actual (mermas del 80\%-90\%). Ante la inestabilidad, economiza insumos en años OFF (usa urea, guano de isla y de corral) para no sobreexigir los árboles y compra stock a familiares. Poda 15 días después de la cosecha, variando la fecha según la carga. Regula el riego por observación y carece de experiencia en sensores IoT. Usa un celular Samsung Android y WhatsApp como canal exclusivo. Su personalidad es arriesgada en años favorables para invertir en nutrición profunda. Valora positivamente una app móvil sin conexión para mitigar variaciones térmicas bruscas, aunque exige un proceso de adopción progresivo para confiar.} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 51 años, casado con dos hijos. Produce en el Valle de Yauca y comercializa en Lima (Chorrillos). Gestiona 1 ha propia y compra a terceros. Destina el 80\% a aceitunas de mesa y el 20\% a aceite. Su testimonio valida las estadísticas de la sección 1.3: la vecería reduce su producción al 50\% en año regular (frente al 80\% de año ON), y el ENOS severo causó caídas extremas al 20\% hace dos campañas y al 10\% en la actual (mermas del 80\%-90\%). Ante la inestabilidad, economiza insumos en años OFF (usa urea, guano de isla y de corral) para no sobreexigir los árboles y compra stock a familiares. Poda 15 días después de la cosecha, variando la fecha según la carga. Regula el riego por observación y carece de experiencia en sensores IoT. Usa un celular Samsung Android, Google Chrome como navegador y WhatsApp como canal exclusivo. Su personalidad es arriesgada en años favorables para invertir en nutrición profunda. Valora positivamente una app móvil sin conexión para mitigar variaciones térmicas bruscas, aunque exige un proceso de adopción progresivo para confiar.} \\ 
 [10pt] 
 \multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview2.png}} \\ 
 \hline 
@@ -162,7 +162,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 
 \vspace{1.5cm}
 
-#### **Segmento 2: Gestores técnicos de organizaciones olivareras**
+#### Segmento 2: Gestores técnicos de organizaciones olivareras
 &nbsp;
 
 \noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
@@ -222,13 +222,16 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 Los porcentajes y descriptores de esta sección provienen de las fichas registradas y de los resúmenes individuales de cada entrevista a profundidad ($n=6$, con $3$ entrevistas por segmento), de modo que cada rasgo del arquetipo pueda rastrearse directamente hasta la evidencia empírica recolectada. Para efectos de concisión en las tablas de características, las fuentes se referencian mediante los códigos **E#1 a E#3** para los productores del Segmento 1 (Gustavo Calizaga, Cristóbal Barrientos y Alexandra Rosas) y **E#4 a E#6** para los gestores técnicos del Segmento 2 (Juan Maquera, Daniel Estrada y Maribel Vargas).
 
 #### Segmento 1: Productores olivareros de la macro-región sur
+&nbsp;
 
 Se analizaron **3 entrevistas** a productores representativos de la agricultura familiar y comercial de los valles de La Yarada Los Palos (Tacna) y Yauca (Arequipa). La información recopilada permitió cuantificar las principales regularidades operativas, agronómicas y tecnológicas del segmento.
 
-##### Características
+\noindent \textbf{Características}
+
+\vspace{0.15cm}
 
 | Característica | Mención | % | Evidencia |
-| :--- | :---: | :---: | :--- |
+| :----------------------------------- | :------: | :------: | :------------------------------------------------- |
 | **Experiencia agrícola y gestión directa ($\ge 5$ años)** | 3/3 | 100% | Todos gestionan sus parcelas: E#1 (5 años), E#2 (>15 años) y E#3 (>10 años). |
 | **Escala de tenencia reducida (1 a 4 hectáreas)** | 3/3 | 100% | Fundo de 4 ha en La Yarada (E#1), 1 ha propia en Yauca (E#2) y parcela familiar de 3 ha (E#3). |
 | **Predominio de variedad Criolla/Sevillana y destino a mesa ($80\%-100\%$)** | 3/3 | 100% | E#1 (Sevillana mesa), E#2 (80% mesa / 20% aceite) y E#3 (80% mesa / 20% aceite). |
@@ -243,8 +246,9 @@ Se analizaron **3 entrevistas** a productores representativos de la agricultura 
 | **Personalidad precavida/conservadora centrada en prevención sanitaria** | 3/3 | 100% | Enfoque fitosanitario preventivo y austeridad de insumos en años de descanso en E#1, E#2 y E#3. |
 | **Meta de diferenciación comercial (marca propia o fidelización)** | 3/3 | 100% | Aspiración de lanzar marca propia de aceituna de mesa (E#1), mantener clientela en Lima (E#2) o vender en salmuera con valor (E#3). |
 
-##### Insights
-&nbsp;
+\noindent \textbf{Insights}
+
+\vspace{0.15cm}
 
 **1. Asincronía fisiológica en la toma de decisiones:**
 El manejo agronómico del productor familiar opera bajo un desfase temporal constante. Al basar el aclareo y la poda en la observación visual tardía (cuando la fruta ya superó el tamaño perdigón o la cosecha se extendió hasta agosto), el árbol agota sus reservas de carbohidratos, bloqueando hormonalmente la inducción floral de la siguiente campaña. Esto evidencia que el software debe actuar como un sistema de alerta temprana que adelante las decisiones a su ventana biológica útil.
@@ -258,16 +262,17 @@ El trabajo cotidiano en el desierto costero expone al agricultor a condiciones d
 **4. Adopción basada en validación comunitaria y valor agronómico tangible:**
 La desconfianza inicial ante algoritmos dinámicos (40%–50%) solo se reduce cuando la herramienta entrega datos que el productor reconoce como críticos pero que hoy no puede medir por su cuenta (especialmente la acumulación de horas de frío para anticipar anomalías de El Niño) y cuando percibe el respaldo de ingenieros referentes de la zona.
 
----
-
 #### Segmento 2: Gestores técnicos de organizaciones olivareras
+&nbsp;
 
 Se analizaron **3 entrevistas** a ingenieros agrónomos y responsables técnicos a cargo de la asistencia técnica y acopio en cooperativas y asociaciones olivareras de Tacna, consolidando una muestra con cobertura sobre más de 100 socios y 590 hectáreas.
 
-##### Características
+\noindent \textbf{Características}
+
+\vspace{0.15cm}
 
 | Característica | Mención | % | Evidencia |
-| :--- | :---: | :---: | :--- |
+| :----------------------------------- | :------: | :------: | :------------------------------------------------- |
 | **Formación superior (universitaria/técnica) y especialización en gestión agrícola ($\ge 15$ años exp.)** | 3/3 | 100% | E#4 (Ing. Civil con especialización técnica de campo, >30 años exp.), E#5 (Ing. Agrónomo colegiado, 18 años) y E#6 (Ing. Agrónoma colegiada, 15 años). |
 | **Supervisión de carteras extensas (35 a 68 socios / 20 a 420 ha)** | 3/3 | 100% | E#4 (20 ha), E#5 (68 socios, 420 ha) y E#6 (35 socios, 150 ha bajo riego por goteo). |
 | **Rutina híbrida con predominio de trabajo en campo ($65\%-75\%$)** | 3/3 | 100% | E#4 (monitoreo presencial continuo), E#5 (75% en campo en pre-cosecha) y E#6 (65%–70% en campo). |
@@ -281,8 +286,9 @@ Se analizaron **3 entrevistas** a ingenieros agrónomos y responsables técnicos
 | **Personalidad analítica, metódica y pedagógica ante la resistencia al cambio** | 3/3 | 100% | E#4 (serenidad y organización), E#5 (analítico y paciente) y E#6 (metódica, analítica y pedagógica con los agricultores). |
 | **Meta estratégica: estabilización de volumen de acopio y eficiencia industrial** | 3/3 | 100% | E#4 (calibres exportables), E#5 (estabilizar 1800–2200 t) y E#6 (estabilizar 700–900 t reduciendo alternancia). |
 
-##### Insights
-&nbsp;
+\noindent \textbf{Insights}
+
+\vspace{0.15cm}
 
 **1. El elevado costo industrial de la ceguera logística:**
 La incapacidad de proyectar el volumen de recepción con métodos tradicionales (declaración subjetiva de socios y aforos visuales) genera graves pérdidas económicas en la agroindustria: sobrecosto por capacidad ociosa en pozas de salmuera (hasta 70% vacías en años OFF), sobredimensionamiento de cuadrillas de transporte y riesgo de penalidades financieras por incumplimiento de contratos de exportación.
@@ -296,4 +302,4 @@ Las condiciones ambientales de La Yarada (alta salinidad del agua subterránea q
 **4. El gestor técnico como articulador de la adopción digital:**
 Dado que el gestor técnico concentra la confianza del agricultor y la administración de la planta de acopio, la estrategia de adopción no depende únicamente de la interfaz del software, sino de incentivos operativos: vincular el uso de la aplicación a beneficios tangibles en planta, tales como turnos prioritarios de recepción en balanza y sobreprecios por calidad y cumplimiento de trazabilidad.
 
-
+\clearpage
