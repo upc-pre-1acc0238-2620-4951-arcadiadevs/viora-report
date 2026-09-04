@@ -45,3 +45,5 @@ Para viabilizar el ingreso de Viora al sector olivarero y posicionarnos frente a
 \textbf{Amenazas (A)} \par \vspace{0.05cm} - A1: Anomalías térmicas invernales por ENOS (Calvo et al., 2024). \par - A2: Volatilidad de fletes y logística naviera (Agraria, 2021). & \textbf{Estrategias FA (Defensivas)} \par \vspace{0.05cm} - FA1: Integrar simulaciones de impacto ENOS en el BBI para estabilizar la nutrición y mitigar mermas [F1, F2, A1]. \par \vspace{0.05cm} - FA2: Apoyar la planificación de acopio ante cuellos de botella logísticos marítimos [F4, A2]. & \textbf{Estrategias DA (Supervivencia)} \par \vspace{0.05cm} - DA1: Diseñar planes de contingencia híbridos (muestreos guiados + calibración) para paliar la falta de historial en temporadas bajo crisis climática ENOS [D1, D2, A1]. \\ \hline
 \end{longtable}
 \end{center}
+
+\clearpage
