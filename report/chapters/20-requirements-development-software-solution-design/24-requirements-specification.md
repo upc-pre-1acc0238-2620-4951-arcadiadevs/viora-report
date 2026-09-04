@@ -2374,7 +2374,7 @@ En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual art
 El Product Backlog de Viora consolida y prioriza los 79 ítems de trabajo del sistema (42 Historias de Usuario, 34 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica, la resolución de spikes críticos (modelo dinámico de Erez, persistencia local offline y pasarela de cobro), la entrega de las pantallas centrales del productor olivarero (delimitación parcelaria, monitoreo de frío, cálculo del índice BBI y muestreo sin conectividad) y el 70% del backend fundacional. Siguiendo las buenas prácticas ágiles, todas las historias de usuario y técnicas de gestión de identidad y accesos (IAM) se posponen al Sprint 3, dado que no aportan valor agronómico directo al usuario final; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, pasarela de pagos y herramientas territoriales de la cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, el cierre productivo de campaña, la proyección logística de acopio diferenciado entre aceituna verde y negra, y la exportación de reportes técnicos auditables en formato PDF.
 
 | # Orden | User Story Id | Título | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |
-| :---: | :---: | :--- | :---: | :---: |
+| :-----: | :----------: | :------------------------------------------------------ | :-------------: | :---------: |
 | 1 | US33 | Presentación de la propuesta de valor central para la mitigación de la vecería prolongada en el olivar | 2 | Sprint 1 |
 | 2 | US34 | Exploración de beneficios y capacidades operativas para el productor olivarero | 2 | Sprint 1 |
 | 3 | US35 | Exploración de beneficios y herramientas de gestión territorial para cooperativas agrarias | 2 | Sprint 1 |
@@ -2454,3 +2454,12 @@ El Product Backlog de Viora consolida y prioriza los 79 ítems de trabajo del si
 | 77 | TS03 | Renovación periódica de tokens de sesión mediante Refresh Token | 2 | Sprint 3 |
 | 78 | TS04 | Consulta de información de perfil del usuario autenticado | 2 | Sprint 3 |
 | 79 | TS05 | Actualización parcial de datos de perfil con validación telefónica E.164 | 2 | Sprint 3 |
+
+\vspace{1.5em}
+
+\begin{figure}[H]
+\caption{Product Backlog del proyecto Viora en Trello.}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.45\textheight,keepaspectratio]{report/assets/trello/product-backlog.png}
+\caption*{\textit{Nota.} Elaboración propia a partir de la herramienta Trello. Disponible en: \url{https://tinyurl.com/1acc0238-product-backlog}.}
+\end{figure}
