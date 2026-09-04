@@ -23,6 +23,7 @@ v0.3.0 & 26/08/26 & Santi Guerrero, Fabrizio Alonso & Redacción del diseño de 
 v0.4.0 & 26/08/26 & Espada Lazo, Piero Anthony & Investigación de competidores \tabularnewline \hline
 v0.4.1 & 30/08/26 & Santi Guerrero, Fabrizio Alonso & Correción de preguntas en el diseño de entrevistas \tabularnewline \hline
 v0.5.0 & 04/09/26 & Espada Lazo, Piero Anthony & Creación del registro de entrevistas y análisis de necesidades \tabularnewline \hline
+v0.6.0 & 04/09/26 & Trinidad Leon, Jahat Jassiel & Creación de la especificación de requisitos \tabularnewline \hline
 \end{longtable}
 
 \newpage
