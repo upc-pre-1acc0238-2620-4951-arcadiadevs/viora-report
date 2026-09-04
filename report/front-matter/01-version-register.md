@@ -22,6 +22,7 @@ v0.2.0 & 25/08/26 & Paredes Maza, Victor Juan de Dios & Creación del capítulo 
 v0.3.0 & 26/08/26 & Santi Guerrero, Fabrizio Alonso & Redacción del diseño de entrevistas \tabularnewline \hline
 v0.4.0 & 26/08/26 & Espada Lazo, Piero Anthony & Investigación de competidores \tabularnewline \hline
 v0.4.1 & 30/08/26 & Santi Guerrero, Fabrizio Alonso & Correción de preguntas en el diseño de entrevistas \tabularnewline \hline
+v0.5.0 & 04/09/26 & Espada Lazo, Piero Anthony & Creación del registro de entrevistas y análisis de necesidades \tabularnewline \hline
 \end{longtable}
 
 \newpage
