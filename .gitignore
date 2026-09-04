@@ -3,6 +3,7 @@
 .mimocode/
 .vscode/
 .atl/
+.codegraph/
 build/
 notes/
 AGENTS.md
