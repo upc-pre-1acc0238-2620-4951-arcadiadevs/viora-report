@@ -43,25 +43,26 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 +-----------------------------------------------------------------------------------------------+
 |                             RESUMEN DE READ MODELS POR ACTOR / ROL                            |
 +-----------------------------------------------------------------------------------------------+
-| A. VISTAS DEL PRODUCTOR OLIVARERO (PRODUCER) - 11 READ MODELS                                 |
-|    RM01: UserProfileAndSubscriptionView        (Cuenta, Perfil E.164, Plan SaaS y Cuotas)     |
-|    RM02: PlotCadastralMapView                  (Visor Satelital de Polígonos y Densidad)      |
-|    RM03: VirtualSensorInventoryView            (Lista de Sondas, Profundidad y Calibración)   |
-|    RM04: SoilMoistureAndStressMonitorView      (Gráficas Radiculares en Tiempo Real y Riego)  |
-|    RM05: WeatherForecastAndThermalRiskCardView (Pronóstico 7 Días, Heladas y Olas de Calor)   |
-|    RM06: HistoricalYieldAndBbiAnalyticsView    (Curva On/Off Plurianual e Índice BBI Hoblyn)  |
-|    RM07: WinterChillAccumulationGaugeView      (Velocímetro Porciones Erez vs. Umbral 25-30)  |
-|    RM08: InFieldSamplingSummaryView            (Conteo Fruto/Brote y Representatividad >=5)   |
-|    RM09: FruitThinningPrescriptionCardView     (% Aclareo, Carga Admisible y Ventana Carozo)  |
-|    RM10: InterannualStabilizationCurveView     (Curva de Reducción de Vecería vs. Año Base)   |
-|    RM11: CertifiedAgronomicDossierView         (Ficha Técnica Oficial Compilada del Predio)   |
+| A. VISTAS DEL PRODUCTOR OLIVARERO (PRODUCER) - 12 READ MODELS                                 |
+|    RM01: UserProfileView                       (Identidad, Nombres y Contacto E.164)          |
+|    RM02: SubscriptionStatusCardView            (Plan Comercial, Pasarela y Cuotas ha)         |
+|    RM03: PlotCadastralMapView                  (Visor Satelital de Polígonos y Densidad)      |
+|    RM04: VirtualSensorInventoryView            (Lista de Sondas, Profundidad y Calibración)   |
+|    RM05: SoilMoistureAndStressMonitorView      (Gráficas Radiculares en Tiempo Real y Riego)  |
+|    RM06: WeatherForecastAndThermalRiskCardView (Pronóstico 7 Días, Heladas y Olas de Calor)   |
+|    RM07: HistoricalYieldAndBbiAnalyticsView    (Curva On/Off Plurianual e Índice BBI Hoblyn)  |
+|    RM08: WinterChillAccumulationGaugeView      (Velocímetro Porciones Erez vs. Umbral 25-30)  |
+|    RM09: InFieldSamplingSummaryView            (Conteo Fruto/Brote y Representatividad >=5)   |
+|    RM10: FruitThinningPrescriptionCardView     (% Aclareo, Carga Admisible y Ventana Carozo)  |
+|    RM11: InterannualStabilizationCurveView     (Curva de Reducción de Vecería vs. Año Base)   |
+|    RM12: CertifiedAgronomicDossierView         (Ficha Técnica Oficial Compilada del Predio)   |
 +-----------------------------------------------------------------------------------------------+
 | B. VISTAS DEL GESTOR TÉCNICO DE LA COOPERATIVA (TECHNICAL MANAGER) - 03 READ MODELS           |
-|    RM12: CooperativeDirectoryAndLicensingView  (Padrón de Socios, Hectáreas y Cupones Canje)  |
-|    RM13: CooperativeTerritorialRiskMatrixView  (Semáforo Sectorial Georreferenciado del Valle)|
-|    RM14: CooperativeIntakeProjectionDashboard  (Volumen Consolidado de Acopio y Cobertura)    |
+|    RM13: CooperativeDirectoryAndLicensingView  (Padrón de Socios, Hectáreas y Cupones Canje)  |
+|    RM14: CooperativeTerritorialRiskMatrixView  (Semáforo Sectorial Georreferenciado del Valle)|
+|    RM15: CooperativeIntakeProjectionDashboard  (Volumen Consolidado de Acopio y Cobertura)    |
 +-----------------------------------------------------------------------------------------------+
-| TOTAL DE READ MODELS (POST-ITS VERDES): 14 VISTAS ESTRATÉGICAS                                |
+| TOTAL DE READ MODELS (POST-ITS VERDES): 15 VISTAS ESTRATÉGICAS                                |
 +-----------------------------------------------------------------------------------------------+
 ```
 
@@ -73,22 +74,38 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ### A. Vistas del Productor Olivarero (`Producer`)
 
-#### **RM01: UserProfileAndSubscriptionView**
+#### **RM01: UserProfileView**
 * **Actor Destinatario:** `Producer`
-* **Contextos Proyectados:** `User Profiles`, `Subscription & Cooperative Membership`
-* **US / BDD:** `US01`, `US03`, `US06`, `US07`
-* **Propósito y Decisión que Habilita:** Permite al olivicultor revisar su identidad personal, número telefónico validado bajo norma E.164, vigencia del plan anual y cupo de hectáreas habilitadas. Habilita la decisión de actualizar sus datos de contacto (`CMD08`), renovar la membresía individual (`CMD09`) o canjear un código de patrocinio cooperativo (`CMD10`).
+* **Contextos Proyectados:** `User Profiles`
+* **US / BDD:** `US03`
+* **Propósito y Decisión que Habilita:** Permite al usuario consultar su identidad personal civil, nombre formal y número telefónico validado y formateado bajo la norma internacional E.164. Habilita la decisión de corregir o actualizar sus canales de contacto (`CMD08: UpdateContactProfile`).
 * **Componentes Visuales y Datos Clave:**
-  * Tarjeta de usuario: Nombre completo, correo de cuenta, teléfono internacional formateado en norma E.164.
-  * Badge de estado de suscripción: *Activa*, *Pendiente de Pago*, *Canjeada por Cooperativa*.
-  * Hectáreas contratadas vs. hectáreas catastradas en uso.
-  * Fecha de vencimiento y opciones de gestión.
-* **Eventos que Actualizan la Vista:** `EV08`, `EV09`, `EV10`, `EV11`, `EV13`.
-* **Comandos que Habilita:** `CMD08: UpdateContactProfile`, `CMD09: ProcessPaymentConfirmation`, `CMD10: RedeemCooperativeCode`.
+  * Nombre completo y formal del usuario.
+  * Código de país (ISO 3166-1) y bandera.
+  * Número móvil normalizado E.164 (+51...).
+  * Estado de contacto: *Validado*.
+* **Eventos que Actualizan la Vista:** `EV08: ProfileCreated`, `EV09: ContactProfileUpdated`.
+* **Comandos que Habilita:** `CMD08: UpdateContactProfile`.
 
 ---
 
-#### **RM02: PlotCadastralMapView**
+#### **RM02: SubscriptionStatusCardView**
+* **Actor Destinatario:** `Producer`
+* **Contextos Proyectados:** `Subscription & Cooperative Membership`
+* **US / BDD:** `US06`, `US07`
+* **Propósito y Decisión que Habilita:** Tarjeta informativa y panel de estado de la membresía comercial de la plataforma SaaS. Habilita la decisión de procesar la confirmación de pago de renovación individual (`CMD09`) o canjear un código de patrocinio gremial emitido por su cooperativa (`CMD10`).
+* **Componentes Visuales y Datos Clave:**
+  * Modalidad de suscripción: `INDIVIDUAL_PAID` o `COOPERATIVE_SPONSORED`.
+  * Badge de vigencia: *Activa*, *Pendiente de Pago*, *Vencida*.
+  * Techo de hectáreas autorizadas (cupo contratado) vs. hectáreas catastradas en uso.
+  * Fecha de caducidad del plan anual.
+  * Enlace al checkout de pago o formulario de canje de cupón corporativo.
+* **Eventos que Actualizan la Vista:** `EV10`, `EV11`, `EV12`, `EV13`.
+* **Comandos que Habilita:** `CMD09: ProcessPaymentConfirmation`, `CMD10: RedeemCooperativeCode`.
+
+---
+
+#### **RM03: PlotCadastralMapView**
 * **Actor Destinatario:** `Producer`
 * **Contextos Proyectados:** `Olive Orchard & Plot Management`
 * **US / BDD:** `US09`, `US10`, `US11`, `US12`
@@ -282,23 +299,24 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 | ID Read Model | Nombre de la Vista | Actor | Evento(s) Fuente de Actualización | Comando(s) Habilitado(s) |
 | :---: | :--- | :--- | :--- | :--- |
-| **RM01** | `UserProfileAndSubscriptionView` | `Producer` | `EV08`, `EV09`, `EV10`, `EV11`, `EV13` | `CMD08`, `CMD09`, `CMD10` |
-| **RM02** | `PlotCadastralMapView` | `Producer` | `EV15`, `EV16`, `EV17` | `CMD12`, `CMD13`, `CMD14` |
-| **RM03** | `VirtualSensorInventoryView` | `Producer` | `EV18`, `EV19`, `EV20` | `CMD15`, `CMD16`, `CMD17` |
-| **RM04** | `SoilMoistureAndStressMonitorView` | `Producer` | `EV21`, `EV22`, `EV24` | Operación de riego de campo |
-| **RM05** | `WeatherForecastAndThermalRiskCardView`| `Producer` | `EV23`, `EV25` | `CMD19` |
-| **RM06** | `HistoricalYieldAndBbiAnalyticsView` | `Producer` | `EV26`, `EV27`, `EV28`, `EV29`, `EV30` | `CMD20`, `CMD21`, `CMD22` |
-| **RM07** | `WinterChillAccumulationGaugeView` | `Producer` | `EV31`, `EV32`, `EV33`, `EV34` | Preparación muestreo (`CMD24`)|
-| **RM08** | `InFieldSamplingSummaryView` | `Producer` | `EV35`, `EV36`, `EV37`, `EV38` | `CMD24`, `CMD25` |
-| **RM09** | `FruitThinningPrescriptionCardView` | `Producer` | `EV39`, `EV40`, `EV41`, `EV42`, `EV43`, `EV44`, `EV45` | `CMD26`, `CMD28` |
-| **RM10** | `InterannualStabilizationCurveView` | `Producer` | `EV46`, `EV47` | `CMD29` |
-| **RM11** | `CertifiedAgronomicDossierView` | `Producer` / `Gestor` | `EV48` | `CMD30` |
-| **RM12** | `CooperativeDirectoryAndLicensingView`| `TechnicalManager` | `EV13`, `EV14` | `CMD11` |
-| **RM13** | `CooperativeTerritorialRiskMatrixView`| `TechnicalManager` | `EV49` | `CMD31` |
-| **RM14** | `CooperativeIntakeProjectionDashboard` | `TechnicalManager` | `EV50`, `EV51` | `CMD32` |
+| **RM01** | `UserProfileView` | `Producer` | `EV08`, `EV09` | `CMD08` |
+| **RM02** | `SubscriptionStatusCardView` | `Producer` | `EV10`, `EV11`, `EV12`, `EV13` | `CMD09`, `CMD10` |
+| **RM03** | `PlotCadastralMapView` | `Producer` | `EV15`, `EV16`, `EV17` | `CMD12`, `CMD13`, `CMD14` |
+| **RM04** | `VirtualSensorInventoryView` | `Producer` | `EV18`, `EV19`, `EV20` | `CMD15`, `CMD16`, `CMD17` |
+| **RM05** | `SoilMoistureAndStressMonitorView` | `Producer` | `EV21`, `EV22`, `EV24` | Operación de riego de campo |
+| **RM06** | `WeatherForecastAndThermalRiskCardView`| `Producer` | `EV23`, `EV25` | `CMD19` |
+| **RM07** | `HistoricalYieldAndBbiAnalyticsView` | `Producer` | `EV26`, `EV27`, `EV28`, `EV29`, `EV30` | `CMD20`, `CMD21`, `CMD22` |
+| **RM08** | `WinterChillAccumulationGaugeView` | `Producer` | `EV31`, `EV32`, `EV33`, `EV34` | Preparación muestreo (`CMD24`)|
+| **RM09** | `InFieldSamplingSummaryView` | `Producer` | `EV35`, `EV36`, `EV37`, `EV38` | `CMD24`, `CMD25` |
+| **RM10** | `FruitThinningPrescriptionCardView` | `Producer` | `EV39`, `EV40`, `EV41`, `EV42`, `EV43`, `EV44`, `EV45` | `CMD26`, `CMD28` |
+| **RM11** | `InterannualStabilizationCurveView` | `Producer` | `EV46`, `EV47` | `CMD29` |
+| **RM12** | `CertifiedAgronomicDossierView` | `Producer` / `Gestor` | `EV48` | `CMD30` |
+| **RM13** | `CooperativeDirectoryAndLicensingView`| `TechnicalManager` | `EV13`, `EV14` | `CMD11` |
+| **RM14** | `CooperativeTerritorialRiskMatrixView`| `TechnicalManager` | `EV49` | `CMD31` |
+| **RM15** | `CooperativeIntakeProjectionDashboard` | `TechnicalManager` | `EV50`, `EV51` | `CMD32` |
 
 ---
 
 ## 5. Consideraciones de Cierre
 
-La delimitación de estos 14 Read Models estructura la interfaz informativa de Viora bajo el patrón CQRS. Al mantener las proyecciones de lectura separadas del modelo transaccional de escritura, se asegura que los tableros analíticos, los semáforos de riesgo y los expedientes técnicos puedan consultarse de forma instantánea sin imponer sobrecarga computacional sobre los agregados de dominio.
+La delimitación de estos 15 Read Models estructura la interfaz informativa de Viora bajo el patrón CQRS. Al mantener las proyecciones de lectura separadas del modelo transaccional de escritura, se asegura que los tableros analíticos, los semáforos de riesgo y los expedientes técnicos puedan consultarse de forma instantánea sin imponer sobrecarga computacional sobre los agregados de dominio.
