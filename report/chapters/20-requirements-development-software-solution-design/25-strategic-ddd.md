@@ -399,7 +399,123 @@ A continuación, se explica en qué consiste cada uno de los 9 bounded contexts 
 #### Domain Message Flows Modeling
 &nbsp;
 
-[Domain Storytelling modeling]
+Los Domain Message Flows de Viora describen el intercambio de mensajes entre los actores, la aplicación móvil, los sistemas externos y los bounded contexts definidos durante el diseño estratégico. Mediante una representación de Domain Storytelling, cada diagrama presenta un escenario concreto e identifica el emisor, el receptor, el orden de los mensajes y la información significativa que transportan.
+
+Los ocho escenarios seleccionados abarcan la regulación de carga frutal, la evaluación de la alternancia, el seguimiento agroclimático, la ejecución del raleo, el cierre de cosecha, la generación de dosieres y los procesos de suscripción y recuperación de acceso. Los comandos se representan mediante post-its celestes, los eventos mediante post-its naranjas y sus contenidos mediante notas amarillas. Cuando la aplicación móvil aparece en distintas posiciones, se representa el mismo sistema en diferentes momentos o sesiones del flujo.
+
+A continuación, se presentan los escenarios que muestran colaboración entre bounded contexts:
+
+\noindent \textbf{Escenario 1: Sincronizar el muestreo, prescribir el raleo y actualizar el riesgo y el acopio cooperativo.}
+
+En este flujo se muestra la interacción entre los bounded contexts Crop Load Regulation and Thinning Advisory y Cooperative Operations and Territorial Intelligence cuando el productor sincroniza un lote de muestras mediante la aplicación móvil. El escenario considera un muestreo suficiente y representativo, una parcela cooperativa y una situación de sobrecarga dentro de la ventana de raleo. A partir de la información recibida, Viora emite la prescripción y actualiza la proyección de acopio y la matriz territorial de riesgo, comunicando los resultados al productor y al gestor técnico.
+
+\begin{figure}[H]
+\caption{Domain Message Flow 1: Sincronización de muestreo, prescripción de raleo y actualización cooperativa.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-1.png}
+\caption*{\textit{Nota.} Colaboración entre Thinning y Territory a partir de una única solicitud de sincronización del productor. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Escenario 2: Registrar el histórico y ajustar la evaluación de carga y el raleo.}
+
+En este flujo se muestra la colaboración entre los bounded contexts Phenology and Historical Bearing Analytics, Crop Load Regulation and Thinning Advisory y Cooperative Operations and Territorial Intelligence. El productor registra un histórico suficiente para evaluar el índice de vecería; este resultado permite reevaluar la carga sostenible utilizando el muestreo de la campaña actual, previamente disponible. Para el caso de sobrecarga y ventana de raleo vigente, Viora emite una prescripción y actualiza la matriz de riesgo cooperativo. La aplicación comunica al productor el índice y la recomendación, y al gestor técnico la evaluación territorial.
+
+\begin{figure}[H]
+\caption{Domain Message Flow 2: Registro histórico, evaluación de alternancia y ajuste del raleo.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-2.png}
+\caption*{\textit{Nota.} Interacción entre Phenology, Thinning y Territory con histórico suficiente y muestreo actual previamente registrado. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Escenario 3: Incorporar telemetría y reajustar el potencial floral ante una anomalía invernal.}
+
+En este flujo se muestra la interacción entre los bounded contexts Agroclimatic Telemetry and Sensor Monitoring y Phenology and Historical Bearing Analytics. El proceso comienza automáticamente con la incorporación de lecturas de un nodo virtual previamente vinculado y calibrado. Cuando se dispone de la serie necesaria, se solicita el cálculo de la acumulación diaria de frío. El escenario representa la detección de una anomalía térmica invernal y el posterior reajuste del potencial floral, cuyos resultados se comunican a la aplicación móvil para su seguimiento.
+
+\begin{figure}[H]
+\caption{Domain Message Flow 3: Ingesta de telemetría y reajuste del potencial floral.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-3.png}
+\caption*{\textit{Nota.} Flujo automático entre Telemetry y Phenology para el caso de anomalía térmica invernal. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Escenario 4: Confirmar el raleo y actualizar la proyección de acopio cooperativo.}
+
+En este flujo se muestra la colaboración entre los bounded contexts Crop Load Regulation and Thinning Advisory y Cooperative Operations and Territorial Intelligence. El productor confirma la ejecución de un raleo asociado a una prescripción existente, realizado dentro del plazo y en una parcela vinculada a una cooperativa. Tras registrar la ejecución, la política ReprojectCooperativeIntakeOnThinningExecution del contexto Thinning solicita actualizar la proyección mediante el comando existente ProjectCooperativeIntakeVolume. La aplicación comunica la confirmación al productor y la proyección actualizada al gestor técnico.
+
+\begin{figure}[H]
+\caption{Domain Message Flow 4: Confirmación del raleo y reajuste del acopio cooperativo.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-4.png}
+\caption*{\textit{Nota.} La colaboración se define mediante la política de recálculo de acopio posterior a la confirmación del raleo, conservando los comandos y eventos existentes. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Escenario 5: Cerrar la cosecha, evaluar la estabilización y actualizar el acopio.}
+
+En este flujo se muestra la interacción entre los bounded contexts Harvest Settlement and Performance Reporting y Cooperative Operations and Territorial Intelligence. El productor registra el resultado final de una campaña cosechada, correspondiente a una parcela cooperativa y con histórico suficiente para comparar su evolución. El cierre permite evaluar la curva de estabilización productiva y aporta información a la proyección de acopio. La aplicación comunica al productor el cierre y la evaluación, mientras el gestor técnico recibe la proyección cooperativa actualizada.
+
+\begin{figure}[H]
+\caption{Domain Message Flow 5: Cierre de cosecha, evaluación de estabilización y actualización del acopio.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-5.png}
+\caption*{\textit{Nota.} La evaluación de estabilización y la actualización cooperativa se derivan del cierre de campaña sin una segunda solicitud del productor. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+Adicionalmente, se presentan escenarios que muestran la colaboración de un bounded context con la aplicación móvil o con sistemas externos:
+
+\noindent \textbf{Escenario 6: El productor o gestor solicita y obtiene el dosier agronómico.}
+
+En este flujo se representa el proceso de generación de un dosier dentro del bounded context Harvest Settlement and Performance Reporting. El productor o gestor técnico solicita el documento para una parcela y un conjunto de campañas mediante la aplicación móvil. El contexto procesa la solicitud con la información disponible y comunica la generación del dosier, incluyendo una referencia al documento. El diagrama muestra la solicitud y su resultado; no detalla consultas a otros bounded contexts.
+
+\begin{figure}[H]
+\caption{Domain Message Flow 6: Solicitud y generación del dosier agronómico.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-6.png}
+\caption*{\textit{Nota.} Interacción entre el productor o gestor técnico, la aplicación móvil y Harvest para solicitar y obtener el dosier. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Escenario 7: Procesar el pago aprobado y activar la suscripción.}
+
+En este flujo se muestra la interacción del sistema externo Payment Gateway Service con el bounded context Subscription and Cooperative Membership. El escenario comienza cuando la pasarela comunica la confirmación de un pago correspondiente a una suscripción identificada. Una vez registrada la aprobación, la política Auto-Activation On Payment Approved activa la suscripción y la aplicación recibe los resultados para mostrar su estado. El diagrama representa el caso exitoso de confirmación y activación, sin incluir el proceso previo de compra.
+
+\begin{figure}[H]
+\caption{Domain Message Flow 7: Confirmación de pago y activación de la suscripción.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-7.png}
+\caption*{\textit{Nota.} Flujo iniciado por la pasarela de pagos y procesado por Subscription para el caso de pago aprobado. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Escenario 8: El usuario solicita recuperar su contraseña y Viora comunica la solicitud al servicio de correo.}
+
+En este flujo se muestra la interacción entre el usuario, la aplicación móvil, el bounded context Identity and Access Management y el sistema externo Transactional Mail Service. Para el caso de una cuenta existente, el usuario solicita recuperar su contraseña utilizando su correo electrónico. IAM registra la solicitud, comunica al servicio de correo la información necesaria para preparar el mensaje de recuperación y devuelve a la aplicación la confirmación de la solicitud. El escenario no incluye la confirmación de entrega del correo ni el posterior cambio de contraseña.
+
+\begin{figure}[H]
+\caption{Domain Message Flow 8: Solicitud de recuperación de contraseña y comunicación al servicio de correo.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-8.png}
+\caption*{\textit{Nota.} El mismo hecho de solicitud de recuperación se comunica al servicio de correo y a la aplicación con el contenido correspondiente a cada destinatario. Elaboración propia.}
+\end{figure}
 
 #### Bounded Context Canvases
 &nbsp;
