@@ -413,7 +413,7 @@ En este flujo se muestra la interacción entre los bounded contexts Crop Load Re
 \caption{Domain Message Flow 1: Sincronización de muestreo, prescripción de raleo y actualización cooperativa.}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-1.png}
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-7.png}
 \caption*{\textit{Nota.} Colaboración entre Thinning y Territory a partir de una única solicitud de sincronización del productor. Elaboración propia.}
 \end{figure}
 
@@ -427,7 +427,7 @@ En este flujo se muestra la colaboración entre los bounded contexts Phenology a
 \caption{Domain Message Flow 2: Registro histórico, evaluación de alternancia y ajuste del raleo.}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-2.png}
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-6.png}
 \caption*{\textit{Nota.} Interacción entre Phenology, Thinning y Territory con histórico suficiente y muestreo actual previamente registrado. Elaboración propia.}
 \end{figure}
 
@@ -441,7 +441,7 @@ En este flujo se muestra la interacción entre los bounded contexts Agroclimatic
 \caption{Domain Message Flow 3: Ingesta de telemetría y reajuste del potencial floral.}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-3.png}
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-5.png}
 \caption*{\textit{Nota.} Flujo automático entre Telemetry y Phenology para el caso de anomalía térmica invernal. Elaboración propia.}
 \end{figure}
 
@@ -469,7 +469,7 @@ En este flujo se muestra la interacción entre los bounded contexts Harvest Sett
 \caption{Domain Message Flow 5: Cierre de cosecha, evaluación de estabilización y actualización del acopio.}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-5.png}
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-3.png}
 \caption*{\textit{Nota.} La evaluación de estabilización y la actualización cooperativa se derivan del cierre de campaña sin una segunda solicitud del productor. Elaboración propia.}
 \end{figure}
 
@@ -485,7 +485,7 @@ En este flujo se representa el proceso de generación de un dosier dentro del bo
 \caption{Domain Message Flow 6: Solicitud y generación del dosier agronómico.}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-6.png}
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-2.png}
 \caption*{\textit{Nota.} Interacción entre el productor o gestor técnico, la aplicación móvil y Harvest para solicitar y obtener el dosier. Elaboración propia.}
 \end{figure}
 
@@ -499,7 +499,7 @@ En este flujo se muestra la interacción del sistema externo Payment Gateway Ser
 \caption{Domain Message Flow 7: Confirmación de pago y activación de la suscripción.}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-7.png}
+\includegraphics[width=0.95\textwidth]{report/assets/event-storming/dmf/scenery-1.png}
 \caption*{\textit{Nota.} Flujo iniciado por la pasarela de pagos y procesado por Subscription para el caso de pago aprobado. Elaboración propia.}
 \end{figure}
 
