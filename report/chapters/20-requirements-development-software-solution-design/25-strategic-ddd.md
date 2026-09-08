@@ -520,7 +520,123 @@ En este flujo se muestra la interacción entre el usuario, la aplicación móvil
 #### Bounded Context Canvases
 &nbsp;
 
-[Canvases for each Bounded Context]
+Para mejorar la organización del dominio y facilitar una comunicación consistente, se elaboraron los Bounded Context Canvases para cada subdominio de Viora. Estos canvases delimitan claramente las responsabilidades, establecen el lenguaje ubicuo y los modelos clave, y describen los puntos de integración y los flujos de mensajes entre contextos delimitados, ordenados de acuerdo a su importancia estratégica para el negocio (iniciando por los subdominios Core diferenciadores y concluyendo con los genéricos de plataforma). Los diagramas que siguen consolidan estas decisiones y sirven como guía para alinear la arquitectura, las interfaces y la evolución técnica del sistema.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: Leyenda de Notación y Convenciones Visuales.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.70\textwidth]{report/assets/bounded-context-canvases/00-legend.png}
+\caption*{\textit{Nota.} Convención de colores para mensajes (comandos en azul, eventos en naranja, políticas en lila) y colaboradores (nubes para contextos internos, engranajes para sistemas externos). Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Crop Load Regulation and Thinning Advisory (Thinning):} Este bounded context evalúa la representatividad del muestreo a pie de árbol y emite prescripciones de porcentaje de aclareo frutal antes del endurecimiento del carozo. Su propósito es intervenir oportunamente para romper el ciclo biológico de la alternancia productiva.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: Crop Load Regulation and Thinning Advisory (Thinning).}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/bounded-context-canvases/01-thining.png}
+\caption*{\textit{Nota.} Canvas de diseño para el Core Domain primario de regulación de carga frutal y aclareo. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Phenology and Historical Bearing Analytics (Phenology):} Este bounded context gestiona la memoria histórica de cosechas, computa el índice $BBI$ de vecería y acumula porciones dinámicas de frío invernal. Su propósito es prever patrones de alternancia (años ON/OFF) y anticipar brotaciones heterogéneas.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: Phenology and Historical Bearing Analytics (Phenology).}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/bounded-context-canvases/02-phenology.png}
+\caption*{\textit{Nota.} Canvas de diseño para el Core Domain de inteligencia bioclimática, vecería e índice BBI. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Harvest Settlement and Performance Reporting (Harvest):} Este bounded context asienta la liquidación de kilos cosechados, computa la curva interanual de estabilización y compila el expediente técnico oficial en PDF. Su propósito es certificar el rendimiento anual y validar la mitigación lograda.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: Harvest Settlement and Performance Reporting (Harvest).}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/bounded-context-canvases/03-harvest.png}
+\caption*{\textit{Nota.} Canvas de diseño para el Core Domain de cierre de campaña y dossier agronómico certificado. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Olive Orchard and Plot Management (Orchard):} Este bounded context gestiona el catastro georreferenciado de cuarteles mediante polígonos GeoJSON, tipifica variedades de olivo y calcula la densidad arbórea. Su propósito es establecer la base espacial y agronómica del olivar.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: Olive Orchard and Plot Management (Orchard).}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/bounded-context-canvases/04-orchard.png}
+\caption*{\textit{Nota.} Canvas de diseño para el subdominio de soporte de catastro predial y dendrometría. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Agroclimatic Telemetry and Sensor Monitoring (Telemetry):} Este bounded context ingesta series horarias de humedad edáfica a 30 y 60 cm y pronósticos a 7 días, emitiendo alertas ante estrés hídrico o choques térmicos. Su propósito es vigilar continuamente las condiciones edafoclimáticas del suelo.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: Agroclimatic Telemetry and Sensor Monitoring (Telemetry).}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/bounded-context-canvases/05-agroclimatic.png}
+\caption*{\textit{Nota.} Canvas de diseño para el subdominio de soporte de telemetría y sensores edafoclimáticos. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Cooperative Operations and Territorial Intelligence (Territory):} Este bounded context administra el padrón de socios, emite lotes de códigos corporativos, centraliza el semáforo de riesgo por valles y proyecta el volumen de acopio colectivo. Su propósito es brindar inteligencia sectorial a la cooperativa.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: Cooperative Operations and Territorial Intelligence (Territory).}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/bounded-context-canvases/06-cooperative.png}
+\caption*{\textit{Nota.} Canvas de diseño para el subdominio de soporte de inteligencia territorial y gremial. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{User Profiles (Profiles):} Este bounded context administra la identidad civil y canales de contacto del productor, normalizando números telefónicos bajo la norma internacional E.164. Su propósito es centralizar la representación de la persona física y facilitar la asistencia técnica.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: User Profiles (Profiles).}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/bounded-context-canvases/07-profiles.png}
+\caption*{\textit{Nota.} Canvas de diseño para el subdominio de soporte de perfiles de usuario y contacto E.164. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Subscription and Cooperative Membership (Subscription):} Este bounded context gestiona pagos al Plan Productor y el canje de códigos de patrocinio, fiscalizando la cuota de hectáreas catastrables. Su propósito es asegurar la monetización del servicio SaaS y controlar el acceso predial.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: Subscription and Cooperative Membership (Subscription).}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/bounded-context-canvases/08-subscription.png}
+\caption*{\textit{Nota.} Canvas de diseño para el subdominio genérico de suscripción SaaS y membresías. Elaboración propia.}
+\end{figure}
+
+\newpage
+
+\noindent \textbf{Identity and Access Management (IAM):} Este bounded context gestiona la autenticación de usuarios, asignación de roles, emisión de tokens de sesión y recuperación segura de credenciales. Su propósito es garantizar acceso controlado y seguridad perimetral en la plataforma.
+
+\begin{figure}[H]
+\caption{Bounded Context Canvas: Identity and Access Management (IAM).}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/bounded-context-canvases/09-iam.png}
+\caption*{\textit{Nota.} Canvas de diseño para el subdominio genérico de seguridad, credenciales y tokens. Elaboración propia.}
+\end{figure}
 
 ### Context Mapping
 [Context Map diagram and explanation of patterns like Anti-corruption Layer, Shared Kernel, etc.]
