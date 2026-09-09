@@ -52,7 +52,7 @@ El productor asocia un sensor físico al suelo de una parcela ya delimitada. La 
 
 * `VirtualSensorNodeLinked`, `VirtualSensorNodeCalibrated`, `VirtualSensorNodeUnlinked` ➔ **Aplicación Móvil**
 * `TelemetryDataIngested`, `HydricStressAlertTriggered`, `ThermalThresholdAlertTriggered`, `AgroclimaticAlertResolved` ➔ **Agroclimatic Telemetry and Sensor Monitoring**
-* `WeatherForecastIngested` ➔ **Aplicación Móvil**
+* `WeatherForecastIngested` ➔ **Cooperative Operations & Territorial Intelligence**, **Aplicación Móvil**
 
 ---
 

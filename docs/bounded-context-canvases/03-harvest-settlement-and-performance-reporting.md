@@ -46,7 +46,7 @@ La decisión: al final de la campaña se asientan los pesos reales de la cosecha
 
 *(Messages ➔ Collaborators)*
 
-* `CampaignHarvestSettled` ➔ **Aplicación móvil**
+* `CampaignHarvestSettled` ➔ **Phenology & Historical Bearing Analytics**, **Aplicación móvil**
 * `YieldStabilizationCurveEvaluated` ➔ **Aplicación móvil**
 * `AgronomicDossierGenerated` ➔ **Aplicación móvil**
 
