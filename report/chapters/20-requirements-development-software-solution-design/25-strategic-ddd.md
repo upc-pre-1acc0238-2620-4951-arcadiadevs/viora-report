@@ -639,7 +639,59 @@ Para mejorar la organización del dominio y facilitar una comunicación consiste
 \end{figure}
 
 ### Context Mapping
-[Context Map diagram and explanation of patterns like Anti-corruption Layer, Shared Kernel, etc.]
+&nbsp;
+
+Con los nueve bounded contexts ya delimitados y documentados en sus respectivos canvases, el equipo procedió a visualizar las relaciones estructurales que los vinculan. El insumo para esta sesión no fue la intuición sino el material previamente producido: la comunicación entrante y saliente declarada en cada Bounded Context Canvas, el catálogo de quince políticas reactivas del EventStorming y el registro de sistemas externos integrados. Cada relación incorporada al mapa quedó respaldada por una política concreta, por una declaración explícita de colaboración en un canvas, o por ambas, de modo que ninguna flecha del diagrama descansa sobre una suposición.
+
+Este cruce sistemático arrojó trece relaciones entre pares de contextos, expresadas en quince arcos dirigidos, más cuatro integraciones con proveedores externos. El ejercicio además reveló inconsistencias entre las fuentes que fueron corregidas antes de dibujar: colaboraciones enunciadas en el propósito de un canvas pero ausentes de su comunicación saliente, una política que declaraba un destinatario que el canvas emisor no reconocía, y una atribución equivocada de agregado que había quedado registrada en el paso de agregados. Modelar sobre fuentes inconsistentes habría producido un mapa que ningún artefacto respaldaba.
+
+\noindent \textbf{Exploración de diseños alternativos:} Antes de fijar la aproximación final, el equipo sometió el modelo a las preguntas de reconfiguración propias de esta técnica, evaluando en cada caso el efecto sobre el acoplamiento y sobre la claridad de las fronteras.
+
+La primera fue \textit{¿qué pasaría si movemos este capability a otro bounded context?}, aplicada a la memoria productiva plurianual y al cálculo del Índice de Vecería Bienal. Estas capacidades figuraban asociadas al contexto de liquidación de cosecha, pese a que la misión declarada del contexto de fenología es precisamente modelar dicha memoria. Al trasladarlas quedó una frontera considerablemente más nítida: fenología concentra el conocimiento bioclimático y de alternancia, mientras que liquidación conserva exclusivamente el cierre de campaña y la certificación. Esta reconfiguración fue adoptada.
+
+La segunda fue \textit{¿qué pasaría si duplicamos una funcionalidad para romper la dependencia?}, considerada para el $BBI$. Replicarlo dentro del contexto de liquidación habría eliminado su dependencia respecto de fenología, pero se descartó: el índice constituye una capacidad diferenciadora del núcleo del negocio y duplicarlo generaría dos fuentes de verdad para un mismo valor, con riesgo cierto de divergencia entre ellas.
+
+La tercera fue \textit{¿qué pasaría si partimos el bounded context en múltiples bounded contexts?}, evaluada sobre fenología, que alberga tanto la acumulación dinámica de frío invernal como la analítica histórica de vecería. Se descartó porque ambas responsabilidades comparten el mismo ciclo de vida —la parcela a lo largo de sus campañas— y alimentan al mismo consumidor, de modo que la partición habría introducido una relación adicional sin aportar valor analítico.
+
+La cuarta fue \textit{¿qué pasaría si creamos un shared service para reducir la duplicación entre múltiples bounded contexts?}, planteada sobre inteligencia territorial. El análisis mostró que ese contexto ya cumple esa función: consolida señales de cuatro contextos distintos en una matriz de riesgo sectorial y una proyección de acopio. Extraer un servicio adicional habría dejado un contexto anémico sin modelo propio.
+
+Finalmente se consideró \textit{¿qué pasaría si aislamos los core capabilities y movemos los otros a un context aparte?}. Esta pregunta no derivó en una reconfiguración sino en una decisión de representación: el mapa dispone los tres contextos core como un núcleo cohesionado, con los subdominios de soporte y genéricos ubicados como proveedores a su alrededor, de manera que la dirección de las dependencias resulte legible a simple vista.
+
+\newpage
+
+\begin{figure}[H]
+\caption{Context Map de Viora: mapa de relaciones estructurales adoptado.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/context-map/01-context-map-recomendado.png}
+\caption*{\textit{Nota.} Nueve bounded contexts, trece relaciones y cuatro integraciones externas. La flecha apunta del contexto upstream al downstream. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Patrones de relación aplicados:} La mayoría de las relaciones internas se resolvieron como \textit{Customer/Supplier}. El criterio determinante fue que cada contexto consumidor conserva su propio lenguaje ubicuo y traduce a él los eventos que recibe, en lugar de adoptar el vocabulario del proveedor. Se trata además de contextos desarrollados por un mismo equipo, donde las necesidades del consumidor sí pueden incorporarse a la planificación del proveedor, que es la condición organizativa que este patrón supone.
+
+Dos relaciones se modelaron como \textit{Partnership}. La primera vincula regulación de carga con fenología: ambos son subdominios core que se alimentan mutuamente dentro de la misma campaña, ya que fenología reajusta la proyección floral ante anomalías térmicas invernales mientras que regulación de carga devuelve el factor de penalización cuando el aclareo se ejecuta fuera de la ventana biológica. La segunda vincula fenología con liquidación de cosecha: el cierre de campaña alimenta la serie plurianual, y esa serie es a su vez el insumo con el que se calcula la curva de estabilización interanual. En ambos casos ninguno de los dos contextos tiene precedencia sobre el otro y el fracaso de uno compromete al otro, que es la condición que distingue a este patrón de una relación cliente-proveedor.
+
+Una única relación se modeló como \textit{Conformist}: la que vincula el contexto de identidad y acceso con el de perfiles de usuario. El canvas de identidad establece que los demás contextos confían en la firma criptográfica de los tokens sin realizar consultas síncronas a su base de datos, y el contexto de perfiles incorpora el identificador de usuario a su lenguaje ubicuo tal como esta lo define. Esa adopción sin traducción es precisamente lo que caracteriza al patrón.
+
+Cuatro contextos actúan como \textit{Open Host Service} por publicar un mismo contrato de eventos hacia múltiples consumidores: identidad y acceso, suscripciones, gestión predial y regulación de carga. En el caso de identidad, el token de sesión constituye además un \textit{Published Language} de alcance transversal a toda la plataforma.
+
+Las cuatro integraciones externas se resolvieron mediante \textit{Anti-corruption Layer}, de modo que ningún modelo de proveedor externo penetre en el dominio. La excepción parcial corresponde al proveedor cartográfico, cuya integración se apoya en el estándar GeoJSON y constituye por tanto un \textit{Published Language} de industria que el sistema consume directamente.
+
+\newpage
+
+\begin{figure}[H]
+\caption{Context Map de Viora: alternativas de diseño evaluadas y descartadas.}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.95\textwidth]{report/assets/context-map/02-alternativas-descartadas.png}
+\caption*{\textit{Nota.} Diseños candidatos considerados durante la elaboración, con la justificación de su descarte. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Discusión de las alternativas descartadas:} La primera alternativa evaluada consistía en declarar un \textit{Shared Kernel} entre fenología y liquidación de cosecha, con la memoria histórica de cosechas y el $BBI$ como modelo compartido entre ambos. La hipótesis surgió al advertir que ambos contextos declaraban esos mismos elementos en su lenguaje ubicuo. El análisis mostró, sin embargo, que ese solapamiento no obedecía a una decisión de diseño sino a un error de documentación arrastrado desde el paso de agregados, y no corresponde consagrar un patrón sobre un defecto. A ello se suma que el \textit{Shared Kernel} es el patrón de mayor acoplamiento del catálogo: obliga a coordinar cada modificación del modelo compartido entre ambos contextos, incluida cualquier recalibración de la fórmula de Hoblyn. Reasignada la memoria histórica a su contexto legítimo, la dependencia mutua remanente se expresa adecuadamente como \textit{Partnership}, que resuelve el mismo problema con un acoplamiento sensiblemente menor. El mapa final no incorpora, por consiguiente, ningún \textit{Shared Kernel}, y esa ausencia constituye un resultado del análisis y no una omisión.
+
+La segunda alternativa consistía en modelar inteligencia territorial como \textit{Conformist} de sus cuatro proveedores. La hipótesis resultaba razonable: se trata de un subdominio de soporte que depende de dos contextos core, por lo que cabía suponer que carecería de capacidad de negociación sobre los contratos que consume. La evidencia del canvas la refutó. Su lenguaje ubicuo —\textit{Cooperative}, \textit{CorporateLicensingPlan}, \textit{CooperativeMember}, \textit{InvitationCode}, \textit{TerritorialRiskMatrix}, \textit{EarlyIntakeProjection}— no toma prestado ningún término de sus proveedores. Un contexto conformista adopta el modelo ajeno sin modificarlo, mientras que este realiza la operación inversa: traduce cuatro vocabularios distintos a un modelo territorial propio. Las cuatro relaciones se mantuvieron en consecuencia como \textit{Customer/Supplier}.
+
+La aproximación finalmente adoptada es, por tanto, aquella que minimiza el acoplamiento sin sacrificar la coherencia de las fronteras: preserva la autonomía de cada contexto para evolucionar su modelo, reserva el \textit{Partnership} para las dos únicas dependencias genuinamente recíprocas, y limita el \textit{Conformist} al único caso en que el consumidor adopta efectivamente el lenguaje del proveedor.
 
 ### Software Architecture
 [C4 Model architecture diagrams]
