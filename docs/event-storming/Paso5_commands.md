@@ -268,7 +268,7 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 
 #### **CMD20: LogHistoricalHarvests**
 * **Iniciador / Actor:** `Producer`
-* **Agregado Destino:** `AgronomicReport`
+* **Agregado Destino:** `ChillAccumulationTracker`
 * **US / BDD:** `US20`
 * **Propósito de Negocio:** Registrar el historial plurianual de cosechas (rendimiento en kg/ha y clasificación On/Off) de las campañas pasadas para calibrar el patrón de alternancia.
 * **Payload Clave:** `plotId`, `harvestRecords` (año, rendimientoKgHa, calificaciónCampaña).
@@ -280,7 +280,7 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 
 #### **CMD21: RectifyHistoricalHarvest**
 * **Iniciador / Actor:** `Producer`
-* **Agregado Destino:** `AgronomicReport`
+* **Agregado Destino:** `ChillAccumulationTracker`
 * **US / BDD:** `US21` (Escenario 1)
 * **Propósito de Negocio:** Corregir el tonelaje registrado de una campaña histórica tras detectar un error en las actas de pesaje del molino o canchón.
 * **Payload Clave:** `plotId`, `campaignYear`, `rectifiedYieldKgHa`.
@@ -290,7 +290,7 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 
 #### **CMD22: DeleteHistoricalHarvest**
 * **Iniciador / Actor:** `Producer`
-* **Agregado Destino:** `AgronomicReport`
+* **Agregado Destino:** `ChillAccumulationTracker`
 * **US / BDD:** `US21` (Escenario 2)
 * **Propósito de Negocio:** Eliminar un registro de cosecha erróneo o duplicado del historial de la parcela.
 * **Payload Clave:** `plotId`, `campaignYear`.
@@ -446,9 +446,9 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 | **CMD17** | `UnlinkVirtualSensorNode` | `Producer` | `VirtualSensorNode` | `EV20` |
 | **CMD18** | `IngestHourlyTelemetry` | `System Scheduler` | `TelemetrySeries` | `EV21`, `EV22`, `EV23`, `EV24` |
 | **CMD19** | `IngestWeatherForecast` | `System Scheduler` | `TelemetrySeries` | `EV25` |
-| **CMD20** | `LogHistoricalHarvests` | `Producer` | `AgronomicReport` | `EV26`, `EV27`, `EV28` |
-| **CMD21** | `RectifyHistoricalHarvest` | `Producer` | `AgronomicReport` | `EV29` |
-| **CMD22** | `DeleteHistoricalHarvest` | `Producer` | `AgronomicReport` | `EV30` |
+| **CMD20** | `LogHistoricalHarvests` | `Producer` | `ChillAccumulationTracker` | `EV26`, `EV27`, `EV28` |
+| **CMD21** | `RectifyHistoricalHarvest` | `Producer` | `ChillAccumulationTracker` | `EV29` |
+| **CMD22** | `DeleteHistoricalHarvest` | `Producer` | `ChillAccumulationTracker` | `EV30` |
 | **CMD23** | `ComputeDailyChillAccumulation` | `System Scheduler` | `ChillAccumulationTracker` | `EV31`, `EV32`, `EV33`, `EV34` |
 | **CMD24** | `RecordInFieldTreeSampling` | `Producer` | `FruitThinningPrescription` | `EV35` |
 | **CMD25** | `IngestFieldSamplingsBatch` | `Producer` | `FruitThinningPrescription` | `EV36`, `EV37`, `EV38` |

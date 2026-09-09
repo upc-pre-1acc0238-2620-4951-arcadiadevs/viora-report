@@ -112,11 +112,11 @@ Modela la memoria histórica de cosechas, la evaluación del Índice de Vecería
 
 | N° | Domain Event (PascalCase) | Agregado Emisor | US / BDD | Descripción del Hecho de Negocio (Español) |
 | :---: | :--- | :--- | :--- | :--- |
-| **EV26** | `HistoricalHarvestsLogged` | AgronomicReport | US20 (Escenario 1) | Serie plurianual de cosechas (3 a 5 años) registrada en el predio discriminando campañas ON y OFF. |
-| **EV27** | `BiennialBearingIndexAssessed` | AgronomicReport | US20 (Escenario 1) | Índice de vecería BBI evaluado y determinado oficialmente mediante la fórmula de Hoblyn et al. |
-| **EV28** | `HistoricalDataInsufficiencyDetected` | AgronomicReport | US20 (Escenario 2) | Aviso de datos insuficientes emitido al registrar menos de 3 campañas, impidiendo el cálculo formal de alternancia. |
-| **EV29** | `HistoricalHarvestRectified` | AgronomicReport | US21 (Escenario 1) | Pesaje de una cosecha pasada corregido por error humano y serie BBI plurianual recalculada automáticamente. |
-| **EV30** | `HistoricalHarvestDeleted` | AgronomicReport | US21 (Escenario 2) | Registro erróneo o duplicado de cosecha suprimido del predio, depurando la serie base de alternancia. |
+| **EV26** | `HistoricalHarvestsLogged` | ChillAccumulationTracker | US20 (Escenario 1) | Serie plurianual de cosechas (3 a 5 años) registrada en el predio discriminando campañas ON y OFF. |
+| **EV27** | `BiennialBearingIndexAssessed` | ChillAccumulationTracker | US20 (Escenario 1) | Índice de vecería BBI evaluado y determinado oficialmente mediante la fórmula de Hoblyn et al. |
+| **EV28** | `HistoricalDataInsufficiencyDetected` | ChillAccumulationTracker | US20 (Escenario 2) | Aviso de datos insuficientes emitido al registrar menos de 3 campañas, impidiendo el cálculo formal de alternancia. |
+| **EV29** | `HistoricalHarvestRectified` | ChillAccumulationTracker | US21 (Escenario 1) | Pesaje de una cosecha pasada corregido por error humano y serie BBI plurianual recalculada automáticamente. |
+| **EV30** | `HistoricalHarvestDeleted` | ChillAccumulationTracker | US21 (Escenario 2) | Registro erróneo o duplicado de cosecha suprimido del predio, depurando la serie base de alternancia. |
 | **EV31** | `WinterChillPortionsAccumulated` | ChillAccumulationTracker | US22 (Escenario 1) | Avance dinámico de porciones de frío computado y acumulado periódicamente aplicando el modelo de Erez. |
 | **EV32** | `ColdRequirementFulfilled` | ChillAccumulationTracker | US22 (Escenario 2) | Umbral varietal de frío completado (25-30 porciones), asegurando la salida fisiológica del reposo invernal. |
 | **EV33** | `WinterThermalAnomalyDetected` | ChillAccumulationTracker | US23 (Escenario 1) | Ola de calor diurna invernal (>24°C por >3 días) detectada, destruyendo intermediarios del frío de Erez. |

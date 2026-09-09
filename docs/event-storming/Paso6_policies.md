@@ -154,7 +154,7 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 ### **POL07: Auto-BBI Assessment On Plurianual Logs Policy**
 * **Contexto Emisor:** `Phenology & Historical Bearing Analytics`
 * **Contexto Receptor:** `Phenology & Historical Bearing Analytics`
-* **Agregado Origen $\rightarrow$ Agregado Destino:** `AgronomicReport` $\rightarrow$ `AgronomicReport`
+* **Agregado Origen $\rightarrow$ Agregado Destino:** `ChillAccumulationTracker` $\rightarrow$ `ChillAccumulationTracker`
 * **US / BDD:** `US20` (Escenario 1)
 * **Regla Reactiva Formal:**
   * **WHENEVER:** `HistoricalHarvestsLogged` (`EV26`)
@@ -208,7 +208,7 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 ### **POL11: Late Thinning Penalty Adjustment Policy**
 * **Contexto Emisor:** `Crop Load Regulation & Thinning Advisory`
 * **Contexto Receptor:** `Phenology & Historical Bearing Analytics`
-* **Agregado Origen $\rightarrow$ Agregado Destino:** `FruitThinningPrescription` $\rightarrow$ `AgronomicReport`
+* **Agregado Origen $\rightarrow$ Agregado Destino:** `FruitThinningPrescription` $\rightarrow$ `ChillAccumulationTracker`
 * **US / BDD:** `US28` (Escenario 2)
 * **Regla Reactiva Formal:**
   * **WHENEVER:** `LateThinningExecutionRecorded` (`EV45`)
