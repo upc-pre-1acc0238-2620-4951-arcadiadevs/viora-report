@@ -663,7 +663,7 @@ Finalmente se consideró \textit{¿qué pasaría si aislamos los core capabiliti
 \caption{Context Map de Viora: mapa de relaciones estructurales adoptado.}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/context-map/01-context-map-recomendado.png}
+\includegraphics[width=0.95\textwidth]{report/assets/context-map/context-map.png}
 \caption*{\textit{Nota.} Nueve bounded contexts, trece relaciones y cuatro integraciones externas. La flecha apunta del contexto upstream al downstream. Elaboración propia.}
 \end{figure}
 
@@ -683,7 +683,7 @@ Las cuatro integraciones externas se resolvieron mediante \textit{Anti-corruptio
 \caption{Context Map de Viora: alternativas de diseño evaluadas y descartadas.}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/context-map/02-alternativas-descartadas.png}
+\includegraphics[width=0.95\textwidth]{report/assets/context-map/context-map-alternatives.png}
 \caption*{\textit{Nota.} Diseños candidatos considerados durante la elaboración, con la justificación de su descarte. Elaboración propia.}
 \end{figure}
 
