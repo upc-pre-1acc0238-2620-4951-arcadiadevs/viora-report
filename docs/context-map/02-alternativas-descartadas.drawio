@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" version="24.0.0">
+  <diagram name="Alternativas descartadas" id="viora-context-map-alternatives">
+    <mxGraphModel dx="1422" dy="798" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="&lt;b&gt;Viora — Context Map: alternativas evaluadas y descartadas&lt;/b&gt;&lt;br&gt;&lt;i&gt;Diseños candidatos considerados durante la elaboración del mapa recomendado&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="800" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="h1" value="&lt;b&gt;ALTERNATIVA A&lt;/b&gt; — Shared Kernel entre Phenology y Harvest Settlement" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="75" width="700" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="sep1" value="" style="line;strokeWidth=1;html=1;strokeColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="1400" height="10" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="a_bc2" value="&lt;b&gt;Phenology &amp;amp; Historical&lt;br&gt;Bearing Analytics&lt;/b&gt;&lt;br&gt;&lt;i&gt;Core&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="160" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_sk" value="&lt;b&gt;SHARED KERNEL&lt;/b&gt;&lt;br&gt;&lt;br&gt;AgronomicReport&lt;br&gt;HistoricalHarvestEntry&lt;br&gt;BiennialBearingIndex" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=#fff2cc;strokeColor=#d6b656;strokeWidth=2;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="360" y="145" width="220" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_bc3" value="&lt;b&gt;Harvest Settlement &amp;amp;&lt;br&gt;Performance Reporting&lt;/b&gt;&lt;br&gt;&lt;i&gt;Core&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="160" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_e1" value="SK" style="endArrow=none;html=1;fontSize=11;fontStyle=1;strokeWidth=2;strokeColor=#d6b656;" edge="1" parent="1" source="a_bc2" target="a_sk">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="a_e2" value="SK" style="endArrow=none;html=1;fontSize=11;fontStyle=1;strokeWidth=2;strokeColor=#d6b656;" edge="1" parent="1" source="a_sk" target="a_bc3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="a_note" value="&lt;b&gt;Por qué se descartó&lt;/b&gt;&lt;br&gt;&lt;br&gt;• El solapamiento que sugería un Shared Kernel resultó ser un &lt;b&gt;defecto de documentación&lt;/b&gt;, no una decisión de diseño: el paso de agregados había absorbido en AgronomicReport contenido que pertenece a Phenology. No se modela un patrón sobre un error.&lt;br&gt;&lt;br&gt;• El Shared Kernel es el patrón de &lt;b&gt;mayor acoplamiento&lt;/b&gt; del catálogo. Obliga a los dos contextos a coordinar cada cambio del modelo compartido, incluido cualquier ajuste de la fórmula del BBI.&lt;br&gt;&lt;br&gt;• Separado el agregado, la dependencia mutua real se expresa como &lt;b&gt;Partnership&lt;/b&gt;: ambos contextos colaboran sin co-poseer el modelo, que es el acoplamiento mínimo que resuelve el problema." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#B85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="940" y="130" width="500" height="230" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="h2" value="&lt;b&gt;ALTERNATIVA B&lt;/b&gt; — Cooperative Operations como Conformist de sus cuatro upstream" style="text;html=1;align=left;verticalAlign=middle;fontSize=13;fontColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="410" width="750" height="25" as="geometry"/>
+        </mxCell>
+        <mxCell id="sep2" value="" style="line;strokeWidth=1;html=1;strokeColor=#B85450;" vertex="1" parent="1">
+          <mxGeometry x="40" y="435" width="1400" height="10" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_bc8" value="&lt;b&gt;Subscription &amp;amp;&lt;br&gt;Cooperative Membership&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="480" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_bc7" value="&lt;b&gt;User Profiles&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="565" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_bc1" value="&lt;b&gt;Crop Load Regulation&lt;br&gt;&amp;amp; Thinning Advisory&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="650" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_bc5" value="&lt;b&gt;Agroclimatic Telemetry&lt;br&gt;&amp;amp; Sensor Monitoring&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="60" y="735" width="200" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_bc6" value="&lt;b&gt;Cooperative Operations &amp;amp;&lt;br&gt;Territorial Intelligence&lt;/b&gt;&lt;br&gt;&lt;i&gt;Supporting&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="480" y="605" width="220" height="85" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_e1" value="CF" style="endArrow=blockThin;html=1;fontSize=11;fontStyle=1;endFill=1;" edge="1" parent="1" source="b_bc8" target="b_bc6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_e2" value="CF" style="endArrow=blockThin;html=1;fontSize=11;fontStyle=1;endFill=1;" edge="1" parent="1" source="b_bc7" target="b_bc6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_e3" value="CF" style="endArrow=blockThin;html=1;fontSize=11;fontStyle=1;endFill=1;" edge="1" parent="1" source="b_bc1" target="b_bc6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_e4" value="CF" style="endArrow=blockThin;html=1;fontSize=11;fontStyle=1;endFill=1;" edge="1" parent="1" source="b_bc5" target="b_bc6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="b_note" value="&lt;b&gt;Por qué se descartó&lt;/b&gt;&lt;br&gt;&lt;br&gt;La hipótesis era razonable: Cooperative Operations es un subdominio de soporte que depende de dos contextos core, así que podría carecer de poder para negociar el contrato y limitarse a aceptar lo que recibe.&lt;br&gt;&lt;br&gt;&lt;b&gt;La evidencia del canvas la refuta.&lt;/b&gt; El criterio que separa Conformist de Customer/Supplier es si el downstream adopta el lenguaje del upstream o conserva el propio. El Ubiquitous Language de Cooperative Operations —&lt;i&gt;Cooperative, CorporateLicensingPlan, CooperativeMember, InvitationCode, TerritorialRiskMatrix, EarlyIntakeProjection&lt;/i&gt;— no toma prestado ni un término de sus cuatro upstream.&lt;br&gt;&lt;br&gt;Un Conformist adopta el modelo ajeno tal cual. Este contexto hace lo contrario: &lt;b&gt;traduce cuatro vocabularios distintos&lt;/b&gt; a su propio modelo territorial. Se mantiene entonces &lt;b&gt;Customer/Supplier&lt;/b&gt; en las cuatro relaciones." style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#ffffff;strokeColor=#B85450;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="940" y="465" width="500" height="330" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
