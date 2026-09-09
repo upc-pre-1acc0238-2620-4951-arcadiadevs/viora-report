@@ -184,7 +184,7 @@ graph TD
 ### **BC06: Phenology & Historical Bearing Analytics Bounded Context**
 * **Tipo de Subdominio:** Core Domain (*Core Subdomain* - Fisiología y Memoria Productiva).
 * **Misión y Responsabilidad:** Modelar la memoria productiva plurianual de cosechas para cuantificar el Índice de Vecería de Hoblyn et al. ($BBI$) y computar las Porciones de Frío invernales mediante el algoritmo Dinámico de Erez et al. (Mayo-Agosto), detectando la destrucción de intermediarios térmicos ante olas de calor por efecto ENOS para reajustar la inducción floral.
-* **Agregados Encapsulados:** `ChillAccumulationTracker` (`AGG07`). *(Interactúa estrechamente con la serie histórica de `AgronomicReport`).*
+* **Agregados Encapsulados:** `ChillAccumulationTracker` (`AGG07`).
 * **Eventos Pivote de Delimitación:** `ColdRequirementFulfilled` (`EV32` / `PV05`), `WinterThermalAnomalyDetected` (`EV33`).
 * **Eventos Clave Emitidos:** `EV26`, `EV27`, `EV28`, `EV29`, `EV30`, `EV31`, `EV32`, `EV33`, `EV34`.
 * **Comandos Gestionados:** `CMD20`, `CMD21`, `CMD22`, `CMD23`.

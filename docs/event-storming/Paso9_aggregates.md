@@ -208,17 +208,21 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
 * **Entidades Internas y Value Objects:**
   * `TrackerId` *(VO)*: UUID.
   * `PlotId` *(VO)*: Parcela olivarera evaluada.
-  * `CampaignYear` *(VO)*: Año agronómico del ciclo de cultivo.
+  * `CampaignYear` *(VO)*: Campaña agronómica que el acumulador de frío está registrando en curso. Marca el ciclo de cultivo actualmente monitoreado, mientras que el agregado en su conjunto trasciende una única campaña a través de su serie histórica plurianual.
   * `DynamicModelErezState` *(VO)*: Acumulador matemático de Porciones de Frío (Chill Portions), que modela la formación de intermediarios térmicos inestables (rango de 2°C a 12°C).
   * `ThermalHeatwaveCounter` *(VO)*: Contador de días consecutivos con temperaturas invernales diurnas $>24^\circ\text{C}$.
   * `ChillFulfillmentStatus` *(VO)*: `ACCUMULATING`, `REQUIREMENT_FULFILLED` ($\ge 25-30$ UF), `THERMAL_ANOMALY_DEFICIT`.
+  * `HistoricalHarvestEntry` *(Entidad Interna)*: Registro plurianual de campaña pasada (año, kilos/ha, calificación On/Off).
+  * `BiennialBearingIndex` *(VO)*: Valor numérico de alternancia ($BBI$ de $0.00$ a $1.00$) calculado según la fórmula de Hoblyn et al.
 * **Invariantes Clave del Agregado:**
   1. La acumulación de frío se calcula exclusivamente durante la ventana de reposo invernal en Tacna (1 de Mayo al 31 de Agosto).
   2. Temperaturas invernales $>24^\circ\text{C}$ por más de 3 días consecutivos destruyen intermediarios térmicos, forzando la deducción en las porciones netas acumuladas.
   3. Al cumplirse el umbral varietal (25-30 porciones para Criolla de Tacna), se certifica la aptitud de la yema para la salida fisiológica del reposo.
-* **Comandos Aceptados:** `CMD23` (*ComputeDailyChillAccumulation*).
-* **Eventos de Dominio Emitidos:** `EV31`, `EV32`, `EV33`, `EV34`.
-* **US / BDD:** `US22`, `US23`.
+  4. El cálculo formal del índice BBI exige un mínimo de 3 campañas consecutivas registradas.
+  5. Los registros de pesaje no pueden duplicar el año de cosecha para una misma parcela.
+* **Comandos Aceptados:** `CMD20` (*LogHistoricalHarvests*), `CMD21` (*RectifyHistoricalHarvest*), `CMD22` (*DeleteHistoricalHarvest*), `CMD23` (*ComputeDailyChillAccumulation*).
+* **Eventos de Dominio Emitidos:** `EV26` a `EV30`, `EV31`, `EV32`, `EV33`, `EV34`.
+* **US / BDD:** `US20`, `US21`, `US22`, `US23`.
 
 ---
 
@@ -252,17 +256,13 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
 * **Entidades Internas y Value Objects:**
   * `ReportId` *(VO)*: UUID.
   * `PlotId` *(VO)*: Parcela titular.
-  * `HistoricalHarvestEntry` *(Entidad Interna)*: Registro plurianual de campaña pasada (año, kilos/ha, calificación On/Off).
-  * `BiennialBearingIndex` *(VO)*: Valor numérico oficial de alternancia ($BBI$ de $0.00$ a $1.00$) calculado según la fórmula de Hoblyn et al.
   * `HarvestSettlement` *(Entidad Interna)*: Cierre de campaña en curso con pesajes definitivos de aceituna verde (mesa) y aceituna negra (mesa/aceite).
   * `StabilizationTrendCurve` *(VO)*: Serie histórica que compara la reducción de la amplitud de vecería respecto a la campaña base preprescriptiva.
 * **Invariantes Clave del Agregado:**
-  1. El cálculo formal del índice BBI exige un mínimo de 3 campañas consecutivas registradas.
-  2. Los registros de pesaje no pueden duplicar el año de cosecha para una misma parcela.
-  3. El cierre de campaña (`HarvestSettlement`) asienta de forma inmutable los kilogramos recolectados y dispara la actualización de la curva de estabilización interanual.
-* **Comandos Aceptados:** `CMD20` (*LogHistoricalHarvests*), `CMD21` (*RectifyHistoricalHarvest*), `CMD22` (*DeleteHistoricalHarvest*), `CMD29` (*SettleCampaignHarvest*), `CMD30` (*GenerateAgronomicDossier*).
-* **Eventos de Dominio Emitidos:** `EV26` a `EV30`, `EV46`, `EV47`, `EV48`.
-* **US / BDD:** `US20`, `US21`, `US29`, `US30`.
+  1. El cierre de campaña (`HarvestSettlement`) asienta de forma inmutable los kilogramos recolectados y dispara la actualización de la curva de estabilización interanual.
+* **Comandos Aceptados:** `CMD29` (*SettleCampaignHarvest*), `CMD30` (*GenerateAgronomicDossier*).
+* **Eventos de Dominio Emitidos:** `EV46`, `EV47`, `EV48`.
+* **US / BDD:** `US29`, `US30`.
 
 ---
 
@@ -297,9 +297,9 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
 | **AGG04** | `Plot` | `Olive Orchard & Plot Management`| `CMD12`, `CMD13`, `CMD14` | `EV15`, `EV16`, `EV17` |
 | **AGG05** | `VirtualSensorNode` | `Agroclimatic Telemetry` | `CMD15`, `CMD16`, `CMD17` | `EV18`, `EV19`, `EV20` |
 | **AGG06** | `TelemetrySeries` | `Agroclimatic Telemetry` | `CMD18`, `CMD19` | `EV21`, `EV22`, `EV23`, `EV24`, `EV25` |
-| **AGG07** | `ChillAccumulationTracker`| `Phenology & Bearing Analytics`| `CMD23` | `EV31`, `EV32`, `EV33`, `EV34` |
+| **AGG07** | `ChillAccumulationTracker`| `Phenology & Bearing Analytics`| `CMD20` a `CMD23` | `EV26` a `EV34` |
 | **AGG08** | `FruitThinningPrescription`| `Crop Load Regulation` *(Core)* | `CMD24` a `CMD28` | `EV35` a `EV45` *(11 eventos)* |
-| **AGG09** | `AgronomicReport` | `Harvest Settlement & Analytics` | `CMD20` a `CMD22`, `CMD29`, `CMD30` | `EV26` a `EV30`, `EV46`, `EV47`, `EV48` |
+| **AGG09** | `AgronomicReport` | `Harvest Settlement & Analytics` | `CMD29`, `CMD30` | `EV46`, `EV47`, `EV48` |
 | **AGG10** | `Cooperative` | `Cooperative Operations` | `CMD11`, `CMD31`, `CMD32` | `EV14`, `EV49`, `EV50`, `EV51` |
 
 ---

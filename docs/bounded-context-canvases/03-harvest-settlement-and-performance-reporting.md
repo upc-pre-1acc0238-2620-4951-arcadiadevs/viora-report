@@ -33,8 +33,6 @@ Gestiona la liquidación definitiva de cosecha y la evaluación de estabilizaci�
 *(Context-specific domain terminology)*
 
 * AgronomicReport
-* HistoricalHarvestEntry
-* BiennialBearingIndex (BBI)
 * HarvestSettlement
 * StabilizationTrendCurve
 * AgronomicDossier
