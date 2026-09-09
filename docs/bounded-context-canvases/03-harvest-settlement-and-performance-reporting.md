@@ -27,6 +27,7 @@ Gestiona la liquidación definitiva de cosecha y la evaluación de estabilizaci�
 * **Productor / Aplicación Móvil** ➔ `SettleCampaignHarvest`
 * **Aplicación Móvil** ➔ `GenerateAgronomicDossier`
 * **Crop Load Regulation & Thinning Advisory** ➔ `ThinningExecutionConfirmed`
+* **Phenology & Historical Bearing Analytics** ➔ `BiennialBearingIndexAssessed`
 
 ### **Ubiquitous Language**
 
