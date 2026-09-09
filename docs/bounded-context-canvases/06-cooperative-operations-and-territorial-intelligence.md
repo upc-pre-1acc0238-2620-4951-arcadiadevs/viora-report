@@ -51,8 +51,6 @@ La decisión: la cooperativa proyecta de forma agregada cuánto volumen de aceit
 *(Messages ➔ Collaborators)*
 
 * `CooperativeRiskMatrixEvaluated`, `CooperativeIntakeVolumeProjected`, `LowSamplingCoverageWarnedForIntake` ➔ **Gestor / Aplicación Móvil**
-* `CooperativeCodeRedeemed` ➔ **Cooperative Operations and Territorial Intelligence**
-* `ProfileUpdated` ➔ **Cooperative Operations and Territorial Intelligence**
 
 ---
 

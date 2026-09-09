@@ -47,7 +47,7 @@ El productor dibuja en el mapa la parcela de su campo (el terreno donde va a tra
 
 *(Messages ➔ Collaborators)*
 
-* `PlotDelimited`, `PlotBoundariesUpdated` ➔ **Agroclimatic Telemetry & Sensor Monitoring**, **Aplicación Móvil**
+* `PlotDelimited`, `PlotBoundariesUpdated` ➔ **Agroclimatic Telemetry & Sensor Monitoring**, **Phenology & Historical Bearing Analytics**, **Crop Load Regulation & Thinning Advisory**, **Aplicación Móvil**
 * `PlotRemoved` ➔ **Aplicación Móvil**
 
 ---
