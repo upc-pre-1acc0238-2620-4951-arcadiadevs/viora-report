@@ -26,7 +26,8 @@ v0.5.0 & 04/09/26 & Espada Lazo, Piero Anthony & Creación del registro de entre
 v0.6.0 & 04/09/26 & Trinidad Leon, Jahat Jassiel & Creación de la especificación de requisitos \tabularnewline \hline
 v0.6.1 & 05/09/26 & Li Gayoso, Diana Carolina & Correción de link de las entrevistas del needfinding \tabularnewline \hline
 v0.7.0 & 05/09/26 & Paredes Maza, Victor Juan de Dios & Creacción de DDD estratégico \tabularnewline \hline
-v0.7.1 & 10/09/26 & Li Gayoso, Diana Carolina & Transcipsión de los domain message flows \tabularnewline \hline
+v0.7.1 & 10/09/26 & Li Gayoso, Diana Carolina & Transcripción de los artefactos del DDD estratégico \tabularnewline \hline
+
 \end{longtable}
 
 \newpage
