@@ -386,7 +386,7 @@ A continuación, se explica en qué consiste cada uno de los 9 bounded contexts 
 
 \newpage
 
-\noindent \textbf{Cooperative Operations and Territorial Intelligence:} También llamado "Territory", este bounded context de soporte contiene el proceso de administración gremial del padrón de socios olivicultores, emisión y control de lotes de códigos corporativos, supervisión del semáforo territorial de riesgo fenológico y cálculo de proyecciones tempranas de volumen de acopio colectivo.
+\noindent \textbf{Cooperative Operations and Territorial Intelligence:} También llamado "Territory", este bounded context de soporte contiene el proceso de administración gremial del padrón de socios productores olivareros, emisión y control de lotes de códigos corporativos, supervisión del semáforo territorial de riesgo fenológico y cálculo de proyecciones tempranas de volumen de acopio colectivo.
 
 \begin{figure}[H]
 \caption{Bounded Context: Cooperative Operations and Territorial Intelligence (Territory).}
