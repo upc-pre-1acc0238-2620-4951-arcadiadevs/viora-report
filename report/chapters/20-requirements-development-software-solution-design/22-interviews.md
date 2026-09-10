@@ -213,7 +213,7 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Mujer de 40 años, casada con tres hijos. Ingeniera Agrónoma con 15 años de experiencia, jefa técnica en asociación con 35 socios y 150 ha (85\% Criolla de Tacna). Durante la campaña activa divide su tiempo: 65\%--70\% en campo (inspección fitosanitaria y corte de riego) y 30\%--35\% en oficina/acopio. Usa Windows 11, Chrome, Excel y Google Earth en oficina, y celular Samsung Android con WhatsApp en campo. Probó tensiómetros y mini-estación climática en pilotos, pero la salinidad del agua deteriora las cápsulas y la conectividad limita su escalado. Su personalidad es analítica, metódica y pedagógica ante la desconfianza del agricultor. Su meta es estabilizar el acopio (700--900 t). Experimenta desviaciones del 35\%--45\% en acopio por falta de frío invernal no monitoreado, provocando subutilización de salmueras y penalidades comerciales. Advierte que los socios no aclarean en tamaño perdigón (noviembre-diciembre) antes de la lignificación del endocarpio ni podan antes de agosto, dañando la siguiente floración. Confiaría en la proyección agregada si ofrece un margen de error $\le 10\%-15\%$ con 60-75 días de anticipación (enero-febrero). Recomienda incentivar el uso de la app mediante prioridad en balanza y sobreprecio por kilo entregado con trazabilidad.} \\ 
 [10pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview5.png}} \\ 
+\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview6.png}} \\ 
 \hline 
 \end{tabular}
 
