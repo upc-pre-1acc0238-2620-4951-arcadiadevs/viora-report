@@ -8,7 +8,7 @@ En esta sección se definen los requisitos del ecosistema mediante Épicas e His
 
 Todos los criterios de aceptación son comprobables y siguen estrictamente la estructura BDD (*Behavior-Driven Development*) con sintaxis Gherkin (*Given-When-Then*) en tiempo presente y tercera persona, sin hacer referencia a detalles efímeros de interfaz gráfica y modelando escenarios representativos de éxito, validación y control de excepciones.
 
-A continuación, se presentan las 14 Épicas definidas para el ecosistema Viora, estructuradas bajo el formato estándar establecido:
+A continuación, se presentan las 15 Épicas definidas para el ecosistema Viora, estructuradas bajo el formato estándar establecido:
 
 \begin{table}[H]
 \centering
@@ -201,27 +201,22 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US01} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP01} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro de cuenta de usuario con país, teléfono y asignación de rol} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro de cuenta de acceso y credenciales seguras con asignación de rol} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario nuevo de Viora (Productor Olivarero o Gestor Técnico), \textbf{quiero} registrar una cuenta en la plataforma ingresando mis datos de contacto, país de residencia y seleccionando mi rol de trabajo, \textbf{para} darme de alta en el sistema y disponer de una identidad de acceso que me permita autenticarme.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario nuevo de Viora (Productor Olivarero o Gestor Técnico), \textbf{quiero} registrar una cuenta en la plataforma ingresando mi correo electrónico, una contraseña segura y seleccionando mi rol de trabajo, \textbf{para} darme de alta en el sistema y disponer de una identidad de acceso que me permita autenticarme.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación exitosa de cuenta con asignación de rol}\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación exitosa de cuenta de acceso con asignación de rol}\newline
 \textbf{Given} un usuario que no posee una cuenta registrada en la plataforma.\newline
-\textbf{When} solicita su registro proporcionando su nombre completo, país de residencia, número celular con prefijo internacional, correo electrónico válido, una contraseña segura y su rol de trabajo (Productor Olivarero o Gestor Técnico).\newline
-\textbf{Then} el sistema crea la cuenta de usuario en estado activo con el número telefónico normalizado bajo el estándar E.164 y el rol correspondiente asignado.\newline
+\textbf{When} solicita su registro proporcionando un correo electrónico válido, una contraseña segura y su rol de trabajo (Productor Olivarero o Gestor Técnico).\newline
+\textbf{Then} el sistema crea la cuenta de acceso en estado activo con el rol correspondiente asignado.\newline
 \textbf{And} el usuario puede autenticarse satisfactoriamente con esas credenciales.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por número telefónico incompatible con el país seleccionado}\newline
-\textbf{Given} un usuario que solicita el registro de una cuenta.\newline
-\textbf{When} proporciona un número telefónico que no cumple con el formato E.164 o cuya longitud no corresponde al estándar del país seleccionado.\newline
-\textbf{Then} el sistema deniega el registro sin persistir información.\newline
-\textbf{And} notifica la inconsistencia indicando el formato telefónico requerido para dicho país.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por correo electrónico ya registrado}\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por correo electrónico ya registrado}\newline
 \textbf{Given} un usuario que intenta registrarse en el sistema.\newline
 \textbf{When} ingresa una dirección de correo electrónico que ya se encuentra asociada a una cuenta existente.\newline
-\textbf{Then} el sistema rechaza la solicitud impidiendo duplicar identidades.\newline
+\textbf{Then} el sistema rechaza la solicitud impidiendo duplicar identidades de acceso.\newline
 \textbf{And} notifica que el correo electrónico ya se encuentra registrado en la plataforma.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Rechazo por contraseña que incumple estándar de seguridad}\newline
-\textbf{Given} un usuario que solicita el registro de una nueva cuenta.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por contraseña que incumple estándar de seguridad}\newline
+\textbf{Given} un usuario que solicita el registro de una nueva cuenta de acceso.\newline
 \textbf{When} ingresa una contraseña que posee menos de 8 caracteres o carece de combinación alfanumérica.\newline
 \textbf{Then} el sistema rechaza la operación sin registrar la cuenta.\newline
 \textbf{And} notifica el incumplimiento de las políticas de complejidad requeridas para la contraseña.} \\ \hline
@@ -1387,6 +1382,37 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \end{longtable}
 \endgroup
 
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US43} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP01} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado de perfil de usuario y contacto validado bajo estándar E.164} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario nuevo autenticado en Viora (Productor Olivarero o Gestor Técnico), \textbf{quiero} completar mi perfil de usuario ingresando mi nombre completo, país de residencia y número celular de contacto, \textbf{para} personalizar mi cuenta y habilitar los canales de notificación agronómica y operativa del sistema.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro exitoso de perfil y contacto con normalización telefónica}\newline
+\textbf{Given} un usuario autenticado con una cuenta activa que aún no ha completado su perfil inicial.\newline
+\textbf{When} ingresa su nombre completo, país de residencia y un número celular válido para dicho país.\newline
+\textbf{Then} el sistema persiste el perfil de usuario asociándolo a su cuenta y normaliza el número telefónico bajo el estándar internacional E.164.\newline
+\textbf{And} habilita el acceso completo a las funciones operativas de la plataforma según su rol asignado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por número telefónico incompatible con el país seleccionado}\newline
+\textbf{Given} un usuario autenticado completando su información de perfil.\newline
+\textbf{When} proporciona un número telefónico que no cumple con el formato E.164 o cuya longitud no corresponde al estándar del país seleccionado.\newline
+\textbf{Then} el sistema rechaza el guardado del perfil sin alterar la cuenta de acceso existente.\newline
+\textbf{And} notifica la inconsistencia indicando el formato telefónico y prefijo requerido para dicho país.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por campos obligatorios incompletos o nombre vacío}\newline
+\textbf{Given} un usuario autenticado completando su perfil de usuario.\newline
+\textbf{When} envía el formulario omitiendo su nombre completo o país de residencia.\newline
+\textbf{Then} el sistema deniega el registro del perfil.\newline
+\textbf{And} resalta los campos requeridos solicitando su debido diligenciamiento.} \\ \hline
+\end{longtable}
+\endgroup
+
 \clearpage
 
 A continuación, se presentan las Historias Técnicas (\textit{Technical Stories}) orientadas al equipo de desarrollo de backend, correspondientes a los servicios de integración RESTful y arquitectura de soporte (\textbf{EP10}, \textbf{EP11}, \textbf{EP12}, \textbf{EP13} y \textbf{EP15}), así como los Spikes técnicos de investigación (\textbf{EP14}). Conforme a las buenas prácticas de diseño de software y requerimientos de desarrollo, cada historia técnica comprende exactamente un único endpoint HTTP con sus respectivos escenarios BDD basados en los códigos de respuesta RESTful:
@@ -1398,23 +1424,23 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS01} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro de cuenta de usuario con validación de teléfono mediante biblioteca E.164} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro de credenciales de cuenta de usuario y asignación de rol en IAM} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los datos de registro a la API para crear cuentas de usuario segregadas por rol y validar el número telefónico internacional con una biblioteca especializada, \textbf{para} garantizar identidades válidas y normalizadas en el backend.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar las credenciales de registro (correo, contraseña y rol) al servicio de autenticación, \textbf{para} crear la cuenta de usuario con contraseña cifrada y rol asignado en el contexto de identidad y acceso.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro exitoso de usuario}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} es recibida con un cuerpo JSON que contiene: email, password, fullName, country, phoneNumber y role.\newline
-\textbf{When} la API valida la sintaxis, procesa el número telefónico con la biblioteca \texttt{libphonenumber} verificando que sea un número válido bajo el estándar E.164 para el país provisto y encripta la contraseña.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{UserResource} con id, email, fullName, country, phoneNumber normalizado, role y status.\newline
-\textbf{And} persiste la cuenta en la base de datos en estado activo.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Teléfono inválido según la biblioteca de validación}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} es recibida con un número telefónico que no satisface la estructura E.164 según la biblioteca \texttt{libphonenumber}.\newline
-\textbf{When} la API somete el teléfono a validación.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando que el número telefónico es inválido para el país indicado.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Correo electrónico duplicado}\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación exitosa de cuenta de usuario}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} es recibida con un cuerpo JSON que contiene: \texttt{email}, \texttt{password} y \texttt{role}.\newline
+\textbf{When} la API valida la sintaxis, verifica que el correo no esté registrado y genera el hash seguro de la contraseña mediante BCrypt.\newline
+\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{UserAccountResource} con id, email, role y status activo.\newline
+\textbf{And} persiste la cuenta de usuario en el almacén de identidades.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Correo electrónico duplicado en el sistema}\newline
 \textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} con un correo ya existente en el sistema.\newline
-\textbf{When} la API detecta conflicto de unicidad.\newline
-\textbf{Then} la API responde \texttt{409 Conflict} con detalle del campo en conflicto.} \\ \hline
+\textbf{When} la API detecta conflicto de unicidad en la base de datos de identidades.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} bajo el estándar RFC 7807 indicando que la dirección de correo ya se encuentra en uso.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Contraseña no cumple con las políticas de complejidad}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} con una contraseña que no satisface las reglas de longitud mínima o complejidad.\newline
+\textbf{When} el validador de payload procesa los atributos del registro.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} detallando la infracción de la política de contraseñas.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2247,6 +2273,35 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS35} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Creación y completado inicial de perfil de usuario con validación telefónica E.164} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los datos de perfil y contacto (nombre completo, país y número celular) a la API de perfiles junto con el token JWT de autenticación, \textbf{para} crear el registro de perfil vinculado al usuario y validar el teléfono con la biblioteca especializada.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación exitosa de perfil de usuario}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/profiles} es recibida con el encabezado \texttt{Authorization: Bearer <JWT>} y un cuerpo JSON que contiene: \texttt{fullName}, \texttt{country} y \texttt{phoneNumber}.\newline
+\textbf{When} la API extrae el identificador del usuario autenticado (\texttt{userId}), procesa el número telefónico mediante la biblioteca \texttt{libphonenumber} verificando su validez para el país provisto y normalizándolo al formato E.164.\newline
+\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{ProfileResource} con id, userId, fullName, country, phoneNumber normalizado y createdAt.\newline
+\textbf{And} persiste el registro de perfil en la base de datos vinculado al usuario.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Número telefónico inválido según la biblioteca de validación}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/profiles} con un número telefónico que no cumple con el formato o longitud requerida según \texttt{libphonenumber} para el país seleccionado.\newline
+\textbf{When} la API somete el teléfono a validación internacional.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando la invalidez del número telefónico.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud no autenticada o token inválido}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/profiles} enviada sin la cabecera \texttt{Authorization} o con un token expirado o corrupto.\newline
+\textbf{When} el filtro de seguridad intercepta la petición.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized} impidiendo la persistencia del perfil.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{SPK01} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Equipo de Desarrollo de Backend} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP14} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Investigación y modelado dinámico de Erez para cálculo de frío en backend} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
@@ -2371,7 +2426,7 @@ En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual art
 
 ### Product Backlog
 
-El Product Backlog de Viora consolida y prioriza los 79 ítems de trabajo del sistema (42 Historias de Usuario, 34 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica, la resolución de spikes críticos (modelo dinámico de Erez, persistencia local offline y pasarela de cobro), la entrega de las pantallas centrales del productor olivarero (delimitación parcelaria, monitoreo de frío, cálculo del índice BBI y muestreo sin conectividad) y el 70% del backend fundacional. Siguiendo las buenas prácticas ágiles, todas las historias de usuario y técnicas de gestión de identidad y accesos (IAM) se posponen al Sprint 3, dado que no aportan valor agronómico directo al usuario final; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, pasarela de pagos y herramientas territoriales de la cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, el cierre productivo de campaña, la proyección logística de acopio diferenciado entre aceituna verde y negra, y la exportación de reportes técnicos auditables en formato PDF.
+El Product Backlog de Viora consolida y prioriza los 81 ítems de trabajo del sistema (43 Historias de Usuario, 35 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica, la resolución de spikes críticos (modelo dinámico de Erez, persistencia local offline y pasarela de cobro), la entrega de las pantallas centrales del productor olivarero (delimitación parcelaria, monitoreo de frío, cálculo del índice BBI y muestreo sin conectividad) y el 70% del backend fundacional. Siguiendo las buenas prácticas ágiles, todas las historias de usuario y técnicas de gestión de identidad y accesos (IAM) se posponen al Sprint 3, dado que no aportan valor agronómico directo al usuario final; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, pasarela de pagos y herramientas territoriales de la cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, el cierre productivo de campaña, la proyección logística de acopio diferenciado entre aceituna verde y negra, y la exportación de reportes técnicos auditables en formato PDF.
 
 | # Orden | User Story Id | Título | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |
 | :-----: | :----------: | :------------------------------------------------------ | :-------------: | :---------: |
@@ -2444,16 +2499,18 @@ El Product Backlog de Viora consolida y prioriza los 79 ítems de trabajo del si
 | 67 | US16 | Desvinculación y baja de nodo sensor virtual de una parcela | 2 | Sprint 3 |
 | 68 | US11 | Baja y remoción de parcela del inventario productivo | 2 | Sprint 3 |
 | 69 | US42 | Configuración y cambio de idioma de la interfaz en la aplicación móvil | 2 | Sprint 3 |
-| 70 | US01 | Registro de cuenta de usuario con país, teléfono y asignación de rol | 3 | Sprint 3 |
+| 70 | US01 | Registro de cuenta de acceso y credenciales seguras con asignación de rol | 3 | Sprint 3 |
 | 71 | US02 | Inicio de sesión y autenticación persistente mediante tokens | 3 | Sprint 3 |
 | 72 | US03 | Consulta y actualización de datos de perfil y contacto | 2 | Sprint 3 |
 | 73 | US04 | Cambio seguro de contraseña de acceso | 2 | Sprint 3 |
 | 74 | US05 | Recuperación de contraseña olvidada mediante enlace por correo | 3 | Sprint 3 |
-| 75 | TS01 | Registro de cuenta de usuario con validación de teléfono mediante biblioteca E.164 | 3 | Sprint 3 |
+| 75 | TS01 | Registro de credenciales de cuenta de usuario y asignación de rol en IAM | 3 | Sprint 3 |
 | 76 | TS02 | Autenticación de usuarios y emisión de tokens JWT con claims de rol | 3 | Sprint 3 |
 | 77 | TS03 | Renovación periódica de tokens de sesión mediante Refresh Token | 2 | Sprint 3 |
 | 78 | TS04 | Consulta de información de perfil del usuario autenticado | 2 | Sprint 3 |
 | 79 | TS05 | Actualización parcial de datos de perfil con validación telefónica E.164 | 2 | Sprint 3 |
+| 80 | US43 | Completado de perfil de usuario y contacto validado bajo estándar E.164 | 3 | Sprint 3 |
+| 81 | TS35 | Creación y completado inicial de perfil de usuario con validación telefónica E.164 | 3 | Sprint 3 |
 
 \vspace{1.5em}
 

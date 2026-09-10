@@ -14,7 +14,7 @@ Gestiona la administración gremial, supervisión territorial e inteligencia sec
 
 ### **Domain Roles**
 
-* **Cooperative Member Registrar:** Administra el padrón unificado de socios olivicultores.
+* **Cooperative Member Registrar:** Administra el padrón unificado de socios productores olivareros.
 * **Territorial Risk Matrix Controller:** Consolida el semáforo de riesgo fenológico y climático por sector.
 * **Intake Volume Forecaster:** Proyecta y reajusta el volumen agregado de acopio de la organización.
 
