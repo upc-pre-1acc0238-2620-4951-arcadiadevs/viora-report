@@ -24,6 +24,7 @@ v0.4.0 & 26/08/26 & Espada Lazo, Piero Anthony & Investigación de competidores 
 v0.4.1 & 30/08/26 & Santi Guerrero, Fabrizio Alonso & Correción de preguntas en el diseño de entrevistas \tabularnewline \hline
 v0.5.0 & 04/09/26 & Espada Lazo, Piero Anthony & Creación del registro de entrevistas y análisis de necesidades \tabularnewline \hline
 v0.6.0 & 04/09/26 & Trinidad Leon, Jahat Jassiel & Creación de la especificación de requisitos \tabularnewline \hline
+v0.6.1 & 05/09/26 & Li Gayoso, Diana Carolina & Correción de link de las entrevistas del needfinding \tabularnewline \hline
 \end{longtable}
 
 \newpage
