@@ -28,6 +28,7 @@ v0.6.1 & 05/09/26 & Li Gayoso, Diana Carolina & Correción de link de las entrev
 v0.7.0 & 05/09/26 & Paredes Maza, Victor Juan de Dios & Creacción de DDD estratégico \tabularnewline \hline
 v0.7.1 & 10/09/26 & Li Gayoso, Diana Carolina & Transcripción de los artefactos del DDD estratégico \tabularnewline \hline
 v0.7.2 & 10/09/26 & Santi Guerrero, Fabrizio Alonso & Separación de US y TS de registro y creación de perfil \tabularnewline \hline
+v0.7.3 & 11/09/26 & Paredes Maza, Victor Juan de Dios & Corrección de los artefactos del DDD estratégico \tabularnewline \hline
 \end{longtable}
 
 \newpage
