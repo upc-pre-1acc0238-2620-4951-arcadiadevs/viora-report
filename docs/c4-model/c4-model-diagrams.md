@@ -49,7 +49,6 @@ Productor y gestor pueden utilizar cualquiera de los clientes. Kotlin no está r
 | Open-Meteo | Obtener series horarias históricas y pronósticos adecuados al caso agroclimático | Adaptador de Telemetry en backend; no calcula por Viora el BBI ni la prescripción |
 | Mercado Pago | Delegar el checkout y procesamiento de pagos de suscripción individual | Móvil abre checkout; backend crea/verifica operaciones y recibe webhooks |
 | Brevo | Delegar entrega de correos de recuperación | Adaptador de Identity and Access; no se presupone un sistema general de push |
-| Cloudinary | Almacenar y servir fotografías de perfil y evidencias | Backend integra medios; PostgreSQL conserva referencias y metadatos pertinentes |
 
 Open-Meteo se adopta por ajuste al dato requerido, no por una afirmación de superioridad universal sobre OpenWeather. La mayor cantidad de servicios de un proveedor no es por sí misma un criterio para añadirlo. AgroMonitoring no se conserva porque la arquitectura aprobada no depende de índices de vegetación o imágenes satelitales. Si cambian los requisitos de datos, se reevalúa el adaptador y su proveedor.
 
@@ -74,7 +73,7 @@ Se adopta un **monolito modular** porque permite separar responsabilidades de do
 
 PostgreSQL se comparte físicamente, pero los módulos conservan propiedad lógica de sus registros. Compartir una base no autoriza a cualquier contexto a modificar tablas de otro. Las relaciones de persistencia representan repositorios encapsulados; la API de entrada y el calculador puro no necesitan acceso directo a tablas.
 
-Cloudinary permanece como proveedor externo. No se añade otro bucket propio con las mismas responsabilidades. El simulador tampoco es el componente de ingesta: uno produce datos fuera del proceso del backend y el otro los recibe, valida y clasifica dentro de él.
+El simulador tampoco es el componente de ingesta: uno produce datos fuera del proceso del backend y el otro los recibe, valida y clasifica dentro de él.
 
 ### 5.1 Contratos de comunicación
 
@@ -98,14 +97,14 @@ El Context Mapping describe límites semánticos y contratos entre contextos. El
 |---|---|---|
 | Mobile REST API | Adaptador de entrada transversal | Agrupa controladores HTTP y DTO, valida estructura, invoca seguridad y despacha comandos, consultas y lotes. No contiene fórmulas agronómicas ni accede directamente a tablas. No es otro servidor ni un API Gateway desplegable. |
 | Identity and Access | Identity and Access Management | Registro, credenciales, JWT, roles y recuperación. Incluye filtros y servicios de Spring Security y el adaptador de Brevo. |
-| Profile Management | User Profiles | Datos personales y contacto, fotografía de perfil e integración de medios correspondiente. No administra credenciales ni activa planes. |
+| Profile Management | User Profiles | Datos personales, país y contacto. No administra credenciales ni activa planes. |
 | Subscription and Membership | Subscription and Cooperative Membership | Suscripción individual, planes, códigos cooperativos y derechos de uso. Encapsula el cliente de Mercado Pago y su controlador de webhook. |
 | Orchard and Plot Management | Olive Orchard and Plot Management | Propiedad, permisos prediales, polígonos GeoJSON, variedad, densidad y superficie. Controla el cupo de hectáreas con Subscription. |
 | Agroclimatic Telemetry | Agroclimatic Telemetry and Sensor Monitoring | Nodos virtuales, ingesta del simulador, importación programada de Open-Meteo, series horarias, procedencia, calidad e incidentes agroclimáticos. Incluye su endpoint de ingesta y su adaptador meteorológico. |
 | Phenology and Bearing Analytics | Phenology and Historical Bearing Analytics | Historial plurianual, BBI, frío invernal, potencial floral y estado fenológico. Es la única autoridad de cálculo del BBI. Su cálculo periódico de frío reside en este módulo. |
 | Field Sampling and Sync | Crop Load Regulation and Thinning Advisory | Recibe lotes offline, valida acceso y representatividad, deduplica reintentos y conserva confirmaciones de procesamiento. Se limita a la sincronización de muestreos prevista en el alcance. |
 | Sustainable Load Calculator | Crop Load Regulation and Thinning Advisory | Servicio de dominio determinista para calcular carga sostenible y objetivo de remoción con entradas validadas. No llama proveedores, no autentica usuarios y no persiste registros. |
-| Thinning Advisory | Crop Load Regulation and Thinning Advisory | Orquesta el cálculo, utiliza el estado fenológico, emite prescripciones y registra ejecución y evidencia. Conserva los resultados y sus versiones de entrada. |
+| Thinning Advisory | Crop Load Regulation and Thinning Advisory | Orquesta el cálculo, utiliza el estado fenológico, emite prescripciones y registra ejecución y notas. Conserva los resultados y sus versiones de entrada. |
 | Harvest Settlement and Reporting | Harvest Settlement and Performance Reporting | Cierra pesos de campaña y genera expedientes reproducibles. Usa el BBI calculado por Phenology para evaluar la estabilización; no mantiene otro algoritmo de BBI. |
 | Cooperative Operations | Cooperative Operations and Territorial Intelligence | Padrón, contacto, riesgo territorial, cobertura muestral y proyección de acopio. Aplica autorización por cooperativa. La emisión/canje de códigos comerciales sigue en Subscription. |
 
@@ -130,7 +129,7 @@ Las flechas de persistencia corresponden a repositorios encapsulados por cada m�
 2. Field Sampling and Sync valida registros, deduplica el lote y evalúa representatividad. Un lote insuficiente se conserva con su resultado y no produce una prescripción definitiva.
 3. Una ronda representativa activa Thinning Advisory. Este obtiene los atributos agronómicos disponibles en el muestreo validado y el contrato predial, consulta potencial floral y ventana en Phenology, y llama Sustainable Load Calculator.
 4. El calculador devuelve valores, sin efectos externos. Thinning valida el resultado y persiste la prescripción junto con la versión de los datos utilizados.
-5. El productor confirma la ejecución. Thinning registra fecha y evidencia, comprueba la ventana biológica y comunica ejecución o tardanza a los consumidores definidos en el dominio. Cooperative Operations actualiza sus proyecciones y cobertura cuando cambia la información relevante.
+5. El productor confirma la ejecución. Thinning registra fecha, porcentaje real de remoción y notas, comprueba la ventana biológica y comunica ejecución o tardanza a los consumidores definidos en el dominio. Cooperative Operations actualiza sus proyecciones y cobertura cuando cambia la información relevante.
 6. Harvest cierra la campaña. Phenology incorpora el cierre a la memoria histórica y recalcula el BBI; Harvest utiliza esa evaluación para el expediente y la curva de estabilización.
 
 ### Decisiones que deben guiar la implementación
@@ -142,7 +141,7 @@ Las flechas de persistencia corresponden a repositorios encapsulados por cada m�
 - **Meteorología:** guardar proveedor, coordenadas de referencia, fecha de validez, zona horaria y calidad. Distinguir series históricas, pronósticos y lecturas sintéticas. Las simulaciones no deben mezclarse silenciosamente con datos utilizados para recomendaciones reales. El adaptador traduce los DTO de Open-Meteo al modelo interno.
 - **Pagos:** el regreso del navegador desde el checkout no activa un plan. Subscription verifica la notificación y consulta el estado autoritativo en Mercado Pago; valida la correspondencia de la operación y evita aplicar dos veces el mismo resultado. Usa estados y controles de concurrencia para notificaciones repetidas o fuera de orden.
 - **Eventos internos:** se ejecutan dentro del backend. Para cambios que deban ser atómicos se proponen manejadores síncronos dentro de la transacción; ante un fallo se revierte y se reintenta la operación idempotente. Si posteriormente se procesan eventos después del commit, será necesario persistir publicaciones pendientes y reintentos. El diagrama no presupone entrega fiable por un evento en memoria después del commit ni requiere un broker externo.
-- **Proveedores:** los adaptadores quedan dentro de los módulos consumidores, con contratos propios, límites de tiempo y manejo de errores. Una falla de Open-Meteo no convierte una serie ausente en temperaturas cero; una falla de Cloudinary no debe marcar una evidencia como cargada.
+- **Proveedores:** los adaptadores quedan dentro de los módulos consumidores, con contratos propios, límites de tiempo y manejo de errores. Una falla de Open-Meteo no convierte una serie ausente en temperaturas cero.
 - **Informes:** el expediente usa una instantánea/versionado de los datos de cierre y la evaluación recibida. Rectificar posteriormente el historial no debe alterar silenciosamente un expediente ya emitido.
 
 ### Integraciones y elementos de apoyo
@@ -154,7 +153,6 @@ Las flechas de persistencia corresponden a repositorios encapsulados por cada m�
 | Open-Meteo | Adaptador meteorológico de Agroclimatic Telemetry. |
 | Mercado Pago | Cliente y webhook de Subscription and Membership. |
 | Brevo | Adaptador de correo de Identity and Access. |
-| Cloudinary | Adaptadores de fotografía de Profiles y evidencia de Thinning. |
 | Viora Database | Persistencia PostgreSQL de los módulos mediante JPA/JDBC. |
 
 Mapbox no aparece porque, en el Container Diagram aprobado, lo consumen directamente las aplicaciones móviles. La landing y las bases SQLite tampoco se conectan a componentes del backend. Su ausencia en esta vista respeta el alcance de un único contenedor.
@@ -166,10 +164,10 @@ Mapbox no aparece porque, en el Container Diagram aprobado, lo consumen directam
 | Componente | Responsabilidad |
 |---|---|
 | App Navigation | Destinos por sesión y rol, pila de navegación y enlaces de retorno validados. Navegar a una pantalla no concede autorización en el servidor. |
-| Account and Profile UI | Registro, inicio de sesión, recuperación, perfil y selección de fotografía. |
+| Account and Profile UI | Registro, inicio de sesión, recuperación, perfil y contacto. |
 | Plot Management UI | Selección y edición de parcelas, variedad, densidad y configuración de nodos virtuales. |
 | Field Sampling UI | Muestreo guiado y presentación de borradores y resultados de sincronización. |
-| Agronomy and Harvest UI | Clima, frío, BBI, historial, prescripciones, confirmación de ejecución, evidencia, cierre y descarga de expedientes. Agrupa pantallas relacionadas, con ViewModels propios; no es una sola pantalla ni un ViewModel global. |
+| Agronomy and Harvest UI | Clima, frío, BBI, historial, prescripciones, confirmación de ejecución, notas, cierre y descarga de expedientes. Agrupa pantallas relacionadas, con ViewModels propios; no es una sola pantalla ni un ViewModel global. |
 | Cooperative Operations UI | Padrón, riesgos, cobertura y proyección de acopio del gestor. |
 | Subscription UI | Planes, derechos vigentes, canje de códigos, emisión autorizada de códigos y acceso al checkout. |
 | Plot Map Adapter | Integra Mapbox y encapsula representación y edición de polígonos GeoJSON. |
@@ -191,7 +189,7 @@ Las unidades UI encapsulan Composables y ViewModels de sus funcionalidades. Los 
 - Backend API: `Shell`, como contenedor de apoyo; su interior no se expande en esta vista.
 - Mapbox y Mercado Pago: sistemas externos con `RoundedBox` y color rojo.
 
-Las llamadas de API hacia Mercado Pago y el webhook se excluyen de esta vista porque no describen el interior de Android. Permanecen en Container y Backend Components. Tampoco se incluyen Cloudinary, Brevo u Open-Meteo: Android accede a esas capacidades mediante el backend aprobado.
+Las llamadas de API hacia Mercado Pago y el webhook se excluyen de esta vista porque no describen el interior de Android. Permanecen en Container y Backend Components. Tampoco se incluyen Brevo u Open-Meteo: Android accede a esas capacidades mediante el backend aprobado.
 
 ### Flujo offline de muestreo
 
@@ -214,7 +212,7 @@ WorkManager permite trabajo persistente y diferido, pero no garantiza envío inm
 - **Sesión:** Backend API Client consulta Session Manager para los tokens y serializa el refresco para evitar carreras. Las llamadas públicas de registro, login y recuperación no exigen un token válido ni disparan un bucle de refresco. Las respuestas de autenticación actualizan Session Manager a través de los repositorios. No incluir tokens o cuerpos sensibles en logs.
 - **Pagos:** el coordinador abre una URL HTTPS creada por el backend y validada contra destinos permitidos. Volver del navegador o recibir un app link no prueba el pago. Se consulta el backend hasta un estado conocido o se muestra pendiente; la app no procesa webhooks ni contiene secretos de Mercado Pago.
 - **Mapas:** Mapbox se usa directamente para visualización/edición y solo con credenciales públicas apropiadas para el SDK. La validación final de geometría, permisos y cuota pertenece al backend. El muestreo offline no depende de que los mapas puedan descargarse; una estrategia de mapas offline requiere diseño adicional y no se presupone aquí.
-- **Archivos:** fotografías y evidencias se seleccionan con APIs de Android y se transfieren mediante Backend API Client al backend, que integra Cloudinary. Los expedientes se descargan por ese mismo cliente. No se introduce un bucket ni un segundo almacén de dominio en Android; el manejo temporal de archivos utiliza almacenamiento privado y permisos de URI apropiados.
+- **Archivos:** los expedientes se descargan mediante Backend API Client desde el backend. Su almacenamiento temporal utiliza el espacio privado de la aplicación; esta capacidad no requiere un servicio externo de imágenes.
 - **Inyección de dependencias:** emplear interfaces e inyección por constructor para sustituir repositorios, clientes y fuentes locales durante las pruebas. La selección de un framework de DI no exige otro componente arquitectónico.
 
 ### Correspondencia con el backend
@@ -239,10 +237,10 @@ Todos esos contratos HTTP pasan por Backend API Client y el contenedor Backend A
 | Componente | Responsabilidad | Tecnología propuesta |
 |---|---|---|
 | App Navigation | Destinos por sesión/rol, enlaces validados y reconciliación al retomar la app. | Dart, go_router |
-| Account and Profile UI | Registro, autenticación, recuperación, contacto y fotografía de perfil. | Widgets y ViewModels con ChangeNotifier |
+| Account and Profile UI | Registro, autenticación, recuperación, contacto. | Widgets y ViewModels con ChangeNotifier |
 | Plot Management UI | Selección y edición predial, atributos y configuración de nodos virtuales. | Widgets y ViewModels con ChangeNotifier |
 | Field Sampling UI | Muestreo guiado, guardado local y estados pendiente/rechazado/sincronizado. | Widgets y ViewModels con ChangeNotifier |
-| Agronomy and Harvest UI | Clima, frío, BBI, historial, prescripción, ejecución, evidencia, cierre e informes. | Widgets y ViewModels con ChangeNotifier |
+| Agronomy and Harvest UI | Clima, frío, BBI, historial, prescripción, ejecución, notas, cierre e informes. | Widgets y ViewModels con ChangeNotifier |
 | Cooperative Operations UI | Miembros, riesgo territorial, cobertura y proyección de acopio. | Widgets y ViewModels con ChangeNotifier |
 | Subscription UI | Planes, derechos, canje y emisión autorizada de códigos y acceso a checkout. | Widgets y ViewModels con ChangeNotifier |
 | Plot Map Adapter | Renderiza mapas y encapsula edición de polígonos y conversión GeoJSON. | mapbox_maps_flutter |
@@ -294,7 +292,7 @@ Las únicas conexiones directas con sistemas externos son Mapbox y Mercado Pago.
 
 Hosted Checkout Coordinator obtiene la URL a través de Feature Repositories y Backend API Client. Valida el destino antes de abrir el navegador. Un app link, un parámetro de retorno o la vuelta a primer plano no acreditan un pago: la app consulta el estado al backend. Los webhooks son responsabilidad del servidor.
 
-Open-Meteo, Brevo y Cloudinary permanecen detrás del Backend API. Fotografías, evidencia e informes se transfieren por ese cliente HTTP. Las fórmulas de BBI, frío y carga sostenible, la representatividad definitiva y las reglas de prescripción no se duplican en Dart.
+Open-Meteo y Brevo permanecen detrás del Backend API. Los informes se descargan por ese cliente HTTP. Las fórmulas de BBI, frío y carga sostenible, la representatividad definitiva y las reglas de prescripción no se duplican en Dart.
 
 Los permisos visuales por rol mejoran la navegación, pero cada operación debe volver a autorizarse en el backend. Los datos locales se particionan por cuenta, no se exponen después de cambiar de usuario y no se descartan silenciosamente cuando hay muestreos pendientes.
 
