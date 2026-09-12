@@ -201,7 +201,7 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 * **US / BDD:** `US11`
 * **Propósito de Negocio:** Dar de baja una parcela (eliminación lógica o soft-delete) manteniendo el resguardo de las series históricas de cosecha y telemetría.
 * **Payload Clave:** `plotId`, `deletionReason`.
-* **Invariantes Clave:** No poseer prescripciones de aclareo activas en ventana biológica pendiente de ejecución.
+* **Invariantes Clave:** *(reclasificada)* La condición de no poseer prescripciones de aclareo activas en ventana pendiente de ejecución abarca dos agregados alojados en bounded contexts distintos, por lo que no puede sostenerse como invariante de agregado: las invariantes se verifican dentro de un único límite transaccional. Se formaliza como `POL16` en `Paso6_policies.md`, con compensación en `Crop Load Regulation & Thinning Advisory`. La baja procede sin consultar a ese contexto.
 * **Evento(s) Resultante(s):**
   * `EV17` (`PlotRemoved`).
 

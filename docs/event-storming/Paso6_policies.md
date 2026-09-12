@@ -62,14 +62,15 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 | POL13: Sectorial Risk Aggregation On Overload         (Carga Predial -> Matriz Cooperativa)  |
 | POL14: Regional Frost Advisory Auto-Broadcast         (Pronóstico Clima -> Cooperativa)      |
 | POL15: Intake Volume Readjustment On Field Sampling   (Muestreo Predial -> Acopio Agregado)  |
+| POL16: Prescription Voiding On Plot Removal           (Baja Predial -> Regulación Carga)     |
 +-----------------------------------------------------------------------------------------------+
-| TOTAL DE POLÍTICAS REACTIVAS FORMALIZADAS: 15 POLÍTICAS (POL01 - POL15)                      |
+| TOTAL DE POLÍTICAS REACTIVAS FORMALIZADAS: 16 POLÍTICAS (POL01 - POL16)                      |
 +-----------------------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 3. Catálogo Detallado de Políticas Reactivas (POL01 a POL15)
+## 3. Catálogo Detallado de Políticas Reactivas (POL01 a POL16)
 
 ---
 
@@ -270,6 +271,19 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 
 ---
 
+### **POL16: Prescription Voiding On Plot Removal Policy**
+* **Contexto Emisor:** `Olive Orchard & Plot Management`
+* **Contexto Receptor:** `Crop Load Regulation & Thinning Advisory`
+* **Agregado Origen $\rightarrow$ Agregado Destino:** `Plot` $\rightarrow$ `FruitThinningPrescription`
+* **US / BDD:** `US11`
+* **Regla Reactiva Formal:**
+  * **WHENEVER:** `PlotRemoved` (`EV17`)
+  * **IF:** `prescriptionStatus in ['SAMPLING_IN_PROGRESS', 'PRESCRIBED']`
+  * **THEN:** `VoidPendingThinningPrescriptions` $\rightarrow$ transiciona la prescripción a `VOIDED_BY_PLOT_REMOVAL`.
+* **Lógica de Negocio Agronómica:** Una parcela dada de baja deja de ser una unidad productiva vigente, de modo que ninguna recomendación de aclareo pendiente sobre ella conserva sentido. La anulación no alcanza a prescripciones ya ejecutadas ni cerradas por fenología, porque ambas son hechos consumados que la liquidación de campaña necesita conservar, y tampoco destruye la evidencia muestral recogida. Esta condición figuraba como invariante clave de `CMD14`; al abarcar dos agregados alojados en bounded contexts distintos no puede sostenerse como invariante de agregado, dado que las invariantes se verifican dentro de un único límite transaccional, y por ello se formaliza aquí como política de consistencia eventual con compensación en el contexto receptor.
+
+---
+
 ## 4. Matriz de Trazabilidad: Evento Disparador $\rightarrow$ Política $\rightarrow$ Comando Destino
 
 | ID Política | Nombre de la Política | Evento Disparador (`EVxx`) | Contexto Origen $\rightarrow$ Destino | Comando / Acción Ejecutada |
@@ -289,9 +303,10 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 | **POL13** | *Sectorial Risk Aggregation On Overload* | `EV40` (`OverloadRiskDetected`) | Regulación Carga $\rightarrow$ Cooperativa | `FlagSectorialRiskInCooperativeMatrix` |
 | **POL14** | *Regional Frost Advisory Auto-Broadcast* | `EV25` (`WeatherForecastIngested`) | Telemetría $\rightarrow$ Cooperativa | `BroadcastRegionalFrostAdvisory` |
 | **POL15** | *Intake Volume Readjustment On Sampling* | `EV37` (`SamplingRoundCompleted`) | Regulación Carga $\rightarrow$ Cooperativa | `ProjectCooperativeIntakeVolume` (`EV50`) |
+| **POL16** | *Prescription Voiding On Plot Removal* | `EV17` (`PlotRemoved`) | Parcelas $\rightarrow$ Regulación Carga | `VoidPendingThinningPrescriptions` |
 
 ---
 
 ## 5. Consideraciones de Cierre
 
-Las 15 políticas reactivas formalizadas orquestan la automatización asíncrona del ecosistema Viora. Al desacoplar la emisión de eventos de la ejecución de comandos receptores, se garantiza que las alertas fenológicas, la sincronización de contactos de socios, la protección frente al estrés hídrico y las proyecciones cooperativas se actualicen dinámicamente preservando la autonomía y consistencia de cada contexto delimitado.
+Las 16 políticas reactivas formalizadas orquestan la automatización asíncrona del ecosistema Viora. Al desacoplar la emisión de eventos de la ejecución de comandos receptores, se garantiza que las alertas fenológicas, la sincronización de contactos de socios, la protección frente al estrés hídrico y las proyecciones cooperativas se actualicen dinámicamente preservando la autonomía y consistencia de cada contexto delimitado.

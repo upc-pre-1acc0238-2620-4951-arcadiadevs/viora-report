@@ -6,7 +6,7 @@
 
 **Propósito:** El Bounded Context de **Cooperative Operations and Territorial Intelligence** (denominado comúnmente *Cooperative Operations* o *Territory*) es un subdominio de soporte (*Supporting Subdomain*) del negocio de Viora, responsable de la gestión gremial corporativa, la administración del padrón de socios olivareros, la emisión controlada de lotes de códigos corporativos de invitación hacia *Subscription & Cooperative Membership*, la consolidación del semáforo territorial de riesgos fisiológicos y agroclimáticos por sectores agroecológicos (La Yarada-Los Palos y Magollo en el valle de Tacna), y el cómputo dinámico de la proyección temprana de volumen de acopio asociativo de aceituna verde (conserva) y aceituna negra (mesa/almazara).
 
-Técnica y agronómicamente, resuelve la incertidumbre logística, financiera y comercial de las asociaciones y cooperativas olivareras de Tacna, permitiéndoles anticipar con meses de antelación la capacidad requerida en tanques de salmuera, cuadrillas de transporte y contratos de exportación. Mantiene una delimitación semántica estricta aislando los modelos gremiales de los detalles prediales individuales: referencia de forma débil por identificador inmutable (`UserId`) a los socios en *User Profiles* e *IAM*, y por identidad lógica (`PlotId`) a los cuarteles de *Olive Orchard & Plot Management*. Actúa como consumidor de eventos de telemetría, sobrecarga frutal y muestreos de campo provenientes de *Crop Load Regulation & Thinning Advisory*, *Agroclimatic Telemetry & Sensor Monitoring* y *Harvest Settlement & Performance Reporting*, traduciendo múltiples vocabularios foráneos a su propio modelo unificado territorial mediante una capa de anticorrupción (ACL).
+Técnica y agronómicamente, resuelve la incertidumbre logística, financiera y comercial de las asociaciones y cooperativas olivareras de Tacna, permitiéndoles anticipar con meses de antelación la capacidad requerida en tanques de salmuera, cuadrillas de transporte y contratos de exportación. Mantiene una delimitación semántica estricta aislando los modelos gremiales de los detalles prediales individuales: referencia de forma débil por identificador inmutable (`UserId`) a los socios en *User Profiles* e *IAM*, y por identidad lógica (`PlotId`) a los cuarteles de *Olive Orchard & Plot Management*. Actúa como consumidor de eventos de telemetría, sobrecarga frutal y muestreos de campo provenientes de *Crop Load Regulation & Thinning Advisory* y *Agroclimatic Telemetry & Sensor Monitoring*, traduciendo múltiples vocabularios foráneos a su propio modelo unificado territorial mediante una capa de anticorrupción (ACL).
 
 ---
 
@@ -221,9 +221,7 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
 * **`OnSamplingRoundCompletedEventHandler`** (POL15 / EV37 / Flujo 7 en DMF):
   * *Disparador:* Escucha `SamplingRoundCompletedEvent` emitido por *Crop Load Regulation & Thinning Advisory*.
   * *Acción:* Despacha automáticamente el comando `ProjectCooperativeIntakeVolumeCommand` para actualizar la proyección de cosecha gremial con los nuevos datos biométricos.
-* **`OnCampaignHarvestSettledEventHandler`** (Flujo 3 en DMF):
-  * *Disparador:* Escucha `CampaignHarvestSettledEvent` (EV46) emitido por *Harvest Settlement & Performance Reporting*.
-  * *Acción:* Compara los kilogramos reales liquidados frente a la proyección temprana calculada para calibrar el margen de error del modelo predictivo asociativo.
+> **Capacidad identificada y no incorporada.** La conexión C17 de `Paso2_timelines.md` describe una calibración del acopio proyectado contra los kilogramos realmente liquidados en `Harvest Settlement & Performance Reporting`. Este contexto no la implementa: `EarlyIntakeProjection` retiene una única proyección vigente sin serie histórica, `isReliable` se deriva de la cobertura muestral y no de la precisión alcanzada, y ningún atributo, método ni evento del agregado representa un margen de error del modelo. Incorporarla supone alcance nuevo con diseño propio, no un manejador de eventos añadido sobre el modelo actual. Queda registrada en `docs/auditoria-integracion-cross-bc.md`.
 
 ---
 
@@ -391,7 +389,6 @@ graph TD
         ProfileBC["User Profiles BC (Emisor EV09)"]
         TelemetryBC["Telemetry BC (Emisor EV25)"]
         ThinningBC["Crop Load Regulation BC (Emisor EV37, EV40)"]
-        HarvestBC["Harvest Settlement BC (Emisor EV46)"]
     end
 
     subgraph InterfaceLayer ["Interface Layer"]
@@ -433,7 +430,6 @@ graph TD
     TelemetryBC -.->|EV25 WeatherForecastIngested| EventHandlers
     ThinningBC -.->|EV40 OverloadRiskDetected| EventHandlers
     ThinningBC -.->|EV37 SamplingRoundCompleted| EventHandlers
-    HarvestBC -.->|EV46 CampaignHarvestSettled| EventHandlers
 
     MembershipCtrl --> GenerateCodesCmdHandler
     MembershipCtrl --> QueryHandlers

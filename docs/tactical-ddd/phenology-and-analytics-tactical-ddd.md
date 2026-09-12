@@ -351,7 +351,7 @@ graph TD
     subgraph ClientLayer ["Clientes & Contextos Externos"]
         MobileApp["Aplicación Móvil Viora (Android / Flutter)"]
         TelemetryBC["Agroclimatic Telemetry BC (Emisor EV21)"]
-        ThinningBC["Crop Load Regulation BC (Consumidor EV32 / EV34)"]
+        ThinningBC["Crop Load Regulation BC (Consumidor EV27 / EV32 / EV34)"]
         HarvestBC["Harvest Settlement BC (Consumidor EV27)"]
     end
 
@@ -410,6 +410,7 @@ graph TD
     ChillCmdHandler --> EventPublisher
     EventPublisher --> EventHandlers
     EventPublisher -.->|EV32, EV34| ThinningBC
+    EventPublisher -.->|EV27| ThinningBC
     EventPublisher -.->|EV27| HarvestBC
 
     RepoInterfaces <|.. PostgresTrackerRepo
@@ -424,7 +425,7 @@ graph TD
 3. **Orquestación de Dominio:** El Command Handler inicia una transacción (`@Transactional`), carga el historial previo desde `HistoricalHarvestRepository` y delega en el agregado `ChillAccumulationTracker`.
 4. **Ejecución y Reglas:** Se ejecutan los métodos de negocio. Si es registro de cosechas, `HoblynBbiCalculator` verifica el umbral de $\ge 3$ campañas y calcula el índice de vecería; si es acumulación de frío, `ErezDynamicChillModel` procesa las temperaturas horarias evaluando horas efectivas ($2^\circ\text{C}$ a $12^\circ\text{C}$) y destrucción por calor ($>24^\circ\text{C}$).
 5. **Persistencia:** El Handler invoca `save()` sobre el repositorio. La capa de infraestructura mapea las entidades JPA y ejecuta las sentencias SQL sobre PostgreSQL garantizando consistencia.
-6. **Integración Externa / Eventos:** Los eventos de dominio generados (`EV26` a `EV34`) se despachan mediante `SpringDomainEventPublisher`. Si se completó el frío (`EV32`) o hubo anomalía ENOS (`EV33`/`EV34`), se notifica a *Crop Load Regulation and Thinning Advisory* para calibrar el aclareo. Si se calculó el BBI (`EV27`), queda disponible para *Harvest Settlement*.
+6. **Integración Externa / Eventos:** Los eventos de dominio generados (`EV26` a `EV34`) se despachan mediante `SpringDomainEventPublisher`. Si se completó el frío (`EV32`) o hubo anomalía ENOS (`EV33`/`EV34`), se notifica a *Crop Load Regulation and Thinning Advisory* para calibrar el aclareo. Si se calculó el BBI (`EV27`), se publica hacia *Harvest Settlement* y hacia *Crop Load Regulation and Thinning Advisory*, que lo incorpora como entrada opcional de su motor de carga admisible. Con menos de tres campañas el índice permanece indeterminado y se emite `EV28` en su lugar, de modo que ambos consumidores deben operar sin él.
 7. **Respuesta:** El controlador convierte el resultado en `HarvestRecordResource` o `MetricResource` y devuelve la respuesta HTTP estándar (`200 OK` o `201 Created`).
 
 ---

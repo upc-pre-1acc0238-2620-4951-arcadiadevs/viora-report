@@ -45,7 +45,7 @@ Conserva al titular como `OwnerId`, vinculado lógicamente con la identidad del 
 
 - `updateBoundaries(polygon: CadastralPolygon, grid: PlantingGrid, dendrometry: DendrometricAttributes): void`: aplica resultados coherentes de los servicios de dominio y aumenta revisión.
 - `updateDescription(name: PlotName, variety: OliveVariety): void`: modifica caracterización de parcela activa y aumenta revisión.
-- `remove(reason: String, at: Instant, eligibility: PlotRemovalEligibility): void`: exige autorización de baja de negocio y cambia a baja lógica; una repetición idéntica no emite un nuevo evento ni libera área dos veces.
+- `remove(reason: String, at: Instant): void`: cambia a baja lógica y aumenta revisión; una repetición idéntica no emite un nuevo evento ni libera área dos veces.
 - `isActive(): boolean`, `snapshot(): PlotSnapshot`: consulta inmutable.
 
 **Invariantes y reglas de negocio:**
@@ -57,7 +57,7 @@ Conserva al titular como `OwnerId`, vinculado lógicamente con la identidad del 
 5. El conteo total es opcional y representa árboles observados; nunca se presenta la estimación geométrica como un censo real. Si existe, la densidad observada es `treeCount / netHectares`. Sin conteo, se utiliza densidad teórica y se identifica su origen.
 6. Una parcela activa pertenece a un único productor y una variedad: `CRIOLLA_DE_TACNA` o `SEVILLANA`. No se cambia titular mediante una actualización genérica.
 7. El alta y los cambios de área requieren membresía efectiva y `sumaAreaActivaAnterior - areaAnterior + areaNueva <= cuota`. La igualdad con la cuota está permitida.
-8. Una parcela con prescripción activa en ventana pendiente de ejecución no puede darse de baja. Se consulta Thinning a través de un contrato; no se inspeccionan sus tablas.
+8. La baja no está condicionada por el estado de las prescripciones de aclareo. La ficha de `CMD14` enunciaba esa condición como invariante clave; una restricción que abarca dos agregados alojados en contextos distintos no puede sostenerse como invariante, dado que las invariantes se verifican dentro de un único límite transaccional. `Paso6_policies.md` la formaliza como `POL16`, política de consistencia eventual resuelta por compensación en el contexto propietario de la prescripción, que reacciona a `PlotRemoved` anulando las pendientes. Este contexto no consulta a Thinning ni inspecciona sus tablas.
 9. La baja conserva identidad, geometría, revisiones e historial de otros contextos. Libera superficie del inventario activo una sola vez. La consulta de trazabilidad debe conservar autorización aunque la parcela esté archivada.
 
 No se definen entidades internas adicionales: geometría y dendrometría son VO. Las revisiones de persistencia son registros de auditoría inmutables, no agregados `Campaign` ni entidades `Tree` inventadas para este contexto.
@@ -73,7 +73,6 @@ No se definen entidades internas adicionales: geometría y dendrometría son VO.
 | `CadastralPolygon` | `exterior: LinearRing`, `holes: List<LinearRing>` | `of(exterior, holes)`, `toGeoJson(): String`; anillos simples, huecos dentro del exterior sin cruces ni solapamientos. |
 | `PlantingGrid` | `rowSpacingMeters: Decimal`, `treeSpacingMeters: Decimal` | `theoreticalDensity(): Decimal`; ambos positivos. |
 | `DendrometricAttributes` | `netHectares: Decimal`, `treeCount: int?`, `theoreticalTreesPerHa: Decimal`, `observedTreesPerHa: Decimal?` | `effectiveDensity(): Decimal`, `densitySource(): DensitySource`; área `>0.1`, conteo no negativo cuando exista y densidades derivadas. |
-| `PlotRemovalEligibility` | `hasBlockingPrescription: boolean`, `checkedAt: Instant` | `allowsRemoval(): boolean`; instantánea obtenida bajo el bloqueo predial de la operación. |
 
 `OliveVariety`, `PlotStatus` y `DensitySource` (`THEORETICAL`, `OBSERVED`) son enumeraciones. Los huecos permiten excluir sectores no productivos del área neta, aunque la primera interfaz pueda capturar solo el anillo exterior; su soporte geométrico es una decisión táctica. Importación Shapefile/KML y subdivisión de parcelas quedan fuera del alcance definido.
 
@@ -116,7 +115,7 @@ La actualización del nombre/variedad forma parte del handler CMD13 y produce un
 - `update()` → `PUT /api/v1/plots/{id}`: sustituye datos editables mediante `UpdatePlotBoundaries`; exige revisión/`If-Match`. No acepta owner, área, densidad, estado comercial ni cuota como campos editables.
 - `remove()` → `DELETE /api/v1/plots/{id}`: `RemovePlot`, baja lógica y `204`. El motivo puede transmitirse como query `?reason=...` con longitud limitada; la UI pide confirmación y explica que el histórico se conserva.
 
-La sintaxis malformada produce `400`, geometría/valores inválidos `422`, falta de identidad `401`, falta de permisos `403` o `404` para no revelar recursos, y cuota o prescripción bloqueante `409`. Una revisión obsoleta en `If-Match` produce `412`. No se confía en un `ownerId` enviado por la aplicación.
+La sintaxis malformada produce `400`, geometría/valores inválidos `422`, falta de identidad `401`, falta de permisos `403` o `404` para no revelar recursos, y cuota excedida `409`. Una revisión obsoleta en `If-Match` produce `412`. No se confía en un `ownerId` enviado por la aplicación.
 
 ##### Resources (DTOs / Request & Response Models)
 
@@ -137,7 +136,7 @@ Todos son records de transporte sin comportamiento del negocio. **`PlotResourceA
 |---|---|---|
 | `DelimitPlotCommandHandler` / `DelimitPlot` — CMD12 | `plots`, `factory`, `quotaPort`, `producerGate`, `idempotency`, `eventDispatcher` | Obtiene titular autenticado; construye geometría/cálculos; dentro del bloqueo por productor comprueba suscripción y suma activa; valida cuota propuesta; guarda parcela y revisión; despacha EV15. |
 | `UpdatePlotBoundariesCommandHandler` / `UpdatePlotBoundaries` — CMD13 | `plots`, `geometry`, `dendrometry`, `quotaPort`, `producerGate`, `plotGate`, `idempotency`, `eventDispatcher` | Verifica titular; adquiere bloqueo productor → parcela; vuelve a cargar estado y revisión; recalcula superficie; valida sustitución de área; actualiza límites/descripción; guarda revisión y EV16. |
-| `RemovePlotCommandHandler` / `RemovePlot` — CMD14 | `plots`, `producerGate`, `plotGate`, `removalGuard`, `idempotency`, `eventDispatcher` | Verifica titular; bloquea productor → parcela; consulta impedimentos de Thinning bajo ese bloqueo; aplica baja lógica; registra revisión y EV17. El área deja de contarse por el cambio de estado. |
+| `RemovePlotCommandHandler` / `RemovePlot` — CMD14 | `plots`, `producerGate`, `plotGate`, `idempotency`, `eventDispatcher` | Verifica titular; bloquea productor → parcela; aplica baja lógica; registra revisión y EV17. El área deja de contarse por el cambio de estado. |
 
 La baja puede ejecutarse aunque la membresía haya vencido: permite ordenar el inventario sin otorgar acceso al motor agronómico. Es una decisión táctica que evita impedir al productor reducir superficie. Las altas y ediciones sí exigen membresía vigente. No se usa una caché de eventos para autorizar el cupo.
 
@@ -158,8 +157,7 @@ Los manejadores de EV15/EV16 pertenecen a los módulos consumidores. Una nueva g
 ##### Puertos de aplicación y consistencia entre contextos
 
 - **`SubscriptionQuotaPort.validateChange(ownerId, currentHa, replacedHa, proposedHa, at): EntitlementSnapshot`**: traduce `OwnerId` a `ProducerId` y consume `SubscriptionQuotaFacade`.
-- **`PlotRemovalGuardPort.check(plotId, at): PlotRemovalEligibility`**: consulta el contrato público de Thinning; es un refinamiento necesario para cumplir AGG04/CMD14.
-- **`PlotTransactionGate.withLock(plotId, work)`**: serializa cambios que afectan elegibilidad. Thinning debe adquirir el mismo bloqueo al emitir una prescripción y volver a comprobar parcela activa. Así no puede aparecer una prescripción entre la consulta de impedimentos y el commit de la baja.
+- **`PlotTransactionGate.withLock(plotId, work)`**: serializa las operaciones internas que mutan una misma parcela, de modo que una edición de límites y una baja concurrentes no se pisen. Es un mecanismo interno de este contexto; ningún otro bounded context lo adquiere.
 - **`CooperativeScopePort.authorizedProducerIds(actorId, cooperativeId)`**: usa autorización y padrón de Territory. No crea una dependencia entre entidades del dominio.
 
 **Control de hectáreas:** todas las altas, cambios y bajas del mismo productor, junto con cambios de su derecho comercial, utilizan el mismo `ProducerTransactionGate`. En una transacción PostgreSQL, Orchard suma áreas activas, Subscription comprueba estado/vigencia y cuota por su contrato, y Orchard persiste. Dos altas concurrentes no leen el mismo saldo libre porque la segunda espera y vuelve a sumar después del commit de la primera. Los bloqueos se liberan con commit/rollback. No basta con `@Version` sobre cada parcela ni con una consulta de cuota realizada antes de empezar la transacción.
@@ -177,7 +175,6 @@ Los manejadores de EV15/EV16 pertenecen a los módulos consumidores. Una nueva g
 | `PlotRevisionJpaEntity` | Campos de `orchard.plot_revisions`; instantánea append-only por `(plot_id, revision)`. |
 | `PlotEntityMapper` | `toDomain(entity)` y `toJpa(plot)`; rehidrata sin EV15 y conserva escalas/unidades. |
 | `InProcessSubscriptionQuotaAdapter` | `subscriptionQuotaFacade`; implementa el puerto de cupo y traduce IDs/DTO sin llamadas HTTP entre módulos. |
-| `InProcessPlotRemovalGuardAdapter` | `thinningContract`; traduce respuesta de Thinning a `PlotRemovalEligibility`. |
 | `InProcessCooperativeScopeAdapter` | `territoryContract`; devuelve alcance autorizado y nunca amplía permisos a partir de datos del cliente. |
 | `PostgresPlotTransactionGate` | `gateStore`, `transactionManager`; implementa el bloqueo estable por parcela. |
 | `PostgresPlotReadStore` | `jdbc/jpa`; consultas paginadas y proyecciones de mapa con filtros obligatorios de titularidad. |
@@ -197,7 +194,7 @@ El snapshot de revisión contiene polígono, nombre, variedad, marco, área, con
 
 ##### 4. Seguridad & Resiliencia
 
-Se comprueba propiedad para mutaciones y alcance cooperativo para consultas. La falta de respuesta del contrato de cuotas o del bloqueo de baja produce fallo recuperable y rollback, nunca aprobación por defecto. Las actualizaciones usan revisión esperada y las creaciones claves idempotentes para impedir duplicados ante reintentos móviles.
+Se comprueba propiedad para mutaciones y alcance cooperativo para consultas. La falta de respuesta del contrato de cuotas produce fallo recuperable y rollback, nunca aprobación por defecto. Las actualizaciones usan revisión esperada y las creaciones claves idempotentes para impedir duplicados ante reintentos móviles.
 
 La captura de muestras offline pertenece a Thinning. En estos dos contextos las mutaciones se confirman en línea; una geometría en edición puede ser un borrador local, pero no se considera parcela registrada ni cuota reservada hasta recibir confirmación del servidor. Las cachés locales están separadas por cuenta y se limpian/inaccesibilizan al cerrar sesión. No almacenan tokens JWT en tablas de parcelas.
 
@@ -205,7 +202,7 @@ La captura de muestras offline pertenece a Thinning. En estos dos contextos las 
 
 ##### 1. Descomposición de Componentes por Capa
 
-En Backend API, **Mobile REST API** recibe comandos y consultas, mientras **Orchard and Plot Management** contiene orquestación, `Plot`, servicios puros, repositorios y adaptadores internos. Su conexión a **Subscription and Membership** verifica cuota. Los contratos adicionales con **Thinning Advisory** y **Cooperative Operations** desarrollan las reglas de baja y consulta cooperativa; se identifican en el DSL como refinamientos del C4, sin añadir contenedores.
+En Backend API, **Mobile REST API** recibe comandos y consultas, mientras **Orchard and Plot Management** contiene orquestación, `Plot`, servicios puros, repositorios y adaptadores internos. Su conexión a **Subscription and Membership** verifica cuota. El contrato adicional con **Cooperative Operations** desarrolla la consulta cooperativa; se identifica en el DSL como refinamiento del C4, sin añadir contenedores. **Thinning Advisory** consume el contexto predial y reacciona a los eventos de ciclo de vida de la parcela, sin exponer contrato hacia este contexto.
 
 En Android y Flutter, **Plot Management UI** delega en **Feature Repositories** y **Plot Map Adapter**. Mapbox representa y edita; **Backend API Client** transmite GeoJSON al backend. **Local Data Access** conserva caché por cuenta en la base local correspondiente. La ubicación GPS se usa en el dispositivo para captura/visualización; no se persiste el desplazamiento del gestor como entidad de Orchard.
 
@@ -224,7 +221,7 @@ Las vistas C4 focalizadas se encuentran en el **Anexo A**. Los almacenes Postgre
 
 ##### Bounded Context Domain Layer Class Diagrams
 
-El **Anexo B.2** muestra `Plot` y sus VO, con atributos privados, métodos públicos y multiplicidades. La composición de anillos/coordenadas representa valores inmutables; no significa que existan entidades `Vertex` con identidad persistente. `PlotRepository` depende de la raíz; `PlotFactory` depende de los servicios geométrico y dendrométrico. Los contratos de Thinning, Subscription y Territory pertenecen a Application y quedan fuera del diagrama de dominio puro.
+El **Anexo B.2** muestra `Plot` y sus VO, con atributos privados, métodos públicos y multiplicidades. La composición de anillos/coordenadas representa valores inmutables; no significa que existan entidades `Vertex` con identidad persistente. `PlotRepository` depende de la raíz; `PlotFactory` depende de los servicios geométrico y dendrométrico. Los contratos de Subscription y Territory pertenecen a Application y quedan fuera del diagrama de dominio puro.
 
 ##### Bounded Context Database Diagram
 
@@ -263,12 +260,12 @@ Una caché de derechos no permite aprobar operaciones comerciales sin conexión.
 |---|---|---|
 | US09, CMD12, EV15 | PlotFactory, geometría, dendrometría y cuota | Parcela/revisión en Orchard; cuota consultada a Subscription. |
 | US10, CMD13, EV16 | Revisión esperada y recálculo al editar | Misma área canónica en comparación y almacenamiento. |
-| US11, CMD14, EV17 | Baja lógica y guardia de prescripción | Historial retenido; consulta a Thinning. |
+| US11, CMD14, EV17 | Baja lógica sin condicionamiento externo | Historial retenido; Thinning compensa por evento. |
 | US12 | Lectura cooperativa autorizada y mapa | Alcance desde Territory; Mapbox en ambos clientes. |
 
 Se requiere acordar con el equipo: precios y escalones de hectáreas; alta institucional y vigencia corporativa; reemisión/liberación de códigos vencidos; cancelación, reembolso, renovación y cambio entre modalidades; tolerancia agronómica entre densidad observada y teórica. Ninguna de esas decisiones se presenta aquí como requisito ya aprobado.
 
-**Ajustes documentales identificados:** corregir US11 para conservar trazabilidad; unificar en todos los textos la propiedad comercial de códigos en Subscription; evitar presentar un cupo de `0.1 ha` como suficiente para una parcela cuyo mínimo es estrictamente mayor; completar el C4 global con los contratos de consulta a Territory y guardia de baja en Thinning que aquí se explicitan. Estas precisiones permiten revisar diferencias reales, sin afirmar una coherencia absoluta que las fuentes originales todavía no tienen.
+**Ajustes documentales identificados:** corregir US11 para conservar trazabilidad; unificar en todos los textos la propiedad comercial de códigos en Subscription; evitar presentar un cupo de `0.1 ha` como suficiente para una parcela cuyo mínimo es estrictamente mayor; completar el C4 global con el contrato de consulta a Territory que aquí se explicita. Estas precisiones permiten revisar diferencias reales, sin afirmar una coherencia absoluta que las fuentes originales todavía no tienen.
 
 
 ## Fuentes locales y uso de los anexos
@@ -285,7 +282,7 @@ Los diagramas se entregan como fuentes editables incluidas en este Markdown auto
 
 
 
-**Referencia de formato del equipo:** `../strategic-ddd/telemetry-ddd.md` y `docs/strategic-ddd/phenology-and-analytics-ddd.md`. Se conserva la organización por capas y diccionarios. Las fuentes C4/UML usan las herramientas Diagram-as-Code indicadas por el Statement. El borrador de Territory en `docs/tactical-ddd/cooperative-operations-tactical-ddd.md` aún ubica códigos comerciales en Cooperative; requiere alinear esa propiedad con Subscription según el C4 vigente, sin mantener dos autoridades de canje.
+**Referencia de formato del equipo:** `telemetry-tactical-ddd.md` y `phenology-and-analytics-tactical-ddd.md`, ambos en `docs/tactical-ddd/`. Se conserva la organización por capas y diccionarios. Las fuentes C4/UML usan las herramientas Diagram-as-Code indicadas por el Statement. El borrador de Territory en `docs/tactical-ddd/cooperative-operations-tactical-ddd.md` aún ubica códigos comerciales en Cooperative; requiere alinear esa propiedad con Subscription según el C4 vigente, sin mantener dos autoridades de canje.
 
 
 ## Anexo A. Componentes C4: Backend API, Android y Flutter
@@ -308,7 +305,7 @@ workspace "Viora - Tactical DDD focus" "Subscription and Orchard component views
                 territory = component "Cooperative Operations" "Institutional scope and member registry." "Spring / Java"
                 telemetry = component "Agroclimatic Telemetry" "Consumes authorised plot location." "Spring / Java"
                 phenology = component "Phenology and Bearing Analytics" "Consumes plot variety and revision." "Spring / Java"
-                thinning = component "Thinning Advisory" "Consumes plot context and exposes removal guard." "Spring / Java"
+                thinning = component "Thinning Advisory" "Consumes plot context and reacts to plot lifecycle events." "Spring / Java"
             }
             db = container "Viora Database" "Owned schemas and transactional persistence." "PostgreSQL"
             nativeDb = container "Android Local Database" "Account-scoped cache." "Room / SQLite"
@@ -345,7 +342,6 @@ workspace "Viora - Tactical DDD focus" "Subscription and Orchard component views
         subscription -> territory "CooperativeCodeRedeemed; POL02 affiliation" "Internal synchronous event"
         subscription -> territory "Verifies authorised institutional manager" "Java module contract / tactical refinement"
         orchard -> territory "Resolves authorised cooperative producer scope" "Java module contract / tactical refinement"
-        orchard -> thinning "Checks removal guard under shared plot lock" "Java module contract / tactical refinement"
         thinning -> orchard "Reads active plot and revision before prescription" "Java module contract"
         telemetry -> orchard "Reads plot location and geometry" "Java module contract"
         phenology -> orchard "Reads variety and dendrometry" "Java module contract"
@@ -445,7 +441,7 @@ class Plot <<AggregateRoot>> {
   -removalReason: String [0..1]
   +updateBoundaries(polygon: CadastralPolygon, grid: PlantingGrid, dendrometry: DendrometricAttributes): void
   +updateDescription(name: PlotName, variety: OliveVariety): void
-  +remove(reason: String, at: Instant, eligibility: PlotRemovalEligibility): void
+  +remove(reason: String, at: Instant): void
   +isActive(): boolean
   +snapshot(): PlotSnapshot
 }
@@ -489,11 +485,6 @@ class DendrometricAttributes <<ValueObject>> {
   -observedTreesPerHa: Decimal [0..1]
   +effectiveDensity(): Decimal
   +densitySource(): DensitySource
-}
-class PlotRemovalEligibility <<ValueObject>> {
-  -hasBlockingPrescription: boolean
-  -checkedAt: Instant
-  +allowsRemoval(): boolean
 }
 class CadastralGeometryService <<DomainService>> {
 
@@ -545,10 +536,9 @@ PlotFactory ..> Plot : creates
 CadastralGeometryService ..> CadastralPolygon : validates topology
 DendrometryService ..> PlantingGrid : uses spacing
 DendrometryService ..> DendrometricAttributes : creates
-Plot ..> PlotRemovalEligibility : checks removal guard
 PlotRepository ..> Plot : loads and saves
 note bottom of Plot
-Subscription, Thinning and Territory contracts belong
+Subscription and Territory contracts belong
 to Application. No external aggregate reference.
 Optional treeCount stays optional in factory/service calls.
 end note

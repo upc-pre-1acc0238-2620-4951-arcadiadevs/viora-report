@@ -322,7 +322,7 @@ Una caché de derechos no permite aprobar operaciones comerciales sin conexión.
 
 Se requiere acordar con el equipo: precios y escalones de hectáreas; alta institucional y vigencia corporativa; reemisión/liberación de códigos vencidos; cancelación, reembolso, renovación y cambio entre modalidades; tolerancia agronómica entre densidad observada y teórica. Ninguna de esas decisiones se presenta aquí como requisito ya aprobado.
 
-**Ajustes documentales identificados:** corregir US11 para conservar trazabilidad; unificar en todos los textos la propiedad comercial de códigos en Subscription; evitar presentar un cupo de `0.1 ha` como suficiente para una parcela cuyo mínimo es estrictamente mayor; completar el C4 global con los contratos de consulta a Territory y guardia de baja en Thinning que aquí se explicitan. Estas precisiones permiten revisar diferencias reales, sin afirmar una coherencia absoluta que las fuentes originales todavía no tienen.
+**Ajustes documentales identificados:** corregir US11 para conservar trazabilidad; unificar en todos los textos la propiedad comercial de códigos en Subscription; evitar presentar un cupo de `0.1 ha` como suficiente para una parcela cuyo mínimo es estrictamente mayor; completar el C4 global con el contrato de consulta a Territory que aquí se explicita. Estas precisiones permiten revisar diferencias reales, sin afirmar una coherencia absoluta que las fuentes originales todavía no tienen.
 
 
 ## Fuentes locales y uso de los anexos
@@ -339,7 +339,7 @@ Los diagramas se entregan como fuentes editables incluidas en este Markdown auto
 
 
 
-**Referencia de formato del equipo:** `../strategic-ddd/telemetry-ddd.md` y `docs/strategic-ddd/phenology-and-analytics-ddd.md`. Se conserva la organización por capas y diccionarios. Las fuentes C4/UML usan las herramientas Diagram-as-Code indicadas por el Statement. El borrador de Territory en `docs/tactical-ddd/cooperative-operations-tactical-ddd.md` aún ubica códigos comerciales en Cooperative; requiere alinear esa propiedad con Subscription según el C4 vigente, sin mantener dos autoridades de canje.
+**Referencia de formato del equipo:** `telemetry-tactical-ddd.md` y `phenology-and-analytics-tactical-ddd.md`, ambos en `docs/tactical-ddd/`. Se conserva la organización por capas y diccionarios. Las fuentes C4/UML usan las herramientas Diagram-as-Code indicadas por el Statement. El borrador de Territory en `docs/tactical-ddd/cooperative-operations-tactical-ddd.md` aún ubica códigos comerciales en Cooperative; requiere alinear esa propiedad con Subscription según el C4 vigente, sin mantener dos autoridades de canje.
 
 
 ## Anexo A. Componentes C4: Backend API, Android y Flutter
@@ -362,7 +362,7 @@ workspace "Viora - Tactical DDD focus" "Subscription and Orchard component views
                 territory = component "Cooperative Operations" "Institutional scope and member registry." "Spring / Java"
                 telemetry = component "Agroclimatic Telemetry" "Consumes authorised plot location." "Spring / Java"
                 phenology = component "Phenology and Bearing Analytics" "Consumes plot variety and revision." "Spring / Java"
-                thinning = component "Thinning Advisory" "Consumes plot context and exposes removal guard." "Spring / Java"
+                thinning = component "Thinning Advisory" "Consumes plot context and reacts to plot lifecycle events." "Spring / Java"
             }
             db = container "Viora Database" "Owned schemas and transactional persistence." "PostgreSQL"
             nativeDb = container "Android Local Database" "Account-scoped cache." "Room / SQLite"
@@ -399,7 +399,6 @@ workspace "Viora - Tactical DDD focus" "Subscription and Orchard component views
         subscription -> territory "CooperativeCodeRedeemed; POL02 affiliation" "Internal synchronous event"
         subscription -> territory "Verifies authorised institutional manager" "Java module contract / tactical refinement"
         orchard -> territory "Resolves authorised cooperative producer scope" "Java module contract / tactical refinement"
-        orchard -> thinning "Checks removal guard under shared plot lock" "Java module contract / tactical refinement"
         thinning -> orchard "Reads active plot and revision before prescription" "Java module contract"
         telemetry -> orchard "Reads plot location and geometry" "Java module contract"
         phenology -> orchard "Reads variety and dendrometry" "Java module contract"
