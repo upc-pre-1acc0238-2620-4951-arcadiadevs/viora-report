@@ -33,7 +33,7 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 +-----------------------------------------------------------------------------------------+
 | 1. Identity & Access Management (IAM):                06 Comandos (CMD01 - CMD06)       |
 | 2. User Profiles:                                     02 Comandos (CMD07 - CMD08)       |
-| 3. Subscription & Cooperative Membership:             03 Comandos (CMD09 - CMD11)       |
+| 3. Subscription & Cooperative Membership:             04 Comandos (CMD09-CMD11, CMD33)  |
 | 4. Olive Orchard & Plot Management:                   03 Comandos (CMD12 - CMD14)       |
 | 5. Agroclimatic Telemetry & Sensor Monitoring:        05 Comandos (CMD15 - CMD19)       |
 | 6. Phenology & Historical Bearing Analytics:          04 Comandos (CMD20 - CMD23)       |
@@ -41,13 +41,21 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 | 8. Harvest Settlement & Performance Reporting:        02 Comandos (CMD29 - CMD30)       |
 | 9. Cooperative Operations & Territorial Intelligence: 02 Comandos (CMD31 - CMD32)       |
 +-----------------------------------------------------------------------------------------+
-| TOTAL DE COMANDOS DEL SISTEMA (POST-ITS AZULES):      32 COMANDOS                       |
+| TOTAL DE COMANDOS DEL SISTEMA (POST-ITS AZULES):      33 COMANDOS                       |
 +-----------------------------------------------------------------------------------------+
 ```
 
+> **Nota sobre los rangos de identificadores.** Los rangos correlativos del cuadro corresponden a la
+> **asignación original del taller de EventStorming**, donde cada bloque se dimensionó exacto a su
+> contenido y no dejó holgura. Las **incorporaciones posteriores** derivadas de decisiones de diseño se
+> anexan al final del catálogo conservando su pertenencia real al Bounded Context y al Timeline que les
+> corresponde, sin renumerar los identificadores ya emitidos. Por eso el Contexto 3 figura como
+> `CMD09-CMD11, CMD33`: `CMD33` es una incorporación posterior de ese mismo contexto, ubicada en el
+> Timeline 2 (Suscripción).
+
 ---
 
-## 3. Catálogo Detallado de Comandos (CMD01 a CMD32)
+## 3. Catálogo Detallado de Comandos (CMD01 a CMD33)
 
 ### Contexto 1: Identity & Access Management (IAM)
 
@@ -153,23 +161,45 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 
 #### **CMD10: RedeemCooperativeCode**
 * **Iniciador / Actor:** `Producer`
-* **Agregado Destino:** `Subscription` / `Cooperative`
+* **Agregado Destino:** `Subscription`
 * **US / BDD:** `US07`
 * **Propósito de Negocio:** Canjear un código de patrocinio entregado por la cooperativa para activar la suscripción sin pago individual y vincularse a la organización.
 * **Payload Clave:** `producerId`, `invitationCode`.
-* **Invariantes Clave:** Código existente, estado no canjeado y cupo disponible en el contrato de la cooperativa.
+* **Invariantes Clave:** Código existente, en estado `AVAILABLE` y dentro de su fecha de vigencia. El cupo de plazas y superficie ya fue comprometido al emitirse el código, de modo que el canje no vuelve a descontarlo.
 * **Evento(s) Resultante(s):**
   * `EV13` (`CooperativeCodeRedeemed`) y activación de membresía.
 
+> **Destino único.** Un comando se dirige siempre a **un solo** agregado, porque su procesamiento ocurre
+> dentro de un único límite transaccional. `CMD10` se dirige exclusivamente a `Subscription`: el canje
+> activa la suscripción del productor. La afiliación al padrón de la cooperativa **no** forma parte de
+> esta transacción, sino que ocurre por reacción al evento `EV13` a través de `POL02`, que es
+> precisamente lo que ese contrato de política ya declara.
+
 #### **CMD11: GenerateInvitationCodesBatch**
 * **Iniciador / Actor:** `TechnicalManager`
-* **Agregado Destino:** `Cooperative`
+* **Agregado Destino:** `InvitationCodeBatch`
 * **US / BDD:** `US08`
 * **Propósito de Negocio:** Generar un lote de códigos alfanuméricos únicos para distribuir entre los socios adscritos al convenio.
-* **Payload Clave:** `cooperativeId`, `batchSize`, `hectaresCapPerCode`, `expirationDate`.
-* **Invariantes Clave:** La cantidad solicitada no debe exceder el cupo contractual de licencias de la cooperativa.
+* **Payload Clave:** `licenseId`, `cooperativeId`, `batchSize`, `hectaresQuotaPerCode`, `expirationDate`.
+* **Invariantes Clave:** La emisión se valida contra los acumuladores de la licencia corporativa (`AGG11`): la cantidad solicitada no puede exceder las plazas disponibles (`issuedSeats + N <= seatLimit`) ni la superficie disponible (`issuedArea + suma(cuotas) <= contractedArea`), y ninguna cuota individual puede superar `maxQuotaPerCode`. Ambos acumuladores se incrementan **al emitir**.
 * **Evento(s) Resultante(s):**
   * `EV14` (`InvitationCodesBatchGenerated`).
+
+#### **CMD33: ShortenInvitationCodeExpiry**
+* **Iniciador / Actor:** `TechnicalManager`
+* **Agregado Destino:** `InvitationCodeBatch`
+* **US / BDD:** `US08`
+* **Propósito de Negocio:** Cancelar anticipadamente un código de invitación aún no canjeado, acortando su fecha de vigencia para que caduque y devuelva la plaza y la superficie comprometidas al cupo de la licencia corporativa.
+* **Payload Clave:** `batchId`, `codeId`, `newExpiresAt`.
+* **Invariantes Clave:** La nueva fecha solo puede **adelantar** la vigencia, nunca extenderla; el código debe encontrarse en estado `AVAILABLE`; la operación es idempotente frente a reintentos.
+* **Evento(s) Resultante(s):**
+  * `EV52` (`InvitationCodeExpired`), emitido de forma inmediata al alcanzarse la nueva fecha de caducidad, con la consiguiente liberación de cupo y superficie.
+
+> **Incorporación posterior.** `CMD33` no proviene de la asignación original del taller: se incorpora con
+> numeración al final, pero pertenece a este Bounded Context y al **Timeline 2 (Suscripción)**. Reemplaza
+> a la revocación explícita de códigos: en lugar de introducir un estado y un camino de liberación
+> propios, reutiliza el estado `EXPIRED` y el evento `EV52` que el modelo ya necesita para la caducidad
+> ordinaria. La liberación resultante es inmediata y no queda diferida a un barrido programado.
 
 ---
 
@@ -423,7 +453,7 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 
 ---
 
-## 4. Matriz de Trazabilidad Comandos $\rightarrow$ Domain Events (EV01 - EV51)
+## 4. Matriz de Trazabilidad Comandos $\rightarrow$ Domain Events (EV01 - EV52)
 
 | ID Comando | Comando Imperativo (PascalCase) | Actor / Iniciador | Agregado Destino | Domain Event(s) Resultante(s) |
 | :---: | :--- | :--- | :--- | :--- |
@@ -436,8 +466,8 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 | **CMD07** | `CreateProfile` | `Producer` / `TechnicalManager` | `Profile` | `EV08` |
 | **CMD08** | `UpdateContactProfile` | `Producer` / `TechnicalManager` | `Profile` | `EV09` |
 | **CMD09** | `ProcessPaymentConfirmation` | `External Gateway` | `Subscription` | `EV10`, `EV11`, `EV12` |
-| **CMD10** | `RedeemCooperativeCode` | `Producer` | `Subscription` / `Cooperative` | `EV13` |
-| **CMD11** | `GenerateInvitationCodesBatch` | `TechnicalManager` | `Cooperative` | `EV14` |
+| **CMD10** | `RedeemCooperativeCode` | `Producer` | `Subscription` | `EV13` |
+| **CMD11** | `GenerateInvitationCodesBatch` | `TechnicalManager` | `InvitationCodeBatch` | `EV14` |
 | **CMD12** | `DelimitPlot` | `Producer` | `Plot` | `EV15` |
 | **CMD13** | `UpdatePlotBoundaries` | `Producer` | `Plot` | `EV16` |
 | **CMD14** | `RemovePlot` | `Producer` | `Plot` | `EV17` |
@@ -459,9 +489,10 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 | **CMD30** | `GenerateAgronomicDossier` | `Producer` / `TechnicalManager` | `AgronomicReport` | `EV48` |
 | **CMD31** | `EvaluateCooperativeRiskMatrix` | `System Scheduler` / `TechnicalManager` | `Cooperative` | `EV49` |
 | **CMD32** | `ProjectCooperativeIntakeVolume` | `TechnicalManager` / `System Scheduler` | `Cooperative` | `EV50`, `EV51` |
+| **CMD33** | `ShortenInvitationCodeExpiry` | `TechnicalManager` | `InvitationCodeBatch` | `EV52` |
 
 ---
 
 ## 5. Consideraciones de Cierre
 
-La especificación formal de los 32 comandos y sus actores respectivos completa el modelo transaccional de entrada para Viora. Estos comandos actúan como canalizadores de interacción que, al ser recibidos por los agregados de dominio en sus respectivos 9 Bounded Contexts, disparan las invariantes del negocio y generan los eventos inmutables que dinamizan la arquitectura reactiva del sistema.
+La especificación formal de los 33 comandos y sus actores respectivos completa el modelo transaccional de entrada para Viora. Estos comandos actúan como canalizadores de interacción que, al ser recibidos por los agregados de dominio en sus respectivos 9 Bounded Contexts, disparan las invariantes del negocio y generan los eventos inmutables que dinamizan la arquitectura reactiva del sistema.

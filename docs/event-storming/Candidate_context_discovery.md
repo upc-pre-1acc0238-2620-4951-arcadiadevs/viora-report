@@ -8,13 +8,13 @@
 
 ## 1. Metodología y Criterios de Descubrimiento Estratégico
 
-El proceso de **Candidate Context Discovery** formaliza la partición del modelo de dominio de Viora en unidades arquitectónicas autónomas y desacopladas (*Bounded Contexts*), tomando como base los artefactos generados a lo largo de las 9 etapas de EventStorming (51 eventos de dominio, 8 líneas de tiempo, 24 puntos de dolor, 10 eventos pivote, 32 comandos, 15 políticas reactivas, 14 modelos de lectura, 4 sistemas externos y 10 agregados transaccionales).
+El proceso de **Candidate Context Discovery** formaliza la partición del modelo de dominio de Viora en unidades arquitectónicas autónomas y desacopladas (*Bounded Contexts*), tomando como base los artefactos generados a lo largo de las 9 etapas de EventStorming (52 eventos de dominio, 8 líneas de tiempo, 24 puntos de dolor, 11 eventos pivote, 33 comandos, 17 políticas reactivas, 15 modelos de lectura, 4 sistemas externos y 12 agregados transaccionales).
 
 Para fundamentar la demarcación de fronteras semánticas con rigor arquitectónico, se aplicaron tres técnicas estratégicas de descubrimiento de DDD:
 
 ```
                                   MURAL INTEGRAL DE EVENTSTORMING
-                                (51 Eventos, 32 Comandos, 10 Agregados)
+                                (52 Eventos, 33 Comandos, 12 Agregados)
                                                  |
          +---------------------------------------+---------------------------------------+
          |                                       |                                       |
@@ -130,16 +130,18 @@ graph TD
 
 ### **BC03: Subscription & Cooperative Membership Bounded Context**
 * **Tipo de Subdominio:** Genérico (*Generic Subdomain*).
-* **Misión y Responsabilidad:** Gestionar la monetización SaaS de Viora, procesando la adquisición del Plan Productor individual mediante pasarela de pagos con tarjeta, el canje de cupones corporativos patrocinados por cooperativas y la fiscalización del cupo de hectáreas catastradas autorizadas.
-* **Agregados Encapsulados:** `Subscription` (`AGG03`).
+* **Misión y Responsabilidad:** Gestionar la monetización SaaS de Viora, procesando la adquisición del Plan Productor individual mediante pasarela de pagos con tarjeta, la emisión y el ciclo de vida de los lotes de códigos corporativos patrocinados por cooperativas, su canje y la fiscalización del cupo de hectáreas catastradas autorizadas.
+* **Agregados Encapsulados:** `Subscription` (`AGG03`), `CooperativeLicense` (`AGG11`), `InvitationCodeBatch` (`AGG12`).
 * **Eventos Pivote de Delimitación:** `SubscriptionActivated` (`EV11` / `PV02`), `CooperativeCodeRedeemed` (`EV13`).
-* **Eventos Clave Emitidos:** `EV10`, `EV11`, `EV12`, `EV13`.
-* **Comandos Gestionados:** `CMD09` (*ProcessPaymentConfirmation*), `CMD10` (*RedeemCooperativeCode*).
+* **Eventos Clave Emitidos:** `EV10`, `EV11`, `EV12`, `EV13`, `EV14`, `EV52`.
+* **Comandos Gestionados:** `CMD09` (*ProcessPaymentConfirmation*), `CMD10` (*RedeemCooperativeCode*), `CMD11` (*GenerateInvitationCodesBatch*), `CMD33` (*ShortenInvitationCodeExpiry*).
 * **Lenguaje Ubicuo Local:**
   * *SubscriptionPlan:* Modalidad comercial (`INDIVIDUAL_PAID` o `COOPERATIVE_SPONSORED`).
   * *HectaresQuota:* Techo máximo de hectáreas que el productor puede catastrar.
   * *PaymentWebhook:* Notificación asíncrona firmada enviada por la pasarela de pagos.
-  * *InvitationCode:* Cupón alfanumérico corporativo de un solo uso.
+  * *CooperativeLicense:* Contrato corporativo que fija el cupo de plazas y la superficie total patrocinable.
+  * *InvitationCodeBatch:* Lote de códigos emitido contra una licencia corporativa vigente.
+  * *InvitationCode:* Cupón alfanumérico corporativo de un solo uso, con cuota de superficie y fecha de caducidad.
 * **Sistemas Externos Vinculados:** `EXT01` (`PaymentGatewayService` - Mercado Pago Checkout Pro).
 * **Justificación de Frontera (*Boundary Justification*):** Separa la lógica transaccional financiera y de licenciamiento del núcleo agronómico. Si en el futuro Viora cambia de pasarela de pagos o introduce modelos freemium, el cambio queda encapsulado aquí sin impactar los modelos de cultivo.
 
@@ -233,11 +235,11 @@ graph TD
 
 ### **BC09: Cooperative Operations & Territorial Intelligence Bounded Context**
 * **Tipo de Subdominio:** De Soporte Estratégico (*Supporting Subdomain* - Inteligencia Gremial).
-* **Misión y Responsabilidad:** Brindar visión territorial y agregada a los gestores técnicos de organizaciones olivareras de Tacna, gestionando el padrón de socios agremiados, lotes de códigos corporativos, el semáforo georreferenciado de riesgo fenológico sectorial y la proyección temprana de acopio de aceituna.
+* **Misión y Responsabilidad:** Brindar visión territorial y agregada a los gestores técnicos de organizaciones olivareras de Tacna, gestionando el padrón de socios agremiados, el semáforo georreferenciado de riesgo fenológico sectorial y la proyección temprana de acopio de aceituna.
 * **Agregados Encapsulados:** `Cooperative` (`AGG10`).
 * **Eventos Pivote de Delimitación:** `CooperativeIntakeVolumeProjected` (`EV50` / `PV10`), `CooperativeRiskMatrixEvaluated` (`EV49`).
-* **Eventos Clave Emitidos:** `EV14`, `EV49`, `EV50`, `EV51`.
-* **Comandos Gestionados:** `CMD11` (*GenerateInvitationCodesBatch*), `CMD31` (*EvaluateCooperativeRiskMatrix*), `CMD32` (*ProjectCooperativeIntakeVolume*).
+* **Eventos Clave Emitidos:** `EV49`, `EV50`, `EV51`.
+* **Comandos Gestionados:** `CMD31` (*EvaluateCooperativeRiskMatrix*), `CMD32` (*ProjectCooperativeIntakeVolume*).
 * **Lenguaje Ubicuo Local:**
   * *CooperativeMember:* Productor agremiado formalmente adscrito al convenio de la organización.
   * *TerritorialRiskMatrix:* Semáforo sectorial (verde, amarillo, rojo) que consolida frío, agua y sobrecarga.
@@ -253,7 +255,7 @@ graph TD
 | :---: | :--- | :---: | :--- | :--- | :---: | :--- |
 | **BC01** | `Identity & Access Management` | Genérico | `UserAccount` | `EV02`, `EV07` | 07 EV / 06 CMD | Cuentas, JWT, sesiones y contraseñas seguras. |
 | **BC02** | `User Profiles` *(NUEVO)* | Soporte | `Profile` | `EV08` (`PV01`) | 02 EV / 02 CMD | Identidad humana, nombres y teléfono E.164. |
-| **BC03** | `Subscription & Cooperative Membership`| Genérico | `Subscription` | `EV11`, `EV13` | 05 EV / 03 CMD | Monetización SaaS, pasarela pagos y canjes. |
+| **BC03** | `Subscription & Cooperative Membership`| Genérico | `Subscription`<br>`CooperativeLicense`<br>`InvitationCodeBatch` | `EV11`, `EV13` | 06 EV / 04 CMD | Monetización SaaS, pasarela pagos, códigos corporativos y canjes. |
 | **BC04** | `Olive Orchard & Plot Management` | Soporte | `Plot` | `EV15`, `EV16` | 03 EV / 03 CMD | Base territorial, cartografía GeoJSON y árboles. |
 | **BC05** | `Agroclimatic Telemetry & Sensor Monitoring`| Soporte | `VirtualSensorNode`<br>`TelemetrySeries` | `EV18`, `EV22` | 08 EV / 05 CMD | Telemetría horaria edáfica y estrés hídrico. |
 | **BC06** | `Phenology & Historical Bearing Analytics`| Core | `ChillAccumulationTracker` | `EV32`, `EV33` | 09 EV / 04 CMD | Frío de Erez, anomalías ENOS e índice BBI. |
