@@ -13,7 +13,7 @@ Exploración abierta y divergente de todos los hechos inmutables significativos 
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/event-storming/1-domain-events.jpg}
-\caption*{\textit{Nota.} Dispersión inicial de 51 eventos de dominio capturados en post-its naranjas durante la sesión de brainstorming. Elaboración propia.}
+\caption*{\textit{Nota.} Dispersión inicial de los 51 eventos de dominio capturados en post-its naranjas durante la sesión de brainstorming. El catálogo consolidado asciende a 52 eventos: \texttt{EV52} es una incorporación posterior al taller, derivada de decisiones de diseño táctico. Elaboración propia.}
 \end{figure}
 
 <br>
@@ -27,7 +27,7 @@ Ordenamiento cronológico continuo de los eventos de izquierda a derecha, estruc
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/event-storming/2-timeline.jpg}
-\caption*{\textit{Nota.} Secuenciación temporal de los 51 eventos en 8 timelines interconectadas mediante dependencias causales. Elaboración propia.}
+\caption*{\textit{Nota.} Secuenciación temporal de los 51 eventos del taller en 8 timelines interconectadas mediante dependencias causales. \texttt{EV52}, incorporado con posterioridad, pertenece al Timeline 2. Elaboración propia.}
 \end{figure}
 
 <br>
@@ -90,7 +90,7 @@ Especificación de las intenciones de acción invocadas por usuarios clave (prod
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/event-storming/5-commands-actors.jpg}
-\caption*{\textit{Nota.} Incorporación de los 32 comandos (post-its azules) y etiquetas de actores (post-its amarillos) sobre el flujo de eventos. Elaboración propia.}
+\caption*{\textit{Nota.} Incorporación de los 32 comandos del taller (post-its azules) y etiquetas de actores (post-its amarillos) sobre el flujo de eventos. El catálogo consolidado asciende a 33 comandos con la incorporación posterior de \texttt{CMD33}. Elaboración propia.}
 \end{figure}
 
 \begin{figure}[H]
@@ -125,7 +125,7 @@ Modelado de las reglas reactivas de negocio que ejecutan comandos de forma autó
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/event-storming/6-policies.jpg}
-\caption*{\textit{Nota.} Mapeo panorámico de las 15 políticas reactivas (post-its lila) que orquestan las sagas y la automatización agronómica. Elaboración propia.}
+\caption*{\textit{Nota.} Mapeo panorámico de las 16 políticas reactivas del taller (post-its lila) que orquestan las sagas y la automatización agronómica. El catálogo consolidado asciende a 17 políticas con la incorporación posterior de \texttt{POL17}. Elaboración propia.}
 \end{figure}
 
 \begin{figure}[H]
@@ -230,7 +230,7 @@ Encapsulamiento de entidades y objetos de valor en unidades transaccionales ató
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/event-storming/9-aggregates.jpg}
-\caption*{\textit{Nota.} Delimitación de los 10 agregados de dominio (post-its amarillos grandes) como guardianes de consistencia entre comandos y eventos. Elaboración propia.}
+\caption*{\textit{Nota.} Delimitación de los 10 agregados de dominio del taller (post-its amarillos grandes) como guardianes de consistencia entre comandos y eventos. El catálogo consolidado asciende a 12 agregados con la incorporación posterior de \texttt{AGG11} y \texttt{AGG12}. Elaboración propia.}
 \end{figure}
 
 #### Candidate Context Discovery
@@ -592,7 +592,7 @@ Para mejorar la organización del dominio y facilitar una comunicación consiste
 
 \newpage
 
-\noindent \textbf{Cooperative Operations and Territorial Intelligence (Territory):} Este bounded context administra el padrón de socios, emite lotes de códigos corporativos, centraliza el semáforo de riesgo por valles y proyecta el volumen de acopio colectivo. Su propósito es brindar inteligencia sectorial a la cooperativa.
+\noindent \textbf{Cooperative Operations and Territorial Intelligence (Territory):} Este bounded context administra el padrón de socios, autoriza qué gestores técnicos pueden solicitar la emisión de lotes de códigos corporativos, centraliza el semáforo de riesgo por valles y proyecta el volumen de acopio colectivo. La custodia del contrato corporativo y el ciclo de vida de los códigos residen en \textit{Subscription and Cooperative Membership}. Su propósito es brindar inteligencia sectorial a la cooperativa.
 
 \begin{figure}[H]
 \caption{Bounded Context Canvas: Cooperative Operations and Territorial Intelligence (Territory).}
@@ -643,14 +643,14 @@ Para mejorar la organización del dominio y facilitar una comunicación consiste
 
 Una vez delimitadas las fronteras y responsabilidades en los Bounded Context Canvases, el diseño estratégico de Domain-Driven Design exige formalizar el \textit{Context Map} (Mapa de Contextos). Este artefacto modela la topología global del ecosistema Viora, definiendo la naturaleza técnica y organizativa de las relaciones de integración, los flujos de dependencia (\textit{Upstream / Downstream}) y los patrones de frontera aplicados para salvaguardar la integridad de los modelos de dominio.
 
-La arquitectura estratégica consolidada articula los nueve bounded contexts a través de trece relaciones internas (estructuradas en quince flujos dirigidos) y cuatro integraciones perimetrales con sistemas externos. Como criterio rector de diseño, la topología organiza el ecosistema situando los tres subdominios \textit{Core} en el centro de gravedad del valor agronómico, respaldados por los subdominios de \textit{Soporte} como proveedores de datos territoriales y de sensometría, y por los subdominios \textit{Genéricos} en la periferia como infraestructura estándar de seguridad y monetización.
+La arquitectura estratégica consolidada articula los nueve bounded contexts a través de catorce relaciones internas (estructuradas en dieciséis flujos dirigidos) y cuatro integraciones perimetrales con sistemas externos. Como criterio rector de diseño, la topología organiza el ecosistema situando los tres subdominios \textit{Core} en el centro de gravedad del valor agronómico, respaldados por los subdominios de \textit{Soporte} como proveedores de datos territoriales y de sensometría, y por los subdominios \textit{Genéricos} en la periferia como infraestructura estándar de seguridad y monetización.
 
 \begin{figure}[H]
 \caption{Context Map de Viora: mapa de relaciones estructurales adoptado.}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/context-map/context-map.png}
-\caption*{\textit{Nota.} Topología estratégica compuesta por 9 bounded contexts, 13 relaciones internas y 4 integraciones externas. La dirección de las flechas indica la dependencia desde el contexto proveedor (\textit{Upstream}) hacia el contexto consumidor (\textit{Downstream}). Elaboración propia.}
+\caption*{\textit{Nota.} Topología estratégica compuesta por 9 bounded contexts, 14 relaciones internas y 4 integraciones externas. La dirección de las flechas indica la dependencia desde el contexto proveedor (\textit{Upstream}) hacia el contexto consumidor (\textit{Downstream}). Elaboración propia.}
 \end{figure}
 
 \noindent \textbf{Patrones de Relación y Estrategias de Integración:} Para gobernar el acoplamiento y preservar la pureza del Lenguaje Ubicuo en cada frontera, se seleccionaron los siguientes patrones canónicos de DDD:
