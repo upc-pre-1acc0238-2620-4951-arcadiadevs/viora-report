@@ -4,7 +4,7 @@
 
 ### **Purpose**
 
-Gestiona las suscripciones comerciales al Plan Productor y el canje de membresías patrocinadas. Procesa intenciones de cobro, valida y redime códigos corporativos, y publica eventos hacia Olive Orchard and Plot Management y la Aplicación móvil para fiscalizar el cupo de hectáreas catastrables. Su propósito es asegurar la monetización de la plataforma SaaS y regular el acceso operativo según el área predial contratada.
+Gestiona las suscripciones comerciales al Plan Productor y el canje de membresías patrocinadas. Procesa intenciones de cobro, emite y custodia los lotes de códigos corporativos contra el cupo de plazas y superficie contratado, valida y redime esos códigos, y publica eventos hacia Olive Orchard and Plot Management y la Aplicación móvil para fiscalizar el cupo de hectáreas catastrables. Su propósito es asegurar la monetización de la plataforma SaaS y regular el acceso operativo según el área predial contratada.
 
 ### **Strategic Classification**
 
@@ -26,7 +26,7 @@ Gestiona las suscripciones comerciales al Plan Productor y el canje de membresí
 *(Collaborators ➔ Messages)*
 
 * **Payment Gateway Service** ➔ `ProcessPaymentConfirmation`
-* **Aplicación Móvil** ➔ `RedeemCooperativeCode`, `GenerateInvitationCodesBatch`
+* **Aplicación Móvil** ➔ `RedeemCooperativeCode`, `GenerateInvitationCodesBatch`, `ShortenInvitationCodeExpiry`
 
 ### **Ubiquitous Language**
 
@@ -38,6 +38,8 @@ Gestiona las suscripciones comerciales al Plan Productor y el canje de membresí
 * SubscriptionPeriod
 * SubscriptionStatus
 * PaymentReceipt
+* CooperativeLicense
+* InvitationCodeBatch
 * InvitationCode
 
 ### **Business Decisions**
@@ -52,7 +54,7 @@ El productor paga su membresía anual y recién ahí se le habilita el acceso al
 * `SubscriptionPaymentApproved`, `SubscriptionPaymentFailed` ➔ **Aplicación Móvil**
 * `SubscriptionActivated` ➔ **Olive Orchard & Plot Management**
 * `CooperativeCodeRedeemed` ➔ **Cooperative Operations & Territorial Intelligence**
-* `InvitationCodesBatchGenerated` ➔ **Técnico / Aplicación Móvil**
+* `InvitationCodesBatchGenerated`, `InvitationCodeExpired` ➔ **Técnico / Aplicación Móvil**
 
 ---
 

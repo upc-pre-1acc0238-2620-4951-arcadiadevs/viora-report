@@ -84,8 +84,9 @@ No Shared Kernel applied in recommended map.
 - **Candidate:** CF on all four inbound relationships to bc6.
 - **Why discarded:**
   - The CF vs C/S test is whether the downstream adopts the upstream language or keeps its own.
-  - bc6 ubiquitous language (`Cooperative`, `CorporateLicensingPlan`, `CooperativeMember`, `InvitationCode`, `TerritorialRiskMatrix`, `EarlyIntakeProjection`) borrows zero terms from its upstream vocabularies.
+  - bc6 ubiquitous language (`Cooperative`, `CooperativeMember`, `AuthorizedManager`, `TerritorialRiskMatrix`, `EarlyIntakeProjection`, `SamplingCoverageRate`, `SectorZone`) borrows zero terms from its upstream vocabularies.
   - bc6 translates four distinct vocabularies into its own territorial model, so C/S is kept on all four relationships.
+  - **Note on scope.** `CorporateLicensingPlan` and `InvitationCode` were previously listed here as bc6 terms. They now belong to bc3 (`CooperativeLicense` / `InvitationCodeBatch`), because the corporate quota cannot be validated against a membership roll that does not yet contain the recipients. This does not weaken the argument above: bc6 still owns every term in its own vocabulary, and the relationship classification is unchanged.
 
 ## Rules for agents
 
