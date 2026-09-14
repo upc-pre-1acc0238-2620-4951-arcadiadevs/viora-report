@@ -339,7 +339,7 @@ workspace "Viora - Tactical DDD focus" "Subscription and Orchard component views
         profiles -> subscription "ProfileCreated" "Internal synchronous event"
         orchard -> subscription "Checks effective entitlement and hectare change under producer lock" "Java module contract"
         subscription -> orchard "SubscriptionActivated; refreshes read projection" "Internal synchronous event"
-        subscription -> territory "CooperativeCodeRedeemed; POL02 affiliation" "Internal synchronous event"
+        subscription -> territory "CooperativeCodeRedeemed; POL02 affiliation" "Cross-context domain event / eventual consistency"
         subscription -> territory "Verifies authorised institutional manager" "Java module contract / tactical refinement"
         orchard -> territory "Resolves authorised cooperative producer scope" "Java module contract / tactical refinement"
         thinning -> orchard "Reads active plot and revision before prescription" "Java module contract"

@@ -82,27 +82,49 @@ Referencia al productor por `ProducerId`, identidad proveniente de IAM y perfil 
 
 ###### CooperativeLicense (Aggregate Root auxiliar)
 
-**Propósito:** representa la bolsa comercial contratada que respalda los códigos de US08. Es un refinamiento táctico de Subscription, no una segunda entidad `Cooperative` ni un nuevo bounded context.
+**Propósito:** representa la bolsa comercial contratada que respalda los códigos de US08 (`AGG11`). Custodia dos recursos finitos y distintos: las **plazas** de socio y la **superficie** patrocinada.
 
-**Atributos:** `id: CooperativeLicenseId`, `cooperativeId: CooperativeId`, `seatLimit: int`, `issuedSeats: int`, `maxQuotaPerCode: HectaresQuota`, `period: SubscriptionPeriod`.
+**Por qué es una raíz de agregado propia y no parte de `Subscription` ni de `Cooperative`.** No puede anidarse en `Subscription` (`AGG03`) porque en el instante de emitir un lote **no existe todavía ninguna instancia de `Subscription` donde alojarlo**: los productores destinatarios aún no están suscritos, y es precisamente el canje del código lo que origina su suscripción. Tampoco puede residir en `Cooperative` (`AGG10`, *Cooperative Operations*), porque entonces la invariante de cupo quedaría en un bounded context distinto del que procesa la emisión y el canje, y su verificación cruzaría un límite transaccional. Sus acumuladores deben poder leerse y mutarse dentro de una sola transacción junto con el lote, lo que la convierte por definición en una unidad de consistencia propia. Se relaciona con `Cooperative` exclusivamente por identidad (`cooperativeId`), que es una referencia externa a otro contexto.
 
-**Métodos:** `reserveSeats(quantity: int, at: Instant): void`, `availableSeats(): int`, `validateCodeTerms(quota: HectaresQuota, expiresAt: Instant): void`.
+**Atributos:** `id: CooperativeLicenseId`, `cooperativeId: CooperativeId`, `seatLimit: int`, `issuedSeats: int`, `contractedArea: HectaresQuota`, `issuedArea: HectaresQuota`, `maxQuotaPerCode: HectaresQuota`, `period: SubscriptionPeriod`.
 
-**Invariantes:** `0 <= issuedSeats <= seatLimit`; se descuenta un cupo **al emitir** el código, como exige US08, y no nuevamente al canjearlo. El lote no excede la capacidad disponible, la cuota por código no supera la autorizada y la expiración no supera la vigencia corporativa. El alta de esta licencia es una precondición institucional controlada; no se expone un endpoint que permita al gestor inventar cupos financiados. No se libera automáticamente el cupo de códigos vencidos mientras no exista una política aprobada de reemisión.
+**Métodos:** `reserveSeats(quantity: int, totalQuota: HectaresQuota, at: Instant): void`, `releaseSeat(quota: HectaresQuota, at: Instant): void`, `availableSeats(): int`, `availableArea(): HectaresQuota`, `validateCodeTerms(quota: HectaresQuota, expiresAt: Instant): void`.
+
+**Invariantes:**
+
+1. `0 <= issuedSeats <= seatLimit` en todo momento.
+2. `0 <= issuedArea <= contractedArea` en todo momento.
+3. Ambos recursos se comprometen **al emitir** el código, como exige US08, y **no** vuelven a descontarse al canjearlo: la plaza y la superficie que antes respaldaban un código disponible pasan a estar ocupadas por un productor real.
+4. La cuota de superficie de un código individual nunca excede `maxQuotaPerCode`, y la expiración de un código no supera la vigencia corporativa (`period`).
+5. **Los acumuladores se llevan como contadores propios de la licencia, nunca recalculando la suma de los códigos emitidos.** Sumar sobre el lote cruzaría el límite transaccional del agregado y dejaría la invariante sin un punto de verificación fiable. Es la misma técnica que ya emplea `issuedSeats`.
+6. El alta de esta licencia es una precondición institucional controlada; no se expone un endpoint que permita al gestor inventar cupos financiados.
+7. **Un código vencido libera plaza y superficie.** Al recibirse `InvitationCodeExpired` (EV52), `releaseSeat(...)` decrementa `issuedSeats` en una unidad e `issuedArea` en la cuota del código caducado. Esta es la **única** vía de liberación del modelo.
+
+> **Derogación expresa.** Una redacción anterior de estas invariantes establecía que «no se libera automáticamente el cupo de códigos vencidos mientras no exista una política aprobada de reemisión». **Esa regla queda derogada.** La política existe y está formalizada como `POL17` (*Quota Release On Invitation Code Expiry*). Sin ella, el cupo contratado se degradaría de forma irreversible con cada lote que no se canjea por completo.
+
+> **Alcance conocido y no cubierto.** Un código ya `REDEEMED` cuya suscripción patrocinada se cancela con posterioridad **no** libera plaza ni superficie con este diseño. El equipo registró el caso y decidió no construirlo en esta etapa. Es una limitación documentada, no una omisión.
 
 ###### InvitationCodeBatch (Aggregate Root auxiliar) e InvitationCode (Entity interna)
 
-**Propósito:** el lote mantiene los códigos emitidos bajo una licencia y su consumo único. La generación del lote y la reserva de plazas constituyen una operación atómica explícita que coordina dos agregados del mismo contexto.
+**Propósito:** el lote (`AGG12`) mantiene los códigos emitidos bajo una licencia, su consumo único y su caducidad. La generación del lote y la reserva de plazas y superficie constituyen una operación atómica explícita que coordina dos agregados del mismo contexto.
+
+**Por qué es una raíz de agregado propia.** Rige el mismo argumento que para `CooperativeLicense`: al emitirse no hay `Subscription` que lo contenga, y su ciclo de vida —emisión, canje, caducidad— es independiente tanto del padrón de socios como de cualquier suscripción individual. Se relaciona con `CooperativeLicense` por identidad (`licenseId`).
 
 **Atributos del lote:** `id: InvitationCodeBatchId`, `licenseId: CooperativeLicenseId`, `issuedBy: ActorId`, `issuedAt: Instant`, `codes: List<InvitationCode>`.
 
-**Métodos del lote:** `redeem(codeId: InvitationCodeId, producerId: ProducerId, license: CooperativeLicense, at: Instant): RedeemedCode`, `snapshot(): InvitationBatchSnapshot`.
+**Métodos del lote:** `redeem(codeId: InvitationCodeId, producerId: ProducerId, license: CooperativeLicense, at: Instant): RedeemedCode`, `shortenExpiry(codeId: InvitationCodeId, newExpiry: Instant, at: Instant): void`, `expireCode(codeId: InvitationCodeId, at: Instant): void`, `snapshot(): InvitationBatchSnapshot`.
 
-**Atributos del código:** `id: InvitationCodeId`, `fingerprint: CodeFingerprint`, `quota: HectaresQuota`, `expiresAt: Instant`, `status: InvitationCodeStatus` (`AVAILABLE`, `REDEEMED`), `redeemedBy: ProducerId?`, `redeemedAt: Instant?`.
+**Atributos del código:** `id: InvitationCodeId`, `fingerprint: CodeFingerprint`, `quota: HectaresQuota`, `expiresAt: Instant`, `status: InvitationCodeStatus` (`AVAILABLE`, `REDEEMED`, `EXPIRED`), `redeemedBy: ProducerId?`, `redeemedAt: Instant?`, `expiredAt: Instant?`.
 
-**Métodos del código:** `isRedeemable(at: Instant): boolean`, `redeem(producerId: ProducerId, at: Instant): void`. El segundo solo se invoca a través del lote. La expiración se determina por fecha, aunque el estado almacenado siga siendo `AVAILABLE`.
+**Métodos del código:** `isRedeemable(at: Instant): boolean`, `redeem(producerId: ProducerId, at: Instant): void`, `expire(at: Instant): void`. Los dos últimos solo se invocan a través del lote.
 
-**Invariantes:** un lote no está vacío; cada código tiene huella única; solo se canjea una vez, antes de expirar y con licencia vigente. La suscripción del productor, el código consumido y la afiliación en Territory se confirman juntos o se revierten juntos. El canje no modifica el rol IAM del productor ni le concede permisos de gestor.
+**Modelo de estados del código.** Las transiciones admitidas son `AVAILABLE` $\rightarrow$ `REDEEMED` (terminal) y `AVAILABLE` $\rightarrow$ `EXPIRED` (libera plaza y superficie). Un código `REDEEMED` no retorna a ningún otro estado. **La caducidad es un estado registrado, no una condición derivada de la fecha:** una redacción anterior indicaba que «la expiración se determina por fecha, aunque el estado almacenado siga siendo `AVAILABLE`». Eso ya no se sostiene, porque el decremento de los acumuladores necesita un hecho puntual y único al cual engancharse; ese hecho es `EV52`.
+
+**Cancelación anticipada.** `shortenExpiry(...)` (`CMD33`) solo puede **adelantar** `expiresAt`, nunca extenderla; opera únicamente sobre códigos en estado `AVAILABLE`; y es idempotente frente a reintentos. No introduce un camino de liberación propio: adelanta la fecha y deja que la caducidad ordinaria haga el resto. La liberación resultante es inmediata —el comando dispara la verificación al terminar— y no queda diferida a un barrido programado, para que el gestor no siga viendo el cupo ocupado después de cancelar.
+
+**Invariantes:** un lote no está vacío; cada código tiene huella única; solo se canjea una vez, antes de expirar y con licencia vigente. Un código solo puede expirar desde `AVAILABLE`. **La suscripción del productor y el código consumido se confirman juntos o se revierten juntos**, porque ambos residen en este contexto. El canje no modifica el rol IAM del productor ni le concede permisos de gestor.
+
+> **Corrección de la frontera transaccional.** Una redacción anterior incluía la afiliación en Territory dentro de esa misma atomicidad, describiendo una transacción de tres piezas con *commit* único. **Eso ya no se sostiene:** `Cooperative` (`AGG10`) es un agregado de otro bounded context, y comprometerlo en la transacción del canje acoplaría dos contextos bajo un mismo bloqueo y violaría la regla de una transacción por agregado. La afiliación pasa a ser **consistencia eventual** mediante `POL02`, que reacciona a `EV13` con una guarda de idempotencia. Es también lo que el contrato de `POL02` declara en `Paso6_policies.md`.
 
 ##### Value Objects (Conceptuales e Inmutables)
 
@@ -146,7 +168,8 @@ Todos los eventos son registros inmutables con `eventId: UUID`, `aggregateId: UU
 | `SubscriptionActivated` — EV11 | `subscriptionId`, `producerId`, `mode`, `quotaHa`, `startsAt`, `endsAt`, `cooperativeId?` | Activación por pago o código. Orchard puede refrescar sus proyecciones de consulta. |
 | `SubscriptionPaymentFailed` — EV12 | `subscriptionId`, `intentId`, `reasonCode` | Rechazo confirmado de un intento pendiente. La aplicación obtiene el resultado mediante consulta REST. |
 | `CooperativeCodeRedeemed` — EV13 | `subscriptionId`, `producerId`, `cooperativeId`, `codeId` | Canje válido. Territory ejecuta POL02 para afiliar al productor. |
-| `InvitationCodesBatchGenerated` — EV14 | `batchId`, `licenseId`, `cooperativeId`, `quantity` | Reserva de plazas y creación del lote. No transporta códigos secretos. |
+| `InvitationCodesBatchGenerated` — EV14 | `batchId`, `licenseId`, `cooperativeId`, `quantity`, `reservedArea` | Reserva de plazas y superficie, y creación del lote. No transporta códigos secretos. |
+| `InvitationCodeExpired` — EV52 | `batchId`, `licenseId`, `codeId`, `releasedQuota`, `expiredAt` | Caducidad de un código `AVAILABLE`, sea por su fecha original o por una adelantada con CMD33. POL17 libera plaza y superficie en la licencia. No transporta el código secreto. |
 
 ---
 
@@ -158,7 +181,7 @@ Todos los eventos son registros inmutables con `eventId: UUID`, `aggregateId: UU
 |---|---|---|
 | `SubscriptionController`; `commands: SubscriptionCommandFacade`, `queries: SubscriptionQueryFacade`, `assembler: SubscriptionResourceAssembler` | `create()` → `POST /api/v1/subscriptions`; `get()` → `GET /api/v1/subscriptions/{id}`; `getCurrent()` → `GET /api/v1/subscriptions?scope=current`; `getPlans()` → `GET /api/v1/subscription-plans` | Crea la intención contractual y consulta estado/planes. Solo el titular accede al contrato. |
 | `CheckoutController`; `handler: CreateCheckoutCommandHandler` | `create()` → `POST /api/v1/subscriptions/{id}/checkouts` | Solicita checkout para términos resueltos en el servidor. |
-| `CooperativeInvitationController`; `commands`, `queries`, `assembler` | `generate()` → `POST /api/v1/cooperatives/{id}/invitation-code-batches`; `list()` → `GET /api/v1/cooperatives/{id}/invitation-code-batches?page=0&size=20`; `redeem()` → `POST /api/v1/cooperative-code-redemptions` | Generación solo por gestor autorizado; canje por productor autenticado. El path cooperativo no transfiere la propiedad comercial a Territory. |
+| `CooperativeInvitationController`; `commands`, `queries`, `assembler` | `generate()` → `POST /api/v1/cooperatives/{id}/invitation-code-batches`; `list()` → `GET /api/v1/cooperatives/{id}/invitation-code-batches?page=0&size=20`; `shortenExpiry()` → `POST /api/v1/invitation-code-batches/{batchId}/codes/{codeId}/expiry-adjustments`; `redeem()` → `POST /api/v1/cooperative-code-redemptions` | Generación y cancelación anticipada solo por gestor autorizado; canje por productor autenticado. El path cooperativo no transfiere la propiedad comercial a Territory. |
 | `MercadoPagoWebhookController`; `authenticator: PaymentWebhookAuthenticator`, `handler: ProcessPaymentConfirmationCommandHandler` | `receive()` → `POST /api/v1/payment-notifications/mercado-pago` | Entrada del proveedor con autenticación propia; no utiliza JWT del productor ni confía en el estado recibido sin reconciliación. |
 
 No se expone `PATCH {status: ACTIVE}` ni un `PUT` genérico sobre suscripciones. Las rutas son recursos; la activación es un comportamiento del dominio. Operaciones mutantes admiten `Idempotency-Key`; `201` identifica creación, `200` consulta/repetición ya procesada, `409` conflicto de estado/cupo y `422` datos semánticamente inválidos. Los fallos externos transitorios devuelven error recuperable; no se confunden con rechazo bancario. Un webhook solo recibe confirmación de procesamiento después de persistir el resultado; ante indisponibilidad recuperable se conserva la posibilidad de reintento.
@@ -172,7 +195,8 @@ No se expone `PATCH {status: ACTIVE}` ni un `PUT` genérico sobre suscripciones.
 | `SubscriptionResource` | `id`, `mode`, `status`, `quotaHa`, `startsAt?`, `endsAt?`, `cooperativeId?`, `entitlementActive`, `audit: AuditResource`. |
 | `CheckoutResource` | `intentId`, `checkoutUrl`, `expiresAt`; URL emitida por el adaptador y validada antes de abrirla. |
 | `GenerateInvitationCodesBatchRequest` | `quantity: int`, `hectaresCapPerCode: Decimal`, `expiresAt: Instant`; validados contra licencia. |
-| `InvitationBatchResource` | `id`, `quantity`, `issuedAt`, `availableSeats`, `codes: List<String>` únicamente en entrega autorizada; las consultas posteriores devuelven IDs, estados y vencimientos enmascarados. |
+| `InvitationBatchResource` | `id`, `quantity`, `issuedAt`, `availableSeats`, `availableAreaHa`, `codes: List<String>` únicamente en entrega autorizada; las consultas posteriores devuelven IDs, estados (`AVAILABLE`, `REDEEMED`, `EXPIRED`) y vencimientos enmascarados. |
+| `ShortenInvitationCodeExpiryRequest` | `newExpiresAt: Instant`; solo se admite si adelanta la vigencia vigente del código. |
 | `RedeemCooperativeCodeRequest` | `code: String`; el productor se deriva del principal autenticado. |
 | `PaymentNotificationRequest` | `externalNotificationId`, `externalPaymentId`; formato externo confinado al adaptador. |
 | `AuditResource` | `createdAt`, `updatedAt`, `createdBy`, `updatedBy`; metadatos técnicos de respuesta. |
@@ -191,8 +215,9 @@ Cada handler implementa `handle(command): Result`. Las fachadas `SubscriptionCom
 | `CreateCheckoutCommandHandler` / `CreateCheckout` | `subscriptions`, `paymentGateway`, `tariffCatalog`, `idempotency`, `clock` | Persiste `PaymentIntent` con términos; fuera de la transacción llama al proveedor; adjunta la referencia en otra transacción. Usa un identificador estable por intento y reconciliación ante resultado incierto, sin crear otro cobro a ciegas. |
 | `ProcessPaymentConfirmationCommandHandler` / `ProcessPaymentConfirmation` — CMD09 | `paymentGateway`, `subscriptions`, `paymentInbox`, `producerGate`, `eventDispatcher` | Consulta estado autoritativo fuera de la transacción; valida cuenta receptora, referencia interna, importe y moneda; bajo bloqueo aplica estado nuevo; registra comprobante; despacha POL01; confirma todo junto. |
 | `ActivateSubscriptionCommandHandler` / `ActivateSubscription` | `subscriptions`, `activationPolicy`, `eventDispatcher` | Manejador interno de POL01. Activa utilizando un comprobante aprobado de ese agregado y emite EV11 en la misma transacción. |
-| `GenerateInvitationCodesBatchCommandHandler` / `GenerateInvitationCodesBatch` — CMD11 | `licenses`, `batches`, `institutionalAccess`, `codeGenerator`, `factory`, `idempotency` | Verifica gestor y cooperativa; bloquea licencia; reserva plazas; genera códigos; guarda lote y reserva; emite EV14. |
-| `RedeemCooperativeCodeCommandHandler` / `RedeemCooperativeCode` — CMD10 | `batches`, `licenses`, `subscriptions`, `producerGate`, `profilesPort`, `eventDispatcher`, `idempotency` | Verifica perfil y ausencia de membresía activa; bloquea productor, licencia y lote; consume código; activa patrocinio; emite EV13 y EV11; ejecuta afiliación síncrona en Territory; commit único. |
+| `GenerateInvitationCodesBatchCommandHandler` / `GenerateInvitationCodesBatch` — CMD11 | `licenses`, `batches`, `institutionalAccess`, `codeGenerator`, `factory`, `idempotency` | Verifica gestor y cooperativa; bloquea licencia; comprueba plazas **y** superficie disponibles; reserva ambas; genera códigos; guarda lote y reserva; emite EV14. |
+| `ShortenInvitationCodeExpiryCommandHandler` / `ShortenInvitationCodeExpiry` — CMD33 | `batches`, `licenses`, `institutionalAccess`, `eventDispatcher`, `idempotency`, `clock` | Verifica gestor autorizado; bloquea lote y licencia; adelanta `expiresAt` solo sobre un código `AVAILABLE`; evalúa la caducidad de inmediato y, si ya venció, transiciona a `EXPIRED` y emite EV52 en la misma transacción. Idempotente ante reintentos. |
+| `RedeemCooperativeCodeCommandHandler` / `RedeemCooperativeCode` — CMD10 | `batches`, `licenses`, `subscriptions`, `producerGate`, `profilesPort`, `eventDispatcher`, `idempotency` | Verifica perfil y ausencia de membresía activa; bloquea productor, licencia y lote; consume código; activa patrocinio; emite EV13 y EV11 en un *commit* único **de este contexto**. No descuenta cupo: plazas y superficie se comprometieron al emitir. La afiliación en Territory **no** participa de esta transacción: ocurre por POL02 como reacción a EV13, de forma idempotente. |
 
 No se hace HTTP a Mercado Pago mientras se retiene un bloqueo de base de datos. El procesamiento reconsulta el estado externo si recibe eventos fuera de orden. Un `PENDING` se conserva como pendiente; un error de red no genera EV12. Reembolsos o contracargos requieren una política adicional y no se traducen silenciosamente al flujo de alta.
 
@@ -201,13 +226,15 @@ No se hace HTTP a Mercado Pago mientras se retiene un bloqueo de base de datos. 
 - **`GetSubscriptionByIdQueryHandler`**: `subscriptions`, `authorization`, `clock`; `handle(GetSubscriptionById): SubscriptionSnapshot`. Autoriza titular y calcula vigencia efectiva.
 - **`GetCurrentSubscriptionQueryHandler`**: mismas dependencias; `handle(GetCurrentSubscription): Optional<SubscriptionSnapshot>`.
 - **`ListSubscriptionPlansQueryHandler`**: `tariffCatalog`; `handle(ListSubscriptionPlans): List<PlanOffer>`; precio, moneda, cuota y versión del catálogo, sin inventar tarifas fijas en el informe.
-- **`ListInvitationBatchesQueryHandler`**: `invitationReadStore`, `institutionalAccess`; `handle(ListInvitationBatches): Page<InvitationBatchSummary>`; nunca revela códigos persistidos en forma recuperable.
+- **`ListInvitationBatchesQueryHandler`** (RM13 / US08): `invitationReadStore`, `institutionalAccess`; `handle(ListInvitationBatches): Page<InvitationBatchSummary>`; nunca revela códigos persistidos en forma recuperable. Aporta el **bloque de licenciamiento y códigos** de `RM13` —plazas y superficie contratadas frente a comprometidas, y el estado de cada código—; la porción del padrón gremial de esa misma vista la sirve *Cooperative Operations*.
 - **`GetEntitlementQueryHandler`**: `subscriptions`, `clock`; `handle(GetEntitlement): EntitlementSnapshot`, con productor, estado efectivo, cuota y período. Es el contrato público para operaciones protegidas.
 
 ##### Event Handlers
 
 - **`OnProfileCreatedEventHandler`**, atributo `readinessStore`: `handle(ProfileCreated): void`; registra idempotentemente que se completó el perfil para iniciar contratación. No crea una suscripción gratuita ni activa derechos. La precondición se confirma por `ProfileReadinessPort` para no depender de una proyección atrasada.
 - **`OnSubscriptionPaymentApprovedEventHandler`**, atributo `activationHandler`: `handle(SubscriptionPaymentApproved): void`; aplica POL01 síncronamente antes del commit. No inicia una segunda transacción independiente.
+- **`OnInvitationCodeExpiredEventHandler`**, atributos `licenses`, `clock`: `handle(InvitationCodeExpired): void`; aplica POL17 en la misma transacción, invocando `license.releaseSeat(code.quota, at)` para devolver la plaza y la superficie al cupo disponible. Es el **único** camino de decremento de los acumuladores, de modo que existe un solo lugar donde pueden desincronizarse.
+- **`InvitationCodeExpirationScheduler`**, atributos `batches`, `eventDispatcher`, `clock`: barrido periódico que detecta códigos `AVAILABLE` cuya `expiresAt` ya pasó y los transiciona a `EXPIRED` emitiendo EV52. Cubre la caducidad ordinaria; la cancelación anticipada por CMD33 no lo espera, porque evalúa la caducidad de forma inmediata.
 - **POL02** se implementa en Territory mediante su manejador de `CooperativeCodeRedeemed`. Subscription publica el contrato y no escribe el padrón directamente. Los IDs del evento y de la operación permiten deduplicar afiliaciones.
 
 ##### Puertos de aplicación
@@ -223,8 +250,8 @@ No se hace HTTP a Mercado Pago mientras se retiene un bloqueo de base de datos. 
 | Clase / paquete | Atributos, métodos y responsabilidad |
 |---|---|
 | `PostgresSubscriptionRepository` | `jpa: SubscriptionJpaRepository`, `mapper: SubscriptionEntityMapper`; implementa el repositorio de dominio y sus tres operaciones. |
-| `PostgresCooperativeLicenseRepository` | `jpa`, `mapper`; carga y guarda licencias; bloquea la fila al reservar cupos dentro de Application. |
-| `PostgresInvitationCodeBatchRepository` | `jpa`, `mapper`; reconstruye lote/códigos, busca por huella y persiste consumo único. |
+| `PostgresCooperativeLicenseRepository` | `jpa`, `mapper`; carga y guarda licencias; bloquea la fila al reservar **o liberar** plazas y superficie dentro de Application. El bloqueo es imprescindible: sin él, dos emisiones concurrentes leerían el mismo remanente y ambas se aprobarían. |
+| `PostgresInvitationCodeBatchRepository` | `jpa`, `mapper`; reconstruye lote/códigos, busca por huella, persiste consumo único y localiza códigos `AVAILABLE` vencidos para el barrido de caducidad. |
 | `SubscriptionJpaEntity`, `PaymentIntentJpaEntity`, `PaymentReceiptJpaEntity`, `CooperativeLicenseJpaEntity`, `InvitationBatchJpaEntity`, `InvitationCodeJpaEntity` | Campos del modelo físico descrito al final. `@Version` en raíces. Relaciones JPA restringidas a este contexto; las hijas se modifican por su raíz. |
 | `SubscriptionEntityMapper`, `CooperativeLicenseEntityMapper`, `InvitationBatchEntityMapper` | `toDomain(entity)` y `toJpa(aggregate)`; reconstrucción sin emitir eventos históricos. |
 | `MercadoPagoPaymentGatewayAdapter` | `httpClient`, `credentials`, `responseMapper`; implementa `createCheckout` y `verifyPayment`. ACL que evita que el dominio dependa de nombres de estados del proveedor. |
@@ -277,7 +304,7 @@ Las tres vistas focalizadas de componentes —Backend API, Android Application y
 
 ##### Bounded Context Domain Layer Class Diagrams
 
-El **Anexo B.1** presenta las raíces, entidades internas, VO, enumeraciones, interfaces y servicios con atributos/métodos y visibilidad. `Subscription 1 *-- 0..* PaymentIntent` y `Subscription 1 *-- 0..* PaymentReceipt` expresan pertenencia al agregado, no autorización para borrar físicamente el historial. `InvitationCodeBatch 1 *-- 1..* InvitationCode` expresa control del canje por el lote. `CooperativeLicense` y `InvitationCodeBatch` son raíces distintas relacionadas por ID.
+El **Anexo B.1** presenta las raíces, entidades internas, VO, enumeraciones, interfaces y servicios con atributos/métodos y visibilidad. `Subscription 1 *-- 0..* PaymentIntent` y `Subscription 1 *-- 0..* PaymentReceipt` expresan pertenencia al agregado, no autorización para borrar físicamente el historial. `InvitationCodeBatch 1 *-- 1..* InvitationCode` expresa control del canje y de la caducidad por el lote. `CooperativeLicense` y `InvitationCodeBatch` son raíces distintas relacionadas por ID, y lo son por una razón concreta: en el momento de emitir un lote todavía no existe ninguna `Subscription` que pueda contenerlo —los destinatarios aún no están suscritos— y alojar el cupo en `Cooperative`, que pertenece a otro bounded context, pondría la invariante fuera del límite transaccional que debe verificarla.
 
 Los eventos se enumeran con sus miembros en el **Anexo B.3**. Los mensajes y proyecciones no se convierten en entidades persistentes de negocio. Las firmas de las operaciones y las multiplicidades hacen visible qué estado puede modificarse y mediante qué raíz.
 
@@ -285,7 +312,7 @@ Los eventos se enumeran con sus miembros en el **Anexo B.3**. Los mensajes y pro
 
 El **Anexo C.1** presenta el modelo relacional y el **Anexo D** contiene DDL PostgreSQL para generar/importar sus tablas. Las FK son internas al contexto. `producer_id`, `cooperative_id` y los actores de auditoría son referencias lógicas externas. La relación licencia → lotes es `1 a 0..N`; lote → códigos es `1 a 1..N` por regla de aplicación; suscripción → intentos/comprobantes es `1 a 0..N`.
 
-Los índices garantizan una suscripción en curso por productor, una transacción de pago aprobada por identificador externo y una huella por código. Los `CHECK` impiden cuota negativa, fechas invertidas, sobreemisión de plazas e inconsistencias entre estado de código y canje. El SQL no sustituye la verificación externa del pago ni la coordinación de cupos.
+Los índices garantizan una suscripción en curso por productor, una transacción de pago aprobada por identificador externo y una huella por código. Los `CHECK` impiden cuota negativa, fechas invertidas, sobreemisión de plazas **y de superficie** e inconsistencias entre estado de código, canje y caducidad. El SQL no sustituye la verificación externa del pago ni la coordinación de cupos.
 
 
 #### Diccionario complementario de clases móviles de Subscription
@@ -318,9 +345,12 @@ Una caché de derechos no permite aprobar operaciones comerciales sin conexión.
 |---|---|---|
 | US06, CMD09, EV10–EV12, POL01 | Subscription, PaymentIntent, PaymentReceipt, activación verificada | Subscription; Mercado Pago vía ACL. |
 | US07, CMD10, EV13, POL02 | Canje atómico y afiliación por evento | Código/contrato en Subscription; padrón en Territory. |
-| US08, CMD11, EV14 | CooperativeLicense, InvitationCodeBatch; descuento al emitir | Bloqueo de licencia; consumo único del código. |
+| US08, CMD11, EV14 | CooperativeLicense, InvitationCodeBatch; compromiso de plazas y superficie al emitir | Bloqueo de licencia; consumo único del código. |
+| US08, CMD33, EV52, POL17 | `shortenExpiry` sobre código `AVAILABLE`; estado `EXPIRED` registrado; `releaseSeat` devuelve plaza y superficie | Bloqueo de licencia y lote; camino único de liberación. |
 
-Se requiere acordar con el equipo: precios y escalones de hectáreas; alta institucional y vigencia corporativa; reemisión/liberación de códigos vencidos; cancelación, reembolso, renovación y cambio entre modalidades; tolerancia agronómica entre densidad observada y teórica. Ninguna de esas decisiones se presenta aquí como requisito ya aprobado.
+Se requiere acordar con el equipo: precios y escalones de hectáreas; alta institucional y vigencia corporativa; cancelación, reembolso, renovación y cambio entre modalidades; tolerancia agronómica entre densidad observada y teórica. Ninguna de esas decisiones se presenta aquí como requisito ya aprobado.
+
+La **liberación de cupo por códigos vencidos** deja de figurar entre las decisiones pendientes: el equipo la resolvió y está formalizada como `POL17`, con `EV52` como único camino de decremento y `CMD33` para la cancelación anticipada. Permanece registrado, en cambio, el caso de la **suscripción patrocinada que se cancela después del canje**, que no libera plaza ni superficie en este diseño.
 
 **Ajustes documentales identificados:** corregir US11 para conservar trazabilidad; unificar en todos los textos la propiedad comercial de códigos en Subscription; evitar presentar un cupo de `0.1 ha` como suficiente para una parcela cuyo mínimo es estrictamente mayor; completar el C4 global con el contrato de consulta a Territory que aquí se explicita. Estas precisiones permiten revisar diferencias reales, sin afirmar una coherencia absoluta que las fuentes originales todavía no tienen.
 
@@ -396,7 +426,7 @@ workspace "Viora - Tactical DDD focus" "Subscription and Orchard component views
         profiles -> subscription "ProfileCreated" "Internal synchronous event"
         orchard -> subscription "Checks effective entitlement and hectare change under producer lock" "Java module contract"
         subscription -> orchard "SubscriptionActivated; refreshes read projection" "Internal synchronous event"
-        subscription -> territory "CooperativeCodeRedeemed; POL02 affiliation" "Internal synchronous event"
+        subscription -> territory "CooperativeCodeRedeemed; POL02 affiliation" "Cross-context domain event / eventual consistency"
         subscription -> territory "Verifies authorised institutional manager" "Java module contract / tactical refinement"
         orchard -> territory "Resolves authorised cooperative producer scope" "Java module contract / tactical refinement"
         thinning -> orchard "Reads active plot and revision before prescription" "Java module contract"
@@ -663,10 +693,14 @@ class CooperativeLicense <<AggregateRoot>> {
   -cooperativeId: CooperativeId
   -seatLimit: int
   -issuedSeats: int
+  -contractedArea: HectaresQuota
+  -issuedArea: HectaresQuota
   -maxQuotaPerCode: HectaresQuota
   -period: SubscriptionPeriod
-  +reserveSeats(quantity: int, at: Instant): void
+  +reserveSeats(quantity: int, totalQuota: HectaresQuota, at: Instant): void
+  +releaseSeat(quota: HectaresQuota, at: Instant): void
   +availableSeats(): int
+  +availableArea(): HectaresQuota
   +validateCodeTerms(quota: HectaresQuota, expiresAt: Instant): void
 }
 class InvitationCodeBatch <<AggregateRoot>> {
@@ -676,6 +710,8 @@ class InvitationCodeBatch <<AggregateRoot>> {
   -issuedAt: Instant
   -codes: List<InvitationCode>
   +redeem(codeId: InvitationCodeId, producerId: ProducerId, license: CooperativeLicense, at: Instant): RedeemedCode
+  +shortenExpiry(codeId: InvitationCodeId, newExpiry: Instant, at: Instant): void
+  +expireCode(codeId: InvitationCodeId, at: Instant): void
   +snapshot(): InvitationBatchSnapshot
 }
 class InvitationCode <<Entity>> {
@@ -686,8 +722,10 @@ class InvitationCode <<Entity>> {
   -status: InvitationCodeStatus
   -redeemedBy: ProducerId [0..1]
   -redeemedAt: Instant [0..1]
+  -expiredAt: Instant [0..1]
   +isRedeemable(at: Instant): boolean
   +redeem(producerId: ProducerId, at: Instant): void
+  +expire(at: Instant): void
 }
 class CodeFingerprint <<ValueObject>> {
   -value: String
@@ -708,6 +746,7 @@ class InvitationBatchFactory <<Factory>> {
 enum InvitationCodeStatus {
   AVAILABLE
   REDEEMED
+  EXPIRED
 }
 class CooperativeLicenseId <<ValueObject>> {
   -value: UUID
@@ -780,6 +819,8 @@ note bottom of InvitationCodeBatch
 The batch verifies licenseId against the supplied license
 and returns RedeemedCode in the same transaction.
 Public child methods are invoked only by the root.
+AVAILABLE is terminal towards REDEEMED or EXPIRED;
+only EXPIRED releases the reserved seat and area.
 end note
 @enduml
 ```
@@ -848,6 +889,19 @@ class InvitationCodesBatchGenerated <<DomainEvent>> {
   -licenseId: UUID
   -cooperativeId: UUID
   -quantity: int
+  -reservedArea: Decimal
+  +payload(): ImmutableRecord
+}
+class InvitationCodeExpired <<DomainEvent>> {
+  -eventId: UUID
+  -aggregateId: UUID
+  -occurredOn: Instant
+  -schemaVersion: int
+  -batchId: UUID
+  -licenseId: UUID
+  -codeId: UUID
+  -releasedQuota: Decimal
+  -expiredAt: Instant
   +payload(): ImmutableRecord
 }
 
@@ -871,6 +925,8 @@ entity "subscription.cooperative_licenses" as subscription_cooperative_licenses 
   * cooperative_id: UUID
   * seat_limit: INTEGER
   * issued_seats: INTEGER
+  * contracted_area_ha: NUMERIC(18,6)
+  * issued_area_ha: NUMERIC(18,6)
   * max_quota_per_code: NUMERIC(18,6)
   * starts_at: TIMESTAMPTZ
   * ends_at: TIMESTAMPTZ
@@ -899,7 +955,8 @@ entity "subscription.invitation_codes" as subscription_invitation_codes {
   * expires_at: TIMESTAMPTZ
   * status: VARCHAR(16)
   redeemed_by: UUID,
-  redeemed_at: TIMESTAMPTZ
+  redeemed_at: TIMESTAMPTZ,
+  expired_at: TIMESTAMPTZ
 }
 entity "subscription.subscriptions" as subscription_subscriptions {
   * id: UUID <<PK>>
@@ -988,6 +1045,8 @@ CREATE TABLE subscription.cooperative_licenses (
     cooperative_id UUID NOT NULL, -- logical reference to Territory
     seat_limit INTEGER NOT NULL CHECK (seat_limit > 0),
     issued_seats INTEGER NOT NULL DEFAULT 0,
+    contracted_area_ha NUMERIC(18,6) NOT NULL CHECK (contracted_area_ha >= 0.1),
+    issued_area_ha NUMERIC(18,6) NOT NULL DEFAULT 0,
     max_quota_per_code NUMERIC(18,6) NOT NULL CHECK (max_quota_per_code >= 0.1),
     starts_at TIMESTAMPTZ NOT NULL,
     ends_at TIMESTAMPTZ NOT NULL,
@@ -997,7 +1056,8 @@ CREATE TABLE subscription.cooperative_licenses (
     created_by UUID NOT NULL,
     updated_by UUID NOT NULL,
     CHECK (starts_at < ends_at),
-    CHECK (issued_seats >= 0 AND issued_seats <= seat_limit)
+    CHECK (issued_seats >= 0 AND issued_seats <= seat_limit),
+    CHECK (issued_area_ha >= 0 AND issued_area_ha <= contracted_area_ha)
 );
 
 CREATE TABLE subscription.invitation_batches (
@@ -1018,11 +1078,13 @@ CREATE TABLE subscription.invitation_codes (
     fingerprint VARCHAR(128) NOT NULL UNIQUE,
     quota_ha NUMERIC(18,6) NOT NULL CHECK (quota_ha >= 0.1),
     expires_at TIMESTAMPTZ NOT NULL,
-    status VARCHAR(16) NOT NULL CHECK (status IN ('AVAILABLE','REDEEMED')),
+    status VARCHAR(16) NOT NULL CHECK (status IN ('AVAILABLE','REDEEMED','EXPIRED')),
     redeemed_by UUID, -- logical producer reference
     redeemed_at TIMESTAMPTZ,
-    CHECK ((status = 'AVAILABLE' AND redeemed_by IS NULL AND redeemed_at IS NULL)
-        OR (status = 'REDEEMED' AND redeemed_by IS NOT NULL AND redeemed_at IS NOT NULL)),
+    expired_at TIMESTAMPTZ,
+    CHECK ((status = 'AVAILABLE' AND redeemed_by IS NULL AND redeemed_at IS NULL AND expired_at IS NULL)
+        OR (status = 'REDEEMED' AND redeemed_by IS NOT NULL AND redeemed_at IS NOT NULL AND expired_at IS NULL)
+        OR (status = 'EXPIRED' AND redeemed_by IS NULL AND redeemed_at IS NULL AND expired_at IS NOT NULL)),
     CHECK (redeemed_at IS NULL OR redeemed_at < expires_at)
 );
 
@@ -1115,6 +1177,8 @@ CREATE TABLE platform.producer_transaction_gates (
 CREATE INDEX idx_license_cooperative ON subscription.cooperative_licenses(cooperative_id, ends_at);
 CREATE INDEX idx_batch_license ON subscription.invitation_batches(license_id, issued_at);
 CREATE INDEX idx_code_batch_status ON subscription.invitation_codes(batch_id, status);
+-- Localiza codigos vigentes ya vencidos para el barrido de caducidad (EV52 / POL17).
+CREATE INDEX idx_code_pending_expiry ON subscription.invitation_codes(expires_at) WHERE status = 'AVAILABLE';
 CREATE UNIQUE INDEX uq_subscription_current ON subscription.subscriptions(producer_id)
     WHERE status IN ('PENDING_PAYMENT','ACTIVE');
 CREATE INDEX idx_subscription_owner_status ON subscription.subscriptions(producer_id, status);
