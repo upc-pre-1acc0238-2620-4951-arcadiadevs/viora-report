@@ -246,7 +246,7 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
   * `ThinningRecommendation` *(VO)*: Porcentaje prescrito de remoción frutal ($0\%$ a $40\%$).
   * `PhenologicalWindow` *(VO)*: Intervalo temporal de intervención con fecha límite biológica antes del endurecimiento del carozo.
   * `ExecutionConfirmation` *(Entidad Interna)*: Bitácora de aplicación en campo (fecha de labor, cuadrilla de jornales y porcentaje real aclareado).
-  * `PrescriptionStatus` *(VO)*: `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `CLOSED_BY_PIT_HARDENING`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`.
+  * `PrescriptionStatus` *(VO)*: `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `CLOSED_BY_PIT_HARDENING`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`, `VOIDED_BY_PLOT_REMOVAL`. El sexto estado se incorpora con la formalización de `POL16`: la baja de la parcela anula las prescripciones pendientes sobre ella.
 * **Invariantes Clave del Agregado:**
   1. No se puede calcular carga sostenible ni emitir prescripción formal si la ronda de muestreo posee menos de 5 árboles evaluados en el sector homogéneo.
   2. El porcentaje prescrito de aclareo nunca puede superar el $40\%$ de la fruta cuajada (límite de seguridad agronómica).

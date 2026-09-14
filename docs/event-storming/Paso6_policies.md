@@ -201,7 +201,7 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 * **US / BDD:** `US27` (Escenario 3)
 * **Regla Reactiva Formal:**
   * **WHENEVER:** `ThinningWindowClosedByPitHardening` (`EV43`)
-  * **IF:** `prescriptionStatus in ['PRESCRIBED', 'PENDING_EXECUTION']`
+  * **IF:** `prescriptionStatus in ['SAMPLING_IN_PROGRESS', 'PRESCRIBED']`
   * **THEN:** `ExpirePendingThinningPrescriptions` (marcar prescripción como expirada biológicamente).
 * **Lógica de Negocio Agronómica:** Una vez que el endocarpio se lignifica (endurecimiento del hueso, típicamente en diciembre), la semilla ya sintetizó giberelinas que inhiben la inducción floral del año siguiente. Aclarear después de esta fecha solo genera costos de mano de obra sin beneficio mitigador; la política cierra y anula las órdenes pendientes.
 
