@@ -634,4 +634,4 @@ erDiagram
   * `CREATE UNIQUE INDEX uq_daily_chill_date ON daily_chill_logs (tracker_id, log_date);` (Una sola entrada diaria de frío por tracker).
 * **Índices de Optimización de Búsqueda:**
   * B-tree sobre `(plot_id, campaign_year DESC)` en `historical_harvest_records` para recuperar ágilmente la serie cronológica requerida por el cálculo del $BBI$ (`TS22`, `TS23`).
-  * B-tree sobre `(tracker_id, log_date)` en `daily_chill_logs` para graficar el avance dinámico en el velocímetro de frío (`RM07` / `US22`).
+  * B-tree sobre `(tracker_id, log_date)` en `daily_chill_logs` para graficar el avance dinámico en el velocímetro de frío (`RM08` / `US22`).
