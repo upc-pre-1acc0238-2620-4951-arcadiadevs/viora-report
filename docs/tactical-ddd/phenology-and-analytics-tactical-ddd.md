@@ -29,14 +29,19 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `chillStatus: ChillFulfillmentStatus` (Value Object / Enum: `ACCUMULATING`, `REQUIREMENT_FULFILLED`, `THERMAL_ANOMALY_DEFICIT`)
   * `dailyChillLogs: List<DailyChillLog>` (Colección interna de bitácoras diarias de frío invernal)
   * `potentialFloralYieldFactor: FloralYieldFactor` (Value Object: factor multiplicador de inducción floral $[0.10, 1.00]$)
+  * `accumulatedGddPostAnthesis: Double` (Acumulación térmica en grados-día con $T_{base}=10^\circ\text{C}$ desde antesis)
+  * `pitHardeningReached: boolean` (Indicador del estadio BBCH 75 de endurecimiento del carozo)
+  * `pitHardeningDate: Optional<LocalDate>` (Fecha de consolidación de la lignificación del endocarpio)
   * `auditTrail: AuditTrail` (Value Object: metadatos de auditoría `createdAt`, `updatedAt`, `isDeleted`)
 * **Métodos:**
   * `registerHarvest(entry: HistoricalHarvestEntry): void` - Registra la cosecha en kg de una campaña pasada. Si se completan $\ge 3$ campañas consecutivas, calcula automáticamente el $BBI$, clasifica la alternancia y encola `HistoricalHarvestsLoggedEvent` y `BiennialBearingIndexAssessedEvent`. Si existen $< 3$ campañas, persiste la memoria y encola `HistoricalDataInsufficiencyDetectedEvent`.
   * `rectifyHarvest(year: CampaignYear, newYield: YieldKg): void` - Modifica el volumen de una cosecha previa por error de pesaje en almazara, recalcula de inmediato el $BBI$ interanual y encola `HistoricalHarvestRectifiedEvent`.
   * `deleteHarvest(year: CampaignYear): void` - Elimina un registro erróneo o duplicado, reevalúa la suficiencia de datos ($\ge 3$ años) y encola `HistoricalHarvestDeletedEvent`.
   * `processDailyTemperatures(date: LocalDate, hourlyTemps: List<Temperature>): void` - Procesa las 24 lecturas horarias de temperatura invernal (Mayo a Agosto), ejecuta la cinética bi-etápica de Erez acumulando porciones de frío netas (`EV31`), verifica si se alcanzó el requerimiento varietal de 25 a 30 porciones (`EV32`), evalúa si ocurrió ola de calor ($>24^\circ\text{C}$ por $>3$ días consecutivos, `EV33`) y reajusta la fertilidad floral potencial (`EV34`).
+  * `processPostAnthesisThermalTime(date: LocalDate, maxTemp: Temperature, minTemp: Temperature): void` - Procesa la integral térmica diaria post-floración calculando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$. Al alcanzar el umbral fisiológico de $680.0^\circ\text{C}\cdot\text{día}$ (BBCH 75), fija `pitHardeningReached = true`, sella `pitHardeningDate = date` y encola `PitHardeningStageReachedEvent` (`EV53`) para disparar `POL10` en *Crop Load Regulation*.
   * `getCalculatedBbi(): Optional<BiennialBearingIndex>`
   * `isColdRequirementSatisfied(): boolean`
+  * `isPitHardened(): boolean`
 * **Invariantes y Reglas de Negocio:**
   1. **Requisito Estadístico Mínimo de Vecería:** El cálculo formal del Índice de Vecería de Hoblyn et al. ($BBI$) exige estrictamente un mínimo de tres ($3$) campañas agrícolas consecutivas registradas en la memoria del cuartel. Con menos de tres campañas, el índice permanece indeterminado y se notifica insuficiencia de datos (`EV28`).
   2. **Unicidad de Año Agrícola en Historial:** No se permite registrar dos veces la cosecha de un mismo año agrícola (`campaignYear`) para una misma parcela.
@@ -44,6 +49,7 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   4. **Ventana de Reposo Invernal:** La simulación y acumulación del modelo dinámico de Erez se activa únicamente durante la ventana fisiológica de reposo en el hemisferio sur (1 de Mayo al 31 de Agosto). Fuera de esta ventana, el ciclo de frío permanece inactivo.
   5. **Termolabilidad de Intermediarios de Erez:** Si durante el invierno la temperatura diurna excede los $24.0^\circ\text{C}$ durante tres o más días consecutivos, los intermediarios térmicos inestables se desacumulan por desnaturalización, reduciendo la acumulación neta y disparando una advertencia por invierno cálido de El Niño (ENOS).
   6. **Umbral Varietal de Salida de Reposo:** Al acumularse entre $25.0$ y $30.0$ Porciones de Frío (UF) en la campaña, se transiciona obligatoriamente el estado a `REQUIREMENT_FULFILLED`, certificando el estímulo para una brotación uniforme.
+  7. **Cierre Biológico por Lignificación del Endocarpio:** Al acumularse $\ge 680.0^\circ\text{C}\cdot\text{día}$ de grados-día post-antesis ($T_{base} = 10^\circ\text{C}$), se declara completada la lignificación del carozo (estadio BBCH 75). Esta transición es irreversible en la campaña y sella la fecha fisiológica límite de aclareo emitiendo `EV53`.
 
 ###### HistoricalHarvestEntry (Entity Interna de ChillAccumulationTracker)
 * **Propósito:** Modela el rendimiento auditado y asentado de una campaña agrícola específica en la memoria productiva del cuartel.
@@ -135,6 +141,8 @@ Eventos inmutables en tiempo pasado que comunican hechos significativos del cicl
   * *Disparado cuando:* Se registran $>24^\circ\text{C}$ durante $>3$ días en invierno, destruyendo intermediarios de frío (efecto ENOS).
 * **`PotentialFloralYieldReadjustedEvent`**: `{ plotId: UUID, campaignYear: Integer, previousFactor: Double, revisedFactor: Double, reductionReason: String, occurredOn: Instant }` (EV34)
   * *Disparado cuando:* Se castiga la expectativa de floración y carga frutal potencial ante un déficit térmico invernal.
+* **`PitHardeningStageReachedEvent`**: `{ plotId: UUID, campaignYear: Integer, pitHardeningDate: LocalDate, accumulatedGdd: Double, occurredOn: Instant }` (EV53)
+  * *Disparado cuando:* La integral térmica post-antesis alcanza los $680.0^\circ\text{C}\cdot\text{día}$ ($T_{base}=10^\circ\text{C}$), confirmando el endurecimiento del endocarpio (estadio BBCH 75) y activando `POL10` en *Crop Load Regulation* para el cierre biológico irrevocable de prescripciones pendientes.
 
 ---
 
@@ -457,13 +465,18 @@ classDiagram
         -ChillFulfillmentStatus chillStatus
         -List~DailyChillLog~ dailyChillLogs
         -FloralYieldFactor potentialFloralYieldFactor
+        -Double accumulatedGddPostAnthesis
+        -Boolean pitHardeningReached
+        -LocalDate pitHardeningDate
         -AuditTrail auditTrail
         +registerHarvest(entry) void
         +rectifyHarvest(year, newYield) void
         +deleteHarvest(year) void
         +processDailyTemperatures(date, hourlyTemps) void
+        +processPostAnthesisThermalTime(date, maxTemp, minTemp) void
         +getCalculatedBbi() Optional~BiennialBearingIndex~
         +isColdRequirementSatisfied() boolean
+        +isPitHardened() boolean
     }
 
     class HistoricalHarvestEntry {
