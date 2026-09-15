@@ -27,22 +27,25 @@ Es el único contexto del sistema que emite un acto prescriptivo. No posee la pa
 **Métodos:**
 
 - `recordTreeSampling(record: TreeSamplingRecord): void`: incorpora un árbol evaluado a la ronda activa; rechaza conteos no positivos y relaciones fruto/brote fuera de rango agronómico admisible.
-- `ingestSamplingsBatch(records: List<TreeSamplingRecord>, evaluator: SamplingRepresentativenessEvaluator): void`: integra un lote sincronizado desde campo y delega en el servicio de dominio la certificación de representatividad de la ronda.
-- `determineSustainableCropLoad(inputs: CropLoadInputs, calculator: SustainableCropLoadCalculator, sentinel: ThinningWindowSentinel): void`: exige ronda representativa y estado `SAMPLING_IN_PROGRESS`; sella en `observedPlotRevision` la revisión predial recibida y en `usedBbi`/`usedFloralYieldFactor` la base del cálculo; calcula carga admisible, deriva la recomendación de remoción y fija la ventana fenológica delegando en el sentinel. Recibe ambos servicios como argumento porque el agregado no retiene referencias a servicios de dominio.
+- `ingestSamplingsBatch(records: List<TreeSamplingRecord>, evaluator: SamplingRepresentativenessEvaluator): void`: integra un lote sincronizado desde campo y delega en el evaluador la certificación de la ronda individual (`evaluator.evaluateRound`) y de la evidencia acumulada (`evaluator.evaluateCumulative`).
+- `getCumulativeEvaluatedTrees(): int`: suma los árboles evaluados en todas las rondas de la prescripción.
+- `hasSufficientCumulativeSampling(): boolean`: consulta inmutable que certifica si `getCumulativeEvaluatedTrees() >= 5`.
+- `determineSustainableCropLoad(inputs: CropLoadInputs, calculator: SustainableCropLoadCalculator, sentinel: ThinningWindowSentinel): void`: exige representatividad estadística acumulada ($\ge 5$ árboles en la prescripción) y estado `SAMPLING_IN_PROGRESS`. Valida internamente la cota mínima de árboles como invariante dura del agregado (P7) mediante `getCumulativeEvaluatedTrees() >= 5`, admitiendo evidencia acumulada entre rondas sucesivas de salidas a campo distintas (P8); sella en `observedPlotRevision` la revisión predial recibida y en `usedBbi`/`usedFloralYieldFactor` la base del cálculo; calcula carga admisible, deriva la recomendación de remoción y fija la ventana fenológica delegando en el sentinel. Recibe ambos servicios como argumento porque el agregado no retiene referencias a servicios de dominio.
 - `closeWindowByPitHardening(at: LocalDate): void`: transición irrevocable a `CLOSED_BY_PIT_HARDENING`; no admite reapertura ni ejecución posterior con efecto mitigador.
 - `confirmExecution(confirmation: ExecutionConfirmation, sentinel: ThinningWindowSentinel): void`: registra la labor efectivamente realizada. **La oportunidad la deriva el propio agregado** invocando `sentinel.classifyExecution(window, executionDate)`: nunca la recibe ya calculada, porque de lo contrario la invariante 4 se evaluaría fuera de su límite transaccional. Calcula además la carga remanente y la sella en la constancia.
-- `voidByPlotRemoval(at: Instant): void`: anula una prescripción cuya parcela dejó de estar activa. Aplica únicamente sobre `SAMPLING_IN_PROGRESS` y `PRESCRIBED`; sobre cualquier otro estado es una operación nula. No publica evento propio, por la razón expuesta al final de la tabla de eventos.
+- `supersedeByBoundaryUpdate(newRevision: long, at: Instant): void`: marca la prescripción como `SUPERSEDED_BY_BOUNDARY_UPDATE` ante una actualización de linderos prediales (`EV16`). Aplica únicamente sobre prescripciones en estado `PRESCRIBED` que aún no han confirmado ejecución. Libera la ranura en el índice parcial de campaña y permite emitir una nueva prescripción recalculada con la geometría actualizada, preservando intacto el historial auditable de la recomendación anterior.
+- `voidByPlotRemoval(at: Instant): void`: anula una prescripción cuya parcela dejó de estar activa. Aplica sobre `SAMPLING_IN_PROGRESS`, `PRESCRIBED` y `SUPERSEDED_BY_BOUNDARY_UPDATE`; sobre cualquier otro estado es una operación nula. No publica evento propio, por la razón expuesta al final de la tabla de eventos.
 - `isPending(): boolean`, `snapshot(): PrescriptionSnapshot`: consulta inmutable.
 
 **Invariantes y reglas de negocio:**
 
-1. No se calcula carga sostenible ni se emite prescripción formal si la ronda de muestreo reúne menos de cinco árboles evaluados en el sector homogéneo. La representatividad estadística es condición previa, no una advertencia posterior.
+1. No se calcula carga sostenible ni se emite prescripción formal si la evidencia muestral acumulada reúne menos de cinco árboles evaluados en el sector homogéneo ($\text{totalTrees} < 5$). El agregado valida directamente esta cota como invariante dura de dominio antes de invocar cualquier cálculo, garantizando que ninguna llamada externa pueda relajar este umbral (P7). Múltiples salidas de campo registradas en rondas sucesivas suman sus árboles evaluados (`totalEvaluatedTrees = sum(round.evaluatedTrees)`) para alcanzar la representatividad sin descartar evidencia previa (P8).
 2. El porcentaje prescrito de remoción nunca supera el cuarenta por ciento de la fruta cuajada. Es un límite de seguridad agronómica, no un parámetro configurable.
 3. Detectado el endurecimiento definitivo del endocarpio, la prescripción transiciona de forma irrevocable a `CLOSED_BY_PIT_HARDENING`. A partir de ese punto el aclareo ya no induce retorno floral y el sistema deja de recomendarlo.
 4. Una labor confirmada después de la fecha de cierre fenológico se marca `EXECUTED_LATE` y conlleva penalización de la eficiencia mitigadora atribuida a la campaña.
-5. *(Derivada, no proviene de `Paso9_aggregates.md`.)* Una parcela sostiene como máximo una prescripción en curso por año agrícola. Una segunda ronda de muestreo sobre la misma campaña amplía la evidencia de la prescripción existente; no origina una paralela.
-6. *(Derivada, no proviene de `Paso9_aggregates.md`.)* La prescripción conserva la revisión predial con la que fue calculada. Una revisión posterior de la parcela no altera retroactivamente una recomendación ya emitida, pero sí invalida su vigencia para nuevos cálculos.
-> **Lo que no es invariante de este agregado.** La regla «la baja de la parcela anula toda prescripción pendiente sobre ella» **no figura aquí**, pese a gobernar el estado de este agregado. Abarca dos agregados alojados en bounded contexts distintos, y las invariantes se sostienen dentro de un único límite transaccional, de modo que se resuelve por consistencia eventual y compensación. Está formalizada como `POL16` en `Paso6_policies.md` y desarrollada en la decisión de contrato 2. Su alcance: los estados `SAMPLING_IN_PROGRESS` y `PRESCRIBED`; no alcanza a una prescripción ya ejecutada ni a una cerrada por fenología, porque ambas son hechos consumados que la liquidación de campaña necesita conservar. La anulación no destruye la evidencia muestral recogida.
+5. *(Derivada, no proviene de `Paso9_aggregates.md`.)* Una parcela sostiene como máximo una prescripción **activa** por año agrícola. Si una prescripción en estado `PRESCRIBED` es superada por actualización predial (`SUPERSEDED_BY_BOUNDARY_UPDATE`) o anulada por baja (`VOIDED_BY_PLOT_REMOVAL`), se libera la emisión de una nueva prescripción actualizada para la campaña.
+6. *(Derivada, no proviene de `Paso9_aggregates.md`.)* La prescripción conserva la revisión predial con la que fue calculada. Una revisión posterior de la parcela invalida la recomendación activa mediante `supersedeByBoundaryUpdate`, habilitando la re-prescripción formal con la nueva geometría predial.
+> **Lo que no es invariante de este agregado.** La regla «la baja de la parcela anula toda prescripción pendiente sobre ella» **no figura aquí**, pese a gobernar el estado de este agregado. Abarca dos agregados alojados en bounded contexts distintos, y las invariantes se sostienen dentro de un único límite transaccional, de modo que se resuelve por consistencia eventual y compensación. Está formalizada como `POL16` en `Paso6_policies.md` y desarrollada en la decisión de contrato 2. Su alcance: los estados `SAMPLING_IN_PROGRESS`, `PRESCRIBED` y `SUPERSEDED_BY_BOUNDARY_UPDATE`; no alcanza a una prescripción ya ejecutada ni a una cerrada por fenología, porque ambas son hechos consumados que la liquidación de campaña necesita conservar. La anulación no destruye la evidencia muestral recogida.
 
 ###### TreeSamplingRecord (Entity Interna de FruitThinningPrescription)
 
@@ -92,7 +95,7 @@ Es el único contexto del sistema que emite un acto prescriptivo. No posee la pa
 | `ExecutionTimeliness` | enum | `OPTIMAL`, `LATE`. Derivado, nunca declarado por el actor. |
 | `CropLoadUnit` | enum | `FRUITS_PER_TREE`, `FRUITS_PER_CANOPY_METER`. |
 | `OverloadSeverity` | enum | `MODERATE`, `HIGH`, `CRITICAL`. Viaja en `EV40` y `Cooperative Operations` la traduce a su propio semáforo sectorial; los dos vocabularios se mantienen separados a propósito. |
-| `PrescriptionStatus` | enum | `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `CLOSED_BY_PIT_HARDENING`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`, `VOIDED_BY_PLOT_REMOVAL`. Los seis figuran en el enum de `AGG08` en `Paso9_aggregates.md`; el sexto se incorporó allí al formalizarse `POL16`. |
+| `PrescriptionStatus` | enum | `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `CLOSED_BY_PIT_HARDENING`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`, `VOIDED_BY_PLOT_REMOVAL`, `SUPERSEDED_BY_BOUNDARY_UPDATE`. Los primeros seis figuran en `Paso9_aggregates.md`; el séptimo formaliza la invalidación no destructiva de una recomendación ante la actualización de linderos prediales (`EV16`), liberando la emisión de una nueva prescripción para la campaña. |
 | `AuditTrail` | `createdAt: Instant`, `updatedAt: Instant`, `createdBy: UUID`, `updatedBy: UUID` | Trazabilidad de autoría coherente con el resto de contextos. Dos actores distintos, porque quien abre una prescripción muestreando no es necesariamente quien confirma su ejecución. |
 
 `CropLoadInputs` agrupa las entradas externas que alimentan el cálculo y no constituye estado del agregado:
@@ -113,7 +116,9 @@ Esto convierte la ausencia de BBI en el caso de adopción, no en un caso borde: 
 
 ##### Domain Services
 
-- **`SamplingRepresentativenessEvaluator`**: servicio sin estado que evalúa si una ronda alcanza validez estadística. `evaluate(round: SamplingRound): SamplingRepresentativeness`. Aísla el umbral de cinco árboles y su eventual ajuste por heterogeneidad del sector, de modo que el agregado no codifique el criterio muestral.
+- **`SamplingRepresentativenessEvaluator`**: servicio sin estado que evalúa si una ronda individual o un conjunto de rondas acumuladas alcanza validez estadística según la heterogeneidad del sector.
+  - `evaluateRound(round: SamplingRound): SamplingRepresentativeness`: evalúa si una salida individual a campo alcanzó el umbral local (por defecto $\ge 5$ árboles).
+  - `evaluateCumulative(rounds: List<SamplingRound>): SamplingRepresentativeness`: certifica si la evidencia acumulada a través de múltiples salidas a campo alcanza el umbral de representatividad global (P8). Aísla el cálculo muestral de heterogeneidad predial para asistir al agregado, sin menoscabar la guarda interna del agregado que fija la cota mínima física de 5 árboles (P7).
 
 - **`SustainableCropLoadCalculator`**: servicio sin estado que encapsula el motor agronómico propietario. `calculate(inputs: CropLoadInputs): SustainableCropLoad`. Combina la densidad frutal muestreada, el vigor derivado del diámetro de tronco, la acumulación de frío cumplida, el factor de fertilidad floral vigente y, cuando está disponible, el Índice de Vecería Bienal histórico. Es el núcleo de valor del contexto y la razón de su clasificación como núcleo primario.
 
@@ -126,7 +131,8 @@ Esto convierte la ausencia de BBI en el caso de adopción, no en un caso borde: 
 **`FruitThinningPrescriptionRepository`**:
 
 - `findById(id: PrescriptionId): Optional<FruitThinningPrescription>`.
-- `findByPlotAndCampaign(plotId: PlotId, campaignYear: CampaignYear): Optional<FruitThinningPrescription>`: recupera la prescripción de esa parcela y campaña **cualquiera sea su estado**, incluidos los terminales. Sostiene la invariante 5. Buscar solo entre los estados pendientes dejaría la ranura libre tras un cierre por lignificación y permitiría abrir una prescripción paralela en la misma campaña, eludiendo la irrevocabilidad de la invariante 3.
+- `findByPlotAndCampaign(plotId: PlotId, campaignYear: CampaignYear): Optional<FruitThinningPrescription>`: recupera la prescripción de esa parcela y campaña **cualquiera sea su estado**, incluidos los terminales o superados, apoyándose en el índice de cobertura total `idx_prescription_plot_campaign` para adquirir bloqueo pesimista a nivel de fila (`SELECT ... FOR UPDATE`) durante operaciones de escritura.
+- `findActiveByPlotAndCampaign(plotId: PlotId, campaignYear: CampaignYear): Optional<FruitThinningPrescription>`: recupera la prescripción activa vigente (no anulada ni superada) para la campaña, apoyándose en el índice único parcial `uq_active_prescription_per_plot_campaign`. Garantiza la exclusividad operativa de la campaña.
 - `findPendingByPlot(plotId: PlotId): List<FruitThinningPrescription>`: prescripciones en estado `SAMPLING_IN_PROGRESS` o `PRESCRIBED`, con independencia de si su ventana sigue abierta. Es la búsqueda que consumen tanto el cierre por lignificación (`POL10`, que actúa justamente cuando la ventana acaba de cerrarse) como la anulación por baja predial (`POL16`, que alcanza también el muestreo en curso). Se apoya en el índice parcial `idx_prescription_pending`.
 - `save(prescription: FruitThinningPrescription): FruitThinningPrescription`: persiste el agregado completo con sus rondas y su constancia de ejecución.
 
@@ -273,8 +279,9 @@ Cada manejador implementa `handle(command): Result`. Las fachadas `CropLoadComma
 - **`OnColdRequirementFulfilledEventHandler`** (EV32), atributo `phenologyProjection`: `handle(ColdRequirementFulfilled): void`. Registra la salida del reposo invernal y habilita la ronda de muestreo de la campaña.
 - **`OnPotentialFloralYieldReadjustedEventHandler`** (EV34), atributo `phenologyProjection`: `handle(PotentialFloralYieldReadjusted): void`. Actualiza el factor de fertilidad floral vigente.
 - **`OnBiennialBearingIndexAssessedEventHandler`** (EV27), atributo `bearingIndexProjection`: `handle(BiennialBearingIndexAssessed): void`. Mantiene el último índice conocido **por parcela**, en una proyección distinta de la de señales fenológicas porque su clave no incluye la campaña. No redefine `BiennialBearingIndex`, que pertenece a Phenology.
-- **`OnPlotDelimitedEventHandler`** y **`OnPlotBoundariesUpdatedEventHandler`** (EV15, EV16), atributo `plotProjection`: mantienen variedad, marco de plantación, densidad y revisión vigente. Una revisión nueva no altera una prescripción ya emitida, pero invalida la vigencia de la parcela para cálculos posteriores.
-- **`OnPlotRemovedEventHandler`** (POL16 / EV17), atributos `plotProjection`, `voidHandler`: invalida la proyección predial y despacha la anulación de las prescripciones pendientes. Es la compensación que sustituye a la consulta síncrona de elegibilidad de baja.
+- **`OnPlotDelimitedEventHandler`** (EV15), atributo `plotProjection`: Inicializa la proyección predial con variedad, marco de plantación, densidad y revisión inicial.
+- **`OnPlotBoundariesUpdatedEventHandler`** (EV16), atributos `plotProjection`, `prescriptions`: Actualiza la proyección predial con la nueva geometría y revisión. Si existe una prescripción en estado `PRESCRIBED` sobre la parcela, invoca `supersedeByBoundaryUpdate(event.newRevision, event.occurredOn)` sobre ella, transicionándola a `SUPERSEDED_BY_BOUNDARY_UPDATE`. Esto preserva el expediente técnico anterior como hecho auditable y libera la ranura en el índice parcial `uq_active_prescription_per_plot_campaign`, permitiendo que el productor solicite un nuevo cálculo (`CMD26`) adaptado a los nuevos linderos.
+- **`OnPlotRemovedEventHandler`** (POL16 / EV17), atributos `plotProjection`, `voidHandler`: Invalida la proyección predial y despacha la anulación de las prescripciones pendientes. Es la compensación que sustituye a la consulta síncrona de elegibilidad de baja.
 
 `POL11`, `POL13` y `POL15` **no se implementan aquí**: este contexto es su emisor. Publica `EV45`, `EV40` y `EV37` respectivamente, y son `Phenology and Historical Bearing Analytics` y `Cooperative Operations and Territorial Intelligence` quienes reaccionan en su propio límite transaccional.
 
@@ -320,7 +327,8 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
       observed_plot_revision BIGINT,            -- se sella al determinar carga, no al abrir la prescripcion
       status VARCHAR(32) NOT NULL CHECK (status IN (
           'SAMPLING_IN_PROGRESS','PRESCRIBED','CLOSED_BY_PIT_HARDENING',
-          'EXECUTED_OPTIMAL','EXECUTED_LATE','VOIDED_BY_PLOT_REMOVAL')),
+          'EXECUTED_OPTIMAL','EXECUTED_LATE','VOIDED_BY_PLOT_REMOVAL',
+          'SUPERSEDED_BY_BOUNDARY_UPDATE')),
       sustainable_load NUMERIC(12,4),
       load_unit VARCHAR(28) CHECK (load_unit IN ('FRUITS_PER_TREE','FRUITS_PER_CANOPY_METER')),
       removal_percentage NUMERIC(5,2) CHECK (removal_percentage BETWEEN 0.00 AND 40.00),  -- prescrito
@@ -335,10 +343,10 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
       created_by UUID NOT NULL,
       updated_by UUID NOT NULL,
       CHECK (window_opens_on IS NULL OR window_closes_on IS NULL OR window_opens_on < window_closes_on),
-      -- Toda prescripción que completó la determinación ('PRESCRIBED','EXECUTED_OPTIMAL','EXECUTED_LATE')
+      -- Toda prescripción que completó la determinación ('PRESCRIBED','EXECUTED_OPTIMAL','EXECUTED_LATE','SUPERSEDED_BY_BOUNDARY_UPDATE')
       -- conserva obligatoriamente carga sostenible, remoción y revisión predial sellada.
       -- Si se cierra por lignificación (POL10) durante el muestreo, o se anula por baja (POL16), estos campos son legítimamente nulos.
-      CHECK (status NOT IN ('PRESCRIBED', 'EXECUTED_OPTIMAL', 'EXECUTED_LATE')
+      CHECK (status NOT IN ('PRESCRIBED', 'EXECUTED_OPTIMAL', 'EXECUTED_LATE', 'SUPERSEDED_BY_BOUNDARY_UPDATE')
              OR (sustainable_load IS NOT NULL AND removal_percentage IS NOT NULL
                  AND observed_plot_revision IS NOT NULL))
   );
@@ -423,16 +431,23 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
   ```
   `biennial_bearing_index` nulo significa que **el índice es indeterminado** por falta de historial: Phenology no puede emitirlo con menos de tres campañas registradas, así que la ausencia es estructural y el cálculo prosigue legítimamente sin esa señal. `valid_campaigns_count` deja constancia de cuántas campañas lo sostienen.
 
-  `floral_yield_factor` nulo es **distinto y más delicado**: en una proyección alimentada por eventos, un nulo no puede afirmar que la anomalía térmica no ocurrió, porque es indistinguible de que `EV34` todavía no llegó. El documento no resuelve esa ambigüedad; queda registrada en la nota de pendientes del cierre.
+  `floral_yield_factor` nulo queda formalmente resuelto mediante la barrera de sincronización de `chill_fulfilled` (`EV32`): como la acumulación de frío invernal es una precondición obligatoria de la determinación de carga (alcanzada al 31 de agosto o al completar las porciones de frío), si al momento de evaluar la prescripción `chill_fulfilled = true` y `floral_yield_factor IS NULL`, se certifica positivamente que no se detectó anomalía térmica invernal y se adopta el factor neutro $1.00$ (P9). Si `EV34` arriba con posterioridad pero antes de la ejecución, habilita el reajuste formal de la recomendación.
 
 * **Índices y restricciones físicas**
   ```sql
-  -- Sostiene la invariante 5: UNA prescripcion por parcela y campaña, cualquiera sea su estado.
-  -- Un indice parcial sobre los estados pendientes liberaria la ranura tras el cierre por
-  -- lignificacion y permitiria abrir una prescripcion paralela, eludiendo la invariante 3.
-  CREATE UNIQUE INDEX uq_prescription_per_plot_campaign
-      ON crop_load.thinning_prescriptions (plot_id, campaign_year);
+  -- Sostiene la invariante 5: como maximo UNA prescripcion ACTIVA por parcela y campaña.
+  -- Excluye VOIDED_BY_PLOT_REMOVAL y SUPERSEDED_BY_BOUNDARY_UPDATE para permitir
+  -- la re-prescripcion tras actualizacion de linderos (EV16) o reapertura, manteniendo intacta
+  -- la trazabilidad inmutable de las prescripciones previas. Los estados terminales de labor
+  -- (CLOSED_BY_PIT_HARDENING, EXECUTED_OPTIMAL, EXECUTED_LATE) SI permanecen en el indice,
+  -- impidiendo abrir prescripciones paralelas tras la ventana de aclareo (Invariante 3).
+  CREATE UNIQUE INDEX uq_active_prescription_per_plot_campaign
+      ON crop_load.thinning_prescriptions (plot_id, campaign_year)
+      WHERE status NOT IN ('VOIDED_BY_PLOT_REMOVAL', 'SUPERSEDED_BY_BOUNDARY_UPDATE');
 
+  -- Indice de cobertura total: permite a findByPlotAndCampaign y al historial agronomico
+  -- recuperar prescripciones en cualquier estado (incluidas anuladas o superadas) y
+  -- adquirir bloqueo pesimista a nivel de fila (SELECT ... FOR UPDATE).
   CREATE INDEX idx_prescription_plot_campaign
       ON crop_load.thinning_prescriptions (plot_id, campaign_year DESC);
 
@@ -448,15 +463,16 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
       ON crop_load.sampling_rounds (prescription_id)
       WHERE completed_at IS NULL;
   ```
-  Ese índice único es la garantía física de la invariante 5. Sin él, dos solicitudes concurrentes de registro muestral sobre una parcela sin prescripción abierta crearían dos prescripciones paralelas para la misma campaña, y la evidencia muestral quedaría partida entre ambas.
+  El índice único parcial `uq_active_prescription_per_plot_campaign` es la garantía física de la invariante 5. Sin él, dos solicitudes concurrentes de registro muestral sobre una parcela sin prescripción abierta crearían dos prescripciones paralelas para la misma campaña, y la evidencia muestral quedaría partida entre ambas. Al ser parcial, permite re-prescribir limpiamente si una prescripción previa fue superada por actualización predial (`SUPERSEDED_BY_BOUNDARY_UPDATE`).
 
 ##### 3. Repositories – Implementación
 
 **`PostgresFruitThinningPrescriptionRepository`**:
 
 - Reconstruye el agregado completo en una sola carga, con sus rondas, registros y constancia. Las entidades internas no se consultan por separado, porque fuera de la raíz no tienen sentido de negocio.
-- `findByPlotAndCampaign` se apoya en el índice único `uq_prescription_per_plot_campaign` y adquiere bloqueo pesimista cuando la invoca un manejador de escritura.
-- Ausencia deliberada de `delete()`: una prescripción anulada transiciona a `VOIDED_BY_PLOT_REMOVAL` y conserva su evidencia muestral. El historial agronómico plurianual es insumo de la evaluación de eficacia mitigadora.
+- `findByPlotAndCampaign` se apoya en el índice de cobertura total `idx_prescription_plot_campaign` para recuperar la entidad en cualquier estado (incluso superada o anulada) y adquiere bloqueo pesimista a nivel de fila (`SELECT ... FOR UPDATE`) cuando la invoca un manejador de escritura. La restricción de unicidad activa a nivel de base de datos la salvaguarda el índice único parcial `uq_active_prescription_per_plot_campaign`.
+- `findActiveByPlotAndCampaign` utiliza directamente el índice único parcial `uq_active_prescription_per_plot_campaign` para resolver de forma óptima la prescripción activa de la campaña en curso.
+- Ausencia deliberada de `delete()`: una prescripción anulada o superada transiciona a `VOIDED_BY_PLOT_REMOVAL` o `SUPERSEDED_BY_BOUNDARY_UPDATE` y conserva su evidencia muestral. El historial agronómico plurianual es insumo de la evaluación de eficacia mitigadora.
 
 ##### 4. Seguridad & Resiliencia
 
@@ -616,7 +632,10 @@ classDiagram
         +determineSustainableCropLoad(inputs, calculator, sentinel) void
         +closeWindowByPitHardening(at) void
         +confirmExecution(confirmation, sentinel) void
+        +supersedeByBoundaryUpdate(newRevision, at) void
         +voidByPlotRemoval(at) void
+        +getCumulativeEvaluatedTrees() int
+        +hasSufficientCumulativeSampling() boolean
         +isPending() boolean
         +snapshot() PrescriptionSnapshot
     }
@@ -684,7 +703,8 @@ classDiagram
 
     class SamplingRepresentativenessEvaluator {
         <<DomainService>>
-        +evaluate(round) SamplingRepresentativeness
+        +evaluateRound(round) SamplingRepresentativeness
+        +evaluateCumulative(rounds) SamplingRepresentativeness
     }
 
     class ThinningWindowSentinel {
@@ -697,6 +717,7 @@ classDiagram
         <<interface>>
         +findById(id) Optional~FruitThinningPrescription~
         +findByPlotAndCampaign(plotId, campaignYear) Optional~FruitThinningPrescription~
+        +findActiveByPlotAndCampaign(plotId, campaignYear) Optional~FruitThinningPrescription~
         +findPendingByPlot(plotId) List~FruitThinningPrescription~
         +save(prescription) FruitThinningPrescription
     }
@@ -727,7 +748,7 @@ classDiagram
 
 ##### 1. Tablas y Estructura de Claves
 
-* **Tabla raíz `thinning_prescriptions`:** clave primaria `id`; índice único **total** sobre `(plot_id, campaign_year)`.
+* **Tabla raíz `thinning_prescriptions`:** clave primaria `id`; índice único **parcial** `uq_active_prescription_per_plot_campaign` sobre `(plot_id, campaign_year) WHERE status NOT IN ('VOIDED_BY_PLOT_REMOVAL', 'SUPERSEDED_BY_BOUNDARY_UPDATE')`, e índice de cobertura total `idx_prescription_plot_campaign` sobre `(plot_id, campaign_year DESC)`.
 * **Tabla subordinada `sampling_rounds`:** clave foránea `prescription_id` con `ON DELETE CASCADE`.
 * **Tabla subordinada `tree_sampling_records`:** clave foránea `round_id` con `ON DELETE CASCADE`; restricción única `(round_id, tree_tag)`.
 * **Tabla subordinada `execution_confirmations`:** clave foránea `prescription_id`, declarada `UNIQUE`.
@@ -832,18 +853,18 @@ erDiagram
   * Representatividad derivada: `is_representative = (evaluated_trees >= required_trees)`, que materializa la invariante 1.
   * Conteos muestrales estrictamente positivos y diámetro de tronco positivo.
   * Coherencia de ventana: `window_opens_on < window_closes_on`.
-  * Completitud tras la determinación: todo estado distinto de `SAMPLING_IN_PROGRESS` y `VOIDED_BY_PLOT_REMOVAL` exige carga admisible, porcentaje de remoción y revisión predial sellada no nulos.
+  * Completitud tras la determinación: todo estado que represente una prescripción formalmente emitida (`PRESCRIBED`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`, `SUPERSEDED_BY_BOUNDARY_UPDATE`) exige carga admisible, porcentaje de remoción y revisión predial sellada no nulos. Los estados previos a la determinación (`SAMPLING_IN_PROGRESS`), cerrados antes de prescribir (`CLOSED_BY_PIT_HARDENING`) o anulados por baja predial (`VOIDED_BY_PLOT_REMOVAL`) mantienen válidamente estos campos como nulos sin violar la integridad física.
 * **Índices únicos:**
-  * `uq_prescription_per_plot_campaign` sobre `(plot_id, campaign_year)`, que materializa la invariante 5 para **todos** los estados.
+  * `uq_active_prescription_per_plot_campaign` sobre `(plot_id, campaign_year) WHERE status NOT IN ('VOIDED_BY_PLOT_REMOVAL', 'SUPERSEDED_BY_BOUNDARY_UPDATE')`, que materializa la invariante 5 asegurando una única prescripción activa operable y habilitando la re-prescripción tras actualización de linderos (`EV16`).
   * `uq_active_round_per_prescription` sobre `(prescription_id) WHERE completed_at IS NULL`, que impide dos rondas abiertas a la vez y con ello que dos ingestas concurrentes partan la evidencia.
   * `uq_tree_tag_per_round` sobre `(round_id, tree_tag)`, que impide duplicar árboles al sincronizar lotes de campo.
   * `prescription_id` único en `execution_confirmations`.
 * **Índices de optimización:**
-  * `idx_prescription_plot_campaign` sobre `(plot_id, campaign_year DESC)` para el historial plurianual por parcela.
+  * `idx_prescription_plot_campaign` sobre `(plot_id, campaign_year DESC)` para el historial plurianual por parcela y soporte de bloqueo pesimista (`SELECT ... FOR UPDATE`).
   * `idx_prescription_pending`, índice parcial sobre `plot_id` restringido a `SAMPLING_IN_PROGRESS` y `PRESCRIBED`, que es el que consume `findPendingByPlot` para resolver `POL10` y `POL16` sin recorrer el histórico.
   * `idx_round_prescription` sobre `(prescription_id, opened_at DESC)` para recuperar la ronda activa de una prescripción.
 
-Las tres invariantes que el motor puede sostener por sí mismo —límite de remoción, representatividad y unicidad de prescripción en curso— están expresadas como restricciones físicas. No sustituyen la validación del dominio, la respaldan: una ruta de escritura que eludiera el agregado seguiría sin poder violarlas.
+Las tres invariantes que el motor puede sostener por sí mismo —límite de remoción, representatividad y unicidad de prescripción activa en curso— están expresadas como restricciones físicas. No sustituyen la validación del dominio, la respaldan: una ruta de escritura que eludiera el agregado seguiría sin poder violarlas.
 
 
 ---
@@ -854,32 +875,61 @@ Las doce cuestiones del modelo compartido y las seis preguntas del ciclo de vida
 
 | # | Cuestión | Resolución Aplicada y Estado |
 |---|---|---|
-| ~~P1~~ | **Lignificación del carozo (BBCH 75).** | **Cerrado.** Formalizado como `EV53: PitHardeningStageReachedEvent`, emitido por *Phenology* tras acumular $680.0^\circ\text{C}\cdot\text{día}$ post-antesis ($T_{base}=10^\circ\text{C}$). *Crop Load Regulation* lo consume en `OnPitHardeningStageReachedEventHandler` (`POL10`), despachando `CMD27` para cerrar la ventana irrevocable (Invariante 3). |
+| ~~P1~~ | **Lignificación del carozo (BBCH 75).** | **Cerrado.** Formalizado como `EV53: PitHardeningStageReachedEvent`, emitido por *Phenology* tras acumular $680.0^\circ\text{C}\cdot\text{día}$ post-antesis ($T_{base}=10^\circ\text{C}$). *Crop Load Regulation* lo consume en `OnPitHardeningStageReachedEventHandler` (`POL10`), despachando `CMD27` para cerrar la ventana de manera irrevocable (Invariante 3). |
 | ~~P2~~ | **Doble autoridad sobre `POL08`.** | **Cerrado.** Se adopta la lectura de `Paso1`: *Phenology* es la autoridad que detecta la anomalía térmica y emite `PotentialFloralYieldReadjusted` (`EV34`). *Crop Load* consume `EV34` de forma reactiva en su proyección local y alimenta el cálculo de carga. |
 | ~~P3~~ | **Invariante 4 de `AGG04: Plot` vs baja de parcelas.** | **Cerrado.** Se confirma la inversión de dependencia: `Olive Orchard` emite `PlotRemoved` (`EV17`) sin consultar síncronamente. *Crop Load* compensa asíncronamente mediante `POL16`, transicionando las prescripciones pendientes a `VOIDED_BY_PLOT_REMOVAL`. |
 | ~~P4~~ | **Consumo de `EV44` en `Harvest Settlement`.** | **Cerrado.** Formalizada la política de enlace: *Harvest Settlement* escucha `ThinningExecutionConfirmed` (`EV44`) para registrar la fecha y remoción ejecutada en el expediente agronómico de fin de campaña. |
 | ~~P5~~ | **Criterio de ejecución tardía (`LATE`).** | **Cerrado.** La fecha `window_closes_on` se sincroniza con la predicción de lignificación ($680.0^\circ\text{C}\cdot\text{día}$). Si la labor se ejecuta hasta esa fecha es `OPTIMAL` (`EV44`); si se ejecuta con posterioridad es `LATE` (`EV45` y penalización de vecería vía `POL11`). |
 | ~~P6~~ | **Payload de `EV37` hacia Cooperativa.** | **Cerrado.** `SamplingRoundCompleted` (`EV37`) incorpora `meanFruitsPerShoot` y `fruitsPerCanopyMeter`, permitiendo a *Cooperative Operations* proyectar volúmenes sectoriales de acopio. |
-| ~~P7/P8~~ | **Representatividad muestral acumulativa.** | **Cerrado.** La validez estadística ($\ge 5$ árboles) se evalúa sobre la evidencia acumulada de la prescripción de la campaña. Rondas sucesivas en salidas de campo distintas suman árboles sin descartar datos previos. |
-| ~~P9~~ | **Semántica de `floral_yield_factor` nulo.** | **Cerrado.** Un valor nulo en la proyección indica que la campaña no ha sufrido anomalía térmica invernal, asumiéndose factor neutro $1.00$. Si `EV34` llega previo a la ejecución, habilita el reajuste. |
+| ~~P7/P8~~ | **Representatividad muestral acumulativa y guarda de dominio.** | **Cerrado.** El Aggregate Root valida directamente en `determineSustainableCropLoad` que `getCumulativeEvaluatedTrees() >= 5` como invariante dura de dominio ineludible (P7). `SamplingRepresentativenessEvaluator` implementa `evaluateRound(round)` y `evaluateCumulative(rounds)` para soportar la agregación inter-rondas de salidas de campo sucesivas sin descartar evidencia previa (P8). |
+| ~~P9~~ | **Semántica de `floral_yield_factor` nulo.** | **Cerrado.** Sincronizada con la barrera de `EV32` (`chillFulfilled = true`): dado que el frío invernal es insumo obligatorio para prescribir, si al momento de evaluar la carga `chillFulfilled == true` y `floral_yield_factor` es nulo en la proyección, se certifica formalmente la ausencia de anomalía térmica invernal ($1.00$ neutro). Si `EV34` arriba posteriormente antes de la ejecución, habilita el reajuste. |
 | ~~P10~~ | **Regla de anulación por baja predial.** | **Cerrado.** Se mantiene desprendida de las invariantes internas y documentada como política reactiva de compensación (`POL16`). |
-| ~~P11~~ | **Revisión predial y re-prescripción (`EV16`).** | **Cerrado.** Si ocurre `PlotBoundariesUpdated` (`EV16`) sobre una prescripción en estado `PRESCRIBED`, la prescripción reabre a `SAMPLING_IN_PROGRESS` conservando las muestras pero invalidando `observedPlotRevision`, permitiendo re-ejecutar `DetermineSustainableCropLoad` con los nuevos linderos sin violar el índice único. |
-| ~~P12~~ | **Escritura y granularidad de agregados.** | **Cerrado.** Se mantiene `FruitThinningPrescription` como Aggregate Root protegiendo la consistencia global del muestreo y la recomendación, utilizando claves de idempotencia `(actorId, plotId, clientBatchId)` para evitar contención pesimista en campo. |
+| ~~P11~~ | **Revisión predial y re-prescripción (`EV16`).** | **Cerrado.** Si ocurre `PlotBoundariesUpdated` (`EV16`) sobre una prescripción en estado `PRESCRIBED`, `supersedeByBoundaryUpdate` transiciona la prescripción a `SUPERSEDED_BY_BOUNDARY_UPDATE`, liberando la ranura en el índice parcial `uq_active_prescription_per_plot_campaign`. Se emite una nueva prescripción con la geometría actualizada conservando intacto el historial de la recomendación superada. |
+| ~~P12~~ | **Escritura y granularidad de agregados.** | **Cerrado.** Se confirma como decisión de diseño consciente mantener `FruitThinningPrescription` como Aggregate Root protegiendo la coherencia integral entre evidencia muestral acumulada y recomendación. Para prevenir contención concurrente en sincronización de campo, se apoya en claves de idempotencia `(actorId, plotId, clientBatchId)` y unicidad `uq_tree_tag_per_round` en la capa de aplicación. |
+
+> **Nota de trazabilidad sobre P1:** Se formalizó la emisión de `PitHardeningStageReachedEvent` (`EV53`) en *Phenology* tras acumular $680.0^\circ\text{C}\cdot\text{día}$ post-antesis ($T_{base}=10^\circ\text{C}$) y su consumo reactivo mediante `POL10` / `CMD27`, habiéndose retirado la nota provisoria previa que condicionaba el cierre fenológico.
 
 ---
 
 #### Formalización del Ciclo de Vida y Máquina de Estados
 
-En respuesta al análisis del ciclo de vida, se establecen las siguientes definiciones unificadas:
+En respuesta al análisis del ciclo de vida, se formaliza la máquina de estados de `FruitThinningPrescription`:
+
+```mermaid
+stateDiagram-v2
+    [*] --> SAMPLING_IN_PROGRESS: Abrir prescripción (CMD24)
+    SAMPLING_IN_PROGRESS --> SAMPLING_IN_PROGRESS: recordTreeSampling / ingestSamplingsBatch
+    SAMPLING_IN_PROGRESS --> PRESCRIBED: determineSustainableCropLoad (CMD26) [>= 5 árboles]
+    SAMPLING_IN_PROGRESS --> CLOSED_BY_PIT_HARDENING: EV53 (POL10 / CMD27)
+    SAMPLING_IN_PROGRESS --> VOIDED_BY_PLOT_REMOVAL: EV17 (POL16)
+
+    PRESCRIBED --> EXECUTED_OPTIMAL: confirmExecution (CMD28) [fecha <= window_closes_on]
+    PRESCRIBED --> EXECUTED_LATE: confirmExecution (CMD28) [fecha > window_closes_on]
+    PRESCRIBED --> CLOSED_BY_PIT_HARDENING: EV53 (POL10 / CMD27)
+    PRESCRIBED --> SUPERSEDED_BY_BOUNDARY_UPDATE: EV16 (supersedeByBoundaryUpdate)
+    PRESCRIBED --> VOIDED_BY_PLOT_REMOVAL: EV17 (POL16)
+
+    CLOSED_BY_PIT_HARDENING --> EXECUTED_LATE: confirmExecution (CMD28) [labor tardía forzosa]
+    SUPERSEDED_BY_BOUNDARY_UPDATE --> VOIDED_BY_PLOT_REMOVAL: EV17 (POL16)
+
+    EXECUTED_OPTIMAL --> [*]
+    EXECUTED_LATE --> [*]
+    VOIDED_BY_PLOT_REMOVAL --> [*]
+    CLOSED_BY_PIT_HARDENING --> [*]
+    SUPERSEDED_BY_BOUNDARY_UPDATE --> [*]
+```
 
 1. **Estados y Restricciones de Integridad (`CHECK` en Base de Datos):**
-   * Estados canónicos: `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `CLOSED_BY_PIT_HARDENING`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`, `VOIDED_BY_PLOT_REMOVAL`.
-   * Restricción DDL corregida: el `CHECK` exige carga sostenible, porcentaje de remoción y revisión predial **únicamente para prescripciones determinadas** (`PRESCRIBED`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`). Prescripciones cerradas por lignificación antes de determinar carga (`CLOSED_BY_PIT_HARDENING`) mantienen válidamente estos campos como nulos sin violar la integridad física.
+   * Estados canónicos (7): `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `CLOSED_BY_PIT_HARDENING`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`, `VOIDED_BY_PLOT_REMOVAL`, `SUPERSEDED_BY_BOUNDARY_UPDATE`.
+   * Restricción DDL corregida: el `CHECK` exige carga sostenible, porcentaje de remoción y revisión predial **únicamente para prescripciones determinadas** (`PRESCRIBED`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`, `SUPERSEDED_BY_BOUNDARY_UPDATE`). Prescripciones cerradas por lignificación antes de determinar carga (`CLOSED_BY_PIT_HARDENING`) o en muestreo mantienen válidamente estos campos como nulos sin violar la integridad física.
 2. **Precondiciones Estrictas de Comandos por Estado:**
    * `recordTreeSampling` e `ingestSamplingsBatch`: Permitidos exclusivamente en estado `SAMPLING_IN_PROGRESS`. Cualquier sincronización tardía sobre una prescripción cerrada o anulada es rechazada con `409 Conflict`.
+   * `determineSustainableCropLoad`: Permitido en `SAMPLING_IN_PROGRESS`. Exige validación de representatividad acumulada ($\ge 5$ árboles) como guarda dura interna.
    * `confirmExecution`: Admitido en `PRESCRIBED` (derivando `OPTIMAL` o `LATE` según la fecha) y excepcionalmente en `CLOSED_BY_PIT_HARDENING` (transicionando forzosamente a `EXECUTED_LATE` y emitiendo `EV45`).
+   * `supersedeByBoundaryUpdate`: Admitido exclusivamente en `PRESCRIBED` ante la recepción de `EV16`.
    * `closeWindowByPitHardening`: Aplica sobre `SAMPLING_IN_PROGRESS` y `PRESCRIBED`.
-3. **Manejo de Re-prescripción:**
-   * Una parcela mantiene como máximo una prescripción por campaña (`uq_prescription_per_plot_campaign`).
-   * Ante cambios prediales (`EV16`), se permite re-determinar sobre la misma prescripción en lugar de abrir una paralela, garantizando la trazabilidad histórica completa.
+   * `voidByPlotRemoval`: Aplica sobre `SAMPLING_IN_PROGRESS`, `PRESCRIBED` y `SUPERSEDED_BY_BOUNDARY_UPDATE`.
+3. **Manejo de Re-prescripción e Integridad Física:**
+   * Una parcela mantiene como máximo una prescripción activa por campaña a través de `uq_active_prescription_per_plot_campaign`.
+   * Ante cambios prediales (`EV16`), la prescripción previa pasa a `SUPERSEDED_BY_BOUNDARY_UPDATE`, liberando la ranura para una nueva prescripción recalculada con la geometría predial vigente sin destruir la auditoría previa.
 
