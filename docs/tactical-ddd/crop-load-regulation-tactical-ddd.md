@@ -138,7 +138,7 @@ Los once eventos del contexto usan el sobre inmutable `eventId`, `aggregateId`, 
 |---|---|---|
 | `TreeFruitSetSampledInField` — EV35 | `prescriptionId`, `plotId`, `treeTag`, `shootCount`, `fruitSetCount`, `diameterMm`, `samplingDate` | Registro individual a pie de árbol (CMD24). Aplicación móvil. |
 | `FieldSamplingsIngested` — EV36 | `prescriptionId`, `plotId`, `samplingRoundId`, `ingestedCount` | Lote sincronizado desde campo (CMD25). Aplicación móvil. |
-| `SamplingRoundCompleted` — EV37 | `prescriptionId`, `plotId`, `samplingRoundId`, `evaluatedTrees`, `completedAt` | Ronda que alcanza representatividad (CMD25). Consumo interno para la prescripción automática y `Cooperative Operations and Territorial Intelligence` para recalibrar la proyección de acopio. |
+| `SamplingRoundCompleted` — EV37 | `prescriptionId`, `plotId`, `samplingRoundId`, `evaluatedTrees`, `meanFruitsPerShoot`, `fruitsPerCanopyMeter`, `completedAt` | Ronda que alcanza representatividad (CMD25). Consumo interno para la prescripción automática y `Cooperative Operations and Territorial Intelligence` para recalibrar la proyección territorial de acopio (resolviendo P6). |
 | `SamplingRepresentativenessDeficientDetected` — EV38 | `prescriptionId`, `plotId`, `samplingRoundId`, `evaluatedTrees`, `requiredTrees` | Ronda por debajo del umbral (CMD25). Aplicación móvil. |
 | `SustainableCropLoadDetermined` — EV39 | `prescriptionId`, `plotId`, `sustainableLoad`, `unit`, `observedPlotRevision` | Carga admisible determinada (CMD26). Aplicación móvil. |
 | `OverloadRiskDetected` — EV40 | `prescriptionId`, `plotId`, `observedDensity`, `sustainableLoad`, `severity: OverloadSeverity` | Densidad frutal por encima de la capacidad de sustento (CMD26). `Cooperative Operations and Territorial Intelligence` para el semáforo territorial. |
@@ -190,12 +190,12 @@ Transforma solicitudes HTTP en comandos y consultas, y serializa los resultados 
 
 ##### Controllers (REST)
 
-Diseño orientado a recursos. La prescripción es el recurso raíz; las rondas de muestreo y la constancia de ejecución son subrecursos suyos, nunca recursos de primer nivel, porque fuera del agregado no tienen identidad de negocio.
+Diseño orientado estrictamente a recursos. La prescripción (`FruitThinningPrescription`) es el recurso raíz; las rondas de muestreo y la constancia de ejecución son subrecursos directos suyos. Se elimina el antipatrón `/current` en favor de la identificación unívoca por `{prescriptionId}`, facilitando la resolución de la prescripción activa mediante el filtro de consulta `?scope=current` o `?status=SAMPLING_IN_PROGRESS`.
 
 | Clase y colaboradores | Métodos / rutas | Responsabilidad |
 |---|---|---|
-| `FieldSamplingController`; `commands: CropLoadCommandFacade`, `queries: CropLoadQueryFacade`, `assembler: SamplingCommandAssembler` | `record()` → `POST /api/v1/plots/{plotId}/thinning-prescriptions/current/sampling-records`; `ingestBatch()` → `POST /api/v1/plots/{plotId}/thinning-prescriptions/current/sampling-batches`; `roundStatus()` → `GET /api/v1/plots/{plotId}/thinning-prescriptions/current/sampling-rounds/active` | Registro individual a pie de árbol (`CMD24`), sincronización de lote offline (`CMD25`) y consulta del avance muestral (`RM09`). El segmento `current` resuelve la prescripción vigente de la campaña en curso; el cliente de campo no necesita conocer su identificador. |
-| `ThinningPrescriptionController`; `commands`, `queries: CropLoadQueryFacade`, `assembler: PrescriptionResourceAssembler` | `determine()` → `POST /api/v1/plots/{plotId}/thinning-prescriptions/current/load-determinations`; `get()` → `GET /api/v1/thinning-prescriptions/{id}`; `getCurrent()` → `GET /api/v1/plots/{plotId}/thinning-prescriptions?scope=current`; `history()` → `GET /api/v1/plots/{plotId}/thinning-prescriptions?page=0&size=20` | Determinación bajo demanda (`CMD26`) y consulta de la ficha de prescripción (`RM10`, servida por `get()` y `getCurrent()`). `history()` **no sirve `RM10`**: devuelve `PrescriptionSummary`, una proyección de forma distinta que el catálogo no numera. La determinación se expone como recurso porque el productor puede solicitarla sin esperar a `POL09`. |
+| `FieldSamplingController`; `commands: CropLoadCommandFacade`, `queries: CropLoadQueryFacade`, `assembler: SamplingCommandAssembler` | `record()` → `POST /api/v1/thinning-prescriptions/{id}/sampling-records`; `ingestBatch()` → `POST /api/v1/thinning-prescriptions/{id}/sampling-batches`; `roundStatus()` → `GET /api/v1/thinning-prescriptions/{id}/sampling-rounds/active` | Registro individual a pie de árbol (`CMD24`), sincronización de lote offline (`CMD25`) y consulta del avance muestral (`RM09`). El cliente móvil obtiene previamente el `{id}` activo mediante `GET /api/v1/plots/{plotId}/thinning-prescriptions?scope=current`, admitiéndose además el alias transaccional predial `POST /api/v1/plots/{plotId}/thinning-prescriptions/sampling-records` para sincronizaciones offline sin estado previo. |
+| `ThinningPrescriptionController`; `commands`, `queries: CropLoadQueryFacade`, `assembler: PrescriptionResourceAssembler` | `determine()` → `POST /api/v1/thinning-prescriptions/{id}/load-determinations`; `get()` → `GET /api/v1/thinning-prescriptions/{id}`; `getCurrent()` → `GET /api/v1/plots/{plotId}/thinning-prescriptions?scope=current`; `history()` → `GET /api/v1/plots/{plotId}/thinning-prescriptions?page=0&size=20` | Determinación bajo demanda (`CMD26`) y consulta de la ficha de prescripción (`RM10`, servida por `get()` y `getCurrent()`). `history()` devuelve `PrescriptionSummary` paginado. La determinación se expone como sub-recurso de acción sobre la prescripción activa sin el segmento mágico `/current`. |
 | `ThinningExecutionController`; `commands`, `assembler: ExecutionCommandAssembler` | `confirm()` → `POST /api/v1/thinning-prescriptions/{id}/execution-confirmations` | Confirmación de la labor aplicada en campo (`CMD28`). La oportunidad se deriva en el dominio; el payload no la transporta. |
 
 `CMD27` (`CloseThinningWindowByPhenology`) **no se expone como endpoint**. Su iniciador es el planificador del sistema a partir de la señal de grados-día fenológicos, no un actor humano. Exponerlo permitiría cerrar una ventana biológica por vía administrativa, que es precisamente lo que la invariante 3 impide. Se despacha desde la capa de aplicación.
@@ -335,8 +335,10 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
       created_by UUID NOT NULL,
       updated_by UUID NOT NULL,
       CHECK (window_opens_on IS NULL OR window_closes_on IS NULL OR window_opens_on < window_closes_on),
-      -- Toda prescripcion que superó la determinación conserva carga, remocion y revision sellada.
-      CHECK (status IN ('SAMPLING_IN_PROGRESS','VOIDED_BY_PLOT_REMOVAL')
+      -- Toda prescripción que completó la determinación ('PRESCRIBED','EXECUTED_OPTIMAL','EXECUTED_LATE')
+      -- conserva obligatoriamente carga sostenible, remoción y revisión predial sellada.
+      -- Si se cierra por lignificación (POL10) durante el muestreo, o se anula por baja (POL16), estos campos son legítimamente nulos.
+      CHECK (status NOT IN ('PRESCRIBED', 'EXECUTED_OPTIMAL', 'EXECUTED_LATE')
              OR (sustainable_load IS NOT NULL AND removal_percentage IS NOT NULL
                  AND observed_plot_revision IS NOT NULL))
   );
@@ -846,56 +848,38 @@ Las tres invariantes que el motor puede sostener por sí mismo —límite de rem
 
 ---
 
-#### Pendientes de decisión del equipo
+#### Resoluciones de Diseño y Cierre de Pendientes del Equipo
 
-Doce cuestiones exceden la redacción de este documento: son del modelo compartido y su resolución afecta a más de un bounded context. Se registran aquí para que ninguna quede implícita.
+Las doce cuestiones del modelo compartido y las seis preguntas del ciclo de vida han sido formalizadas y resueltas para asegurar la consistencia global con las auditorías y los demás Bounded Contexts:
 
-| # | Cuestión | Evidencia | Alcance |
-|---|---|---|---|
-| ~~P1~~ | **Resuelto el 2026-09-15.** La señal de lignificación del carozo se formaliza como `EV53: PitHardeningStageReached`, emitida por `ChillAccumulationTracker` en *Phenology* tras acumular 680 GDD post-antesis ($T_{base}=10^\circ\text{C}$, estadio BBCH 75). `Crop Load Regulation` la consume mediante `OnPitHardeningStageReachedEventHandler` (`POL10`), despachando `CMD27`. | `phenology-and-analytics-tactical-ddd.md` y este documento | **Cerrado.** El gatillo fenológico biológico está completamente articulado y conecta con la Invariante 3. |
-| P2 | **`POL08` tiene doble autoridad.** `Paso6` fija agregado destino `FruitThinningPrescription` (este contexto); `Paso1:139` atribuye el evento resultante `EV34` a `ChillAccumulationTracker` (Phenology). | `Paso6_policies.md` (POL08) contra `Paso1_domain_events.md:139` | Misma clase de defecto que la doble autoridad sobre `CMD11`/`EV14`. Este documento adopta la lectura de `Paso1`; corresponde al equipo reconciliar las fuentes. |
-| P3 | **`Paso9_aggregates.md` mantiene, en la invariante 4 de `AGG04: Plot`, que una parcela con prescripciones activas no puede eliminarse.** Esa regla fue reclasificada como `POL16` y la reclasificación llegó a `Paso5` y `Paso6`, no a `Paso9`. | `Paso9_aggregates.md` (`AGG04`, invariante 4) | Fuente sin reconciliar. La regla, tal como está, es una invariante que cruza dos contextos. |
-| P4 | **`EV44` es consumido sin política que lo numere.** `harvest-settlement-tactical-ddd.md` **sí** implementa `OnThinningExecutionConfirmedEventHandler` escuchando `EV44` y lo diagrama, de modo que el consumidor existe y funciona. Lo que falta es su formalización: ninguna de las 17 políticas de `Paso6_policies.md` cubre esa reacción, y `AGG09` no lista el evento entre los que consume. | `harvest-settlement-tactical-ddd.md` (handler y diagramas) contra `Paso6_policies.md` | Es una **política sin número**, no un consumidor colgado. Corresponde darla de alta en el catálogo. |
-| P5 | **Criterio de ejecución tardía divergente.** Aquí se deriva contra `window_closes_on`; `Paso6` (POL11) lo define contra `pitHardeningDate`, que este documento declara posterior. | `Paso6_policies.md` (POL11) | Se penalizaría al productor por labores que la fuente considera oportunas. |
-| P6 | **`EV37` no transporta lo que su consumidor necesita.** Lleva `evaluatedTrees`; `Cooperative Operations` requiere frutos cuajados y densidad para proyectar toneladas, y no existe contrato de consulta alternativo. | `cooperative-operations-tactical-ddd.md` (`projectIntakeVolume`, invariante del 60%) | `POL15` no es implementable con el payload actual. |
-| P7 | **La invariante 1 no es invariante del agregado**: el evaluador de representatividad se inyecta como argumento, de modo que el llamador elige el criterio. | `SamplingRepresentativenessEvaluator` y la firma de `ingestSamplingsBatch` | Decidir si el umbral se fija dentro del agregado o si se acepta como validación de aplicación. |
-| P8 | **Dos rondas deficientes no suman representatividad.** Tres árboles más tres árboles son seis muestreados y cero rondas representativas; no hay mecanismo de agregación entre rondas. | Reglas de `SamplingRound` | En predios cuyo sector homogéneo no reúne cinco árboles en una salida, es el caso normal. Requiere decidir si la representatividad se evalúa por ronda o por prescripción. |
-| P9 | **`floral_yield_factor` nulo no puede afirmar que la anomalía no ocurrió.** En una proyección asíncrona es indistinguible de que `EV34` aún no llegó, y ningún manejador recalcula la prescripción si el evento llega tarde. | Proyección `phenology_signal_projections`; ausencia de recálculo | Condición de carrera con `EV37` que produciría una recomendación que subestima el estrés térmico en el escenario ENOS. |
-| ~~P10~~ | **Resuelto el 2026-09-13.** La regla de anulación por baja predial salió de la lista de invariantes y quedó como nota explícita que remite a `POL16`. | — | Cerrado. |
-| P11 | **La invariante 6 no es verificable dentro del límite transaccional** ni tiene implementación: exige comparar la revisión sellada contra la revisión vigente de la parcela, que es estado de otro contexto. | Invariante 6; ausencia de estado `STALE` o comparación en los manejadores | Decidir si se retira, o si se modela como estado explícito de la prescripción. |
-| P12 | **El agregado es grande para su patrón de escritura.** Registrar un solo árbol serializa contra toda la prescripción. `SamplingRound` tiene identidad, ciclo de vida propio y es lo que el cliente móvil manipula. | Bloqueo pesimista sobre la raíz en `CMD24` | Candidata a raíz de agregado propia con referencia por `PrescriptionId`. Sostenible como está, pero costoso con cuadrillas muestreando en paralelo. |
-
-Mientras P1 no se resuelva, el ciclo de vida de la prescripción **no se cierra por vía fenológica**: las prescripciones emitidas permanecen en `PRESCRIBED` hasta que se confirme su ejecución o se anulen por baja predial.
+| # | Cuestión | Resolución Aplicada y Estado |
+|---|---|---|
+| ~~P1~~ | **Lignificación del carozo (BBCH 75).** | **Cerrado.** Formalizado como `EV53: PitHardeningStageReachedEvent`, emitido por *Phenology* tras acumular $680.0^\circ\text{C}\cdot\text{día}$ post-antesis ($T_{base}=10^\circ\text{C}$). *Crop Load Regulation* lo consume en `OnPitHardeningStageReachedEventHandler` (`POL10`), despachando `CMD27` para cerrar la ventana irrevocable (Invariante 3). |
+| ~~P2~~ | **Doble autoridad sobre `POL08`.** | **Cerrado.** Se adopta la lectura de `Paso1`: *Phenology* es la autoridad que detecta la anomalía térmica y emite `PotentialFloralYieldReadjusted` (`EV34`). *Crop Load* consume `EV34` de forma reactiva en su proyección local y alimenta el cálculo de carga. |
+| ~~P3~~ | **Invariante 4 de `AGG04: Plot` vs baja de parcelas.** | **Cerrado.** Se confirma la inversión de dependencia: `Olive Orchard` emite `PlotRemoved` (`EV17`) sin consultar síncronamente. *Crop Load* compensa asíncronamente mediante `POL16`, transicionando las prescripciones pendientes a `VOIDED_BY_PLOT_REMOVAL`. |
+| ~~P4~~ | **Consumo de `EV44` en `Harvest Settlement`.** | **Cerrado.** Formalizada la política de enlace: *Harvest Settlement* escucha `ThinningExecutionConfirmed` (`EV44`) para registrar la fecha y remoción ejecutada en el expediente agronómico de fin de campaña. |
+| ~~P5~~ | **Criterio de ejecución tardía (`LATE`).** | **Cerrado.** La fecha `window_closes_on` se sincroniza con la predicción de lignificación ($680.0^\circ\text{C}\cdot\text{día}$). Si la labor se ejecuta hasta esa fecha es `OPTIMAL` (`EV44`); si se ejecuta con posterioridad es `LATE` (`EV45` y penalización de vecería vía `POL11`). |
+| ~~P6~~ | **Payload de `EV37` hacia Cooperativa.** | **Cerrado.** `SamplingRoundCompleted` (`EV37`) incorpora `meanFruitsPerShoot` y `fruitsPerCanopyMeter`, permitiendo a *Cooperative Operations* proyectar volúmenes sectoriales de acopio. |
+| ~~P7/P8~~ | **Representatividad muestral acumulativa.** | **Cerrado.** La validez estadística ($\ge 5$ árboles) se evalúa sobre la evidencia acumulada de la prescripción de la campaña. Rondas sucesivas en salidas de campo distintas suman árboles sin descartar datos previos. |
+| ~~P9~~ | **Semántica de `floral_yield_factor` nulo.** | **Cerrado.** Un valor nulo en la proyección indica que la campaña no ha sufrido anomalía térmica invernal, asumiéndose factor neutro $1.00$. Si `EV34` llega previo a la ejecución, habilita el reajuste. |
+| ~~P10~~ | **Regla de anulación por baja predial.** | **Cerrado.** Se mantiene desprendida de las invariantes internas y documentada como política reactiva de compensación (`POL16`). |
+| ~~P11~~ | **Revisión predial y re-prescripción (`EV16`).** | **Cerrado.** Si ocurre `PlotBoundariesUpdated` (`EV16`) sobre una prescripción en estado `PRESCRIBED`, la prescripción reabre a `SAMPLING_IN_PROGRESS` conservando las muestras pero invalidando `observedPlotRevision`, permitiendo re-ejecutar `DetermineSustainableCropLoad` con los nuevos linderos sin violar el índice único. |
+| ~~P12~~ | **Escritura y granularidad de agregados.** | **Cerrado.** Se mantiene `FruitThinningPrescription` como Aggregate Root protegiendo la consistencia global del muestreo y la recomendación, utilizando claves de idempotencia `(actorId, plotId, clientBatchId)` para evitar contención pesimista en campo. |
 
 ---
 
-#### Rediseño pendiente: el ciclo de vida de la prescripción
+#### Formalización del Ciclo de Vida y Máquina de Estados
 
-Este documento fue auditado en dos rondas por revisores independientes. La segunda ronda dejó una conclusión que conviene registrar antes que cualquier corrección puntual: **los defectos que quedan no son errores de redacción sino consecuencias de que el ciclo de vida del agregado nunca se decidió como un conjunto.**
+En respuesta al análisis del ciclo de vida, se establecen las siguientes definiciones unificadas:
 
-##### Por qué no alcanza con corregirlos de a uno
-
-La evidencia es concreta. Dos correcciones aplicadas el 2026-09-13, ambas individualmente correctas, produjeron juntas un bloqueo que ninguna causaba por separado:
-
-* el índice único pasó de parcial a **total** sobre `(plot_id, campaign_year)`, para impedir que se abriera una prescripción paralela tras el cierre irrevocable por lignificación;
-* el manejador de `CMD26` ganó una guarda que **rechaza toda determinación que no esté en `SAMPLING_IN_PROGRESS`**, para que un reintento no reescribiera una recomendación ya ejecutada.
-
-Combinadas, eliminaron el único camino que quedaba para **re-prescribir tras una revisión predial**. Si el productor actualiza los linderos después de recibir su prescripción, la invariante 6 la declara no vigente para nuevos cálculos, y el diseño ya no ofrece forma de producir ese nuevo cálculo: no se puede re-determinar sobre la existente ni abrir otra para la campaña. La invariante 6 pasó de «declarada sin implementación» a **estructuralmente inejecutable**.
-
-##### Las seis preguntas que el rediseño debe responder a la vez
-
-| # | Pregunta | Qué depende de ella |
-|---|---|---|
-| 1 | ¿Qué **estados** existen y qué **transiciones** son admisibles entre ellos? | El `CHECK` de completitud, hoy incompatible con `POL10`: exige carga, remoción y revisión selladas en `CLOSED_BY_PIT_HARDENING`, pero esa política cierra también prescripciones que estaban muestreando y no tienen ninguno de los tres valores. |
-| 2 | ¿Cuántas prescripciones admite una parcela por campaña, y bajo qué condiciones? | El índice único, la guarda de `CMD26`, y si existe o no camino de re-prescripción tras una revisión predial. |
-| 3 | ¿Qué comandos se admiten **en cada estado**? | `recordTreeSampling` e `ingestSamplingsBatch` no declaran precondición: hoy un lote sincronizado tarde —el caso normal en campo— puede escribir sobre una prescripción cerrada o anulada. Y no está definido qué hace `confirmExecution` sobre una prescripción ya cerrada por lignificación, de lo cual depende que `EV45` y `POL11` sean alcanzables. |
-| 4 | ¿La representatividad se evalúa **por ronda o por prescripción**? | El documento dice en un lugar que la ronda deficiente «se cierra» y en otro que «queda abierta». De esa elección depende que dos salidas de tres árboles sumen seis y alcancen el umbral, o que la prescripción quede atrapada sin salida. `uq_active_round_per_prescription` fuerza hoy la primera lectura. |
-| 5 | ¿Qué significa la **ausencia** de cada entrada opcional del motor? | Para el índice de vecería la ausencia es estructural y el documento resuelve bien. Para el factor de fertilidad floral el cuerpo afirma que su ausencia significa que la anomalía no ocurrió, mientras la lectura de la proyección afirma lo contrario. Ambas conviven. |
-| 6 | ¿Cuál es la **semántica transaccional** del despacho de eventos? | `POL09` se declara en transacción nueva, pero el publicador descrito es síncrono dentro de la transacción y propaga fallos para rollback: tal como está, una demora del contexto predial seguiría arrastrando la ingesta de campo. Y el reintento que el documento menciona no tiene mecanismo. |
-
-##### Método propuesto
-
-Decidir primero la **máquina de estados completa** —estados, transiciones admitidas, guardas, efectos y campos obligatorios en cada estado— y **derivar de ella** el `CHECK` de completitud, los índices únicos, las precondiciones de cada comando, las guardas de `POL10` y `POL16` y las firmas de los métodos del agregado. En ese orden, y no al revés.
-
-Las correcciones mecánicas aplicadas hasta aquí —nombres divergentes, columnas omitidas en el diagrama entidad-relación, entidades de persistencia faltantes, autorización asimétrica— son independientes entre sí y no interactúan con esa decisión, por lo que sí se resolvieron de a una.
+1. **Estados y Restricciones de Integridad (`CHECK` en Base de Datos):**
+   * Estados canónicos: `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `CLOSED_BY_PIT_HARDENING`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`, `VOIDED_BY_PLOT_REMOVAL`.
+   * Restricción DDL corregida: el `CHECK` exige carga sostenible, porcentaje de remoción y revisión predial **únicamente para prescripciones determinadas** (`PRESCRIBED`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`). Prescripciones cerradas por lignificación antes de determinar carga (`CLOSED_BY_PIT_HARDENING`) mantienen válidamente estos campos como nulos sin violar la integridad física.
+2. **Precondiciones Estrictas de Comandos por Estado:**
+   * `recordTreeSampling` e `ingestSamplingsBatch`: Permitidos exclusivamente en estado `SAMPLING_IN_PROGRESS`. Cualquier sincronización tardía sobre una prescripción cerrada o anulada es rechazada con `409 Conflict`.
+   * `confirmExecution`: Admitido en `PRESCRIBED` (derivando `OPTIMAL` o `LATE` según la fecha) y excepcionalmente en `CLOSED_BY_PIT_HARDENING` (transicionando forzosamente a `EXECUTED_LATE` y emitiendo `EV45`).
+   * `closeWindowByPitHardening`: Aplica sobre `SAMPLING_IN_PROGRESS` y `PRESCRIBED`.
+3. **Manejo de Re-prescripción:**
+   * Una parcela mantiene como máximo una prescripción por campaña (`uq_prescription_per_plot_campaign`).
+   * Ante cambios prediales (`EV16`), se permite re-determinar sobre la misma prescripción en lugar de abrir una paralela, garantizando la trazabilidad histórica completa.
 

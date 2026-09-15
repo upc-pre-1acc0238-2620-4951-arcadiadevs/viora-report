@@ -155,16 +155,16 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
 
 * **`PlotHarvestRecordController`** (Ruta base: `/api/v1/plots/{plotId}/harvest-records`):
   * `POST /api/v1/plots/{plotId}/harvest-records` - Asienta el volumen cosechado de una campaña anual (`TS21` / `US20`). Responde `201 Created` con `HarvestRecordResource`, `409 Conflict` si la campaña ya existe, o `400 Bad Request` ante valores negativos o año futuro.
-  * `GET /api/v1/plots/{plotId}/harvest-records` - Lista el historial plurianual cronológico de cosechas de la parcela (`TS22`). Responde `200 OK` con un arreglo de `HarvestRecordResource`, o `404 Not Found` si el predio no existe.
-  * `PUT /api/v1/plots/{plotId}/harvest-records/{year}` - Rectifica el pesaje histórico de una campaña específica (`US21` Escenario 1). Responde `200 OK` con el registro actualizado y el recálculo del BBI.
-  * `DELETE /api/v1/plots/{plotId}/harvest-records/{year}` - Elimina un registro de cosecha erróneo (`US21` Escenario 2). Responde `204 No Content` o `404 Not Found`.
+  * `GET /api/v1/plots/{plotId}/harvest-records` - Lista el historial plurianual cronológico de cosechas de la parcela (`TS22`), con soporte para filtro opcional por año agrícola (`?year={year}`). Responde `200 OK` con un arreglo de `HarvestRecordResource`, o `404 Not Found` si el predio no existe.
+  * `PUT /api/v1/plots/{plotId}/harvest-records/{recordId}` - Rectifica el pesaje histórico de una campaña específica identificada por su ID único (`US21` Escenario 1). Responde `200 OK` con el registro actualizado y el recálculo automático del BBI.
+  * `DELETE /api/v1/plots/{plotId}/harvest-records/{recordId}` - Elimina un registro de cosecha erróneo (`US21` Escenario 2). Responde `204 No Content` o `404 Not Found`.
 
 * **`PlotMetricController`** (Ruta base: `/api/v1/plots/{plotId}/metrics`):
   * `GET /api/v1/plots/{plotId}/metrics?name=BBI` - Entrega el Índice de Vecería de Hoblyn ($BBI$) y su categoría cualitativa (`TS23` / `US20`). Responde `200 OK` con `MetricResource`, o `400 Bad Request` si existen menos de 3 campañas registradas.
   * `GET /api/v1/plots/{plotId}/metrics?name=CHILLING` - Entrega el estado de acumulación de porciones de frío de Erez y alertas ENOS (`TS23` / `US22` / `US23`). Responde `200 OK` con `MetricResource` detallando unidades de frío, estado de satisfacción y flag `enosAnomalyDetected`.
 
 * **`PlotChillComputationController`** (Ruta base: `/api/v1/plots/{plotId}/chill-computations`):
-  * `POST /api/v1/plots/{plotId}/chill-computations/daily-process` - Disparador programado nocturno (`CMD23`) para procesar las temperaturas telemétricas del día en el modelo de Erez. Responde `200 OK`.
+  * `POST /api/v1/plots/{plotId}/chill-computations` - Disparador bajo demanda para re-procesar las temperaturas telemétricas de una fecha en el modelo de Erez o forzar el cálculo de integral térmica. Responde `200 OK` con `ChillTrackerResource`.
 
 ##### Resources (DTOs / Request & Response Models)
 * **`CreateHarvestRecordRequest`**: `{ campaignYear: Integer, totalYieldKg: Double, greenKg: Double, blackKg: Double }` (Payload recibido en POST).
@@ -191,14 +191,17 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
   * *Entrada:* `LogHistoricalHarvestsCommand` (`plotId`, `campaignYear`, `totalYieldKg`, `greenKg`, `blackKg`)
   * *Flujo:* Valida que el año no sea futuro ni esté duplicado -> recupera o inicializa `ChillAccumulationTracker` para el cuartel -> crea `HistoricalHarvestEntry` -> invoca `registerHarvest()` en el agregado delegando el cálculo matemático en `HoblynBbiCalculator` -> persiste en `ChillAccumulationTrackerRepository` -> despacha eventos encolados (`HistoricalHarvestsLoggedEvent` y `BiennialBearingIndexAssessedEvent` o `HistoricalDataInsufficiencyDetectedEvent`).
 * **`RectifyHistoricalHarvestCommandHandler`** (CMD21 / US21):
-  * *Entrada:* `RectifyHistoricalHarvestCommand` (`plotId`, `campaignYear`, `totalYieldKg`, `greenKg`, `blackKg`)
-  * *Flujo:* Recupera el tracker del predio -> invoca `rectifyHarvest()` actualizando el pesaje -> recalcula el $BBI$ con `HoblynBbiCalculator` -> guarda cambios en el repositorio -> despacha `HistoricalHarvestRectifiedEvent`.
+  * *Entrada:* `RectifyHistoricalHarvestCommand` (`plotId`, `recordId`, `totalYieldKg`, `greenKg`, `blackKg`)
+  * *Flujo:* Recupera el tracker del predio -> invoca `rectifyHarvest()` actualizando el pesaje por identificador -> recalcula el $BBI$ con `HoblynBbiCalculator` -> guarda cambios en el repositorio -> despacha `HistoricalHarvestRectifiedEvent`.
 * **`DeleteHistoricalHarvestCommandHandler`** (CMD22 / US21):
-  * *Entrada:* `DeleteHistoricalHarvestCommand` (`plotId`, `campaignYear`)
-  * *Flujo:* Recupera el tracker -> invoca `deleteHarvest()` removiendo la campaña -> reevalúa el número de campañas remanentes y recalcula o invalida el BBI -> persiste cambios -> despacha `HistoricalHarvestDeletedEvent`.
+  * *Entrada:* `DeleteHistoricalHarvestCommand` (`plotId`, `recordId`)
+  * *Flujo:* Recupera el tracker -> invoca `deleteHarvest()` removiendo la campaña por identificador -> reevalúa el número de campañas remanentes y recalcula o invalida el BBI -> persiste cambios -> despacha `HistoricalHarvestDeletedEvent`.
 * **`ComputeDailyChillAccumulationCommandHandler`** (CMD23 / US22 / US23):
   * *Entrada:* `ComputeDailyChillAccumulationCommand` (`plotId`, `date`, `hourlyTemperatures`)
   * *Flujo:* Verifica que la fecha pertenezca a la ventana invernal (Mayo-Agosto) -> carga el agregado `ChillAccumulationTracker` del predio -> invoca `processDailyTemperatures()` apoyándose en el servicio de dominio `ErezDynamicChillModel` -> actualiza acumulador de porciones, contador de olas de calor y factor de fertilidad floral -> persiste en el repositorio -> publica eventos generados (`WinterChillPortionsAccumulatedEvent`, alertas de cumplimiento o anomalías ENOS).
+* **`AccumulatePostAnthesisThermalTimeCommandHandler`** (CMD29 / Flujo C08):
+  * *Entrada:* `AccumulatePostAnthesisThermalTimeCommand` (`plotId`, `date`, `maxTemp`, `minTemp`)
+  * *Flujo:* Valida que la fecha pertenezca al ciclo fenológico post-antesis (Septiembre a Diciembre) -> carga `ChillAccumulationTracker` del predio -> invoca `processPostAnthesisThermalTime(date, maxTemp, minTemp)` integrando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$ -> al acumular $\ge 680.0^\circ\text{C}\cdot\text{día}$, el agregado transiciona `pitHardeningReached = true`, sella `pitHardeningDate` y encola `PitHardeningStageReachedEvent` (`EV53`) -> persiste cambios en `ChillAccumulationTrackerRepository` -> publica eventos encolados para activar `POL10` en *Crop Load Regulation*.
 
 ##### Query Handlers
 * **`ListPlotHarvestRecordsQueryHandler`** (TS22 / US20):
@@ -213,7 +216,9 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
 ##### Event Handlers
 * **`OnTelemetryDataIngestedEventHandler`** (Flujo C08 / Mensaje 5 en Domain Message Flows):
   * *Disparador:* Escucha `TelemetryDataIngestedEvent` emitido por *Agroclimatic Telemetry & Sensor Monitoring*.
-  * *Acción:* Al finalizar la jornada en meses de reposo invernal (Mayo a Agosto), despacha el comando `ComputeDailyChillAccumulationCommand` con las series horarias de temperatura medidas en campo para actualizar dinámicamente las porciones de Erez.
+  * *Acción:* Evalúa la ventana estacional de la fecha meteorológica registrada:
+    * **Ventana de Reposo Invernal (1 de Mayo al 31 de Agosto):** Despacha `ComputeDailyChillAccumulationCommand` con las series horarias de temperatura para procesar las porciones de frío de Erez (`EV31`, `EV32`, `EV33`, `EV34`).
+    * **Ventana Post-Antesis / Primavera (1 de Septiembre al 31 de Diciembre):** Despacha `AccumulatePostAnthesisThermalTimeCommand` con las temperaturas máxima y mínima del día para acumular grados-día con $T_{base}=10^\circ\text{C}$, detectando la fecha exacta en que se alcanzan los $680^\circ\text{C}\cdot\text{día}$ y disparando `PitHardeningStageReachedEvent` (`EV53`) para el cierre biológico formal de aclareo.
 * **`OnWinterThermalAnomalyDetectedEventHandler`** (POL08 / US23):
   * *Disparador:* Escucha `WinterThermalAnomalyDetectedEvent`.
   * *Acción:* Ejecuta la política de reajuste predictivo floral, castigando el factor de carga potencial y publicando `PotentialFloralYieldReadjustedEvent` hacia el Bounded Context de *Crop Load Regulation and Thinning Advisory* para ajustar las metas de aclareo frutal de primavera.
