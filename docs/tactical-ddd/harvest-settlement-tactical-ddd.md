@@ -137,7 +137,7 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
 * **`HarvestSettlementResourceAssembler`**: Convierte la entidad interna `HarvestSettlement` en el DTO `HarvestSettlementResource`.
 * **`AgronomicReportResourceAssembler`**: Mapea el Aggregate Root `AgronomicReport` y sus Value Objects en `AgronomicReportResource`.
 * **`SettleHarvestCommandAssembler`**: Transforma `SettleHarvestRequest` y la variable de ruta `{plotId}` en el comando `SettleCampaignHarvestCommand`.
-* **`CertifyDossierCommandAssembler`**: Transforma `CertifyDossierRequest` y la variable `{plotId}` en `CertifyAgronomicDossierCommand`.
+* **`GenerateAgronomicDossierCommandAssembler`**: Transforma `CertifyDossierRequest` y la variable `{plotId}` en `GenerateAgronomicDossierCommand`.
 
 ---
 
@@ -149,8 +149,8 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
 * **`SettleCampaignHarvestCommandHandler`** (CMD29 / US29 / TS39):
   * *Entrada:* `SettleCampaignHarvestCommand` (`plotId`, `campaignYear`, `greenOlivesKg`, `blackOlivesKg`, `notes`)
   * *Flujo:* Inicia transacción demarcada (`@Transactional`) -> recupera o inicializa `AgronomicReport` para el `plotId` mediante `AgronomicReportRepository` -> invoca `report.settleCampaign(...)` delegando el recálculo en `StabilizationCurveCalculatorService` -> persiste el agregado modificado en el repositorio -> despacha eventos generados (`CampaignHarvestSettledEvent` EV46 y `YieldStabilizationCurveEvaluatedEvent` EV47).
-* **`CertifyAgronomicDossierCommandHandler`** (CMD30 / US30 / TS40 / TS28):
-  * *Entrada:* `CertifyAgronomicDossierCommand` (`plotId`, `auditorSignature`)
+* **`GenerateAgronomicDossierCommandHandler`** (CMD30 / US30 / TS40 / TS28):
+  * *Entrada:* `GenerateAgronomicDossierCommand` (`plotId`, `auditorSignature`)
   * *Flujo:* Carga el agregado `AgronomicReport` -> invoca `report.compileDossier(signature, pdfGenerator)` -> obtiene el arreglo de bytes binario -> actualiza metadatos de auditoría persistidos y hash SHA-256 -> publica `AgronomicDossierGeneratedEvent` (EV48) -> retorna `DossierMetadata`.
 
 ##### Query Handlers
@@ -167,8 +167,8 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
 * **`OnThinningExecutionConfirmedEventHandler`** (POL18 / US29 / Flujo 4 en Domain Message Flows):
   * *Disparador:* Escucha `ThinningExecutionConfirmedEvent` (EV44) emitido por *Crop Load Regulation & Thinning Advisory*.
   * *Acción:* Registra la confirmación de la labor de aclareo frutal en la bitácora del ciclo para vincular el volumen de remoción ejecutado con el balance final cosechado en fin de campaña (`POL18`).
-* **`OnHistoricalBearingIndexAssessedEventHandler`** (POL12 / US20):
-  * *Disparador:* Escucha `BiennialBearingIndexAssessedEvent` (EV49) emitido por *Phenology & Historical Bearing Analytics*.
+* **`OnHistoricalBearingIndexAssessedEventHandler`** (Flujo Inter-Contexto Phenology -> Harvest / US20):
+  * *Disparador:* Escucha `BiennialBearingIndexAssessedEvent` (EV27) emitido por *Phenology & Historical Bearing Analytics*.
   * *Acción:* Actualiza los indicadores de severidad de vecería ($BBI$) del lote como referencia de contraste para la curva de atenuación interanual.
 
 ---
@@ -275,7 +275,7 @@ En esta sección se describe la descomposición y el flujo de comunicación entr
   * `PlotHarvestSettlementController`: Expone endpoints REST para registro, listado y consulta de liquidaciones anuales.
   * `PlotAgronomicReportController`: Expone la entrega del análisis consolidado de estabilización (JSON), la certificación oficial y la consulta/descarga del dossier oficial vía content negotiation.
 * **Application Layer:**
-  * Command Handlers (`SettleCampaignHarvestCommandHandler`, `CertifyAgronomicDossierCommandHandler`): Orquestan casos de uso transaccionales.
+  * Command Handlers (`SettleCampaignHarvestCommandHandler`, `GenerateAgronomicDossierCommandHandler`): Orquestan casos de uso transaccionales.
   * Query Handlers (`GetAgronomicReportByPlotQueryHandler`, `ListPlotHarvestSettlementsQueryHandler`, `GetHarvestSettlementByIdQueryHandler`, `GetAgronomicDossierQueryHandler`): Resuelven consultas y transformaciones a DTO o streaming binario.
   * Event Handlers (`OnThinningExecutionConfirmedEventHandler`, `OnHistoricalBearingIndexAssessedEventHandler`): Integración reactiva inter-contexto.
 * **Domain Layer:**
@@ -302,7 +302,7 @@ graph TD
 
     subgraph ApplicationLayer ["Application Layer"]
         SettlementCmdHandler["SettleCampaignHarvestCommandHandler"]
-        CertifyCmdHandler["CertifyAgronomicDossierCommandHandler"]
+        GenerateDossierCmdHandler["GenerateAgronomicDossierCommandHandler"]
         ReportQueryHandlers["Query Handlers<br/>(GetReport, ListSettlements, GetSettlementById, GetDossier)"]
         EventHandlers["Event Handlers<br/>(OnThinningConfirmed, OnBbiAssessed)"]
     end
@@ -329,21 +329,21 @@ graph TD
 
     SettlementCtrl --> SettlementCmdHandler
     SettlementCtrl --> ReportQueryHandlers
-    ReportCtrl --> CertifyCmdHandler
+    ReportCtrl --> GenerateDossierCmdHandler
     ReportCtrl --> ReportQueryHandlers
 
     SettlementCmdHandler --> ReportAR
     SettlementCmdHandler --> StabilizationService
     SettlementCmdHandler --> RepoInterfaces
 
-    CertifyCmdHandler --> ReportAR
-    CertifyCmdHandler --> RepoInterfaces
+    GenerateDossierCmdHandler --> ReportAR
+    GenerateDossierCmdHandler --> RepoInterfaces
 
     ReportQueryHandlers --> RepoInterfaces
 
     ReportAR --> DomainEvents
     SettlementCmdHandler --> EventPublisher
-    CertifyCmdHandler --> EventPublisher
+    GenerateDossierCmdHandler --> EventPublisher
     EventPublisher -.->|EV46 CampaignHarvestSettled| PhenologyBC
 
     RepoInterfaces <|.. PostgresRepo
@@ -358,7 +358,7 @@ graph TD
 4. **Ejecución y Reglas:** Se invoca `settleCampaign()`, verificando la unicidad del año agrícola, computando el total y delegando en `StabilizationCurveCalculatorService` el cálculo de varianza interanual y tasa de reducción de vecería ($ARR$).
 5. **Persistencia:** El Handler invoca `save()` sobre `AgronomicReportRepository`. La capa de infraestructura mapea el agregado a entidades JPA (`AgronomicReportJpaEntity` y `HarvestSettlementJpaEntity`) ejecutando sentencias SQL atómicas en PostgreSQL.
 6. **Integración Externa / Eventos:** `SpringDomainEventPublisher` despacha `CampaignHarvestSettledEvent` (EV46), el cual es recibido de forma asíncrona por *Phenology & Historical Bearing Analytics* para alimentar el cómputo del $BBI$ de Hoblyn.
-7. **Generación y Certificación Documental:** Ante una solicitud `POST .../certifications`, `CertifyAgronomicDossierCommandHandler` genera y estampa la firma y hash SHA-256 (`EV48`). Ante `GET .../dossier` con cabecera `Accept: application/pdf`, `GetAgronomicDossierQueryHandler` delega en `OpenPdfAgronomicDossierAdapter`, el cual renderiza el binario inmutable y estampa el hash criptográfico para streaming directo.
+7. **Generación y Certificación Documental:** Ante una solicitud `POST .../certifications`, `GenerateAgronomicDossierCommandHandler` genera y estampa la firma y hash SHA-256 (`EV48`). Ante `GET .../dossier` con cabecera `Accept: application/pdf`, `GetAgronomicDossierQueryHandler` delega en `OpenPdfAgronomicDossierAdapter`, el cual renderiza el binario inmutable y estampa el hash criptográfico para streaming directo.
 
 ---
 

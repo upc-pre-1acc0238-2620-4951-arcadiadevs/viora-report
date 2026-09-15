@@ -310,7 +310,7 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
 ##### 3. Repositories – Implementación
 * **`PostgresCooperativeRepository`**:
   * Implementa persistencia sobre `cooperatives` utilizando `SpringDataJpaCooperativeRepository`.
-  * Gestiona las colecciones `cooperative_members` y `cooperative_authorized_managers` como componentes agregados bajo una única frontera de consistencia.
+  * Gestiona el padrón de socios `cooperative_members` bajo la autoridad del gestor técnico institucional (`technicalManagerUserId`) dentro de una única frontera de consistencia.
   * Aplica anotaciones `@Transactional` para garantizar atomicidad en el alta de socios y el recálculo analítico territorial.
 
 ##### 4. Seguridad & Resiliencia
@@ -445,7 +445,7 @@ classDiagram
         -CooperativeName name
         -TaxIdentificationNumber taxId
         -CooperativeLicenseId licenseId
-        -List~UserId~ authorizedManagerUserIds
+        -UserId technicalManagerUserId
         -List~CooperativeMember~ members
         -TerritorialRiskMatrix riskMatrix
         -EarlyIntakeProjection intakeProjection
