@@ -170,22 +170,22 @@ Eventos inmutables en tiempo pasado que informan cambios relevantes de estado en
 En esta capa se definen los puntos de entrada y salida del sistema. Transforma solicitudes HTTP entrantes en Commands o Queries para la Application Layer y serializa los resultados del dominio en Resources (DTOs).
 
 ##### Controllers (REST)
-Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP estándar, implementando los contratos de las Historias Técnicas TS16, TS17, TS18, TS19 y TS20:
+Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP estándar, implementando los contratos de las Historias Técnicas TS16, TS17, TS18, TS19, TS20 y TS42:
 
 * **`PlotIotDeviceController`** (Ruta base: `/api/v1/plots/{plotId}/iot-devices`):
-  * `POST /api/v1/plots/{plotId}/iot-devices` - Da de alta un nodo sensor virtual en la parcela (`TS16`). Responde `201 Created` con `IotDeviceResource`, `409 Conflict` ante nombre duplicado en el lote, o `400 Bad Request` por datos inválidos.
-  * `GET /api/v1/plots/{plotId}/iot-devices` - Lista el inventario de nodos virtuales vinculados a la parcela (`TS17`). Responde `200 OK` con arreglo de `IotDeviceResource`, o `404 Not Found` si la parcela no existe.
+  * `POST /api/v1/plots/{plotId}/iot-devices` - Da de alta un nodo sensor virtual en la parcela (`TS16` / `CMD15` / `US13`). Responde `201 Created` con `IotDeviceResource`, `409 Conflict` ante nombre duplicado en el lote, o `400 Bad Request` por datos inválidos.
+  * `GET /api/v1/plots/{plotId}/iot-devices` - Lista el inventario de nodos virtuales vinculados a la parcela (`TS17` / `US14`). Responde `200 OK` con arreglo de `IotDeviceResource`, o `404 Not Found` si la parcela no existe.
   * `GET /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Obtiene el detalle operativo de un nodo sensor virtual específico. Responde `200 OK` o `404 Not Found`.
-  * `PUT /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Configura y calibra la profundidad de la sonda edáfica y factores edafológicos (`US15`). Responde `200 OK` o `400 Bad Request`.
-  * `DELETE /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Desvincula lógicamente el nodo virtual preservando el historial previo (`TS18`). Responde `204 No Content` o `404 Not Found`.
+  * `PUT /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Configura y calibra la profundidad de la sonda edáfica y factores edafológicos (`TS42` / `CMD16` / `US15`). Responde `200 OK` con `IotDeviceResource` o `400 Bad Request`.
+  * `DELETE /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Desvincula lógicamente el nodo virtual preservando el historial previo (`TS18` / `CMD17` / `US16`). Responde `204 No Content` o `404 Not Found`.
 
 * **`PlotTelemetryController`** (Ruta base: `/api/v1/plots/{plotId}/telemetries`):
-  * `GET /api/v1/plots/{plotId}/telemetries` - Consulta series temporales horarias de microclima y humedad edáfica (`TS19`). Admite filtros obligatorios `?startDate={ISO}&endDate={ISO}`. Responde `200 OK` con `TelemetrySeriesResource`, o `400 Bad Request` ante rangos temporales ilógicos.
-  * `POST /api/v1/plots/{plotId}/telemetries/ingest` - Endpoint interno de ingesta horaria para *Telemetry Simulator* con credenciales seguras de servicio. Responde `202 Accepted`.
+  * `GET /api/v1/plots/{plotId}/telemetries` - Consulta series temporales horarias de microclima y humedad edáfica (`TS19` / `US17`). Admite filtros obligatorios `?startDate={ISO}&endDate={ISO}`. Responde `200 OK` con `TelemetrySeriesResource`, o `400 Bad Request` ante rangos temporales ilógicos.
+  * `POST /api/v1/plots/{plotId}/telemetries` - Ingesta horaria de telemetría (lectura individual o arreglo en lote procedente del simulador de sensores o sondas de campo) (`TS19` / `CMD18` / `US17`). Responde `202 Accepted` con cabecera `Location` o resumen de lecturas procesadas.
 
 * **`PlotForecastController`** (Ruta base: `/api/v1/plots/{plotId}/forecasts`):
-  * `GET /api/v1/plots/{plotId}/forecasts` - Consulta el pronóstico meteorológico geolocalizado a 7 días calculado a partir del centroide de la parcela (`TS20`). Implementa almacenamiento en caché local con caducidad de 3 horas. Responde `200 OK` con `ForecastResource`, o `400 Bad Request` si la parcela carece de coordenadas perimétricas.
-  * `POST /api/v1/plots/{plotId}/forecasts/sync` - Dispara la sincronización programada o forzada con el servicio Open-Meteo. Responde `200 OK`.
+  * `GET /api/v1/plots/{plotId}/forecasts` - Consulta el pronóstico meteorológico geolocalizado a 7 días calculado a partir del centroide de la parcela (`TS20` / `US19`). Implementa almacenamiento en caché local con caducidad de 3 horas y sincronización automática vía `WeatherSyncScheduler`. Responde `200 OK` con `ForecastResource`, o `400 Bad Request` si la parcela carece de coordenadas perimétricas.
+  * `POST /api/v1/plots/{plotId}/forecasts` - Ingesta o actualización de lote de pronóstico a 7 días para la parcela (`TS20` / `CMD19`). Responde `200 OK` o `202 Accepted`.
 
 * **`PlotIncidentController`** (Ruta base: `/api/v1/plots/{plotId}/incidents`):
   * `GET /api/v1/plots/{plotId}/incidents` - Lista los incidentes agroclimáticos registrados en el lote (activos e históricos). Responde `200 OK`.
@@ -419,7 +419,7 @@ En esta sección se describe la descomposición y el flujo de comunicación entr
 ##### 1. Descomposición de Componentes por Capa
 * **Interface / API Layer:** 
   * `PlotIotDeviceController`: Expone endpoints para el inventario, alta, calibración y desvinculación de nodos sensores virtuales.
-  * `PlotTelemetryController`: Expone endpoints de lectura de series temporales horarias y el endpoint seguro de ingesta para el simulador.
+  * `PlotTelemetryController`: Expone endpoints de lectura e ingesta consolidada de series temporales horarias.
   * `PlotForecastController`: Expone la consulta de pronósticos geolocalizados a 7 días.
   * `PlotIncidentController`: Expone la consulta de incidentes y alertas agroclimáticas.
 * **Application Layer:**
@@ -476,7 +476,7 @@ graph TD
     MobileApp -->|HTTPS / REST| TelemCtrl
     MobileApp -->|HTTPS / REST| ForeCtrl
     MobileApp -->|HTTPS / REST| IncCtrl
-    Simulator -->|POST /telemetries/ingest| TelemCtrl
+    Simulator -->|POST /telemetries| TelemCtrl
 
     IotCtrl --> CmdHandlers
     IotCtrl --> QueryHandlers

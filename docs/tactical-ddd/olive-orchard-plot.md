@@ -109,11 +109,11 @@ La actualización del nombre/variedad forma parte del handler CMD13 y produce un
 
 **`PlotController`**, atributos `commands: PlotCommandFacade`, `queries: PlotQueryFacade`, `assembler: PlotResourceAssembler`:
 
-- `create()` → `POST /api/v1/plots`: ejecuta `DelimitPlot`, devuelve `201` y `Location`.
-- `get()` → `GET /api/v1/plots/{id}`: titular o gestor con alcance predial vigente.
-- `list()` → `GET /api/v1/plots?status=ACTIVE&page=0&size=20`: ámbito propio por defecto. El filtro cooperativo exige autorización institucional y limita propietarios desde Territory.
-- `update()` → `PUT /api/v1/plots/{id}`: sustituye datos editables mediante `UpdatePlotBoundaries`; exige revisión/`If-Match`. No acepta owner, área, densidad, estado comercial ni cuota como campos editables.
-- `remove()` → `DELETE /api/v1/plots/{id}`: `RemovePlot`, baja lógica y `204`. El motivo puede transmitirse como query `?reason=...` con longitud limitada; la UI pide confirmación y explica que el histórico se conserva.
+- `create()` → `POST /api/v1/plots` (`TS11` / `CMD12` / `US06`): ejecuta `DelimitPlot`, devuelve `201` y `Location`.
+- `get()` → `GET /api/v1/plots/{plotId}` (`TS13` / `US07`): titular o gestor con alcance predial vigente.
+- `list()` → `GET /api/v1/plots?status=ACTIVE&page=0&size=20` (`TS12` / `US07`): ámbito propio por defecto. El filtro cooperativo exige autorización institucional y limita propietarios desde Territory.
+- `update()` → `PUT /api/v1/plots/{plotId}` (`TS14` / `CMD13` / `US09`): sustituye datos editables mediante `UpdatePlotBoundaries`; exige revisión/`If-Match`. No acepta owner, área, densidad, estado comercial ni cuota como campos editables.
+- `remove()` → `DELETE /api/v1/plots/{plotId}` (`TS15` / `CMD14` / `US11`): `RemovePlot`, baja lógica y `204`. El motivo puede transmitirse como query `?reason=...` con longitud limitada; la UI pide confirmación y explica que el histórico se conserva.
 
 La sintaxis malformada produce `400`, geometría/valores inválidos `422`, falta de identidad `401`, falta de permisos `403` o `404` para no revelar recursos, y cuota excedida `409`. Una revisión obsoleta en `If-Match` produce `412`. No se confía en un `ownerId` enviado por la aplicación.
 

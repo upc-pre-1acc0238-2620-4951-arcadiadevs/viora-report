@@ -25,21 +25,21 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `name: CooperativeName` (Value Object: razón social y denominación comercial de la cooperativa)
   * `taxId: TaxIdentificationNumber` (Value Object: registro tributario oficial, RUC en Perú)
   * `licenseId: CooperativeLicenseId` (Referencia débil por identidad al agregado `CooperativeLicense` (`AGG11`) que custodia el contrato corporativo en *Subscription & Cooperative Membership*; este contexto no lee ni muta su cupo)
-  * `authorizedManagerUserIds: List<UserId>` (Colección de gestores técnicos habilitados para solicitar la emisión de lotes de códigos en nombre de la cooperativa)
+  * `technicalManagerUserId: UserId` (Identificador del Gestor Técnico institucional único responsable de la cooperativa, resuelto mediante los claims de su token JWT con rol `ROLE_GESTOR_COOPERATIVA`)
   * `members: List<CooperativeMember>` (Colección interna subordinada de socios productores agremiados)
   * `riskMatrix: TerritorialRiskMatrix` (Value Object: estado consolidado del semáforo de riesgo por sectores agroecológicos)
   * `intakeProjection: EarlyIntakeProjection` (Value Object: proyección vigente de acopio en toneladas para aceituna verde y negra)
   * `version: Long` (Atributo de control de concurrencia optimista)
   * `auditTrail: AuditTrail` (Value Object: marcas temporales inmutables `createdAt`, `updatedAt`)
 * **Métodos:**
-  * `authorizeCodeIssuance(requesterUserId: UserId): void` - Verifica que el gestor técnico solicitante figure en `authorizedManagerUserIds` y que la cooperativa esté operativa, habilitando así que *Subscription & Cooperative Membership* procese la emisión del lote (`US08` / `CMD11`). **No valida cupo ni genera códigos**: la disponibilidad de plazas y superficie se evalúa contra los acumuladores de `CooperativeLicense` (`AGG11`) dentro de aquel contexto.
+  * `authorizeCodeIssuance(requesterUserId: UserId): void` - Verifica que el gestor técnico solicitante coincida con `technicalManagerUserId` y que la cooperativa esté operativa, habilitando así que *Subscription & Cooperative Membership* procese la emisión del lote (`US08` / `CMD11`). **No valida cupo ni genera códigos**: la disponibilidad de plazas y superficie se evalúa contra los acumuladores de `CooperativeLicense` (`AGG11`) dentro de aquel contexto.
   * `affiliateProducer(producerUserId: UserId, grantedHectares: Double, plotIds: List<PlotId>): CooperativeMember` - Procesa la afiliación formal de un socio por reacción al canje de un código corporativo (`POL02` / `EV13`), crea e incorpora la entidad `CooperativeMember` al padrón e incrementa el contador de socios activos. **No inspecciona ni transiciona el código**: la validez y el cambio a `REDEEMED` ocurrieron dentro del límite transaccional de `InvitationCodeBatch` (`AGG12`), y el evento `EV13` es la prueba de que el canje prosperó. La operación es idempotente frente a reentregas del evento.
   * `updateMemberContact(producerUserId: UserId, newFullName: String, newPhone: String, newEmail: String): void` - Sincroniza los datos personales y de contacto del socio en el padrón técnico ante mutaciones de perfil en el upstream (`POL03` / `EV09`).
   * `evaluateTerritorialRiskMatrix(sectorIncidents: List<SectorIncidentSnapshot>): TerritorialRiskMatrix` - Procesa y sintetiza los incidentes agroclimáticos de helada (`POL14` / `EV25`), anomalías de frío de El Niño y alertas de sobrecarga frutal (`POL13` / `EV40`), actualizando los cuadrantes del semáforo sectorial (verde, amarillo, rojo) y encolando `CooperativeRiskMatrixEvaluatedEvent` (EV49) (`CMD31` / `US31`).
   * `projectIntakeVolume(forecaster: TerritorialIntakeForecastingService, samplingSummaries: List<PlotSamplingSummary>): EarlyIntakeProjection` - Invoca el servicio de dominio entregando las coberturas muestrales de los socios (`POL15` / `EV37` / `CMD32` / `US32`). Si la representatividad muestral del padrón es menor al $60\%$, encola obligatoriamente `LowSamplingCoverageWarnedForIntakeEvent` (EV51) con un factor de castigo en el margen de confianza; computa las toneladas agregadas de aceituna verde y negra y encola `CooperativeIntakeVolumeProjectedEvent` (EV50).
   * `getActiveMembersCount(): int` - Retorna la cantidad de socios en estado activo en el padrón.
 * **Invariantes y Reglas de Negocio:**
-  1. **Autorización Nominal de Emisión:** Solo un gestor técnico registrado en `authorizedManagerUserIds` puede solicitar la emisión de un lote de códigos en nombre de la cooperativa. Esta invariante gobierna **quién** solicita, nunca **cuántos** códigos se emiten: el límite cuantitativo es invariante de `CooperativeLicense` (`AGG11`) y se verifica en *Subscription & Cooperative Membership*.
+  1. **Autorización Institucional de Emisión:** Solo el gestor técnico institucional registrado (`technicalManagerUserId`) con rol `ROLE_GESTOR_COOPERATIVA` puede solicitar la emisión de un lote de códigos en nombre de la cooperativa. Esta invariante gobierna **quién** solicita, nunca **cuántos** códigos se emiten: el límite cuantitativo es invariante de `CooperativeLicense` (`AGG11`) y se verifica en *Subscription & Cooperative Membership*.
   2. **Unicidad del Socio en el Padrón:** Un mismo `producerUserId` no puede figurar más de una vez como socio activo del padrón, con independencia de cuántos eventos de canje se reciban para él.
   3. **Umbral Crítico de Representatividad Muestral (60%):** La proyección de acopio territorial exige que al menos el $60.0\%$ de los socios activos del padrón cuenten con muestreos de campo concluidos. Si la cobertura es inferior ($<60\%$), el sistema restringe la confiabilidad de la proyección y emite forzosamente una advertencia de riesgo de muestreo (`EV51`).
   4. **Anonimización y Agregación Territorial:** Los datos de rendimiento y superficie de parcelas individuales se procesan de forma anónima y agregada por subcuencas/sectores, impidiendo la exposición de datos productivos privados entre socios competidores.
@@ -66,11 +66,12 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
 * **`CooperativeId` / `MemberId` / `CooperativeLicenseId` / `UserId` / `PlotId`**: Identificadores inmutables basados en UUID v4 con validación de no nulidad.
 * **`CooperativeName`**: Cadena inmutable no vacía que representa la denominación gremial oficial (mínimo 3 caracteres, máximo 150).
 * **`TaxIdentificationNumber` (RUC)**: Registro fiscal inmutable de 11 dígitos numéricos validado con dígito verificador para personas jurídicas en Perú.
-* **`TerritorialRiskMatrix`**: Encapsula el estado del semáforo sectorial consolidado por zonas agroecológicas:
+* **`TerritorialRiskMatrix`**: Encapsula el estado del semáforo sectorial consolidado por zonas agroecológicas y permite la geolocalización por coordenadas (`US12`):
   * `overallStatus: RiskSeverityLevel` (`LOW_RISK_GREEN`, `MODERATE_WARNING_YELLOW`, `HIGH_ALERT_RED`).
-  * `sectorRisks: Map<SectorZone, SectorRiskDetail>` (Mapeo de riesgos por sector).
+  * `sectorRisks: Map<SectorZone, SectorRiskDetail>` (Mapeo de riesgos por sector: *La Yarada Baja*, *Los Palos*, *Magollo*).
   * `overloadedPlotsCount: Integer` (Cantidad de predios socios con alerta roja de sobrecarga frutal).
   * `evaluatedAt: Instant` (Marca temporal de la evaluación).
+  * `locateSectorByCoordinates(latitude: Double, longitude: Double): Optional<SectorZone>` (Resuelve el sector geográfico donde se encuentra el asesor técnico con el GPS del móvil, resaltando visualmente el semáforo y las alertas activas de esa zona).
 * **`EarlyIntakeProjection`**: Encapsula los volúmenes agregados estimados para la campaña agrícola:
   * `campaignYear: Integer` (Año de cosecha proyectado).
   * `projectedGreenOlivesTons: Double` (Toneladas proyectadas de aceituna verde para conserva).
@@ -129,37 +130,32 @@ En esta capa se definen los puntos de entrada y salida del sistema. Transforma s
 ##### Controllers (REST)
 Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP estándar, implementando los contratos de las Historias de Usuario US08, US31 y US32:
 
-* **`CooperativeMembershipController`** (Ruta base: `/api/v1/cooperatives/{cooperativeId}/membership`):
-  * `GET /api/v1/cooperatives/{cooperativeId}/membership/members` - Retorna el padrón completo de socios productores agremiados (`RM13`). Responde `200 OK` con un arreglo de `CooperativeMemberResource`.
-  * `GET /api/v1/cooperatives/{cooperativeId}/membership/members/{memberId}` - Obtiene el detalle gremial de un socio puntual. Responde `200 OK` o `404 Not Found`.
-  * `GET /api/v1/cooperatives/{cooperativeId}/membership/authorized-managers` - Lista los gestores técnicos habilitados para solicitar emisiones de códigos en nombre de la cooperativa. Responde `200 OK` con un arreglo de `AuthorizedManagerResource`.
+* **`CooperativeMembershipController`** (Ruta base: `/api/v1/cooperatives/{cooperativeId}/members`):
+  * `GET /api/v1/cooperatives/{cooperativeId}/members` - Retorna el padrón completo de socios productores agremiados (`RM13`, `US08`). Responde `200 OK` con un arreglo de `CooperativeMemberResource`. La identidad del gestor técnico solicitante se valida de forma autoritativa mediante los claims de su token JWT (`role: ROLE_GESTOR_COOPERATIVA`).
+  * `GET /api/v1/cooperatives/{cooperativeId}/members/{memberId}` - Obtiene el detalle gremial de un socio puntual. Responde `200 OK` o `404 Not Found`.
 
-> **Endpoints trasladados.** La emisión de lotes (`POST .../invitation-codes`) y la consulta de códigos
-> emitidos (`GET .../invitation-codes`) **ya no se exponen desde este contexto**. Pasan a
+> **Endpoints trasladados.** La emisión de lotes (`POST .../invitation-code-batches`) y la consulta de códigos
+> emitidos (`GET .../invitation-code-batches`) **no se exponen desde este contexto**. Pasan a
 > *Subscription & Cooperative Membership*, que es donde residen `CooperativeLicense` (`AGG11`) e
 > `InvitationCodeBatch` (`AGG12`) y donde puede evaluarse el cupo de plazas y superficie. La vista
 > administrativa `RM13` sigue presentándolos de forma unificada al gestor técnico: la composición ocurre
 > en el modelo de lectura, no devolviendo la autoría del recurso a este contexto.
 
 * **`TerritorialRiskMatrixController`** (Ruta base: `/api/v1/cooperatives/{cooperativeId}/territorial-risk`):
-  * `GET /api/v1/cooperatives/{cooperativeId}/territorial-risk/matrix` - Consulta el semáforo consolidado de riesgo fenológico, climático y de sobrecarga por sectores (`US31` / `RM14`). Responde `200 OK` con `TerritorialRiskMatrixResource`. Actúa como mecanismo de consulta pull que complementa la notificación reactiva push de `CooperativeRiskMatrixEvaluatedEvent` (EV49).
-  * `POST /api/v1/cooperatives/{cooperativeId}/territorial-risk/evaluations` - Dispara la reevaluación bajo demanda del semáforo sectorial (`CMD31`). Responde `200 OK` con la matriz actualizada.
+  * `GET /api/v1/cooperatives/{cooperativeId}/territorial-risk` - Consulta el semáforo consolidado de riesgo fenológico, climático y de sobrecarga por sectores (`US12`, `US31`, `TS29` / `RM14`). Admite parámetros opcionales de geolocalización GPS `?latitude={lat}&longitude={lon}` (`US12`) para que la aplicación móvil detecte automáticamente en qué sector del valle olivarero se encuentra el asesor (*La Yarada*, *Los Palos*, *Magollo*) y resalte el semáforo y las alertas activas de esa zona. Responde `200 OK` con `TerritorialRiskMatrixResource`. Actúa como mecanismo de consulta pull que complementa la notificación reactiva push de `CooperativeRiskMatrixEvaluatedEvent` (EV49). La reevaluación de la matriz es reactiva y guiada por eventos (`EV40`, `EV25`); no se exponen endpoints procedurales de recálculo manual.
 
 * **`CooperativeIntakeForecastController`** (Ruta base: `/api/v1/cooperatives/{cooperativeId}/intake-forecasts`):
-  * `GET /api/v1/cooperatives/{cooperativeId}/intake-forecasts/current` - Consulta la proyección vigente de volumen de acopio de aceituna verde y negra (`US32` / `RM15`). Responde `200 OK` con `EarlyIntakeProjectionResource`. Actúa como mecanismo de consulta pull que complementa el evento push de `CooperativeIntakeVolumeProjectedEvent` (EV50).
-  * `POST /api/v1/cooperatives/{cooperativeId}/intake-forecasts/recompute` - Fuerza el recálculo analítico de la proyección agregada (`CMD32`). Responde `200 OK` con `EarlyIntakeProjectionResource` e incluye advertencia en cabecera si la cobertura es menor al 60%.
+  * `GET /api/v1/cooperatives/{cooperativeId}/intake-forecasts` - Consulta la proyección agregada de volumen de acopio de aceituna verde y negra (`US32`, `TS30` / `RM15`), admitiendo filtro opcional por año agrícola `?campaignYear={year}`. Responde `200 OK` con `EarlyIntakeProjectionResource`. Actúa como mecanismo de consulta pull que complementa el evento push de `CooperativeIntakeVolumeProjectedEvent` (EV50). La proyección se actualiza de forma automática ante la finalización de muestreos en campo (`EV37`); no requiere endpoints procedurales de recálculo forzado.
 
 ##### Resources (DTOs / Request & Response Models)
-* **`AuthorizedManagerResource`**: `{ userId: UUID, fullName: String, authorizedAt: Instant }` (DTO de los gestores técnicos habilitados para solicitar emisiones).
 * **`CooperativeMemberResource`**: `{ id: UUID, producerUserId: UUID, fullName: String, phone: String, email: String, declaredHectares: Double, plotsCount: Integer, status: String, joinedAt: Instant }` (DTO del padrón).
-* **`TerritorialRiskMatrixResource`**: `{ cooperativeId: UUID, overallStatus: String, overloadedPlotsCount: Integer, frostAlertsCount: Integer, sectorRisks: List<SectorRiskResource>, evaluatedAt: Instant }` (DTO de matriz de riesgo).
+* **`TerritorialRiskMatrixResource`**: `{ cooperativeId: UUID, overallStatus: String, overloadedPlotsCount: Integer, frostAlertsCount: Integer, detectedSectorZone: String?, sectorRisks: List<SectorRiskResource>, evaluatedAt: Instant }` (DTO de matriz de riesgo sectorial con sector geolocalizado por GPS).
 * **`SectorRiskResource`**: `{ sectorZone: String, severityLevel: String, thermalAnomalyActive: boolean, overloadCriticalCount: Integer, activePlots: Integer }` (DTO por sector).
 * **`EarlyIntakeProjectionResource`**: `{ cooperativeId: UUID, campaignYear: Integer, greenOlivesTons: Double, blackOlivesTons: Double, totalTons: Double, samplingCoverageRate: Double, isReliable: boolean, lastComputedAt: Instant }` (DTO de proyección de acopio).
 
 ##### Assemblers / Mappers
 * **`CooperativeMemberResourceAssembler`**: Transforma la entidad interna `CooperativeMember` en el DTO `CooperativeMemberResource`.
-* **`AuthorizedManagerResourceAssembler`**: Transforma las entradas de `authorizedManagerUserIds` en el DTO `AuthorizedManagerResource`.
-* **`TerritorialRiskMatrixResourceAssembler`**: Mapea el Value Object `TerritorialRiskMatrix` a `TerritorialRiskMatrixResource`.
+* **`TerritorialRiskMatrixResourceAssembler`**: Mapea el Value Object `TerritorialRiskMatrix` a `TerritorialRiskMatrixResource`, incorporando la detección del sector si se suministraron coordenadas GPS.
 * **`EarlyIntakeProjectionResourceAssembler`**: Mapea el Value Object `EarlyIntakeProjection` a `EarlyIntakeProjectionResource`.
 
 ---
@@ -171,20 +167,18 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
 ##### Command Handlers
 * **`EvaluateCooperativeRiskMatrixCommandHandler`** (CMD31 / US31 / TS29):
   * *Entrada:* `EvaluateCooperativeRiskMatrixCommand` (`cooperativeId`, `evaluationDate`)
-  * *Flujo:* Carga el agregado `Cooperative` -> recopila las alertas activas de telemetría y sobrecarga de las parcelas socias -> invoca `cooperative.evaluateTerritorialRiskMatrix(...)` -> persiste la matriz actualizada en el repositorio -> publica `CooperativeRiskMatrixEvaluatedEvent` (EV49).
+  * *Flujo:* Invocado reactivamente ante eventos de riesgo o por tareas de orquestación interna -> carga el agregado `Cooperative` -> recopila las alertas activas de telemetría y sobrecarga de las parcelas socias -> invoca `cooperative.evaluateTerritorialRiskMatrix(...)` -> persiste la matriz actualizada en el repositorio -> publica `CooperativeRiskMatrixEvaluatedEvent` (EV49).
 * **`ProjectCooperativeIntakeVolumeCommandHandler`** (CMD32 / US32 / TS30):
   * *Entrada:* `ProjectCooperativeIntakeVolumeCommand` (`cooperativeId`, `campaignYear`)
-  * *Flujo:* Inicia transacción (`@Transactional`) -> carga el agregado `Cooperative` -> consulta los resúmenes biométricos de aclareo de las parcelas socias -> invoca `cooperative.projectIntakeVolume(forecastingService, samplings)` -> verifica si la cobertura supera el $60\%$ -> persiste la proyección consolidada en el repositorio -> publica `CooperativeIntakeVolumeProjectedEvent` (EV50) y, de corresponder, `LowSamplingCoverageWarnedForIntakeEvent` (EV51).
+  * *Flujo:* Invocado reactivamente ante `SamplingRoundCompletedEvent` (`EV37`) -> inicia transacción (`@Transactional`) -> carga el agregado `Cooperative` -> consulta los resúmenes biométricos de aclareo de las parcelas socias -> invoca `cooperative.projectIntakeVolume(forecastingService, samplings)` -> verifica si la cobertura supera el $60\%$ -> persiste la proyección consolidada en el repositorio -> publica `CooperativeIntakeVolumeProjectedEvent` (EV50) y, de corresponder, `LowSamplingCoverageWarnedForIntakeEvent` (EV51).
 
 ##### Query Handlers
 * **`GetCooperativeDirectoryQueryHandler`** (RM13 / US08):
   * Resuelve `GetCooperativeDirectoryQuery` recuperando el padrón de socios ordenado alfabéticamente por apellido y estado de afiliación. Aporta **únicamente la porción gremial** de `RM13`; el bloque de licenciamiento y códigos de esa misma vista lo sirve *Subscription & Cooperative Membership*.
-* **`GetAuthorizedManagersQueryHandler`** (RM13 / US08):
-  * Resuelve `GetAuthorizedManagersQuery` entregando los gestores técnicos habilitados para solicitar emisiones de lotes en nombre de la cooperativa.
-* **`GetTerritorialRiskMatrixQueryHandler`** (RM14 / US31):
-  * Resuelve `GetTerritorialRiskMatrixQuery` entregando el estado del semáforo sectorial consolidado para visualización en dashboards web y móviles.
-* **`GetEarlyIntakeProjectionQueryHandler`** (RM15 / US32):
-  * Resuelve `GetEarlyIntakeProjectionQuery` entregando las toneladas proyectadas de aceituna verde y negra para la planificación de salmueras y logística.
+* **`GetTerritorialRiskMatrixQueryHandler`** (RM14 / US12 / US31 / TS29):
+  * Resuelve `GetTerritorialRiskMatrixQuery` entregando el estado del semáforo sectorial consolidado y resolviendo mediante `matrix.locateSectorByCoordinates(lat, lon)` el sector específico donde se encuentra el asesor técnico con el GPS de su dispositivo móvil (`US12`).
+* **`GetEarlyIntakeProjectionQueryHandler`** (RM15 / US32 / TS30):
+  * Resuelve `GetEarlyIntakeProjectionQuery` entregando las toneladas proyectadas de aceituna verde y negra para la planificación de salmueras y logística, filtradas por campaña agrícola.
 
 ##### Event Handlers
 * **`OnCooperativeCodeRedeemedEventHandler`** (POL02 / EV13 / Flujo 2 en DMF):
@@ -213,7 +207,7 @@ Clases que acceden a la base de datos relacional PostgreSQL e implementaciones c
 ##### 1. Paquetes y componentes principales
 * **Persistence:**
   * `PostgresCooperativeRepository`: Implementa la interfaz `CooperativeRepository` de Dominio delegando en Spring Data JPA.
-  * Entidades JPA: `CooperativeJpaEntity`, `CooperativeMemberJpaEntity`, `AuthorizedManagerJpaEntity`, `EarlyIntakeProjectionJpaEntity`, `TerritorialRiskEvaluationJpaEntity`.
+  * Entidades JPA: `CooperativeJpaEntity`, `CooperativeMemberJpaEntity`, `EarlyIntakeProjectionJpaEntity`, `TerritorialRiskEvaluationJpaEntity`.
   * `CooperativeEntityMapper`: Convertidor bidireccional entre las entidades de Dominio puro y las entidades relacionales JPA.
 * **Events:**
   * `SpringDomainEventPublisher`: Publicador interno de eventos en memoria vía `ApplicationEventPublisher`.
@@ -227,16 +221,17 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
 * **Tabla Principal: `cooperatives`**
   ```sql
   CREATE TABLE cooperatives (
-      id                   UUID PRIMARY KEY,
-      name                 VARCHAR(150) NOT NULL,
-      tax_id               VARCHAR(11) NOT NULL UNIQUE,          -- RUC de la cooperativa en Perú
-      license_id           UUID NOT NULL,                        -- Referencia lógica a cooperative_licenses (AGG11, BC Subscription)
-      version              BIGINT NOT NULL DEFAULT 0,            -- Control de concurrencia optimista del padrón
-      created_at           TIMESTAMPTZ NOT NULL,
-      updated_at           TIMESTAMPTZ NOT NULL
+      id                        UUID PRIMARY KEY,
+      name                      VARCHAR(150) NOT NULL,
+      tax_id                    VARCHAR(11) NOT NULL UNIQUE,          -- RUC de la cooperativa en Perú
+      technical_manager_user_id UUID NOT NULL,                        -- Gestor técnico institucional único (IAM / Profiles)
+      license_id                UUID NOT NULL,                        -- Referencia lógica a cooperative_licenses (AGG11, BC Subscription)
+      version                   BIGINT NOT NULL DEFAULT 0,            -- Control de concurrencia optimista del padrón
+      created_at                TIMESTAMPTZ NOT NULL,
+      updated_at                TIMESTAMPTZ NOT NULL
   );
   ```
-  Las columnas `plan_tier`, `max_members_capacity` y `contract_valid_until` se retiran de esta tabla: el contrato corporativo pasa a `cooperative_licenses`, bajo la custodia de `CooperativeLicense` (`AGG11`) en *Subscription & Cooperative Membership*. La referencia `license_id` es lógica y deliberadamente **sin `FOREIGN KEY`**, porque cruza el límite de un Bounded Context.
+  Las columnas `plan_tier`, `max_members_capacity` y `contract_valid_until` se retiran de esta tabla: el contrato corporativo pasa a `cooperative_licenses`, bajo la custodia de `CooperativeLicense` (`AGG11`) en *Subscription & Cooperative Membership*. La referencia `license_id` es lógica y deliberadamente **sin `FOREIGN KEY`**, porque cruza el límite de un Bounded Context. Asimismo, el gestor técnico se almacena como titular institucional único (`technical_manager_user_id`), suprimiendo la necesidad de una tabla auxiliar de gestores múltiples.
 
 * **Tabla Subordinada: `cooperative_members`**
   ```sql
@@ -255,18 +250,6 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
       CONSTRAINT uq_coop_producer UNIQUE (cooperative_id, producer_user_id),
       CONSTRAINT chk_member_status CHECK (status IN ('ACTIVE', 'SUSPENDED', 'RESIGNED')),
       CONSTRAINT chk_declared_hectares CHECK (total_declared_hectares >= 0.00)
-  );
-  ```
-
-* **Tabla Subordinada: `cooperative_authorized_managers`**
-  ```sql
-  CREATE TABLE cooperative_authorized_managers (
-      id             UUID PRIMARY KEY,
-      cooperative_id UUID NOT NULL REFERENCES cooperatives(id) ON DELETE CASCADE,
-      manager_user_id UUID NOT NULL,                            -- Referencia lógica foránea a IAM / Profiles
-      authorized_at  TIMESTAMPTZ NOT NULL,
-      created_at     TIMESTAMPTZ NOT NULL,
-      CONSTRAINT uq_coop_manager UNIQUE (cooperative_id, manager_user_id)
   );
   ```
   La tabla `invitation_codes` se retira de este esquema. Los códigos y su ciclo de vida pasan a
@@ -344,12 +327,12 @@ En esta sección se describe la descomposición y el flujo de comunicación entr
 
 ##### 1. Descomposición de Componentes por Capa
 * **Interface / API Layer:**
-  * `CooperativeMembershipController`: Expone endpoints REST para el padrón de socios y los gestores técnicos autorizados.
-  * `TerritorialRiskMatrixController`: Expone endpoints para el semáforo sectorial de riesgo.
+  * `CooperativeMembershipController`: Expone endpoints REST para el padrón gremial de socios.
+  * `TerritorialRiskMatrixController`: Expone endpoints para el semáforo sectorial de riesgo y geolocalización GPS.
   * `CooperativeIntakeForecastController`: Expone endpoints para la proyección temprana de acopio.
 * **Application Layer:**
-  * Command Handlers (`EvaluateCooperativeRiskMatrixCommandHandler`, `ProjectCooperativeIntakeVolumeCommandHandler`): Orquestan transacciones y coordinan servicios.
-  * Query Handlers (`GetCooperativeDirectoryQueryHandler`, `GetAuthorizedManagersQueryHandler`, `GetTerritorialRiskMatrixQueryHandler`, `GetEarlyIntakeProjectionQueryHandler`): Resuelven consultas optimizadas para dashboards.
+  * Command Handlers (`EvaluateCooperativeRiskMatrixCommandHandler`, `ProjectCooperativeIntakeVolumeCommandHandler`): Orquestan transacciones reactivas y coordinan servicios.
+  * Query Handlers (`GetCooperativeDirectoryQueryHandler`, `GetTerritorialRiskMatrixQueryHandler`, `GetEarlyIntakeProjectionQueryHandler`): Resuelven consultas optimizadas para dashboards y detección GPS.
   * Event Handlers (`OnCooperativeCodeRedeemedEventHandler`, `OnContactProfileUpdatedEventHandler`, `OnOverloadRiskDetectedEventHandler`, `OnWeatherForecastIngestedEventHandler`, `OnSamplingRoundCompletedEventHandler`): Procesan la mensajería asíncrona inter-contexto.
 * **Domain Layer:**
   * Agregado Raíz `Cooperative`, Entidad Interna `CooperativeMember`, Value Objects y el servicio de dominio `TerritorialIntakeForecastingService`.
@@ -378,7 +361,7 @@ graph TD
     subgraph ApplicationLayer ["Application Layer"]
         EvaluateRiskCmdHandler["EvaluateCooperativeRiskMatrixHandler"]
         ProjectIntakeCmdHandler["ProjectCooperativeIntakeVolumeHandler"]
-        QueryHandlers["Query Handlers<br/>(GetDirectory, GetManagers, GetRiskMatrix, GetForecast)"]
+        QueryHandlers["Query Handlers<br/>(GetDirectory, GetRiskMatrix, GetForecast)"]
         EventHandlers["Event Handlers / Policies<br/>(POL02, POL03, POL13, POL14, POL15)"]
     end
 
@@ -432,7 +415,7 @@ graph TD
 ```
 
 ##### 2. Flujo de Comunicación y Conectividad
-1. **Entrada:** El gestor técnico consulta el padrón gremial desde el portal web cooperativo (`GET /api/v1/cooperatives/{cooperativeId}/membership/members`). La solicitud de emisión de un lote de códigos **no entra por este contexto**: se dirige a *Subscription & Cooperative Membership*, que consulta aquí la autorización del solicitante antes de procesarla.
+1. **Entrada:** El gestor técnico consulta el padrón gremial desde el portal web cooperativo (`GET /api/v1/cooperatives/{cooperativeId}/members`). La solicitud de emisión de un lote de códigos **no entra por este contexto**: se dirige a *Subscription & Cooperative Membership*, que valida institucionalmente la coincidencia con `technicalManagerUserId` antes de procesarla.
 2. **Transformación:** `CooperativeMembershipController` valida los parámetros de entrada y delega la consulta en la Application Layer a través de su Query Handler.
 3. **Orquestación de Dominio:** Ante el canje de un código, `OnCooperativeCodeRedeemedEventHandler` (POL02) recibe `CooperativeCodeRedeemedEvent` (EV13), inicia una transacción (`@Transactional`) y carga el agregado `Cooperative` desde `CooperativeRepository`.
 4. **Ejecución y Reglas:** El agregado verifica que el `producerUserId` no figure ya en el padrón e invoca `affiliateProducer(...)`, dando de alta al socio con la superficie concedida por el código. No se evalúa cupo: las plazas y la superficie se comprometieron al emitirse el código, en `CooperativeLicense` (`AGG11`).
@@ -535,7 +518,7 @@ classDiagram
     Cooperative "1" --> "1" CooperativeName
     Cooperative "1" --> "1" TaxIdentificationNumber
     Cooperative "1" --> "1" CooperativeLicenseId : referencia a AGG11
-    Cooperative "1" --> "0..*" UserId : authorizedManagerUserIds
+    Cooperative "1" --> "1" UserId : technicalManagerUserId
     Cooperative "1" --> "0..1" TerritorialRiskMatrix
     Cooperative "1" --> "0..1" EarlyIntakeProjection
     Cooperative "1" *-- "0..*" CooperativeMember : composición
@@ -552,7 +535,7 @@ classDiagram
 
 ##### 2. Relaciones y Conectividad entre Clases
 * **Composición (`1 *-- 0..*`):** `Cooperative` ejerce soberanía transaccional sobre `CooperativeMember`. Si se remueve la cooperativa, sus socios asociados se eliminan en cascada.
-* **Asociación / Atributo (`-->`):** La raíz del agregado encapsula los Value Objects inmutables `TerritorialRiskMatrix` y `EarlyIntakeProjection`, y referencia por identidad la licencia corporativa `CooperativeLicenseId`, que vive en otro Bounded Context y nunca se carga en memoria desde aquí.
+* **Asociación / Atributo (`-->`):** La raíz del agregado encapsula los Value Objects inmutables `TerritorialRiskMatrix` y `EarlyIntakeProjection`, referencia por identidad la licencia corporativa `CooperativeLicenseId`, y vincula al gestor técnico único mediante `UserId`.
 * **Dependencia (`..>`):** El agregado delega en `TerritorialIntakeForecastingService` para ejecutar cálculos matemáticos de estratificación muestral y balance de cosecha.
 * **Referencias desacopladas por ID:** Los socios se asocian mediante el Value Object `UserId` (hacia *IAM* y *Profiles*) y las parcelas mediante `PlotId` (hacia *Orchard*), garantizando cero acoplamiento en memoria hacia otros Bounded Contexts.
 
@@ -563,14 +546,11 @@ classDiagram
 En esta sección se detalla el diseño físico y relacional de la base de datos en PostgreSQL, describiendo tablas, tipos de datos, claves primarias, claves foráneas, restricciones de integridad e índices:
 
 ##### 1. Tablas y Estructura de Claves
-* **Tabla Principal `cooperatives`:** Almacena la razón social, RUC y contrato corporativo de licenciamiento.
+* **Tabla Principal `cooperatives`:** Almacena la razón social, RUC, gestor técnico institucional y contrato corporativo de licenciamiento.
   * Clave primaria: `id` (UUID).
 * **Tabla Subordinada `cooperative_members`:** Padrón de productores socios.
   * Clave primaria: `id` (UUID).
   * Clave foránea física: `cooperative_id` (UUID) con regla `ON DELETE CASCADE` referenciando a `cooperatives(id)`.
-* **Tabla Subordinada `cooperative_authorized_managers`:** Gestores técnicos habilitados para solicitar emisiones de códigos.
-  * Clave primaria: `id` (UUID).
-  * Clave foránea física: `cooperative_id` (UUID) con regla `ON DELETE CASCADE`.
 * **Tabla Subordinada `early_intake_projections`:** Histórico de proyecciones tempranas de acopio por campaña.
   * Clave primaria: `id` (UUID).
   * Clave foránea física: `cooperative_id` (UUID) con regla `ON DELETE CASCADE`.
@@ -580,8 +560,8 @@ En esta sección se detalla el diseño físico y relacional de la base de datos 
 
 ##### 2. Relaciones y Cardinalidad Relacional
 * **Relación 1 a N (`cooperatives` a `cooperative_members`):** Una cooperativa asocia múltiples productores olivareros en su padrón.
-* **Relación 1 a N (`cooperatives` a `cooperative_authorized_managers`):** Una cooperativa habilita a uno o más gestores técnicos para solicitar emisiones de códigos en su nombre.
 * **Relación 1 a N (`cooperatives` a `early_intake_projections`):** Una cooperativa almacena múltiples estimaciones de acopio a lo largo de las campañas agrícolas.
+* **Relación 1 a N (`cooperatives` a `territorial_risk_evaluations`):** Una cooperativa registra las evaluaciones del semáforo de riesgo territorial.
 
 ```mermaid
 erDiagram
@@ -589,6 +569,7 @@ erDiagram
         UUID id PK
         VARCHAR_150 name "Razón social cooperativa"
         VARCHAR_11 tax_id "RUC fiscal (Perú) UNIQUE"
+        UUID technical_manager_user_id "Gestor técnico institucional"
         UUID license_id "Referencia lógica a AGG11 (BC Subscription)"
         BIGINT version "Control concurrencia optimista del padrón"
         TIMESTAMPTZ created_at "Auditoría"
@@ -607,14 +588,6 @@ erDiagram
         TIMESTAMPTZ joined_at "Fecha de ingreso"
         TIMESTAMPTZ created_at "Auditoría"
         TIMESTAMPTZ updated_at "Auditoría"
-    }
-
-    cooperative_authorized_managers {
-        UUID id PK
-        UUID cooperative_id FK "ON DELETE CASCADE"
-        UUID manager_user_id "Referencia lógica a IAM/Profiles"
-        TIMESTAMPTZ authorized_at "Fecha de habilitación"
-        TIMESTAMPTZ created_at "Auditoría"
     }
 
     early_intake_projections {
@@ -641,7 +614,6 @@ erDiagram
     }
 
     cooperatives ||--o{ cooperative_members : "incorpora socios"
-    cooperatives ||--o{ cooperative_authorized_managers : "habilita gestores emisores"
     cooperatives ||--o{ early_intake_projections : "computa proyecciones de acopio"
     cooperatives ||--o{ territorial_risk_evaluations : "consolida semáforo de riesgo"
 ```
@@ -655,7 +627,6 @@ erDiagram
 * **Índices Únicos:**
   * `CREATE UNIQUE INDEX uq_coop_tax_id ON cooperatives (tax_id);` (Unicidad fiscal de la cooperativa).
   * `CREATE UNIQUE INDEX uq_coop_member_producer ON cooperative_members (cooperative_id, producer_user_id);` (Un productor solo puede tener una membresía por cooperativa).
-  * `CREATE UNIQUE INDEX uq_coop_manager ON cooperative_authorized_managers (cooperative_id, manager_user_id);` (Un gestor técnico se habilita una sola vez por cooperativa).
 * **Índices de Optimización de Búsqueda:**
   * B-tree sobre `(cooperative_id, status)` en `cooperative_members` para listar socios activos rápidamente.
   * B-tree sobre `(license_id)` en `cooperatives` para resolver la cooperativa destinataria al reaccionar a eventos del contexto de suscripciones.
