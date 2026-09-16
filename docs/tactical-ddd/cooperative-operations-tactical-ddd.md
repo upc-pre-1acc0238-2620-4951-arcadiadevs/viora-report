@@ -4,11 +4,11 @@
 
 ### Bounded Context: Cooperative Operations and Territorial Intelligence (Cooperative Operations)
 
-**Propósito:** El Bounded Context de **Cooperative Operations and Territorial Intelligence** (denominado comúnmente *Cooperative Operations* o *Territory*) es un subdominio de soporte (*Supporting Subdomain*) del negocio de Viora, responsable de la gestión gremial corporativa, la administración del padrón de socios olivareros, la autorización de qué gestores técnicos pueden solicitar la emisión de lotes de códigos corporativos de invitación a *Subscription & Cooperative Membership*, la consolidación del semáforo territorial de riesgos fisiológicos y agroclimáticos por sectores agroecológicos (La Yarada-Los Palos y Magollo en el valle de Tacna), y el cómputo dinámico de la proyección temprana de volumen de acopio asociativo de aceituna verde (conserva) y aceituna negra (mesa/almazara).
+**Propósito:** El Bounded Context de **Cooperative Operations and Territorial Intelligence** (denominado comúnmente *Cooperative Operations* o *Territory*) es un subdominio de soporte (*Supporting Subdomain*) del negocio de Viora, responsable de la gestión gremial corporativa, la administración del padrón de socios olivareros, la autorización de qué gestores técnicos pueden solicitar la emisión de lotes de códigos corporativos de invitación a *Subscription & Cooperative Membership*, la consolidación del semáforo territorial de riesgos fisiológicos y agroclimáticos por sectores agroecológicos de la cuenca territorial, y el cómputo dinámico de la proyección temprana de volumen de acopio asociativo de aceituna verde (conserva) y aceituna negra (mesa/almazara).
 
 > **Delimitación respecto del licenciamiento corporativo.** La custodia del contrato corporativo y el ciclo de vida de los códigos de invitación **no residen en este contexto**: viven en *Subscription & Cooperative Membership* bajo los agregados `CooperativeLicense` (`AGG11`) e `InvitationCodeBatch` (`AGG12`). La razón es que, en el instante de emitir un lote, los productores destinatarios todavía no son socios ni están suscritos, de modo que el cupo no puede validarse contra el padrón de esta cooperativa. Este contexto conserva la potestad de **autorizar quién** solicita una emisión, y consume el resultado del canje para dar de alta al socio en su padrón.
 
-Técnica y agronómicamente, resuelve la incertidumbre logística, financiera y comercial de las asociaciones y cooperativas olivareras de Tacna, permitiéndoles anticipar con meses de antelación la capacidad requerida en tanques de salmuera, cuadrillas de transporte y contratos de exportación. Mantiene una delimitación semántica estricta aislando los modelos gremiales de los detalles prediales individuales: referencia de forma débil por identificador inmutable (`UserId`) a los socios en *User Profiles* e *IAM*, y por identidad lógica (`PlotId`) a los cuarteles de *Olive Orchard & Plot Management*. Actúa como consumidor de eventos de telemetría, sobrecarga frutal y muestreos de campo provenientes de *Crop Load Regulation & Thinning Advisory* y *Agroclimatic Telemetry & Sensor Monitoring*, traduciendo múltiples vocabularios foráneos a su propio modelo unificado territorial mediante una capa de anticorrupción (ACL).
+Técnica y agronómicamente, resuelve la incertidumbre logística, financiera y comercial de las asociaciones y cooperativas olivareras, permitiéndoles anticipar con meses de antelación la capacidad requerida en tanques de salmuera, cuadrillas de transporte y contratos de exportación. Mantiene una delimitación semántica estricta aislando los modelos gremiales de los detalles prediales individuales: referencia de forma débil por identificador inmutable (`UserId`) a los socios en *User Profiles* e *IAM*, y por identidad lógica (`PlotId`) a los cuarteles de *Olive Orchard & Plot Management*. Actúa como consumidor de eventos de telemetría, sobrecarga frutal y muestreos de campo provenientes de *Crop Load Regulation & Thinning Advisory* y *Agroclimatic Telemetry & Sensor Monitoring*, traduciendo múltiples vocabularios foráneos a su propio modelo unificado territorial mediante una capa de anticorrupción (ACL).
 
 ---
 
@@ -29,7 +29,6 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `members: List<CooperativeMember>` (Colección interna subordinada de socios productores agremiados)
   * `riskMatrix: TerritorialRiskMatrix` (Value Object: estado consolidado del semáforo de riesgo por sectores agroecológicos)
   * `intakeProjection: EarlyIntakeProjection` (Value Object: proyección vigente de acopio en toneladas para aceituna verde y negra)
-  * `version: Long` (Atributo de control de concurrencia optimista)
   * `auditTrail: AuditTrail` (Value Object: marcas temporales inmutables `createdAt`, `updatedAt`)
 * **Métodos:**
   * `authorizeCodeIssuance(requesterUserId: UserId): void` - Verifica que el gestor técnico solicitante coincida con `technicalManagerUserId` y que la cooperativa esté operativa, habilitando así que *Subscription & Cooperative Membership* procese la emisión del lote (`US08` / `CMD11`). **No valida cupo ni genera códigos**: la disponibilidad de plazas y superficie se evalúa contra los acumuladores de `CooperativeLicense` (`AGG11`) dentro de aquel contexto.
@@ -68,7 +67,7 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
 * **`TaxIdentificationNumber` (RUC)**: Registro fiscal inmutable de 11 dígitos numéricos validado con dígito verificador para personas jurídicas en Perú.
 * **`TerritorialRiskMatrix`**: Encapsula el estado del semáforo sectorial consolidado por zonas agroecológicas y permite la geolocalización por coordenadas (`US12`):
   * `overallStatus: RiskSeverityLevel` (`LOW_RISK_GREEN`, `MODERATE_WARNING_YELLOW`, `HIGH_ALERT_RED`).
-  * `sectorRisks: Map<SectorZone, SectorRiskDetail>` (Mapeo de riesgos por sector: *La Yarada Baja*, *Los Palos*, *Magollo*).
+  * `sectorRisks: Map<SectorZone, SectorRiskDetail>` (Mapeo de riesgos por sector: *Sector Valle Bajo*, *Sector Valle Medio*, *Sector Costa*, *Sector Litoral*).
   * `overloadedPlotsCount: Integer` (Cantidad de predios socios con alerta roja de sobrecarga frutal).
   * `evaluatedAt: Instant` (Marca temporal de la evaluación).
   * `locateSectorByCoordinates(latitude: Double, longitude: Double): Optional<SectorZone>` (Resuelve el sector geográfico donde se encuentra el asesor técnico con el GPS del móvil, resaltando visualmente el semáforo y las alertas activas de esa zona).
@@ -80,7 +79,7 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `samplingCoverageRate: SamplingCoverageRate` (Porcentaje de cobertura muestral del padrón).
   * `isReliable: boolean` (Indicador de robustez estadística: verdadero si $Coverage \ge 60\%$).
 * **`SamplingCoverageRate`**: Decimal inmutable en rango $[0.00, 100.00]\%$ que cuantifica el porcentaje de socios activos que han reportado muestreos en campo válidos.
-* **`SectorZone`**: Enum inmutable que delimita los sectores agroecológicos del valle olivarero de Tacna: `LA_YARADA_BAJA`, `LA_YARADA_MEDIA`, `LOS_PALOS`, `MAGOLLO`.
+* **`SectorZone`**: Enum inmutable que delimita los sectores agroecológicos del territorio olivarero: `SECTOR_VALLE_BAJO`, `SECTOR_VALLE_MEDIO`, `SECTOR_COSTA`, `SECTOR_LITORAL`.
 * **`MemberStatus`**: Enum inmutable (`ACTIVE`, `SUSPENDED`, `RESIGNED`).
 * **`AuditTrail`**: Marcas inmutables de trazabilidad temporal (`createdAt`, `updatedAt`).
 
@@ -142,7 +141,7 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
 > en el modelo de lectura, no devolviendo la autoría del recurso a este contexto.
 
 * **`TerritorialRiskMatrixController`** (Ruta base: `/api/v1/cooperatives/{cooperativeId}/territorial-risk`):
-  * `GET /api/v1/cooperatives/{cooperativeId}/territorial-risk` - Consulta el semáforo consolidado de riesgo fenológico, climático y de sobrecarga por sectores (`US12`, `US31`, `TS29` / `RM14`). Admite parámetros opcionales de geolocalización GPS `?latitude={lat}&longitude={lon}` (`US12`) para que la aplicación móvil detecte automáticamente en qué sector del valle olivarero se encuentra el asesor (*La Yarada*, *Los Palos*, *Magollo*) y resalte el semáforo y las alertas activas de esa zona. Responde `200 OK` con `TerritorialRiskMatrixResource`. Actúa como mecanismo de consulta pull que complementa la notificación reactiva push de `CooperativeRiskMatrixEvaluatedEvent` (EV49). La reevaluación de la matriz es reactiva y guiada por eventos (`EV40`, `EV25`); no se exponen endpoints procedurales de recálculo manual.
+  * `GET /api/v1/cooperatives/{cooperativeId}/territorial-risk` - Consulta el semáforo consolidado de riesgo fenológico, climático y de sobrecarga por sectores (`US12`, `US31`, `TS29` / `RM14`). Admite parámetros opcionales de geolocalización GPS `?latitude={lat}&longitude={lon}` (`US12`) para que la aplicación móvil detecte automáticamente en qué sector territorial se encuentra el asesor (*Sector Valle Bajo*, *Sector Valle Medio*, *Sector Costa*, *Sector Litoral*) y resalte el semáforo y las alertas activas de esa zona. Responde `200 OK` con `TerritorialRiskMatrixResource`. Actúa como mecanismo de consulta pull que complementa la notificación reactiva push de `CooperativeRiskMatrixEvaluatedEvent` (EV49). La reevaluación de la matriz es reactiva y guiada por eventos (`EV40`, `EV25`); no se exponen endpoints procedurales de recálculo manual.
 
 * **`CooperativeIntakeForecastController`** (Ruta base: `/api/v1/cooperatives/{cooperativeId}/intake-forecasts`):
   * `GET /api/v1/cooperatives/{cooperativeId}/intake-forecasts` - Consulta la proyección agregada de volumen de acopio de aceituna verde y negra (`US32`, `TS30` / `RM15`), admitiendo filtro opcional por año agrícola `?campaignYear={year}`. Responde `200 OK` con `EarlyIntakeProjectionResource`. Actúa como mecanismo de consulta pull que complementa el evento push de `CooperativeIntakeVolumeProjectedEvent` (EV50). La proyección se actualiza de forma automática ante la finalización de muestreos en campo (`EV37`); no requiere endpoints procedurales de recálculo forzado.
@@ -361,16 +360,16 @@ graph TD
     subgraph ApplicationLayer ["Application Layer"]
         EvaluateRiskCmdHandler["EvaluateCooperativeRiskMatrixHandler"]
         ProjectIntakeCmdHandler["ProjectCooperativeIntakeVolumeHandler"]
-        QueryHandlers["Query Handlers<br/>(GetDirectory, GetRiskMatrix, GetForecast)"]
-        EventHandlers["Event Handlers / Policies<br/>(POL02, POL03, POL13, POL14, POL15)"]
+        QueryHandlers["Query Handlers: (GetDirectory, GetRiskMatrix, GetForecast)"]
+        EventHandlers["Event Handlers / Policies: (POL02, POL03, POL13, POL14, POL15)"]
     end
 
     subgraph DomainLayer ["Domain Layer"]
         CooperativeAR["Cooperative (Aggregate Root)"]
         MemberEntity["CooperativeMember (Entity)"]
         ForecastingService["TerritorialIntakeForecastingService (Domain Service)"]
-        RepoInterfaces["Interfaces de Dominio<br/>(CooperativeRepository)"]
-        DomainEvents["Domain Events<br/>(EV49, EV50, EV51)"]
+        RepoInterfaces["Interfaces de Dominio: (CooperativeRepository)"]
+        DomainEvents["Domain Events: (EV49, EV50, EV51)"]
     end
 
     subgraph InfrastructureLayer ["Infrastructure Layer"]
@@ -571,7 +570,7 @@ erDiagram
         VARCHAR_11 tax_id "RUC fiscal (Perú) UNIQUE"
         UUID technical_manager_user_id "Gestor técnico institucional"
         UUID license_id "Referencia lógica a AGG11 (BC Subscription)"
-        BIGINT version "Control concurrencia optimista del padrón"
+
         TIMESTAMPTZ created_at "Auditoría"
         TIMESTAMPTZ updated_at "Auditoría"
     }
@@ -631,3 +630,252 @@ erDiagram
   * B-tree sobre `(cooperative_id, status)` en `cooperative_members` para listar socios activos rápidamente.
   * B-tree sobre `(license_id)` en `cooperatives` para resolver la cooperativa destinataria al reaccionar a eventos del contexto de suscripciones.
   * B-tree sobre `(cooperative_id, campaign_year DESC)` en `early_intake_projections` para graficar el avance de proyecciones en dashboards.
+
+---
+
+### Anexo de Diagramas como Código (3 Herramientas)
+
+#### 1. Structurizr DSL (C4 Model - Component Level)
+
+```structurizr
+workspace "Viora - Cooperative Operations Component Architecture" "Cooperative Operations and Territorial Intelligence Component View" {
+    model {
+        manager = person "Technical Manager" "Supervises cooperative member plots, intake projections, and territorial risks."
+        producer = person "Olive Producer" "Member affiliated with the cooperative."
+
+        viora = softwareSystem "Viora Platform" {
+            backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
+                memberCtrl = component "CooperativeMemberController" "Exposes cooperative registry, member affiliation, and roster endpoints" "Spring MVC Controller"
+                intakeCtrl = component "CooperativeIntakeController" "Exposes early intake projections and harvest volume forecasts" "Spring MVC Controller"
+                riskCtrl = component "CooperativeRiskController" "Exposes territorial risk matrix and sectorial alert queries" "Spring MVC Controller"
+                
+                coopCommandService = component "CooperativeCommandService" "Coordinates cooperative registration, member affiliation/suspension, and territorial risk evaluation (CMD31)" "Spring Service / Command Service"
+                coopQueryService = component "CooperativeQueryService" "Handles queries for member rosters, early intake projections, and territorial risk alerts" "Spring Service / Query Service"
+                
+                riskService = component "TerritorialRiskAggregationService" "Consolidates active frost alerts and crop overload by geographic zone" "Domain Service"
+                intakeService = component "YieldAggregationDomainService" "Projects total olive intake from member plot samples and floral return" "Domain Service"
+                
+                coopRepo = component "CooperativeRepository" "Domain repository interface for cooperative and member persistence" "Domain Port / Interface"
+                coopRepoAdapter = component "JpaCooperativeRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for cooperatives" "Spring Data JPA Adapter"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV49 and member affiliation domain events" "Spring ApplicationEventPublisher"
+            }
+            db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
+                tags "Database"
+            }
+        }
+
+        manager -> memberCtrl "Manages members [HTTPS/REST]"
+        manager -> intakeCtrl "Views intake projections [HTTPS/REST]"
+        manager -> riskCtrl "Queries territorial risk [HTTPS/REST]"
+        producer -> memberCtrl "Views membership [HTTPS/REST]"
+
+        memberCtrl -> coopCommandService "Delegates affiliation/suspension commands"
+        memberCtrl -> coopQueryService "Delegates member roster queries"
+        intakeCtrl -> coopQueryService "Delegates intake projection queries"
+        riskCtrl -> coopCommandService "Delegates EvaluateTerritorialRiskCommand (CMD31)"
+        riskCtrl -> coopQueryService "Delegates territorial risk queries"
+
+        coopCommandService -> riskService "Aggregates sectorial risk matrix"
+        coopCommandService -> coopRepo "Loads / persists cooperatives and members via domain port"
+        coopCommandService -> eventPublisher "Publishes EV49 (Risk Matrix Evaluated)"
+
+        coopQueryService -> intakeService "Aggregates early harvest intake"
+        coopQueryService -> coopRepo "Fetches cooperatives, members, and risk evaluations via domain port"
+
+        coopRepoAdapter -> coopRepo "Implements persistence contract"
+        coopRepoAdapter -> db "CRUD operations on cooperative.* tables [JDBC/JPA]"
+    }
+    views {
+        component backend "CooperativeComponentView" "Cooperative Operations Component Architecture" {
+            include *
+            autoLayout lr
+        }
+        styles {
+            element "Database" {
+                shape Cylinder
+                background #1168bd
+                color #ffffff
+            }
+        }
+        theme default
+    }
+}
+```
+
+#### 2. PlantUML (Domain Layer Class Diagram)
+
+```plantuml
+@startuml
+title Viora - Cooperative Operations Domain Class Diagram
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+hide empty members
+
+class Cooperative <<AggregateRoot>> {
+  - id: CooperativeId
+  - name: String
+  - taxId: TaxId
+  - technicalManagerUserId: UserId
+  - declaredHectares: Double
+  - members: List<CooperativeMember>
+  - intakeProjections: List<EarlyIntakeProjection>
+  - riskEvaluations: List<TerritorialRiskEvaluation>
+  + register(id, name, taxId, managerUserId): Cooperative
+  + affiliateMember(producerUserId, fullName, phone, email, hectares): void
+  + suspendMember(memberId): void
+  + recordIntakeProjection(campaignYear, greenTons, blackTons, coverage): void
+  + evaluateTerritorialRisk(riskService, activeAlerts): void
+  + technicalManagerUserId(): UserId
+}
+
+class CooperativeMember <<Entity>> {
+  - id: MemberId
+  - producerUserId: UserId
+  - fullName: String
+  - contactPhone: PhoneNumber
+  - contactEmail: EmailAddress
+  - totalDeclaredHectares: Double
+  - status: MemberStatus
+  - joinedAt: Instant
+  + suspend(): void
+  + reactivate(): void
+}
+
+class EarlyIntakeProjection <<Entity>> {
+  - id: ProjectionId
+  - campaignYear: Integer
+  - projectedGreenTons: Double
+  - projectedBlackTons: Double
+  - totalProjectedTons: Double
+  - samplingCoverageRate: Double
+  - isReliable: Boolean
+  - computedAt: Instant
+}
+
+class TerritorialRiskEvaluation <<Entity>> {
+  - id: EvaluationId
+  - overallSeverity: RiskSeverity
+  - overloadedPlotsCount: Integer
+  - frostAlertsCount: Integer
+  - evaluatedAt: Instant
+}
+
+class TerritorialRiskAggregationService <<DomainService>> {
+  + evaluateSectorRisk(activeIncidents, prescriptions): RiskAssessment
+}
+
+class YieldAggregationDomainService <<DomainService>> {
+  + projectHarvestYield(plotSamplings, floralReturnFactors): IntakeProjectionResult
+}
+
+class CooperativeRiskMatrixEvaluatedEvent <<DomainEvent>> {
+  - cooperativeId: UUID
+  - overallSeverity: String
+  - frostAlertsActive: Integer
+  - occurredOn: Instant
+}
+
+class MemberAffiliatedEvent <<DomainEvent>> {
+  - cooperativeId: UUID
+  - memberId: UUID
+  - producerUserId: UUID
+  - occurredOn: Instant
+}
+
+interface CooperativeRepository <<Repository>> {
+  + findById(id: CooperativeId): Optional<Cooperative>
+  + findByTaxId(taxId: TaxId): Optional<Cooperative>
+  + findByTechnicalManagerUserId(userId: UserId): List<Cooperative>
+  + save(cooperative: Cooperative): Cooperative
+}
+
+Cooperative "1" *--> "0..*" CooperativeMember : enrolls
+Cooperative "1" *--> "0..*" EarlyIntakeProjection : tracks
+Cooperative "1" *--> "0..*" TerritorialRiskEvaluation : evaluates
+Cooperative ..> TerritorialRiskAggregationService : uses
+Cooperative ..> YieldAggregationDomainService : uses for intake projections
+EarlyIntakeProjection ..> YieldAggregationDomainService : computed by
+Cooperative ..> CooperativeRiskMatrixEvaluatedEvent : emits (EV49)
+Cooperative ..> MemberAffiliatedEvent : emits (EV51 / POL02)
+CooperativeRepository ..> Cooperative : manages
+@enduml
+```
+
+#### 3. PlantUML (Database Relational Diagram - ERD)
+
+```plantuml
+@startuml
+title Viora - Cooperative Operations Relational Schema
+hide circle
+skinparam linetype ortho
+
+entity "cooperative.cooperatives" as cooperatives {
+  * id : UUID <<PK>>
+  --
+  * name : VARCHAR(120)
+  * tax_id : VARCHAR(30) <<UQ>>
+  * technical_manager_user_id : UUID
+  * declared_hectares : NUMERIC(10,2)
+
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+entity "cooperative.cooperative_members" as cooperative_members {
+  * id : UUID <<PK>>
+  --
+  * cooperative_id : UUID <<FK>>
+  * producer_user_id : UUID
+  * full_name : VARCHAR(150)
+  contact_phone : VARCHAR(25)
+  contact_email : VARCHAR(100)
+  * total_declared_hectares : NUMERIC(8,2)
+  * status : VARCHAR(20)
+  * joined_at : TIMESTAMPTZ
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+entity "cooperative.early_intake_projections" as early_intake_projections {
+  * id : UUID <<PK>>
+  --
+  * cooperative_id : UUID <<FK>>
+  * campaign_year : INTEGER
+  * projected_green_tons : NUMERIC(10,2)
+  * projected_black_tons : NUMERIC(10,2)
+  * total_projected_tons : NUMERIC(10,2)
+  * sampling_coverage_rate : NUMERIC(5,2)
+  * is_reliable : BOOLEAN
+  * computed_at : TIMESTAMPTZ
+  * created_at : TIMESTAMPTZ
+}
+
+entity "cooperative.territorial_risk_evaluations" as territorial_risk_evaluations {
+  * id : UUID <<PK>>
+  --
+  * cooperative_id : UUID <<FK>>
+  * overall_severity : VARCHAR(30)
+  * overloaded_plots_count : INTEGER
+  * frost_alerts_count : INTEGER
+  * evaluated_at : TIMESTAMPTZ
+  * created_at : TIMESTAMPTZ
+}
+
+cooperatives ||--o{ cooperative_members : "enrolls"
+cooperatives ||--o{ early_intake_projections : "computes"
+cooperatives ||--o{ territorial_risk_evaluations : "consolidates"
+
+note bottom of cooperatives
+  Constraints:
+  - UNIQUE(tax_id)
+  - technical_manager_user_id references logically iam.user_accounts(id)
+end note
+
+note bottom of cooperative_members
+  Constraints:
+  - UNIQUE(cooperative_id, producer_user_id)
+  - CHECK(status IN ('ACTIVE', 'SUSPENDED', 'RESIGNED'))
+end note
+@enduml
+```
+

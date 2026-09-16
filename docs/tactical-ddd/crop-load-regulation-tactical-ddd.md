@@ -200,9 +200,9 @@ Diseño orientado estrictamente a recursos. La prescripción (`FruitThinningPres
 
 | Clase y colaboradores | Métodos / rutas | Responsabilidad |
 |---|---|---|
-| `FieldSamplingController`; `commands: CropLoadCommandFacade`, `queries: CropLoadQueryFacade`, `assembler: SamplingCommandAssembler` | `record()` → `POST /api/v1/thinning-prescriptions/{id}/sampling-records`; `ingestBatch()` → `POST /api/v1/thinning-prescriptions/{id}/sampling-batches`; `roundStatus()` → `GET /api/v1/thinning-prescriptions/{id}/sampling-rounds/active` | Registro individual a pie de árbol (`TS24` / `CMD24` / `US24`) y sincronización de lote offline (`TS24` / `CMD25` / `US24`). El endpoint acepta un registro individual o un arreglo por lote con cabecera `Idempotency-Key` para deduplicación de reintentos post-reconexión (RF-12, RNF-03). El cliente móvil persiste los muestreos en base de datos local SQLite (Room en Android / sqflite en Flutter) y los sincroniza al restablecer conectividad mediante `WorkManager` (Android) o `workmanager` plugin (Flutter), conservando identificadores estables `(actorId, plotId, clientBatchId)` para idempotencia. Consulta del avance muestral (`RM09` / `TS25`). El cliente obtiene previamente el `{id}` activo mediante `GET /api/v1/plots/{plotId}/thinning-prescriptions?scope=current`, admitiéndose además el alias predial `POST /api/v1/plots/{plotId}/thinning-prescriptions/sampling-records` para sincronizaciones offline sin estado previo. |
-| `ThinningPrescriptionController`; `commands`, `queries: CropLoadQueryFacade`, `assembler: PrescriptionResourceAssembler` | `determine()` → `POST /api/v1/thinning-prescriptions/{id}/load-determinations`; `get()` → `GET /api/v1/thinning-prescriptions/{id}`; `getCurrent()` → `GET /api/v1/plots/{plotId}/thinning-prescriptions?scope=current`; `history()` → `GET /api/v1/plots/{plotId}/thinning-prescriptions?page=0&size=20` | Determinación bajo demanda (`CMD26`) y consulta de la ficha de prescripción (`RM10`, servida por `get()` y `getCurrent()`). `history()` devuelve `PrescriptionSummary` paginado. La determinación se expone como sub-recurso de acción sobre la prescripción activa sin el segmento mágico `/current`. |
-| `ThinningExecutionController`; `commands`, `assembler: ExecutionCommandAssembler` | `confirm()` → `POST /api/v1/thinning-prescriptions/{id}/execution-confirmations` | Confirmación de la labor aplicada en campo (`CMD28`). La oportunidad se deriva en el dominio; el payload no la transporta. |
+| `FieldSamplingController`; `commands: CropLoadCommandFacade`, `queries: CropLoadQueryFacade`, `assembler: SamplingCommandAssembler` | `ingest()` → `POST /api/v1/plots/{plotId}/samplings`; `getSamplings()` → `GET /api/v1/plots/{plotId}/samplings` | Ingesta individual a pie de árbol (`TS24` / `CMD24` / `US24`) y sincronización de lote offline (`TS24` / `CMD25` / `US24`). El endpoint acepta un registro individual o un arreglo por lote con cabecera `Idempotency-Key` para deduplicación de reintentos post-reconexión (RF-12, RNF-03). El cliente móvil persiste los muestreos en base de datos local SQLite (Room en Android / sqflite en Flutter) y los sincroniza al restablecer conectividad mediante `WorkManager` (Android) o `workmanager` plugin (Flutter), conservando identificadores estables `(actorId, plotId, clientBatchId)` para idempotencia. Consulta del avance muestral y suficiencia representativa (`RM09` / `TS25` / `US25`) sobre la colección con soporte para filtros `?campaignYear={year}` y `?view=summary`. |
+| `ThinningPrescriptionController`; `commands`, `queries: CropLoadQueryFacade`, `assembler: PrescriptionResourceAssembler` | `determine()` → `POST /api/v1/plots/{plotId}/thinning-prescriptions`; `get()` → `GET /api/v1/thinning-prescriptions/{id}`; `list()` → `GET /api/v1/plots/{plotId}/thinning-prescriptions` | Determinación bajo demanda (`CMD26` / `US26`) y consulta de la ficha de prescripción (`RM10` / `TS26` / `US27`, servida por `get()` por ID unívoco o `list()` para la activa de la campaña / historial paginado con `?page=0&size=20`). |
+| `ThinningExecutionController`; `commands`, `assembler: ExecutionCommandAssembler` | `confirm()` → `POST /api/v1/thinning-prescriptions/{id}/execution-confirmations` | Confirmación de la labor aplicada en campo (`TS27` / `CMD28` / `US28`). La oportunidad se deriva en el dominio clasificando en oportuna (`EV44` / `POL18`) o tardía (`EV45` / `POL11`); el payload no la transporta. |
 
 `CMD27` (`CloseThinningWindowByPhenology`) **no se expone como endpoint**. Su iniciador es el planificador del sistema a partir de la señal de grados-día fenológicos, no un actor humano. Exponerlo permitiría cerrar una ventana biológica por vía administrativa, que es precisamente lo que la invariante 3 impide. Se despacha desde la capa de aplicación.
 
@@ -260,7 +260,7 @@ Cada manejador implementa `handle(command): Result`. Las fachadas `CropLoadComma
 | `ConfirmThinningExecutionCommandHandler` / `ConfirmThinningExecution` — CMD28 | `prescriptions`, `windowSentinel`, `eventDispatcher`, `idempotency` | Bajo bloqueo del agregado invoca `confirmExecution(confirmation, windowSentinel)`. **El handler no deriva la oportunidad**: pasa el sentinel y es el agregado quien clasifica, para que la invariante 4 se resuelva dentro de su límite transaccional. Emite `EV44` si fue oportuna y `EV45` si fue tardía, nunca ambos. |
 | `VoidPendingPrescriptionsCommandHandler` / `VoidPendingPrescriptions` | `prescriptions` (vía `findPendingByPlot`), `plotProjection` | Manejador interno de `POL16`. Invoca `voidByPlotRemoval(...)` sobre las prescripciones pendientes de la parcela. **No publica evento**, conforme a la ausencia deliberada razonada en la capa de dominio. Es idempotente: sobre un estado no pendiente la operación es nula. |
 
-**La idempotencia del lote de campo no es un detalle técnico.** El muestreo se realiza en predios del valle de Tacna con conectividad intermitente; el cliente móvil acumula registros sin red y sincroniza cuando la recupera. Un reintento tras un corte de conexión no debe duplicar árboles evaluados, porque el conteo de árboles es exactamente lo que determina si la ronda alcanza representatividad. Duplicar tres árboles convertiría una ronda deficiente en aparentemente válida y habilitaría una prescripción sobre evidencia inexistente. Por eso la deduplicación opera en dos niveles: la terna `(actorId, plotId, clientBatchId)` descarta el lote repetido completo, y la unicidad de `TreeTag` dentro de la ronda descarta el árbol repetido entre lotes distintos.
+**La idempotencia del lote de campo no es un detalle técnico.** El muestreo se realiza en predios olivícolas de campo con conectividad intermitente; el cliente móvil acumula registros sin red y sincroniza cuando la recupera. Un reintento tras un corte de conexión no debe duplicar árboles evaluados, porque el conteo de árboles es exactamente lo que determina si la ronda alcanza representatividad. Duplicar tres árboles convertiría una ronda deficiente en aparentemente válida y habilitaría una prescripción sobre evidencia inexistente. Por eso la deduplicación opera en dos niveles: la terna `(actorId, plotId, clientBatchId)` descarta el lote repetido completo, y la unicidad de `TreeTag` dentro de la ronda descarta el árbol repetido entre lotes distintos.
 
 ##### Query Handlers
 
@@ -310,7 +310,7 @@ Implementaciones concretas de los repositorios, mapeos ORM sobre PostgreSQL y ad
 | `OrchardPlotContextAdapter` | `httpClient` o contrato Java en proceso; implementa `PlotContextPort` traduciendo la respuesta de Orchard al value object propio. Capa anticorrupción: este contexto no adopta el modelo predial ajeno. |
 | `SpringDomainEventPublisher` | `dispatch(events)` síncrono dentro de la transacción, propagando fallos para rollback. |
 | `PostgresIdempotencyStore` | Huella de solicitud y resultado; reserva y confirmación dentro de la transacción de negocio. Sostiene la deduplicación de lotes de campo. |
-| `AgriculturalCampaignClockAdapter` | Implementa `CampaignClockPort` resolviendo el año agrícola vigente a partir del calendario fenológico del valle de Tacna, que no coincide con el año civil. |
+| `AgriculturalCampaignClockAdapter` | Implementa `CampaignClockPort` resolviendo el año agrícola vigente a partir del calendario fenológico regional del cultivo, que no coincide con el año civil. |
 | `PhenologicalScheduler` | Tarea programada que actúa como mecanismo periódico de verificación de respaldo o sincronización, delegando en `OnPitHardeningStageReachedEventHandler` (`POL10` / `EV53`) el disparo reactivo de `CMD27`. |
 | `CropLoadSecurityConfig` | Validación de JWT y rol `ROLE_PRODUCTOR`; la autorización efectiva se resuelve contra la titularidad de la parcela, no contra el rol solamente. |
 
@@ -337,7 +337,7 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
       window_closes_on DATE,
       used_bbi BOOLEAN NOT NULL DEFAULT FALSE,
       used_floral_yield_factor BOOLEAN NOT NULL DEFAULT FALSE,
-      lock_version BIGINT NOT NULL DEFAULT 0,
+
       created_at TIMESTAMPTZ NOT NULL,
       updated_at TIMESTAMPTZ NOT NULL,
       created_by UUID NOT NULL,
@@ -478,7 +478,7 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
 
 - **Autorización por titularidad, no solo por rol.** El rol `ROLE_PRODUCTOR` habilita el módulo; el acceso a una prescripción concreta se resuelve contra la titularidad de la parcela en Orchard. Un productor no lee ni confirma la ejecución de un predio ajeno.
 - **Idempotencia de la sincronización de campo.** Clave `(actorId, plotId, clientBatchId)` más `uq_tree_tag_per_round`. Está desarrollado en la capa de aplicación porque es una regla de negocio, no una precaución técnica: duplicar árboles falsea la representatividad.
-- **Concurrencia optimista** mediante `lock_version` en la raíz, y bloqueo pesimista en los manejadores que determinan carga o confirman ejecución, donde dos escrituras simultáneas producirían recomendaciones divergentes sobre la misma campaña.
+- **Control de concurrencia** mediante marcas temporales auditadas (`updated_at`) en la raíz y bloqueo pesimista en los manejadores que determinan carga o confirman ejecución, donde dos escrituras simultáneas producirían recomendaciones divergentes sobre la misma campaña.
 - **Sin llamadas externas bajo bloqueo.** `PlotContextPort` se resuelve antes de abrir la transacción. Si el contexto predial no responde, la determinación falla con `424 Failed Dependency` y no deja una prescripción a medio construir.
 - **Degradación controlada del motor.** La ausencia de entradas opcionales no es un fallo: el cálculo prosigue y se registra en `used_bbi` y `used_floral_yield_factor` con qué base se construyó. Rechazar el cálculo por falta de historial dejaría sin servicio al productor que recién digitaliza sus predios.
 - **Manejo centralizado de excepciones (RFC 7807)** con `ProblemDetail`, según la tabla de códigos de la capa de interfaz.
@@ -497,13 +497,13 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
 ```mermaid
 graph TB
     subgraph Clients ["Clientes"]
-        MobileApp["Aplicación Móvil<br/>(muestreo offline en campo)"]
+        MobileApp["Aplicación Móvil: muestreo offline en campo"]
         WebApp["Panel Web del Productor"]
     end
 
     subgraph Upstream ["Contextos Emisores"]
-        PhenologyBC["Phenology BC<br/>(EV32, EV34, EV27)"]
-        OrchardBC["Olive Orchard BC<br/>(EV15, EV16, EV17)"]
+        PhenologyBC["Phenology BC: (EV32, EV34, EV27)"]
+        OrchardBC["Olive Orchard BC: (EV15, EV16, EV17)"]
     end
 
     subgraph InterfaceLayer ["Interface Layer"]
@@ -518,20 +518,20 @@ graph TB
         CloseWindowCmdHandler["CMD27 CloseThinningWindowByPhenologyHandler"]
         ExecutionCmdHandler["CMD28 ConfirmThinningExecutionHandler"]
         VoidCmdHandler["VoidPendingPrescriptionsHandler (POL16)"]
-        QueryHandlers["Query Handlers<br/>(RM10, historial, estado de ronda)"]
-        EventHandlers["Event Handlers / Políticas<br/>(POL09, POL10, EV27, EV32, EV34, EV15-EV17)"]
-        Ports["Puertos<br/>(PlotContext, CampaignClock, PhenologicalSignal)"]
+        QueryHandlers["Query Handlers: (RM10, historial, estado de ronda)"]
+        EventHandlers["Event Handlers / Políticas: (POL09, POL10, EV27, EV32, EV34, EV15-EV17)"]
+        Ports["Puertos: (PlotContext, CampaignClock, PhenologicalSignal)"]
     end
 
     subgraph DomainLayer ["Domain Layer"]
         PrescriptionAR["FruitThinningPrescription (Aggregate Root)"]
         RoundEntity["SamplingRound / TreeSamplingRecord (Entities)"]
         ExecutionEntity["ExecutionConfirmation (Entity)"]
-        LoadCalculator["SustainableCropLoadCalculator<br/><b>(motor agronómico propietario)</b>"]
+        LoadCalculator["SustainableCropLoadCalculator: motor agronómico propietario"]
         RepEvaluator["SamplingRepresentativenessEvaluator"]
         WindowSentinel["ThinningWindowSentinel"]
         RepoInterface["FruitThinningPrescriptionRepository"]
-        DomainEvents["Domain Events<br/>(EV35 a EV45)"]
+        DomainEvents["Domain Events: (EV35 a EV45)"]
     end
 
     subgraph InfrastructureLayer ["Infrastructure Layer"]
@@ -540,7 +540,7 @@ graph TB
         IdempotencyStore["PostgresIdempotencyStore"]
         Scheduler["PhenologicalScheduler"]
         EventPublisher["SpringDomainEventPublisher"]
-        PostgreSQL[("PostgreSQL<br/>esquema crop_load")]
+        PostgreSQL[("PostgreSQL: esquema crop_load")]
     end
 
     MobileApp -->|HTTPS / REST| SamplingCtrl
@@ -776,7 +776,7 @@ erDiagram
         DATE window_closes_on "Cierre por lignificación"
         BOOLEAN used_bbi "Base del cálculo"
         BOOLEAN used_floral_yield_factor "Base del cálculo"
-        BIGINT lock_version "Concurrencia optimista"
+
         TIMESTAMPTZ created_at "Auditoría"
         TIMESTAMPTZ updated_at "Auditoría"
         UUID created_by "Auditoría"
@@ -866,7 +866,6 @@ erDiagram
 
 Las tres invariantes que el motor puede sostener por sí mismo —límite de remoción, representatividad y unicidad de prescripción activa en curso— están expresadas como restricciones físicas. No sustituyen la validación del dominio, la respaldan: una ruta de escritura que eludiera el agregado seguiría sin poder violarlas.
 
-
 ---
 
 #### Resoluciones de Diseño y Cierre de Pendientes del Equipo
@@ -932,4 +931,289 @@ stateDiagram-v2
 3. **Manejo de Re-prescripción e Integridad Física:**
    * Una parcela mantiene como máximo una prescripción activa por campaña a través de `uq_active_prescription_per_plot_campaign`.
    * Ante cambios prediales (`EV16`), la prescripción previa pasa a `SUPERSEDED_BY_BOUNDARY_UPDATE`, liberando la ranura para una nueva prescripción recalculada con la geometría predial vigente sin destruir la auditoría previa.
+
+---
+
+### Anexo de Diagramas como Código (3 Herramientas)
+
+#### 1. Structurizr DSL (C4 Model - Component Level)
+
+```structurizr
+workspace "Viora - Crop Load Component Architecture" "Crop Load Regulation and Thinning Advisory Component View" {
+    model {
+        producer = person "Olive Producer" "Collects tree samples offline and executes thinning."
+        manager = person "Technical Manager" "Reviews thinning recommendations across cooperative plots."
+
+        viora = softwareSystem "Viora Platform" {
+            backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
+                samplingCtrl = component "PlotSamplingController" "Exposes tree sampling ingestion (single/batch) and summary endpoints" "Spring MVC Controller"
+                thinningCtrl = component "PlotThinningPrescriptionController" "Exposes active and historical prescription query endpoints" "Spring MVC Controller"
+                executionCtrl = component "ThinningExecutionController" "Exposes thinning execution confirmation endpoints" "Spring MVC Controller"
+                
+                cropLoadCommandService = component "CropLoadCommandService" "Coordinates sampling ingestion (CMD24-25), prescription calculation, and thinning execution (CMD28)" "Spring Service / Command Service"
+                cropLoadQueryService = component "CropLoadQueryService" "Handles queries for thinning prescriptions, historical recommendations, and sampling summaries" "Spring Service / Query Service"
+                balancingService = component "CropLoadBalancingCalculatorService" "Domain service calculating sustainable load and thinning percentages" "Domain Service"
+                deduplicatorService = component "FieldSamplingDeduplicator" "Domain service ensuring idempotent batch ingestion from offline clients" "Domain Service"
+                
+                prescriptionRepo = component "FruitThinningPrescriptionRepository" "Domain repository interface for prescriptions and sampling rounds" "Domain Port / Interface"
+                prescriptionRepoAdapter = component "JpaFruitThinningPrescriptionRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for crop load regulation" "Spring Data JPA Adapter"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV42, EV43, EV44, and EV45 domain events" "Spring ApplicationEventPublisher"
+            }
+            nativeApp = container "Android Application" "Mobile client with Room offline cache" "Kotlin / Compose" {
+                roomDb = component "Room Offline Database" "Caches local field samplings with (actorId, plotId, clientBatchId)" "Room / SQLite"
+                workManager = component "SamplingSyncWorkManager" "Background resilient synchronization with exponential backoff" "WorkManager"
+            }
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline cache" "Flutter / Dart" {
+                sqfliteDb = component "sqflite Offline Database" "Caches local field samplings" "sqflite / SQLite"
+            }
+            db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
+                tags "Database"
+            }
+        }
+
+        producer -> nativeApp "Records tree samplings offline"
+        producer -> crossApp "Records tree samplings offline"
+        workManager -> samplingCtrl "Syncs sampling batches [POST /plots/{id}/samplings]"
+        nativeApp -> thinningCtrl "Queries prescriptions [HTTPS/REST]"
+        crossApp -> thinningCtrl "Queries prescriptions [HTTPS/REST]"
+        manager -> thinningCtrl "Reviews plot recommendations [HTTPS/REST]"
+
+        samplingCtrl -> cropLoadCommandService "Delegates sampling commands (CMD24, CMD25)"
+        samplingCtrl -> cropLoadQueryService "Delegates sampling summary queries"
+        thinningCtrl -> cropLoadQueryService "Delegates prescription queries (RM10)"
+        executionCtrl -> cropLoadCommandService "Delegates execution confirmations (CMD28)"
+
+        cropLoadCommandService -> deduplicatorService "Deduplicates client batches"
+        cropLoadCommandService -> balancingService "Calculates sustainable crop load"
+        cropLoadCommandService -> prescriptionRepo "Loads / persists prescriptions and samplings via domain port"
+        cropLoadCommandService -> eventPublisher "Publishes domain events (EV42, EV43, EV44, EV45)"
+        
+        cropLoadQueryService -> prescriptionRepo "Fetches prescriptions and samplings via domain port"
+
+        prescriptionRepoAdapter -> prescriptionRepo "Implements persistence contract"
+        prescriptionRepoAdapter -> db "CRUD operations on cropload.* tables [JDBC/JPA]"
+    }
+    views {
+        component backend "CropLoadComponentView" "Crop Load Component Architecture" {
+            include *
+            autoLayout lr
+        }
+        styles {
+            element "Database" {
+                shape Cylinder
+                background #1168bd
+                color #ffffff
+            }
+        }
+        theme default
+    }
+}
+```
+
+#### 2. PlantUML (Domain Layer Class Diagram)
+
+```plantuml
+@startuml
+title Viora - Crop Load Regulation Domain Class Diagram
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+hide empty members
+
+class ThinningPrescription <<AggregateRoot>> {
+  - id: PrescriptionId
+  - plotId: PlotId
+  - campaignYear: CampaignYear
+  - observedPlotRevision: Long
+  - status: PrescriptionStatus
+  - sustainableLoad: CropLoad [0..1]
+  - removalPercentage: RemovalPercentage [0..1]
+  - windowOpensOn: LocalDate [0..1]
+  - windowClosesOn: LocalDate [0..1]
+  - samplingRounds: List<SamplingRound>
+  - executionConfirmation: ExecutionConfirmation [0..1]
+  + open(id, plotId, campaignYear): ThinningPrescription
+  + recordTreeSampling(roundId, treeTag, shoots, fruits, diameter): void
+  + determineSustainableCropLoad(calculator, bbi, floralFactor, revision): void
+  + confirmExecution(executionDate, actualRemovalPct, crewSize): void
+  + closeWindowByPitHardening(): void
+  + supersedeByBoundaryUpdate(): void
+  + voidByPlotRemoval(): void
+}
+
+class SamplingRound <<Entity>> {
+  - id: SamplingRoundId
+  - evaluatedTrees: Integer
+  - requiredTrees: Integer
+  - isRepresentative: Boolean
+  - openedAt: Instant
+  - completedAt: Instant
+  - treeSamplings: List<TreeSamplingRecord>
+  + addSampling(treeTag, shoots, fruits, diameter): TreeSamplingRecord
+  + checkRepresentativity(): boolean
+}
+
+class TreeSamplingRecord <<Entity>> {
+  - id: TreeRecordId
+  - treeTag: String
+  - shootCount: Integer
+  - fruitSetCount: Integer
+  - trunkDiameterMm: TrunkDiameter
+  - fruitToShootRatio: Double
+}
+
+class ExecutionConfirmation <<Entity>> {
+  - id: ConfirmationId
+  - executionDate: LocalDate
+  - actualRemovalPercentage: RemovalPercentage
+  - laborCrewSize: Integer
+  - timeliness: ExecutionTimeliness
+  - remainingLoad: CropLoad
+}
+
+class CropLoadBalancingCalculatorService <<DomainService>> {
+  + calculateSustainableLoad(density, variety, bbi, floralFactor): CropLoad
+  + calculateOptimalRemovalPercentage(currentLoad, sustainableLoad): RemovalPercentage
+}
+
+class FieldSamplingDeduplicator <<DomainService>> {
+  + deduplicate(clientBatchId: UUID, samplings: List<TreeSamplingRecord>): List<TreeSamplingRecord>
+}
+
+interface FruitThinningPrescriptionRepository <<Repository>> {
+  + findById(id: PrescriptionId): Optional<ThinningPrescription>
+  + findActiveByPlotIdAndCampaign(plotId: PlotId, year: CampaignYear): Optional<ThinningPrescription>
+  + save(prescription: ThinningPrescription): ThinningPrescription
+}
+
+enum PrescriptionStatus <<ValueObject>> {
+  SAMPLING_IN_PROGRESS
+  PRESCRIBED
+  CLOSED_BY_PIT_HARDENING
+  EXECUTED_OPTIMAL
+  EXECUTED_LATE
+  VOIDED_BY_PLOT_REMOVAL
+  SUPERSEDED_BY_BOUNDARY_UPDATE
+}
+
+class SustainableCropLoadDeterminedEvent <<DomainEvent>> {
+  - prescriptionId: UUID
+  - plotId: UUID
+  - recommendedRemovalPercentage: Double
+  - windowClosesOn: LocalDate
+  - occurredOn: Instant
+}
+
+class ThinningExecutionConfirmedEvent <<DomainEvent>> {
+  - prescriptionId: UUID
+  - plotId: UUID
+  - executionDate: LocalDate
+  - actualRemovalPercentage: Double
+  - timeliness: String
+  - occurredOn: Instant
+}
+
+class SamplingRoundCompletedEvent <<DomainEvent>> {
+  - prescriptionId: UUID
+  - plotId: UUID
+  - evaluatedTrees: Integer
+  - occurredOn: Instant
+}
+
+class OverloadRiskDetectedEvent <<DomainEvent>> {
+  - prescriptionId: UUID
+  - plotId: UUID
+  - overloadFactor: Double
+  - occurredOn: Instant
+}
+
+ThinningPrescription "1" *--> "1..*" SamplingRound : organizes
+SamplingRound "1" *--> "0..*" TreeSamplingRecord : collects
+ThinningPrescription "1" *--> "0..1" ExecutionConfirmation : verifies
+ThinningPrescription --> PrescriptionStatus : status
+ThinningPrescription ..> CropLoadBalancingCalculatorService : uses
+ThinningPrescription ..> FieldSamplingDeduplicator : deduplicates with
+ThinningPrescription ..> SustainableCropLoadDeterminedEvent : emits (EV42)
+ThinningPrescription ..> ThinningExecutionConfirmedEvent : emits (EV44 / EV45)
+ThinningPrescription ..> SamplingRoundCompletedEvent : emits (EV37)
+ThinningPrescription ..> OverloadRiskDetectedEvent : emits (EV40)
+FruitThinningPrescriptionRepository ..> ThinningPrescription : manages
+@enduml
+```
+
+#### 3. PlantUML (Database Relational Diagram - ERD)
+
+```plantuml
+@startuml
+title Viora - Crop Load Regulation Relational Schema
+hide circle
+skinparam linetype ortho
+
+entity "cropload.thinning_prescriptions" as thinning_prescriptions {
+  * id : UUID <<PK>>
+  --
+  * plot_id : UUID
+  * campaign_year : INTEGER
+  observed_plot_revision : BIGINT
+  * status : VARCHAR(32)
+  sustainable_load : NUMERIC(12,4)
+  load_unit : VARCHAR(28)
+  removal_percentage : NUMERIC(5,2)
+  rationale : TEXT
+  window_opens_on : DATE
+  window_closes_on : DATE
+  used_bbi : BOOLEAN
+  used_floral_yield_factor : BOOLEAN
+
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+entity "cropload.sampling_rounds" as sampling_rounds {
+  * id : UUID <<PK>>
+  --
+  * prescription_id : UUID <<FK>>
+  * evaluated_trees : INTEGER
+  * required_trees : INTEGER
+  * is_representative : BOOLEAN
+  * opened_at : TIMESTAMPTZ
+  completed_at : TIMESTAMPTZ
+}
+
+entity "cropload.tree_sampling_records" as tree_sampling_records {
+  * id : UUID <<PK>>
+  --
+  * round_id : UUID <<FK>>
+  * tree_tag : VARCHAR(64)
+  * shoot_count : INTEGER
+  * fruit_set_count : INTEGER
+  * trunk_diameter_mm : NUMERIC(8,2)
+  * sampling_date : DATE
+  * created_at : TIMESTAMPTZ
+}
+
+entity "cropload.execution_confirmations" as execution_confirmations {
+  * id : UUID <<PK>>
+  --
+  * prescription_id : UUID <<FK>> <<UQ>>
+  * execution_date : DATE
+  * actual_removal_percentage : NUMERIC(5,2)
+  * labor_crew_size : INTEGER
+  * timeliness : VARCHAR(10)
+  * remaining_load : NUMERIC(12,4)
+  * created_at : TIMESTAMPTZ
+}
+
+thinning_prescriptions ||--o{ sampling_rounds : "contains"
+sampling_rounds ||--o{ tree_sampling_records : "aggregates"
+thinning_prescriptions ||--o| execution_confirmations : "confirms"
+
+note bottom of thinning_prescriptions
+  Constraints:
+  - UNIQUE (plot_id, campaign_year) WHERE status IN ('SAMPLING_IN_PROGRESS', 'PRESCRIBED')
+  - CHECK (status IN ('SAMPLING_IN_PROGRESS', 'PRESCRIBED', 'CLOSED_BY_PIT_HARDENING',
+    'EXECUTED_OPTIMAL', 'EXECUTED_LATE', 'VOIDED_BY_PLOT_REMOVAL', 'SUPERSEDED_BY_BOUNDARY_UPDATE'))
+  - CHECK (removal_percentage BETWEEN 0.00 AND 40.00)
+end note
+@enduml
+```
 

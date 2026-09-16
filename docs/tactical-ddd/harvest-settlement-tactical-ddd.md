@@ -6,7 +6,7 @@
 
 **Propósito:** El Bounded Context de **Harvest Settlement and Performance Reporting** (denominado comúnmente *Harvest Settlement*) es un subdominio central (*Core Subdomain*) del negocio de Viora, responsable de certificar el balance agronómico de fin de campaña, conciliar los pesajes auditados de cosecha diferenciados por aptitud comercial (aceituna verde para conserva y aceituna negra para mesa o extracción aceitera), computar el índice de mitigación de vecería mediante la atenuación de varianza interanual, y compilar el expediente técnico auditable en formato PDF inmutable con firma de verificación criptográfica SHA-256.
 
-Técnica y agronómicamente, resuelve la necesidad de validar de forma objetiva y formal el éxito de las intervenciones de regulación de carga frutal (*Thinning Advisory*) en los valles de Tacna (La Yarada-Los Palos y Magollo) para las variedades *Olea europaea L.* cv. Criolla y Sevillana. Actúa como la única autoridad contable y certificadora del rendimiento final del olivar. Preserva una delimitación semántica estricta referenciando de manera desacoplada por identificador inmutable (`PlotId`) a las parcelas del Bounded Context *Olive Orchard and Plot Management* y por identidad (`UserId`) al productor en *IAM*, publicando de forma asíncrona la confirmación definitiva de cosecha (`CampaignHarvestSettledEvent`) para actualizar el cómputo plurianual del Índice de Vecería ($BBI$) en *Phenology & Historical Bearing Analytics*.
+Técnica y agronómicamente, resuelve la necesidad de validar de forma objetiva y formal el éxito de las intervenciones de regulación de carga frutal (*Thinning Advisory*) en las cuencas y valles olivícolas para las variedades *Olea europaea L.* cv. Criolla, Sevillana y Manzanilla. Actúa como la única autoridad contable y certificadora del rendimiento final del olivar. Preserva una delimitación semántica estricta referenciando de manera desacoplada por identificador inmutable (`PlotId`) a las parcelas del Bounded Context *Olive Orchard and Plot Management* y por identidad (`UserId`) al productor en *IAM*, publicando de forma asíncrona la confirmación definitiva de cosecha (`CampaignHarvestSettledEvent`) para actualizar el cómputo plurianual del Índice de Vecería ($BBI$) en *Phenology & Historical Bearing Analytics*.
 
 ---
 
@@ -25,7 +25,6 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `settlements: List<HarvestSettlement>` (Colección interna subordinada de liquidaciones anuales de cosecha)
   * `trendCurve: StabilizationTrendCurve` (Value Object: encapsula la tasa de reducción de amplitud y varianza interanual)
   * `dossierMetadata: DossierMetadata` (Value Object: metadatos de auditoría, certificador y hash SHA-256)
-  * `version: Long` (Atributo para control de concurrencia optimista)
   * `auditTrail: AuditTrail` (Value Object: marcas temporales inmutables `createdAt`, `updatedAt`)
 * **Métodos:**
   * `settleCampaign(year: CampaignYear, greenKg: OliveWeight, blackKg: OliveWeight, notes: String): HarvestSettlement` - Valida que no exista una liquidación previa para el año agrícola (`TS39` / `US29` / `CMD29`), verifica que la suma total sea mayor a cero, instancia la entidad interna `HarvestSettlement`, recalcula la curva de estabilización si existen campañas previas y encola `CampaignHarvestSettledEvent` (EV46).
@@ -120,10 +119,9 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
   * `GET /api/v1/plots/{plotId}/harvest-settlements/{settlementId}` - Obtiene el balance detallado de una liquidación específica identificada por su UUID (`TS39` / `US29`). Responde `200 OK` con `HarvestSettlementResource` o `404 Not Found`.
 
 * **`PlotAgronomicReportController`** (Ruta base: `/api/v1/plots/{plotId}/agronomic-reports`):
-  * `GET /api/v1/plots/{plotId}/agronomic-reports` - Entrega el análisis consolidado de estabilización y atenuación de vecería junto con el histórico de campañas en formato JSON (`TS28` / `US30`). Responde `200 OK` con `AgronomicReportResource`. Actúa como mecanismo de consulta pull que complementa la notificación reactiva push de `YieldStabilizationCurveEvaluatedEvent` (EV47) para clientes móviles y dashboards.
-  * `GET /api/v1/plots/{plotId}/agronomic-reports/dossier` - Consulta o descarga el expediente agronómico oficial inmutable (`TS28` / `US30`). Implementa negociación de contenido HTTP:
+  * `GET /api/v1/plots/{plotId}/agronomic-reports` - Consulta el expediente agronómico oficial y análisis consolidado de estabilización (`TS28` / `US30`). Implementa negociación de contenido HTTP nativa (RFC 7231 / RFC 9110):
+    * Con cabecera `Accept: application/json`: entrega el análisis consolidado de atenuación de vecería ($ARR$), varianza interanual y metadatos de certificación (`200 OK` con `AgronomicReportResource`).
     * Con cabecera `Accept: application/pdf`: compila y transmite en streaming el binario inmutable del informe oficial con cabecera `Content-Disposition: attachment; filename="expediente-agronomico-[plotId].pdf"` y cabecera `ETag` portando el hash SHA-256 (`200 OK`).
-    * Con cabecera `Accept: application/json`: entrega los metadatos auditables del expediente y su hash criptográfico SHA-256 (`200 OK` con `DossierCertificationResource`), permitiendo validar la integridad documental sin requerir la descarga del archivo binario.
   * `POST /api/v1/plots/{plotId}/agronomic-reports/certifications` - Emite formalmente la certificación colegiada del expediente agronómico inmutable calculando y estampando el hash criptográfico SHA-256 de auditoría (`TS40` / `US30` / `CMD30`). Responde `201 Created` con cabecera `Location` y cuerpo `DossierCertificationResource`.
 
 ##### Resources (DTOs / Request & Response Models)
@@ -303,16 +301,16 @@ graph TD
     subgraph ApplicationLayer ["Application Layer"]
         SettlementCmdHandler["SettleCampaignHarvestCommandHandler"]
         GenerateDossierCmdHandler["GenerateAgronomicDossierCommandHandler"]
-        ReportQueryHandlers["Query Handlers<br/>(GetReport, ListSettlements, GetSettlementById, GetDossier)"]
-        EventHandlers["Event Handlers<br/>(OnThinningConfirmed, OnBbiAssessed)"]
+        ReportQueryHandlers["Query Handlers: (GetReport, ListSettlements, GetSettlementById, GetDossier)"]
+        EventHandlers["Event Handlers: (OnThinningConfirmed, OnBbiAssessed)"]
     end
 
     subgraph DomainLayer ["Domain Layer"]
         ReportAR["AgronomicReport (Aggregate Root)"]
         SettlementEntity["HarvestSettlement (Entity)"]
         StabilizationService["StabilizationCurveCalculatorService (Domain Service)"]
-        RepoInterfaces["Interfaces de Dominio & Puertos<br/>(AgronomicReportRepo, PdfGeneratorPort)"]
-        DomainEvents["Domain Events<br/>(EV46, EV47, EV48)"]
+        RepoInterfaces["Interfaces de Dominio y Puertos: (AgronomicReportRepo, PdfGeneratorPort)"]
+        DomainEvents["Domain Events: (EV46, EV47, EV48)"]
     end
 
     subgraph InfrastructureLayer ["Infrastructure Layer"]
@@ -501,7 +499,7 @@ erDiagram
         VARCHAR_64 verification_hash "Hash criptográfico SHA-256"
         VARCHAR_150 certified_by "Acreditación del certificador"
         TIMESTAMPTZ last_certified_at "Fecha última emisión"
-        BIGINT version "Control de concurrencia optimista"
+
         TIMESTAMPTZ created_at "Auditoría"
         TIMESTAMPTZ updated_at "Auditoría"
     }
@@ -535,3 +533,219 @@ erDiagram
 * **Índices de Optimización de Búsqueda:**
   * B-tree sobre `(campaign_year, status)` en `harvest_settlements` para consultas anuales y conciliación cooperativa.
   * B-tree sobre `(plot_id)` en `agronomic_reports` para agilizar la carga del agregado desde la API REST.
+
+---
+
+### Anexo de Diagramas como Código (3 Herramientas)
+
+#### 1. Structurizr DSL (C4 Model - Component Level)
+
+```structurizr
+workspace "Viora - Harvest Settlement Component Architecture" "Harvest Settlement and Performance Reporting Component View" {
+    model {
+        producer = person "Olive Producer" "Settles annual olive harvests and downloads certified dossiers."
+        manager = person "Technical Manager" "Reviews agronomic stabilization dossiers and reduction rates."
+
+        viora = softwareSystem "Viora Platform" {
+            backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
+                settlementCtrl = component "PlotHarvestSettlementController" "Exposes annual harvest weighing settlement endpoints" "Spring MVC Controller"
+                reportCtrl = component "PlotAgronomicReportController" "Exposes stabilization curves, certification, and PDF dossier download" "Spring MVC Controller"
+                
+                settlementCommandService = component "HarvestSettlementCommandService" "Coordinates harvest settlement (CMD29) and dossier certification (CMD30)" "Spring Service / Command Service"
+                reportQueryService = component "AgronomicReportQueryService" "Handles queries for settlements, ARR stabilization curves, and dossier PDF streaming (TS28)" "Spring Service / Query Service"
+                
+                curveCalculator = component "StabilizationCurveCalculatorService" "Calculates interannual variance and amplitude reduction rate (ARR)" "Domain Service"
+                pdfGenerator = component "OpenPdfAgronomicDossierAdapter" "Infrastructure adapter compiling binary PDF documents with SHA-256 seal" "Infrastructure Port / Adapter"
+                
+                reportRepo = component "AgronomicReportRepository" "Domain repository interface for agronomic report persistence" "Domain Port / Interface"
+                reportRepoAdapter = component "JpaAgronomicReportRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for settlements" "Spring Data JPA Adapter"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV46, EV47, and EV48 domain events" "Spring ApplicationEventPublisher"
+            }
+            db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
+                tags "Database"
+            }
+        }
+
+        producer -> settlementCtrl "Settles harvest [POST /plots/{id}/harvest-settlements]"
+        producer -> reportCtrl "Downloads dossier PDF [GET .../agronomic-reports Accept: application/pdf]"
+        manager -> reportCtrl "Reviews stabilization reports [HTTPS/REST]"
+
+        settlementCtrl -> settlementCommandService "Delegates SettleCampaignHarvestCommand (CMD29)"
+        settlementCtrl -> reportQueryService "Delegates settlement list/get queries"
+        reportCtrl -> settlementCommandService "Delegates GenerateAgronomicDossierCommand (CMD30)"
+        reportCtrl -> reportQueryService "Delegates GetAgronomicDossierQuery (TS28)"
+
+        settlementCommandService -> curveCalculator "Computes ARR curve and variance"
+        settlementCommandService -> pdfGenerator "Compiles dossier PDF and stamps SHA-256"
+        settlementCommandService -> reportRepo "Loads / persists reports via domain port"
+        settlementCommandService -> eventPublisher "Publishes EV46 (Harvest Settled), EV48 (Dossier Generated)"
+
+        reportQueryService -> reportRepo "Fetches reports via domain port"
+
+        reportRepoAdapter -> reportRepo "Implements persistence contract"
+        reportRepoAdapter -> db "CRUD operations on settlement.* tables [JDBC/JPA]"
+    }
+    views {
+        component backend "SettlementComponentView" "Harvest Settlement Component Architecture" {
+            include *
+            autoLayout lr
+        }
+        styles {
+            element "Database" {
+                shape Cylinder
+                background #1168bd
+                color #ffffff
+            }
+        }
+        theme default
+    }
+}
+```
+
+#### 2. PlantUML (Domain Layer Class Diagram)
+
+```plantuml
+@startuml
+title Viora - Harvest Settlement and Performance Reporting Domain Class Diagram
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+hide empty members
+
+class AgronomicReport <<AggregateRoot>> {
+  - id: ReportId
+  - plotId: PlotId
+  - producerId: ProducerId
+  - baselineYieldKg: OliveWeight
+  - interannualVariance: Double
+  - amplitudeReductionRate: Double
+  - dossierMetadata: DossierMetadata [0..1]
+  - settlements: List<HarvestSettlement>
+  + settleCampaign(campaignYear, greenKg, blackKg, calculator): HarvestSettlement
+  + generateCertifiedDossier(auditorSignature, pdfGenerator): DossierMetadata
+  + evaluateStabilizationCurve(calculator): StabilizationTrendCurve
+}
+
+class HarvestSettlement <<Entity>> {
+  - id: SettlementId
+  - campaignYear: CampaignYear
+  - greenOlivesWeight: OliveWeight
+  - blackOlivesWeight: OliveWeight
+  - totalHarvestWeight: OliveWeight
+  - status: SettlementStatus
+  - settledAt: Instant
+  - notes: String
+  + calculateTotalWeight(): OliveWeight
+  + markAsAudited(auditor): void
+}
+
+class StabilizationCurveCalculatorService <<DomainService>> {
+  + computeCurve(settlements): StabilizationTrendCurve
+}
+
+interface AgronomicDossierPdfGenerator <<OutputPort>> {
+  + renderPdf(reportData): byte[]
+}
+
+class DossierMetadata <<ValueObject>> {
+  - verificationHash: String
+  - certifiedBy: String
+  - certifiedAt: Instant
+}
+
+class StabilizationTrendCurve <<ValueObject>> {
+  - baselineYield: Double
+  - variance: Double
+  - amplitudeReductionRate: Double
+  - isStabilizing: Boolean
+}
+
+class CampaignHarvestSettledEvent <<DomainEvent>> {
+  - reportId: UUID
+  - plotId: UUID
+  - campaignYear: Integer
+  - totalKg: Double
+  - occurredOn: Instant
+}
+
+class AgronomicDossierGeneratedEvent <<DomainEvent>> {
+  - reportId: UUID
+  - plotId: UUID
+  - verificationHash: String
+  - certifiedAt: Instant
+}
+
+interface AgronomicReportRepository <<Repository>> {
+  + findById(id: ReportId): Optional<AgronomicReport>
+  + findByPlotId(plotId: PlotId): Optional<AgronomicReport>
+  + save(report: AgronomicReport): AgronomicReport
+}
+
+AgronomicReport "1" *--> "0..*" HarvestSettlement : aggregates
+AgronomicReport "1" *--> "0..1" DossierMetadata : seals with
+AgronomicReport ..> StabilizationCurveCalculatorService : uses
+AgronomicReport ..> AgronomicDossierPdfGenerator : uses
+StabilizationCurveCalculatorService ..> StabilizationTrendCurve : computes and returns
+AgronomicReport ..> StabilizationTrendCurve : evaluates to
+AgronomicReport ..> CampaignHarvestSettledEvent : emits (EV46)
+AgronomicReport ..> AgronomicDossierGeneratedEvent : emits (EV48)
+AgronomicReportRepository ..> AgronomicReport : manages
+@enduml
+```
+
+#### 3. PlantUML (Database Relational Diagram - ERD)
+
+```plantuml
+@startuml
+title Viora - Harvest Settlement and Performance Reporting Relational Schema
+hide circle
+skinparam linetype ortho
+
+entity "settlement.agronomic_reports" as agronomic_reports {
+  * id : UUID <<PK>>
+  --
+  * plot_id : UUID <<UQ>>
+  * producer_id : UUID
+  baseline_yield_kg : NUMERIC(10,2)
+  interannual_variance : NUMERIC(8,4)
+  amplitude_reduction_rate : NUMERIC(5,2)
+  verification_hash : VARCHAR(64)
+  certified_by : VARCHAR(150)
+  last_certified_at : TIMESTAMPTZ
+
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+entity "settlement.harvest_settlements" as harvest_settlements {
+  * id : UUID <<PK>>
+  --
+  * report_id : UUID <<FK>>
+  * campaign_year : INTEGER
+  * green_olives_kg : NUMERIC(10,2)
+  * black_olives_kg : NUMERIC(10,2)
+  * total_yield_kg : NUMERIC(10,2)
+  * status : VARCHAR(20)
+  * settled_at : TIMESTAMPTZ
+  notes : TEXT
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+agronomic_reports ||--o{ harvest_settlements : "consolidates"
+
+note bottom of agronomic_reports
+  Constraints:
+  - UNIQUE(plot_id)
+  - amplitude_reduction_rate BETWEEN 0.00 AND 100.00
+end note
+
+note bottom of harvest_settlements
+  Constraints:
+  - UNIQUE(report_id, campaign_year)
+  - CHECK(status IN ('DRAFT', 'SETTLED', 'AUDITED'))
+  - CHECK(green_olives_kg >= 0 AND black_olives_kg >= 0 AND total_yield_kg > 0)
+  - CHECK(total_yield_kg = green_olives_kg + black_olives_kg)
+end note
+@enduml
+```
+

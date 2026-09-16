@@ -63,11 +63,11 @@ Diseño basado estrictamente en recursos (sustantivos en plural) y verbos HTTP e
 * **`ProfilesController`** (Ruta base: `/api/v1/profiles`):
   * `POST /api/v1/profiles` - Registra y formaliza el perfil civil inicial del usuario autenticado en onboarding (`TS35`, `US43`, `CMD07`). Requiere cabecera `Authorization: Bearer <JWT>` y cuerpo JSON con datos de contacto. Extrae el `userId` del claim del token y valida el teléfono con `libphonenumber`. Retorna `201 Created` con `ProfileResource`. Respuestas de error: `400 Bad Request` (teléfono inválido bajo norma E.164), `401 Unauthorized` (token ausente o corrupto), `409 Conflict` (perfil ya existente para dicho usuario).
   * `GET /api/v1/profiles/{userId}` - Consulta la información de perfil y contacto asociada a un identificador de usuario (`TS04`, `US03`). Valida que el `userId` solicitado coincida con el claim del token o que el solicitante cuente con privilegios de administración (*Owner Check*). Retorna `200 OK` con `ProfileResource`. Respuestas de error: `401 Unauthorized`, `403 Forbidden` (intento de acceso a perfil ajeno), `404 Not Found` (perfil no registrado para dicho usuario).
-  * `PATCH /api/v1/profiles/{userId}` - Actualización parcial de nombre completo, país o número telefónico con validación E.164 (`TS05`, `US03`, `CMD08`). Valida la titularidad de la cuenta y verifica el nuevo teléfono mediante `libphonenumber`. Retorna `200 OK` con `ProfileResource` actualizado. Respuestas de error: `400 Bad Request` (teléfono no cumple norma E.164 o país inválido), `401 Unauthorized`, `403 Forbidden` (intento de mutación de cuenta ajena), `404 Not Found`.
+  * `PUT /api/v1/profiles/{userId}` / `PATCH /api/v1/profiles/{userId}` - Actualización completa (`PUT`) o parcial (`PATCH`) de nombre completo, país o número telefónico con validación E.164 (`TS05`, `US03`, `CMD08`). Valida la titularidad de la cuenta (*Owner Check*) y verifica el nuevo teléfono mediante `libphonenumber`. Retorna `200 OK` con `ProfileResource` actualizado. Respuestas de error: `400 Bad Request` (teléfono no cumple norma E.164 o país inválido), `401 Unauthorized`, `403 Forbidden` (intento de mutación de cuenta ajena), `404 Not Found`.
 
 ##### Resources (DTOs / Request & Response Models)
 * **`CreateProfileRequest`**: `{ fullName: String, country: String, phoneNumber: String }` (Payload recibido en POST; el identificador `userId` se extrae de forma segura del claim `sub` del token JWT autenticado para garantizar integridad de identidad).
-* **`UpdateContactProfileRequest`**: `{ fullName: String, country: String, phoneNumber: String }` (Payload recibido en PATCH para modificación parcial de datos de contacto).
+* **`UpdateProfileRequest` / `UpdateContactProfileRequest`**: `{ fullName: String, country: String, phoneNumber: String }` (Payload recibido en PUT/PATCH para modificación completa o parcial de datos personales y contacto).
 * **`ProfileResource`**: `{ id: UUID, userId: UUID, fullName: String, country: String, phoneNumber: String, createdAt: Instant }` (DTO de respuesta consolidada con datos del titular, teléfono normalizado E.164 y marca temporal de creación).
 
 ##### Assemblers / Mappers
@@ -237,3 +237,182 @@ Estructura relacional en PostgreSQL para la tabla de perfiles de usuario:
 * **Índice Único:** `uq_profiles_user_id` sobre `user_id` para garantizar que ninguna cuenta de acceso posea más de un perfil activo.
 * **Índice de Búsqueda:** `idx_profiles_phone_number` sobre `phone_number` para optimizar consultas de verificación telefónica.
 * **Restricción CHECK:** Validación de longitud mínima para evitar nombres en blanco: `CHECK (length(trim(full_name)) >= 2)`.
+
+---
+
+### Anexo de Diagramas como Código (3 Herramientas)
+
+#### 1. Structurizr DSL (C4 Model - Component Level)
+
+```structurizr
+workspace "Viora - User Profiles Component Architecture" "User Profiles Component View" {
+    model {
+        producer = person "Olive Producer" "Manages contact details and personal profile."
+        manager = person "Technical Manager" "Manages contact details and institutional identity."
+
+        viora = softwareSystem "Viora Platform" {
+            backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
+                profileController = component "ProfileController" "Exposes profile registration, query and contact update REST endpoints" "Spring MVC Controller"
+                
+                profileCommandService = component "ProfileCommandService" "Orchestrates profile creation and contact updates (CMD07, CMD08)" "Spring Service / Command Service"
+                profileQueryService = component "ProfileQueryService" "Handles profile retrieval and role verification queries" "Spring Service / Query Service"
+                
+                phoneValidator = component "PhoneNumberValidator" "Validates international E.164 phone formats and regional carriers" "Domain Service / libphonenumber"
+                profileRepo = component "ProfileRepository" "Domain repository interface for user profile persistence" "Domain Port / Interface"
+                profileRepoAdapter = component "JpaProfileRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for profiles" "Spring Data JPA Adapter"
+                eventPublisher = component "DomainEventPublisher" "Dispatches ProfileCreated and ContactProfileUpdated events" "Spring ApplicationEventPublisher"
+            }
+            db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
+                tags "Database"
+            }
+        }
+
+        producer -> profileController "Reads / updates profile [HTTPS/REST]"
+        manager -> profileController "Reads / updates profile [HTTPS/REST]"
+        
+        profileController -> profileCommandService "Delegates write operations (commands)"
+        profileController -> profileQueryService "Delegates read operations (queries)"
+        
+        profileCommandService -> phoneValidator "Validates phone format against E.164"
+        profileCommandService -> profileRepo "Loads / persists profiles via domain port"
+        profileCommandService -> eventPublisher "Publishes domain events (EV04, EV05)"
+        
+        profileQueryService -> profileRepo "Fetches profiles via domain port"
+        
+        profileRepoAdapter -> profileRepo "Implements persistence contract"
+        profileRepoAdapter -> db "CRUD operations on profiles.profiles [JDBC/JPA]"
+    }
+    views {
+        component backend "ProfilesComponentView" "User Profiles Component Architecture" {
+            include *
+            autoLayout lr
+        }
+        styles {
+            element "Database" {
+                shape Cylinder
+                background #1168bd
+                color #ffffff
+            }
+        }
+        theme default
+    }
+}
+```
+
+#### 2. PlantUML (Domain Layer Class Diagram)
+
+```plantuml
+@startuml
+title Viora - User Profiles Domain Class Diagram
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+hide empty members
+
+class Profile <<AggregateRoot>> {
+  - id: ProfileId
+  - userId: UserId
+  - fullName: FullName
+  - country: Country
+  - phoneNumber: PhoneNumber
+  + create(userId: UserId, fullName: FullName, country: Country, phoneNumber: PhoneNumber): Profile
+  + updateContactInfo(newFullName: FullName, newCountry: Country, newPhoneNumber: PhoneNumber): void
+  + id(): ProfileId
+  + userId(): UserId
+  + fullName(): FullName
+  + country(): Country
+  + phoneNumber(): PhoneNumber
+}
+
+class ProfileId <<ValueObject>> {
+  - value: UUID
+  + getValue(): UUID
+}
+
+class UserId <<ValueObject>> {
+  - value: UUID
+  + getValue(): UUID
+}
+
+class FullName <<ValueObject>> {
+  - value: String
+  + getValue(): String
+}
+
+class Country <<ValueObject>> {
+  - value: String
+  + getValue(): String
+}
+
+class PhoneNumber <<ValueObject>> {
+  - value: String
+  + getValue(): String
+}
+
+interface ProfileRepository <<Repository>> {
+  + findById(id: ProfileId): Optional<Profile>
+  + findByUserId(userId: UserId): Optional<Profile>
+  + existsByUserId(userId: UserId): boolean
+  + save(profile: Profile): Profile
+}
+
+class ProfileCreatedEvent <<DomainEvent>> {
+  - profileId: UUID
+  - userId: UUID
+  - fullName: String
+  - occurredOn: Instant
+}
+
+class ContactProfileUpdatedEvent <<DomainEvent>> {
+  - profileId: UUID
+  - userId: UUID
+  - phoneNumber: String
+  - occurredOn: Instant
+}
+
+interface PhoneNumberValidator <<DomainService>> {
+  + validate(phoneNumber: PhoneNumber): boolean
+  + formatE164(phoneNumber: PhoneNumber): String
+}
+
+Profile "1" *--> "1" ProfileId
+Profile "1" *--> "1" UserId
+Profile "1" *--> "1" FullName
+Profile "1" *--> "1" Country
+Profile "1" *--> "1" PhoneNumber
+PhoneNumberValidator ..> PhoneNumber : validates format (E.164)
+Profile ..> PhoneNumberValidator : normalizes contact info with
+ProfileRepository ..> Profile : manages
+Profile ..> ProfileCreatedEvent : emits
+Profile ..> ContactProfileUpdatedEvent : emits
+@enduml
+```
+
+#### 3. PlantUML (Database Relational Diagram - ERD)
+
+```plantuml
+@startuml
+title Viora - User Profiles Relational Schema
+hide circle
+skinparam linetype ortho
+
+entity "profiles.profiles" as profiles {
+  * id : UUID <<PK>>
+  --
+  * user_id : UUID <<UQ>>
+  * full_name : VARCHAR(150)
+  * country : VARCHAR(50)
+  * phone_number : VARCHAR(25)
+
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+note bottom of profiles
+  Constraints:
+  - UNIQUE(user_id) (Logical 1:1 with iam.user_accounts.id)
+  - CHECK(length(trim(full_name)) >= 2)
+  - INDEX idx_profiles_phone_number (phone_number)
+end note
+@enduml
+```
+

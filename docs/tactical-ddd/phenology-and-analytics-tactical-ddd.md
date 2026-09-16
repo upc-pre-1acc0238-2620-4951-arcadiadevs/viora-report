@@ -6,7 +6,7 @@
 
 **Propósito:** El Bounded Context de **Phenology and Historical Bearing Analytics** (denominado comúnmente *Phenology*) es un subdominio central (*Core Subdomain*) del negocio de Viora, responsable de custodiar la memoria productiva plurianual del olivar, evaluar científicamente la severidad de la alternancia bienal mediante el Índice de Vecería ($BBI$ de Hoblyn et al., 1936), y computar dinámicamente el cumplimiento del reposo invernal a través del Modelo Dinámico de Porciones de Frío de Erez (*Dynamic Model* de Erez et al.). Su misión es anticipar el potencial de inducción floral y prever brotaciones heterogéneas o abortos derivados de inviernos cálidos asociados al fenómeno de El Niño (ENOS).
 
-Agronómica y técnicamente, resuelve la incertidumbre del comportamiento productivo interanual (*On-Year* versus *Off-Year*) en el valle olivarero de Tacna (La Yarada-Los Palos y Magollo) para las variedades cultivadas *Olea europaea L.* cv. Criolla y Sevillana. Actúa como la única autoridad de cálculo del $BBI$ y del frío invernal en toda la plataforma. Mantiene una delimitación semántica estricta referenciando exclusivamente de forma lógica por identificador inmutable (`PlotId`) a las parcelas del Bounded Context *Olive Orchard and Plot Management*, proveyendo insumos biológicos determinantes para el balance de carga frutal en *Crop Load Regulation and Thinning Advisory* y para la curva de estabilización en *Harvest Settlement and Performance Reporting*.
+Agronómica y técnicamente, resuelve la incertidumbre del comportamiento productivo interanual (*On-Year* versus *Off-Year*) en las cuencas y valles olivareros para las variedades cultivadas *Olea europaea L.* cv. Criolla, Sevillana y Manzanilla. Actúa como la única autoridad de cálculo del $BBI$ y del frío invernal en toda la plataforma. Mantiene una delimitación semántica estricta referenciando exclusivamente de forma lógica por identificador inmutable (`PlotId`) a las parcelas del Bounded Context *Olive Orchard and Plot Management*, proveyendo insumos biológicos determinantes para el balance de carga frutal en *Crop Load Regulation and Thinning Advisory* y para la curva de estabilización en *Harvest Settlement and Performance Reporting*.
 
 ---
 
@@ -151,23 +151,28 @@ Eventos inmutables en tiempo pasado que comunican hechos significativos del cicl
 En esta capa se definen los puntos de entrada y salida del sistema. Transforma solicitudes HTTP entrantes en Commands o Queries para la Application Layer y serializa los resultados del dominio en Resources (DTOs).
 
 ##### Controllers (REST)
-Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP estándar, implementando los contratos de las Historias Técnicas TS21, TS22 y TS23:
+Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP estándar, implementando los contratos de las Historias Técnicas TS21, TS22, TS23 y TS43:
 
 * **`PlotHarvestRecordController`** (Ruta base: `/api/v1/plots/{plotId}/harvest-records`):
-  * `POST /api/v1/plots/{plotId}/harvest-records` - Asienta el volumen cosechado de una campaña anual (`TS21` / `US20`). Responde `201 Created` con `HarvestRecordResource`, `409 Conflict` si la campaña ya existe, o `400 Bad Request` ante valores negativos o año futuro.
-  * `GET /api/v1/plots/{plotId}/harvest-records` - Lista el historial plurianual cronológico de cosechas de la parcela (`TS22`), con soporte para filtro opcional por año agrícola (`?year={year}`). Responde `200 OK` con un arreglo de `HarvestRecordResource`, o `404 Not Found` si el predio no existe.
-  * `PUT /api/v1/plots/{plotId}/harvest-records/{recordId}` - Rectifica el pesaje histórico de una campaña específica identificada por su ID único (`US21` Escenario 1). Responde `200 OK` con el registro actualizado y el recálculo automático del BBI.
-  * `DELETE /api/v1/plots/{plotId}/harvest-records/{recordId}` - Elimina un registro de cosecha erróneo (`US21` Escenario 2). Responde `204 No Content` o `404 Not Found`.
+  * `POST /api/v1/plots/{plotId}/harvest-records` - Asienta el volumen cosechado de una campaña anual (`TS21` / `CMD20` / `US20`). Responde `201 Created` con `HarvestRecordResource`, `409 Conflict` si la campaña ya existe, o `400 Bad Request` ante valores negativos o año futuro.
+  * `GET /api/v1/plots/{plotId}/harvest-records` - Lista el historial plurianual cronológico de cosechas de la parcela (`TS22` / `US20`), con soporte para filtro opcional por año agrícola (`?campaignYear={year}`). Responde `200 OK` con un arreglo de `HarvestRecordResource`, o `404 Not Found` si el predio no existe.
+  * `PUT /api/v1/plots/{plotId}/harvest-records/{recordId}` - Rectifica el pesaje histórico de una campaña específica identificada por su ID único (`TS43` / `CMD21` / `US21` Escenario 1). Responde `200 OK` con el registro actualizado y el recálculo automático del BBI.
+  * `DELETE /api/v1/plots/{plotId}/harvest-records/{recordId}` - Elimina un registro de cosecha erróneo (`TS43` / `CMD22` / `US21` Escenario 2). Responde `204 No Content` o `404 Not Found`.
 
 * **`PlotMetricController`** (Ruta base: `/api/v1/plots/{plotId}/metrics`):
   * `GET /api/v1/plots/{plotId}/metrics?name=BBI` - Entrega el Índice de Vecería de Hoblyn ($BBI$) y su categoría cualitativa (`TS23` / `US20`). Responde `200 OK` con `MetricResource`, o `400 Bad Request` si existen menos de 3 campañas registradas.
   * `GET /api/v1/plots/{plotId}/metrics?name=CHILLING` - Entrega el estado de acumulación de porciones de frío de Erez y alertas ENOS (`TS23` / `US22` / `US23`). Responde `200 OK` con `MetricResource` detallando unidades de frío, estado de satisfacción y flag `enosAnomalyDetected`.
 
+* **`PlotPhenologyController`** (Ruta base: `/api/v1/plots/{plotId}/phenology-observations`):
+  * `POST /api/v1/plots/{plotId}/phenology-observations` - Registro de observación visual de estadio fenológico en escala BBCH (`CMD20` / `EV53`). Responde `201 Created` con `PhenologyObservationResource`.
+
 * **`PlotChillComputationController`** (Ruta base: `/api/v1/plots/{plotId}/chill-computations`):
-  * `POST /api/v1/plots/{plotId}/chill-computations` - Disparador bajo demanda para re-procesar las temperaturas telemétricas de una fecha en el modelo de Erez o forzar el cálculo de integral térmica. Responde `200 OK` con `ChillTrackerResource`.
+  * `POST /api/v1/plots/{plotId}/chill-computations` - Disparador bajo demanda para re-procesar las temperaturas telemétricas de una fecha en el modelo de Erez o forzar el cálculo de integral térmica (complementando la ejecución automática diaria de medianoche gestionada por `ChillComputationScheduler`). Responde `200 OK` con `ChillTrackerResource`.
 
 ##### Resources (DTOs / Request & Response Models)
 * **`CreateHarvestRecordRequest`**: `{ campaignYear: Integer, totalYieldKg: Double, greenKg: Double, blackKg: Double }` (Payload recibido en POST).
+* **`RecordPhenologyObservationRequest`**: `{ stageCode: Integer, observationDate: LocalDate, notes: String }` (Payload recibido en POST de observación BBCH).
+* **`PhenologyObservationResource`**: `{ id: UUID, plotId: UUID, currentStage: Integer, accumulatedGdd: Double, isWindowClosed: boolean }` (DTO de respuesta fenológica).
 * **`RectifyHarvestRecordRequest`**: `{ totalYieldKg: Double, greenKg: Double, blackKg: Double }` (Payload recibido en PUT).
 * **`HarvestRecordResource`**: `{ id: UUID, plotId: UUID, campaignYear: Integer, totalYieldKg: Double, greenKg: Double, blackKg: Double, classification: String, loggedAt: Instant }` (DTO de respuesta).
 * **`MetricResource`**: `{ plotId: UUID, metricName: String, value: Double, severityCategory: String, validCampaignsCount: Integer, enosAnomalyDetected: boolean, evaluatedAt: Instant }` (DTO de respuesta polymorphic para BBI o Chilling).
@@ -375,10 +380,10 @@ graph TD
     end
 
     subgraph ApplicationLayer ["Application Layer"]
-        HarvestCmdHandlers["Harvest Command Handlers<br/>(Log, Rectify, Delete)"]
+        HarvestCmdHandlers["Harvest Command Handlers: (Log, Rectify, Delete)"]
         ChillCmdHandler["ComputeDailyChillAccumulationHandler"]
-        QueryHandlers["Query Handlers<br/>(GetBBI, GetChilling, ListHarvests)"]
-        EventHandlers["Event Handlers / Policies<br/>(POL07, POL08, POL11)"]
+        QueryHandlers["Query Handlers: (GetBBI, GetChilling, ListHarvests)"]
+        EventHandlers["Event Handlers / Policies: (POL07, POL08, POL11)"]
     end
 
     subgraph DomainLayer ["Domain Layer"]
@@ -387,8 +392,8 @@ graph TD
         DailyLogEntity["DailyChillLog (Entity)"]
         HoblynService["HoblynBbiCalculator (Domain Service)"]
         ErezService["ErezDynamicChillModel (Domain Service)"]
-        RepoInterfaces["Interfaces de Repositorio<br/>(ChillTrackerRepo, HistoricalHarvestRepo)"]
-        DomainEvents["Domain Events<br/>(EV26 - EV34)"]
+        RepoInterfaces["Interfaces de Repositorio: (ChillTrackerRepo, HistoricalHarvestRepo)"]
+        DomainEvents["Domain Events: (EV26 - EV34)"]
     end
 
     subgraph InfrastructureLayer ["Infrastructure Layer"]
@@ -653,3 +658,246 @@ erDiagram
 * **Índices de Optimización de Búsqueda:**
   * B-tree sobre `(plot_id, campaign_year DESC)` en `historical_harvest_records` para recuperar ágilmente la serie cronológica requerida por el cálculo del $BBI$ (`TS22`, `TS23`).
   * B-tree sobre `(tracker_id, log_date)` en `daily_chill_logs` para graficar el avance dinámico en el velocímetro de frío (`RM08` / `US22`).
+
+---
+
+### Anexo de Diagramas como Código (3 Herramientas)
+
+#### 1. Structurizr DSL (C4 Model - Component Level)
+
+```structurizr
+workspace "Viora - Phenology Component Architecture" "Phenology and Historical Bearing Analytics Component View" {
+    model {
+        producer = person "Olive Producer" "Monitors winter chill portion accumulation and logs historical yields."
+        manager = person "Technical Manager" "Supervises cooperative chill fulfillment and biennial bearing indices."
+
+        viora = softwareSystem "Viora Platform" {
+            backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
+                chillCtrl = component "PlotChillController" "Exposes winter chill accumulation and speedometer queries" "Spring MVC Controller"
+                phenoCtrl = component "PlotPhenologyController" "Exposes BBCH phenological stages and GDD tracking endpoints" "Spring MVC Controller"
+                harvestRecordCtrl = component "PlotHarvestRecordController" "Exposes historical harvest entries CRUD endpoints (CMD20, CMD21, CMD22)" "Spring MVC Controller"
+                bearingCtrl = component "PlotBearingController" "Exposes Hoblyn BBI computation and alternance severity metrics" "Spring MVC Controller"
+                
+                phenoCommandService = component "PhenologyCommandService" "Coordinates stage progression (CMD19), harvest entries (CMD20-22), and chill calculation" "Spring Service / Command Service"
+                phenoQueryService = component "PhenologyQueryService" "Handles queries for chill accumulation, phenological stages, GDD, and Hoblyn BBI" "Spring Service / Query Service"
+                dailyChillJob = component "DailyChillComputationJob" "Scheduled background task executing daily Erez chill portion processing" "Spring @Scheduled Component"
+                
+                erezCalculator = component "ErezDynamicModelCalculator" "Domain service executing the two-step dynamic Erez chill portion algorithm" "Domain Service"
+                gddCalculator = component "GrowingDegreeDaysCalculator" "Calculates cumulative GDD post-anthesis triggering EV53 at 680 GDD" "Domain Service"
+                bbiCalculator = component "HoblynBbiCalculatorService" "Computes Hoblyn Alternate Bearing Index and vegetative bias" "Domain Service"
+                
+                trackerRepo = component "ChillAccumulationTrackerRepository" "Domain repository interface for chill tracking and harvest persistence" "Domain Port / Interface"
+                trackerRepoAdapter = component "JpaChillAccumulationTrackerRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for phenology tracking" "Spring Data JPA Adapter"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV26, EV27, and EV53 domain events" "Spring ApplicationEventPublisher"
+            }
+            db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
+                tags "Database"
+            }
+        }
+
+        producer -> chillCtrl "Queries chill accumulation [HTTPS/REST]"
+        producer -> phenoCtrl "Logs stage / views GDD [HTTPS/REST]"
+        producer -> harvestRecordCtrl "Logs / rectifies yield history [HTTPS/REST]"
+        manager -> bearingCtrl "Views sectorial BBI and chill progress [HTTPS/REST]"
+
+        chillCtrl -> phenoQueryService "Delegates chill queries"
+        phenoCtrl -> phenoCommandService "Delegates stage progression commands (CMD19)"
+        phenoCtrl -> phenoQueryService "Delegates BBCH and GDD queries"
+        harvestRecordCtrl -> phenoCommandService "Delegates harvest logging and rectification (CMD20, CMD21, CMD22)"
+        harvestRecordCtrl -> phenoQueryService "Delegates historical yield queries"
+        bearingCtrl -> phenoQueryService "Delegates BBI evaluation queries"
+        dailyChillJob -> phenoCommandService "Triggers daily automated chill calculation"
+
+        phenoCommandService -> erezCalculator "Executes 2-step dynamic chill portion model"
+        phenoCommandService -> gddCalculator "Computes GDD (680 trigger for pit hardening)"
+        phenoCommandService -> trackerRepo "Loads / persists trackers and yield logs via domain port"
+        phenoCommandService -> eventPublisher "Publishes domain events (EV26, EV27, EV53)"
+        
+        phenoQueryService -> trackerRepo "Fetches trackers and yield logs via domain port"
+        phenoQueryService -> bbiCalculator "Computes Hoblyn BBI from historical yield series"
+
+        trackerRepoAdapter -> trackerRepo "Implements persistence contract"
+        trackerRepoAdapter -> db "CRUD operations on phenology.chill_trackers and harvest_logs [JDBC/JPA]"
+    }
+    views {
+        component backend "PhenologyComponentView" "Phenology Component Architecture" {
+            include *
+            autoLayout lr
+        }
+        styles {
+            element "Database" {
+                shape Cylinder
+                background #1168bd
+                color #ffffff
+            }
+        }
+        theme default
+    }
+}
+```
+
+#### 2. PlantUML (Domain Layer Class Diagram)
+
+```plantuml
+@startuml
+title Viora - Phenology and Bearing Analytics Domain Class Diagram
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+hide empty members
+
+class ChillAccumulationTracker <<AggregateRoot>> {
+  - id: ChillTrackerId
+  - plotId: PlotId
+  - campaignYear: CampaignYear
+  - varietyName: OliveVariety
+  - requiredChillPortions: Double
+  - accumulatedChillPortions: Double
+  - fulfillmentStatus: ChillFulfillmentStatus
+  - potentialFloralFactor: Double
+  - accumulatedGddPostAnthesis: Double
+  - isWindowClosed: Boolean
+  - dailyLogs: List<DailyChillLog>
+  - harvestEntries: List<HistoricalHarvestEntry>
+  - hoblynBBI: Double [0..1]
+  + accumulateDailyChill(log, calculator): void
+  + accumulateGdd(dailyGdd, calculator): void
+  + logHistoricalHarvest(campaignYear, greenKg, blackKg): void
+  + evaluateFulfillment(): void
+  + computeHoblynBBI(calculator): Double
+  + calculateFloralReturnFactor(): Double
+}
+
+class DailyChillLog <<Entity>> {
+  - id: DailyLogId
+  - logDate: LocalDate
+  - chillPortionsEarned: Double
+  - maxDayTemp: Temperature
+  - minNightTemp: Temperature
+  - optimalRangeHours: Integer
+  - heatDestructionOccurred: Boolean
+}
+
+class HistoricalHarvestEntry <<Entity>> {
+  - id: HarvestEntryId
+  - campaignYear: Integer
+  - greenKg: Double
+  - blackKg: Double
+  - totalYieldKg: Double
+  - classification: YieldClassification
+  - loggedAt: Instant
+}
+
+class ErezDynamicModelCalculator <<DomainService>> {
+  + calculateDailyPortions(hourlyTemps): Double
+}
+
+class GrowingDegreeDaysCalculator <<DomainService>> {
+  + calculateGDD(anthesisDate, dailyMax, dailyMin): Double
+  + checkStoneHardeningTrigger(accumulatedGDD): boolean
+}
+
+class HoblynBbiCalculatorService <<DomainService>> {
+  + calculateBBI(harvestEntries): Double
+}
+
+class PhenologicalStageTransitionedEvent <<DomainEvent>> {
+  - plotId: UUID
+  - stage: String
+  - accumulatedGDD: Double
+  - occurredOn: Instant
+}
+
+class BiennialBearingIndexAssessedEvent <<DomainEvent>> {
+  - plotId: UUID
+  - hoblynBBI: Double
+  - occurredOn: Instant
+}
+
+interface ChillAccumulationTrackerRepository <<Repository>> {
+  + findById(id: ChillTrackerId): Optional<ChillAccumulationTracker>
+  + findByPlotIdAndCampaign(plotId: PlotId, year: CampaignYear): Optional<ChillAccumulationTracker>
+  + save(tracker: ChillAccumulationTracker): ChillAccumulationTracker
+}
+
+ChillAccumulationTracker "1" *--> "0..*" DailyChillLog : accumulates
+ChillAccumulationTracker "1" *--> "0..*" HistoricalHarvestEntry : logs
+ChillAccumulationTracker ..> ErezDynamicModelCalculator : calculates chill portions
+ChillAccumulationTracker ..> GrowingDegreeDaysCalculator : calculates cumulative GDD
+ChillAccumulationTracker ..> HoblynBbiCalculatorService : calculates Hoblyn BBI
+ChillAccumulationTracker ..> PhenologicalStageTransitionedEvent : emits (EV53 at 680 GDD)
+ChillAccumulationTracker ..> BiennialBearingIndexAssessedEvent : emits (EV27)
+ChillAccumulationTrackerRepository ..> ChillAccumulationTracker : manages
+@enduml
+```
+
+#### 3. PlantUML (Database Relational Diagram - ERD)
+
+```plantuml
+@startuml
+title Viora - Phenology and Bearing Analytics Relational Schema
+hide circle
+skinparam linetype ortho
+
+entity "phenology.chill_trackers" as chill_trackers {
+  * id : UUID <<PK>>
+  --
+  * plot_id : UUID
+  * campaign_year : INTEGER
+  * variety_name : VARCHAR(60)
+  * required_portions : NUMERIC(5,2)
+  * accumulated_portions : NUMERIC(5,2)
+  * fulfillment_status : VARCHAR(30)
+  * potential_floral_factor : NUMERIC(3,2)
+
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+entity "phenology.daily_chill_logs" as daily_chill_logs {
+  * id : UUID <<PK>>
+  --
+  * tracker_id : UUID <<FK>>
+  * log_date : DATE
+  * chill_portions_earned : NUMERIC(4,2)
+  * max_day_temperature : NUMERIC(4,2)
+  * min_night_temperature : NUMERIC(4,2)
+  * optimal_range_hours : INTEGER
+  * heat_destruction_occurred : BOOLEAN
+  * created_at : TIMESTAMPTZ
+}
+
+entity "phenology.historical_harvest_records" as historical_harvest_records {
+  * id : UUID <<PK>>
+  --
+  * tracker_id : UUID <<FK>>
+  * plot_id : UUID
+  * campaign_year : INTEGER
+  * total_yield_kg : NUMERIC(10,2)
+  * green_kg : NUMERIC(10,2)
+  * black_kg : NUMERIC(10,2)
+  * classification : VARCHAR(20)
+  * logged_at : TIMESTAMPTZ
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+chill_trackers ||--o{ daily_chill_logs : "records"
+chill_trackers ||--o{ historical_harvest_records : "logs yields"
+
+note bottom of chill_trackers
+  Constraints:
+  - UNIQUE(plot_id, campaign_year)
+  - CHECK(fulfillment_status IN ('ACCUMULATING', 'REQUIREMENT_FULFILLED', 'THERMAL_ANOMALY_DEFICIT'))
+  - CHECK(potential_floral_factor BETWEEN 0.10 AND 1.00)
+end note
+
+note bottom of historical_harvest_records
+  Constraints:
+  - UNIQUE(plot_id, campaign_year)
+  - CHECK(total_yield_kg >= 0 AND green_kg >= 0 AND black_kg >= 0)
+  - CHECK(total_yield_kg = green_kg + black_kg)
+  - CHECK(classification IN ('ON_YEAR', 'OFF_YEAR', 'BALANCED'))
+end note
+@enduml
+```
+

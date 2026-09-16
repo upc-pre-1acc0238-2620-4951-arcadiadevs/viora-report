@@ -279,3 +279,195 @@ Estructura relacional en PostgreSQL para la tabla de cuentas de usuario:
 ##### 3. Índices y Reglas de Integridad
 * **Índice Único:** `uq_user_accounts_email` sobre `LOWER(email)` para garantizar unicidad insensible a mayúsculas.
 * **Restricciones CHECK:** Verificación de pertenencia para la columna `role` (`ROLE_PRODUCER`, `ROLE_TECHNICAL_MANAGER`).
+
+---
+
+### Anexo de Diagramas como Código (3 Herramientas)
+
+#### 1. Structurizr DSL (C4 Model - Component Level)
+
+```structurizr
+workspace "Viora - IAM Component Architecture" "Identity and Access Management Component View" {
+    model {
+        producer = person "Olive Producer" "Manages credentials and signs in."
+        manager = person "Technical Manager" "Manages credentials and signs in."
+        brevo = softwareSystem "Brevo Email API" "External transactional email delivery."
+
+        viora = softwareSystem "Viora Platform" {
+            backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
+                authController = component "AuthController" "Exposes authentication and password reset REST endpoints" "Spring MVC Controller"
+                
+                userCommandService = component "UserAccountCommandService" "Coordinates write commands (sign-up, sign-in, tokens, resets)" "Spring Service / Command Service"
+                userQueryService = component "UserAccountQueryService" "Handles credential verification and session lookup queries" "Spring Service / Query Service"
+                
+                bcryptHasher = component "BCryptPasswordHasher" "Hashes and verifies passwords with salt" "Domain Service / Spring Security Crypto"
+                jwtTokenProvider = component "JwtTokenProvider" "Generates and validates JWT tokens with role claims" "Security Component / Nimbus"
+                userRepo = component "UserAccountRepository" "Domain repository interface for user accounts persistence" "Domain Port / Interface"
+                userRepoAdapter = component "JpaUserAccountRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for user accounts" "Spring Data JPA Adapter"
+                emailAdapter = component "BrevoEmailDeliveryAdapter" "Dispatches transactional emails via Brevo REST API" "HTTP Client Adapter"
+            }
+            db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
+                tags "Database"
+            }
+        }
+
+        producer -> authController "Authenticates / resets password [HTTPS/REST]"
+        manager -> authController "Authenticates / resets password [HTTPS/REST]"
+        
+        authController -> userCommandService "Delegates write operations (commands)"
+        authController -> userQueryService "Delegates read operations (queries)"
+        
+        userCommandService -> bcryptHasher "Hashes / matches passwords with salt"
+        userCommandService -> jwtTokenProvider "Emits / validates JWT tokens"
+        userCommandService -> userRepo "Loads / persists user accounts via domain port"
+        userCommandService -> emailAdapter "Envia emails de verificación y reseteo"
+        
+        userQueryService -> userRepo "Fetches user accounts via domain port"
+        
+        emailAdapter -> brevo "Sends reset token email [HTTPS/REST]"
+        userRepoAdapter -> userRepo "Implements persistence contract"
+        userRepoAdapter -> db "CRUD operations on iam.user_accounts [JDBC/JPA]"
+    }
+    views {
+        component backend "IamComponentView" "IAM Component Architecture" {
+            include *
+            autoLayout lr
+        }
+
+        styles {
+            element "Database" {
+                shape Cylinder
+                background #1168bd
+                color #ffffff
+            }
+        }
+
+        theme default
+    }
+}
+```
+
+#### 2. PlantUML (Domain Layer Class Diagram)
+
+```plantuml
+@startuml
+title Viora - Identity and Access Management Domain Class Diagram
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+hide empty members
+
+class UserAccount <<AggregateRoot>> {
+  - id: UserAccountId
+  - email: EmailAddress
+  - password: HashedPassword
+  - role: Role
+  - passwordResetToken: PasswordResetToken [0..1]
+  + changePassword(newHash: HashedPassword): void
+  + requestPasswordReset(tokenValue: String, expiresAt: Instant): PasswordResetToken
+  + resetPassword(token: PasswordResetToken, newHash: HashedPassword): void
+  + role(): Role
+  + email(): EmailAddress
+}
+
+class UserAccountId <<ValueObject>> {
+  - value: UUID
+  + getValue(): UUID
+}
+
+class EmailAddress <<ValueObject>> {
+  - value: String
+  + getValue(): String
+}
+
+class Password <<ValueObject>> {
+  - value: String
+  + getValue(): String
+}
+
+class HashedPassword <<ValueObject>> {
+  - value: String
+  + getValue(): String
+}
+
+enum Role <<ValueObject>> {
+  ROLE_PRODUCER
+  ROLE_TECHNICAL_MANAGER
+}
+
+class PasswordResetToken <<ValueObject>> {
+  - tokenValue: String
+  - expiresAt: Instant
+  + isExpired(currentTime: Instant): boolean
+  + tokenValue(): String
+}
+
+interface UserAccountRepository <<Repository>> {
+  + findById(id: UserAccountId): Optional<UserAccount>
+  + findByEmail(email: EmailAddress): Optional<UserAccount>
+  + existsByEmail(email: EmailAddress): boolean
+  + save(userAccount: UserAccount): UserAccount
+}
+
+interface HashingService <<DomainService>> {
+  + hash(raw: Password): HashedPassword
+  + matches(raw: Password, hash: HashedPassword): boolean
+}
+
+class UserAccountRegisteredEvent <<DomainEvent>> {
+  - userId: UUID
+  - email: String
+  - role: String
+  - occurredOn: Instant
+}
+
+class UserAuthenticatedEvent <<DomainEvent>> {
+  - userId: UUID
+  - email: String
+  - occurredOn: Instant
+}
+
+UserAccount "1" *--> "1" UserAccountId
+UserAccount "1" *--> "1" EmailAddress
+UserAccount "1" *--> "1" HashedPassword
+UserAccount "1" *--> "1" Role
+UserAccount "1" *--> "0..1" PasswordResetToken
+UserAccount ..> Password : uses raw for validation
+HashingService ..> Password : hashes raw
+HashingService ..> HashedPassword : generates
+UserAccount ..> HashingService : verifies credentials with
+UserAccountRepository ..> UserAccount : manages
+UserAccount ..> UserAccountRegisteredEvent : emits
+UserAccount ..> UserAuthenticatedEvent : emits
+@enduml
+```
+
+#### 3. PlantUML (Database Relational Diagram - ERD)
+
+```plantuml
+@startuml
+title Viora - Identity and Access Management Relational Schema
+hide circle
+skinparam linetype ortho
+
+entity "iam.user_accounts" as user_accounts {
+  * id : UUID <<PK>>
+  --
+  * email : VARCHAR(255) <<UQ>>
+  * password_hash : VARCHAR(255)
+  * role : VARCHAR(50)
+  reset_token : VARCHAR(100)
+  reset_token_expires_at : TIMESTAMPTZ
+
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+note bottom of user_accounts
+  Constraints:
+  - UNIQUE(email)
+  - CHECK(role IN ('ROLE_PRODUCER', 'ROLE_TECHNICAL_MANAGER'))
+  - INDEX idx_user_accounts_reset_token (reset_token) WHERE reset_token IS NOT NULL
+end note
+@enduml
+```
+

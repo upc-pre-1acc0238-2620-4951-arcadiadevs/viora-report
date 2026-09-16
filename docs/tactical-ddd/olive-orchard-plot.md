@@ -17,7 +17,6 @@ La propuesta se basa en US06–US12, los comandos CMD09–CMD14, los eventos EV1
 
 **Convenciones del diccionario:** atributos privados y métodos públicos, salvo indicación contraria; Value Objects y mensajes inmutables, con igualdad por valor. `Decimal` equivale a `BigDecimal` en Java. `Instant` expresa tiempo UTC; los períodos son intervalos semiabiertos `[startsAt, endsAt)`. Los identificadores son UUID no nulos. Los getters de lectura se representan por `snapshot()` en las raíces y por accesores inmutables en los VO. Ningún setter permite eludir invariantes. Las dependencias de los handlers se inyectan como atributos privados finales. Los comandos llevan `actorId` y `operationId` internos; el actor procede de la sesión verificada y no de un campo libre del request.
 
-
 ---
 
 ### Bounded Context: Olive Orchard and Plot Management
@@ -55,7 +54,7 @@ Conserva al titular como `OwnerId`, vinculado lógicamente con la identidad del 
 3. La superficie y densidad persistidas las calcula el backend. Los valores mostrados por el móvil son previsualizaciones, no entradas autoritativas para el cupo.
 4. El marco tiene distancias positivas en metros. La densidad teórica es `10000 / (rowSpacingMeters * treeSpacingMeters)`, en árboles/ha.
 5. El conteo total es opcional y representa árboles observados; nunca se presenta la estimación geométrica como un censo real. Si existe, la densidad observada es `treeCount / netHectares`. Sin conteo, se utiliza densidad teórica y se identifica su origen.
-6. Una parcela activa pertenece a un único productor y una variedad: `CRIOLLA_DE_TACNA` o `SEVILLANA`. No se cambia titular mediante una actualización genérica.
+6. Una parcela activa pertenece a un único productor y una variedad botánica autorizada: `CRIOLLA`, `SEVILLANA`, `MANZANILLA` o `ARBEQUINA`. No se cambia titular mediante una actualización genérica.
 7. El alta y los cambios de área requieren membresía efectiva y `sumaAreaActivaAnterior - areaAnterior + areaNueva <= cuota`. La igualdad con la cuota está permitida.
 8. La baja no está condicionada por el estado de las prescripciones de aclareo. La ficha de `CMD14` enunciaba esa condición como invariante clave; una restricción que abarca dos agregados alojados en contextos distintos no puede sostenerse como invariante, dado que las invariantes se verifican dentro de un único límite transaccional. `Paso6_policies.md` la formaliza como `POL16`, política de consistencia eventual resuelta por compensación en el contexto propietario de la prescripción, que reacciona a `PlotRemoved` anulando las pendientes. Este contexto no consulta a Thinning ni inspecciona sus tablas.
 9. La baja conserva identidad, geometría, revisiones e historial de otros contextos. Libera superficie del inventario activo una sola vez. La consulta de trazabilidad debe conservar autorización aunque la parcela esté archivada.
@@ -109,10 +108,10 @@ La actualización del nombre/variedad forma parte del handler CMD13 y produce un
 
 **`PlotController`**, atributos `commands: PlotCommandFacade`, `queries: PlotQueryFacade`, `assembler: PlotResourceAssembler`:
 
-- `create()` → `POST /api/v1/plots` (`TS11` / `CMD12` / `US06`): ejecuta `DelimitPlot`, devuelve `201` y `Location`.
-- `get()` → `GET /api/v1/plots/{plotId}` (`TS13` / `US07`): titular o gestor con alcance predial vigente.
-- `list()` → `GET /api/v1/plots?status=ACTIVE&page=0&size=20` (`TS12` / `US07`): ámbito propio por defecto. El filtro cooperativo exige autorización institucional y limita propietarios desde Territory.
-- `update()` → `PUT /api/v1/plots/{plotId}` (`TS14` / `CMD13` / `US09`): sustituye datos editables mediante `UpdatePlotBoundaries`; exige revisión/`If-Match`. No acepta owner, área, densidad, estado comercial ni cuota como campos editables.
+- `create()` → `POST /api/v1/plots` (`TS11` / `CMD12` / `US09`): ejecuta `DelimitPlot`, devuelve `201` y `Location`.
+- `get()` → `GET /api/v1/plots/{plotId}` (`TS13` / `US09`): titular o gestor con alcance predial vigente.
+- `list()` → `GET /api/v1/plots?status=ACTIVE&page=0&size=20` (`TS12` / `US09`): ámbito propio por defecto. El filtro cooperativo exige autorización institucional y limita propietarios desde Territory.
+- `update()` → `PUT /api/v1/plots/{plotId}` (`TS14` / `CMD13` / `US10`): sustituye datos editables mediante `UpdatePlotBoundaries`; exige revisión/`If-Match`. No acepta owner, área, densidad, estado comercial ni cuota como campos editables.
 - `remove()` → `DELETE /api/v1/plots/{plotId}` (`TS15` / `CMD14` / `US11`): `RemovePlot`, baja lógica y `204`. El motivo puede transmitirse como query `?reason=...` con longitud limitada; la UI pide confirmación y explica que el histórico se conserva.
 
 La sintaxis malformada produce `400`, geometría/valores inválidos `422`, falta de identidad `401`, falta de permisos `403` o `404` para no revelar recursos, y cuota excedida `409`. Una revisión obsoleta en `If-Match` produce `412`. No se confía en un `ownerId` enviado por la aplicación.
@@ -184,7 +183,7 @@ La implementación geodésica es una biblioteca local de cálculo, no un nuevo s
 
 ##### 2. Modelo de datos y mapeos
 
-`orchard.plots` almacena el estado actual y `orchard.plot_revisions` la instantánea de cada alta, modificación y baja. `OwnerId`, `PlotName`, `PlantingGrid` y dendrometría se aplanan. Los anillos se serializan como GeoJSON JSONB. La versión de concurrencia (`lock_version`) es distinta de `revision`, que identifica la versión de negocio compartida en eventos y cálculos.
+`orchard.plots` almacena el estado actual y `orchard.plot_revisions` la instantánea de cada alta, modificación y baja. `OwnerId`, `PlotName`, `PlantingGrid` y dendrometría se aplanan. Los anillos se serializan como GeoJSON JSONB. La auditoría temporal se gestiona mediante `created_at` y `updated_at`, mientras que `revision` identifica la versión de negocio compartida en eventos y cálculos.
 
 El snapshot de revisión contiene polígono, nombre, variedad, marco, área, conteo/densidades, estado y motivo de baja; incluye la versión del algoritmo. No se duplica una cosecha ni se actualizan retrospectivamente prescripciones ajenas. Las referencias externas son lógicas; solo `plot_revisions.plot_id` tiene FK interna.
 
@@ -229,8 +228,6 @@ El **Anexo C.2** muestra `plots 1 → 1..N plot_revisions`, donde el mínimo de 
 
 El índice `(owner_id, status)` acelera inventario y suma de área; `(plot_id, revision)` es único. La validación de polígonos no se reduce a comprobar que el JSON tiene una clave `type`. El DDL del **Anexo D** explicita qué garantiza PostgreSQL y qué corresponde al dominio.
 
-
-
 #### Diccionario complementario de clases móviles de Orchard
 
 Estas clases implementan los mismos casos de uso en ambos productos. No replican la autoridad del modelo de dominio Java. Los nombres de componentes C4 permanecen inalterados; las clases siguientes viven dentro de ellos.
@@ -253,7 +250,6 @@ Una caché de derechos no permite aprobar operaciones comerciales sin conexión.
 
 ---
 
-
 ## Matriz de trazabilidad y decisiones pendientes
 
 | Requisito / contrato | Diseño táctico | Persistencia / frontera |
@@ -267,157 +263,79 @@ Se requiere acordar con el equipo: precios y escalones de hectáreas; alta insti
 
 **Ajustes documentales identificados:** corregir US11 para conservar trazabilidad; unificar en todos los textos la propiedad comercial de códigos en Subscription; evitar presentar un cupo de `0.1 ha` como suficiente para una parcela cuyo mínimo es estrictamente mayor; completar el C4 global con el contrato de consulta a Territory que aquí se explicita. Estas precisiones permiten revisar diferencias reales, sin afirmar una coherencia absoluta que las fuentes originales todavía no tienen.
 
-
 ## Fuentes locales y uso de los anexos
 
 - Plantilla proporcionada: `C:/Users/Daron/Downloads/plantilla-tactical-ddd.md`.
 - Statement del curso: `D:/mov-chatgpt-work/Trabajo Final_1ACC0238_202620 (1).pdf`, secciones Tactical-Level DDD y Tecnología; extracción consultada en `tmp/pdfs/viora/statement.txt`.
 - C4 vigente: `D:/mov-chatgpt-work/output/viora/c4/VioraArchitecture-no-cloudinary.dsl`. La memoria anterior contiene decisiones de medios ya sustituidas, por lo que no se adopta como autoridad para reincorporarlos.
-- Requisitos: `D:/mov-viora-project/mov-viora-report/report/chapters/20-requirements-development-software-solution-design/24-requirements-specification.md`, US06–US12.
+- C4 vigente: `D:/mov-viora-project/mov-viora-report/report/chapters/20-requirements-development-software-solution-design/24-requirements-specification.md`, US06–US12.
 - Dominio: `../bounded-context-canvases/08-subscription-and-cooperative-membership.md`, `04-olive-orchard-and-plot-management.md` y `docs/event-storming/Paso1_domain_events.md`, `Paso5_commands.md`, `Paso6_policies.md`, `Paso9_aggregates.md`, dentro del repositorio del informe.
 
 Los diagramas se entregan como fuentes editables incluidas en este Markdown autocontenido. C4 utiliza Structurizr DSL y las clases UML utilizan PlantUML, conforme a la alternativa Diagram-as-Code del Statement. Los diagramas de base de datos en PlantUML son una representación auxiliar; para la entrega institucional en **LucidChart o Vertabelo**, se proporciona DDL de importación. No se afirma haber publicado diagramas en esas herramientas ni validado visualmente un render que no se haya generado.
 
-
-
-
-
 **Referencia de formato del equipo:** `telemetry-tactical-ddd.md` y `phenology-and-analytics-tactical-ddd.md`, ambos en `docs/tactical-ddd/`. Se conserva la organización por capas y diccionarios. Las fuentes C4/UML usan las herramientas Diagram-as-Code indicadas por el Statement. El borrador de Territory en `docs/tactical-ddd/cooperative-operations-tactical-ddd.md` aún ubica códigos comerciales en Cooperative; requiere alinear esa propiedad con Subscription según el C4 vigente, sin mantener dos autoridades de canje.
 
+---
 
-## Anexo A. Componentes C4: Backend API, Android y Flutter
+## Anexo A. Componentes C4: Olive Orchard & Plot Management
 
 ```structurizr
-workspace "Viora - Tactical DDD focus" "Subscription and Orchard component views, derived from the corrected C4." {
-    !impliedRelationships false
+workspace "Viora - Olive Orchard Component Architecture" "Olive Orchard and Plot Management Component View" {
     model {
-        producer = person "Olive Producer" "Manages own subscription and plots."
-        manager = person "Cooperative Technical Manager" "Issues financed invitations and reads authorised member plots."
-        payment = softwareSystem "Mercado Pago" "Hosted checkout and authoritative payment status."
-        mapbox = softwareSystem "Mapbox" "Map rendering and boundary capture."
-        viora = softwareSystem "Viora" "Olive alternate-bearing mitigation." {
-            api = container "Backend API" "Shared modular backend." "Java / Spring Boot" {
-                httpApi = component "Mobile REST API" "Controllers, resources and command/query dispatch." "Spring MVC"
-                iam = component "Identity and Access" "Identity, JWT validation and roles." "Spring Security"
-                profiles = component "Profile Management" "Profile readiness and contact data." "Spring / Java"
-                subscription = component "Subscription and Membership" "Handlers, contract domain, repositories, payment ACL and webhook." "Spring / Java / JPA"
-                orchard = component "Orchard and Plot Management" "Handlers, Plot domain, geometry, repositories and access policies." "Spring / Java / JPA"
-                territory = component "Cooperative Operations" "Institutional scope and member registry." "Spring / Java"
-                telemetry = component "Agroclimatic Telemetry" "Consumes authorised plot location." "Spring / Java"
-                phenology = component "Phenology and Bearing Analytics" "Consumes plot variety and revision." "Spring / Java"
-                thinning = component "Thinning Advisory" "Consumes plot context and reacts to plot lifecycle events." "Spring / Java"
+        producer = person "Olive Producer" "Registers olive parcels, updates boundaries, and performs soft deletions."
+        manager = person "Technical Manager" "Inspects member parcels and verifies agronomic surface area."
+        mapbox = softwareSystem "Mapbox API" "External geospatial vector tile and mapping service."
+
+        viora = softwareSystem "Viora Platform" {
+            backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
+                plotCtrl = component "PlotController" "Exposes plot registration, delta sync, update and deletion REST endpoints" "Spring MVC Controller"
+                
+                plotCommandService = component "PlotCommandService" "Coordinates plot creation, polygon updates, and soft deletions (CMD12, CMD13, CMD14)" "Spring Service / Command Service"
+                plotQueryService = component "PlotQueryService" "Handles queries for plot details, boundary GeoJSON, and delta sync" "Spring Service / Query Service"
+                
+                geoValidator = component "GeospatialPolygonValidator" "Validates GeoJSON polygon topology, non-self-intersection, and net ha" "Domain Service / JTS Topology Suite"
+                quotaPort = component "SubscriptionQuotaPort" "Outbound port verifying producer active surface quota against Subscription" "Domain Port / Outbound Client"
+                plotRepo = component "PlotRepository" "Domain repository interface for plot persistence and revision history" "Domain Port / Interface"
+                plotRepoAdapter = component "JpaPlotRepositoryAdapter" "PostgreSQL + PostGIS Spring Data JPA implementation for plots" "Spring Data JPA Adapter"
+                eventPublisher = component "DomainEventPublisher" "Dispatches PlotRegisteredEvent, PlotUpdatedEvent, and PlotRemovedEvent" "Spring ApplicationEventPublisher"
             }
-            db = container "Viora Database" "Owned schemas and transactional persistence." "PostgreSQL"
-            nativeDb = container "Android Local Database" "Account-scoped cache." "Room / SQLite"
-            crossDb = container "Cross-platform Local Database" "Account-scoped cache." "sqflite / SQLite"
-            native = container "Android Application" "Role-based mobile client." "Kotlin / Android" {
-                aPlans = component "Subscription UI" "Plans, entitlement, redemption and invitations." "Compose / ViewModel"
-                aPlots = component "Plot Management UI" "Authorised plot list and editor." "Compose / ViewModel"
-                aCoop = component "Cooperative Operations UI" "Member map and invitation entry points." "Compose / ViewModel"
-                aCheckout = component "Hosted Checkout Coordinator" "Opens backend-issued checkout and rechecks status." "Android Custom Tabs"
-                aMaps = component "Plot Map Adapter" "Map rendering, GPS and GeoJSON capture." "Mapbox Maps SDK"
-                aFeatures = component "Feature Repositories" "REST contracts and account-scoped cache." "Coroutines / Flow"
-                aClient = component "Backend API Client" "HTTP resources and authenticated requests." "Retrofit / OkHttp"
-                aSession = component "Session Manager" "Account scope and protected credentials." "Android Keystore"
-                aLocal = component "Local Data Access" "Cache transactions and invalidation." "Room DAO"
-            }
-            cross = container "Cross-platform Application" "Role-based mobile client." "Flutter / Dart" {
-                fPlans = component "Subscription UI" "Plans, entitlement, redemption and invitations." "Widgets / ChangeNotifier"
-                fPlots = component "Plot Management UI" "Authorised plot list and editor." "Widgets / ChangeNotifier"
-                fCoop = component "Cooperative Operations UI" "Member map and invitation entry points." "Widgets / ChangeNotifier"
-                fCheckout = component "Hosted Checkout Coordinator" "Opens backend-issued checkout and rechecks status." "url_launcher"
-                fMaps = component "Plot Map Adapter" "Map rendering, GPS and GeoJSON capture." "mapbox_maps_flutter"
-                fFeatures = component "Feature Repositories" "REST contracts and account-scoped cache." "Future / Stream"
-                fClient = component "Backend API Client" "HTTP resources and authenticated requests." "Dio"
-                fSession = component "Session Manager" "Account scope and protected credentials." "flutter_secure_storage"
-                fLocal = component "Local Data Access" "Cache transactions and invalidation." "sqflite"
+            db = container "Viora Database" "PostgreSQL Relational Store with PostGIS" "PostgreSQL / PostGIS" {
+                tags "Database"
             }
         }
-        httpApi -> iam "Validates identity and role" "Java / in-process"
-        httpApi -> subscription "Dispatches subscription commands and queries" "Java / in-process"
-        httpApi -> orchard "Dispatches plot commands and queries" "Java / in-process"
-        profiles -> subscription "ProfileCreated" "Internal synchronous event"
-        orchard -> subscription "Checks effective entitlement and hectare change under producer lock" "Java module contract"
-        subscription -> orchard "SubscriptionActivated; refreshes read projection" "Internal synchronous event"
-        subscription -> territory "CooperativeCodeRedeemed; POL02 affiliation" "Cross-context domain event / eventual consistency"
-        subscription -> territory "Verifies authorised institutional manager" "Java module contract / tactical refinement"
-        orchard -> territory "Resolves authorised cooperative producer scope" "Java module contract / tactical refinement"
-        thinning -> orchard "Reads active plot and revision before prescription" "Java module contract"
-        telemetry -> orchard "Reads plot location and geometry" "Java module contract"
-        phenology -> orchard "Reads variety and dendrometry" "Java module contract"
-        subscription -> payment "Creates checkout and verifies payment" "HTTPS / JSON"
-        payment -> subscription "Signed payment notification to module webhook" "HTTPS"
-        subscription -> db "Persists owned commercial records" "JPA / JDBC"
-        orchard -> db "Persists plots and revisions" "JPA / JDBC"
-        producer -> aPlans "Manages own plan and membership"
-        producer -> aPlots "Manages own plots"
-        manager -> aCoop "Reads member plots and starts invitations"
-        manager -> aPlans "Issues authorised invitations"
-        aPlans -> aFeatures "Reads plans and redeems/issues codes" "In-process"
-        aPlans -> aCheckout "Starts hosted checkout" "In-process"
-        aCheckout -> aFeatures "Creates checkout and rechecks server status" "In-process"
-        aCheckout -> payment "Opens hosted checkout" "HTTPS / browser"
-        aPlots -> aFeatures "Loads and changes authorised plots" "In-process"
-        aPlots -> aMaps "Renders and captures polygon" "In-process"
-        aCoop -> aFeatures "Loads authorised scope and starts code issuance" "In-process"
-        aCoop -> aMaps "Renders authorised member polygons" "In-process"
-        aMaps -> mapbox "Loads map resources" "HTTPS / SDK"
-        aFeatures -> aClient "Requests REST resources" "In-process"
-        aFeatures -> aLocal "Reads and refreshes scoped cache" "In-process"
-        aClient -> aSession "Reads account-scoped token" "In-process"
-        aClient -> api "Sends commands and queries" "HTTPS / JSON / JWT"
-        aLocal -> nativeDb "Persists local cache" "SQLite"
-        producer -> fPlans "Manages own plan and membership"
-        producer -> fPlots "Manages own plots"
-        manager -> fCoop "Reads member plots and starts invitations"
-        manager -> fPlans "Issues authorised invitations"
-        fPlans -> fFeatures "Reads plans and redeems/issues codes" "In-process"
-        fPlans -> fCheckout "Starts hosted checkout" "In-process"
-        fCheckout -> fFeatures "Creates checkout and rechecks server status" "In-process"
-        fCheckout -> payment "Opens hosted checkout" "HTTPS / browser"
-        fPlots -> fFeatures "Loads and changes authorised plots" "In-process"
-        fPlots -> fMaps "Renders and captures polygon" "In-process"
-        fCoop -> fFeatures "Loads authorised scope and starts code issuance" "In-process"
-        fCoop -> fMaps "Renders authorised member polygons" "In-process"
-        fMaps -> mapbox "Loads map resources" "HTTPS / SDK"
-        fFeatures -> fClient "Requests REST resources" "In-process"
-        fFeatures -> fLocal "Reads and refreshes scoped cache" "In-process"
-        fClient -> fSession "Reads account-scoped token" "In-process"
-        fClient -> api "Sends commands and queries" "HTTPS / JSON / JWT"
-        fLocal -> crossDb "Persists local cache" "SQLite"
+
+        producer -> plotCtrl "Registers / modifies / deletes plots [HTTPS/REST]"
+        manager -> plotCtrl "Reads authorized member plots [HTTPS/REST]"
+
+        plotCtrl -> plotCommandService "Delegates plot write operations (commands)"
+        plotCtrl -> plotQueryService "Delegates plot read and delta queries"
+        
+        plotCommandService -> geoValidator "Validates polygon coordinates and net hectares"
+        plotCommandService -> quotaPort "Verifies remaining entitlement quota (CMD12)"
+        plotCommandService -> plotRepo "Loads / persists plot records and revisions via domain port"
+        plotCommandService -> eventPublisher "Publishes domain events (EV15, EV16, EV17)"
+        
+        plotQueryService -> plotRepo "Fetches plot records and revisions via domain port"
+
+        plotRepoAdapter -> plotRepo "Implements persistence contract"
+        plotRepoAdapter -> db "CRUD operations on orchard.plots and plot_revisions [JDBC/PostGIS]"
     }
     views {
-
-        component api "OrchardBackend" {
-            include httpApi iam orchard subscription territory thinning telemetry phenology db
-            autoLayout lr
-        }
-
-        component native "OrchardAndroid" {
-            include producer manager aPlots aCoop aMaps aFeatures aClient aSession aLocal nativeDb api mapbox
-            autoLayout lr
-        }
-
-        component cross "OrchardFlutter" {
-            include producer manager fPlots fCoop fMaps fFeatures fClient fSession fLocal crossDb api mapbox
+        component backend "OrchardComponentView" "Olive Orchard Component Architecture" {
+            include *
             autoLayout lr
         }
         styles {
-            element "Person" {
-                shape Person
-                background #397146
+            element "Database" {
+                shape Cylinder
+                background #1168bd
                 color #ffffff
             }
-            element "Component" {
-                shape Component
-                background #eaf2f8
-                color #17354a
-            }
         }
+        theme default
     }
 }
 ```
-
 
 ## Anexo B.2. Clases del Domain Layer
 
@@ -501,8 +419,10 @@ class PlotFactory <<Factory>> {
   +delimit(id: PlotId, ownerId: OwnerId, name: PlotName, polygon: CadastralPolygon, variety: OliveVariety, grid: PlantingGrid, treeCount: int): Plot
 }
 enum OliveVariety {
-  CRIOLLA_DE_TACNA
+  CRIOLLA
   SEVILLANA
+  MANZANILLA
+  ARBEQUINA
 }
 enum PlotStatus {
   ACTIVE
@@ -536,6 +456,11 @@ PlotFactory ..> Plot : creates
 CadastralGeometryService ..> CadastralPolygon : validates topology
 DendrometryService ..> PlantingGrid : uses spacing
 DendrometryService ..> DendrometricAttributes : creates
+Plot ..> CadastralGeometryService : validates boundary updates
+Plot ..> DendrometryService : recalibrates attributes
+Plot ..> PlotDelimited : emits (EV15)
+Plot ..> PlotBoundariesUpdated : emits (EV16)
+Plot ..> PlotRemoved : emits (EV17)
 PlotRepository ..> Plot : loads and saves
 note bottom of Plot
 Subscription and Territory contracts belong
@@ -545,7 +470,6 @@ end note
 @enduml
 ```
 
-
 ## Anexo B.3. Eventos del bounded context
 
 ```plantuml
@@ -554,10 +478,6 @@ title Viora - immutable domain event contracts
 skinparam classAttributeIconSize 0
 skinparam linetype ortho
 hide empty members
-
-
-
-
 
 class PlotDelimited <<DomainEvent>> {
   -eventId: UUID
@@ -604,7 +524,6 @@ Events are dispatched by Application inside the transaction." as N
 @enduml
 ```
 
-
 ## Anexo C.2. Modelo relacional de Orchard
 
 ```plantuml
@@ -626,7 +545,7 @@ entity "orchard.plots" as orchard_plots {
   observed_trees_per_ha: NUMERIC(20,6)
   * status: VARCHAR(24)
   * revision: BIGINT
-  * lock_version: BIGINT
+
   removed_at: TIMESTAMPTZ
   removal_reason: VARCHAR(500)
   * created_at: TIMESTAMPTZ
@@ -654,12 +573,12 @@ entity "orchard.request_idempotency" as orchard_request_idempotency {
   * created_at: TIMESTAMPTZ
 }
 orchard_plots ||--o{ orchard_plot_revisions : "internal FK"
+orchard_plots |o--o{ orchard_request_idempotency : "scopes idempotency"
 note "External IDs have no cross-context FK.
 See DDL for composite keys, checks and partial indexes.
 One or more revisions/codes are ensured by application transactions." as N
 @enduml
 ```
-
 
 ## Anexo C.3. Caché en cada base local móvil
 
@@ -692,7 +611,6 @@ Each installation maintains its own account-scoped cache." as N
 @enduml
 ```
 
-
 ## Anexo D.1. Especificación SQL PostgreSQL
 
 ```sql
@@ -713,7 +631,7 @@ CREATE TABLE orchard.plots (
     owner_id UUID NOT NULL, -- logical reference to producer; no FK to IAM
     name VARCHAR(120) NOT NULL CHECK (length(trim(name)) > 0),
     polygon JSONB NOT NULL,
-    variety VARCHAR(32) NOT NULL CHECK (variety IN ('CRIOLLA_DE_TACNA','SEVILLANA')),
+    variety VARCHAR(32) NOT NULL CHECK (variety IN ('CRIOLLA','SEVILLANA','MANZANILLA','ARBEQUINA')),
     row_spacing_m NUMERIC(12,4) NOT NULL CHECK (row_spacing_m > 0),
     tree_spacing_m NUMERIC(12,4) NOT NULL CHECK (tree_spacing_m > 0),
     net_hectares NUMERIC(18,6) NOT NULL CHECK (net_hectares > 0.1),
@@ -722,7 +640,7 @@ CREATE TABLE orchard.plots (
     observed_trees_per_ha NUMERIC(20,6) CHECK (observed_trees_per_ha >= 0),
     status VARCHAR(24) NOT NULL CHECK (status IN ('ACTIVE','REMOVED_SOFT_DELETE')),
     revision BIGINT NOT NULL CHECK (revision >= 1),
-    lock_version BIGINT NOT NULL DEFAULT 0,
+
     removed_at TIMESTAMPTZ,
     removal_reason VARCHAR(500),
     created_at TIMESTAMPTZ NOT NULL,
@@ -778,7 +696,6 @@ CREATE INDEX idx_plot_owner_status ON orchard.plots(owner_id, status);
 -- mediante los contratos y transacciones documentados; no solo mediante CHECK.
 -- Las revisiones son append-only; el rol normal carece de UPDATE/DELETE sobre ellas.
 ```
-
 
 ## Anexo D.2. Especificación SQL SQLite
 

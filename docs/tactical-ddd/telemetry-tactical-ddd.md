@@ -6,7 +6,7 @@
 
 **Propósito:** El Bounded Context de **Agroclimatic Telemetry and Sensor Monitoring** (denominado comúnmente *Telemetry*) es un subdominio de soporte (*Supporting Subdomain*) responsable de la sensometría edáfica virtual, la ingesta continua de series temporales agroclimáticas y la vigilancia activa de riesgos microclimáticos para los olivares. Administra el ciclo de vida operativo de los nodos sensores virtuales (estaciones microclimáticas y sondas edáficas multinivel a 30 y 60 cm), procesa e ingesta series horarias de lecturas sintéticas procedentes de un simulador telemétrico certificado, sincroniza pronósticos meteorológicos geolocalizados a 7 días mediante el proveedor meteorológico externo Open-Meteo, y evalúa umbrales agronómicos críticos para la detección y disparo reactivo de alertas por estrés hídrico radicular, choques térmicos en floración y heladas radiativas invernales.
 
-Técnica y agronómicamente, resuelve la carencia de instrumentalización física de bajo costo en el valle olivarero de Tacna (La Yarada-Los Palos y Magollo), posibilitando la simulación precisa del balance hídrico en el bulbo de absorción radicular activo del olivo (*Olea europaea L.* cv. Criolla y Sevillana). Aísla semánticamente la lógica de series de tiempo e incidentes agroclimáticos de la delimitación geográfica predial, referenciando exclusivamente de forma lógica por identificador inmutable (`PlotId`) a las parcelas georreferenciadas pertenecientes al Bounded Context *Olive Orchard and Plot Management*, sin acoplar modelos de datos ni dependencias directas entre capas de dominio.
+Técnica y agronómicamente, resuelve la carencia de instrumentalización física de bajo costo en las cuencas y valles olivareros, posibilitando la simulación precisa del balance hídrico en el bulbo de absorción radicular activo del olivo (*Olea europaea L.* cv. Criolla y Sevillana). Aísla semánticamente la lógica de series de tiempo e incidentes agroclimáticos de la delimitación geográfica predial, referenciando exclusivamente de forma lógica por identificador inmutable (`PlotId`) a las parcelas georreferenciadas pertenecientes al Bounded Context *Olive Orchard and Plot Management*, sin acoplar modelos de datos ni dependencias directas entre capas de dominio.
 
 ---
 
@@ -57,10 +57,10 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `updateWeatherForecast(forecasts: List<WeatherForecastDay>): void` - Sobrescribe la proyección a 7 días, valida continuidad temporal, evalúa riesgo de helada radiativa invernal y encola `WeatherForecastIngestedEvent`.
   * `getActiveIncidents(): List<AgroclimaticIncident>` - Devuelve incidentes vigentes no normalizados.
 * **Invariantes y Reglas de Negocio:**
-  1. **Disparo Obligatorio de Estrés Hídrico:** Si la lectura de humedad volumétrica de suelo a 30 cm desciende por debajo de $\\theta < 18\\%$ (punto de recarga crítico en suelos arenosos y franco-arenosos de Tacna), el agregado transiciona obligatoriamente a estado de estrés hídrico y genera un incidente de severidad crítica.
-  2. **Resolución Automática Post-Riego:** Si una nueva lectura registra recuperación hídrica a $\\theta \\ge 22\\%$ (capacidad de campo del bulbo radicular), el incidente abierto se clausura de forma automática, calculando el tiempo total bajo estrés y normalizando el estado.
-  3. **Protección Térmica en Floración:** Si la temperatura ambiental supera los $32.0^\\circ\\text{C}$ con humedad relativa menor al $20.0\\%$ durante la fase fenológica de floración (*Flowering*), se activa obligatoriamente una advertencia por riesgo de desecación estigmática y aborto floral.
-  4. **Alerta Preventiva de Helada en Pronóstico:** Si la temperatura mínima proyectada a $\\le 48$ horas es inferior o igual a $1.5^\\circ\\text{C}$, se califica la condición como riesgo inminente de helada radiativa invernal.
+  1. **Disparo Obligatorio de Estrés Hídrico:** Si la lectura de humedad volumétrica de suelo a 30 cm desciende por debajo de $\theta < 18\%$ (punto de recarga crítico en suelos arenosos y franco-arenosos áridos), el agregado transiciona obligatoriamente a estado de estrés hídrico y genera un incidente de severidad crítica.
+  2. **Resolución Automática Post-Riego:** Si una nueva lectura registra recuperación hídrica a $\theta \ge 22\%$ (capacidad de campo del bulbo radicular), el incidente abierto se clausura de forma automática, calculando el tiempo total bajo estrés y normalizando el estado.
+  3. **Protección Térmica en Floración:** Si la temperatura ambiental supera los $32.0^\circ\text{C}$ con humedad relativa menor al $20.0\%$ durante la fase fenológica de floración (*Flowering*), se activa obligatoriamente una advertencia por riesgo de desecación estigmática y aborto floral.
+  4. **Alerta Preventiva de Helada en Pronóstico:** Si la temperatura mínima proyectada a $\le 48$ horas es inferior o igual a $1.5^\circ\text{C}$, se califica la condición como riesgo inminente de helada radiativa invernal.
 
 ###### HourlyTelemetryReading (Entity Interna de TelemetrySeries)
 * **Propósito:** Modela una medición horaria puntual de variables edáficas y ambientales en el estrato del olivar.
@@ -120,7 +120,7 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
 
 ##### Domain Services
 * **`AgroclimaticThresholdEvaluator`**:
-  * **Propósito:** Servicio puro sin estado que encapsula los modelos biofísicos de tolerancia al estrés hídrico y térmico del olivo según las características edafológicas del valle de Tacna y la variedad cultivada.
+  * **Propósito:** Servicio puro sin estado que encapsula los modelos biofísicos de tolerancia al estrés hídrico y térmico del olivo según las características edafológicas de la cuenca olivícola y la variedad cultivada.
   * **Métodos:**
     * `evaluateHydricRisk(moisture30cm: VolumetricWaterContent, texture: SoilTextureType): HydricEvaluationResult` - Evalúa si la humedad edáfica cayó bajo el punto de recarga o retornó a capacidad de campo.
     * `evaluateThermalRisk(temp: Temperature, rh: RelativeHumidity, stage: String): ThermalRiskEvaluationResult` - Evalúa si la combinación de temperatura diurna y sequedad atmosférica genera aborto estigmático en floración.
@@ -271,7 +271,7 @@ Clases que acceden a servicios externos (base de datos relacional PostgreSQL, ad
   * `VirtualSensorNodeEntityMapper` y `TelemetrySeriesEntityMapper`: Conversores bidireccionales entre el modelo de Dominio puro y las entidades JPA.
 * **Adapters / External Services:**
   * `OpenMeteoWeatherAdapter`: Implementa el puerto agrometeorológico del dominio mediante cliente HTTP (Spring WebClient / RestClient) consumiendo los endpoints de series horarias y pronóstico a 7 días de Open-Meteo, aplicando una política de tolerancia a fallos con caché local de 3 horas vía Caffeine (`@Cacheable("weatherForecasts")`).
-  * `TelemetrySimulatorAdapter`: Componente programado (`@Scheduled`) o servicio de soporte que genera lecturas sintéticas consistentes con la física del suelo de Tacna y las inyecta en el sistema marcándolas con `is_synthetic = true`.
+  * `TelemetrySimulatorAdapter`: Componente programado (`@Scheduled`) o servicio de soporte que genera lecturas sintéticas consistentes con la física del suelo olivarero regional y las inyecta en el sistema marcándolas con `is_synthetic = true`.
 * **Events:**
   * `SpringDomainEventPublisher`: Implementa el publicador de eventos del dominio mediante `ApplicationEventPublisher` de Spring Framework para despacho atómico síncrono/asíncrono en memoria.
 * **Configuration:**
@@ -451,17 +451,17 @@ graph TD
     end
 
     subgraph ApplicationLayer ["Application Layer"]
-        CmdHandlers["Command Handlers<br/>(Link, Calibrate, Unlink, Ingest)"]
-        QueryHandlers["Query Handlers<br/>(ListDevices, GetTelemetry, GetForecast)"]
-        EventHandlers["Event Handlers / Policies<br/>(POL04, POL05, POL06, POL14)"]
+        CmdHandlers["Command Handlers: (Link, Calibrate, Unlink, Ingest)"]
+        QueryHandlers["Query Handlers: (ListDevices, GetTelemetry, GetForecast)"]
+        EventHandlers["Event Handlers / Policies: (POL04, POL05, POL06, POL14)"]
     end
 
     subgraph DomainLayer ["Domain Layer"]
         VSN["VirtualSensorNode (Aggregate Root)"]
         TS["TelemetrySeries (Aggregate Root)"]
         DomainService["AgroclimaticThresholdEvaluator"]
-        RepoInterfaces["Interfaces de Repositorio<br/>(VirtualSensorNodeRepo, TelemetrySeriesRepo)"]
-        DomainEvents["Domain Events<br/>(EV18 - EV25)"]
+        RepoInterfaces["Interfaces de Repositorio: (VirtualSensorNodeRepo, TelemetrySeriesRepo)"]
+        DomainEvents["Domain Events: (EV18 - EV25)"]
     end
 
     subgraph InfrastructureLayer ["Infrastructure Layer"]
@@ -761,3 +761,321 @@ erDiagram
   * B-tree sobre `(plot_id, status)` en `virtual_sensor_nodes` para listados rápidos de inventario.
   * B-tree sobre `(series_id, observed_at DESC)` en `hourly_telemetry_readings` para optimizar la consulta de curvas cronológicas por rangos de fecha (`TS19`).
   * B-tree sobre `(series_id, status)` en `agroclimatic_incidents` para recuperación inmediata de alertas abiertas.
+
+---
+
+### Anexo de Diagramas como Código (3 Herramientas)
+
+#### 1. Structurizr DSL (C4 Model - Component Level)
+
+```structurizr
+workspace "Viora - Telemetry Component Architecture" "Agroclimatic Telemetry Component View" {
+    model {
+        producer = person "Olive Producer" "Monitors soil moisture, SWP thresholds, and microclimate conditions."
+        manager = person "Technical Manager" "Monitors cooperative sectorial telemetry and agroclimatic incidents."
+        openMeteo = softwareSystem "Open-Meteo API" "External weather forecast provider."
+        simulator = softwareSystem "Telemetry Simulator" "Ingests synthetic hourly agroclimatic readings via edge API."
+
+        viora = softwareSystem "Viora Platform" {
+            backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
+                iotCtrl = component "PlotIotDeviceController" "Exposes IoT sensor node registration, calibration and lifecycle endpoints" "Spring MVC Controller"
+                telemCtrl = component "PlotTelemetryController" "Exposes hourly telemetry query and ingestion endpoints" "Spring MVC Controller"
+                forecastCtrl = component "PlotForecastController" "Exposes 7-day weather forecast queries" "Spring MVC Controller"
+                
+                telemCommandService = component "TelemetryCommandService" "Coordinates IoT node registration/calibration (CMD15-17) and hourly reading ingestion (CMD18)" "Spring Service / Command Service"
+                telemQueryService = component "TelemetryQueryService" "Handles queries for telemetry series, active sensor nodes, and 7-day weather forecast" "Spring Service / Query Service"
+                forecastScheduler = component "ForecastSyncScheduler" "Scheduled background task synchronizing weather forecast cache" "Spring @Scheduled Component"
+                
+                evaluatorService = component "AgroclimaticThresholdEvaluator" "Domain service evaluating hydric stress (SWP), heat shock, and frost risk" "Domain Service"
+                
+                vsnRepo = component "VirtualSensorNodeRepository" "Domain repository interface for virtual sensor node persistence" "Domain Port / Interface"
+                seriesRepo = component "TelemetrySeriesRepository" "Domain repository interface for telemetry series persistence" "Domain Port / Interface"
+                
+                vsnRepoAdapter = component "JpaVirtualSensorNodeRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for virtual sensor nodes" "Spring Data JPA Adapter"
+                seriesRepoAdapter = component "JpaTelemetrySeriesRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for telemetry series" "Spring Data JPA Adapter"
+                
+                weatherAdapter = component "OpenMeteoWeatherAdapter" "Fetches weather forecasts and applies 3-hour Caffeine in-memory cache" "HTTP Client Adapter"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches telemetry ingested and stress alert domain events" "Spring ApplicationEventPublisher"
+            }
+            db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
+                tags "Database"
+            }
+        }
+
+        producer -> iotCtrl "Manages sensors [HTTPS/REST]"
+        producer -> telemCtrl "Queries telemetry [HTTPS/REST]"
+        producer -> forecastCtrl "Queries forecast [HTTPS/REST]"
+        manager -> telemCtrl "Monitors sectorial telemetry [HTTPS/REST]"
+        simulator -> telemCtrl "Ingests hourly readings [HTTPS/REST]"
+
+        iotCtrl -> telemCommandService "Delegates sensor commands (CMD15, CMD16, CMD17)"
+        telemCtrl -> telemCommandService "Delegates telemetry ingestion (CMD18)"
+        telemCtrl -> telemQueryService "Delegates telemetry series and threshold queries"
+        forecastCtrl -> telemQueryService "Delegates forecast queries"
+        forecastScheduler -> weatherAdapter "Triggers 3-hour forecast cache sync"
+
+        telemCommandService -> evaluatorService "Evaluates microclimatic stress thresholds"
+        telemCommandService -> vsnRepo "Loads / persists sensor nodes via domain port"
+        telemCommandService -> seriesRepo "Persists telemetry series via domain port"
+        telemCommandService -> eventPublisher "Publishes domain events (EV21, EV22, EV23)"
+        
+        telemQueryService -> vsnRepo "Fetches sensor nodes via domain port"
+        telemQueryService -> seriesRepo "Fetches telemetry series via domain port"
+        telemQueryService -> weatherAdapter "Fetches cached forecasts"
+        
+        weatherAdapter -> openMeteo "HTTP GET hourly forecast"
+
+        vsnRepoAdapter -> vsnRepo "Implements persistence contract"
+        seriesRepoAdapter -> seriesRepo "Implements persistence contract"
+        vsnRepoAdapter -> db "CRUD operations on telemetry.virtual_sensor_nodes [JDBC/JPA]"
+        seriesRepoAdapter -> db "CRUD operations on telemetry.telemetry_series [JDBC/JPA]"
+    }
+    views {
+        component backend "TelemetryComponentView" "Telemetry Component Architecture" {
+            include *
+            autoLayout lr
+        }
+        styles {
+            element "Database" {
+                shape Cylinder
+                background #1168bd
+                color #ffffff
+            }
+        }
+        theme default
+    }
+}
+```
+
+#### 2. PlantUML (Domain Layer Class Diagram)
+
+```plantuml
+@startuml
+title Viora - Agroclimatic Telemetry Domain Class Diagram
+skinparam classAttributeIconSize 0
+skinparam linetype ortho
+hide empty members
+
+class VirtualSensorNode <<AggregateRoot>> {
+  - id: SensorNodeId
+  - plotId: PlotId
+  - name: SensorNodeName
+  - type: SensorNodeType
+  - depthCm: SensorDepth
+  - soilTextureType: SoilTextureType
+  - calibrationMultiplier: CalibrationMultiplier
+  - status: SensorNodeStatus
+  - lastReadingTimestamp: Instant
+  + register(id, plotId, name, type, depthCm, soilTexture, multiplier): VirtualSensorNode
+  + calibrate(depthCm, soilTexture, multiplier): void
+  + rename(newName): void
+  + pauseTransmission(): void
+  + resumeTransmission(): void
+  + unlink(): void
+  + recordReadingActivity(timestamp): void
+}
+
+class TelemetrySeries <<AggregateRoot>> {
+  - id: TelemetrySeriesId
+  - sensorNodeId: SensorNodeId
+  - plotId: PlotId
+  - currentStatus: TelemetrySeriesStatus
+  - hourlyReadings: List<HourlyTelemetryReading>
+  - forecastDays: List<WeatherForecastDay>
+  - incidents: List<AgroclimaticIncident>
+  + recordHourlyReading(reading, evaluator): void
+  + syncForecast(forecastDays): void
+  + acknowledgeIncident(incidentId): void
+  + resolveIncident(incidentId, timestamp): void
+}
+
+class HourlyTelemetryReading <<Entity>> {
+  - id: ReadingId
+  - observedAt: Instant
+  - soilMoisturePercentage: VolumetricWaterContent
+  - ambientTemperatureCelsius: Temperature
+  - relativeHumidityPercentage: RelativeHumidity
+  - solarRadiationWattsM2: Double
+  - windSpeedKmh: Double
+  - evapotranspirationMm: Double
+}
+
+class WeatherForecastDay <<Entity>> {
+  - id: ForecastDayId
+  - forecastDate: LocalDate
+  - maxTemperature: Temperature
+  - minTemperature: Temperature
+  - precipitationProbability: Double
+  - windSpeedKmh: Double
+  - syncedAt: Instant
+}
+
+class AgroclimaticIncident <<Entity>> {
+  - id: IncidentId
+  - type: IncidentType
+  - severity: IncidentSeverity
+  - status: IncidentStatus
+  - triggeredAt: Instant
+  - resolvedAt: Instant
+  - triggerValue: Double
+  - thresholdValue: Double
+  - stressDurationMinutes: Long
+  + resolve(resolvedAt): void
+}
+
+class AgroclimaticThresholdEvaluator <<DomainService>> {
+  + evaluateHydricStress(soilMoisture, soilTexture): Optional<StressLevel>
+  + evaluateThermalStress(temp, duration): Optional<IncidentType>
+  + evaluateFrostRisk(minTemp): boolean
+}
+
+interface VirtualSensorNodeRepository <<Repository>> {
+  + findById(id: SensorNodeId): Optional<VirtualSensorNode>
+  + findByPlotId(plotId: PlotId): List<VirtualSensorNode>
+  + existsByPlotIdAndName(plotId: PlotId, name: SensorNodeName): boolean
+  + save(node: VirtualSensorNode): VirtualSensorNode
+}
+
+interface TelemetrySeriesRepository <<Repository>> {
+  + findById(id: TelemetrySeriesId): Optional<TelemetrySeries>
+  + findByPlotId(plotId: PlotId): Optional<TelemetrySeries>
+  + save(series: TelemetrySeries): TelemetrySeries
+}
+
+class VirtualSensorNodeRegisteredEvent <<DomainEvent>> {
+  - sensorNodeId: UUID
+  - plotId: UUID
+  - name: String
+  - occurredOn: Instant
+}
+
+class HourlyTelemetryReadingIngestedEvent <<DomainEvent>> {
+  - seriesId: UUID
+  - sensorNodeId: UUID
+  - readingId: UUID
+  - observedAt: Instant
+  - occurredOn: Instant
+}
+
+class HydricStressAlertTriggeredEvent <<DomainEvent>> {
+  - seriesId: UUID
+  - plotId: UUID
+  - severity: String
+  - triggerValue: Double
+  - occurredOn: Instant
+}
+
+class WeatherForecastSyncedEvent <<DomainEvent>> {
+  - seriesId: UUID
+  - plotId: UUID
+  - forecastDate: LocalDate
+  - occurredOn: Instant
+}
+
+VirtualSensorNode "1" ..> "0..*" TelemetrySeries : generates readings for
+TelemetrySeries "1" *--> "0..*" HourlyTelemetryReading : contains
+TelemetrySeries "1" *--> "0..7" WeatherForecastDay : holds
+TelemetrySeries "1" *--> "0..*" AgroclimaticIncident : tracks
+TelemetrySeries ..> AgroclimaticThresholdEvaluator : uses
+AgroclimaticThresholdEvaluator ..> HourlyTelemetryReading : evaluates readings
+VirtualSensorNode ..> VirtualSensorNodeRegisteredEvent : emits
+TelemetrySeries ..> HourlyTelemetryReadingIngestedEvent : emits (EV21)
+TelemetrySeries ..> HydricStressAlertTriggeredEvent : emits (EV22)
+TelemetrySeries ..> WeatherForecastSyncedEvent : emits (EV25)
+VirtualSensorNodeRepository ..> VirtualSensorNode : manages
+TelemetrySeriesRepository ..> TelemetrySeries : manages
+@enduml
+```
+
+#### 3. PlantUML (Database Relational Diagram - ERD)
+
+```plantuml
+@startuml
+title Viora - Agroclimatic Telemetry Relational Schema
+hide circle
+skinparam linetype ortho
+
+entity "telemetry.virtual_sensor_nodes" as virtual_sensor_nodes {
+  * id : UUID <<PK>>
+  --
+  * plot_id : UUID
+  * name : VARCHAR(80)
+  * type : VARCHAR(30)
+  depth_cm : INTEGER
+  soil_texture_type : VARCHAR(30)
+  * calibration_multiplier : NUMERIC(4,2)
+  * status : VARCHAR(20)
+  last_reading_timestamp : TIMESTAMPTZ
+  * is_deleted : BOOLEAN
+
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+entity "telemetry.telemetry_series" as telemetry_series {
+  * id : UUID <<PK>>
+  --
+  * sensor_node_id : UUID <<FK>> <<UQ>>
+  * plot_id : UUID
+  * current_status : VARCHAR(20)
+
+  * created_at : TIMESTAMPTZ
+  * updated_at : TIMESTAMPTZ
+}
+
+entity "telemetry.hourly_telemetry_readings" as hourly_telemetry_readings {
+  * id : UUID <<PK>>
+  --
+  * series_id : UUID <<FK>>
+  * observed_at : TIMESTAMPTZ
+  * soil_moisture_percentage : NUMERIC(5,2)
+  * ambient_temperature_celsius : NUMERIC(4,2)
+  * relative_humidity_percentage : NUMERIC(5,2)
+  solar_radiation_watts_m2 : NUMERIC(6,2)
+  wind_speed_kmh : NUMERIC(5,2)
+  evapotranspiration_mm : NUMERIC(5,2)
+  * ingested_at : TIMESTAMPTZ
+}
+
+entity "telemetry.weather_forecast_days" as weather_forecast_days {
+  * id : UUID <<PK>>
+  --
+  * series_id : UUID <<FK>>
+  * forecast_date : DATE
+  * max_temperature : NUMERIC(4,2)
+  * min_temperature : NUMERIC(4,2)
+  * precipitation_probability : NUMERIC(4,2)
+  wind_speed_kmh : NUMERIC(5,2)
+  * synced_at : TIMESTAMPTZ
+}
+
+entity "telemetry.agroclimatic_incidents" as agroclimatic_incidents {
+  * id : UUID <<PK>>
+  --
+  * series_id : UUID <<FK>>
+  * type : VARCHAR(40)
+  * severity : VARCHAR(20)
+  * status : VARCHAR(20)
+  * triggered_at : TIMESTAMPTZ
+  resolved_at : TIMESTAMPTZ
+  * trigger_value : NUMERIC(6,2)
+  * threshold_value : NUMERIC(6,2)
+  stress_duration_minutes : BIGINT
+}
+
+virtual_sensor_nodes ||--o| telemetry_series : "emits"
+telemetry_series ||--o{ hourly_telemetry_readings : "stores"
+telemetry_series ||--o{ weather_forecast_days : "holds 7-day forecast"
+telemetry_series ||--o{ agroclimatic_incidents : "records"
+
+note bottom of virtual_sensor_nodes
+  Constraints:
+  - UNIQUE(plot_id, name) WHERE is_deleted = FALSE
+  - CHECK(type IN ('MICROCLIMATE', 'SOIL_PROBE'))
+  - CHECK(depth_cm IS NULL OR depth_cm IN (30, 60))
+  - CHECK(status IN ('ACTIVE', 'PAUSED', 'UNLINKED'))
+  - CHECK(calibration_multiplier BETWEEN 0.50 AND 2.00)
+end note
+@enduml
+```
+

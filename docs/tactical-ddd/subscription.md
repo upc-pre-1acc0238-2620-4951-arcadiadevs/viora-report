@@ -17,7 +17,6 @@ La propuesta se basa en US06–US12, los comandos CMD09–CMD14, los eventos EV1
 
 **Convenciones del diccionario:** atributos privados y métodos públicos, salvo indicación contraria; Value Objects y mensajes inmutables, con igualdad por valor. `Decimal` equivale a `BigDecimal` en Java. `Instant` expresa tiempo UTC; los períodos son intervalos semiabiertos `[startsAt, endsAt)`. Los identificadores son UUID no nulos. Los getters de lectura se representan por `snapshot()` en las raíces y por accesores inmutables en los VO. Ningún setter permite eludir invariantes. Las dependencias de los handlers se inyectan como atributos privados finales. Los comandos llevan `actorId` y `operationId` internos; el actor procede de la sesión verificada y no de un campo libre del request.
 
-
 ---
 
 ### Bounded Context: Subscription and Cooperative Membership
@@ -314,7 +313,6 @@ El **Anexo C.1** presenta el modelo relacional y el **Anexo D** contiene DDL Pos
 
 Los índices garantizan una suscripción en curso por productor, una transacción de pago aprobada por identificador externo y una huella por código. Los `CHECK` impiden cuota negativa, fechas invertidas, sobreemisión de plazas **y de superficie** e inconsistencias entre estado de código, canje y caducidad. El SQL no sustituye la verificación externa del pago ni la coordinación de cupos.
 
-
 #### Diccionario complementario de clases móviles de Subscription
 
 Estas clases implementan los mismos casos de uso en ambos productos. No replican la autoridad del modelo de dominio Java. Los nombres de componentes C4 permanecen inalterados; las clases siguientes viven dentro de ellos.
@@ -338,7 +336,6 @@ Una caché de derechos no permite aprobar operaciones comerciales sin conexión.
 
 ---
 
-
 ## Matriz de trazabilidad y decisiones pendientes
 
 | Requisito / contrato | Diseño táctico | Persistencia / frontera |
@@ -354,7 +351,6 @@ La **liberación de cupo por códigos vencidos** deja de figurar entre las decis
 
 **Ajustes documentales identificados:** corregir US11 para conservar trazabilidad; unificar en todos los textos la propiedad comercial de códigos en Subscription; evitar presentar un cupo de `0.1 ha` como suficiente para una parcela cuyo mínimo es estrictamente mayor; completar el C4 global con el contrato de consulta a Territory que aquí se explicita. Estas precisiones permiten revisar diferencias reales, sin afirmar una coherencia absoluta que las fuentes originales todavía no tienen.
 
-
 ## Fuentes locales y uso de los anexos
 
 - Plantilla proporcionada: `C:/Users/Daron/Downloads/plantilla-tactical-ddd.md`.
@@ -365,146 +361,103 @@ La **liberación de cupo por códigos vencidos** deja de figurar entre las decis
 
 Los diagramas se entregan como fuentes editables incluidas en este Markdown autocontenido. C4 utiliza Structurizr DSL y las clases UML utilizan PlantUML, conforme a la alternativa Diagram-as-Code del Statement. Los diagramas de base de datos en PlantUML son una representación auxiliar; para la entrega institucional en **LucidChart o Vertabelo**, se proporciona DDL de importación. No se afirma haber publicado diagramas en esas herramientas ni validado visualmente un render que no se haya generado.
 
-
-
-
-
 **Referencia de formato del equipo:** `telemetry-tactical-ddd.md` y `phenology-and-analytics-tactical-ddd.md`, ambos en `docs/tactical-ddd/`. Se conserva la organización por capas y diccionarios. Las fuentes C4/UML usan las herramientas Diagram-as-Code indicadas por el Statement. El borrador de Territory en `docs/tactical-ddd/cooperative-operations-tactical-ddd.md` aún ubica códigos comerciales en Cooperative; requiere alinear esa propiedad con Subscription según el C4 vigente, sin mantener dos autoridades de canje.
-
 
 ## Anexo A. Componentes C4: Backend API, Android y Flutter
 
 ```structurizr
-workspace "Viora - Tactical DDD focus" "Subscription and Orchard component views, derived from the corrected C4." {
-    !impliedRelationships false
+workspace "Viora - Subscription Component Architecture" "Subscription and Membership Component View" {
     model {
-        producer = person "Olive Producer" "Manages own subscription and plots."
-        manager = person "Cooperative Technical Manager" "Issues financed invitations and reads authorised member plots."
-        payment = softwareSystem "Mercado Pago" "Hosted checkout and authoritative payment status."
-        mapbox = softwareSystem "Mapbox" "Map rendering and boundary capture."
-        viora = softwareSystem "Viora" "Olive alternate-bearing mitigation." {
-            api = container "Backend API" "Shared modular backend." "Java / Spring Boot" {
-                httpApi = component "Mobile REST API" "Controllers, resources and command/query dispatch." "Spring MVC"
-                iam = component "Identity and Access" "Identity, JWT validation and roles." "Spring Security"
-                profiles = component "Profile Management" "Profile readiness and contact data." "Spring / Java"
-                subscription = component "Subscription and Membership" "Handlers, contract domain, repositories, payment ACL and webhook." "Spring / Java / JPA"
-                orchard = component "Orchard and Plot Management" "Handlers, Plot domain, geometry, repositories and access policies." "Spring / Java / JPA"
-                territory = component "Cooperative Operations" "Institutional scope and member registry." "Spring / Java"
-                telemetry = component "Agroclimatic Telemetry" "Consumes authorised plot location." "Spring / Java"
-                phenology = component "Phenology and Bearing Analytics" "Consumes plot variety and revision." "Spring / Java"
-                thinning = component "Thinning Advisory" "Consumes plot context and reacts to plot lifecycle events." "Spring / Java"
+        producer = person "Olive Producer" "Manages personal subscription, checkouts, and redeems invitation codes."
+        manager = person "Technical Manager" "Issues financed invitation code batches and manages code expiry."
+        mercadoPago = softwareSystem "Mercado Pago API" "External payment gateway handling hosted checkout and IPN webhooks."
+
+        viora = softwareSystem "Viora Platform" {
+            backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
+                subCtrl = component "SubscriptionController" "Exposes subscription creation, checkout intent, and query REST endpoints" "Spring MVC Controller"
+                paymentWebhookCtrl = component "PaymentWebhookController" "Receives asynchronous IPN payment notifications from Mercado Pago" "Spring MVC Controller"
+                invitationCtrl = component "CooperativeInvitationController" "Exposes batch generation and expiry shortening endpoints" "Spring MVC Controller"
+                redemptionCtrl = component "CodeRedemptionController" "Exposes cooperative invitation code redemption endpoint" "Spring MVC Controller"
+
+                subCommandService = component "SubscriptionCommandService" "Coordinates write commands (subscription creation, payment intent, checkout preferences)" "Spring Service / Command Service"
+                subQueryService = component "SubscriptionQueryService" "Handles queries for current subscription, status, and contracted quota" "Spring Service / Query Service"
+                reconciliationCommandService = component "PaymentReconciliationCommandService" "Processes IPN notifications, verifies HMAC signatures, and activates subscriptions (CMD09)" "Spring Service / Command Service"
+                invitationCommandService = component "CooperativeInvitationCommandService" "Handles batch issuance (CMD11), expiry shortening (CMD33), and code redemption (CMD10)" "Spring Service / Command Service"
+                invitationQueryService = component "CooperativeInvitationQueryService" "Handles queries for invitation batches, available seats, and code status" "Spring Service / Query Service"
+                
+                codeGenerator = component "InvitationCodeGenerator" "Generates cryptographically secure non-sequential voucher codes" "Domain Service / Java Security"
+                quotaPolicy = component "HectareQuotaPolicy" "Enforces hectare limits and anti-fragmentation domain rules" "Domain Service"
+                activationPolicy = component "SubscriptionActivationPolicy" "Calculates annual and sponsored validity periods" "Domain Service"
+                
+                subRepo = component "SubscriptionRepository" "Domain repository interface for subscription persistence" "Domain Port / Interface"
+                invitationRepo = component "CooperativeInvitationBatchRepository" "Domain repository interface for code batch persistence" "Domain Port / Interface"
+                licenseRepo = component "CooperativeLicenseRepository" "Domain repository interface for cooperative license persistence" "Domain Port / Interface"
+                
+                subRepoAdapter = component "JpaSubscriptionRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for subscriptions" "Spring Data JPA Adapter"
+                invitationRepoAdapter = component "JpaInvitationBatchRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for invitation batches" "Spring Data JPA Adapter"
+                licenseRepoAdapter = component "JpaCooperativeLicenseRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for cooperative licenses" "Spring Data JPA Adapter"
+                
+                paymentAdapter = component "MercadoPagoPaymentAdapter" "Outbound port communicating with Mercado Pago REST API" "HTTP Client Adapter"
+                eventPublisher = component "DomainEventPublisher" "Dispatches SubscriptionActivated and CooperativeCodeRedeemed events" "Spring ApplicationEventPublisher"
             }
-            db = container "Viora Database" "Owned schemas and transactional persistence." "PostgreSQL"
-            nativeDb = container "Android Local Database" "Account-scoped cache." "Room / SQLite"
-            crossDb = container "Cross-platform Local Database" "Account-scoped cache." "sqflite / SQLite"
-            native = container "Android Application" "Role-based mobile client." "Kotlin / Android" {
-                aPlans = component "Subscription UI" "Plans, entitlement, redemption and invitations." "Compose / ViewModel"
-                aPlots = component "Plot Management UI" "Authorised plot list and editor." "Compose / ViewModel"
-                aCoop = component "Cooperative Operations UI" "Member map and invitation entry points." "Compose / ViewModel"
-                aCheckout = component "Hosted Checkout Coordinator" "Opens backend-issued checkout and rechecks status." "Android Custom Tabs"
-                aMaps = component "Plot Map Adapter" "Map rendering, GPS and GeoJSON capture." "Mapbox Maps SDK"
-                aFeatures = component "Feature Repositories" "REST contracts and account-scoped cache." "Coroutines / Flow"
-                aClient = component "Backend API Client" "HTTP resources and authenticated requests." "Retrofit / OkHttp"
-                aSession = component "Session Manager" "Account scope and protected credentials." "Android Keystore"
-                aLocal = component "Local Data Access" "Cache transactions and invalidation." "Room DAO"
-            }
-            cross = container "Cross-platform Application" "Role-based mobile client." "Flutter / Dart" {
-                fPlans = component "Subscription UI" "Plans, entitlement, redemption and invitations." "Widgets / ChangeNotifier"
-                fPlots = component "Plot Management UI" "Authorised plot list and editor." "Widgets / ChangeNotifier"
-                fCoop = component "Cooperative Operations UI" "Member map and invitation entry points." "Widgets / ChangeNotifier"
-                fCheckout = component "Hosted Checkout Coordinator" "Opens backend-issued checkout and rechecks status." "url_launcher"
-                fMaps = component "Plot Map Adapter" "Map rendering, GPS and GeoJSON capture." "mapbox_maps_flutter"
-                fFeatures = component "Feature Repositories" "REST contracts and account-scoped cache." "Future / Stream"
-                fClient = component "Backend API Client" "HTTP resources and authenticated requests." "Dio"
-                fSession = component "Session Manager" "Account scope and protected credentials." "flutter_secure_storage"
-                fLocal = component "Local Data Access" "Cache transactions and invalidation." "sqflite"
+            db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
+                tags "Database"
             }
         }
-        httpApi -> iam "Validates identity and role" "Java / in-process"
-        httpApi -> subscription "Dispatches subscription commands and queries" "Java / in-process"
-        httpApi -> orchard "Dispatches plot commands and queries" "Java / in-process"
-        profiles -> subscription "ProfileCreated" "Internal synchronous event"
-        orchard -> subscription "Checks effective entitlement and hectare change under producer lock" "Java module contract"
-        subscription -> orchard "SubscriptionActivated; refreshes read projection" "Internal synchronous event"
-        subscription -> territory "CooperativeCodeRedeemed; POL02 affiliation" "Cross-context domain event / eventual consistency"
-        subscription -> territory "Verifies authorised institutional manager" "Java module contract / tactical refinement"
-        orchard -> territory "Resolves authorised cooperative producer scope" "Java module contract / tactical refinement"
-        thinning -> orchard "Reads active plot and revision before prescription" "Java module contract"
-        telemetry -> orchard "Reads plot location and geometry" "Java module contract"
-        phenology -> orchard "Reads variety and dendrometry" "Java module contract"
-        subscription -> payment "Creates checkout and verifies payment" "HTTPS / JSON"
-        payment -> subscription "Signed payment notification to module webhook" "HTTPS"
-        subscription -> db "Persists owned commercial records" "JPA / JDBC"
-        orchard -> db "Persists plots and revisions" "JPA / JDBC"
-        producer -> aPlans "Manages own plan and membership"
-        producer -> aPlots "Manages own plots"
-        manager -> aCoop "Reads member plots and starts invitations"
-        manager -> aPlans "Issues authorised invitations"
-        aPlans -> aFeatures "Reads plans and redeems/issues codes" "In-process"
-        aPlans -> aCheckout "Starts hosted checkout" "In-process"
-        aCheckout -> aFeatures "Creates checkout and rechecks server status" "In-process"
-        aCheckout -> payment "Opens hosted checkout" "HTTPS / browser"
-        aPlots -> aFeatures "Loads and changes authorised plots" "In-process"
-        aPlots -> aMaps "Renders and captures polygon" "In-process"
-        aCoop -> aFeatures "Loads authorised scope and starts code issuance" "In-process"
-        aCoop -> aMaps "Renders authorised member polygons" "In-process"
-        aMaps -> mapbox "Loads map resources" "HTTPS / SDK"
-        aFeatures -> aClient "Requests REST resources" "In-process"
-        aFeatures -> aLocal "Reads and refreshes scoped cache" "In-process"
-        aClient -> aSession "Reads account-scoped token" "In-process"
-        aClient -> api "Sends commands and queries" "HTTPS / JSON / JWT"
-        aLocal -> nativeDb "Persists local cache" "SQLite"
-        producer -> fPlans "Manages own plan and membership"
-        producer -> fPlots "Manages own plots"
-        manager -> fCoop "Reads member plots and starts invitations"
-        manager -> fPlans "Issues authorised invitations"
-        fPlans -> fFeatures "Reads plans and redeems/issues codes" "In-process"
-        fPlans -> fCheckout "Starts hosted checkout" "In-process"
-        fCheckout -> fFeatures "Creates checkout and rechecks server status" "In-process"
-        fCheckout -> payment "Opens hosted checkout" "HTTPS / browser"
-        fPlots -> fFeatures "Loads and changes authorised plots" "In-process"
-        fPlots -> fMaps "Renders and captures polygon" "In-process"
-        fCoop -> fFeatures "Loads authorised scope and starts code issuance" "In-process"
-        fCoop -> fMaps "Renders authorised member polygons" "In-process"
-        fMaps -> mapbox "Loads map resources" "HTTPS / SDK"
-        fFeatures -> fClient "Requests REST resources" "In-process"
-        fFeatures -> fLocal "Reads and refreshes scoped cache" "In-process"
-        fClient -> fSession "Reads account-scoped token" "In-process"
-        fClient -> api "Sends commands and queries" "HTTPS / JSON / JWT"
-        fLocal -> crossDb "Persists local cache" "SQLite"
+
+        producer -> subCtrl "Creates subscription / requests checkout / queries status [HTTPS/REST]"
+        producer -> redemptionCtrl "Redeems cooperative code [HTTPS/REST]"
+        manager -> invitationCtrl "Generates code batches / adjusts expiry / queries batches [HTTPS/REST]"
+        mercadoPago -> paymentWebhookCtrl "Sends IPN payment notification [HTTPS/POST]"
+
+        subCtrl -> subCommandService "Delegates subscription write operations (commands)"
+        subCtrl -> subQueryService "Delegates subscription read operations (queries)"
+        redemptionCtrl -> invitationCommandService "Delegates code redemption (CMD10)"
+        invitationCtrl -> invitationCommandService "Delegates batch issuance (CMD11) and expiry shortening (CMD33)"
+        invitationCtrl -> invitationQueryService "Delegates batch and seat queries"
+        paymentWebhookCtrl -> reconciliationCommandService "Delegates IPN webhook commands (CMD09)"
+
+        subCommandService -> quotaPolicy "Validates requested hectares against plan boundaries"
+        subCommandService -> subRepo "Loads / persists subscriptions via domain port"
+        subCommandService -> paymentAdapter "Creates hosted checkout preference via API"
+        paymentAdapter -> mercadoPago "HTTP POST /checkout/preferences"
+        subQueryService -> subRepo "Fetches subscriptions and quotas via domain port"
+
+        reconciliationCommandService -> subRepo "Updates subscription status to ACTIVE upon payment"
+        reconciliationCommandService -> activationPolicy "Computes subscription period"
+        reconciliationCommandService -> eventPublisher "Publishes SubscriptionActivatedEvent (EV08)"
+        
+        invitationCommandService -> codeGenerator "Generates secure code strings"
+        invitationCommandService -> invitationRepo "Loads / persists invitation batches via domain port"
+        invitationCommandService -> licenseRepo "Loads / persists licenses to manage seat quotas via domain port"
+        invitationCommandService -> eventPublisher "Publishes CooperativeCodeRedeemedEvent (EV10)"
+
+        invitationQueryService -> invitationRepo "Fetches invitation batches via domain port"
+        invitationQueryService -> licenseRepo "Fetches cooperative licenses via domain port"
+
+        subRepoAdapter -> subRepo "Implements persistence contract"
+        invitationRepoAdapter -> invitationRepo "Implements persistence contract"
+        licenseRepoAdapter -> licenseRepo "Implements persistence contract"
+        subRepoAdapter -> db "CRUD operations on subscription.subscriptions [JDBC/JPA]"
+        invitationRepoAdapter -> db "CRUD operations on subscription.invitation_batches [JDBC/JPA]"
+        licenseRepoAdapter -> db "CRUD operations on subscription.cooperative_licenses [JDBC/JPA]"
     }
     views {
-        component api "SubscriptionBackend" {
-            include httpApi iam profiles subscription orchard territory db payment
+        component backend "SubscriptionComponentView" "Subscription Component Architecture" {
+            include *
             autoLayout lr
         }
-
-        component native "SubscriptionAndroid" {
-            include producer manager aPlans aCoop aCheckout aFeatures aClient aSession aLocal nativeDb api payment
-            autoLayout lr
-        }
-
-        component cross "SubscriptionFlutter" {
-            include producer manager fPlans fCoop fCheckout fFeatures fClient fSession fLocal crossDb api payment
-            autoLayout lr
-        }
-
         styles {
-            element "Person" {
-                shape Person
-                background #397146
+            element "Database" {
+                shape Cylinder
+                background #1168bd
                 color #ffffff
             }
-            element "Component" {
-                shape Component
-                background #eaf2f8
-                color #17354a
-            }
         }
+        theme default
     }
 }
 ```
-
 
 ## Anexo B.1. Clases de contrato y pago
 
@@ -668,6 +621,8 @@ Money --> Currency : denomination
 SubscriptionRepository ..> Subscription : loads and saves
 SubscriptionActivationPolicy ..> SubscriptionPeriod : constructs
 HectareQuotaPolicy ..> HectaresQuota : validates values
+Subscription ..> SubscriptionActivationPolicy : delegates period calculation
+Subscription ..> HectareQuotaPolicy : validates quota requirements
 Subscription ..> VerifiedPaymentResult : records verified outcome
 VerifiedPaymentResult --> PaymentIntentStatus : normalized state
 VerifiedPaymentResult "1" --> "1" Money : verified amount
@@ -678,7 +633,6 @@ Read-only snapshot accessors omitted.
 end note
 @enduml
 ```
-
 
 ## Anexo B.1b. Clases de invitación cooperativa
 
@@ -813,6 +767,7 @@ InvitationCodeBatch ..> RedeemedCode : returns validated evidence
 RedeemedCode "1" --> "1" SubscriptionPeriod : sponsor validity
 RedeemedCode "1" --> "1" HectaresQuota : granted quota
 InvitationBatchFactory ..> InvitationCodeBatch : creates
+InvitationCodeBatch ..> CooperativeLicense : validates seat and area limits
 CooperativeLicenseRepository ..> CooperativeLicense : loads and saves
 InvitationCodeBatchRepository ..> InvitationCodeBatch : loads and saves
 note bottom of InvitationCodeBatch
@@ -824,7 +779,6 @@ only EXPIRED releases the reserved seat and area.
 end note
 @enduml
 ```
-
 
 ## Anexo B.3. Eventos del bounded context
 
@@ -905,13 +859,10 @@ class InvitationCodeExpired <<DomainEvent>> {
   +payload(): ImmutableRecord
 }
 
-
-
 note "Private final fields; public read-only record accessors.
 Events are dispatched by Application inside the transaction." as N
 @enduml
 ```
-
 
 ## Anexo C.1. Modelo relacional de Subscription
 
@@ -930,7 +881,7 @@ entity "subscription.cooperative_licenses" as subscription_cooperative_licenses 
   * max_quota_per_code: NUMERIC(18,6)
   * starts_at: TIMESTAMPTZ
   * ends_at: TIMESTAMPTZ
-  * lock_version: BIGINT
+
   * created_at: TIMESTAMPTZ
   * updated_at: TIMESTAMPTZ
   * created_by: UUID
@@ -941,7 +892,7 @@ entity "subscription.invitation_batches" as subscription_invitation_batches {
   * license_id: UUID <<FK>>
   * issued_by: UUID
   * issued_at: TIMESTAMPTZ
-  * lock_version: BIGINT
+
   * created_at: TIMESTAMPTZ
   * updated_at: TIMESTAMPTZ
   * created_by: UUID
@@ -968,7 +919,7 @@ entity "subscription.subscriptions" as subscription_subscriptions {
   ends_at: TIMESTAMPTZ
   cooperative_id: UUID,
   redeemed_code_id: UUID <<FK>> <<UQ>>
-  * lock_version: BIGINT
+
   * created_at: TIMESTAMPTZ
   * updated_at: TIMESTAMPTZ
   * created_by: UUID
@@ -1007,7 +958,6 @@ One or more revisions/codes are ensured by application transactions." as N
 @enduml
 ```
 
-
 ## Anexo C.3. Caché en cada base local móvil
 
 ```plantuml
@@ -1032,7 +982,6 @@ Each installation maintains its own account-scoped cache." as N
 @enduml
 ```
 
-
 ## Anexo D.1. Especificación SQL PostgreSQL
 
 ```sql
@@ -1050,7 +999,7 @@ CREATE TABLE subscription.cooperative_licenses (
     max_quota_per_code NUMERIC(18,6) NOT NULL CHECK (max_quota_per_code >= 0.1),
     starts_at TIMESTAMPTZ NOT NULL,
     ends_at TIMESTAMPTZ NOT NULL,
-    lock_version BIGINT NOT NULL DEFAULT 0,
+
     created_at TIMESTAMPTZ NOT NULL,
     updated_at TIMESTAMPTZ NOT NULL,
     created_by UUID NOT NULL,
@@ -1065,7 +1014,7 @@ CREATE TABLE subscription.invitation_batches (
     license_id UUID NOT NULL REFERENCES subscription.cooperative_licenses(id) ON DELETE RESTRICT,
     issued_by UUID NOT NULL,
     issued_at TIMESTAMPTZ NOT NULL,
-    lock_version BIGINT NOT NULL DEFAULT 0,
+
     created_at TIMESTAMPTZ NOT NULL,
     updated_at TIMESTAMPTZ NOT NULL,
     created_by UUID NOT NULL,
@@ -1098,7 +1047,7 @@ CREATE TABLE subscription.subscriptions (
     ends_at TIMESTAMPTZ,
     cooperative_id UUID, -- logical reference to Territory
     redeemed_code_id UUID UNIQUE REFERENCES subscription.invitation_codes(id) ON DELETE RESTRICT,
-    lock_version BIGINT NOT NULL DEFAULT 0,
+
     created_at TIMESTAMPTZ NOT NULL,
     updated_at TIMESTAMPTZ NOT NULL,
     created_by UUID NOT NULL,
@@ -1188,7 +1137,6 @@ CREATE INDEX idx_intent_subscription ON subscription.payment_intents(subscriptio
 -- mediante los contratos y transacciones documentados; no solo mediante CHECK.
 -- Las revisiones son append-only; el rol normal carece de UPDATE/DELETE sobre ellas.
 ```
-
 
 ## Anexo D.2. Especificación SQL SQLite
 
