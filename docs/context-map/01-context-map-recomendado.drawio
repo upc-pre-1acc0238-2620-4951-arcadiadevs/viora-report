@@ -5,7 +5,7 @@
         <mxCell id="0"/>
         <mxCell id="1" parent="0"/>
 
-        <mxCell id="title" value="&lt;b&gt;Viora — Context Map&lt;/b&gt;&lt;br&gt;&lt;i&gt;Mapa recomendado — 9 bounded contexts, 13 relaciones, 4 integraciones externas&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="title" value="&lt;b&gt;Viora — Context Map&lt;/b&gt;&lt;br&gt;&lt;i&gt;Mapa recomendado — 9 bounded contexts, 14 relaciones, 4 integraciones externas&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="40" y="10" width="700" height="40" as="geometry"/>
         </mxCell>
 
@@ -90,6 +90,9 @@
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="e13" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;" edge="1" parent="1" source="bc5" target="bc6">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e14" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;" edge="1" parent="1" source="bc5" target="bc2">
           <mxGeometry relative="1" as="geometry"/>
         </mxCell>
 

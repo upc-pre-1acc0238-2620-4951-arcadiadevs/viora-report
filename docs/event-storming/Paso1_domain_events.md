@@ -23,22 +23,30 @@ Para estructurar el inventario de eventos del ecosistema Viora, se establecieron
 ## 2. Resumen Consolidado por Bounded Context
 
 ```
-+----------------------------------------------------------------------------------+
-|                    RESUMEN GENERAL POR BOUNDED CONTEXT                           |
-+----------------------------------------------------------------------------------+
-| 1. Identity & Access Management (IAM):                07 eventos (EV01 - EV07)   |
-| 2. User Profiles:                                     02 eventos (EV08 - EV09)   |
-| 3. Subscription & Cooperative Membership:             05 eventos (EV10 - EV14)   |
-| 4. Olive Orchard & Plot Management:                   03 eventos (EV15 - EV17)   |
-| 5. Agroclimatic Telemetry & Sensor Monitoring:        08 eventos (EV18 - EV25)   |
-| 6. Phenology & Historical Bearing Analytics:          09 eventos (EV26 - EV34)   |
-| 7. Crop Load Regulation & Thinning Advisory (Core):   11 eventos (EV35 - EV45)   |
-| 8. Harvest Settlement & Performance Reporting:        03 eventos (EV46 - EV48)   |
-| 9. Cooperative Operations & Territorial Intelligence: 03 eventos (EV49 - EV51)   |
-+----------------------------------------------------------------------------------+
-| TOTAL DE DOMAIN EVENTS (POST-ITS NARANJAS):          51 EVENTOS                 |
-+----------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------+
+|                    RESUMEN GENERAL POR BOUNDED CONTEXT                             |
++------------------------------------------------------------------------------------+
+| 1. Identity & Access Management (IAM):                07 eventos (EV01 - EV07)     |
+| 2. User Profiles:                                     02 eventos (EV08 - EV09)     |
+| 3. Subscription & Cooperative Membership:             06 eventos (EV10-EV14, EV52) |
+| 4. Olive Orchard & Plot Management:                   03 eventos (EV15 - EV17)     |
+| 5. Agroclimatic Telemetry & Sensor Monitoring:        08 eventos (EV18 - EV25)     |
+| 6. Phenology & Historical Bearing Analytics:          09 eventos (EV26 - EV34)     |
+| 7. Crop Load Regulation & Thinning Advisory (Core):   11 eventos (EV35 - EV45)     |
+| 8. Harvest Settlement & Performance Reporting:        03 eventos (EV46 - EV48)     |
+| 9. Cooperative Operations & Territorial Intelligence: 03 eventos (EV49 - EV51)     |
++------------------------------------------------------------------------------------+
+| TOTAL DE DOMAIN EVENTS (POST-ITS NARANJAS):          52 EVENTOS                    |
++------------------------------------------------------------------------------------+
 ```
+
+> **Nota sobre los rangos de identificadores.** Los rangos correlativos del cuadro corresponden a la
+> **asignación original del taller de EventStorming**, donde cada bloque se dimensionó exacto a su
+> contenido y no dejó holgura. Las **incorporaciones posteriores** derivadas de decisiones de diseño se
+> anexan al final del catálogo conservando su pertenencia real al Bounded Context y al Timeline que les
+> corresponde, sin renumerar los identificadores ya emitidos. Por eso el Contexto 3 figura como
+> `EV10-EV14, EV52`: `EV52` es una incorporación posterior de ese mismo contexto, ubicada en el
+> Timeline 2 (Suscripción).
 
 ---
 
@@ -76,7 +84,15 @@ Modela el esquema comercial SaaS de Viora (pago digital del Plan Productor), los
 | **EV11** | `SubscriptionActivated` | Subscription | US06 (Escenario 1) | Membresía anual del Plan Productor habilitada en estado activo para las hectáreas declaradas. |
 | **EV12** | `SubscriptionPaymentFailed` | Subscription | US06 (Escenario 2) | Cobro denegado por la pasarela de pagos externa debido a fondos insuficientes o medio rechazado. |
 | **EV13** | `CooperativeCodeRedeemed` | Subscription | US07 (Escenario 1) | Código corporativo canjeado exitosamente, vinculando formalmente al productor a la cooperativa. |
-| **EV14** | `InvitationCodesBatchGenerated` | Cooperative | US08 (Escenario 1) | Lote de códigos de invitación corporativos generado para la cooperativa según el cupo contratado. |
+| **EV14** | `InvitationCodesBatchGenerated` | InvitationCodeBatch | US08 (Escenario 1) | Lote de códigos de invitación corporativos generado para la cooperativa según el cupo de plazas y superficie contratado. |
+| **EV52** | `InvitationCodeExpired` | InvitationCodeBatch | US08 (Escenario 2) | Código de invitación vencido sin haber sido canjeado; la plaza y la superficie que tenía comprometidas se liberan en la licencia corporativa. |
+
+> **Incorporación posterior.** `EV52` no proviene de la asignación original del taller: se incorpora al
+> catálogo con numeración al final, pero pertenece a este Bounded Context y se ubica en el **Timeline 2
+> (Suscripción)**. Es el **único** camino de liberación de cupo y superficie del modelo: sustituye a la
+> revocación explícita de códigos, que se retira por quedar sin comando, sin evento y sin requisito que
+> la respalde. La cancelación anticipada se resuelve acortando la vigencia (`CMD33`), lo que deriva en
+> este mismo evento.
 
 ---
 
@@ -167,4 +183,4 @@ Proporciona visión agregada a los gestores técnicos de organizaciones olivarer
 
 ## 3. Consideraciones de Cierre
 
-El catálogo consolidado de 51 eventos de dominio proporciona la base conceptual sobre la cual se articulan las líneas de tiempo cronológicas del sistema. Cada evento actúa como punto de enlace entre las intenciones de acción de los usuarios, las políticas de automatización agronómica y la consistencia transaccional de los agregados del dominio.
+El catálogo consolidado de 52 eventos de dominio proporciona la base conceptual sobre la cual se articulan las líneas de tiempo cronológicas del sistema. Cada evento actúa como punto de enlace entre las intenciones de acción de los usuarios, las políticas de automatización agronómica y la consistencia transaccional de los agregados del dominio.

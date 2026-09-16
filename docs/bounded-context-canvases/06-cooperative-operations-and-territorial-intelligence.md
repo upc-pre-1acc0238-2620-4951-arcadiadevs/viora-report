@@ -4,7 +4,7 @@
 
 ### **Purpose**
 
-Gestiona la administración gremial, supervisión territorial e inteligencia sectorial para cooperativas olivícolas. Administra el padrón de socios, emite lotes de códigos corporativos hacia Subscription y centraliza un semáforo territorial de riesgos fisiológicos y climáticos por valles a partir de eventos de Telemetry y Thinning. Su propósito es dotar de inteligencia operativa a los directivos técnicos para coordinar la logística asociativa y mitigar riesgos.
+Gestiona la administración gremial, supervisión territorial e inteligencia sectorial para cooperativas olivícolas. Administra el padrón de socios, autoriza qué gestores técnicos pueden solicitar la emisión de lotes de códigos corporativos a Subscription y centraliza un semáforo territorial de riesgos fisiológicos y climáticos por valles a partir de eventos de Telemetry y Thinning. Su propósito es dotar de inteligencia operativa a los directivos técnicos para coordinar la logística asociativa y mitigar riesgos.
 
 ### **Strategic Classification**
 
@@ -35,11 +35,11 @@ Gestiona la administración gremial, supervisión territorial e inteligencia sec
 
 * Cooperative
 * CooperativeName
-* CorporateLicensingPlan
 * CooperativeMember
-* InvitationCode
+* AuthorizedManager
 * TerritorialRiskMatrix
 * EarlyIntakeProjection
+* SamplingCoverageRate
 
 ### **Business Decisions**
 

@@ -10,7 +10,7 @@
 
 Tras la identificación divergente de los eventos de dominio en el Paso 1, la segunda etapa metodológica de EventStorming consiste en establecer una ordenación cronológica continua de izquierda a derecha. Esta secuenciación permite estructurar la trayectoria de valor de los usuarios y articularla con el ciclo biológico anual del olivo en la región de Tacna.
 
-Dado que las operaciones agronómicas, de monitoreo y de gestión cooperativa ocurren de forma paralela y con distintos ritmos temporales, el modelo organiza los 51 eventos de dominio en **8 Líneas de Tiempo (Timelines)** concurrentes, con la primera subdividida en dos fases complementarias (Seguridad e Identidad), agrupadas en tres dimensiones fundamentales:
+Dado que las operaciones agronómicas, de monitoreo y de gestión cooperativa ocurren de forma paralela y con distintos ritmos temporales, el modelo organiza los 52 eventos de dominio en **8 Líneas de Tiempo (Timelines)** concurrentes, con la primera subdividida en dos fases complementarias (Seguridad e Identidad), agrupadas en tres dimensiones fundamentales:
 
 1. **Dimensión de Plataforma y Gestión Operativa (Timelines 1 al 4):** Abarca el onboarding en dos fases (credenciales IAM e identidad humana en Profiles), activación de membresías o suscripciones, delimitación territorial de parcelas y vinculación de telemetría IoT.
 2. **Dimensión Agronómica y Fisiológica Estacional (Timelines 5 al 7):** Sigue rigurosamente el calendario fenológico del cultivo en Tacna (*Reposo invernal mayo-agosto $\rightarrow$ Floración, cuajado y aclareo octubre-diciembre $\rightarrow$ Cosecha y liquidación marzo-junio*).
@@ -89,16 +89,18 @@ graph LR
     
     subgraph Camino Cooperativo
         EV14["EV14<br/>InvitationCodesBatchGenerated"] --> EV13["EV13<br/>CooperativeCodeRedeemed"]
+        EV14 -. Sin canje en plazo .-> EV52["EV52<br/>InvitationCodeExpired"]
     end
 ```
 
 | Orden | Código | Evento de Dominio | Disparador / Causa Cronológica | Consecuencia en el Negocio |
 | :---: | :---: | :--- | :--- | :--- |
-| **2.1** | **EV14** | `InvitationCodesBatchGenerated` | Gestor técnico emite lote según cupo contratado. | Códigos de invitación disponibles para socios. |
+| **2.1** | **EV14** | `InvitationCodesBatchGenerated` | Gestor técnico emite lote según cupo contratado. | Códigos de invitación disponibles para socios; plazas y superficie quedan comprometidas en la licencia. |
 | **2.2** | **EV10** | `SubscriptionPaymentApproved` | Pasarela confirma pago anual del Plan Productor. | Transacción financiera exitosa en Soles (PEN). |
 | **2.3** | **EV11** | `SubscriptionActivated` | Pago aprobado por pasarela digital. | Habilitación de funciones avanzadas por un año. |
 | **2.4** | **EV12** | `SubscriptionPaymentFailed` | Tarjeta rechazada o fondos insuficientes en pasarela. | Suscripción pendiente de regularización. |
 | **2.5** | **EV13** | `CooperativeCodeRedeemed` | Socio ingresa código de invitación corporativo. | Cuenta vinculada a la licencia cooperativa sin cobro individual. |
+| **2.6** | **EV52** | `InvitationCodeExpired` | Código no canjeado que alcanza su fecha de caducidad, sea la original o una adelantada por el gestor con `CMD33`. | Plaza y superficie comprometidas se devuelven al cupo disponible de la licencia. |
 
 ---
 
@@ -266,9 +268,9 @@ graph LR
 
 ---
 
-## 3. Matriz Cronológica Maestra (Del Evento 1 al 51)
+## 3. Matriz Cronológica Maestra (Del Evento 1 al 52)
 
-A continuación se resume la secuencia maestra completa de los **51 Domain Events** del ecosistema Viora:
+A continuación se resume la secuencia maestra completa de los **52 Domain Events** del ecosistema Viora:
 
 | Paso Secuencial | ID Evento | Domain Event (PascalCase) | Timeline Perteneciente | Ventana Estacional / Momento |
 | :---: | :---: | :--- | :--- | :--- |
@@ -286,43 +288,44 @@ A continuación se resume la secuencia maestra completa de los **51 Domain Event
 | 12 | **EV11** | `SubscriptionActivated` | Timeline 2: Suscripción | Habilitación de membresía anual |
 | 13 | **EV12** | `SubscriptionPaymentFailed` | Timeline 2: Suscripción | Fallo de pasarela digital |
 | 14 | **EV13** | `CooperativeCodeRedeemed` | Timeline 2: Suscripción | Activación por cooperativa |
-| 15 | **EV15** | `PlotDelimited` | Timeline 3: Parcelas | Configuración inicial de lote |
-| 16 | **EV16** | `PlotBoundariesUpdated` | Timeline 3: Parcelas | Ajuste de linderos |
-| 17 | **EV17** | `PlotRemoved` | Timeline 3: Parcelas | Baja lógica de lote |
-| 18 | **EV18** | `VirtualSensorNodeLinked` | Timeline 4: Sensores IoT | Asignación de dispositivo |
-| 19 | **EV19** | `VirtualSensorNodeCalibrated` | Timeline 4: Sensores IoT | Calibración de sonda |
-| 20 | **EV20** | `VirtualSensorNodeUnlinked` | Timeline 4: Sensores IoT | Desvinculación de sensor |
-| 21 | **EV21** | `TelemetryDataIngested` | Timeline 4: Sensores IoT | Monitoreo continuo 24/7 |
-| 22 | **EV25** | `WeatherForecastIngested` | Timeline 4: Sensores IoT | Sincronización meteorológica |
-| 23 | **EV22** | `HydricStressAlertTriggered` | Timeline 4: Sensores IoT | Incidente hídrico |
-| 24 | **EV23** | `ThermalThresholdAlertTriggered` | Timeline 4: Sensores IoT | Incidente térmico |
-| 25 | **EV24** | `AgroclimaticAlertResolved` | Timeline 4: Sensores IoT | Normalización tras riego |
-| 26 | **EV26** | `HistoricalHarvestsLogged` | Timeline 5: Vecería & Erez | Configuración de histórico |
-| 27 | **EV27** | `BiennialBearingIndexAssessed` | Timeline 5: Vecería & Erez | Evaluación de vecería |
-| 28 | **EV28** | `HistoricalDataInsufficiencyDetected` | Timeline 5: Vecería & Erez | Histórico insuficiente |
-| 29 | **EV29** | `HistoricalHarvestRectified` | Timeline 5: Vecería & Erez | Corrección de datos |
-| 30 | **EV30** | `HistoricalHarvestDeleted` | Timeline 5: Vecería & Erez | Depuración de histórico |
-| 31 | **EV31** | `WinterChillPortionsAccumulated` | Timeline 5: Vecería & Erez | **Mayo a Agosto (Invierno)** |
-| 32 | **EV32** | `ColdRequirementFulfilled` | Timeline 5: Vecería & Erez | Término del invierno |
-| 33 | **EV33** | `WinterThermalAnomalyDetected` | Timeline 5: Vecería & Erez | Anomalía térmica ENOS |
-| 34 | **EV34** | `PotentialFloralYieldReadjusted` | Timeline 5: Vecería & Erez | Reajuste de floración |
-| 35 | **EV35** | `TreeFruitSetSampledInField` | Timeline 6: Cuajado & Aclareo | **Octubre a Noviembre** |
-| 36 | **EV36** | `FieldSamplingsIngested` | Timeline 6: Cuajado & Aclareo | Transmisión de muestras |
-| 37 | **EV37** | `SamplingRoundCompleted` | Timeline 6: Cuajado & Aclareo | Representatividad lograda |
-| 38 | **EV38** | `SamplingRepresentativenessDeficientDetected` | Timeline 6: Cuajado & Aclareo | Representatividad baja |
-| 39 | **EV39** | `SustainableCropLoadDetermined` | Timeline 6: Cuajado & Aclareo | **Noviembre (Carga objetivo)** |
-| 40 | **EV40** | `OverloadRiskDetected` | Timeline 6: Cuajado & Aclareo | Detección de sobrecarga |
-| 41 | **EV41** | `ThinningPrescribed` | Timeline 6: Cuajado & Aclareo | Prescripción de aclareo |
-| 42 | **EV42** | `ThinningDeclaredUnnecessary` | Timeline 6: Cuajado & Aclareo | Carga equilibrada |
-| 43 | **EV43** | `ThinningWindowClosedByPitHardening` | Timeline 6: Cuajado & Aclareo | **Diciembre (Endocarpio duro)** |
-| 44 | **EV44** | `ThinningExecutionConfirmed` | Timeline 6: Cuajado & Aclareo | Confirmación de labor |
-| 45 | **EV45** | `LateThinningExecutionRecorded` | Timeline 6: Cuajado & Aclareo | Labor fuera de ventana |
-| 46 | **EV46** | `CampaignHarvestSettled` | Timeline 7: Cierre Cosecha | **Marzo a Junio (Cosecha)** |
-| 47 | **EV47** | `YieldStabilizationCurveEvaluated` | Timeline 7: Cierre Cosecha | Balance interanual |
-| 48 | **EV48** | `AgronomicDossierGenerated` | Timeline 7: Cierre Cosecha | Certificación en PDF |
-| 49 | **EV49** | `CooperativeRiskMatrixEvaluated` | Timeline 8: Cooperativa | Supervisión de cartera |
-| 50 | **EV50** | `CooperativeIntakeVolumeProjected` | Timeline 8: Cooperativa | Proyección de acopio |
-| 51 | **EV51** | `LowSamplingCoverageWarnedForIntake` | Timeline 8: Cooperativa | Advertencia gremial |
+| 15 | **EV52** | `InvitationCodeExpired` | Timeline 2: Suscripción | Caducidad de código sin canje |
+| 16 | **EV15** | `PlotDelimited` | Timeline 3: Parcelas | Configuración inicial de lote |
+| 17 | **EV16** | `PlotBoundariesUpdated` | Timeline 3: Parcelas | Ajuste de linderos |
+| 18 | **EV17** | `PlotRemoved` | Timeline 3: Parcelas | Baja lógica de lote |
+| 19 | **EV18** | `VirtualSensorNodeLinked` | Timeline 4: Sensores IoT | Asignación de dispositivo |
+| 20 | **EV19** | `VirtualSensorNodeCalibrated` | Timeline 4: Sensores IoT | Calibración de sonda |
+| 21 | **EV20** | `VirtualSensorNodeUnlinked` | Timeline 4: Sensores IoT | Desvinculación de sensor |
+| 22 | **EV21** | `TelemetryDataIngested` | Timeline 4: Sensores IoT | Monitoreo continuo 24/7 |
+| 23 | **EV25** | `WeatherForecastIngested` | Timeline 4: Sensores IoT | Sincronización meteorológica |
+| 24 | **EV22** | `HydricStressAlertTriggered` | Timeline 4: Sensores IoT | Incidente hídrico |
+| 25 | **EV23** | `ThermalThresholdAlertTriggered` | Timeline 4: Sensores IoT | Incidente térmico |
+| 26 | **EV24** | `AgroclimaticAlertResolved` | Timeline 4: Sensores IoT | Normalización tras riego |
+| 27 | **EV26** | `HistoricalHarvestsLogged` | Timeline 5: Vecería & Erez | Configuración de histórico |
+| 28 | **EV27** | `BiennialBearingIndexAssessed` | Timeline 5: Vecería & Erez | Evaluación de vecería |
+| 29 | **EV28** | `HistoricalDataInsufficiencyDetected` | Timeline 5: Vecería & Erez | Histórico insuficiente |
+| 30 | **EV29** | `HistoricalHarvestRectified` | Timeline 5: Vecería & Erez | Corrección de datos |
+| 31 | **EV30** | `HistoricalHarvestDeleted` | Timeline 5: Vecería & Erez | Depuración de histórico |
+| 32 | **EV31** | `WinterChillPortionsAccumulated` | Timeline 5: Vecería & Erez | **Mayo a Agosto (Invierno)** |
+| 33 | **EV32** | `ColdRequirementFulfilled` | Timeline 5: Vecería & Erez | Término del invierno |
+| 34 | **EV33** | `WinterThermalAnomalyDetected` | Timeline 5: Vecería & Erez | Anomalía térmica ENOS |
+| 35 | **EV34** | `PotentialFloralYieldReadjusted` | Timeline 5: Vecería & Erez | Reajuste de floración |
+| 36 | **EV35** | `TreeFruitSetSampledInField` | Timeline 6: Cuajado & Aclareo | **Octubre a Noviembre** |
+| 37 | **EV36** | `FieldSamplingsIngested` | Timeline 6: Cuajado & Aclareo | Transmisión de muestras |
+| 38 | **EV37** | `SamplingRoundCompleted` | Timeline 6: Cuajado & Aclareo | Representatividad lograda |
+| 39 | **EV38** | `SamplingRepresentativenessDeficientDetected` | Timeline 6: Cuajado & Aclareo | Representatividad baja |
+| 40 | **EV39** | `SustainableCropLoadDetermined` | Timeline 6: Cuajado & Aclareo | **Noviembre (Carga objetivo)** |
+| 41 | **EV40** | `OverloadRiskDetected` | Timeline 6: Cuajado & Aclareo | Detección de sobrecarga |
+| 42 | **EV41** | `ThinningPrescribed` | Timeline 6: Cuajado & Aclareo | Prescripción de aclareo |
+| 43 | **EV42** | `ThinningDeclaredUnnecessary` | Timeline 6: Cuajado & Aclareo | Carga equilibrada |
+| 44 | **EV43** | `ThinningWindowClosedByPitHardening` | Timeline 6: Cuajado & Aclareo | **Diciembre (Endocarpio duro)** |
+| 45 | **EV44** | `ThinningExecutionConfirmed` | Timeline 6: Cuajado & Aclareo | Confirmación de labor |
+| 46 | **EV45** | `LateThinningExecutionRecorded` | Timeline 6: Cuajado & Aclareo | Labor fuera de ventana |
+| 47 | **EV46** | `CampaignHarvestSettled` | Timeline 7: Cierre Cosecha | **Marzo a Junio (Cosecha)** |
+| 48 | **EV47** | `YieldStabilizationCurveEvaluated` | Timeline 7: Cierre Cosecha | Balance interanual |
+| 49 | **EV48** | `AgronomicDossierGenerated` | Timeline 7: Cierre Cosecha | Certificación en PDF |
+| 50 | **EV49** | `CooperativeRiskMatrixEvaluated` | Timeline 8: Cooperativa | Supervisión de cartera |
+| 51 | **EV50** | `CooperativeIntakeVolumeProjected` | Timeline 8: Cooperativa | Proyección de acopio |
+| 52 | **EV51** | `LowSamplingCoverageWarnedForIntake` | Timeline 8: Cooperativa | Advertencia gremial |
 
 ---
 

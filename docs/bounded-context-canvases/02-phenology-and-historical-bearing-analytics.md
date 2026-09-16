@@ -52,9 +52,10 @@ El olivo necesita acumular una cantidad mínima de frío invernal para florecer 
 *(Messages ➔ Collaborators)*
 
 * `HistoricalHarvestsLogged`, `HistoricalDataInsufficiencyDetected` ➔ **Aplicación móvil**
-* `BiennialBearingIndexAssessed` ➔ **Harvest Settlement & Performance Reporting**, **Aplicación móvil**
+* `BiennialBearingIndexAssessed` ➔ **Harvest Settlement & Performance Reporting**, **Crop Load Regulation & Thinning Advisory**, **Aplicación móvil**
 * `HistoricalHarvestRectified`, `HistoricalHarvestDeleted` ➔ **Aplicación móvil**
-* `WinterChillPortionsAccumulated`, `ColdRequirementFulfilled` ➔ **Crop Load Regulation & Thinning Advisory**
+* `WinterChillPortionsAccumulated` ➔ **Aplicación móvil**
+* `ColdRequirementFulfilled`, `PotentialFloralYieldReadjusted` ➔ **Crop Load Regulation & Thinning Advisory**
 
 ---
 

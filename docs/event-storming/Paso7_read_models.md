@@ -68,7 +68,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-## 3. Catálogo Detallado de Read Models (RM01 a RM14)
+## 3. Catálogo Detallado de Read Models (RM01 a RM15)
 
 ---
 
@@ -119,7 +119,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM03: VirtualSensorInventoryView**
+#### **RM04: VirtualSensorInventoryView**
 * **Actor Destinatario:** `Producer`
 * **Contextos Proyectados:** `Agroclimatic Telemetry & Sensor Monitoring`
 * **US / BDD:** `US13`, `US15`, `US16`
@@ -133,7 +133,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM04: SoilMoistureAndStressMonitorView**
+#### **RM05: SoilMoistureAndStressMonitorView**
 * **Actor Destinatario:** `Producer`
 * **Contextos Proyectados:** `Agroclimatic Telemetry & Sensor Monitoring`
 * **US / BDD:** `US14`, `US17`, `US18`
@@ -148,7 +148,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM05: WeatherForecastAndThermalRiskCardView**
+#### **RM06: WeatherForecastAndThermalRiskCardView**
 * **Actor Destinatario:** `Producer`
 * **Contextos Proyectados:** `Agroclimatic Telemetry & Sensor Monitoring`
 * **US / BDD:** `US18`, `US19`
@@ -162,7 +162,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM06: HistoricalYieldAndBbiAnalyticsView**
+#### **RM07: HistoricalYieldAndBbiAnalyticsView**
 * **Actor Destinatario:** `Producer`
 * **Contextos Proyectados:** `Phenology & Historical Bearing Analytics`
 * **US / BDD:** `US20`, `US21`
@@ -177,7 +177,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM07: WinterChillAccumulationGaugeView**
+#### **RM08: WinterChillAccumulationGaugeView**
 * **Actor Destinatario:** `Producer`
 * **Contextos Proyectados:** `Phenology & Historical Bearing Analytics`
 * **US / BDD:** `US22`, `US23`
@@ -192,7 +192,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM08: InFieldSamplingSummaryView**
+#### **RM09: InFieldSamplingSummaryView**
 * **Actor Destinatario:** `Producer`
 * **Contextos Proyectados:** `Crop Load Regulation & Thinning Advisory`
 * **US / BDD:** `US24`, `US25`
@@ -207,7 +207,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM09: FruitThinningPrescriptionCardView**
+#### **RM10: FruitThinningPrescriptionCardView**
 * **Actor Destinatario:** `Producer`
 * **Contextos Proyectados:** `Crop Load Regulation & Thinning Advisory`
 * **US / BDD:** `US26`, `US27`, `US28`
@@ -222,7 +222,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM10: InterannualStabilizationCurveView**
+#### **RM11: InterannualStabilizationCurveView**
 * **Actor Destinatario:** `Producer`
 * **Contextos Proyectados:** `Harvest Settlement & Performance Reporting`
 * **US / BDD:** `US29`
@@ -236,7 +236,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM11: CertifiedAgronomicDossierView**
+#### **RM12: CertifiedAgronomicDossierView**
 * **Actor Destinatario:** `Producer` / `TechnicalManager`
 * **Contextos Proyectados:** `Harvest Settlement & Performance Reporting`
 * **US / BDD:** `US30`
@@ -252,21 +252,21 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ### B. Vistas del Gestor Técnico de la Cooperativa (`TechnicalManager`)
 
-#### **RM12: CooperativeDirectoryAndLicensingView**
+#### **RM13: CooperativeDirectoryAndLicensingView**
 * **Actor Destinatario:** `TechnicalManager`
 * **Contextos Proyectados:** `Subscription & Cooperative Membership`, `Cooperative Operations & Territorial Intelligence`
 * **US / BDD:** `US08`, `US31`
-* **Propósito y Decisión que Habilita:** Panel administrativo consolidado del padrón de olivicultores adscritos a la cooperativa. Habilita la decisión de generar nuevos lotes de códigos corporativos de invitación o dar seguimiento al canje de membresías.
+* **Propósito y Decisión que Habilita:** Panel administrativo consolidado del padrón de olivicultores adscritos a la cooperativa. Habilita la decisión de generar nuevos lotes de códigos corporativos de invitación, cancelar anticipadamente los que ya no se van a distribuir, o dar seguimiento al canje de membresías.
 * **Componentes Visuales y Datos Clave:**
-  * Métricas de adopción: Total socios afiliados, licencias corporativas contratadas vs. cupones canjeados, hectáreas totales bajo cobertura del convenio.
+  * Métricas de adopción: Total socios afiliados, plazas contratadas frente a plazas comprometidas (`seatLimit` / `issuedSeats`), superficie contratada frente a superficie comprometida (`contractedArea` / `issuedArea`) y cupones efectivamente canjeados.
   * Directorio filtrable de socios: Nombre, DNI/RUC, teléfono de contacto E.164, número de parcelas y fecha de alta.
-  * Módulo de generación y descarga de lotes de códigos alfanuméricos de invitación.
-* **Eventos que Actualizan la Vista:** `EV13`, `EV14`.
-* **Comandos que Habilita:** `CMD11: GenerateInvitationCodesBatch`.
+  * Módulo de generación y descarga de lotes de códigos alfanuméricos de invitación, con el estado de cada código (`AVAILABLE`, `REDEEMED`, `EXPIRED`) y su fecha de caducidad.
+* **Eventos que Actualizan la Vista:** `EV13`, `EV14`, `EV52`.
+* **Comandos que Habilita:** `CMD11: GenerateInvitationCodesBatch`, `CMD33: ShortenInvitationCodeExpiry`.
 
 ---
 
-#### **RM13: CooperativeTerritorialRiskMatrixView**
+#### **RM14: CooperativeTerritorialRiskMatrixView**
 * **Actor Destinatario:** `TechnicalManager`
 * **Contextos Proyectados:** `Cooperative Operations & Territorial Intelligence`
 * **US / BDD:** `US31`
@@ -281,7 +281,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 
 ---
 
-#### **RM14: CooperativeIntakeProjectionDashboardView**
+#### **RM15: CooperativeIntakeProjectionDashboardView**
 * **Actor Destinatario:** `TechnicalManager`
 * **Contextos Proyectados:** `Cooperative Operations & Territorial Intelligence`
 * **US / BDD:** `US32`
@@ -311,7 +311,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 | **RM10** | `FruitThinningPrescriptionCardView` | `Producer` | `EV39`, `EV40`, `EV41`, `EV42`, `EV43`, `EV44`, `EV45` | `CMD26`, `CMD28` |
 | **RM11** | `InterannualStabilizationCurveView` | `Producer` | `EV46`, `EV47` | `CMD29` |
 | **RM12** | `CertifiedAgronomicDossierView` | `Producer` / `Gestor` | `EV48` | `CMD30` |
-| **RM13** | `CooperativeDirectoryAndLicensingView`| `TechnicalManager` | `EV13`, `EV14` | `CMD11` |
+| **RM13** | `CooperativeDirectoryAndLicensingView`| `TechnicalManager` | `EV13`, `EV14`, `EV52` | `CMD11`, `CMD33` |
 | **RM14** | `CooperativeTerritorialRiskMatrixView`| `TechnicalManager` | `EV49` | `CMD31` |
 | **RM15** | `CooperativeIntakeProjectionDashboard` | `TechnicalManager` | `EV50`, `EV51` | `CMD32` |
 

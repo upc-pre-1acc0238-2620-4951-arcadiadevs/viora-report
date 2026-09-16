@@ -29,7 +29,8 @@ Gestiona la evaluación de carga frutal, generación de prescripciones de aclare
 * **System / Productor** ➔ `DetermineSustainableCropLoad`
 * **System** ➔ `CloseThinningWindowByPhenology`
 * **Productor / Aplicación Móvil** ➔ `ConfirmThinningExecution`
-* **Phenology & Historical Bearing Analytics** ➔ `ColdRequirementFulfilled`, `ReadjustPotentialFloralYield`
+* **Phenology & Historical Bearing Analytics** ➔ `ColdRequirementFulfilled`, `PotentialFloralYieldReadjusted`, `BiennialBearingIndexAssessed`
+* **Olive Orchard & Plot Management** ➔ `PlotDelimited`, `PlotBoundariesUpdated`, `PlotRemoved`
 
 ### **Ubiquitous Language**
 
@@ -55,11 +56,13 @@ La decisión central del sistema: reemplazar la intuición del productor por un 
 *(Messages ➔ Collaborators)*
 
 * `TreeFruitSetSampledInField`, `FieldSamplingsIngested` ➔ **Aplicación móvil**
-* `SamplingRoundCompleted`, `SamplingRepresentativenessDeficientDetected` ➔ **Crop Load Regulation and Thinning Advisory**, **Aplicación móvil**
+* `SamplingRoundCompleted` ➔ **Cooperative Operations & Territorial Intelligence**, **Aplicación móvil**
+* `SamplingRepresentativenessDeficientDetected` ➔ **Aplicación móvil**
 * `SustainableCropLoadDetermined`, `ThinningPrescribed`, `ThinningDeclaredUnnecessary` ➔ **Aplicación móvil**
 * `OverloadRiskDetected` ➔ **Cooperative Operations & Territorial Intelligence**
 * `ThinningWindowClosedByPitHardening` ➔ **Aplicación móvil**
-* `ThinningExecutionConfirmed`, `LateThinningExecutionRecorded` ➔ **Harvest Settlement & Performance Reporting**, **Phenology & Historical Bearing Analytics**
+* `ThinningExecutionConfirmed` ➔ **Harvest Settlement & Performance Reporting**
+* `LateThinningExecutionRecorded` ➔ **Phenology & Historical Bearing Analytics**
 
 ---
 

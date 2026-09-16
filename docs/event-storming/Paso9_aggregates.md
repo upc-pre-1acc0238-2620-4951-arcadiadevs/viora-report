@@ -66,16 +66,24 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
 | AGG06: TelemetrySeries             (Contexto 5: Agroclimatic Telemetry & Sensor Monitoring)   |
 | AGG07: ChillAccumulationTracker    (Contexto 6: Phenology & Historical Bearing Analytics)     |
 | AGG08: FruitThinningPrescription   (Contexto 7: Crop Load Regulation & Thinning Advisory)     |
-| AGG09: AgronomicReport            (Contexto 8: Harvest Settlement & Performance Reporting)   |
-| AGG10: Cooperative                 (Contexto 9: Cooperative Operations & Intelligence)       |
+| AGG09: AgronomicReport             (Contexto 8: Harvest Settlement & Performance Reporting)   |
+| AGG10: Cooperative                 (Contexto 9: Cooperative Operations & Intelligence)        |
+| AGG11: CooperativeLicense          (Contexto 3: Subscription & Cooperative Membership)        |
+| AGG12: InvitationCodeBatch         (Contexto 3: Subscription & Cooperative Membership)        |
 +-----------------------------------------------------------------------------------------------+
-| TOTAL DE AGREGADOS RAÍZ: 10 AGREGADOS QUE ESTRUCTURAN LA ARQUITECTURA DEL DOMINIO            |
+| TOTAL DE AGREGADOS RAÍZ: 12 AGREGADOS QUE ESTRUCTURAN LA ARQUITECTURA DEL DOMINIO             |
 +-----------------------------------------------------------------------------------------------+
 ```
 
+> **Nota de numeración.** `AGG11` y `AGG12` se incorporan al final del catálogo, con numeración posterior
+> al bloque original del taller. Su pertenencia real es el Contexto 3 (`Subscription & Cooperative
+> Membership`) y su ubicación en los artefactos de EventStorming corresponde al Timeline 2 (Suscripción).
+> La numeración correlativa del taller queda como asignación original; las incorporaciones posteriores
+> se anexan sin renumerar el catálogo existente.
+
 ---
 
-## 3. Catálogo Detallado de Agregados Raíz (AGG01 a AGG10)
+## 3. Catálogo Detallado de Agregados Raíz (AGG01 a AGG12)
 
 ---
 
@@ -147,7 +155,7 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
   * `OwnerId` *(VO)*: Referencia débil al productor (`UserId`).
   * `PlotName` *(VO)*: Nombre identitario del predio o cuartel olivarero.
   * `CadastralPolygon` *(VO)*: Polígono cerrado GeoJSON (RFC 7946 en coordenadas WGS84) con validación de no auto-intersección.
-  * `OliveVariety` *(VO)*: Variedad agronómica (`CRIOLLA_DE_TACNA`, `SEVILLANA`).
+  * `OliveVariety` *(VO)*: Variedad agronómica (`CRIOLLA`, `SEVILLANA`, `MANZANILLA`, `ARBEQUINA`).
   * `PlantingGrid` *(VO)*: Marco de plantación (e.g. $8\times 8$ m, $10\times 10$ m).
   * `DendrometricAttributes` *(VO)*: Superficie neta calculada (`netHectares`), conteo total de árboles y densidad poblacional calculada (`treesPerHectare`).
   * `PlotStatus` *(VO)*: `ACTIVE`, `REMOVED_SOFT_DELETE`.
@@ -238,7 +246,7 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
   * `ThinningRecommendation` *(VO)*: Porcentaje prescrito de remoción frutal ($0\%$ a $40\%$).
   * `PhenologicalWindow` *(VO)*: Intervalo temporal de intervención con fecha límite biológica antes del endurecimiento del carozo.
   * `ExecutionConfirmation` *(Entidad Interna)*: Bitácora de aplicación en campo (fecha de labor, cuadrilla de jornales y porcentaje real aclareado).
-  * `PrescriptionStatus` *(VO)*: `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `CLOSED_BY_PIT_HARDENING`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`.
+  * `PrescriptionStatus` *(VO)*: `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `CLOSED_BY_PIT_HARDENING`, `EXECUTED_OPTIMAL`, `EXECUTED_LATE`, `VOIDED_BY_PLOT_REMOVAL`. El sexto estado se incorpora con la formalización de `POL16`: la baja de la parcela anula las prescripciones pendientes sobre ella.
 * **Invariantes Clave del Agregado:**
   1. No se puede calcular carga sostenible ni emitir prescripción formal si la ronda de muestreo posee menos de 5 árboles evaluados en el sector homogéneo.
   2. El porcentaje prescrito de aclareo nunca puede superar el $40\%$ de la fruta cuajada (límite de seguridad agronómica).
@@ -272,18 +280,77 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
 * **Entidades Internas y Value Objects:**
   * `CooperativeId` *(VO)*: UUID.
   * `CooperativeName` *(VO)*: Razón social del gremio olivarero.
-  * `CorporateLicensingPlan` *(VO)*: Contrato corporativo con cupo máximo de socios permitidos (e.g. 50 socios).
   * `CooperativeMember` *(Entidad Interna)*: Socio agremiado que guarda `MemberId`, `ProducerUserId` (referencia externa por ID a `UserAccount`), fecha de adhesión y parcelas aportadas.
-  * `InvitationCode` *(Entidad Interna)*: Código alfanumérico único generado para canje, con fecha de caducidad y estado de consumo (`AVAILABLE`, `REDEEMED`).
   * `TerritorialRiskMatrix` *(VO)*: Semáforo agregado por sector geográfico (verde, amarillo, rojo) que consolida alertas de estrés, frío y sobrecarga.
   * `EarlyIntakeProjection` *(VO)*: Estimación de toneladas proyectadas de acopio (verde y negra) ponderada por el porcentaje de muestreos completados.
 * **Invariantes Clave del Agregado:**
-  1. No se pueden generar más códigos de invitación que los cupos disponibles en el plan corporativo contratado.
+  1. La proyección de acopio territorial exige que al menos el $60\%$ del padrón de socios haya completado muestreos representativos; de lo contrario, se emite obligatoriamente una advertencia de cobertura insuficiente.
+* **Comandos Aceptados:** `CMD31` (*EvaluateCooperativeRiskMatrix*), `CMD32` (*ProjectCooperativeIntakeVolume*).
+* **Eventos de Dominio Emitidos:** `EV49`, `EV50`, `EV51`.
+* **US / BDD:** `US31`, `US32`.
+
+> **Nota de reasignación.** El contrato corporativo y la emisión de códigos de invitación ya no residen
+> en este agregado: `CorporateLicensingPlan` se formaliza como `AGG11: CooperativeLicense` y la entidad
+> `InvitationCode` pasa a `AGG12: InvitationCodeBatch`, ambos en el Contexto 3. `Cooperative` conserva
+> la potestad de decidir **quién** puede solicitar una emisión; el cupo, el área y el ciclo de vida de
+> los códigos se custodian en el contexto de suscripciones.
+
+---
+
+### **AGG11: CooperativeLicense**
+* **Bounded Context:** `Subscription & Cooperative Membership`
+* **Aggregate Root:** `CooperativeLicense`
+* **Entidades Internas y Value Objects:**
+  * `CooperativeLicenseId` *(VO)*: UUID.
+  * `CooperativeId` *(VO)*: Referencia débil por ID a la cooperativa titular del contrato (`AGG10`).
+  * `seatLimit` *(VO)*: Cupo máximo de plazas de socio contratadas (e.g. 50 socios).
+  * `issuedSeats` *(VO)*: Acumulador de plazas ya comprometidas por códigos emitidos y vigentes.
+  * `contractedArea` *(VO)*: Superficie catastral total contratada, en hectáreas.
+  * `issuedArea` *(VO)*: Acumulador de superficie ya comprometida por las cuotas de los códigos emitidos y vigentes.
+  * `maxQuotaPerCode` *(VO)*: Techo de hectáreas asignable a un código individual.
+  * `SubscriptionPeriod` *(VO)*: Rango temporal de vigencia del contrato `[startDate, validUntil]`.
+* **Invariantes Clave del Agregado:**
+  1. $0 \le \texttt{issuedSeats} \le \texttt{seatLimit}$ en todo momento.
+  2. $0 \le \texttt{issuedArea} \le \texttt{contractedArea}$ en todo momento.
+  3. La cuota de superficie de un código individual nunca puede exceder `maxQuotaPerCode`.
+  4. Ambos acumuladores se incrementan **al emitir** y se decrementan **al expirar** un código; el canje no los mueve, porque la plaza y el área pasan a estar ocupadas por un productor real.
+  5. Ninguna emisión puede aceptarse fuera del `SubscriptionPeriod` vigente.
+* **Comandos Aceptados:** ninguno de forma directa. Los acumuladores se mueven dentro de la transacción de emisión (`CMD11`) y por la política de liberación que atiende `EV52`.
+* **Eventos de Dominio Emitidos:** ninguno propio.
+* **US / BDD:** `US08`.
+
+> **Nota de concurrencia.** El control optimista de versión que hoy reside sobre la entidad de
+> persistencia de `Cooperative` se traslada a este agregado. Sin él, dos emisiones concurrentes leen el
+> mismo remanente de cupo y ambas se aprueban, rompiendo las invariantes 1 y 2.
+
+---
+
+### **AGG12: InvitationCodeBatch**
+* **Bounded Context:** `Subscription & Cooperative Membership`
+* **Aggregate Root:** `InvitationCodeBatch`
+* **Entidades Internas y Value Objects:**
+  * `BatchId` *(VO)*: UUID.
+  * `CooperativeLicenseId` *(VO)*: Referencia débil por ID a la licencia que respalda el lote (`AGG11`).
+  * `CooperativeId` *(VO)*: Referencia débil por ID a la cooperativa emisora (`AGG10`).
+  * `InvitationCode` *(Entidad Interna)*: Código alfanumérico único generado para canje, con `quota` (`HectaresQuota`), `expiresAt` y `InvitationCodeStatus`.
+  * `InvitationCodeStatus` *(VO)*: `AVAILABLE`, `REDEEMED`, `EXPIRED`.
+* **Invariantes Clave del Agregado:**
+  1. No se pueden generar más códigos de invitación que las plazas y la superficie disponibles en la licencia corporativa que respalda el lote.
   2. Un `InvitationCode` solo puede ser canjeado por un único productor socio.
-  3. La proyección de acopio territorial exige que al menos el $60\%$ del padrón de socios haya completado muestreos representativos; de lo contrario, se emite obligatoriamente una advertencia de cobertura insuficiente.
-* **Comandos Aceptados:** `CMD11` (*GenerateInvitationCodesBatch*), `CMD31` (*EvaluateCooperativeRiskMatrix*), `CMD32` (*ProjectCooperativeIntakeVolume*).
-* **Eventos de Dominio Emitidos:** `EV14`, `EV49`, `EV50`, `EV51`.
-* **US / BDD:** `US08`, `US31`, `US32`.
+  3. Las transiciones admitidas son `AVAILABLE` $\rightarrow$ `REDEEMED` (terminal) y `AVAILABLE` $\rightarrow$ `EXPIRED` (libera cupo y área). Un código `REDEEMED` no retorna a ningún otro estado.
+  4. El acortamiento de vigencia solo puede reducir `expiresAt`, nunca extenderla, y solo sobre códigos en estado `AVAILABLE`. La operación es idempotente.
+  5. La caducidad de un código es el **único** camino de liberación de cupo y área.
+* **Comandos Aceptados:** `CMD11` (*GenerateInvitationCodesBatch*), `CMD33` (*ShortenInvitationCodeExpiry*).
+* **Eventos de Dominio Emitidos:** `EV14`, `EV52`.
+* **US / BDD:** `US08`.
+
+> **Nota de diseño: por qué es una raíz de agregado propia.** El lote no puede anidarse dentro de
+> `AGG03: Subscription` porque en el instante de la emisión no existe todavía ninguna instancia de
+> `Subscription` donde alojarlo: los productores destinatarios aún no están suscritos, y precisamente el
+> canje del código es lo que origina su suscripción. Tampoco puede anidarse en `AGG10: Cooperative`,
+> porque su consistencia se evalúa contra los acumuladores de `AGG11` y su ciclo de vida es
+> independiente del padrón de socios. Es, por definición, una unidad de consistencia transaccional
+> propia, y se relaciona con `AGG10` y `AGG11` exclusivamente por identidad.
 
 ---
 
@@ -300,10 +367,12 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
 | **AGG07** | `ChillAccumulationTracker`| `Phenology & Bearing Analytics`| `CMD20` a `CMD23` | `EV26` a `EV34` |
 | **AGG08** | `FruitThinningPrescription`| `Crop Load Regulation` *(Core)* | `CMD24` a `CMD28` | `EV35` a `EV45` *(11 eventos)* |
 | **AGG09** | `AgronomicReport` | `Harvest Settlement & Analytics` | `CMD29`, `CMD30` | `EV46`, `EV47`, `EV48` |
-| **AGG10** | `Cooperative` | `Cooperative Operations` | `CMD11`, `CMD31`, `CMD32` | `EV14`, `EV49`, `EV50`, `EV51` |
+| **AGG10** | `Cooperative` | `Cooperative Operations` | `CMD31`, `CMD32` | `EV49`, `EV50`, `EV51` |
+| **AGG11** | `CooperativeLicense` | `Subscription & Cooperative` | — *(custodia de cupo y área)* | — |
+| **AGG12** | `InvitationCodeBatch` | `Subscription & Cooperative` | `CMD11`, `CMD33` | `EV14`, `EV52` |
 
 ---
 
 ## 5. Consideraciones de Cierre
 
-La consolidación de los 10 agregados de dominio delimita con precisión las fronteras de consistencia transaccional del sistema Viora. Al encapsular las invariantes biológicas y de negocio dentro de cada raíz de agregado, y establecer relaciones exclusivas por identidad (IDs), se provee una base robusta para la transición hacia la arquitectura de contextos delimitados y el diseño táctico en capas.
+La consolidación de los 12 agregados de dominio delimita con precisión las fronteras de consistencia transaccional del sistema Viora. Al encapsular las invariantes biológicas y de negocio dentro de cada raíz de agregado, y establecer relaciones exclusivas por identidad (IDs), se provee una base robusta para la transición hacia la arquitectura de contextos delimitados y el diseño táctico en capas.
