@@ -2640,7 +2640,7 @@ En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual art
 
 ### Product Backlog
 
-El Product Backlog de Viora consolida y prioriza los 81 ítems de trabajo del sistema (43 Historias de Usuario, 35 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica, la resolución de spikes críticos (modelo dinámico de Erez, persistencia local offline y pasarela de cobro), la entrega de las pantallas centrales del productor olivarero (delimitación parcelaria, monitoreo de frío, cálculo del índice BBI y muestreo sin conectividad) y el 70% del backend fundacional. Siguiendo las buenas prácticas ágiles, todas las historias de usuario y técnicas de gestión de identidad y accesos (IAM) se posponen al Sprint 3, dado que no aportan valor agronómico directo al usuario final; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, pasarela de pagos y herramientas territoriales de la cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, el cierre productivo de campaña, la proyección logística de acopio diferenciado entre aceituna verde y negra, y la exportación de reportes técnicos auditables en formato PDF.
+El Product Backlog de Viora consolida y prioriza los 89 ítems de trabajo del sistema (43 Historias de Usuario, 43 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica, la resolución de spikes críticos (modelo dinámico de Erez, persistencia local offline y pasarela de cobro), la entrega de las pantallas centrales del productor olivarero (delimitación parcelaria, monitoreo de frío, cálculo del índice BBI y muestreo sin conectividad) y el 70% del backend fundacional. Siguiendo las buenas prácticas ágiles, todas las historias de usuario y técnicas de gestión de identidad y accesos (IAM) se posponen al Sprint 3, dado que no aportan valor agronómico directo al usuario final; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, pasarela de pagos y herramientas territoriales de la cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, el cierre productivo de campaña, la proyección logística de acopio diferenciado entre aceituna verde y negra, y la exportación de reportes técnicos auditables en formato PDF.
 
 | # Orden | User Story Id | Título | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |
 | :-----: | :----------: | :------------------------------------------------------ | :-------------: | :---------: |
@@ -2725,6 +2725,14 @@ El Product Backlog de Viora consolida y prioriza los 81 ítems de trabajo del si
 | 79 | TS05 | Actualización parcial de datos de perfil con validación telefónica E.164 | 2 | Sprint 3 |
 | 80 | US43 | Completado de perfil de usuario y contacto validado bajo estándar E.164 | 3 | Sprint 3 |
 | 81 | TS35 | Creación y completado inicial de perfil de usuario con validación telefónica E.164 | 3 | Sprint 3 |
+| 82 | TS36 | Actualización de contraseña para sesión autenticada en IAM | 2 | Sprint 3 |
+| 83 | TS37 | Solicitud de código de restablecimiento de contraseña vía correo | 3 | Sprint 3 |
+| 84 | TS38 | Restablecimiento de contraseña mediante token temporal de un solo uso | 2 | Sprint 3 |
+| 85 | TS39 | Asentamiento formal y balance de liquidación de cosecha de fin de campaña | 3 | Sprint 3 |
+| 86 | TS40 | Certificación criptográfica colegiada del expediente agronómico inmutable | 3 | Sprint 3 |
+| 87 | TS41 | Revocación anticipada de código de activación y restitución de cupo cooperativo | 2 | Sprint 3 |
+| 88 | TS42 | Calibración y ajuste de offset edafoclimático para nodo sensor virtual en parcela | 2 | Sprint 3 |
+| 89 | TS43 | Rectificación de pesaje y baja de registro de cosecha en histórico fenológico | 2 | Sprint 3 |
 
 \vspace{1.5em}
 
