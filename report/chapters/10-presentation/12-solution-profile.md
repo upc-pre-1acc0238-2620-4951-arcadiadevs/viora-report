@@ -22,7 +22,7 @@ Esta distinción es determinante para el diseño de la solución. La variabilida
 
 La investigación aplicada confirma el mecanismo. Un evento ENOS fuerte se asocia a un aumento de temperaturas invernales de aproximadamente +2 °C y a una reducción de la acumulación de frío de entre -15 % y -23 %, con deterioro directo de productividad y agravamiento de la alternancia; en las campañas más adversas se registraron reducciones de rendimiento de aceite superiores al 85 % (Calvo et al., 2024).
 
-**Efecto en cascada sobre la cadena de valor.** La alternancia no se agota en la parcela. Las organizaciones que acopian y transforman la aceituna —cooperativas, asociaciones y agroindustrias— planifican capacidad de fermentación, contratos de compra, calibres, mano de obra estacional y compromisos de exportación sobre volúmenes que oscilan de forma impredecible entre campañas. Un ejemplo del orden de magnitud de esta planificación se observa en la Cooperativa Yalpa, que proyectó acopiar 130 000 kilos de aceituna para obtener 23 000 litros de aceite extra virgen (AgroPerú, 2025); un año OFF no anticipado inutiliza esa capacidad instalada y rompe los compromisos comerciales asumidos.
+**Efecto en cascada sobre la cadena de valor.** La alternancia no se agota en la parcela. Las organizaciones que acopian y transforman la aceituna (cooperativas, asociaciones y agroindustrias) planifican capacidad de fermentación, contratos de compra, calibres, mano de obra estacional y compromisos de exportación sobre volúmenes que oscilan de forma impredecible entre campañas. Un ejemplo del orden de magnitud de esta planificación se observa en la Cooperativa Yalpa, que proyectó acopiar 130 000 kilos de aceituna para obtener 23 000 litros de aceite extra virgen (AgroPerú, 2025); un año OFF no anticipado inutiliza esa capacidad instalada y rompe los compromisos comerciales asumidos.
 
 **Brecha tecnológica actual.** Las herramientas disponibles no resuelven la vecería porque monitorean variables que resultan ser "ruido" o llegan fuera de la ventana fisiológica útil:
 
@@ -76,7 +76,7 @@ El olivar del sur del Perú opera atrapado en un ciclo de alternancia productiva
 
 \noindent ¿Quiénes son los usuarios?
 
-- **Productores olivareros de la macro-región sur.** Gestores de parcelas —desde agricultura familiar asociada en cooperativas hasta fundos agroindustriales tecnificados— que sufren directamente la oscilación de ingresos. Su dolor es la imposibilidad de predecir y de estabilizar la cosecha: en años OFF pierden hasta el 90 % del volumen (Andina, 2024) y en años ON obtienen fruta pequeña, de menor calibre y menor valor comercial que además condena la campaña siguiente.
+- **Productores olivareros de la macro-región sur.** Gestores de parcelas (desde agricultura familiar asociada en cooperativas hasta fundos agroindustriales tecnificados) que sufren directamente la oscilación de ingresos. Su dolor es la imposibilidad de predecir y de estabilizar la cosecha: en años OFF pierden hasta el 90 % del volumen (Andina, 2024) y en años ON obtienen fruta pequeña, de menor calibre y menor valor comercial que además condena la campaña siguiente.
 - **Gestores técnicos de organizaciones olivareras** (cooperativas, asociaciones de productores y acopiadores/agroindustrias procesadoras). Responsables de planificar acopio, capacidad de proceso, calibres y compromisos comerciales sobre un volumen agregado que hoy no pueden proyectar. Requieren visibilidad anticipada del estado ON/OFF de su cartera de proveedores y capacidad de impulsar un protocolo homogéneo de manejo de carga entre sus socios.
 
 \noindent \textbf{When (Cuándo)}
@@ -93,7 +93,7 @@ El problema se decide en ventanas fenológicas estrechas y se manifiesta un año
 
 \noindent ¿Dónde ocurre?
 
-En la macro-región sur del Perú, con epicentro en Tacna —que concentra cerca del 81 % del área olivarera nacional (Agraria.pe, 2021)— y particularmente en el distrito de La Yarada Los Palos, donde la agricultura se desarrolla en condiciones desérticas costeras bajo riego presurizado y con presión creciente sobre los acuíferos subterráneos (Contraloría, 2023), lo que amplifica el estrés hídrico durante los años de alta carga.
+En la macro-región sur del Perú, con epicentro en Tacna, departamento que concentra cerca del 81 % del área olivarera nacional (Agraria.pe, 2021), y particularmente en el distrito de La Yarada Los Palos, donde la agricultura se desarrolla en condiciones desérticas costeras bajo riego presurizado y con presión creciente sobre los acuíferos subterráneos (Contraloría, 2023), lo que amplifica el estrés hídrico durante los años de alta carga.
 
 \noindent \textbf{Why (Por qué)}
 
@@ -101,7 +101,7 @@ En la macro-región sur del Perú, con epicentro en Tacna —que concentra cerca
 
 \noindent ¿Por qué ocurre?
 
-Porque la decisión más determinante del ciclo —cuánta fruta dejar en el árbol— se toma sin medición y sin referencia. No existe un registro sistemático del rendimiento histórico por parcela que permita cuantificar la severidad de la alternancia, ni un protocolo de muestreo que estime la carga frutal real, ni umbrales de riego y nutrición vinculados al estado fisiológico de la planta. En ausencia de estos elementos, el productor aplica calendarios fijos heredados y reacciona al daño visible, mientras que la organización acopiadora descubre el año OFF cuando la fruta no llega a planta.
+Porque la decisión más determinante del ciclo, consistente en regular cuánta fruta dejar en el árbol, se toma sin medición y sin referencia. No existe un registro sistemático del rendimiento histórico por parcela que permita cuantificar la severidad de la alternancia, ni un protocolo de muestreo que estime la carga frutal real, ni umbrales de riego y nutrición vinculados al estado fisiológico de la planta. En ausencia de estos elementos, el productor aplica calendarios fijos heredados y reacciona al daño visible, mientras que la organización acopiadora descubre el año OFF cuando la fruta no llega a planta.
 
 \noindent \textbf{How (Cómo)}
 
@@ -127,7 +127,7 @@ La oscilación documentada en Tacna es de una magnitud difícil de sostener fina
 
 \vspace{0.15cm}
 
-Los productores olivareros de la macro-región sur y las organizaciones que acopian y transforman su producción enfrentan un problema de negocio: la cosecha alterna entre años de sobreproducción de baja calidad y años de cosecha marginal, y ni el productor ni la organización disponen de un criterio cuantitativo para gestionar la carga frutal ni de una señal oportuna dentro de las ventanas fenológicas donde la intervención todavía es posible. Aunque existe evidencia agronómica consolidada sobre cómo mitigar la alternancia —regulación de carga, poda de renovación, cosecha temprana, riego por potencial hídrico y nutrición por análisis foliar—, esa evidencia no llega traducida en decisiones fechadas y dimensionadas para una parcela concreta. Como consecuencia, los ingresos del productor oscilan de forma insostenible y la organización no puede planificar capacidad ni comprometer volúmenes de venta.
+Los productores olivareros de la macro-región sur y las organizaciones que acopian y transforman su producción enfrentan un problema de negocio: la cosecha alterna entre años de sobreproducción de baja calidad y años de cosecha marginal, y ni el productor ni la organización disponen de un criterio cuantitativo para gestionar la carga frutal ni de una señal oportuna dentro de las ventanas fenológicas donde la intervención todavía es posible. Aunque existe evidencia agronómica consolidada sobre cómo mitigar la alternancia (regulación de carga, poda de renovación, cosecha temprana, riego por potencial hídrico y nutrición por análisis foliar), esa evidencia no llega traducida en decisiones fechadas y dimensionadas para una parcela concreta. Como consecuencia, los ingresos del productor oscilan de forma insostenible y la organización no puede planificar capacidad ni comprometer volúmenes de venta.
 
 \noindent \textbf{Objetivos del proyecto}
 
