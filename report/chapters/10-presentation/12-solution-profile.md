@@ -4,83 +4,58 @@
 
 **Antecedentes productivos y relevancia.** El olivo es un cultivo estratégico para el sur del Perú por su altísima concentración territorial y su peso en las cadenas de valor de aceituna de mesa y aceite de oliva. Tacna concentra alrededor del 81 % de la superficie olivarera nacional, con cerca de 35 000 hectáreas registradas (Agraria.pe, 2021), y ha reportado volúmenes de 52 000 toneladas en campañas regulares, con una distribución aproximada de 60 % hacia aceituna de mesa y el resto hacia aceite (Andina, 2024); en un año de alta carga esa misma región llegó a cosechar 122 731 toneladas (Agraria.pe, 2021), lo que anticipa la magnitud de la oscilación que se analiza más adelante. Esta concentración implica que cualquier desequilibrio productivo local se traduce de inmediato en un déficit de oferta a escala nacional.
 
-\begin{table}[H]
-\caption{Variación del Valor de la Producción Agropecuaria según subsectores mes de septiembre 2019 - 2025 (\%)}
-\centering
-\includegraphics[width=0.8\textwidth]{report/assets/graphics/valor_produccion_midagri.png}
-\caption*{\textit{Nota.} En el mes de septiembre el sector agropecuario registró un crecimiento de 12,1 \% comparado con similar mes del 2024. Tomado de MIDAGRI, 2025.}
-\end{table}
-
-
 **La vecería como problema central, no como síntoma.** La vecería o alternancia productiva es un fenómeno fisiológico por el cual el olivo alterna entre años de alta producción ("años ON") y años de baja o nula cosecha ("años OFF"). La causa raíz no es climática sino de balance de carga: la carga frutal excesiva de un año ON agota las reservas de carbohidratos no estructurales (almidón y azúcares en hojas y madera), drena masivamente nitrógeno y potasio foliar hacia el fruto, e induce un bloqueo hormonal (auxinas y giberelinas emitidas desde la semilla) sobre las yemas que debían diferenciarse en flor para la campaña siguiente (Lavee, 2007; Paoletti et al., 2021). El clima actúa como disparador y amplificador: un evento de floración o cuaja adverso genera un año OFF, cuyas reservas acumuladas producen un año ON desmedido, y el ciclo se autosostiene indefinidamente si nadie interviene sobre la carga.
 
 Esta distinción es determinante para el diseño de la solución. La variabilidad climática puede monitorearse pero no controlarse; la carga frutal, en cambio, sí constituye una variable de decisión directa del productor. Si bien la vecería es un fenómeno fisiológico intrínseco del olivo que no puede suprimirse de forma absoluta, existe sólida evidencia agronómica de que la regulación deliberada de la carga permite amortiguar la amplitud de las oscilaciones productivas, mitigar las pérdidas del año OFF y evitar que este se prolongue de manera estructural en campañas consecutivas.
 
-**Evidencia local de la magnitud de la alternancia.** La volatilidad interanual del olivar tacneño es extrema y está documentada. En campañas adversas se reportaron mermas de hasta 90 % en La Yarada Los Palos, con proyecciones de cosecha equivalentes a apenas 10 % a 20 % del año previo, vinculadas a la ausencia del "golpe de frío" nocturno necesario para el cuajado (Andina, 2024). En sentido inverso, en septiembre de 2025 se reportó un incremento de 18 615 % en la producción de aceituna de Tacna respecto al mismo mes de 2024 (MIDAGRI, 2025). Ambas cifras no son dos noticias independientes: son las dos caras del mismo ciclo ON/OFF, y constituyen la evidencia más contundente de que el problema no se ha gestionado.
+**Evidencia local de la magnitud de la alternancia.** La volatilidad interanual del olivar tacneño es extrema y está documentada. En campañas adversas se reportaron mermas de hasta 90 % en La Yarada Los Palos, con proyecciones de cosecha equivalentes a apenas 10 % a 20 % del año previo, vinculadas a la ausencia del "golpe de frío" nocturno necesario para el cuajado (Andina, 2024). En sentido inverso, en septiembre de 2025 se reportó un incremento de 18 615 % en la producción de aceituna de Tacna respecto al mismo mes de 2024 (MIDAGRI, 2025). Ambas cifras no son dos noticias independientes: son las dos caras del mismo ciclo ON/OFF, y constituyen la evidencia más contundente de que el problema no se ha gestionado. Como se observa en la \autoref{fig:calidad-aceite}, el contraste en el rendimiento de aceite entre tratamientos confirma que el manejo deliberado de la poda y la carga frutal reduce de forma sustancial la brecha productiva entre campañas consecutivas.
 
 \begin{figure}[H]
 \caption{Rendimiento de aceite según tipo de poda y estado de carga, y reducción del rendimiento en períodos bianuales 2020-2022 y 2022-2024 (\%)}
+\label{fig:calidad-aceite}
 \centering
-\includegraphics[width=0.8\textwidth]{report/assets/graphics/calidad_aceite.png}
+\includegraphics[width=0.55\textwidth]{report/assets/graphics/calidad_aceite.png}
 \caption*{\textit{Nota.} El contraste entre los tratamientos Bilateral ON y Bilateral OFF evidencia la magnitud de la alternancia productiva y el efecto de la intervención sobre la carga en el rendimiento de la campaña siguiente. Recuperado de Calvo et al., 2024.}
 \end{figure}
 
 La investigación aplicada confirma el mecanismo. Un evento ENOS fuerte se asocia a un aumento de temperaturas invernales de aproximadamente +2 °C y a una reducción de la acumulación de frío de entre -15 % y -23 %, con deterioro directo de productividad y agravamiento de la alternancia; en las campañas más adversas se registraron reducciones de rendimiento de aceite superiores al 85 % (Calvo et al., 2024).
-
-\begin{figure}[H]
-\caption{Porciones acumuladas de frío, estimadas según el modelo dinámico entre el 1 de mayo y el 1 de septiembre para el período 2013-2023. Las porciones acumuladas de frío anuales promedio suavizadas desde 2013 hasta 2023 se destacan con una línea negra continua. (\%)}
-\centering
-\includegraphics[width=0.8\textwidth]{report/assets/graphics/porciones_acumuladas_frio.png}
-\caption*{\textit{Nota.} ENOS, acumulación de frío y alternancia productiva — Calvo et al., 2024}
-\end{figure}
-
-\begin{table}[H]
-\caption{Reducción de la acumulación de frío estacional según la intensidad del evento ENOS}
-\centering
-\includegraphics[width=0.8\textwidth]{report/assets/graphics/intensidades_enso.png}
-\caption*{\textit{Nota.} Los eventos ENOS registran reducciones del frío estacional de entre 15 \% y 23 \%, amplificando la amplitud del ciclo ON/OFF. Recuperado de Calvo et al., 2024.}
-\end{table}
 
 **Efecto en cascada sobre la cadena de valor.** La alternancia no se agota en la parcela. Las organizaciones que acopian y transforman la aceituna —cooperativas, asociaciones y agroindustrias— planifican capacidad de fermentación, contratos de compra, calibres, mano de obra estacional y compromisos de exportación sobre volúmenes que oscilan de forma impredecible entre campañas. Un ejemplo del orden de magnitud de esta planificación se observa en la Cooperativa Yalpa, que proyectó acopiar 130 000 kilos de aceituna para obtener 23 000 litros de aceite extra virgen (AgroPerú, 2025); un año OFF no anticipado inutiliza esa capacidad instalada y rompe los compromisos comerciales asumidos.
 
 **Brecha tecnológica actual.** Las herramientas disponibles no resuelven la vecería porque monitorean variables que resultan ser "ruido" o llegan fuera de la ventana fisiológica útil:
 
 1. **Métricas satelitales de alta frecuencia.** El monitoreo continuo del Índice de Área Foliar (LAI) no aporta valor predictivo, ya que la canopia del olivo es perenne y no varía drásticamente entre años salvo por poda, y la vegetación entre hileras distorsiona la señal. Lo que sí aporta es el seguimiento espectral focalizado en fases críticas (NDRE/NDVI) para detectar caída prematura de masa foliar bajo alta carga frutal.
-2. **Humedad de suelo sin calibración con la planta.** Las sondas tradicionales no reflejan el estrés real del árbol: en años ON la demanda del fruto es tan alta que el olivo sufre estrés severo aunque el suelo conserve agua disponible. La variable pertinente es el potencial hídrico del tallo al mediodía, con umbrales por fase fenológica (Moriana et al., 2012).
+2. **Humedad de suelo sin calibración con la planta.** Las sondas tradicionales no reflejan el estrés real del árbol: en años ON la demanda del fruto es tan alta que el olivo sufre estrés severo aunque el suelo conserve agua disponible. Como se observa en la \autoref{fig:umbrales-swp}, el potencial hídrico del tallo al mediodía permite diagnosticar el estrés hídrico real del cultivo con independencia de la demanda atmosférica, superando las deficiencias del monitoreo de humedad de suelo durante años de alta carga frutal.
 
 \begin{figure}[H]
 \caption{Relación entre el potencial hídrico del tallo al mediodía y el déficit de presión de vapor en olivo}
+\label{fig:umbrales-swp}
 \centering
-\includegraphics[width=0.8\textwidth]{report/assets/graphics/umbrales_swp.png}
+\includegraphics[width=0.55\textwidth]{report/assets/graphics/umbrales_swp.png}
 \caption*{\textit{Nota.} La línea base permite interpretar el estrés hídrico real de la planta descontando el efecto de la demanda atmosférica, criterio que sustituye al monitoreo de humedad de suelo, insuficiente en años de alta carga frutal. Recuperado de Shackel et al., 2021.}
 \end{figure}
 
-3. **Fertilización nitrogenada por calendario.** Aplicar nitrógeno en fechas fijas no frena la vecería, puede deteriorar la calidad del aceite y enmascara la deficiencia real de potasio, que es el nutriente drenado críticamente por la carga frutal. La decisión debe basarse en análisis foliar de julio contrastado con niveles de suficiencia (University of California Agriculture and Natural Resources [UC ANR], 2010).
+3. **Fertilización nitrogenada por calendario.** Aplicar nitrógeno en fechas fijas no frena la vecería, puede deteriorar la calidad del aceite y enmascara la deficiencia real de potasio, que es el nutriente drenado críticamente por la carga frutal. Como se observa en la \autoref{tab:umbrales-foliares}, el diagnóstico nutricional debe basarse en umbrales analíticos específicos de nitrógeno y potasio tomados en julio para evitar excesos vegetativos y asegurar reservas para la floración.
+
+\setcounter{table}{0}
 
 \begin{table}[H]
 \caption{Niveles críticos de nutrientes en hoja de olivo según análisis foliar de muestras tomadas en julio}
+\label{tab:umbrales-foliares}
 \centering
-\includegraphics[width=0.8\textwidth]{report/assets/graphics/umbrales_foliares.png}
+\includegraphics[width=0.55\textwidth]{report/assets/graphics/umbrales_foliares.png}
 \caption*{\textit{Nota.} El nitrógeno es deficiente por debajo de 1,40 \% y suficiente entre 1,50 \% y 2,00 \%; el potasio es deficiente por debajo de 0,40 \% y suficiente por encima de 0,80 \%. Estos umbrales reemplazan la fertilización por calendario como criterio de decisión. Recuperado de University of California Agriculture and Natural Resources, 2010.}
 \end{table}
 
-4. **Ausencia de gestión integrada de la decisión de carga.** El aclareo de frutos, la poda de despunte inmediatamente posterior a la cosecha y la cosecha temprana rara vez se notifican dentro de su ventana útil. Sin un seguimiento que cruce la relación fuente-sumidero con datos climáticos y nutricionales, el productor actúa cuando el bloqueo hormonal sobre las yemas ya se ejecutó y la campaña siguiente ya está perdida.
-
-\begin{table}[H]
-\caption{Fechas de poda de invierno, poda de primavera y cosecha por estación 2020-2024}
-\centering
-\includegraphics[width=0.8\textwidth]{report/assets/graphics/fecha_poda_cosecha.png}
-\caption*{\textit{Nota.} Las intervenciones de manejo de carga operan en ventanas fenológicas estrechas; una ejecución fuera de ventana no modifica el resultado de la campaña siguiente. Recuperado de Calvo et al., 2024.}
-\end{table}
+4. **Ausencia de gestión integrada de la decisión de carga.** El aclareo de frutos, la poda de despunte inmediatamente posterior a la cosecha y la cosecha temprana rara vez se notifican dentro de su ventana útil. Sin un seguimiento que cruce la relación fuente-sumidero con datos climáticos y nutricionales, el productor actúa cuando el bloqueo hormonal sobre las yemas ya se ejecutó y la campaña siguiente ya está perdida. Como se observa en la \autoref{fig:deteccion-frutos}, la visión computacional aplicada al conteo automatizado de frutos permite cuantificar de manera temprana la densidad de carga frutal en campo para gatillar oportunamente las intervenciones de regulación.
 
 \begin{figure}[H]
 \caption{Inferencia del modelo YOLOv8m para la detección y conteo de frutos en olivo}
+\label{fig:deteccion-frutos}
 \centering
-\includegraphics[width=0.8\textwidth]{report/assets/graphics/uso_deep_learning.png}
+\includegraphics[width=0.55\textwidth]{report/assets/graphics/uso_deep_learning.png}
 \caption*{\textit{Nota.} La detección automatizada de frutos evidencia el potencial de escalar el muestreo de carga frutal, variable de decisión central en la gestión de la alternancia productiva. Recuperado de Osco-Mamani et al., 2025.}
 \end{figure}
-
----
 
 \noindent \textbf{Problemática (5W + 2H)}
 
@@ -145,16 +120,12 @@ Bajo eventos ENOS o El Niño costero, cuando el aumento de temperaturas invernal
 \noindent ¿Cuál es la magnitud del problema?
 
 La oscilación documentada en Tacna es de una magnitud difícil de sostener financieramente: mermas de hasta 90 % con proyecciones de cosecha de apenas 10 % a 20 % del año previo en campañas adversas (Andina, 2024), frente a un incremento reportado de 18 615 % en septiembre de 2025 respecto al mismo mes del año anterior (MIDAGRI, 2025). Bajo escenarios ENOS fuertes se advierten reducciones de rendimiento de aceite superiores al 85 % (Calvo et al., 2024). A esto se suma la pérdida de valor comercial dentro del propio año ON, donde el exceso de carga produce fruta de menor calibre, maduración más tardía y menor precio por kilo.
- 
----
 
 \noindent \textbf{Enunciado del problema (Problem Statement)}
 
 \vspace{0.15cm}
 
 Los productores olivareros de la macro-región sur y las organizaciones que acopian y transforman su producción enfrentan un problema de negocio: la cosecha alterna entre años de sobreproducción de baja calidad y años de cosecha marginal, y ni el productor ni la organización disponen de un criterio cuantitativo para gestionar la carga frutal ni de una señal oportuna dentro de las ventanas fenológicas donde la intervención todavía es posible. Aunque existe evidencia agronómica consolidada sobre cómo mitigar la alternancia —regulación de carga, poda de renovación, cosecha temprana, riego por potencial hídrico y nutrición por análisis foliar—, esa evidencia no llega traducida en decisiones fechadas y dimensionadas para una parcela concreta. Como consecuencia, los ingresos del productor oscilan de forma insostenible y la organización no puede planificar capacidad ni comprometer volúmenes de venta.
- 
----
 
 \noindent \textbf{Objetivos del proyecto}
 
@@ -179,13 +150,11 @@ Los productores olivareros de la macro-región sur y las organizaciones que acop
 - Lograr que al menos el 40 % de las decisiones de riego y fertilización registradas se sustenten en una medición (potencial hídrico o análisis foliar) y no en calendario.
 - Firmar al menos 2 convenios con cooperativas, asociaciones o agroindustrias de la macro-región sur en un plazo de 6 meses tras el lanzamiento.
 
----
-
 \noindent \textbf{Restricciones}
 
 \vspace{0.15cm}
 
-- **Alcance tecnológico.** La solución se compone de una aplicación móvil nativa, una aplicación móvil multiplataforma, un servicio web RESTful de desarrollo interno y un sitio web estático para el Landing Page. La aplicación nativa se desarrolla en Kotlin sobre Android; la estrategia cross-platform se implementa con Flutter y Dart o, alternativamente, con Kotlin Multiplatform (KMP). El servicio web se construye bajo estilo arquitectónico RESTful con Spring Boot y Java, documentado mediante OpenAPI Specification vía Swagger. El Landing Page se desarrolla en HTML5, CSS3 y JavaScript.
+- **Alcance tecnológico.** La solución se compone de una aplicación móvil nativa, una aplicación móvil multiplataforma, un servicio web RESTful de desarrollo interno y un sitio web estático para el Landing Page. La aplicación nativa se desarrolla en Kotlin sobre Android; la estrategia cross-platform se implementa con Flutter y Dart. El servicio web se construye bajo estilo arquitectónico RESTful con Spring Boot y Java, documentado mediante OpenAPI Specification vía Swagger. El Landing Page se desarrolla en HTML5, CSS3 y JavaScript.
 - **Capacidades obligatorias de la aplicación móvil.** La solución debe incorporar almacenamiento local de información en el dispositivo, acceso a al menos un recurso interno del dispositivo, integración con el servicio RESTful de desarrollo interno y consumo de al menos un servicio externo de terceros. **Aplicación al dominio:** el almacenamiento local sostiene el trabajo sin conectividad durante el muestreo de carga frutal en parcela; el recurso interno del dispositivo se emplea en la georreferenciación de la parcela; el servicio externo de terceros provee los datos meteorológicos horarios requeridos para el cálculo de acumulación de frío.
 - **Telemetría IoT con datos simulados.** El proyecto no contempla la implementación de hardware ni de sensores físicos de campo. La capa de telemetría se resuelve mediante un simulador de datos de estación agrometeorológica y de sensores de parcela, que alimenta al servicio RESTful con lecturas sintéticas coherentes con los rangos documentados para la zona de estudio. Esta decisión no compromete el núcleo funcional: las variables fisiológicas determinantes de la vecería —potencial hídrico del tallo, concentración foliar de nitrógeno y potasio, y conteo de frutos— se incorporan mediante registro manual guiado de mediciones que el productor o su técnico ya realizan con instrumental convencional (cámara de presión, análisis de laboratorio, muestreo de ramas marcadas).
 - **Feature de aprendizaje autónomo.** El alcance incluye la investigación, evaluación e integración de una tecnología, biblioteca o servicio no abordado en clase, con justificación de su selección y documentación del proceso de aprendizaje y aplicación.
