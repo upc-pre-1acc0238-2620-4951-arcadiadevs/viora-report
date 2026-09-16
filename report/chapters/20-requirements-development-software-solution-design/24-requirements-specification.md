@@ -2296,6 +2296,226 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS36} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización de contraseña para sesión de usuario autenticado} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la contraseña actual y la nueva contraseña confirmada a la API de autenticación, \textbf{para} que el usuario con sesión activa modifique sus credenciales de acceso de forma segura.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Actualización exitosa de contraseña}\newline
+\textbf{Given} una solicitud PATCH a \url{/api/v1/auth/passwords} con cabecera \texttt{Authorization: Bearer <JWT>} y cuerpo JSON con \texttt{currentPassword}, \texttt{newPassword} y \texttt{confirmPassword}.\newline
+\textbf{When} la API valida la identidad del token, verifica que el hash de \texttt{currentPassword} coincida con el almacenado y que \texttt{newPassword} cumpla las políticas de complejidad.\newline
+\textbf{Then} la API responde \texttt{204 No Content} y persiste el nuevo hash criptográfico BCrypt.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Contraseña actual incorrecta}\newline
+\textbf{Given} una solicitud PATCH a \url{/api/v1/auth/passwords} con una contraseña actual errónea.\newline
+\textbf{When} el servicio de autenticación compara los hashes criptográficos.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando credencial previa no coincidente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Nueva contraseña no cumple políticas de complejidad}\newline
+\textbf{Given} una solicitud PATCH a \url{/api/v1/auth/passwords} con una nueva clave que no satisface longitud mínima o variedad de caracteres.\newline
+\textbf{When} el validador de seguridad procesa la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} detallando la regla de complejidad incumplida.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS37} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Solicitud de código de restablecimiento de contraseña olvidada vía correo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la dirección de correo del usuario al servicio de recuperación de contraseñas, \textbf{para} que el sistema despache de manera asíncrona un token temporal seguro sin revelar la existencia previa del correo en la base de datos.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Solicitud exitosa de restablecimiento}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/password-reset-tokens} con cuerpo JSON conteniendo: \texttt{email}.\newline
+\textbf{When} la API valida la sintaxis del correo, genera un token criptográfico unívoco de 6 dígitos con expiración a 15 minutos y encola el evento para despacho seguro de correo.\newline
+\textbf{Then} la API responde \texttt{202 Accepted} bajo el patrón de procesamiento asíncrono.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Dirección de correo con formato inválido}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/password-reset-tokens} con una cadena que no conforma un correo electrónico válido.\newline
+\textbf{When} el validador sintáctico analiza el cuerpo de la petición.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS38} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Restablecimiento de contraseña mediante token temporal de un solo uso} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar el token temporal recibido por correo y la nueva contraseña a la API, \textbf{para} restablecer el acceso a la cuenta del usuario y revocar el token consumido.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Restablecimiento exitoso de contraseña}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/auth/password-reset-tokens/{token}} con cuerpo JSON conteniendo \texttt{newPassword} y \texttt{confirmPassword}.\newline
+\textbf{When} la API valida que el token exista, no haya expirado, no haya sido consumido previamente y aplica el nuevo hash criptográfico BCrypt.\newline
+\textbf{Then} la API responde \texttt{204 No Content}, marca el token como CONSUMED y revoca todas las sesiones activas previas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Token expirado, inexistente o consumido previamente}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/auth/password-reset-tokens/{token}} con un token inválido o vencido.\newline
+\textbf{When} la API consulta el almacén de tokens temporales.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807 exigiendo reiniciar el flujo de recuperación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Nueva contraseña idéntica a la anterior o sin complejidad}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/auth/password-reset-tokens/{token}} con una clave que coincide con el hash previo o incumple las reglas de seguridad.\newline
+\textbf{When} la API valida la política de credenciales.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS39} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Asentamiento formal y balance de liquidación de cosecha de fin de campaña} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar el pesaje formal definitivo de cosecha (aceituna verde y negra) al cierre de campaña a la API, \textbf{para} asentar la liquidación oficial de la parcela, computar el balance contra la prescripción y congelar el expediente de campaña.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Asentamiento exitoso de liquidación de cosecha}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/harvest-settlements} con cuerpo JSON: \texttt{campaignYear}, \texttt{greenYieldKg}, \texttt{blackYieldKg} y \texttt{settlementNotes}.\newline
+\textbf{When} la API valida la titularidad del predio, comprueba que el año no haya sido liquidado previamente, computa el tonelaje total y registra la liquidación oficial.\newline
+\textbf{Then} la API responde \texttt{201 Created}, retorna \texttt{HarvestSettlementResource} con el balance de campaña y emite \texttt{CampaignHarvestSettledEvent}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Campaña ya liquidada previamente para la parcela}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/harvest-settlements} para un año agrícola que ya cuenta con liquidación formal asentada.\newline
+\textbf{When} el servicio de aplicación detecta conflicto de duplicidad de cierre.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} impidiendo la sobreescritura del balance definitivo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Pesajes inconsistentes o valores negativos}\newline
+\textbf{Given} una solicitud POST con cifras de kilogramos negativas o incongruentes.\newline
+\textbf{When} la API valida las restricciones de dominio agronómico.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS40} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Certificación criptográfica colegiada del expediente agronómico inmutable} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la rúbrica y número de colegiatura del profesional agronómico a la API, \textbf{para} certificar oficialmente el expediente de la parcela y generar el hash criptográfico SHA-256 inmutable de auditoría.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Certificación exitosa y generación de hash criptográfico}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/agronomic-reports/certifications} con cuerpo JSON: \texttt{campaignYear}, \texttt{certifiedBy}, \texttt{cipNumber} y \texttt{certificationNotes}.\newline
+\textbf{When} la API valida la existencia de la liquidación de cosecha, compila el estado integral del expediente y computa la huella digital criptográfica SHA-256.\newline
+\textbf{Then} la API responde \texttt{201 Created}, retorna \texttt{DossierCertificationResource} con el hash de verificación y emite \texttt{AgronomicDossierGeneratedEvent}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Intento de doble certificación sobre expediente auditado}\newline
+\textbf{Given} una solicitud POST sobre una campaña que ya cuenta con certificación colegiada emitida.\newline
+\textbf{When} la API evalúa la inmutabilidad del expediente.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} garantizando la no repudiación del documento.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela sin liquidación de campaña previa}\newline
+\textbf{Given} una solicitud POST sobre una parcela cuya campaña aún no ha sido liquidada formalmente.\newline
+\textbf{When} el servicio de dominio verifica las precondiciones de auditoría.\newline
+\textbf{Then} la API responde \texttt{422 Unprocessable Entity}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS41} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Revocación anticipada y ajuste de vigencia de código de activación cooperativo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la solicitud de expiración inmediata de un código no canjeado a la API, \textbf{para} revocar la invitación emitida por la cooperativa y restituir el cupo disponible a la licencia colectiva.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Expiración anticipada y restitución de cupo}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} emitida por un gestor técnico institucional.\newline
+\textbf{When} la API valida que el código se encuentre en estado AVAILABLE, adelanta su fecha de expiración a la fecha actual y transiciona su estado a EXPIRED.\newline
+\textbf{Then} la API responde \texttt{200 OK}, retorna \texttt{InvitationCodeResource} actualizado, emite \texttt{InvitationCodeExpiredEvent} y restituye automáticamente el cupo en la licencia cooperativa.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código ya canjeado o inactivo}\newline
+\textbf{Given} una solicitud POST sobre un código que ya se encuentra en estado REDEEMED o EXPIRED.\newline
+\textbf{When} la API evalúa el ciclo de vida del código.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} impidiendo la alteración de códigos consumidos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado para no gestores}\newline
+\textbf{Given} una solicitud POST emitida por un usuario sin rol GESTOR en la cooperativa.\newline
+\textbf{When} la API valida los permisos institucionales.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS42} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP15} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los factores de calibración y offset ambiental al nodo sensor registrado en la API, \textbf{para} ajustar las lecturas telemétricas según las condiciones de suelo y microclima del lote.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Calibración exitosa de nodo sensor virtual}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}/iot-devices/{deviceId}} con cuerpo JSON conteniendo \texttt{temperatureOffset}, \texttt{humidityOffset}, \texttt{soilCorrectionFactor} y \texttt{calibrationNotes}.\newline
+\textbf{When} la API valida la titularidad del lote, comprueba el estado activo de la sonda y aplica los factores de corrección edafoclimática.\newline
+\textbf{Then} la API responde \texttt{200 OK}, retorna \texttt{DeviceResource} actualizado y persiste los coeficientes de calibración.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Dispositivo inexistente o desvinculado de la parcela}\newline
+\textbf{Given} una solicitud PUT hacia un identificador de sonda no vinculado a la parcela especificada.\newline
+\textbf{When} la API consulta el inventario telemétrico.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parámetros de calibración fuera del rango físico admisible}\newline
+\textbf{Given} una solicitud PUT con valores de offset que exceden los límites físicos tolerados.\newline
+\textbf{When} el validador de dominio procesa los atributos.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS43} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Rectificación de pesaje y baja de registro erróneo de cosecha en histórico fenológico} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar solicitudes de rectificación o eliminación de pesajes de cosecha pasados a la API, \textbf{para} subsanar errores de digitación en campañas históricas y recomputar el Índice de Vecería (BBI) del olivar.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Rectificación exitosa de pesaje histórico de campaña}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con cuerpo JSON: \texttt{rectifiedYieldKg} y \texttt{rectificationReason}.\newline
+\textbf{When} la API valida la titularidad, verifica que el valor sea positivo, actualiza el pesaje en la serie histórica y dispara el recálculo reactivo del BBI.\newline
+\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{HarvestRecordResource} actualizado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Baja física de registro erróneo de cosecha}\newline
+\textbf{Given} una solicitud DELETE a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} emitida por el titular de la parcela.\newline
+\textbf{When} la API valida la propiedad y elimina el registro erróneo del histórico productivo.\newline
+\textbf{Then} la API responde \texttt{204 No Content} y actualiza el balance plurianual.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Registro de cosecha inexistente}\newline
+\textbf{Given} una solicitud PUT o DELETE sobre un \texttt{recordId} no registrado.\newline
+\textbf{When} la API consulta la persistencia.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{SPK01} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Equipo de Desarrollo de Backend} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP14} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Investigación y modelado dinámico de Erez para cálculo de frío en backend} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
