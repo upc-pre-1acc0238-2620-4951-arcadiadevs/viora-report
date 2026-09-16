@@ -1,12 +1,20 @@
 # Capítulo II: Requirements Development and Software Solution Design
 
+En este capítulo se desarrolla el proceso integral de ingeniería de requisitos y diseño arquitectónico de la solución Viora. A partir de una evaluación exhaustiva del mercado de tecnologías agrícolas y de las soluciones existentes, se identifican las brechas competitivas que fundamentan nuestra propuesta de valor. Posteriormente, mediante técnicas de investigación cualitativa centradas en el usuario (Needfinding), se levantan y analizan las necesidades reales de productores y gestores técnicos de organizaciones olivareras en el sur del Perú. Dicho entendimiento se formaliza en artefactos de modelado ágil y especificación de requisitos, para luego estructurar la arquitectura de software bajo los enfoques estratégico y táctico de Domain-Driven Design (DDD), garantizando una solución modular, escalable y estrictamente alineada con la lógica del dominio agronómico.
+
 ## Competidores
 
+En esta sección se identifican y analizan las principales soluciones tecnológicas existentes en el mercado agrícola internacional y regional vinculadas a la gestión de cultivos, la analítica predictiva de cosechas y el monitoreo agronómico. El propósito es examinar las capacidades operativas y modelos de negocio de herramientas representativas del sector para identificar brechas funcionales no resueltas frente a la problemática de la alternancia productiva del olivo, delimitando el espacio de oportunidad para una propuesta especializada de nicho.
+
 ### Análisis competitivo
+
+Con el objetivo de profundizar en el conocimiento de las alternativas existentes y contrastar sus capacidades frente a las necesidades de la macro-región sur, se desarrolla una evaluación multidimensional. Como se observa en la \autoref{tab:competitive-landscape}, el Competitive Analysis Landscape examina el perfil corporativo, propuesta de valor, mercado objetivo, estrategias comerciales, cartera de productos, modelos de precios, canales de distribución y análisis FODA de cada solución frente a Viora.
+
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{0.8cm}|p{2.4cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}|}
+\caption{Competitive analysis landscape de la solución Viora frente a competidores del sector} \label{tab:competitive-landscape} \\
 \hline
 \multicolumn{6}{|c|}{\textbf{Competitive analysis landscape}} \\ \hline
 \multicolumn{2}{|p{3.2cm}|}{¿Por qué llevar a cabo este análisis?} & \multicolumn{4}{p{10.8cm}|}{Este análisis permite identificar las brechas funcionales y comerciales de las soluciones agrícolas actuales frente al fenómeno de la vecería (alternancia productiva) del olivo. Al contrastar herramientas generalistas de gestión de costos (Agroptima), sistemas de predicción basados en IA (RawData) y plataformas de soporte a la decisión especializadas (Agrigenio Olivo), se valida la oportunidad de posicionamiento estratégico de Viora: una solución de nicho agro-fisiológica, de diseño offline-first y orientada a la previsión logística de acopio en el sur del Perú.} \\ \hline
@@ -33,14 +41,25 @@
 
 ### Estrategias y tácticas frente a competidores
 
-Para viabilizar el ingreso de Viora al sector olivarero y posicionarnos frente a competidores establecidos, estructuramos una matriz de estrategias cruzadas. Esta matriz define las tácticas iniciales para mitigar la presencia de herramientas como Agrigenio, Agroptima y RawData, aprovechando sus limitaciones en soporte de campo y su enfoque en cultivos masivos para destacar la alta especialización de nuestra plataforma en la alternancia productiva del olivo.
+Para viabilizar el ingreso de Viora al sector olivarero y posicionarnos frente a competidores establecidos, se estructura una matriz de estrategias cruzadas. Como se observa en la \autoref{tab:matriz-foda-cruzada}, esta matriz define las tácticas iniciales para mitigar la presencia de herramientas alternativas, aprovechando sus limitaciones en soporte de campo y su enfoque en cultivos masivos para destacar la especialización de nuestra plataforma en la alternancia productiva del olivo.
 
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{3.0cm}|p{5.5cm}|p{5.5cm}|}
+\caption{Matriz FODA cruzada de estrategias y tácticas frente a competidores} \label{tab:matriz-foda-cruzada} \\
 \hline
 \textbf{Matriz FODA Cruzada} & \textbf{Fortalezas (F)} \par \vspace{0.05cm} - F1: Foco en vecería y algoritmo BBI. \par - F2: Riego y nutrición por $\Psi_{\text{stem}}$ y $N, K$. \par - F3: App offline-first nativa/Flutter. \par - F4: Inteligencia de acopio B2B. & \textbf{Debilidades (D)} \par \vspace{0.05cm} - D1: Dependencia de series históricas. \par - D2: Toma de datos manual en campo. \par - D3: Marca nueva sin tracción. \\ \hline
+\endfirsthead
+\hline
+\caption*{Tabla \ref{tab:matriz-foda-cruzada}. \textit{Matriz FODA cruzada de estrategias y tácticas frente a competidores (Continuación)}} \\
+\hline
+\textbf{Matriz FODA Cruzada} & \textbf{Fortalezas (F)} & \textbf{Debilidades (D)} \\ \hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
 \textbf{Oportunidades (O)} \par \vspace{0.05cm} - O1: Tacna concentra el 81.4\% de olivares (Agraria, 2021). \par - O2: Necesidad de previsión en almazaras (Agraria, 2021). \par - O3: Crecimiento de agroexportaciones (MIDAGRI, 2025). & \textbf{Estrategias FO (Ofensivas)} \par \vspace{0.05cm} - FO1: Capturar el mercado de Tacna ofreciendo el panel de acopio B2B a las almazaras asociadas [F1, F4, O1, O2]. \par \vspace{0.05cm} - FO2: Usar el canal de la app offline-first para captar productores de forma ágil y masiva aprovechando la densidad olivarera de Tacna [F3, O1]. & \textbf{Estrategias DO (Reorientación)} \par \vspace{0.05cm} - DO1: Mitigar la falta de tracción inicial aliándose con almazaras para digitalizar conjuntamente parcelas de proveedores históricos [D3, O2]. \par \vspace{0.05cm} - DO2: Participar en gremios de agroexportadores para realizar demostraciones técnicas y acelerar la penetración de mercado [D3, O3]. \\ \hline
 \textbf{Amenazas (A)} \par \vspace{0.05cm} - A1: Anomalías térmicas invernales por ENOS (Calvo et al., 2024). \par - A2: Volatilidad de fletes y logística naviera (Agraria, 2021). & \textbf{Estrategias FA (Defensivas)} \par \vspace{0.05cm} - FA1: Integrar simulaciones de impacto ENOS en el BBI para estabilizar la nutrición y mitigar mermas [F1, F2, A1]. \par \vspace{0.05cm} - FA2: Apoyar la planificación de acopio ante cuellos de botella logísticos marítimos [F4, A2]. & \textbf{Estrategias DA (Supervivencia)} \par \vspace{0.05cm} - DA1: Diseñar planes de contingencia híbridos (muestreos guiados + calibración) para paliar la falta de historial en temporadas bajo crisis climática ENOS [D1, D2, A1]. \\ \hline
 \end{longtable}
