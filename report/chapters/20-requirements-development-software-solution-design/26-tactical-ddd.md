@@ -89,10 +89,9 @@ En las siguientes secciones se detalla el diseño táctico de los nueve contexto
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
 | `SignUpRequest` | Request DTO | `{ email: String, password: String, role: String }` | Payload para registro con validaciones Bean Validation (`@Email`, `@NotBlank`). |
 | `SignInRequest` | Request DTO | `{ email: String, password: String }` | Credenciales para inicio de sesión seguro. |
-| `UserAccountResource` | Response DTO | `{ id: UUID, email: String, role: String, createdAt: Instant }` | Datos públicos de la cuenta registrada. |
-| `AuthenticatedUserResource` | Response DTO | `{ accessToken: String, refreshToken: String, tokenType: String, expiresIn: Long }` | Paquete de autenticación con Bearer token JWT. |
-| `UserAccountResourceAssembler` | Assembler | `toResource(UserAccount): UserAccountResource` | Convierte la entidad de dominio a su representación de salida. |
-
+| `User` `AccountResource` | Response DTO | `{ id: UUID, email: String, role: String, createdAt: Instant }` | Datos públicos de la cuenta registrada. |
+| `Authenticated` `UserResource` | Response DTO | `{ accessToken: String, refreshToken: String, tokenType: String, expiresIn: Long }` | Paquete de autenticación con Bearer token JWT. |
+| `UserAccount` `ResourceAssembler` | Assembler | `toResource(UserAccount): `UserAccountResource` | Convierte la entidad de dominio a su representación de salida. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -281,12 +280,11 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `CreateProfileRequest` | Request DTO | `{ fullName: String, country: String, phoneNumber: String }` | Datos de entrada para formalización del perfil. |
-| `UpdateProfileRequest` | Request DTO | `{ fullName: String, country: String, phoneNumber: String }` | Modificación completa de datos personales y contacto. |
-| `UpdateContactProfileRequest` | Request DTO | `{ fullName: String, country: String, phoneNumber: String }` | Modificación parcial de datos de contacto. |
-| `UserProfileResource` | Response DTO | `{ id: UUID, userId: UUID, fullName: String, country: String, phoneNumber: String }` | Perfil de usuario consolidado. |
-| `UserProfileResourceAssembler` | Assembler | `toResource(UserProfile): UserProfileResource` | Transforma el agregado en el DTO de presentación. |
-
+| `Create` `ProfileRequest` | Request DTO | `{ fullName: String, country: String, phoneNumber: String }` | Datos de entrada para formalización del perfil. |
+| `Update` `ProfileRequest` | Request DTO | `{ fullName: String, country: String, phoneNumber: String }` | Modificación completa de datos personales y contacto. |
+| `UpdateContact` `ProfileRequest` | Request DTO | `{ fullName: String, country: String, phoneNumber: String }` | Modificación parcial de datos de contacto. |
+| `User` `ProfileResource` | Response DTO | `{ id: UUID, userId: UUID, fullName: String, country: String, phoneNumber: String }` | Perfil de usuario consolidado. |
+| `UserProfile` `ResourceAssembler` | Assembler | `toResource(UserProfile): `UserProfileResource` | Transforma el agregado en el DTO de presentación. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -564,17 +562,16 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `CreateSubscriptionRequest` | Request DTO | `{ planCode: String, requestedQuotaHa: Double }` | Selección comercial contrastada con el catálogo del servidor. |
-| `CreateCheckoutRequest` | Request DTO | `{ returnUrl?: String }` | Solicitud de preferencia de cobro en pasarela externa. |
-| `GenerateInvitationCodesBatchRequest` | Request DTO | `{ quantity: Int, hectaresCapPerCode: Double, expiresAt: Instant }` | Parámetros para emisión de lote de códigos. |
-| `ShortenInvitationCodeExpiryRequest` | Request DTO | `{ newExpiresAt: Instant }` | Acortamiento de vigencia de código disponible. |
-| `RedeemCooperativeCodeRequest` | Request DTO | `{ code: String }` | Código de activación ingresado por el productor. |
-| `PaymentNotificationRequest` | Request DTO | `{ externalNotificationId: String, externalPaymentId: String }` | Payload webhook de notificación de Mercado Pago. |
-| `SubscriptionResource` | Response DTO | `{ id: UUID, mode: String, status: String, quotaHa: Double, startsAt: Instant, endsAt: Instant, entitlementActive: Boolean }` | Representación pública de suscripción vigente. |
+| `Create` `SubscriptionRequest` | Request DTO | `{ planCode: String, requestedQuotaHa: Double }` | Selección comercial contrastada con el catálogo del servidor. |
+| `Create` `CheckoutRequest` | Request DTO | `{ returnUrl?: String }` | Solicitud de preferencia de cobro en pasarela externa. |
+| `GenerateInvitation` `CodesBatchRequest` | Request DTO | `{ quantity: Int, hectaresCapPerCode: Double, expiresAt: Instant }` | Parámetros para emisión de lote de códigos. |
+| `ShortenInvitation` `CodeExpiryRequest` | Request DTO | `{ newExpiresAt: Instant }` | Acortamiento de vigencia de código disponible. |
+| `RedeemCooperative` `CodeRequest` | Request DTO | `{ code: String }` | Código de activación ingresado por el productor. |
+| `Payment` `NotificationRequest` | Request DTO | `{ externalNotificationId: String, externalPaymentId: String }` | Payload webhook de notificación de Mercado Pago. |
+| `Subscription` `Resource` | Response DTO | `{ id: UUID, mode: String, status: String, quotaHa: Double, startsAt: Instant, endsAt: Instant, entitlementActive: Boolean }` | Representación pública de suscripción vigente. |
 | `CheckoutResource` | Response DTO | `{ intentId: UUID, checkoutUrl: String, expiresAt: Instant }` | URL segura de checkout emitida por la pasarela. |
-| `InvitationBatchResource` | Response DTO | `{ id: UUID, quantity: Int, availableSeats: Int, availableAreaHa: Double, codes: List<String> }` | Lote de códigos entregado al gestor cooperativo. |
-| `SubscriptionResourceAssembler` | Assembler | `toResource(Subscription): SubscriptionResource` | Mapeador del agregado a DTO público de presentación. |
-
+| `Invitation` `BatchResource` | Response DTO | `{ id: UUID, quantity: Int, availableSeats: Int, availableAreaHa: Double, codes: List<String> }` | Lote de códigos entregado al gestor cooperativo. |
+| `Subscription` `ResourceAssembler` | Assembler | `toResource(Subscription): `SubscriptionResource` | Mapeador del agregado a DTO público de presentación. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -813,11 +810,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `CreatePlotRequest` | Request DTO | `{ name: String, variety: String, geoJson: String, rowSpacingM: Double, treeSpacingM: Double }` | Entrada para registro predial. |
-| `UpdatePlotRequest` | Request DTO | `{ name: String, rowSpacingM: Double, treeSpacingM: Double, lastPruningDate: LocalDate }` | Modificación agronómica del lote (controlado con `If-Match`). |
+| `Create` `PlotRequest` | Request DTO | `{ name: String, variety: String, geoJson: String, rowSpacingM: Double, treeSpacingM: Double }` | Entrada para registro predial. |
+| `Update` `PlotRequest` | Request DTO | `{ name: String, rowSpacingM: Double, treeSpacingM: Double, lastPruningDate: LocalDate }` | Modificación agronómica del lote (controlado con `If-Match`). |
 | `PlotResource` | Response DTO | `{ id: UUID, name: String, variety: String, areaHa: Double, treeDensity: Int, geoJson: String }` | Representación pública del predio. |
-| `PlotResourceAssembler` | Assembler | `toResource(Plot): PlotResource` | Mapeador a DTO con cálculo de métricas. |
-
+| `Plot` `ResourceAssembler` | Assembler | `toResource(Plot): `PlotResource` | Mapeador a DTO con cálculo de métricas. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -1140,15 +1136,14 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `CreateIoTDeviceRequest` | Request DTO | `{ name: String, deviceType: String, depthCm: Int, soilTextureType: String }` | Registro y alta de sonda edáfica virtual. |
-| `CalibrateDeviceRequest` | Request DTO | `{ depthCm: Int, calibrationMultiplier: Double, calibrationNotes: String }` | Ajuste físico y calibración edafológica de sonda. |
-| `IngestTelemetryRequest` | Request DTO | `{ sensorNodeId: UUID, readings: List<HourlyTelemetryReadingDto> }` | Lectura horaria o lote enviado por simulador o sensor. |
+| `CreateIo` `TDeviceRequest` | Request DTO | `{ name: String, deviceType: String, depthCm: Int, soilTextureType: String }` | Registro y alta de sonda edáfica virtual. |
+| `Calibrate` `DeviceRequest` | Request DTO | `{ depthCm: Int, calibrationMultiplier: Double, calibrationNotes: String }` | Ajuste físico y calibración edafológica de sonda. |
+| `Ingest` `TelemetryRequest` | Request DTO | `{ sensorNodeId: UUID, readings: List<HourlyTelemetryReadingDto> }` | Lectura horaria o lote enviado por simulador o sensor. |
 | `DeviceResource` | Response DTO | `{ id: UUID, plotId: UUID, name: String, deviceType: String, status: String }` | Representación de nodo sensor vinculado. |
-| `TelemetryResource` | Response DTO | `{ id: UUID, plotId: UUID, temperature: Double, humidity: Double, soilMoisture: Double, recordedAt: Instant }` | Representación pública de lectura agroclimática. |
-| `WeatherForecastResource` | Response DTO | `{ plotId: UUID, dailyForecasts: List<DailyForecastDto>, generatedAt: Instant }` | Proyección meteorológica a 7 días. |
+| `Telemetry` `Resource` | Response DTO | `{ id: UUID, plotId: UUID, temperature: Double, humidity: Double, soilMoisture: Double, recordedAt: Instant }` | Representación pública de lectura agroclimática. |
+| `Weather` `ForecastResource` | Response DTO | `{ plotId: UUID, dailyForecasts: List<DailyForecastDto>, generatedAt: Instant }` | Proyección meteorológica a 7 días. |
 | `IncidentResource` | Response DTO | `{ id: UUID, plotId: UUID, incidentType: String, severity: String, triggeredAt: Instant }` | Alerta de estrés hídrico o térmico. |
-| `TelemetryResourceAssembler` | Assembler | `toResource(TelemetryReading): TelemetryResource` | Convierte lectura interna a DTO de visualización. |
-
+| `Telemetry` `ResourceAssembler` | Assembler | `toResource(TelemetryReading): `TelemetryResource` | Convierte lectura interna a DTO de visualización. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -1402,14 +1397,13 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `RecordHarvestYieldRequest` | Request DTO | `{ campaignYear: Int, totalTons: Double, oliveUseType: String, notes: String }` | Asiento de pesaje anual cosechado. |
-| `UpdateHarvestYieldRequest` | Request DTO | `{ totalTons: Double, notes: String }` | Corrección auditada de volumen de cosecha. |
-| `HarvestRecordResource` | Response DTO | `{ id: UUID, plotId: UUID, campaignYear: Int, totalTons: Double, recordedAt: Instant }` | Representación de cosecha histórica. |
+| `RecordHarvest` `YieldRequest` | Request DTO | `{ campaignYear: Int, totalTons: Double, oliveUseType: String, notes: String }` | Asiento de pesaje anual cosechado. |
+| `UpdateHarvest` `YieldRequest` | Request DTO | `{ totalTons: Double, notes: String }` | Corrección auditada de volumen de cosecha. |
+| `Harvest` `RecordResource` | Response DTO | `{ id: UUID, plotId: UUID, campaignYear: Int, totalTons: Double, recordedAt: Instant }` | Representación de cosecha histórica. |
 | `MetricResource` | Response DTO | `{ metricName: String, value: Double, qualitativeCategory: String, details: Map<String, Object>, evaluatedAt: Instant }` | Métrica de vecería ($BBI$) o frío dinámico (Erez). |
-| `RecordPhenologyObservationRequest` | Request DTO | `{ stageCode: Int, observationDate: LocalDate, notes: String }` | Inspección de estadio BBCH en campo. |
-| `PhenologyObservationResource` | Response DTO | `{ id: UUID, plotId: UUID, currentStage: Int, accumulatedGdd: Double, isWindowClosed: Boolean }` | Estado biológico y ventana de aclareo. |
-| `HarvestRecordResourceAssembler` | Assembler | `toResource(HistoricalHarvestEntry): HarvestRecordResource` | Transformador a DTO desacoplado. |
-
+| `RecordPhenology` `ObservationRequest` | Request DTO | `{ stageCode: Int, observationDate: LocalDate, notes: String }` | Inspección de estadio BBCH en campo. |
+| `Phenology` `ObservationResource` | Response DTO | `{ id: UUID, plotId: UUID, currentStage: Int, accumulatedGdd: Double, isWindowClosed: Boolean }` | Estado biológico y ventana de aclareo. |
+| `HarvestRecord` `ResourceAssembler` | Assembler | `toResource(HistoricalHarvestEntry): `HarvestRecordResource` | Transformador a DTO desacoplado. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -1681,13 +1675,12 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `SubmitSamplingRequest` | Request DTO | `{ clientBatchId: String, samples: List<ShootSampleDto> }` | Lote de conteo capturado en campo offline. |
-| `SamplingSummaryResource` | Response DTO | `{ plotId: UUID, sampledTreesCount: Int, sampledShootsCount: Int, meanFruitsPerMeter: Double, isRepresentative: Boolean, treesNeeded: Int }` | Resumen de representatividad muestral. |
-| `PrescriptionResource` | Response DTO | `{ id: UUID, plotId: UUID, targetLoad: Double, percentageToRemove: Double, status: String, windowClosesOn: LocalDate }` | Asesoramiento oficial de aclareo. |
-| `ConfirmExecutionRequest` | Request DTO | `{ executedDate: LocalDate, removedKg: Double, notes: String }` | Declaración de ejecución de la labor. |
-| `ExecutionConfirmationResource` | Response DTO | `{ prescriptionId: UUID, confirmationStatus: String, executedDate: LocalDate, isOpportune: Boolean, recordedAt: Instant }` | Constancia de ejecución y sellado biológico. |
-| `PrescriptionResourceAssembler` | Assembler | `toResource(FruitThinningPrescription): PrescriptionResource` | Mapeo a DTO con formateo agronómico. |
-
+| `Submit` `SamplingRequest` | Request DTO | `{ clientBatchId: String, samples: List<ShootSampleDto> }` | Lote de conteo capturado en campo offline. |
+| `Sampling` `SummaryResource` | Response DTO | `{ plotId: UUID, sampledTreesCount: Int, sampledShootsCount: Int, meanFruitsPerMeter: Double, isRepresentative: Boolean, treesNeeded: Int }` | Resumen de representatividad muestral. |
+| `Prescription` `Resource` | Response DTO | `{ id: UUID, plotId: UUID, targetLoad: Double, percentageToRemove: Double, status: String, windowClosesOn: LocalDate }` | Asesoramiento oficial de aclareo. |
+| `Confirm` `ExecutionRequest` | Request DTO | `{ executedDate: LocalDate, removedKg: Double, notes: String }` | Declaración de ejecución de la labor. |
+| `Execution` `ConfirmationResource` | Response DTO | `{ prescriptionId: UUID, confirmationStatus: String, executedDate: LocalDate, isOpportune: Boolean, recordedAt: Instant }` | Constancia de ejecución y sellado biológico. |
+| `Prescription` `ResourceAssembler` | Assembler | `toResource(FruitThinningPrescription): `PrescriptionResource` | Mapeo a DTO con formateo agronómico. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -1920,11 +1913,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `CooperativeMemberResource` | Response DTO | `{ id: UUID, producerUserId: UUID, fullName: String, contactPhone: String, totalDeclaredHa: Double, status: String }` | Datos de socio agremiado. |
-| `TerritorialRiskMatrixResource` | Response DTO | `{ cooperativeId: UUID, highRiskSectors: List<String>, generalStatus: String, evaluatedAt: Instant }` | Semáforo de riesgo territorial. |
-| `IntakeForecastResource` | Response DTO | `{ cooperativeId: UUID, greenOlivesTons: Double, blackOlivesTons: Double, confidenceDegraded: Boolean }` | Proyección de acopio para salmuera y aceite. |
-| `CooperativeResourceAssembler` | Assembler | `toResource(Cooperative): CooperativeResource` | Transformador a DTO público de presentación. |
-
+| `Cooperative` `MemberResource` | Response DTO | `{ id: UUID, producerUserId: UUID, fullName: String, contactPhone: String, totalDeclaredHa: Double, status: String }` | Datos de socio agremiado. |
+| `TerritorialRisk` `MatrixResource` | Response DTO | `{ cooperativeId: UUID, highRiskSectors: List<String>, generalStatus: String, evaluatedAt: Instant }` | Semáforo de riesgo territorial. |
+| `Intake` `ForecastResource` | Response DTO | `{ cooperativeId: UUID, greenOlivesTons: Double, blackOlivesTons: Double, confidenceDegraded: Boolean }` | Proyección de acopio para salmuera y aceite. |
+| `Cooperative` `ResourceAssembler` | Assembler | `toResource(Cooperative): `CooperativeResource` | Transformador a DTO público de presentación. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -2149,12 +2141,11 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `SettleHarvestRequest` | Request DTO | `{ campaignYear: Int, greenOlivesKg: Double, blackOlivesKg: Double, notes: String }` | Datos del pesaje comercial asentado. |
-| `CertifyDossierRequest` | Request DTO | `{ auditorSignature: String, notes: String }` | Solicitud de certificación formal colegiada. |
-| `HarvestSettlementResource` | Response DTO | `{ id: UUID, campaignYear: Int, totalYieldKg: Double, status: String, settledAt: Instant }` | Representación de liquidación anual. |
-| `AgronomicReportResource` | Response DTO | `{ reportId: UUID, interannualVariance: Double, amplitudeReductionRate: Double, isEffective: Boolean }` | Resumen de estabilización interanual. |
-| `GenerateAgronomicDossierCommandAssembler` | Assembler | `toCommand(CertifyDossierRequest, plotId): GenerateAgronomicDossierCommand` | Ensamblador alineado al comando canónico `CMD30`. |
-
+| `Settle` `HarvestRequest` | Request DTO | `{ campaignYear: Int, greenOlivesKg: Double, blackOlivesKg: Double, notes: String }` | Datos del pesaje comercial asentado. |
+| `Certify` `DossierRequest` | Request DTO | `{ auditorSignature: String, notes: String }` | Solicitud de certificación formal colegiada. |
+| `Harvest` `SettlementResource` | Response DTO | `{ id: UUID, campaignYear: Int, totalYieldKg: Double, status: String, settledAt: Instant }` | Representación de liquidación anual. |
+| `Agronomic` `ReportResource` | Response DTO | `{ reportId: UUID, interannualVariance: Double, amplitudeReductionRate: Double, isEffective: Boolean }` | Resumen de estabilización interanual. |
+| `GenerateAgronomic` `DossierCommandAssembler` | Assembler | `toCommand(CertifyDossierRequest, plotId): `GenerateAgronomicDossierCommand` | Ensamblador alineado al comando canónico `CMD30`. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
