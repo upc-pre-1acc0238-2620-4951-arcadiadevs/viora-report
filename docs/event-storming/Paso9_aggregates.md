@@ -155,7 +155,7 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
   * `OwnerId` *(VO)*: Referencia débil al productor (`UserId`).
   * `PlotName` *(VO)*: Nombre identitario del predio o cuartel olivarero.
   * `CadastralPolygon` *(VO)*: Polígono cerrado GeoJSON (RFC 7946 en coordenadas WGS84) con validación de no auto-intersección.
-  * `OliveVariety` *(VO)*: Variedad agronómica (`CRIOLLA_DE_TACNA`, `SEVILLANA`).
+  * `OliveVariety` *(VO)*: Variedad agronómica (`CRIOLLA`, `SEVILLANA`, `MANZANILLA`, `ARBEQUINA`).
   * `PlantingGrid` *(VO)*: Marco de plantación (e.g. $8\times 8$ m, $10\times 10$ m).
   * `DendrometricAttributes` *(VO)*: Superficie neta calculada (`netHectares`), conteo total de árboles y densidad poblacional calculada (`treesPerHectare`).
   * `PlotStatus` *(VO)*: `ACTIVE`, `REMOVED_SOFT_DELETE`.

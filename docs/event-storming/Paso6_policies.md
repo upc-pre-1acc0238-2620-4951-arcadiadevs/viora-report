@@ -64,14 +64,15 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 | POL15: Intake Volume Readjustment On Field Sampling   (Muestreo Predial -> Acopio Agregado)   |
 | POL16: Prescription Voiding On Plot Removal           (Baja Predial -> Regulación Carga)      |
 | POL17: Quota Release On Invitation Code Expiry        (Códigos -> Licencia Corporativa)       |
+| POL18: Historic Record Update On Thinning Execution   (Aclareo -> Liquidación Cosecha)        |
 +-----------------------------------------------------------------------------------------------+
-| TOTAL DE POLÍTICAS REACTIVAS FORMALIZADAS: 17 POLÍTICAS (POL01 - POL17)                       |
+| TOTAL DE POLÍTICAS REACTIVAS FORMALIZADAS: 18 POLÍTICAS (POL01 - POL18)                       |
 +-----------------------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 3. Catálogo Detallado de Políticas Reactivas (POL01 a POL17)
+## 3. Catálogo Detallado de Políticas Reactivas (POL01 a POL18)
 
 ---
 
@@ -214,8 +215,7 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 * **US / BDD:** `US28` (Escenario 2)
 * **Regla Reactiva Formal:**
   * **WHENEVER:** `LateThinningExecutionRecorded` (`EV45`)
-  * **IF:** `executionDate > pitHardeningDate`
-  * **THEN:** `RecalculateMitigationEfficiencyFactor` (aplicar factor de castigo a la proyección del BBI).
+  * **THEN:** `RecalculateMitigationEfficiencyFactor` (aplicar factor de castigo del 70% a la eficiencia de mitigación en la proyección del BBI).
 * **Lógica de Negocio Agronómica:** Si un productor aclara tarde, la política registra una penalización en el modelo de alternancia, advirtiendo al agricultor y al agrónomo que la eficacia para el retorno floral de la campaña venidera disminuyó en más del 70%.
 
 ---
@@ -303,6 +303,18 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 
 ---
 
+### **POL18: HistoricRecordUpdateOnThinningExecutionConfirmed Policy**
+* **Contexto Emisor:** `Crop Load Regulation & Thinning Advisory`
+* **Contexto Receptor:** `Harvest Settlement & Performance Reporting`
+* **Agregado Origen $\rightarrow$ Agregado Destino:** `FruitThinningPrescription` $\rightarrow$ `AgronomicReport`
+* **US / BDD:** `US29` (Escenario 2)
+* **Regla Reactiva Formal:**
+  * **WHENEVER:** `ThinningExecutionConfirmed` (`EV44`)
+  * **THEN:** `RecordThinningExecutionOnCycleLog` (vincular remoción ejecutada en verde con el balance final cosechado al cierre de campaña).
+* **Lógica de Negocio Agronómica:** Permite contrastar la tasa de aclareo efectivamente aplicada frente a la producción real obtenida, alimentando la evaluación de la eficacia mitigadora interanual.
+
+---
+
 ## 4. Matriz de Trazabilidad: Evento Disparador $\rightarrow$ Política $\rightarrow$ Comando Destino
 
 | ID Política | Nombre de la Política | Evento Disparador (`EVxx`) | Contexto Origen $\rightarrow$ Destino | Comando / Acción Ejecutada |
@@ -324,9 +336,10 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 | **POL15** | *Intake Volume Readjustment On Sampling* | `EV37` (`SamplingRoundCompleted`) | Regulación Carga $\rightarrow$ Cooperativa | `ProjectCooperativeIntakeVolume` (`EV50`) |
 | **POL16** | *Prescription Voiding On Plot Removal* | `EV17` (`PlotRemoved`) | Parcelas $\rightarrow$ Regulación Carga | `VoidPendingThinningPrescriptions` |
 | **POL17** | *Quota Release On Invitation Code Expiry* | `EV52` (`InvitationCodeExpired`) | Suscripciones $\rightarrow$ Suscripciones | `ReleaseLicenseQuota` |
+| **POL18** | *Historic Record Update On Thinning Execution* | `EV44` (`ThinningExecutionConfirmed`) | Regulación Carga $\rightarrow$ Liquidación Cosecha | `RecordThinningExecutionOnCycleLog` |
 
 ---
 
 ## 5. Consideraciones de Cierre
 
-Las 17 políticas reactivas formalizadas orquestan la automatización asíncrona del ecosistema Viora. Al desacoplar la emisión de eventos de la ejecución de comandos receptores, se garantiza que las alertas fenológicas, la sincronización de contactos de socios, la protección frente al estrés hídrico, la devolución de cupo corporativo y las proyecciones cooperativas se actualicen dinámicamente preservando la autonomía y consistencia de cada contexto delimitado.
+Las 18 políticas reactivas formalizadas orquestan la automatización asíncrona del ecosistema Viora. Al desacoplar la emisión de eventos de la ejecución de comandos receptores, se garantiza que las alertas fenológicas, la sincronización de contactos de socios, la protección frente al estrés hídrico, la devolución de cupo corporativo y las proyecciones cooperativas se actualicen dinámicamente preservando la autonomía y consistencia de cada contexto delimitado.

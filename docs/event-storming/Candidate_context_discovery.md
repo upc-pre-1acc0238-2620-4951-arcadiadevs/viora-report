@@ -158,7 +158,7 @@ graph TD
   * *Plot:* Unidad básica de gestión territorial y productiva.
   * *CadastralPolygon:* Geometría vectorial cerrada en coordenadas WGS84 (GeoJSON RFC 7946).
   * *NetArea:* Cabida superficial efectiva del cuartel en hectáreas ($\ge 0.10$ ha).
-  * *OliveVariety:* Variedad genética del olivo (`CRIOLLA_DE_TACNA`, `SEVILLANA`).
+  * *OliveVariety:* Variedad genética del olivo (`CRIOLLA`, `SEVILLANA`, `MANZANILLA`, `ARBEQUINA`).
   * *PlantingDensity:* Densidad arbórea calculada (árboles/hectárea).
 * **Sistemas Externos Vinculados:** `EXT02` (`SatelliteBasemapAndGisProvider` - Mapbox/OpenStreetMap).
 * **Justificación de Frontera (*Boundary Justification*):** Es el soporte territorial de la solución. No calcula vecería ni almacena telemetría horaria; su única responsabilidad es responder fielmente *dónde está la parcela, qué variedad tiene y cuántos árboles alberga*.
