@@ -1468,11 +1468,11 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar el refresh token a la API, \textbf{para} renovar el token de acceso JWT expirado sin requerir que el usuario vuelva a ingresar sus credenciales.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Renovación exitosa de token}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/auth/refresh-token} es recibida con un refreshToken vigente y no revocado.\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/refresh-tokens} es recibida con un refreshToken vigente y no revocado.\newline
 \textbf{When} la API valida la firma y el estado de la sesión en el almacén de tokens.\newline
 \textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{AuthResource} con un nuevo accessToken y un nuevo refreshToken rotado.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Refresh token expirado o revocado}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/auth/refresh-token} con un token revocado o caducado.\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/refresh-tokens} con un token revocado o caducado.\newline
 \textbf{When} la API valida el token.\newline
 \textbf{Then} la API responde \texttt{401 Unauthorized} exigiendo nueva autenticación interactiva.} \\ \hline
 \end{longtable}
@@ -1492,15 +1492,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consumir el endpoint GET del perfil de usuario, \textbf{para} obtener los datos personales, de membresía y contacto del usuario autenticado.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de perfil propio}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/users/{userId}} con cabecera Authorization Bearer.\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/profiles/{userId}} con cabecera Authorization Bearer.\newline
 \textbf{When} la API valida que el \texttt{userId} solicitado coincide con el claim del token JWT o el solicitante es administrador.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{UserResource} con id, email, fullName, country, phoneNumber, role y membershipStatus.} \\
+\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{ProfileResource} con id, userId, fullName, country, phoneNumber y createdAt.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Intento de consulta de perfil de otro usuario}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/users/{userId}} con un identificador ajeno al usuario autenticado.\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/profiles/{userId}} con un identificador ajeno al usuario autenticado.\newline
 \textbf{When} la API evalúa la correspondencia de propiedad de la cuenta.\newline
 \textbf{Then} la API responde \texttt{403 Forbidden}.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Usuario inexistente}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/users/{userId}} con un identificador no registrado.\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/profiles/{userId}} con un identificador no registrado.\newline
 \textbf{When} la API consulta la persistencia.\newline
 \textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
 \end{longtable}
@@ -1520,15 +1520,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar actualizaciones parciales del perfil a la API, \textbf{para} modificar el nombre de contacto o el número de teléfono operativo validado bajo el estándar E.164.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Actualización exitosa}\newline
-\textbf{Given} una solicitud PATCH a \url{/api/v1/users/{userId}} con cuerpo JSON que incluye fullName y/o phoneNumber y país.\newline
+\textbf{Given} una solicitud PATCH a \url{/api/v1/profiles/{userId}} con cuerpo JSON que incluye fullName y/o phoneNumber y país.\newline
 \textbf{When} la API valida la propiedad de la cuenta y verifica el nuevo teléfono mediante la biblioteca \texttt{libphonenumber}.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{UserResource} con los datos actualizados y persistidos.} \\
+\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{ProfileResource} con los datos actualizados y persistidos.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Teléfono inválido en actualización}\newline
-\textbf{Given} una solicitud PATCH a \url{/api/v1/users/{userId}} con un teléfono que no cumple la norma E.164 según \texttt{libphonenumber}.\newline
+\textbf{Given} una solicitud PATCH a \url{/api/v1/profiles/{userId}} con un teléfono que no cumple la norma E.164 según \texttt{libphonenumber}.\newline
 \textbf{When} la API valida los campos provistos.\newline
 \textbf{Then} la API responde \texttt{400 Bad Request} sin alterar la información previa.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Permiso denegado sobre cuenta ajena}\newline
-\textbf{Given} una solicitud PATCH a \url{/api/v1/users/{userId}} dirigida a un identificador distinto al token autenticado.\newline
+\textbf{Given} una solicitud PATCH a \url{/api/v1/profiles/{userId}} dirigida a un identificador distinto al token autenticado.\newline
 \textbf{When} la API evalúa la correspondencia.\newline
 \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
 \end{longtable}
@@ -1572,13 +1572,13 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de plataforma backend, \textbf{quiero} exponer un endpoint webhook para la pasarela de pagos, \textbf{para} procesar asíncronamente las confirmaciones de transacción y activar la suscripción del productor de manera inmediata.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Procesamiento exitoso de pago confirmado}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/webhooks/payment} recibida desde la pasarela con firma criptográfica válida y estado approved.\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/payment-notifications/mercado-pago} recibida desde la pasarela con cabecera \texttt{x-signature} conteniendo la firma criptográfica HMAC-SHA256 válida y estado approved.\newline
 \textbf{When} la API valida la firma de autenticidad, recupera la orden y actualiza el estado de la suscripción del usuario.\newline
 \textbf{Then} la API responde \texttt{200 OK} y transiciona el estado de la suscripción a ACTIVE, asignando la fecha de vigencia correspondiente.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Firma de webhook inválida}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/webhooks/payment} con cabecera de firma ausente o alterada.\newline
-\textbf{When} la API verifica el hash del webhook.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request} y descarta el procesamiento.} \\ \hline
+\textbf{Given} una solicitud POST a \url{/api/v1/payment-notifications/mercado-pago} con cabecera \texttt{x-signature} ausente o alterada.\newline
+\textbf{When} el validador criptográfico de webhooks detecta discrepancia en la firma HMAC.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} bajo RFC 7807 y descarta el procesamiento.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1596,12 +1596,12 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la creación de códigos de activación institucionales a la API, \textbf{para} que el gestor técnico pueda distribuirlos a los socios de la cooperativa.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación exitosa de códigos de activación}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/cooperatives/{coopId}/invitation-codes} con cuerpo JSON: quantity: number.\newline
-\textbf{When} la API valida que el usuario tiene rol GESTOR en dicha cooperativa y que la cantidad solicitada no supera el límite contratado.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{InvitationCodeListResource} con el arreglo de códigos alfanuméricos únicos y cupos remanentes.} \\
+\textbf{Given} una solicitud POST a \url{/api/v1/cooperatives/{id}/invitation-code-batches} con cuerpo JSON conteniendo: \texttt{quantity} y \texttt{validDays}.\newline
+\textbf{When} la API valida que el usuario tiene rol GESTOR en dicha cooperativa y que la cantidad solicitada no supera el límite contratado en la licencia.\newline
+\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{InvitationCodeBatchResource} con el identificador del lote, arreglo de códigos alfanuméricos únicos generados y fecha de expiración.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cupo de membresías excedido}\newline
 \textbf{Given} una solicitud POST con una cantidad que sobrepasa el cupo de la membresía cooperativa.\newline
-\textbf{When} la API evalúa la disponibilidad de cupos.\newline
+\textbf{When} la API evalúa la disponibilidad de cupos en la licencia.\newline
 \textbf{Then} la API responde \texttt{400 Bad Request} indicando el límite de licencias permitidas.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado para no gestores}\newline
 \textbf{Given} una solicitud POST emitida por un usuario sin rol GESTOR en la cooperativa especificada.\newline
@@ -1624,9 +1624,9 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el listado de códigos de activación de una cooperativa a la API, \textbf{para} mostrar al gestor los códigos disponibles, canjeados y los socios vinculados.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de códigos disponibles y canjeados}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/cooperatives/{coopId}/invitation-codes} con token de gestor técnico.\newline
-\textbf{When} la API valida la pertenencia institucional y consulta los registros.\newline
-\textbf{Then} la API responde \texttt{200 OK} con un arreglo de objetos que detallan: code, status (AVAILABLE, REDEEMED, EXPIRED), redeemedByUserId y fecha de canje.} \\
+\textbf{Given} una solicitud GET a \url{/api/v1/cooperatives/{id}/invitation-code-batches} con token de gestor técnico y parámetros opcionales de filtro por estado.\newline
+\textbf{When} la API valida la pertenencia institucional y consulta los registros del agregado.\newline
+\textbf{Then} la API responde \texttt{200 OK} con un arreglo de objetos \texttt{InvitationCodeBatchResource} que detallan lotes, códigos, estados (AVAILABLE, REDEEMED, EXPIRED) y fechas de expiración.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Acceso no autorizado}\newline
 \textbf{Given} una solicitud GET emitida por un usuario que no es gestor de la cooperativa.\newline
 \textbf{When} la API verifica el rol institucional.\newline
@@ -1648,13 +1648,13 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar el código de activación provisto por el socio a la API, \textbf{para} afiliar al productor a la licencia colectiva de la cooperativa sin cobro individual.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso y afiliación}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/users/{userId}/cooperative-memberships} con cuerpo JSON: invitationCode.\newline
-\textbf{When} la API valida que el código existe, está en estado AVAILABLE y pertenece al usuario autenticado.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{MembershipResource} confirmando la vinculación con la cooperativa y el cambio de estado del código a REDEEMED.} \\
+\textbf{Given} una solicitud POST a \url{/api/v1/cooperative-code-redemptions} con cuerpo JSON: \texttt{invitationCode}.\newline
+\textbf{When} la API valida que el código existe, está en estado AVAILABLE y pertenece al socio autenticado.\newline
+\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{CooperativeMembershipResource} confirmando la vinculación con la cooperativa y el cambio de estado del código a REDEEMED.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código inválido o agotado}\newline
-\textbf{Given} una solicitud POST con un invitationCode inexistente o ya canjeado previamente.\newline
+\textbf{Given} una solicitud POST con un \texttt{invitationCode} inexistente o ya canjeado previamente.\newline
 \textbf{When} la API consulta la validez del código.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request} indicando que el código no es válido.} \\
+\textbf{Then} la API responde \texttt{400 Bad Request} indicando que el código no es válido o expiró.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Socio ya vinculado activamente}\newline
 \textbf{Given} una solicitud POST emitida por un usuario que ya cuenta con membresía activa en la cooperativa.\newline
 \textbf{When} la API comprueba el estado actual de membresías.\newline
@@ -1743,21 +1743,21 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS14} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización parcial de linderos y parámetros de parcela} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización y rectificación integral de parcela con bloqueo optimista} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar modificaciones parciales de la parcela a la API, \textbf{para} corregir linderos poligonales, densidad de árboles o nombre del lote.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los datos actualizados de la parcela junto con la cabecera de control de versión a la API, \textbf{para} rectificar linderos poligonales, densidad de árboles o nombre del lote previniendo colisiones de concurrencia.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Actualización exitosa de parcela}\newline
-\textbf{Given} una solicitud PATCH a \url{/api/v1/plots/{plotId}} con atributos a modificar.\newline
-\textbf{When} la API valida la propiedad, recalcula la superficie si variaron las coordenadas y persiste los cambios.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{PlotResource} actualizado.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Coordenadas malformadas}\newline
-\textbf{Given} una solicitud PATCH con un nuevo polígono que no cierra.\newline
-\textbf{When} la API valida la consistencia espacial.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado}\newline
-\textbf{Given} una solicitud PATCH enviada por un usuario no propietario.\newline
-\textbf{When} la API evalúa la correspondencia.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Actualización exitosa con control de concurrencia}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} con cabecera \texttt{If-Match} conteniendo la versión actual y cuerpo JSON con los datos modificados.\newline
+\textbf{When} la API valida la titularidad, verifica que la versión coincida, recalcula la superficie si variaron las coordenadas y persiste los cambios.\newline
+\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{PlotResource} actualizado con nueva cabecera ETag.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Conflicto de versión por modificación concurrente}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} con una cabecera \texttt{If-Match} que difiere de la versión persistida en el almacén de datos.\newline
+\textbf{When} el interceptor de concurrencia optimista detecta conflicto de modificación simultánea.\newline
+\textbf{Then} la API responde \texttt{412 Precondition Failed} bajo el estándar RFC 7807 impidiendo sobreescrituras concurrentes.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado sobre parcela ajena}\newline
+\textbf{Given} una solicitud PUT enviada por un usuario no propietario del predio.\newline
+\textbf{When} la API evalúa la titularidad en el contexto de inventario parcelario.\newline
 \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
 \end{longtable}
 \endgroup
@@ -2073,13 +2073,17 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la confirmación de la labor de aclareo ejecutada a la API, \textbf{para} registrar la fecha de intervención y recalcular la proyección de calibre comercial.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro exitoso de ejecución de aclareo}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/thinning-executions} con cuerpo JSON: executionDate, actualRemovalPercentage y notes.\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/thinning-prescriptions/{id}/execution-confirmations} con cuerpo JSON: \texttt{executionDate}, \texttt{actualRemovalPercentage} y \texttt{notes}.\newline
 \textbf{When} la API valida que el porcentaje esté entre 0\% y 100\% y persiste la intervención agronómica.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{ThinningExecutionResource} con el nuevo balance de carga y calibre proyectado.} \\
+\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{ExecutionConfirmationResource} con el nuevo balance de carga y calibre proyectado.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Porcentaje de remoción fuera de rango}\newline
 \textbf{Given} una solicitud POST con un porcentaje mayor al 100\% o negativo.\newline
 \textbf{When} la API valida la entrada.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request}.} \\ \hline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Prescripción inexistente o ya confirmada}\newline
+\textbf{Given} una solicitud POST dirigida a una prescripción inexistente o que ya fue confirmada previamente.\newline
+\textbf{When} el servicio de aplicación evalúa el estado del agregado.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} o \texttt{409 Conflict} según corresponda.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2096,11 +2100,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el archivo binario del reporte agronómico a la API, \textbf{para} descargar la ficha técnica en PDF con la trazabilidad completa del predio para trámites bancarios o cooperativos.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación exitosa de PDF}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/reports/pdf} con token autorizado.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación exitosa de PDF mediante negociación de contenidos}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/agronomic-reports} con cabecera \texttt{Accept: application/pdf} y token autorizado.\newline
 \textbf{When} la API compila los registros de cosecha, índice BBI, frío acumulado y labores de aclareo en el motor de renderizado de documentos.\newline
 \textbf{Then} la API responde \texttt{200 OK} con tipo de contenido \texttt{application/pdf} y cabecera \texttt{Content-Disposition} para descarga directa.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela inexistente}\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta en formato estructurado JSON}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/agronomic-reports} con cabecera \texttt{Accept: application/json}.\newline
+\textbf{When} la API recupera la estructura agregada del expediente agronómico.\newline
+\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{AgronomicReportResource} con los metadatos y hash de certificación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela inexistente}\newline
 \textbf{Given} una solicitud GET con un identificador de parcela no existente.\newline
 \textbf{When} la API busca los datos del reporte.\newline
 \textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
@@ -2116,14 +2124,14 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS29} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del semáforo fenológico y sobrecarga de socios para el gestor técnico} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el estado consolidado de riesgo de los predios socios a la API, \textbf{para} desplegar el semáforo fenológico y priorizar visitas técnicas a parcelas con sobrecarga crítica (> 30\%).} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el estado consolidado de riesgo de los predios socios geolocalizados a la API, \textbf{para} desplegar el semáforo fenológico y priorizar visitas técnicas a parcelas con sobrecarga crítica (> 30\%) o estrés hídrico.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de semáforo de riesgo}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/cooperatives/{coopId}/risk-dashboard} con token de gestor técnico.\newline
-\textbf{When} la API evalúa los indicadores de frío y sobrecarga de todas las parcelas socias registradas.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{CooperativeRiskDashboardResource} agrupando los predios en verde (óptimo), amarillo (moderado) y rojo (sobrecarga > 30\% o frío insuficiente).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de semáforo de riesgo sectorial}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/cooperatives/{cooperativeId}/territorial-risk} con parámetros \texttt{?latitude=\{lat\}\&longitude=\{lon\}} y token de gestor técnico.\newline
+\textbf{When} la API evalúa los indicadores de frío y sobrecarga de todas las parcelas socias registradas en el radio territorial.\newline
+\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{TerritorialRiskResource} agrupando los predios en verde (óptimo), amarillo (moderado) y rojo (sobrecarga > 30\% o frío insuficiente).} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Permisos insuficientes para no gestores}\newline
 \textbf{Given} una solicitud GET emitida por un usuario sin rol GESTOR en la cooperativa.\newline
 \textbf{When} la API valida las credenciales.\newline
@@ -2145,9 +2153,9 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la proyección temprana consolidada de acopio a la API, \textbf{para} mostrar el tonelaje total previsto discriminado por aptitud de aceituna verde para mesa y negra para aceite.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Proyección de acopio agregada}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/cooperatives/{coopId}/acopio-projections} con parámetro \texttt{?campaignYear=\{year\}}.\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/cooperatives/{cooperativeId}/intake-forecasts} con parámetro \texttt{?campaignYear=\{year\}}.\newline
 \textbf{When} la API agrega las cargas estimadas de los muestreos de los socios y computa el tonelaje esperado.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{AcopioProjectionResource} con total de toneladas estimadas, desglose mesa/aceite y el porcentaje de superficie muestreada.} \\
+\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{IntakeForecastResource} con total de toneladas estimadas, desglose mesa/aceite y el porcentaje de superficie muestreada.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Acceso no autorizado}\newline
 \textbf{Given} una solicitud GET emitida por un usuario sin rol de gestor.\newline
 \textbf{When} la API evalúa la pertenencia institucional.\newline
@@ -2444,7 +2452,7 @@ El Product Backlog de Viora consolida y prioriza los 81 ítems de trabajo del si
 | 26 | TS11 | Creación y delimitación poligonal de parcelas georreferenciadas | 5 | Sprint 1 |
 | 27 | TS12 | Listado y sincronización incremental delta de parcelas | 3 | Sprint 1 |
 | 28 | TS13 | Consulta detallada de información agronómica y espacial de parcela | 2 | Sprint 1 |
-| 29 | TS14 | Actualización parcial de linderos y parámetros de parcela | 3 | Sprint 1 |
+| 29 | TS14 | Actualización y rectificación integral de parcela con bloqueo optimista | 3 | Sprint 1 |
 | 30 | TS15 | Eliminación y baja lógica de parcela del inventario | 2 | Sprint 1 |
 | 31 | TS16 | Alta y vinculación de nodo sensor virtual a parcela | 3 | Sprint 1 |
 | 32 | TS17 | Consulta de inventario de nodos virtuales vinculados a parcela | 2 | Sprint 1 |
@@ -2473,7 +2481,7 @@ El Product Backlog de Viora consolida y prioriza los 81 ítems de trabajo del si
 | 55 | TS06 | Generación de preferencia de checkout para suscripción de productor independiente | 3 | Sprint 2 |
 | 56 | TS07 | Recepción y procesamiento de webhooks de notificación de pagos | 5 | Sprint 2 |
 | 57 | TS28 | Generación y descarga de reporte agronómico auditable en formato PDF | 5 | Sprint 2 |
-| 58 | TS29 | Consulta del semáforo fenológico y sobrecarga de socios para el gestor técnico | 3 | Sprint 2 |
+| 58 | TS29 | Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico | 3 | Sprint 2 |
 | 59 | TS30 | Proyección agregada temprana de volumen de acopio cooperativo | 5 | Sprint 2 |
 | 60 | US29 | Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva | 3 | Sprint 3 |
 | 61 | US30 | Emisión, certificación criptográfica y exportación del expediente agronómico en PDF | 5 | Sprint 3 |
