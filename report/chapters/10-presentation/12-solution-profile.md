@@ -1,5 +1,7 @@
 ## Solution Profile
 
+Esta sección presenta la caracterización integral de la solución propuesta a través de dos componentes fundamentales. En primer lugar, se expone el análisis de antecedentes y la formulación formal de la problemática del sector olivarero mediante la técnica 5W+2H, estableciendo el enunciado del problema, los objetivos generales y específicos, y las restricciones técnicas y de dominio que delimitan el alcance del sistema. En segundo lugar, se detalla la aplicación del proceso Lean UX sobre el modelo de negocio y producto, consolidando los enunciados de problema, las creencias organizadas por tipo de supuestos (assumptions), las hipótesis de experimentación y la matriz estratégica plasmada en el Lean UX Canvas.
+
 ### Antecedentes y problemática
 
 **Antecedentes productivos y relevancia.** El olivo es un cultivo estratégico para el sur del Perú por su altísima concentración territorial y su peso en las cadenas de valor de aceituna de mesa y aceite de oliva. Tacna concentra alrededor del 81 % de la superficie olivarera nacional, con cerca de 35 000 hectáreas registradas (Agraria.pe, 2021), y ha reportado volúmenes de 52 000 toneladas en campañas regulares, con una distribución aproximada de 60 % hacia aceituna de mesa y el resto hacia aceite (Andina, 2024); en un año de alta carga esa misma región llegó a cosechar 122 731 toneladas (Agraria.pe, 2021), lo que anticipa la magnitud de la oscilación que se analiza más adelante. Esta concentración implica que cualquier desequilibrio productivo local se traduce de inmediato en un déficit de oferta a escala nacional.
@@ -15,7 +17,7 @@ Esta distinción es determinante para el diseño de la solución. La variabilida
 \label{fig:calidad-aceite}
 \centering
 \includegraphics[width=0.55\textwidth]{report/assets/graphics/calidad_aceite.png}
-\caption*{\textit{Nota.} El contraste entre los tratamientos Bilateral ON y Bilateral OFF evidencia la magnitud de la alternancia productiva y el efecto de la intervención sobre la carga en el rendimiento de la campaña siguiente. Recuperado de Calvo et al., 2024.}
+\caption*{\textit{Nota.} Recuperado de Calvo et al., 2024.}
 \end{figure}
 
 La investigación aplicada confirma el mecanismo. Un evento ENOS fuerte se asocia a un aumento de temperaturas invernales de aproximadamente +2 °C y a una reducción de la acumulación de frío de entre -15 % y -23 %, con deterioro directo de productividad y agravamiento de la alternancia; en las campañas más adversas se registraron reducciones de rendimiento de aceite superiores al 85 % (Calvo et al., 2024).
@@ -32,7 +34,7 @@ La investigación aplicada confirma el mecanismo. Un evento ENOS fuerte se asoci
 \label{fig:umbrales-swp}
 \centering
 \includegraphics[width=0.55\textwidth]{report/assets/graphics/umbrales_swp.png}
-\caption*{\textit{Nota.} La línea base permite interpretar el estrés hídrico real de la planta descontando el efecto de la demanda atmosférica, criterio que sustituye al monitoreo de humedad de suelo, insuficiente en años de alta carga frutal. Recuperado de Shackel et al., 2021.}
+\caption*{\textit{Nota.} Recuperado de Shackel et al., 2021.}
 \end{figure}
 
 3. **Fertilización nitrogenada por calendario.** Aplicar nitrógeno en fechas fijas no frena la vecería, puede deteriorar la calidad del aceite y enmascara la deficiencia real de potasio, que es el nutriente drenado críticamente por la carga frutal. Como se observa en la \autoref{tab:umbrales-foliares}, el diagnóstico nutricional debe basarse en umbrales analíticos específicos de nitrógeno y potasio tomados en julio para evitar excesos vegetativos y asegurar reservas para la floración.
@@ -44,7 +46,7 @@ La investigación aplicada confirma el mecanismo. Un evento ENOS fuerte se asoci
 \label{tab:umbrales-foliares}
 \centering
 \includegraphics[width=0.55\textwidth]{report/assets/graphics/umbrales_foliares.png}
-\caption*{\textit{Nota.} El nitrógeno es deficiente por debajo de 1,40 \% y suficiente entre 1,50 \% y 2,00 \%; el potasio es deficiente por debajo de 0,40 \% y suficiente por encima de 0,80 \%. Estos umbrales reemplazan la fertilización por calendario como criterio de decisión. Recuperado de University of California Agriculture and Natural Resources, 2010.}
+\caption*{\textit{Nota.} Recuperado de University of California Agriculture and Natural Resources, 2010.}
 \end{table}
 
 4. **Ausencia de gestión integrada de la decisión de carga.** El aclareo de frutos, la poda de despunte inmediatamente posterior a la cosecha y la cosecha temprana rara vez se notifican dentro de su ventana útil. Sin un seguimiento que cruce la relación fuente-sumidero con datos climáticos y nutricionales, el productor actúa cuando el bloqueo hormonal sobre las yemas ya se ejecutó y la campaña siguiente ya está perdida. Como se observa en la \autoref{fig:deteccion-frutos}, la visión computacional aplicada al conteo automatizado de frutos permite cuantificar de manera temprana la densidad de carga frutal en campo para gatillar oportunamente las intervenciones de regulación.
@@ -54,7 +56,7 @@ La investigación aplicada confirma el mecanismo. Un evento ENOS fuerte se asoci
 \label{fig:deteccion-frutos}
 \centering
 \includegraphics[width=0.55\textwidth]{report/assets/graphics/uso_deep_learning.png}
-\caption*{\textit{Nota.} La detección automatizada de frutos evidencia el potencial de escalar el muestreo de carga frutal, variable de decisión central en la gestión de la alternancia productiva. Recuperado de Osco-Mamani et al., 2025.}
+\caption*{\textit{Nota.} Recuperado de Osco-Mamani et al., 2025.}
 \end{figure}
 
 \noindent \textbf{Problemática (5W + 2H)}
@@ -154,15 +156,12 @@ Los productores olivareros de la macro-región sur y las organizaciones que acop
 
 \vspace{0.15cm}
 
-- **Alcance tecnológico.** La solución se compone de una aplicación móvil nativa, una aplicación móvil multiplataforma, un servicio web RESTful de desarrollo interno y un sitio web estático para el Landing Page. La aplicación nativa se desarrolla en Kotlin sobre Android; la estrategia cross-platform se implementa con Flutter y Dart. El servicio web se construye bajo estilo arquitectónico RESTful con Spring Boot y Java, documentado mediante OpenAPI Specification vía Swagger. El Landing Page se desarrolla en HTML5, CSS3 y JavaScript.
-- **Capacidades obligatorias de la aplicación móvil.** La solución debe incorporar almacenamiento local de información en el dispositivo, acceso a al menos un recurso interno del dispositivo, integración con el servicio RESTful de desarrollo interno y consumo de al menos un servicio externo de terceros. **Aplicación al dominio:** el almacenamiento local sostiene el trabajo sin conectividad durante el muestreo de carga frutal en parcela; el recurso interno del dispositivo se emplea en la georreferenciación de la parcela; el servicio externo de terceros provee los datos meteorológicos horarios requeridos para el cálculo de acumulación de frío.
-- **Telemetría IoT con datos simulados.** El proyecto no contempla la implementación de hardware ni de sensores físicos de campo. La capa de telemetría se resuelve mediante un simulador de datos de estación agrometeorológica y de sensores de parcela, que alimenta al servicio RESTful con lecturas sintéticas coherentes con los rangos documentados para la zona de estudio. Esta decisión no compromete el núcleo funcional: las variables fisiológicas determinantes de la vecería —potencial hídrico del tallo, concentración foliar de nitrógeno y potasio, y conteo de frutos— se incorporan mediante registro manual guiado de mediciones que el productor o su técnico ya realizan con instrumental convencional (cámara de presión, análisis de laboratorio, muestreo de ramas marcadas).
-- **Feature de aprendizaje autónomo.** El alcance incluye la investigación, evaluación e integración de una tecnología, biblioteca o servicio no abordado en clase, con justificación de su selección y documentación del proceso de aprendizaje y aplicación.
-- **Demostración en dispositivo físico.** La presentación final se realiza sobre un dispositivo físico con la aplicación previamente instalada y operativa, distribuida mediante Firebase App Distribution u otro servicio equivalente.
-- **Fidelidad arquitectónica.** El diseño de todos los productos de la solución sigue Domain-Driven Design (DDD) y se documenta bajo Modelo C4 (Context, Container, Component, Code).
-- **Internacionalización y accesibilidad.** Los productos incorporan internacionalización bajo i18n y accesibilidad bajo a11y, considerando como base los idiomas English (en_US) y Latin American Spanish (es_419).
-- **Estandarización de idioma.** El idioma por defecto de mensajes, interfaz de usuario e interfaz de documentación en todos los productos de la solución es el inglés.
-- **Disponibilidad en la nube.** El Landing Page y los Web Services se despliegan en plataformas Server-Side o Cloud con acceso público mediante URL.
+- **Delimitación de dominio agronómico.** El motor analítico y los modelos de balance de carga, potencial hídrico del tallo ($\Psi_{tallo}$), suficiencia foliar y acumulación de frío invernal están parametrizados exclusivamente para el cultivo del olivo (*Olea europaea* L.) bajo regímenes de riego localizado y clima árido o semiárido. El sistema restringe su catálogo biológico a las variedades tipificadas en el dominio (*Criolla*, *Sevillana*, *Manzanilla* y *Arbequina*), no siendo aplicable a otras especies frutales sin una previa recalibración biofísica de sus umbrales fenológicos.
+- **Instrumentación y telemetría de campo.** La solución es estrictamente de base software; no abarca el diseño, manufactura ni distribución de hardware o sensores físicos en parcela. La capa de datos meteorológicos opera mediante el consumo de servicios web de terceros (APIs agrometeorológicas) complementada con un simulador de telemetría en backend para pruebas de integración. Las variables fisiológicas directas (potencial hídrico con cámara de Scholander, análisis foliar de laboratorio y conteo muestral de frutos) se incorporan mediante el registro digital asistido en la aplicación móvil por parte del productor o asistente técnico.
+- **Operatividad en campo sin conectividad (Offline-First).** Debido a la nula o intermitente cobertura de red celular en las zonas olivareras de campo, los flujos críticos de la aplicación móvil (delimitación perimetral por GPS, registro de lotes de muestreo de carga frutal y consulta de ventanas biológicas activas) deben operar de manera autónoma mediante almacenamiento local transaccional (SQLite), postergando la sincronización bidireccional con el servicio RESTful hasta el restablecimiento de la conexión.
+- **Ecosistema y stack tecnológico.** El alcance de desarrollo de software se delimita a cuatro componentes: una aplicación móvil nativa en Kotlin para Android, una aplicación móvil multiplataforma construida con Flutter y Dart, un servicio web de desarrollo interno bajo arquitectura RESTful con Spring Boot y Java 21 respaldado por base de datos relacional PostgreSQL, y un sitio web estático para el Landing Page (HTML5, CSS3, JavaScript). No se desarrollan clientes de escritorio nativos.
+- **Interoperabilidad y dependencias externas.** La precisión temporal y espacial del cálculo de porciones de frío (Dynamic Model) y evapotranspiración está sujeta a la disponibilidad, resolución y cuotas de consumo de las fuentes de datos agrometeorológicos externas enlazadas.
+- **Internacionalización y accesibilidad.** La plataforma se diseña con soporte de internacionalización (i18n) bajo dos idiomas base: inglés (`en_US`) como idioma estándar del sistema y español latinoamericano (`es_419`) para la operación en campo. Asimismo, las interfaces móviles incorporan pautas de accesibilidad visual y contraste cromático para su correcta legibilidad en entornos diurnos de alta radiación solar directa.
 
 \clearpage
 
@@ -261,14 +260,19 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 - **H6. Creemos que lograremos** reducir el índice de alternancia promedio de la cartera en 0,10 puntos tras dos campañas. **Si** los productores olivareros **logran** sostener el protocolo de regulación campaña tras campaña **con** la bitácora de trazabilidad que realimenta el índice de alternancia.
 - **H7. Creemos que lograremos** la firma de al menos 2 convenios institucionales. **Si** los gestores técnicos de organizaciones olivareras **logran** anticipar el volumen de acopio de su campaña **con** el portafolio de parcelas y la proyección agregada de cosecha.
 
+\newpage
+
 #### Lean UX Canvas
 &nbsp;
 
+Como se observa en la \autoref{fig:lean-ux-canvas}, el Lean UX Canvas sintetiza el modelo de valor y experimentación de Viora, articulando el problema de la alternancia productiva, los perfiles de productores y gestores técnicos, las soluciones funcionales propuestas, los resultados de negocio proyectados y las hipótesis prioritarias para guiar el desarrollo incremental del producto.
+
 \begin{figure}[H]
-\caption{Lean UX Canvas de la solución Viora.}
+\caption{Lean UX Canvas de la solución Viora}
+\label{fig:lean-ux-canvas}
 \centering
 \includegraphics[width=0.9\textwidth]{report/assets/lean-ux-canvas/lean-ux-canvas-viora.png}
-\caption*{\textit{Nota.} El diagrama presenta el Lean UX Canvas formulado para Viora, estructurando el problema de la alternancia productiva en olivos, los perfiles de productores y gestores técnicos, las soluciones propuestas, las métricas de negocio, los beneficios esperados y las hipótesis clave para la validación del MVP. Elaboración propia.}
+\caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
 \clearpage
