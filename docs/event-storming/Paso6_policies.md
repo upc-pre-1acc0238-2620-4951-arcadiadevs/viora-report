@@ -47,29 +47,32 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 +-----------------------------------------------------------------------------------------------+
 |                             MATRIZ DE POLÍTICAS REACTIVAS (VIORA)                             |
 +-----------------------------------------------------------------------------------------------+
-| POL01: Auto-Activation On Payment Approved            (Pagos -> Suscripción)                 |
-| POL02: Producer Affiliation On Cooperative Code       (Suscripción -> Cooperativa)           |
-| POL03: Member Contact Sync On Profile Updated          (User Profiles -> Cooperativa)         |
-| POL04: Critical Hydric Stress Alert Dispatcher        (Telemetría -> Alerta In-App)          |
-| POL05: Thermal Shock Flowering Protection             (Telemetría -> Alerta In-App)          |
-| POL06: Agroclimatic Alert Auto-Resolver               (Telemetría -> Monitoreo)              |
-| POL07: Auto-BBI Assessment On Plurianual Logs         (Historial Cosechas -> Vecería BBI)    |
-| POL08: Floral Yield Readjustment On Winter Heat       (Frío Dinámico -> Carga Frutal)        |
-| POL09: Auto-Prescription On Sampling Quota Met        (Muestreo Campo -> Motor de Aclareo)   |
-| POL10: Thinning Window Invalidation By Phenology      (Fenología -> Prescripciones Abiertas) |
-| POL11: Late Thinning Penalty Adjustment               (Aclareo Tardío -> Eficiencia Mitigad) |
-| POL12: Interannual Stabilization Tracking             (Cierre Cosecha -> Curva Histórica)    |
-| POL13: Sectorial Risk Aggregation On Overload         (Carga Predial -> Matriz Cooperativa)  |
-| POL14: Regional Frost Advisory Auto-Broadcast         (Pronóstico Clima -> Cooperativa)      |
-| POL15: Intake Volume Readjustment On Field Sampling   (Muestreo Predial -> Acopio Agregado)  |
+| POL01: Auto-Activation On Payment Approved            (Pagos -> Suscripción)                  |
+| POL02: Producer Affiliation On Cooperative Code       (Suscripción -> Cooperativa)            |
+| POL03: Member Contact Sync On Profile Updated         (User Profiles -> Cooperativa)          |
+| POL04: Critical Hydric Stress Alert Dispatcher        (Telemetría -> Alerta In-App)           |
+| POL05: Thermal Shock Flowering Protection             (Telemetría -> Alerta In-App)           |
+| POL06: Agroclimatic Alert Auto-Resolver               (Telemetría -> Monitoreo)               |
+| POL07: Auto-BBI Assessment On Plurianual Logs         (Historial Cosechas -> Vecería BBI)     |
+| POL08: Floral Yield Readjustment On Winter Heat       (Frío Dinámico -> Carga Frutal)         |
+| POL09: Auto-Prescription On Sampling Quota Met        (Muestreo Campo -> Motor de Aclareo)    |
+| POL10: Thinning Window Invalidation By Phenology      (Fenología -> Prescripciones Abiertas)  |
+| POL11: Late Thinning Penalty Adjustment               (Aclareo Tardío -> Eficiencia Mitigad)  |
+| POL12: Interannual Stabilization Tracking             (Cierre Cosecha -> Curva Histórica)     |
+| POL13: Sectorial Risk Aggregation On Overload         (Carga Predial -> Matriz Cooperativa)   |
+| POL14: Regional Frost Advisory Auto-Broadcast         (Pronóstico Clima -> Cooperativa)       |
+| POL15: Intake Volume Readjustment On Field Sampling   (Muestreo Predial -> Acopio Agregado)   |
+| POL16: Prescription Voiding On Plot Removal           (Baja Predial -> Regulación Carga)      |
+| POL17: Quota Release On Invitation Code Expiry        (Códigos -> Licencia Corporativa)       |
+| POL18: Historic Record Update On Thinning Execution   (Aclareo -> Liquidación Cosecha)        |
 +-----------------------------------------------------------------------------------------------+
-| TOTAL DE POLÍTICAS REACTIVAS FORMALIZADAS: 15 POLÍTICAS (POL01 - POL15)                      |
+| TOTAL DE POLÍTICAS REACTIVAS FORMALIZADAS: 18 POLÍTICAS (POL01 - POL18)                       |
 +-----------------------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 3. Catálogo Detallado de Políticas Reactivas (POL01 a POL15)
+## 3. Catálogo Detallado de Políticas Reactivas (POL01 a POL18)
 
 ---
 
@@ -93,9 +96,9 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 * **US / BDD:** `US07` (Escenario 1)
 * **Regla Reactiva Formal:**
   * **WHENEVER:** `CooperativeCodeRedeemed` (`EV13`)
-  * **IF:** `codeStatus == 'VALID' && cooperativeQuotaAvailable == true`
+  * **IF:** `producerAlreadyAffiliatedToCooperative == false`
   * **THEN:** `AffiliateCooperativeProducer` (obteniendo los datos de contacto desde `Profile`).
-* **Lógica de Negocio Agronómica:** Al canjear un cupón corporativo, el productor obtiene su suscripción y, en el mismo instante, la política lo afilia formalmente a la cartera de socios de la cooperativa utilizando su identidad validada en `Profile`, haciéndolo visible para el gestor técnico en la matriz sectorial.
+* **Lógica de Negocio Agronómica:** Al canjear un cupón corporativo, el productor obtiene su suscripción y, acto seguido, la política lo afilia formalmente a la cartera de socios de la cooperativa utilizando su identidad validada en `Profile`, haciéndolo visible para el gestor técnico en la matriz sectorial. La condición de guarda es únicamente de idempotencia frente a reentregas del evento: ni la validez del código ni la disponibilidad de cupo se reverifican aquí. La validez ya fue comprobada dentro de `CMD10` —el evento `EV13` es la prueba de que el canje prosperó— y el cupo de plazas y superficie se comprometió **al emitir** el código, no al canjearlo. Reverificar el cupo en este punto rechazaría precisamente los canjes de una cooperativa que agotó su emisión, que son los legítimos.
 
 ---
 
@@ -199,7 +202,7 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 * **US / BDD:** `US27` (Escenario 3)
 * **Regla Reactiva Formal:**
   * **WHENEVER:** `ThinningWindowClosedByPitHardening` (`EV43`)
-  * **IF:** `prescriptionStatus in ['PRESCRIBED', 'PENDING_EXECUTION']`
+  * **IF:** `prescriptionStatus in ['SAMPLING_IN_PROGRESS', 'PRESCRIBED']`
   * **THEN:** `ExpirePendingThinningPrescriptions` (marcar prescripción como expirada biológicamente).
 * **Lógica de Negocio Agronómica:** Una vez que el endocarpio se lignifica (endurecimiento del hueso, típicamente en diciembre), la semilla ya sintetizó giberelinas que inhiben la inducción floral del año siguiente. Aclarear después de esta fecha solo genera costos de mano de obra sin beneficio mitigador; la política cierra y anula las órdenes pendientes.
 
@@ -212,8 +215,7 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 * **US / BDD:** `US28` (Escenario 2)
 * **Regla Reactiva Formal:**
   * **WHENEVER:** `LateThinningExecutionRecorded` (`EV45`)
-  * **IF:** `executionDate > pitHardeningDate`
-  * **THEN:** `RecalculateMitigationEfficiencyFactor` (aplicar factor de castigo a la proyección del BBI).
+  * **THEN:** `RecalculateMitigationEfficiencyFactor` (aplicar factor de castigo del 70% a la eficiencia de mitigación en la proyección del BBI).
 * **Lógica de Negocio Agronómica:** Si un productor aclara tarde, la política registra una penalización en el modelo de alternancia, advirtiendo al agricultor y al agrónomo que la eficacia para el retorno floral de la campaña venidera disminuyó en más del 70%.
 
 ---
@@ -270,6 +272,49 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 
 ---
 
+### **POL16: Prescription Voiding On Plot Removal Policy**
+* **Contexto Emisor:** `Olive Orchard & Plot Management`
+* **Contexto Receptor:** `Crop Load Regulation & Thinning Advisory`
+* **Agregado Origen $\rightarrow$ Agregado Destino:** `Plot` $\rightarrow$ `FruitThinningPrescription`
+* **US / BDD:** `US11`
+* **Regla Reactiva Formal:**
+  * **WHENEVER:** `PlotRemoved` (`EV17`)
+  * **IF:** `prescriptionStatus in ['SAMPLING_IN_PROGRESS', 'PRESCRIBED']`
+  * **THEN:** `VoidPendingThinningPrescriptions` $\rightarrow$ transiciona la prescripción a `VOIDED_BY_PLOT_REMOVAL`.
+* **Lógica de Negocio Agronómica:** Una parcela dada de baja deja de ser una unidad productiva vigente, de modo que ninguna recomendación de aclareo pendiente sobre ella conserva sentido. La anulación no alcanza a prescripciones ya ejecutadas ni cerradas por fenología, porque ambas son hechos consumados que la liquidación de campaña necesita conservar, y tampoco destruye la evidencia muestral recogida. Esta condición figuraba como invariante clave de `CMD14`; al abarcar dos agregados alojados en bounded contexts distintos no puede sostenerse como invariante de agregado, dado que las invariantes se verifican dentro de un único límite transaccional, y por ello se formaliza aquí como política de consistencia eventual con compensación en el contexto receptor.
+
+---
+
+### **POL17: Quota Release On Invitation Code Expiry Policy**
+* **Contexto Emisor:** `Subscription & Cooperative Membership`
+* **Contexto Receptor:** `Subscription & Cooperative Membership`
+* **Agregado Origen $\rightarrow$ Agregado Destino:** `InvitationCodeBatch` $\rightarrow$ `CooperativeLicense`
+* **US / BDD:** `US08` (Escenario 2)
+* **Regla Reactiva Formal:**
+  * **WHENEVER:** `InvitationCodeExpired` (`EV52`)
+  * **IF:** `previousCodeStatus == 'AVAILABLE'`
+  * **THEN:** `ReleaseLicenseQuota` $\rightarrow$ decrementa `issuedSeats` en una unidad e `issuedArea` en la cuota de superficie del código caducado.
+* **Lógica de Negocio Agronómica:** El cupo de plazas y la superficie contratada se comprometen **en el momento de emitir** el código, no al canjearlo, para que el gestor técnico nunca distribuya más invitaciones de las que su convenio admite. Cuando un código caduca sin ser usado, esa reserva deja de tener destinatario y debe volver al pozo disponible; de lo contrario el cupo se degradaría de forma irreversible con cada lote que no se canjea por completo. Esta política es el **único** camino de liberación del modelo: la cancelación anticipada de un código no abre una vía propia, sino que acorta su vigencia (`CMD33`) y desemboca en este mismo evento. El decremento se aplica sobre los acumuladores de la licencia y no recalculando la suma de los códigos vigentes, porque esa suma cruzaría el límite transaccional del agregado y dejaría la invariante sin punto de verificación.
+
+> **Alcance conocido y deliberadamente no cubierto.** Un código ya `REDEEMED` cuya suscripción
+> patrocinada se cancela con posterioridad **no** libera plaza ni superficie con este diseño. El equipo
+> registró ese caso y decidió no construirlo en esta etapa. Queda documentado como limitación conocida,
+> no como omisión.
+
+---
+
+### **POL18: HistoricRecordUpdateOnThinningExecutionConfirmed Policy**
+* **Contexto Emisor:** `Crop Load Regulation & Thinning Advisory`
+* **Contexto Receptor:** `Harvest Settlement & Performance Reporting`
+* **Agregado Origen $\rightarrow$ Agregado Destino:** `FruitThinningPrescription` $\rightarrow$ `AgronomicReport`
+* **US / BDD:** `US29` (Escenario 2)
+* **Regla Reactiva Formal:**
+  * **WHENEVER:** `ThinningExecutionConfirmed` (`EV44`)
+  * **THEN:** `RecordThinningExecutionOnCycleLog` (vincular remoción ejecutada en verde con el balance final cosechado al cierre de campaña).
+* **Lógica de Negocio Agronómica:** Permite contrastar la tasa de aclareo efectivamente aplicada frente a la producción real obtenida, alimentando la evaluación de la eficacia mitigadora interanual.
+
+---
+
 ## 4. Matriz de Trazabilidad: Evento Disparador $\rightarrow$ Política $\rightarrow$ Comando Destino
 
 | ID Política | Nombre de la Política | Evento Disparador (`EVxx`) | Contexto Origen $\rightarrow$ Destino | Comando / Acción Ejecutada |
@@ -289,9 +334,12 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 | **POL13** | *Sectorial Risk Aggregation On Overload* | `EV40` (`OverloadRiskDetected`) | Regulación Carga $\rightarrow$ Cooperativa | `FlagSectorialRiskInCooperativeMatrix` |
 | **POL14** | *Regional Frost Advisory Auto-Broadcast* | `EV25` (`WeatherForecastIngested`) | Telemetría $\rightarrow$ Cooperativa | `BroadcastRegionalFrostAdvisory` |
 | **POL15** | *Intake Volume Readjustment On Sampling* | `EV37` (`SamplingRoundCompleted`) | Regulación Carga $\rightarrow$ Cooperativa | `ProjectCooperativeIntakeVolume` (`EV50`) |
+| **POL16** | *Prescription Voiding On Plot Removal* | `EV17` (`PlotRemoved`) | Parcelas $\rightarrow$ Regulación Carga | `VoidPendingThinningPrescriptions` |
+| **POL17** | *Quota Release On Invitation Code Expiry* | `EV52` (`InvitationCodeExpired`) | Suscripciones $\rightarrow$ Suscripciones | `ReleaseLicenseQuota` |
+| **POL18** | *Historic Record Update On Thinning Execution* | `EV44` (`ThinningExecutionConfirmed`) | Regulación Carga $\rightarrow$ Liquidación Cosecha | `RecordThinningExecutionOnCycleLog` |
 
 ---
 
 ## 5. Consideraciones de Cierre
 
-Las 15 políticas reactivas formalizadas orquestan la automatización asíncrona del ecosistema Viora. Al desacoplar la emisión de eventos de la ejecución de comandos receptores, se garantiza que las alertas fenológicas, la sincronización de contactos de socios, la protección frente al estrés hídrico y las proyecciones cooperativas se actualicen dinámicamente preservando la autonomía y consistencia de cada contexto delimitado.
+Las 18 políticas reactivas formalizadas orquestan la automatización asíncrona del ecosistema Viora. Al desacoplar la emisión de eventos de la ejecución de comandos receptores, se garantiza que las alertas fenológicas, la sincronización de contactos de socios, la protección frente al estrés hídrico, la devolución de cupo corporativo y las proyecciones cooperativas se actualicen dinámicamente preservando la autonomía y consistencia de cada contexto delimitado.
