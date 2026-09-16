@@ -14,7 +14,7 @@
 
 **La vecería como problema central, no como síntoma.** La vecería o alternancia productiva es un fenómeno fisiológico por el cual el olivo alterna entre años de alta producción ("años ON") y años de baja o nula cosecha ("años OFF"). La causa raíz no es climática sino de balance de carga: la carga frutal excesiva de un año ON agota las reservas de carbohidratos no estructurales (almidón y azúcares en hojas y madera), drena masivamente nitrógeno y potasio foliar hacia el fruto, e induce un bloqueo hormonal (auxinas y giberelinas emitidas desde la semilla) sobre las yemas que debían diferenciarse en flor para la campaña siguiente (Lavee, 2007; Paoletti et al., 2021). El clima actúa como disparador y amplificador: un evento de floración o cuaja adverso genera un año OFF, cuyas reservas acumuladas producen un año ON desmedido, y el ciclo se autosostiene indefinidamente si nadie interviene sobre la carga.
 
-Esta distinción es determinante para el diseño de la solución. La variabilidad climática puede monitorearse pero no controlarse; la carga frutal sí es una variable de decisión del productor, y es precisamente sobre ella donde existe evidencia de que la alternancia puede quebrarse.
+Esta distinción es determinante para el diseño de la solución. La variabilidad climática puede monitorearse pero no controlarse; la carga frutal, en cambio, sí constituye una variable de decisión directa del productor. Si bien la vecería es un fenómeno fisiológico intrínseco del olivo que no puede suprimirse de forma absoluta, existe sólida evidencia agronómica de que la regulación deliberada de la carga permite amortiguar la amplitud de las oscilaciones productivas, mitigar las pérdidas del año OFF y evitar que este se prolongue de manera estructural en campañas consecutivas.
 
 **Evidencia local de la magnitud de la alternancia.** La volatilidad interanual del olivar tacneño es extrema y está documentada. En campañas adversas se reportaron mermas de hasta 90 % en La Yarada Los Palos, con proyecciones de cosecha equivalentes a apenas 10 % a 20 % del año previo, vinculadas a la ausencia del "golpe de frío" nocturno necesario para el cuajado (Andina, 2024). En sentido inverso, en septiembre de 2025 se reportó un incremento de 18 615 % en la producción de aceituna de Tacna respecto al mismo mes de 2024 (MIDAGRI, 2025). Ambas cifras no son dos noticias independientes: son las dos caras del mismo ciclo ON/OFF, y constituyen la evidencia más contundente de que el problema no se ha gestionado.
 
@@ -164,7 +164,7 @@ Los productores olivareros de la macro-región sur y las organizaciones que acop
 
 \vspace{0.15cm}
 
-1. **Quebrar el ciclo de alternancia a nivel de parcela.** Reducir de forma medible el índice de alternancia (BBI) de las parcelas gestionadas mediante la regulación deliberada de la carga frutal y de las prácticas asociadas.
+1. **Atenuar la severidad de la alternancia productiva a nivel de parcela.** Reducir de forma medible el índice de alternancia (BBI) y mitigar el impacto del año OFF en las parcelas gestionadas mediante la regulación deliberada de la carga frutal y de las prácticas asociadas.
 2. **Convertir la evidencia agronómica en decisiones fechadas.** Entregar al productor, dentro de la ventana fisiológica útil, la acción concreta y dimensionada que corresponde al estado real de su parcela.
 3. **Dar previsibilidad de volumen a la cadena de valor.** Proveer a las organizaciones olivareras una proyección agregada del acopio esperado que permita planificar capacidad, calibres y compromisos comerciales.
 
