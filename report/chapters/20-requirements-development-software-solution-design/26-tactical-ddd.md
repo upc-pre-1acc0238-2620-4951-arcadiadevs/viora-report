@@ -547,15 +547,15 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Method | Route (Endpoint) | Request Body (DTO) | Response (DTO / Code) | Purpose & Traceability (US/TS) |
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
-| `POST` | \nolinkurl{/api/v1/subscriptions} | `Create` `Subscription` `Request` | `Subscription` `Resource` (201 Created) | Creación de intención contractual de suscripción individual (`US07`/`TS06`). |
-| `POST` | \nolinkurl{/api/v1/subscriptions/{id}/checkouts} | `Create` `Checkout` `Request` | `Checkout` `Resource` (201 Created) | Generación de preferencia de pago y URL de checkout en Mercado Pago (`US07`/`TS06`). |
-| `GET` | \nolinkurl{/api/v1/subscriptions} | N/A | `Subscription` `Resource` (200 OK) | Consulta de suscripción activa del titular autenticado (`US07`). |
-| `GET` | \nolinkurl{/api/v1/subscriptions/{id}} | N/A | `Subscription` `Resource` (200 OK) | Consulta detallada del contrato de suscripción (`US07`). |
-| `GET` | \nolinkurl{/api/v1/subscription-plans} | N/A | `List` `Plan` `Offer` `Resource`(200 OK) | Catálogo comercial de planes y tarifas vigentes (`US07`). |
-| `POST` | \nolinkurl{/api/v1/payment-notifications/mercado-pago} | `Payment` `Notification` `Request` | `200 OK` | Recepción asíncrona y reconciliación de pago de Mercado Pago (`US07`/`TS07`/`CMD09`). |
+| `POST` | \nolinkurl{/api/v1/subscriptions} | `Create` `Subscription` `Request` | `Subscription` `Resource` (201 Created) | Creación de intención contractual de suscripción individual (`US06`/`TS06`). |
+| `POST` | \nolinkurl{/api/v1/subscriptions/{id}/checkouts} | `Create` `Checkout` `Request` | `Checkout` `Resource` (201 Created) | Generación de preferencia de pago y URL de checkout en Mercado Pago (`US06`/`TS06`). |
+| `GET` | \nolinkurl{/api/v1/subscriptions} | N/A | `Subscription` `Resource` (200 OK) | Consulta de suscripción activa del titular autenticado (`US06`). |
+| `GET` | \nolinkurl{/api/v1/subscriptions/{id}} | N/A | `Subscription` `Resource` (200 OK) | Consulta detallada del contrato de suscripción (`US06`). |
+| `GET` | \nolinkurl{/api/v1/subscription-plans} | N/A | `List` `Plan` `Offer` `Resource`(200 OK) | Catálogo comercial de planes y tarifas vigentes (`US06`). |
+| `POST` | \nolinkurl{/api/v1/payment-notifications/mercado-pago} | `Payment` `Notification` `Request` | `200 OK` | Recepción asíncrona y reconciliación de pago de Mercado Pago (`US06`/`TS07`/`CMD09`). |
 | `POST` | \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} | `Generate` `Invitation` `Codes` `Batch` `Request` | `Invitation` `Batch` `Resource` (201 Created) | Emisión de lote de códigos por gestor contra cupo institucional (`US08`/`TS08`/`CMD11`). |
 | `GET` | \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} | N/A (`?page=0&size=20`) | `Page` `Invitation` `Batch` `Summary`(200 OK) | Consulta paginada y auditoría de códigos generados (`US08`/`TS09`). |
-| `POST` | \nolinkurl{/api/v1/cooperative-code-redemptions} | `Redeem` `Cooperative` `Code` `Request` | `Subscription` `Resource` (201 Created) | Canje de código corporativo por productor autenticado sin BOLA (`US08`/`TS10`/`CMD10`). |
+| `POST` | \nolinkurl{/api/v1/cooperative-code-redemptions} | `Redeem` `Cooperative` `Code` `Request` | `Subscription` `Resource` (201 Created) | Canje de código corporativo por productor autenticado (`US07`/`TS10`/`CMD10`). |
 | `POST` | \nolinkurl{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} | `Shorten` `Invitation` `Code` `Expiry` `Request` | `200 OK` | Adelanto de vigencia para expiración anticipada (`US08`/`TS41`/`CMD33`). |
 
 ##### DTOs (Resources) y Mappers (Assemblers)
@@ -1128,7 +1128,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `PUT` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices/{deviceId}} | `Calibrate` `Device` `Request` | `Device` `Resource` (200 OK) | Calibración de offset en sonda edáfica y factor edafológico (`US15`/`TS42`/`CMD16`). |
 | `DELETE` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices/{deviceId}} | N/A | `204 No Content` | Desvinculación lógica de la sonda preservando histórico (`US16`/`TS18`/`CMD17`). |
 | `POST` | \nolinkurl{/api/v1/plots/{plotId}/telemetries} | `Ingest` `Telemetry` `Request` | `Telemetry` `Resource` (201 Created) | Ingesta individual o en lote de lecturas de sensores (`US17`/`TS19`/`CMD18`). |
-| `GET` | \nolinkurl{/api/v1/plots/{plotId}/telemetries} | N/A (`Dateend` `Date`) | `List` `Telemetry` `Resource`(200 OK) | Consulta de series climáticas para gráficas y monitoreo (`US17`/`TS19`). |
+| `GET` | \nolinkurl{/api/v1/plots/{plotId}/telemetries} | N/A (`?startDate=&endDate=`) | `List` `Telemetry` `Resource`(200 OK) | Consulta de series climáticas para gráficas y monitoreo (`US17`/`TS19`). |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}/forecasts} | N/A | `Weather` `Forecast` `Resource` (200 OK) | Consulta de pronóstico meteorológico a 7 días vía Open-Meteo (`US19`/`TS20`). |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}/incidents} | N/A (`?status=ACTIVE`) | `List` `Incident` `Resource`(200 OK) | Consulta de alertas e incidentes de estrés hídrico o térmico (`US18`/`POL04`/`POL05`). |
 
@@ -1527,7 +1527,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 ### Bounded Context: Crop Load Regulation and Thinning Advisory
 
-**Propósito:** Núcleo agronómico prescriptivo de Viora. Regula la carga frutal del olivar para mitigar la alternancia productiva entre campañas consecutivas. Gestiona el registro de muestreos de campo con soporte *offline-first* en dispositivos móviles (`TS24` / SQLite Room y sqflite con sincronización `WorkManager` y claves compuestas de idempotencia), calcula la tasa sostenible de frutos por metro lineal de copa, emite prescripciones automáticas de aclareo frutal en verde cuando se alcanza la representatividad muestral (`POL09` / `EV37` / `EV39`), alerta sobrecarga productiva sectorial hacia la cooperativa (`POL13` / `EV40`), y valida la ejecución oportuna de la labor frente al endurecimiento de carozo (`EV44` vs `EV45`).
+**Propósito:** Núcleo agronómico prescriptivo de Viora. Regula la carga frutal del olivar para mitigar la alternancia productiva entre campañas consecutivas. Gestiona el registro de muestreos de campo con soporte *offline-first* en dispositivos móviles (`TS24` / SQLite Room y sqflite con sincronización `WorkManager` y claves compuestas de idempotencia), calcula la tasa sostenible de frutos por metro lineal de copa, emite prescripciones automáticas de aclareo frutal en verde cuando se alcanza la representatividad muestral (`POL09` / `EV37` / `EV39`), alerta sobrecarga productiva sectorial hacia la cooperativa (`POL13` / `EV40`), y valida la ejecución oportuna de la labor frente al endurecimiento de carozo (`EV44` vs `EV45`). Otorga trazabilidad y cobertura técnica directa a las historias de usuario **US24** (Muestreo guiado de cuajado offline), **US25** (Avance y representatividad muestral con detalle de árboles evaluados), **US26** (Carga frutal admisible sostenible), **US27** (Prescripción in-app y ventana fenológica de intervención) y **US28** (Registro y confirmación de ejecución de aclareo).
 
 #### Domain Layer
 
@@ -1666,7 +1666,8 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | Method | Route (Endpoint) | Request Body (DTO) | Response (DTO / Code) | Purpose & Traceability (US/TS) |
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
 | `POST` | \nolinkurl{/api/v1/plots/{plotId}/samplings} | `Submit` `Sampling` `Request` | `Sampling` `Summary` `Resource` (201 Created) | Ingesta de muestreos individuales o por lote con cabecera `Idempotency-Key`(`TS24`/`US24`/`CMD24`,`CMD25`). |
-| `GET` | \nolinkurl{/api/v1/plots/{plotId}/samplings} | N/A (`Yearviewsummary`) | `Sampling` `Summary` `Resource` (200 OK) | Consulta del avance y representatividad muestral de la campaña (`TS25`/`US25`/`RM09`). |
+| `GET` | \nolinkurl{/api/v1/plots/{plotId}/samplings} | N/A (`?campaignYear=&view=summary`) | `Sampling` `Summary` `Resource` (200 OK) | Consulta del avance y representatividad muestral de la campaña (`TS25`/`US25`/`RM09`). |
+| `POST` | \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions} | N/A | `Prescription` `Resource` (201 Created) | Determinación de carga frutal sostenible y emisión de prescripción bajo demanda (`CMD26`/`US26`). |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions} | N/A (`?status=ACTIVE`) | `Prescription` `Resource` (200 OK) | Consulta de prescripción vigente o por campaña (`TS26`/`US27`/`RM10`). |
 | `GET` | \nolinkurl{/api/v1/thinning-prescriptions/{id}} | N/A | `Prescription` `Resource` (200 OK) | Consulta de prescripción por identificador unívoco directo (`TS26`/`US27`). |
 | `POST` | \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations} | `Confirm` `Execution` `Request` | `Execution` `Confirmation` `Resource` (201 Created) | Declaración y confirmación de labor de aclareo oportuna o tardía (`TS27`/`US28`/`CMD28`). |
@@ -1906,7 +1907,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
 | `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members} | N/A (`?status=ACTIVE`) | `List` `Cooperative` `Member` `Resource`(200 OK) | Padrón de socios agremiados (`US08`/`RM13`). |
 | `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members/{memberId}} | N/A | `Cooperative` `Member` `Resource` (200 OK) | Ficha gremial individual de socio (`US08`/`RM13`). |
-| `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/territorial-risk} | N/A (`latitudelongitude`) | `Territorial` `Risk` `Matrix` `Resource` (200 OK) | Semáforo territorial de riesgo fenológico y sobrecarga con geolocalización GPS (`US12`/`US31`/`TS29`/`RM14`). |
+| `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/territorial-risk} | N/A (`?latitude=&longitude=`) | `Territorial` `Risk` `Matrix` `Resource` (200 OK) | Semáforo territorial de riesgo fenológico y sobrecarga con geolocalización GPS (`US12`/`US31`/`TS29`/`RM14`). |
 | `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/intake-forecasts} | N/A (`?campaignYear=`) | `Intake` `Forecast` `Resource` (200 OK) | Proyección temprana agregada de acopio en toneladas (`US32`/`TS30`/`RM15`). |
 
 ##### DTOs (Resources) y Mappers (Assemblers)
@@ -1946,12 +1947,12 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `cooperatives` | `name` | `VARCHAR(150)` | `NOT NULL` | Razón social de la organización agraria. |
 | `cooperatives` | `tax_id` | `VARCHAR(11)` | `NOT NULL, UNIQUE` | RUC institucional de 11 dígitos. |
 | `cooperatives` | `license_id` | `UUID` | `NOT NULL` | Referencia al contrato corporativo en Subscription. |
-| `cooperatives` | `technicalmanageruserid` | `UUID` | `NOT NULL` | Gestor técnico único autorizado de la cooperativa. |
-| `cooperativemembers` | `id` | `UUID` | `PRIMARY KEY` | Identificador del socio en padrón. |
-| `cooperativemembers` | `cooperative_id` | `UUID` | `NOT NULL, FK` | Cooperativa a la que pertenece. |
-| `cooperativemembers` | `producer_user_id` | `UUID` | `NOT NULL` | Usuario productor socio. |
-| `cooperativemembers` | `full_name` | `VARCHAR(150)` | `NOT NULL` | Nombre civil del socio. |
-| `cooperativemembers` | `declared_ha` | `NUMERIC(8,2)` | `NOT NULL` | Hectáreas aportadas al padrón. |
+| `cooperatives` | `technical_manager_user_id` | `UUID` | `NOT NULL` | Gestor técnico único autorizado de la cooperativa. |
+| `cooperative_members` | `id` | `UUID` | `PRIMARY KEY` | Identificador del socio en padrón. |
+| `cooperative_members` | `cooperative_id` | `UUID` | `NOT NULL, FK` | Cooperativa a la que pertenece. |
+| `cooperative_members` | `producer_user_id` | `UUID` | `NOT NULL` | Usuario productor socio. |
+| `cooperative_members` | `full_name` | `VARCHAR(150)` | `NOT NULL` | Nombre civil del socio. |
+| `cooperative_members` | `declared_ha` | `NUMERIC(8,2)` | `NOT NULL` | Hectáreas aportadas al padrón. |
 
 ##### Script DDL de Base de Datos
 

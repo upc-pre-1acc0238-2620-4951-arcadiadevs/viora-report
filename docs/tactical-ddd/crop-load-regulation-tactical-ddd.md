@@ -4,6 +4,8 @@
 
 **Propósito:** convierte el conteo de frutos cuajados a pie de árbol en una prescripción agronómica accionable. Certifica la representatividad estadística del muestreo, determina la carga frutal que el árbol puede sostener sin comprometer sus reservas, emite el porcentaje de remoción y su ventana biológica, y fiscaliza la ejecución en campo hasta el cierre por endurecimiento del carozo.
 
+**Trazabilidad con Requerimientos del Negocio:** Da cobertura técnica directa a las historias de usuario **US24** (Muestreo guiado de cuajado offline con deduplicación por clave de idempotencia), **US25** (Consulta de representatividad estadística e historial de árboles muestreados en campo), **US26** (Determinación de carga frutal admisible sostenible), **US27** (Prescripción in-app y ventana fenológica de intervención) y **US28** (Registro y confirmación de ejecución de aclareo oportuno o tardío).
+
 Es el único contexto del sistema que emite un acto prescriptivo. No posee la parcela, que pertenece a `Olive Orchard and Plot Management`; no computa el Índice de Vecería Bienal ni las porciones de frío, que pertenecen a `Phenology and Historical Bearing Analytics`; no liquida la cosecha ni evalúa la curva de estabilización, que pertenecen a `Harvest Settlement and Performance Reporting`. Referencia la parcela de forma lógica por `PlotId` y conserva la revisión predial observada al prescribir, sin replicar geometría ni titularidad.
 
 #### Domain Layer
@@ -265,7 +267,7 @@ Cada manejador implementa `handle(command): Result`. Las fachadas `CropLoadComma
 ##### Query Handlers
 
 - **`GetPrescriptionByIdQueryHandler`**: `prescriptions`, `authorization`; `handle(GetPrescriptionById): PrescriptionSnapshot`. Autoriza contra la titularidad de la parcela.
-- **`GetCurrentPrescriptionQueryHandler`**: `prescriptions`, `campaignClock`, `authorization`; `handle(GetCurrentPrescription): Optional<PrescriptionSnapshot>`. Sostiene el segmento `current` de las rutas de campo. Autoriza contra la titularidad de la parcela igual que su hermano: la ruta `current` expone el mismo dato y no está exenta del control.
+- **`GetCurrentPrescriptionQueryHandler`**: `prescriptions`, `campaignClock`, `authorization`; `handle(GetCurrentPrescription): Optional<PrescriptionSnapshot>`. Resuelve la prescripción activa vigente para la campaña mediante el filtro de consulta `?scope=current` o `?status=ACTIVE` sobre la colección predial. Autoriza contra la titularidad de la parcela igual que su hermano: expone el mismo dato y no está exento del control.
 - **`ListPrescriptionHistoryQueryHandler`**: `prescriptions`, `authorization`; `handle(ListPrescriptionHistory): Page<PrescriptionSummary>`. Historial plurianual por parcela, servido desde el propio repositorio del agregado. No existe un almacén de lectura separado: `RM10` y `RM09` se proyectan desde el snapshot del agregado, que es su fuente. El historial devuelve `PrescriptionSummary`, que no corresponde a ningún read model del catálogo.
 - **`GetSamplingRoundStatusQueryHandler`**: `prescriptions`; `handle(GetSamplingRoundStatus): SamplingRoundSnapshot`. Sirve `RM09` y permite al cliente de campo saber cuántos árboles faltan para alcanzar el umbral sin descargar los registros. Lo expone `roundStatus()` en `FieldSamplingController`.
 

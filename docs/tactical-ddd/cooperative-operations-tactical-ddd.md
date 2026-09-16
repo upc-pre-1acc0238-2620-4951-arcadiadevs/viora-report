@@ -127,7 +127,7 @@ Eventos inmutables en tiempo pasado que comunican hechos transaccionales signifi
 En esta capa se definen los puntos de entrada y salida del sistema. Transforma solicitudes HTTP entrantes en Commands o Queries para la Application Layer y serializa los resultados del dominio en Resources (DTOs) conforme a OpenAPI 3.0 y respuestas estructuradas RFC 7807.
 
 ##### Controllers (REST)
-Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP estándar, implementando los contratos de las Historias de Usuario US08, US31 y US32:
+Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP estándar, implementando los contratos de las Historias de Usuario US08, US12, US31 y US32:
 
 * **`CooperativeMembershipController`** (Ruta base: `/api/v1/cooperatives/{cooperativeId}/members`):
   * `GET /api/v1/cooperatives/{cooperativeId}/members` - Retorna el padrón completo de socios productores agremiados (`RM13`, `US08`). Responde `200 OK` con un arreglo de `CooperativeMemberResource`. La identidad del gestor técnico solicitante se valida de forma autoritativa mediante los claims de su token JWT (`role: ROLE_GESTOR_COOPERATIVA`).
