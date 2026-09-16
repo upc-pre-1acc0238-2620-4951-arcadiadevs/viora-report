@@ -20,6 +20,8 @@ A continuación, se presentan los planes de desarrollo profesional continuo de c
 * **Relevante (R):** Fortalece el criterio profesional para traducir necesidades de usuarios reales en historias de usuario bien acotadas y priorizar Product Backlogs de alto impacto.
 * **Temporal (T):** Obtener la certificación PSPO I dentro de los primeros 4 meses de graduado.
 
+\newpage
+
 \noindent \textbf{Li Gayoso, Diana Carolina (U202415749)}
 
 \noindent {Objetivo SMART 1: Certificación y especialización en Arquitectura Orientada a Eventos y Domain-Driven Design}
