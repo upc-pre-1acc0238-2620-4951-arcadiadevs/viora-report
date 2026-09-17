@@ -970,7 +970,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
-| `register` | `id: SensorNodeId`,`plotId: PlotId`,`name: SensorNodeName`,`type: SensorNodeType`,`depth: SensorDepth`,`texture: SoilTextureType`,`mult: CalibrationMultiplier` | `VirtualSensorNode` | Registra el nodo en el inventario predial y emite `VirtualSensorNodeRegisteredEvent`. |
+| `register` | `id: SensorNodeId`,`plotId: PlotId`,`name: SensorNodeName`,`type: SensorNodeType`,`depth: SensorDepth`,`texture: SoilTextureType`,`mult: CalibrationMultiplier` | `VirtualSensorNode` | Registra el nodo en el inventario predial y emite `VirtualSensorNodeLinkedEvent`. |
 | `calibrate` | `depth: SensorDepth`,`texture: SoilTextureType`,`mult: CalibrationMultiplier` | `void` | Actualiza coeficientes de cálculo de humedad volumétrica. |
 | `rename` | `newName: SensorNodeName` | `void` | Actualiza la denominación del nodo garantizando unicidad en el predio. |
 | `unlink` | `void` | `void` | Desvincula lógicamente el sensor de la parcela activa. |
@@ -999,8 +999,8 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
-| `ingestHourlyReading` | `reading: HourlyTelemetryReading`,`evaluator: AgroclimaticThresholdEvaluator` | `void` | Incorpora lectura horaria, evalúa umbrales y emite `HourlyTelemetryReadingIngestedEvent`. |
-| `updateWeatherForecast` | `forecasts: List<WeatherForecastDay>` | `void` | Actualiza pronóstico semanal georreferenciado y emite `WeatherForecastSyncedEvent`. |
+| `ingestHourlyReading` | `reading: HourlyTelemetryReading`,`evaluator: AgroclimaticThresholdEvaluator` | `void` | Incorpora lectura horaria, evalúa umbrales y emite `TelemetryDataIngestedEvent`. |
+| `updateWeatherForecast` | `forecasts: List<WeatherForecastDay>` | `void` | Actualiza pronóstico semanal georreferenciado y emite `WeatherForecastIngestedEvent`. |
 | `getActiveIncidents` | `void` | `List<AgroclimaticIncident>` | Retorna incidentes abiertos de estrés hídrico o choque térmico. |
 
 ##### Modelos del Dominio: `HourlyTelemetryReading` (`Internal Entity`)
@@ -1113,10 +1113,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `Telemetry` `Series` `Repository` | Repository | `findByPlotId(plotId: PlotId): Optional<TelemetrySeries>` | Localiza la serie asociada a una parcela. |
 | `Telemetry` `Series` `Repository` | Repository | `findBySensorNodeId(nodeId: SensorNodeId): Optional<TelemetrySeries>` | Recupera serie emitida por un sensor específico. |
 | `Telemetry` `Series` `Repository` | Repository | `save(series: TelemetrySeries): TelemetrySeries` | Guarda lecturas, pronósticos e incidentes del agregado. |
-| `VirtualSensor` `NodeRegistered` `Event` | Domain Event | `nodeId: UUID, plotId: UUID, name: String, type: String, occurredOn: Instant` | Notifica registro de sensor para inicializar ingesta (`EV18`). |
-| `Hourly` `Telemetry` `Reading` `IngestedEvent` | Domain Event | `seriesId: UUID, nodeId: UUID, observedAt: Instant, occurredOn: Instant` | Notifica ingesta de medición horaria para modelos fenológicos (`EV21`). |
+| `VirtualSensor` `NodeLinked` `Event` | Domain Event | `nodeId: UUID, plotId: UUID, name: String, type: String, occurredOn: Instant` | Notifica registro de sensor para inicializar ingesta (`EV18`). |
+| `Telemetry` `Data` `IngestedEvent` | Domain Event | `seriesId: UUID, nodeId: UUID, observedAt: Instant, occurredOn: Instant` | Notifica ingesta de medición horaria para modelos fenológicos (`EV21`). |
 | `HydricStress` `AlertTriggered` `Event` | Domain Event | `plotId: UUID, severity: String, moisture: Double, occurredOn: Instant` | Alerta estrés hídrico para activar recomendaciones de riego (`EV22`). |
-| `Weather` `ForecastSynced` `Event` | Domain Event | `plotId: UUID, forecastDate: LocalDate, minTemp: Double, occurredOn: Instant` | Notifica pronóstico sincronizado con Open-Meteo (`EV25`). |
+| `Weather` `ForecastIngested` `Event` | Domain Event | `plotId: UUID, forecastDate: LocalDate, minTemp: Double, occurredOn: Instant` | Notifica pronóstico sincronizado con Open-Meteo (`EV25`). |
 
 #### Interface Layer
 
@@ -1304,7 +1304,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `rectifyHarvest` | `year: CampaignYear`,`yield: Double` | `void` | Corrige pesajes de cosechas previas actualizando el índice de alternancia. |
 | `deleteHarvest` | `year: CampaignYear` | `void` | Elimina registro histórico manteniendo la coherencia de la serie. |
 | `processDailyTemperatures` | `date: LocalDate`,`temps: List<Double>` | `void` | Computa porciones de frío de Erez considerando termodestrucción. |
-| `processPostAnthesisThermalTime` | `date: LocalDate`,`max: Double`,`min: Double` | `void` | Acumula GDD y detecta endurecimiento de carozo emitiendo `PhenologicalStageTransitionedEvent`. |
+| `processPostAnthesisThermalTime` | `date: LocalDate`,`max: Double`,`min: Double` | `void` | Acumula GDD y detecta endurecimiento de carozo emitiendo `PitHardeningStageReachedEvent`. |
 
 ##### Modelos del Dominio: `HistoricalHarvestEntry` (`Internal Entity`)
 
@@ -1378,7 +1378,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `Chill` `Accumulation` `Tracker` `Repository` | Repository | `findById(id: TrackerId): Optional<ChillAccumulationTracker>` | Carga el seguidor de frío y fenología por ID. |
 | `Chill` `Accumulation` `Tracker` `Repository` | Repository | `findByPlotIdAndCampaign(plotId: PlotId, year: CampaignYear): Optional<ChillAccumulationTracker>` | Recupera el tracker de una campaña agrícola en el predio. |
 | `Chill` `Accumulation` `Tracker` `Repository` | Repository | `save(tracker: ChillAccumulationTracker): ChillAccumulationTracker` | Persiste atómicamente el estado y bitácoras de frío. |
-| `Phenological` `Stage` `Transitioned` `Event` | Domain Event | `plotId: UUID, previousStage: String, newStage: String, gdd: Double, occurredOn: Instant` | Notifica cambio de fase fenológica (ej. carozo a 680 GDD,`EV53`). |
+| `PitHardening` `StageReached` `Event` | Domain Event | `plotId: UUID, previousStage: String, newStage: String, gdd: Double, occurredOn: Instant` | Notifica cambio de fase fenológica (ej. carozo a 680 GDD,`EV53`). |
 | `Biennial` `BearingIndex` `AssessedEvent` | Domain Event | `plotId: UUID, bbiValue: Double, classification: String, occurredOn: Instant` | Informa severidad de vecería hacia Crop Load Regulation (`EV27`/`POL08`). |
 
 #### Interface Layer

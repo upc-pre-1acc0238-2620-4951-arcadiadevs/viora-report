@@ -1134,7 +1134,7 @@ ThinningPrescription "1" *--> "0..1" ExecutionConfirmation : verifies
 ThinningPrescription --> PrescriptionStatus : status
 ThinningPrescription ..> CropLoadBalancingCalculatorService : uses
 ThinningPrescription ..> FieldSamplingDeduplicator : deduplicates with
-ThinningPrescription ..> SustainableCropLoadDeterminedEvent : emits (EV42)
+ThinningPrescription ..> SustainableCropLoadDeterminedEvent : emits (EV39)
 ThinningPrescription ..> ThinningExecutionConfirmedEvent : emits (EV44 / EV45)
 ThinningPrescription ..> SamplingRoundCompletedEvent : emits (EV37)
 ThinningPrescription ..> OverloadRiskDetectedEvent : emits (EV40)

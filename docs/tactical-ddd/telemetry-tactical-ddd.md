@@ -942,14 +942,14 @@ interface TelemetrySeriesRepository <<Repository>> {
   + save(series: TelemetrySeries): TelemetrySeries
 }
 
-class VirtualSensorNodeRegisteredEvent <<DomainEvent>> {
+class VirtualSensorNodeLinkedEvent <<DomainEvent>> {
   - sensorNodeId: UUID
   - plotId: UUID
   - name: String
   - occurredOn: Instant
 }
 
-class HourlyTelemetryReadingIngestedEvent <<DomainEvent>> {
+class TelemetryDataIngestedEvent <<DomainEvent>> {
   - seriesId: UUID
   - sensorNodeId: UUID
   - readingId: UUID
@@ -965,7 +965,7 @@ class HydricStressAlertTriggeredEvent <<DomainEvent>> {
   - occurredOn: Instant
 }
 
-class WeatherForecastSyncedEvent <<DomainEvent>> {
+class WeatherForecastIngestedEvent <<DomainEvent>> {
   - seriesId: UUID
   - plotId: UUID
   - forecastDate: LocalDate
@@ -978,10 +978,10 @@ TelemetrySeries "1" *--> "0..7" WeatherForecastDay : holds
 TelemetrySeries "1" *--> "0..*" AgroclimaticIncident : tracks
 TelemetrySeries ..> AgroclimaticThresholdEvaluator : uses
 AgroclimaticThresholdEvaluator ..> HourlyTelemetryReading : evaluates readings
-VirtualSensorNode ..> VirtualSensorNodeRegisteredEvent : emits
-TelemetrySeries ..> HourlyTelemetryReadingIngestedEvent : emits (EV21)
+VirtualSensorNode ..> VirtualSensorNodeLinkedEvent : emits
+TelemetrySeries ..> TelemetryDataIngestedEvent : emits (EV21)
 TelemetrySeries ..> HydricStressAlertTriggeredEvent : emits (EV22)
-TelemetrySeries ..> WeatherForecastSyncedEvent : emits (EV25)
+TelemetrySeries ..> WeatherForecastIngestedEvent : emits (EV25)
 VirtualSensorNodeRepository ..> VirtualSensorNode : manages
 TelemetrySeriesRepository ..> TelemetrySeries : manages
 @enduml

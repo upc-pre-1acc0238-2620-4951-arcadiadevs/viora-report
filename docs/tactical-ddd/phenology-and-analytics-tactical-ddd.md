@@ -800,7 +800,7 @@ class HoblynBbiCalculatorService <<DomainService>> {
   + calculateBBI(harvestEntries): Double
 }
 
-class PhenologicalStageTransitionedEvent <<DomainEvent>> {
+class PitHardeningStageReachedEvent <<DomainEvent>> {
   - plotId: UUID
   - stage: String
   - accumulatedGDD: Double
@@ -824,7 +824,7 @@ ChillAccumulationTracker "1" *--> "0..*" HistoricalHarvestEntry : logs
 ChillAccumulationTracker ..> ErezDynamicModelCalculator : calculates chill portions
 ChillAccumulationTracker ..> GrowingDegreeDaysCalculator : calculates cumulative GDD
 ChillAccumulationTracker ..> HoblynBbiCalculatorService : calculates Hoblyn BBI
-ChillAccumulationTracker ..> PhenologicalStageTransitionedEvent : emits (EV53 at 680 GDD)
+ChillAccumulationTracker ..> PitHardeningStageReachedEvent : emits (EV53 at 680 GDD)
 ChillAccumulationTracker ..> BiennialBearingIndexAssessedEvent : emits (EV27)
 ChillAccumulationTrackerRepository ..> ChillAccumulationTracker : manages
 @enduml
