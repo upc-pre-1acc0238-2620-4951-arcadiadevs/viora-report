@@ -110,7 +110,7 @@ flowchart TD
     D22["<b>Deliverable 2.2.1:</b> Módulo de registro (E.164), perfil y cobros"]
     D23["<b>Deliverable 2.3.1:</b> Gestor cartográfico GIS satelital"]
     TM --> D21 --> S21["US33, US34, US36, US37, US39, US40"]
-    TM --> D22 --> S22["US01, US02, US03, US04, US05, US06, US42"]
+    TM --> D22 --> S22["US01, US02, US03, US04, US05, US06, US42, US43"]
     TM --> D23 --> S23["US09, US10, US11"]
 
     %% Deliverables Goal 3
@@ -166,7 +166,8 @@ flowchart TD
       * `US40`: Redirección y acceso a la descarga oficial de la aplicación móvil.
   * 🔄 Impacto 2.2: Se da de alta en la plataforma, personaliza sus credenciales y paga su suscripción en moneda local de forma segura.
     * 📦 Deliverable 2.2.1: Módulo de registro (E.164), autenticación, perfil, seguridad y pasarela Checkout Pro en Soles
-      * `US01`: Registro de cuenta de usuario con país, teléfono y asignación de rol.
+      * `US01`: Registro de cuenta de acceso y credenciales seguras con asignación de rol.
+      * `US43`: Completado de perfil de usuario y contacto validado bajo estándar E.164.
       * `US02`: Inicio de sesión seguro con emisión de tokens de acceso.
       * `US03`: Consulta y edición de perfil con datos de contacto.
       * `US04`: Modificación segura de credenciales de acceso.
@@ -222,7 +223,7 @@ flowchart TD
 
 ---
 
-## 5. Matriz Exhaustiva de Trazabilidad (42 Historias de Usuario con Formato Ágil Completo)
+## 5. Matriz Exhaustiva de Trazabilidad (43 Historias de Usuario con Formato Ágil Completo)
 
 La siguiente matriz documenta la trazabilidad completa, detallando para cada funcionalidad su formulación ágil formal (ID - Como / Quiero / Para), Actor, Impacto, Entregable y Business Goal SMART asignado.
 
@@ -239,7 +240,8 @@ La siguiente matriz documenta la trazabilidad completa, detallando para cada fun
 | US37: Reproducción del video promocional y demostrativo del producto ("About the Product")<br>Como Visitante Interesado, quiero reproducir un video demostrativo breve sobre el funcionamiento de Viora, para apreciar la aplicación práctica de los modelos agronómicos en campo y validar su eficacia en la mitigación de la vecería prolongada antes de adoptar la plataforma. | Teodoro Mamani | Supera el escepticismo inicial, descubre el valor de la plataforma en su smartphone y descarga la app oficial | Portal web de captación y propuesta contra vecería prolongada | BG-02 |
 | US39: Consulta de términos de servicio y política de privacidad y protección de datos (Ley N° 29733)<br>Como Visitante, quiero consultar los Términos y Condiciones y la Política de Privacidad formulada conforme a la Ley N° 29733 (Ley de Protección de Datos Personales del Perú), para tener plena certidumbre legal sobre la confidencialidad de mis registros de cultivo y los derechos sobre mis datos agronómicos. | Teodoro Mamani | Supera el escepticismo inicial, descubre el valor de la plataforma en su smartphone y descarga la app oficial | Portal web de captación y propuesta contra vecería prolongada | BG-02 |
 | US40: Redirección y acceso a la descarga oficial de la aplicación móvil<br>Como Visitante, quiero disponer de accesos directos hacia los repositorios oficiales de distribución móvil, para descargar e instalar la aplicación en mi dispositivo e iniciar mi experiencia en la plataforma. | Teodoro Mamani | Supera el escepticismo inicial, descubre el valor de la plataforma en su smartphone y descarga la app oficial | Portal web de captación y propuesta contra vecería prolongada | BG-02 |
-| US01: Registro de cuenta de usuario con país, teléfono y asignación de rol<br>Como usuario nuevo de Viora (Productor Olivarero o Gestor Técnico), quiero registrar una cuenta en la plataforma ingresando mis datos de contacto, país de residencia y seleccionando mi rol de trabajo, para darme de alta en el sistema y disponer de una identidad de acceso que me permita autenticarme. | Teodoro Mamani | Se da de alta en la plataforma, personaliza sus credenciales y paga su suscripción en Soles de forma segura | Módulo de registro (E.164), autenticación y perfil de usuario | BG-02 |
+| US01: Registro de cuenta de acceso y credenciales seguras con asignación de rol<br>Como usuario nuevo de Viora (Productor Olivarero o Gestor Técnico), quiero registrar una cuenta en la plataforma ingresando mi correo electrónico, una contraseña segura y seleccionando mi rol de trabajo, para darme de alta en el sistema y disponer de una identidad de acceso que me permita autenticarme. | Teodoro Mamani | Se da de alta en la plataforma, personaliza sus credenciales y paga su suscripción en Soles de forma segura | Módulo de registro, credenciales seguras y asignación de rol | BG-02 |
+| US43: Completado de perfil de usuario y contacto validado bajo estándar E.164<br>Como usuario nuevo autenticado en Viora (Productor Olivarero o Gestor Técnico), quiero completar mi perfil de usuario ingresando mi nombre completo, país de residencia y número celular de contacto, para personalizar mi cuenta y habilitar los canales de notificación agronómica y operativa del sistema. | Teodoro Mamani | Se da de alta en la plataforma, personaliza sus credenciales y paga su suscripción en Soles de forma segura | Módulo de perfil de usuario y validación telefónica E.164 | BG-02 |
 | US02: Inicio de sesión y autenticación persistente mediante tokens<br>Como usuario registrado de Viora (Productor Olivarero o Gestor Técnico), quiero autenticarme con mi correo electrónico y contraseña para mantener mi sesión activa en el dispositivo móvil mediante tokens seguros, para operar de forma continua y protegida en la gestión de mis predios o cartera cooperativa sin tener que reingresar credenciales continuamente durante mis labores agrícolas en campo. | Teodoro Mamani | Se da de alta en la plataforma, personaliza sus credenciales y paga su suscripción en Soles de forma segura | Módulo de identidad y seguridad móvil (tokens JWT) | BG-02 |
 | US03: Consulta y actualización de datos de perfil y contacto<br>Como usuario autenticado de Viora (Productor Olivarero o Gestor Técnico), quiero consultar y modificar mis datos personales, país y número telefónico en mi perfil, para mantener actualizada mi información de contacto y facilitar las coordinaciones operativas y de asistencia técnica entre productores y la administración cooperativa. | Teodoro Mamani | Se da de alta en la plataforma, personaliza sus credenciales y paga su suscripción en Soles de forma segura | Módulo de perfil y configuración de datos de contacto | BG-02 |
 | US04: Cambio seguro de contraseña de acceso<br>Como usuario autenticado de Viora (Productor Olivarero o Gestor Técnico), quiero actualizar mi contraseña de acceso verificando mi clave actual e ingresando una nueva clave robusta, para proteger el acceso a mis registros agrícolas, históricos de cosecha y datos comerciales ante sospechas de vulneración y salvaguardar la privacidad de mis parcelas o cartera gremial. | Teodoro Mamani | Se da de alta en la plataforma, personaliza sus credenciales y paga su suscripción en Soles de forma segura | Módulo de seguridad y modificación de credenciales | BG-02 |
@@ -277,8 +279,8 @@ La siguiente matriz documenta la trazabilidad completa, detallando para cada fun
 
 * Goal 1 (Validación de Canal B2B y 2 Convenios en 6 meses): 5 Historias de Usuario
   * `US07`, `US08`, `US35`, `US38`, `US41`.
-* Goal 2 (Monetización SaaS, 60% Activación 30d y 60% Renovación 6m): 16 Historias de Usuario
-  * `US01`, `US02`, `US03`, `US04`, `US05`, `US06`, `US09`, `US10`, `US11`, `US33`, `US34`, `US36`, `US37`, `US39`, `US40`, `US42`.
+* Goal 2 (Monetización SaaS, 60% Activación 30d y 60% Renovación 6m): 17 Historias de Usuario
+  * `US01`, `US02`, `US03`, `US04`, `US05`, `US06`, `US09`, `US10`, `US11`, `US33`, `US34`, `US36`, `US37`, `US39`, `US40`, `US42`, `US43`.
 * Goal 3 (Renovación Contratos B2B, 50% ON en ventana, BBI -0.10 en 2 camp. y Error Acopio < 25%): 21 Historias de Usuario
   * `US12`, `US13`, `US14`, `US15`, `US16`, `US17`, `US18`, `US19`, `US20`, `US21`, `US22`, `US23`, `US24`, `US25`, `US26`, `US27`, `US28`, `US29`, `US30`, `US31`, `US32`.
-* Total Global: 42 Historias de Usuario (100% del inventario cubierto sin duplicidades ni vacíos).
+* Total Global: 43 Historias de Usuario (100% del inventario cubierto sin duplicidades ni vacíos).
