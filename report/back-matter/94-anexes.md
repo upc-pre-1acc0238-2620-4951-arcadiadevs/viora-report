@@ -1,16 +1,10 @@
 # Anexos {-}
 
-\noindent \textbf{Anexo A. Videos de Exposiciones}
-
-\vspace{0.15cm}
-
-\clearpage
-
-\noindent \textbf{Anexo B. Videos de Entrevistas}
+\noindent \textbf{Anexo A. Videos de Entrevistas}
 
 \vspace{0.3cm}
 
-\noindent \textbf{B.1. Video de Entrevistas de Needfinding}
+\noindent \textbf{A.1. Video de Entrevistas de Needfinding}
 
 \vspace{0.2cm}
 

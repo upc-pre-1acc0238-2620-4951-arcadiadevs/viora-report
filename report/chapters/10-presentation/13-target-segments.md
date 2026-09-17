@@ -62,42 +62,58 @@ Para asegurar el rigor científico en la posterior etapa de recolección de nece
 
 A continuación, se presentan las matrices metodológicas para la operacionalización de las variables de estudio. Como se observa en la \autoref{tab:matriz-productores}, se definen los parámetros poblacionales y las variables cuantitativas y cualitativas para el segmento de productores olivareros. Del mismo modo, en la \autoref{tab:matriz-gestores} se estructuran las variables correspondientes a los gestores técnicos de organizaciones olivareras.
 
-\begin{table}[H]
-\caption{Matriz estadística de población, muestra y variables para el segmento de productores olivareros}
-\label{tab:matriz-productores}
-\centering
+\begin{center}
 \small
-\begin{tabular}{p{0.15\textwidth} p{0.39\textwidth} p{0.42\textwidth}}
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{p{0.15\textwidth} p{0.38\textwidth} p{0.41\textwidth}}
+\caption{Matriz estadística de población, muestra y variables para el segmento de productores olivareros} \label{tab:matriz-productores} \\
 \hline
 \textbf{Concepto estadístico} & \textbf{Aplicación al proyecto Viora} & \textbf{Descripción y justificación metodológica} \\ \hline
+\endfirsthead
+\hline
+\multicolumn{3}{l}{\textit{Tabla \ref{tab:matriz-productores} (Continuación)}} \\ \hline
+\textbf{Concepto estadístico} & \textbf{Aplicación al proyecto Viora} & \textbf{Descripción y justificación metodológica} \\ \hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{3}{l}{\parbox{14cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia.}} \\
+\endlastfoot
 Población ($N$) & Productores olivareros de la macro-región sur del Perú. & Representa el universo total y objetivo del segmento, que abarca a los gestores de parcelas afectados por la alternancia productiva del olivo. \\
 Muestra ($n$) & Subconjunto no probabilístico de 3 a 5 productores olivareros locales. & Es el grupo representativo, accesible y estratificado al que se aplicará el instrumento cualitativo (entrevistas a profundidad) exigido en el proceso Lean UX. \\
 Unidad de análisis & Un (1) productor o gestor agrícola olivarero. & Es el sujeto de investigación del cual se extrae la información empírica. Cada unidad provee un punto de dato único sobre las decisiones de carga, poda y cosecha en campo. \\
 Variable cualitativa & Criterio actual de decisión de cosecha y poda (calendario heredado, observación visual, recomendación de terceros). & Variable categórica nominal. Permite caracterizar el modelo mental con el que hoy se toma la decisión de carga y comprender las barreras de adopción de un criterio basado en medición. \\
 Variable cuantitativa discreta & Número de campañas consecutivas con caída de rendimiento superior al 50 \%. & Toma valores enteros ($0, 1, 2, 3\dots$). Mide la severidad percibida y la recurrencia real del ciclo ON/OFF en la unidad productiva. \\
-Variable cuantitativa continua & Rendimiento histórico por campaña (kg/ha) y extensión del cultivo (hectáreas). & Toma valores reales continuos (ej. 4,5 hectáreas). Constituye el insumo directo para el cálculo del índice de alternancia y para delimitar la escala productiva y la viabilidad económica del SaaS. \\ \hline
-\end{tabular}
-\caption*{\textit{Nota.} Elaboración propia.}
-\end{table}
+Variable cuantitativa continua & Rendimiento histórico por campaña (kg/ha) y extensión del cultivo (hectáreas). & Toma valores reales continuos (ej. 4,5 hectáreas). Constituye el insumo directo para el cálculo del índice de alternancia y para delimitar la escala productiva y la viabilidad económica del SaaS. \\
+\end{longtable}
+\end{center}
 
-\vspace{0.35cm}
+\vspace{0.2cm}
 
-\begin{table}[H]
-\caption{Matriz estadística de población, muestra y variables para el segmento de gestores técnicos de organizaciones olivareras}
-\label{tab:matriz-gestores}
-\centering
+\begin{center}
 \small
-\begin{tabular}{p{0.15\textwidth} p{0.39\textwidth} p{0.42\textwidth}}
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{p{0.15\textwidth} p{0.38\textwidth} p{0.41\textwidth}}
+\caption{Matriz estadística de población, muestra y variables para el segmento de gestores técnicos de organizaciones olivareras} \label{tab:matriz-gestores} \\
 \hline
 \textbf{Concepto estadístico} & \textbf{Aplicación al proyecto Viora} & \textbf{Descripción y justificación metodológica} \\ \hline
+\endfirsthead
+\hline
+\multicolumn{3}{l}{\textit{Tabla \ref{tab:matriz-gestores} (Continuación)}} \\ \hline
+\textbf{Concepto estadístico} & \textbf{Aplicación al proyecto Viora} & \textbf{Descripción y justificación metodológica} \\ \hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{3}{l}{\parbox{14cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia.}} \\
+\endlastfoot
 Población ($N$) & Responsables técnicos y de acopio de cooperativas, asociaciones y agroindustrias procesadoras de aceituna de la macro-región sur del Perú. & Representa el universo de organizaciones que consolidan, transforman y comercializan la producción olivarera regional. \\
 Muestra ($n$) & Subconjunto no probabilístico de 3 a 5 gestores técnicos de organizaciones olivareras. & Es el segmento experto al que se aplicará la entrevista para validar las necesidades de planificación, las barreras de adopción y la disposición de pago por un plan organizacional. \\
 Unidad de análisis & Un (1) gestor técnico o jefe de acopio de una organización olivarera. & Representa el individuo del cual se extraen los datos sobre fricciones en la planificación de capacidad y en los compromisos comerciales de campaña. \\
 Variable cualitativa & Método actual de proyección del volumen de acopio (histórico simple, declaración de socios, sin proyección formal). & Variable categórica nominal. Permite identificar el nivel de madurez del proceso de planificación que el producto debe sustituir. \\
 Variable cuantitativa discreta & Cantidad de socios o proveedores activos por campaña. & Toma valores enteros. Ayuda a dimensionar el tamaño de la cartera, la escala del plan organizacional y el potencial de adopción a través de este canal. \\
-Variable cuantitativa continua & Volumen acopiado por campaña (toneladas) y desviación porcentual frente al volumen proyectado. & Toma valores reales continuos. Cuantifica el costo actual del error de planificación y establece la métrica contra la cual se medirá el valor aportado por el producto. \\ \hline
-\end{tabular}
-\caption*{\textit{Nota.} Elaboración propia.}
-\end{table}
+Variable cuantitativa continua & Volumen acopiado por campaña (toneladas) y desviación porcentual frente al volumen proyectado. & Toma valores reales continuos. Cuantifica el costo actual del error de planificación y establece la métrica contra la cual se medirá el valor aportado por el producto. \\
+\end{longtable}
+\end{center}
 
 \clearpage
