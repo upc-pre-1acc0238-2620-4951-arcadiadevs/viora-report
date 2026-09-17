@@ -35,12 +35,12 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `affiliateProducer(producerUserId: UserId, grantedHectares: Double, plotIds: List<PlotId>): CooperativeMember` - Procesa la afiliación formal de un socio por reacción al canje de un código corporativo (`POL02` / `EV13`), crea e incorpora la entidad `CooperativeMember` al padrón e incrementa el contador de socios activos. **No inspecciona ni transiciona el código**: la validez y el cambio a `REDEEMED` ocurrieron dentro del límite transaccional de `InvitationCodeBatch` (`AGG12`), y el evento `EV13` es la prueba de que el canje prosperó. La operación es idempotente frente a reentregas del evento.
   * `updateMemberContact(producerUserId: UserId, newFullName: String, newPhone: String, newEmail: String): void` - Sincroniza los datos personales y de contacto del socio en el padrón técnico ante mutaciones de perfil en el upstream (`POL03` / `EV09`).
   * `evaluateTerritorialRiskMatrix(sectorIncidents: List<SectorIncidentSnapshot>): TerritorialRiskMatrix` - Procesa y sintetiza los incidentes agroclimáticos de helada (`POL14` / `EV25`), anomalías de frío de El Niño y alertas de sobrecarga frutal (`POL13` / `EV40`), actualizando los cuadrantes del semáforo sectorial (verde, amarillo, rojo) y encolando `CooperativeRiskMatrixEvaluatedEvent` (EV49) (`CMD31` / `US31`).
-  * `projectIntakeVolume(forecaster: TerritorialIntakeForecastingService, samplingSummaries: List<PlotSamplingSummary>): EarlyIntakeProjection` - Invoca el servicio de dominio entregando las coberturas muestrales de los socios (`POL15` / `EV37` / `CMD32` / `US32`). Si la representatividad muestral del padrón es menor al $60\%$, encola obligatoriamente `LowSamplingCoverageWarnedForIntakeEvent` (EV51) con un factor de castigo en el margen de confianza; computa las toneladas agregadas de aceituna verde y negra y encola `CooperativeIntakeVolumeProjectedEvent` (EV50).
+  * `projectIntakeVolume(forecaster: TerritorialIntakeForecastingService, samplingSummaries: List<PlotSamplingSummary>): EarlyIntakeProjection` - Invoca el servicio de dominio entregando las coberturas muestrales de los socios (`POL15` / `EV37` / `CMD32` / `US32`). Si la representatividad muestral del padrón es menor al $50\%$, encola obligatoriamente `LowSamplingCoverageWarnedForIntakeEvent` (EV51) con un factor de castigo en el margen de confianza; computa las toneladas agregadas de aceituna verde y negra y encola `CooperativeIntakeVolumeProjectedEvent` (EV50).
   * `getActiveMembersCount(): int` - Retorna la cantidad de socios en estado activo en el padrón.
 * **Invariantes y Reglas de Negocio:**
   1. **Autorización Institucional de Emisión:** Solo el gestor técnico institucional registrado (`technicalManagerUserId`) con rol `ROLE_GESTOR_COOPERATIVA` puede solicitar la emisión de un lote de códigos en nombre de la cooperativa. Esta invariante gobierna **quién** solicita, nunca **cuántos** códigos se emiten: el límite cuantitativo es invariante de `CooperativeLicense` (`AGG11`) y se verifica en *Subscription & Cooperative Membership*.
   2. **Unicidad del Socio en el Padrón:** Un mismo `producerUserId` no puede figurar más de una vez como socio activo del padrón, con independencia de cuántos eventos de canje se reciban para él.
-  3. **Umbral Crítico de Representatividad Muestral (60%):** La proyección de acopio territorial exige que al menos el $60.0\%$ de los socios activos del padrón cuenten con muestreos de campo concluidos. Si la cobertura es inferior ($<60\%$), el sistema restringe la confiabilidad de la proyección y emite forzosamente una advertencia de riesgo de muestreo (`EV51`).
+  3. **Umbral Crítico de Representatividad Muestral (50%):** La proyección de acopio territorial exige que al menos el $50.0\%$ de los socios activos del padrón cuenten con muestreos de campo concluidos. Si la cobertura es inferior ($<50\%$), el sistema restringe la confiabilidad de la proyección y emite forzosamente una advertencia de riesgo de muestreo (`EV51`).
   4. **Anonimización y Agregación Territorial:** Los datos de rendimiento y superficie de parcelas individuales se procesan de forma anónima y agregada por subcuencas/sectores, impidiendo la exposición de datos productivos privados entre socios competidores.
   5. **Consistencia en la Segregación Comercial de Aceituna:** En toda proyección o conciliación de acopio, la masa total estimada debe corresponder exactamente a la sumatoria de aceituna verde para conserva y aceituna negra para almazara o mesa ($\hat{Y}_{\text{total}} = \hat{Y}_{\text{verde}} + \hat{Y}_{\text{negra}}$).
 
@@ -77,7 +77,7 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `projectedBlackOlivesTons: Double` (Toneladas proyectadas de aceituna negra para almazara o mesa).
   * `totalProjectedTons: Double` (Suma consolidada de aceituna proyectada).
   * `samplingCoverageRate: SamplingCoverageRate` (Porcentaje de cobertura muestral del padrón).
-  * `isReliable: boolean` (Indicador de robustez estadística: verdadero si $Coverage \ge 60\%$).
+  * `isReliable: boolean` (Indicador de robustez estadística: verdadero si $Coverage \ge 50\%$).
 * **`SamplingCoverageRate`**: Decimal inmutable en rango $[0.00, 100.00]\%$ que cuantifica el porcentaje de socios activos que han reportado muestreos en campo válidos.
 * **`SectorZone`**: Enum inmutable que delimita los sectores agroecológicos del territorio olivarero: `SECTOR_VALLE_BAJO`, `SECTOR_VALLE_MEDIO`, `SECTOR_COSTA`, `SECTOR_LITORAL`.
 * **`MemberStatus`**: Enum inmutable (`ACTIVE`, `SUSPENDED`, `RESIGNED`).
@@ -91,12 +91,12 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
       $$CR = \left( \frac{N_{\text{socios\_con\_muestreo}}}{N_{\text{total\_socios\_activos}}} \right) \times 100\%$$
     * *Proyección de Rendimiento Sectorial Ponderado ($\hat{Y}_{\text{sector}}$):*
       $$\hat{Y}_{\text{sector}} = \sum_{i=1}^{k} \left( A_{i} \cdot \bar{y}_{i} \right) \cdot \lambda_{\text{confianza}}$$
-      *Donde $A_i$ representa las hectáreas declaradas del socio $i$, $\bar{y}_i$ es el rendimiento estimado en kg/ha obtenido del aclareo o muestreo biométrico, y $\lambda_{\text{confianza}}$ es un factor de calibración ($1.00$ si $CR \ge 60\%$; $0.85$ si $CR < 60\%$).*
+      *Donde $A_i$ representa las hectáreas declaradas del socio $i$, $\bar{y}_i$ es el rendimiento estimado en kg/ha obtenido del aclareo o muestreo biométrico, y $\lambda_{\text{confianza}}$ es un factor de calibración ($1.00$ si $CR \ge 50\%$; $0.85$ si $CR < 50\%$).*
     * *Balance Consolidado Total de Acopio:*
       $$\hat{Y}_{\text{total}} = \hat{Y}_{\text{verde}} + \hat{Y}_{\text{negra}}$$
   * **Métodos:**
     * `calculateIntakeProjection(members: List<CooperativeMember>, samplings: List<PlotSamplingSummary>, campaignYear: Integer): EarlyIntakeProjection` - Computa las proyecciones desagregadas por variedad y aptitud de acopio.
-    * `evaluateSamplingCoverage(totalMembers: int, sampledMembers: int): SamplingCoverageRate` - Evalúa el porcentaje y valida si se satisface el umbral crítico del 60%.
+    * `evaluateSamplingCoverage(totalMembers: int, sampledMembers: int): SamplingCoverageRate` - Evalúa el porcentaje y valida si se satisface el umbral crítico del 50%.
 
 ##### Repositories (Interfaces en Domain)
 Contratos agnósticos de base de datos definidos en el dominio:
@@ -117,7 +117,7 @@ Eventos inmutables en tiempo pasado que comunican hechos transaccionales signifi
   * *Disparado cuando:* Se calcula o reajusta el volumen agregado de acopio de aceituna verde y negra de la cooperativa.
   * *Consumido por:* El módulo de logística de acopio y los directivos técnicos para planificación industrial.
 * **`LowSamplingCoverageWarnedForIntakeEvent`**: `{ cooperativeId: UUID, campaignYear: Integer, currentCoverageRate: Double, requiredCoverageThreshold: Double, occurredOn: Instant }` (EV51 / US32)
-  * *Disparado cuando:* La proyección de acopio se ejecuta con una representatividad muestral inferior al umbral crítico del 60%.
+  * *Disparado cuando:* La proyección de acopio se ejecuta con una representatividad muestral inferior al umbral crítico del 50%.
   * *Consumido por:* Los gestores técnicos para priorizar visitas y ordenar campañas de muestreo en campo sobre los predios faltantes.
 
 ---
@@ -169,7 +169,7 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
   * *Flujo:* Invocado reactivamente ante eventos de riesgo o por tareas de orquestación interna -> carga el agregado `Cooperative` -> recopila las alertas activas de telemetría y sobrecarga de las parcelas socias -> invoca `cooperative.evaluateTerritorialRiskMatrix(...)` -> persiste la matriz actualizada en el repositorio -> publica `CooperativeRiskMatrixEvaluatedEvent` (EV49).
 * **`ProjectCooperativeIntakeVolumeCommandHandler`** (CMD32 / US32 / TS30):
   * *Entrada:* `ProjectCooperativeIntakeVolumeCommand` (`cooperativeId`, `campaignYear`)
-  * *Flujo:* Invocado reactivamente ante `SamplingRoundCompletedEvent` (`EV37`) -> inicia transacción (`@Transactional`) -> carga el agregado `Cooperative` -> consulta los resúmenes biométricos de aclareo de las parcelas socias -> invoca `cooperative.projectIntakeVolume(forecastingService, samplings)` -> verifica si la cobertura supera el $60\%$ -> persiste la proyección consolidada en el repositorio -> publica `CooperativeIntakeVolumeProjectedEvent` (EV50) y, de corresponder, `LowSamplingCoverageWarnedForIntakeEvent` (EV51).
+  * *Flujo:* Invocado reactivamente ante `SamplingRoundCompletedEvent` (`EV37`) -> inicia transacción (`@Transactional`) -> carga el agregado `Cooperative` -> consulta los resúmenes biométricos de aclareo de las parcelas socias -> invoca `cooperative.projectIntakeVolume(forecastingService, samplings)` -> verifica si la cobertura supera el $50\%$ -> persiste la proyección consolidada en el repositorio -> publica `CooperativeIntakeVolumeProjectedEvent` (EV50) y, de corresponder, `LowSamplingCoverageWarnedForIntakeEvent` (EV51).
 
 ##### Query Handlers
 * **`GetCooperativeDirectoryQueryHandler`** (RM13 / US08):
@@ -265,7 +265,7 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
       projected_black_tons   NUMERIC(10, 2) NOT NULL,
       total_projected_tons   NUMERIC(10, 2) NOT NULL,
       sampling_coverage_rate NUMERIC(5, 2) NOT NULL,           -- Porcentaje [0.00 - 100.00]
-      is_reliable            BOOLEAN NOT NULL,                 -- True si sampling_coverage_rate >= 60%
+      is_reliable            BOOLEAN NOT NULL,                 -- True si sampling_coverage_rate >= 50%
       computed_at            TIMESTAMPTZ NOT NULL,
       created_at             TIMESTAMPTZ NOT NULL,
       CONSTRAINT chk_projection_tons CHECK (projected_green_tons >= 0 AND projected_black_tons >= 0),
@@ -419,7 +419,7 @@ graph TD
 3. **Orquestación de Dominio:** Ante el canje de un código, `OnCooperativeCodeRedeemedEventHandler` (POL02) recibe `CooperativeCodeRedeemedEvent` (EV13), inicia una transacción (`@Transactional`) y carga el agregado `Cooperative` desde `CooperativeRepository`.
 4. **Ejecución y Reglas:** El agregado verifica que el `producerUserId` no figure ya en el padrón e invoca `affiliateProducer(...)`, dando de alta al socio con la superficie concedida por el código. No se evalúa cupo: las plazas y la superficie se comprometieron al emitirse el código, en `CooperativeLicense` (`AGG11`).
 5. **Persistencia:** El Handler invoca `save()` sobre el repositorio. `PostgresCooperativeRepository` mapea las entidades JPA e inserta los registros atómicamente en PostgreSQL.
-6. **Integración Asíncrona (Flujo Reactivo):** Cuando un socio completa un muestreo en campo, `ThinningBC` emite `SamplingRoundCompletedEvent` (EV37). `OnSamplingRoundCompletedEventHandler` (POL15) recibe el evento y despacha `ProjectCooperativeIntakeVolumeCommand`. El servicio de dominio `TerritorialIntakeForecastingService` recalcula el acopio y despacha `CooperativeIntakeVolumeProjectedEvent` (EV50) y, si la representatividad es $<60\%$, `LowSamplingCoverageWarnedForIntakeEvent` (EV51).
+6. **Integración Asíncrona (Flujo Reactivo):** Cuando un socio completa un muestreo en campo, `ThinningBC` emite `SamplingRoundCompletedEvent` (EV37). `OnSamplingRoundCompletedEventHandler` (POL15) recibe el evento y despacha `ProjectCooperativeIntakeVolumeCommand`. El servicio de dominio `TerritorialIntakeForecastingService` recalcula el acopio y despacha `CooperativeIntakeVolumeProjectedEvent` (EV50) y, si la representatividad es $<50\%$, `LowSamplingCoverageWarnedForIntakeEvent` (EV51).
 7. **Respuesta:** El controlador convierte el resultado en `CooperativeMemberResource` o `EarlyIntakeProjectionResource` y retorna la respuesta HTTP estándar (`200 OK` o `201 Created`).
 
 ---
@@ -597,7 +597,7 @@ erDiagram
         NUMERIC_10_2 projected_black_tons "Toneladas aceituna negra"
         NUMERIC_10_2 total_projected_tons "Total proyectado"
         NUMERIC_5_2 sampling_coverage_rate "Cobertura muestral (%)"
-        BOOLEAN is_reliable "Flag si cobertura >= 60%"
+        BOOLEAN is_reliable "Flag si cobertura >= 50%"
         TIMESTAMPTZ computed_at "Fecha de cálculo"
         TIMESTAMPTZ created_at "Auditoría"
     }

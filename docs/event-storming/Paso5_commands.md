@@ -446,7 +446,7 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 * **US / BDD:** `US32`
 * **Propósito de Negocio:** Calcular la estimación temprana del volumen consolidado de acopio (toneladas de aceituna de mesa y para aceite) para planificar la logística de procesamiento de la cooperativa.
 * **Payload Clave:** `cooperativeId`, `forecastHarvestYear`.
-* **Invariantes Clave:** Si menos del 60% de los socios ha completado muestreos representativos, emitir una advertencia explícita de cobertura insuficiente de datos.
+* **Invariantes Clave:** Si menos del 50% de los socios ha completado muestreos representativos, emitir una advertencia explícita de cobertura insuficiente de datos.
 * **Evento(s) Resultante(s):**
   * `EV50` (`CooperativeIntakeVolumeProjected`).
   * `EV51` (`LowSamplingCoverageWarnedForIntake`) si la representatividad muestral del padrón es inferior a la cuota crítica.

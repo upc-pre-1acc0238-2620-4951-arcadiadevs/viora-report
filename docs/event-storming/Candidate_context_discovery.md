@@ -244,7 +244,7 @@ graph TD
   * *CooperativeMember:* Productor agremiado formalmente adscrito al convenio de la organización.
   * *TerritorialRiskMatrix:* Semáforo sectorial (verde, amarillo, rojo) que consolida frío, agua y sobrecarga.
   * *EarlyIntakeProjection:* Estimación temprana de toneladas de acopio (mesa vs. aceite).
-  * *SamplingCoverageQuotas:* Umbral mínimo de padrón evaluado ($\ge 60\%$) para validez predictiva.
+  * *SamplingCoverageQuotas:* Umbral mínimo de padrón evaluado ($\ge 50\%$) para validez predictiva.
 * **Justificación de Frontera (*Boundary Justification*):** Modela la escala colectiva y gremial. Las cooperativas no operan las válvulas de riego ni ejecutan el aclareo; necesitan un contexto analítico desacoplado que sintetice la información de cientos de socios sin violar la privacidad de cada fundo.
 
 ---
