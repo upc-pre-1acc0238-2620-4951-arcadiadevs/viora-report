@@ -282,11 +282,19 @@ Los diagramas se entregan como fuentes editables incluidas en este Markdown auto
 ```structurizr
 workspace "Viora - Olive Orchard Component Architecture" "Olive Orchard and Plot Management Component View" {
     model {
-        producer = person "Olive Producer" "Registers olive parcels, updates boundaries, and performs soft deletions."
-        manager = person "Technical Manager" "Inspects member parcels and verifies agronomic surface area."
         mapbox = softwareSystem "Mapbox API" "External geospatial vector tile and mapping service."
 
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Mapbox and Room offline plot cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with Mapbox and sqflite offline plot cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for plot polygon and attributes cache" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for plot polygon and attributes cache" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 plotCtrl = component "PlotController" "Exposes plot registration, delta sync, update and deletion REST endpoints" "Spring MVC Controller"
                 
@@ -304,8 +312,12 @@ workspace "Viora - Olive Orchard Component Architecture" "Olive Orchard and Plot
             }
         }
 
-        producer -> plotCtrl "Registers / modifies / deletes plots [HTTPS/REST]"
-        manager -> plotCtrl "Reads authorized member plots [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes plot_cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes plot_cache [SQLite / sqflite]"
+        nativeApp -> mapbox "Fetches vector tiles and renders map overlays"
+        crossApp -> mapbox "Fetches vector tiles and renders map overlays"
+        nativeApp -> plotCtrl "Registers / modifies / deletes plots [HTTPS/REST]"
+        crossApp -> plotCtrl "Registers / modifies / deletes plots [HTTPS/REST]"
 
         plotCtrl -> plotCommandService "Delegates plot write operations (commands)"
         plotCtrl -> plotQueryService "Delegates plot read and delta queries"

@@ -321,6 +321,13 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
 * **Control de Concurrencia Optimista:** Columna `@Version private Long version` en `CooperativeJpaEntity` que previene carreras en las altas simultáneas sobre el padrón de socios. **La protección de las emisiones concurrentes de códigos ya no reside aquí**: se traslada a `CooperativeLicense` (`AGG11`) en *Subscription & Cooperative Membership*, que es el agregado que custodia los acumuladores `issuedSeats` e `issuedArea`. Sin control de versión sobre esa licencia, dos emisiones simultáneas leerían el mismo remanente y ambas se aprobarían.
 * **Manejo Centralizado de Excepciones (RFC 7807):** Retorno de objetos `ProblemDetail` ante solicitante no autorizado para emitir (`403 Forbidden`), socio ya afiliado (`409 Conflict`) o cooperativa no encontrada (`404 Not Found`).
 
+##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+* **Caché Local de Padrón y Semáforo Territorial:**
+  * *Android Nativo (Room / SQLite):* `CooperativeCacheDao` y entidades `LocalMemberEntity`, `LocalRiskMatrixEntity` para consulta inmediata del padrón de socios y matriz de riesgo sectorial sin dependencia de conectividad permanente.
+  * *Cross-Platform (sqflite / SQLite):* Tablas `cooperative_members_cache` y `territorial_risk_cache` administradas por `LocalDataAccess`.
+* **Sectorización Espacial GPS en Dispositivo:**
+  * Integración con **FusedLocationProviderClient** en la aplicación del Gestor Técnico Cooperativo (`Cooperative Operations UI`) para resolver automáticamente la subcuenca o sector agroecológico al recorrer predios agremiados en campo, visualizando el cuadrante de riesgo correspondiente.
+
 ---
 
 #### Bounded Context Software Architecture Component Level Diagrams
@@ -643,10 +650,17 @@ erDiagram
 ```structurizr
 workspace "Viora - Cooperative Operations Component Architecture" "Cooperative Operations and Territorial Intelligence Component View" {
     model {
-        manager = person "Technical Manager" "Supervises cooperative member plots, intake projections, and territorial risks."
-        producer = person "Olive Producer" "Member affiliated with the cooperative."
-
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline cooperative and roster cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline cooperative and roster cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database caching member directory and risk alerts" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database caching member directory and risk alerts" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 memberCtrl = component "CooperativeMemberController" "Exposes cooperative registry, member affiliation, and roster endpoints" "Spring MVC Controller"
                 intakeCtrl = component "CooperativeIntakeController" "Exposes early intake projections and harvest volume forecasts" "Spring MVC Controller"
@@ -667,10 +681,14 @@ workspace "Viora - Cooperative Operations Component Architecture" "Cooperative O
             }
         }
 
-        manager -> memberCtrl "Manages members [HTTPS/REST]"
-        manager -> intakeCtrl "Views intake projections [HTTPS/REST]"
-        manager -> riskCtrl "Queries territorial risk [HTTPS/REST]"
-        producer -> memberCtrl "Views membership [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes cooperative and risk cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes cooperative and risk cache [SQLite / sqflite]"
+        nativeApp -> memberCtrl "Manages members / views roster [HTTPS/REST]"
+        crossApp -> memberCtrl "Manages members / views roster [HTTPS/REST]"
+        nativeApp -> intakeCtrl "Views intake projections [HTTPS/REST]"
+        crossApp -> intakeCtrl "Views intake projections [HTTPS/REST]"
+        nativeApp -> riskCtrl "Queries territorial risk [HTTPS/REST]"
+        crossApp -> riskCtrl "Queries territorial risk [HTTPS/REST]"
 
         memberCtrl -> coopCommandService "Delegates affiliation/suspension commands"
         memberCtrl -> coopQueryService "Delegates member roster queries"

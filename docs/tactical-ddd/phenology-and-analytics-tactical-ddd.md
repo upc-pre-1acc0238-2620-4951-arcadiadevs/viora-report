@@ -342,6 +342,13 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
 * **Manejo Centralizado de Excepciones (RFC 7807):** Retorno estructurado `ProblemDetail` ante insuficiencia de campañas ($<3$), años agrícolas futuros o rendimientos negativos (`TS31`).
 * **Auditoría Inmutable:** Marcas temporales automáticas `@CreatedDate` y `@LastModifiedDate` en todos los registros históricos.
 
+##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+* **Caché Local de Historial de Cosechas y Métricas Fenológicas:**
+  * *Android Nativo (Room / SQLite):* Entidades `LocalHarvestRecordEntity` y `LocalPhenologyMetricEntity` gestionadas por `PhenologyCacheDao` para consultar memoria de vecería e índice $BBI$ sin conexión.
+  * *Cross-Platform (sqflite / SQLite):* Tabla local `phenology_cache` con par `(plot_id, campaign_year)`.
+* **Visualización de Semáforo de Vecería:**
+  * Interfaz de usuario (`Agronomy and Harvest UI`) que traduce el valor decimal del $BBI$ en rangos visuales accesibles en campo (Leve, Moderado, Severo) y renderiza el avance de porciones de frío acumuladas contra la meta varietal de 25-30 UF.
+
 ---
 
 #### Bounded Context Software Architecture Component Level Diagrams
@@ -668,10 +675,17 @@ erDiagram
 ```structurizr
 workspace "Viora - Phenology Component Architecture" "Phenology and Historical Bearing Analytics Component View" {
     model {
-        producer = person "Olive Producer" "Monitors winter chill portion accumulation and logs historical yields."
-        manager = person "Technical Manager" "Supervises cooperative chill fulfillment and biennial bearing indices."
-
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline phenology and chill cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline phenology and chill cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for phenological tracking and chill cache" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for phenological tracking and chill cache" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 chillCtrl = component "PlotChillController" "Exposes winter chill accumulation and speedometer queries" "Spring MVC Controller"
                 phenoCtrl = component "PlotPhenologyController" "Exposes BBCH phenological stages and GDD tracking endpoints" "Spring MVC Controller"
@@ -695,10 +709,16 @@ workspace "Viora - Phenology Component Architecture" "Phenology and Historical B
             }
         }
 
-        producer -> chillCtrl "Queries chill accumulation [HTTPS/REST]"
-        producer -> phenoCtrl "Logs stage / views GDD [HTTPS/REST]"
-        producer -> harvestRecordCtrl "Logs / rectifies yield history [HTTPS/REST]"
-        manager -> bearingCtrl "Views sectorial BBI and chill progress [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes phenology and chill cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes phenology and chill cache [SQLite / sqflite]"
+        nativeApp -> chillCtrl "Queries chill accumulation [HTTPS/REST]"
+        crossApp -> chillCtrl "Queries chill accumulation [HTTPS/REST]"
+        nativeApp -> phenoCtrl "Logs stage / views GDD [HTTPS/REST]"
+        crossApp -> phenoCtrl "Logs stage / views GDD [HTTPS/REST]"
+        nativeApp -> harvestRecordCtrl "Logs / rectifies yield history [HTTPS/REST]"
+        crossApp -> harvestRecordCtrl "Logs / rectifies yield history [HTTPS/REST]"
+        nativeApp -> bearingCtrl "Views sectorial BBI and chill progress [HTTPS/REST]"
+        crossApp -> bearingCtrl "Views sectorial BBI and chill progress [HTTPS/REST]"
 
         chillCtrl -> phenoQueryService "Delegates chill queries"
         phenoCtrl -> phenoCommandService "Delegates stage progression commands (CMD19)"

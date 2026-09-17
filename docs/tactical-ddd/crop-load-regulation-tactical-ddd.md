@@ -4,7 +4,7 @@
 
 **Propósito:** convierte el conteo de frutos cuajados a pie de árbol en una prescripción agronómica accionable. Certifica la representatividad estadística del muestreo, determina la carga frutal que el árbol puede sostener sin comprometer sus reservas, emite el porcentaje de remoción y su ventana biológica, y fiscaliza la ejecución en campo hasta el cierre por endurecimiento del carozo.
 
-**Trazabilidad con Requerimientos del Negocio:** Da cobertura técnica directa a las historias de usuario **US24** (Muestreo guiado de cuajado offline con deduplicación por clave de idempotencia), **US25** (Consulta de representatividad estadística e historial de árboles muestreados en campo), **US26** (Determinación de carga frutal admisible sostenible), **US27** (Prescripción in-app y ventana fenológica de intervención) y **US28** (Registro y confirmación de ejecución de aclareo oportuno o tardío).
+**Trazabilidad con Requisitos del Negocio:** Da cobertura técnica directa a las historias de usuario **US24** (Muestreo guiado de cuajado offline con deduplicación por clave de idempotencia), **US25** (Consulta de representatividad estadística e historial de árboles muestreados en campo), **US26** (Determinación de carga frutal admisible sostenible), **US27** (Prescripción in-app y ventana fenológica de intervención) y **US28** (Registro y confirmación de ejecución de aclareo oportuno o tardío).
 
 Es el único contexto del sistema que emite un acto prescriptivo. No posee la parcela, que pertenece a `Olive Orchard and Plot Management`; no computa el Índice de Vecería Bienal ni las porciones de frío, que pertenecen a `Phenology and Historical Bearing Analytics`; no liquida la cosecha ni evalúa la curva de estabilización, que pertenecen a `Harvest Settlement and Performance Reporting`. Referencia la parcela de forma lógica por `PlotId` y conserva la revisión predial observada al prescribir, sin replicar geometría ni titularidad.
 
@@ -485,6 +485,15 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
 - **Degradación controlada del motor.** La ausencia de entradas opcionales no es un fallo: el cálculo prosigue y se registra en `used_bbi` y `used_floral_yield_factor` con qué base se construyó. Rechazar el cálculo por falta de historial dejaría sin servicio al productor que recién digitaliza sus predios.
 - **Manejo centralizado de excepciones (RFC 7807)** con `ProblemDetail`, según la tabla de códigos de la capa de interfaz.
 
+##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+
+* **Almacenamiento Local Offline-First (Room / sqflite):**
+  * *Android Nativo (Room / SQLite):* `SamplingDao` gestiona `LocalSamplingRoundEntity` y `LocalTreeSamplingEntity`, permitiendo registrar árboles evaluados en campo sin cobertura de red. La tabla `sync_queue` retiene los lotes pendientes con clave de idempotencia `(actor_id, plot_id, client_batch_id)`.
+* **Sincronización Resiliente en Segundo Plano (WorkManager):**
+  * `SamplingSyncWorkManager` programa tareas en background con restricciones de conectividad (`NetworkType.CONNECTED`). Al recuperar señal celular, drena la cola de sincronización hacia `POST /api/v1/plots/{plotId}/samplings` aplicando reintentos exponenciales automáticos ante fallas transitorias.
+* **Integración con Hardware del Dispositivo:**
+  * *Geolocalización (FusedLocationProviderClient):* Captura las coordenadas de georreferenciación del árbol testigo al momento de registrar el muestreo en campo.
+
 ---
 
 #### Bounded Context Software Architecture Component Level Diagrams
@@ -943,10 +952,21 @@ stateDiagram-v2
 ```structurizr
 workspace "Viora - Crop Load Component Architecture" "Crop Load Regulation and Thinning Advisory Component View" {
     model {
-        producer = person "Olive Producer" "Collects tree samples offline and executes thinning."
-        manager = person "Technical Manager" "Reviews thinning recommendations across cooperative plots."
-
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline cache" "Kotlin / Compose" {
+                workManager = component "SamplingSyncWorkManager" "Background resilient synchronization with exponential backoff" "WorkManager"
+            }
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline cache" "Flutter / Dart" {
+                flutterSync = component "SamplingSyncCoordinator" "Foreground and scheduled background batch synchronization" "Dart / workmanager"
+            }
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for field samplings and sync queue" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for field samplings and sync queue" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 samplingCtrl = component "PlotSamplingController" "Exposes tree sampling ingestion (single/batch) and summary endpoints" "Spring MVC Controller"
                 thinningCtrl = component "PlotThinningPrescriptionController" "Exposes active and historical prescription query endpoints" "Spring MVC Controller"
@@ -961,24 +981,19 @@ workspace "Viora - Crop Load Component Architecture" "Crop Load Regulation and T
                 prescriptionRepoAdapter = component "JpaFruitThinningPrescriptionRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for crop load regulation" "Spring Data JPA Adapter"
                 eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV42, EV43, EV44, and EV45 domain events" "Spring ApplicationEventPublisher"
             }
-            nativeApp = container "Android Application" "Mobile client with Room offline cache" "Kotlin / Compose" {
-                roomDb = component "Room Offline Database" "Caches local field samplings with (actorId, plotId, clientBatchId)" "Room / SQLite"
-                workManager = component "SamplingSyncWorkManager" "Background resilient synchronization with exponential backoff" "WorkManager"
-            }
-            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline cache" "Flutter / Dart" {
-                sqfliteDb = component "sqflite Offline Database" "Caches local field samplings" "sqflite / SQLite"
-            }
             db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
                 tags "Database"
             }
         }
 
-        producer -> nativeApp "Records tree samplings offline"
-        producer -> crossApp "Records tree samplings offline"
+        nativeApp -> androidDb "Reads / writes local samplings and sync queue [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes local samplings and sync queue [SQLite / sqflite]"
         workManager -> samplingCtrl "Syncs sampling batches [POST /plots/{id}/samplings]"
+        flutterSync -> samplingCtrl "Syncs sampling batches [POST /plots/{id}/samplings]"
         nativeApp -> thinningCtrl "Queries prescriptions [HTTPS/REST]"
         crossApp -> thinningCtrl "Queries prescriptions [HTTPS/REST]"
-        manager -> thinningCtrl "Reviews plot recommendations [HTTPS/REST]"
+        nativeApp -> executionCtrl "Confirms thinning execution [HTTPS/REST]"
+        crossApp -> executionCtrl "Confirms thinning execution [HTTPS/REST]"
 
         samplingCtrl -> cropLoadCommandService "Delegates sampling commands (CMD24, CMD25)"
         samplingCtrl -> cropLoadQueryService "Delegates sampling summary queries"

@@ -410,6 +410,13 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
 * **Manejo Centralizado de Excepciones (RFC 7807):** Toda violación de invariantes de dominio (ej. profundidad inválida, nombre duplicado, rangos de fechas ilógicos) se traduce en un payload estructurado `ProblemDetail` conforme al estándar RFC 7807 (`TS31`), retornando códigos `400 Bad Request`, `404 Not Found` o `409 Conflict`.
 * **Auditoría Inmutable:** Marcas temporales `created_at` y `updated_at` administradas automáticamente vía Spring Data JPA Auditing (`@CreatedDate`, `@LastModifiedDate`).
 
+##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+* **Caché Local de Telemetría y Pronóstico Offline:**
+  * *Android Nativo (Room / SQLite):* `TelemetryCacheDao` y entidades `LocalTelemetrySeriesEntity`, `LocalWeatherForecastEntity` que cachean las últimas 24 lecturas horarias y el pronóstico a 7 días de la parcela activa para consulta en campo sin red.
+  * *Cross-Platform (sqflite / SQLite):* Tablas `telemetry_cache` y `forecast_cache` con clave compuesta `(plot_id, fetched_at)` gestionadas por `LocalDataAccess`.
+* **Visualización y Alertas en Dispositivo:**
+  * Componentes de interfaz móvil (`Agronomy and Harvest UI`) que renderizan curvas de humedad de suelo a 30/60 cm y activan banners de alerta local inmediata ante incidentes críticos de estrés hídrico (`HydricStressAlertTriggeredEvent`).
+
 ---
 
 #### Bounded Context Software Architecture Component Level Diagrams
@@ -771,12 +778,20 @@ erDiagram
 ```structurizr
 workspace "Viora - Telemetry Component Architecture" "Agroclimatic Telemetry Component View" {
     model {
-        producer = person "Olive Producer" "Monitors soil moisture, SWP thresholds, and microclimate conditions."
-        manager = person "Technical Manager" "Monitors cooperative sectorial telemetry and agroclimatic incidents."
         openMeteo = softwareSystem "Open-Meteo API" "External weather forecast provider."
         simulator = softwareSystem "Telemetry Simulator" "Ingests synthetic hourly agroclimatic readings via edge API."
 
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline telemetry cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline telemetry cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for telemetry series and forecast cache" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for telemetry series and forecast cache" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 iotCtrl = component "PlotIotDeviceController" "Exposes IoT sensor node registration, calibration and lifecycle endpoints" "Spring MVC Controller"
                 telemCtrl = component "PlotTelemetryController" "Exposes hourly telemetry query and ingestion endpoints" "Spring MVC Controller"
@@ -802,10 +817,14 @@ workspace "Viora - Telemetry Component Architecture" "Agroclimatic Telemetry Com
             }
         }
 
-        producer -> iotCtrl "Manages sensors [HTTPS/REST]"
-        producer -> telemCtrl "Queries telemetry [HTTPS/REST]"
-        producer -> forecastCtrl "Queries forecast [HTTPS/REST]"
-        manager -> telemCtrl "Monitors sectorial telemetry [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes telemetry and forecast cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes telemetry and forecast cache [SQLite / sqflite]"
+        nativeApp -> iotCtrl "Manages sensors [HTTPS/REST]"
+        crossApp -> iotCtrl "Manages sensors [HTTPS/REST]"
+        nativeApp -> telemCtrl "Queries telemetry [HTTPS/REST]"
+        crossApp -> telemCtrl "Queries telemetry [HTTPS/REST]"
+        nativeApp -> forecastCtrl "Queries forecast [HTTPS/REST]"
+        crossApp -> forecastCtrl "Queries forecast [HTTPS/REST]"
         simulator -> telemCtrl "Ingests hourly readings [HTTPS/REST]"
 
         iotCtrl -> telemCommandService "Delegates sensor commands (CMD15, CMD16, CMD17)"

@@ -368,11 +368,19 @@ Los diagramas se entregan como fuentes editables incluidas en este Markdown auto
 ```structurizr
 workspace "Viora - Subscription Component Architecture" "Subscription and Membership Component View" {
     model {
-        producer = person "Olive Producer" "Manages personal subscription, checkouts, and redeems invitation codes."
-        manager = person "Technical Manager" "Issues financed invitation code batches and manages code expiry."
         mercadoPago = softwareSystem "Mercado Pago API" "External payment gateway handling hosted checkout and IPN webhooks."
 
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline entitlement cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline entitlement cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for entitlement and quota cache" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for entitlement and quota cache" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 subCtrl = component "SubscriptionController" "Exposes subscription creation, checkout intent, and query REST endpoints" "Spring MVC Controller"
                 paymentWebhookCtrl = component "PaymentWebhookController" "Receives asynchronous IPN payment notifications from Mercado Pago" "Spring MVC Controller"
@@ -405,9 +413,14 @@ workspace "Viora - Subscription Component Architecture" "Subscription and Member
             }
         }
 
-        producer -> subCtrl "Creates subscription / requests checkout / queries status [HTTPS/REST]"
-        producer -> redemptionCtrl "Redeems cooperative code [HTTPS/REST]"
-        manager -> invitationCtrl "Generates code batches / adjusts expiry / queries batches [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes entitlement_cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes entitlement_cache [SQLite / sqflite]"
+        nativeApp -> subCtrl "Creates subscription / requests checkout / queries status [HTTPS/REST]"
+        crossApp -> subCtrl "Creates subscription / requests checkout / queries status [HTTPS/REST]"
+        nativeApp -> redemptionCtrl "Redeems cooperative code [HTTPS/REST]"
+        crossApp -> redemptionCtrl "Redeems cooperative code [HTTPS/REST]"
+        nativeApp -> invitationCtrl "Generates code batches / adjusts expiry / queries batches [HTTPS/REST]"
+        crossApp -> invitationCtrl "Generates code batches / adjusts expiry / queries batches [HTTPS/REST]"
         mercadoPago -> paymentWebhookCtrl "Sends IPN payment notification [HTTPS/POST]"
 
         subCtrl -> subCommandService "Delegates subscription write operations (commands)"

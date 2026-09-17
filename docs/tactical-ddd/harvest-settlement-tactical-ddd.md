@@ -262,6 +262,19 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
 * **Integridad Criptográfica del Documento:** El código hash SHA-256 generado durante la compilación binaria se almacena en `verification_hash`, permitiendo verificar la autenticidad física o digital del documento ante la cooperativa.
 * **Manejo Centralizado de Excepciones (RFC 7807):** Estructuras `ProblemDetail` ante duplicidad de año (`409 Conflict`), pesos nulos (`400 Bad Request`) o predio no encontrado (`404 Not Found`).
 
+##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+Para habilitar el registro ágil de pesajes al pie de báscula en el campo o centro de acopio y la consulta/descarga segura del expediente técnico con conectividad intermitente, el Bounded Context extiende componentes tácticos hacia el cliente móvil:
+* **Caché Local y Consultas Offline (`HarvestSettlementCacheDao` / `SettlementDatabase`):**
+  * En **Android nativo**, se implementa una base de datos local SQLite mediante **Room** (`@Database`, `@Dao`, `@Entity`) con la tabla `cached_harvest_settlements` y `cached_agronomic_reports`. En **Flutter**, se utiliza **sqflite** / **drift** para estructurar la persistencia local de liquidaciones históricas.
+  * Permite al productor consultar balances de campañas anteriores, el histórico de pesajes verde/negra y las métricas de mitigación de vecería ($ARR$) en parcelas remotas sin cobertura celular.
+* **Sincronización Resiliente de Liquidaciones (`SettlementSyncWorker` / WorkManager):**
+  * Ante la formalización del pesaje en zonas desconectadas, el comando se encola en una tabla local `pending_settlements` gestionada por **Android Jetpack WorkManager** (`CoroutineWorker`) o un servicio en segundo plano en Flutter.
+  * Al restablecerse la conectividad HTTPS, el worker despacha la solicitud `POST /api/v1/plots/{plotId}/harvest-settlements` con cabecera de idempotencia basada en el UUID local para evitar duplicación.
+* **Descarga Segura y Visor de Expedientes PDF (`DossierDownloadManager`):**
+  * La aplicación móvil gestiona la descarga en streaming del PDF mediante `DownloadManager` de Android o el paquete `flutter_downloader` / `dio`, almacenándolo en el directorio privado de la aplicación (`getExternalFilesDir` / `getApplicationDocumentsDirectory`).
+  * **Verificación de Integridad SHA-256:** Al completar la descarga, un componente utilitario computa el hash criptográfico del archivo local empleando la biblioteca `java.security.MessageDigest` o el paquete Dart `crypto`, contrastándolo contra la cabecera `ETag` y el campo `verification_hash` del backend para certificar que el informe no sufrió alteraciones o corrupciones en tránsito.
+  * **Visualización:** Integración con visores PDF nativos o embebidos (`PdfRenderer` en Android / `flutter_pdfview` en Flutter) para que el productor pueda exhibir el expediente oficial ante la junta directiva de la cooperativa.
+
 ---
 
 #### Bounded Context Software Architecture Component Level Diagrams
@@ -543,10 +556,17 @@ erDiagram
 ```structurizr
 workspace "Viora - Harvest Settlement Component Architecture" "Harvest Settlement and Performance Reporting Component View" {
     model {
-        producer = person "Olive Producer" "Settles annual olive harvests and downloads certified dossiers."
-        manager = person "Technical Manager" "Reviews agronomic stabilization dossiers and reduction rates."
-
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline harvest dossier cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline harvest dossier cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for settlements and reports cache" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for settlements and reports cache" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 settlementCtrl = component "PlotHarvestSettlementController" "Exposes annual harvest weighing settlement endpoints" "Spring MVC Controller"
                 reportCtrl = component "PlotAgronomicReportController" "Exposes stabilization curves, certification, and PDF dossier download" "Spring MVC Controller"
@@ -566,9 +586,12 @@ workspace "Viora - Harvest Settlement Component Architecture" "Harvest Settlemen
             }
         }
 
-        producer -> settlementCtrl "Settles harvest [POST /plots/{id}/harvest-settlements]"
-        producer -> reportCtrl "Downloads dossier PDF [GET .../agronomic-reports Accept: application/pdf]"
-        manager -> reportCtrl "Reviews stabilization reports [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes settlements and reports cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes settlements and reports cache [SQLite / sqflite]"
+        nativeApp -> settlementCtrl "Settles harvest [POST /plots/{id}/harvest-settlements]"
+        crossApp -> settlementCtrl "Settles harvest [POST /plots/{id}/harvest-settlements]"
+        nativeApp -> reportCtrl "Downloads dossier PDF [GET .../agronomic-reports Accept: application/pdf]"
+        crossApp -> reportCtrl "Downloads dossier PDF [GET .../agronomic-reports Accept: application/pdf]"
 
         settlementCtrl -> settlementCommandService "Delegates SettleCampaignHarvestCommand (CMD29)"
         settlementCtrl -> reportQueryService "Delegates settlement list/get queries"
