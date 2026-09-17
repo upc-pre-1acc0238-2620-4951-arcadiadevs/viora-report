@@ -586,9 +586,6 @@ entity "orchard.request_idempotency" as orchard_request_idempotency {
 }
 orchard_plots ||--o{ orchard_plot_revisions : "internal FK"
 orchard_plots |o--o{ orchard_request_idempotency : "scopes idempotency"
-note "External IDs have no cross-context FK.
-See DDL for composite keys, checks and partial indexes.
-One or more revisions/codes are ensured by application transactions." as N
 @enduml
 ```
 
