@@ -8,13 +8,13 @@
 
 ## 1. Metodología y Criterios de Descubrimiento Estratégico
 
-El proceso de **Candidate Context Discovery** formaliza la partición del modelo de dominio de Viora en unidades arquitectónicas autónomas y desacopladas (*Bounded Contexts*), tomando como base los artefactos generados a lo largo de las 9 etapas de EventStorming (52 eventos de dominio, 8 líneas de tiempo, 24 puntos de dolor, 11 eventos pivote, 33 comandos, 17 políticas reactivas, 15 modelos de lectura, 4 sistemas externos y 12 agregados transaccionales).
+El proceso de **Candidate Context Discovery** formaliza la partición del modelo de dominio de Viora en unidades arquitectónicas autónomas y desacopladas (*Bounded Contexts*), tomando como base los artefactos generados a lo largo de las 9 etapas de EventStorming (54 eventos de dominio, 8 líneas de tiempo, 24 puntos de dolor, 11 eventos pivote, 35 comandos, 17 políticas reactivas, 15 modelos de lectura, 4 sistemas externos y 12 agregados transaccionales).
 
 Para fundamentar la demarcación de fronteras semánticas con rigor arquitectónico, se aplicaron tres técnicas estratégicas de descubrimiento de DDD:
 
 ```
                                   MURAL INTEGRAL DE EVENTSTORMING
-                                (52 Eventos, 33 Comandos, 12 Agregados)
+                                (54 Eventos, 35 Comandos, 12 Agregados)
                                                  |
          +---------------------------------------+---------------------------------------+
          |                                       |                                       |

@@ -13,7 +13,7 @@ Exploración abierta y divergente de todos los hechos inmutables significativos 
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/event-storming/1-domain-events.jpg}
-\caption*{\textit{Nota.} Dispersión inicial de los 51 eventos de dominio capturados en post-its naranjas durante la sesión de brainstorming. El catálogo consolidado asciende a 52 eventos: \texttt{EV52} es una incorporación posterior al taller, derivada de decisiones de diseño táctico. Elaboración propia.}
+\caption*{\textit{Nota.} Dispersión inicial de los 51 eventos de dominio capturados en post-its naranjas durante la sesión de brainstorming. El catálogo consolidado asciende a 54 eventos: \texttt{EV52}, \texttt{EV53} y \texttt{EV54} son incorporaciones posteriores al taller, derivadas de decisiones de diseño táctico. Elaboración propia.}
 \end{figure}
 
 <br>
@@ -27,7 +27,7 @@ Ordenamiento cronológico continuo de los eventos de izquierda a derecha, estruc
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/event-storming/2-timeline.jpg}
-\caption*{\textit{Nota.} Secuenciación temporal de los 51 eventos del taller en 8 timelines interconectadas mediante dependencias causales. \texttt{EV52}, incorporado con posterioridad, pertenece al Timeline 2. Elaboración propia.}
+\caption*{\textit{Nota.} Secuenciación temporal de los 51 eventos del taller en 8 timelines interconectadas mediante dependencias causales. \texttt{EV52}, incorporado con posterioridad, pertenece al Timeline 2. \texttt{EV53} pertenece al Timeline 6 (cuajado y aclareo, cierre biológico por lignificación) y \texttt{EV54} al Timeline 2. Elaboración propia.}
 \end{figure}
 
 <br>
@@ -90,7 +90,7 @@ Especificación de las intenciones de acción invocadas por usuarios clave (prod
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/event-storming/5-commands-actors.jpg}
-\caption*{\textit{Nota.} Incorporación de los 32 comandos del taller (post-its azules) y etiquetas de actores (post-its amarillos) sobre el flujo de eventos. El catálogo consolidado asciende a 33 comandos con la incorporación posterior de \texttt{CMD33}. Elaboración propia.}
+\caption*{\textit{Nota.} Incorporación de los 32 comandos del taller (post-its azules) y etiquetas de actores (post-its amarillos) sobre el flujo de eventos. El catálogo consolidado asciende a 35 comandos con la incorporación posterior de \texttt{CMD33}, \texttt{CMD34} y \texttt{CMD35}. Elaboración propia.}
 \end{figure}
 
 \begin{figure}[H]

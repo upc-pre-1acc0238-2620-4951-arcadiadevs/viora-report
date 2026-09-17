@@ -31,12 +31,12 @@ Para estructurar el inventario de eventos del ecosistema Viora, se establecieron
 | 3. Subscription & Cooperative Membership:             06 eventos (EV10-EV14, EV52) |
 | 4. Olive Orchard & Plot Management:                   03 eventos (EV15 - EV17)     |
 | 5. Agroclimatic Telemetry & Sensor Monitoring:        08 eventos (EV18 - EV25)     |
-| 6. Phenology & Historical Bearing Analytics:          09 eventos (EV26 - EV34)     |
+| 6. Phenology & Historical Bearing Analytics:          10 eventos (EV26-EV34, EV53) |
 | 7. Crop Load Regulation & Thinning Advisory (Core):   11 eventos (EV35 - EV45)     |
 | 8. Harvest Settlement & Performance Reporting:        03 eventos (EV46 - EV48)     |
-| 9. Cooperative Operations & Territorial Intelligence: 03 eventos (EV49 - EV51)     |
+| 9. Cooperative Operations & Territorial Intelligence: 04 eventos (EV49-EV51, EV54) |
 +------------------------------------------------------------------------------------+
-| TOTAL DE DOMAIN EVENTS (POST-ITS NARANJAS):          52 EVENTOS                    |
+| TOTAL DE DOMAIN EVENTS (POST-ITS NARANJAS):          54 EVENTOS                    |
 +------------------------------------------------------------------------------------+
 ```
 
@@ -137,6 +137,13 @@ Modela la memoria histórica de cosechas, la evaluación del Índice de Vecería
 | **EV32** | `ColdRequirementFulfilled` | ChillAccumulationTracker | US22 (Escenario 2) | Umbral varietal de frío completado (25-30 porciones), asegurando la salida fisiológica del reposo invernal. |
 | **EV33** | `WinterThermalAnomalyDetected` | ChillAccumulationTracker | US23 (Escenario 1) | Ola de calor diurna invernal (>24°C por >3 días) detectada, destruyendo intermediarios del frío de Erez. |
 | **EV34** | `PotentialFloralYieldReadjusted` | ChillAccumulationTracker | US23 (Escenario 2) | Proyección de diferenciación floral y carga potencial reajustada ante estrés térmico por efecto ENOS. |
+| **EV53** | `PitHardeningStageReached` | ChillAccumulationTracker | US26 | La integral térmica post-antesis alcanza los $680.0^\circ\text{C}\cdot\text{día}$ ($T_{base}=10^\circ\text{C}$), confirmando el endurecimiento del endocarpio (estadio BBCH 75) y sellando la fecha fisiológica límite de aclareo. Dispara `CMD27` (`CloseThinningWindowByPhenology`) en *Crop Load Regulation*, cuyo `EV43` activa a su vez `POL10`. |
+
+> **Incorporación posterior.** `EV53` no proviene de la asignación original del taller: se incorpora al
+> catálogo con numeración al final, pero pertenece a este Bounded Context y se ubica en el **Timeline 6
+> (cuajado y aclareo, cierre biológico por lignificación)**. Formaliza como hecho de dominio propio del
+> agregado `ChillAccumulationTracker` el sellado de la fecha fisiológica límite de aclareo por
+> endurecimiento del endocarpio, derivado de decisiones de diseño táctico.
 
 ---
 
@@ -178,9 +185,16 @@ Proporciona visión agregada a los gestores técnicos de organizaciones olivarer
 | **EV49** | `CooperativeRiskMatrixEvaluated` | Cooperative | US31 (Escenario 1) | Matriz y semáforo colectivo de riesgo fenológico evaluados y consolidados para la cartera de socios. |
 | **EV50** | `CooperativeIntakeVolumeProjected` | Cooperative | US32 (Escenario 1) | Volumen agregado temprano de acopio de aceituna verde y negra proyectado a nivel de toda la organización. |
 | **EV51** | `LowSamplingCoverageWarnedForIntake` | Cooperative | US32 (Escenario 2) | Advertencia emitida al gestor técnico por baja cobertura de muestreos en los predios socios. |
+| **EV54** | `MemberAffiliated` | Cooperative | US07 | Productor dado de alta en el padrón gremial con la superficie concedida por el código de activación canjeado. Materializa `POL02` tras `CooperativeCodeRedeemed`. |
+
+> **Incorporación posterior.** `EV54` no proviene de la asignación original del taller: se incorpora al
+> catálogo con numeración al final, pero pertenece a este Bounded Context por su agregado emisor
+> (`Cooperative`) y se ubica en el **Timeline 2 (Suscripción)**, ya que su hecho de negocio se dispara por
+> reacción a `EV13` (`CooperativeCodeRedeemed`) a través de `POL02`, tal como aclara la nota de `CMD10`
+> en `Paso5_commands.md`.
 
 ---
 
 ## 3. Consideraciones de Cierre
 
-El catálogo consolidado de 52 eventos de dominio proporciona la base conceptual sobre la cual se articulan las líneas de tiempo cronológicas del sistema. Cada evento actúa como punto de enlace entre las intenciones de acción de los usuarios, las políticas de automatización agronómica y la consistencia transaccional de los agregados del dominio.
+El catálogo consolidado de 54 eventos de dominio proporciona la base conceptual sobre la cual se articulan las líneas de tiempo cronológicas del sistema. Cada evento actúa como punto de enlace entre las intenciones de acción de los usuarios, las políticas de automatización agronómica y la consistencia transaccional de los agregados del dominio.

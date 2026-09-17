@@ -10,7 +10,7 @@
 
 Tras la identificación divergente de los eventos de dominio en el Paso 1, la segunda etapa metodológica de EventStorming consiste en establecer una ordenación cronológica continua de izquierda a derecha. Esta secuenciación permite estructurar la trayectoria de valor de los usuarios y articularla con el ciclo biológico anual del olivo en la región de Tacna.
 
-Dado que las operaciones agronómicas, de monitoreo y de gestión cooperativa ocurren de forma paralela y con distintos ritmos temporales, el modelo organiza los 52 eventos de dominio en **8 Líneas de Tiempo (Timelines)** concurrentes, con la primera subdividida en dos fases complementarias (Seguridad e Identidad), agrupadas en tres dimensiones fundamentales:
+Dado que las operaciones agronómicas, de monitoreo y de gestión cooperativa ocurren de forma paralela y con distintos ritmos temporales, el modelo organiza los 54 eventos de dominio en **8 Líneas de Tiempo (Timelines)** concurrentes, con la primera subdividida en dos fases complementarias (Seguridad e Identidad), agrupadas en tres dimensiones fundamentales:
 
 1. **Dimensión de Plataforma y Gestión Operativa (Timelines 1 al 4):** Abarca el onboarding en dos fases (credenciales IAM e identidad humana en Profiles), activación de membresías o suscripciones, delimitación territorial de parcelas y vinculación de telemetría IoT.
 2. **Dimensión Agronómica y Fisiológica Estacional (Timelines 5 al 7):** Sigue rigurosamente el calendario fenológico del cultivo en Tacna (*Reposo invernal mayo-agosto $\rightarrow$ Floración, cuajado y aclareo octubre-diciembre $\rightarrow$ Cosecha y liquidación marzo-junio*).
