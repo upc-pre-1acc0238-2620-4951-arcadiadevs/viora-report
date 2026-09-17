@@ -38,7 +38,7 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `rectifyHarvest(year: CampaignYear, newYield: YieldKg): void` - Modifica el volumen de una cosecha previa por error de pesaje en almazara, recalcula de inmediato el $BBI$ interanual y encola `HistoricalHarvestRectifiedEvent`.
   * `deleteHarvest(year: CampaignYear): void` - Elimina un registro erróneo o duplicado, reevalúa la suficiencia de datos ($\ge 3$ años) y encola `HistoricalHarvestDeletedEvent`.
   * `processDailyTemperatures(date: LocalDate, hourlyTemps: List<Temperature>): void` - Procesa las 24 lecturas horarias de temperatura invernal (Mayo a Agosto), ejecuta la cinética bi-etápica de Erez acumulando porciones de frío netas (`EV31`), verifica si se alcanzó el requerimiento varietal de 25 a 30 porciones (`EV32`), evalúa si ocurrió ola de calor ($>24^\circ\text{C}$ por $>3$ días consecutivos, `EV33`) y reajusta la fertilidad floral potencial (`EV34`).
-  * `processPostAnthesisThermalTime(date: LocalDate, maxTemp: Temperature, minTemp: Temperature): void` - Procesa la integral térmica diaria post-floración calculando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$. Al alcanzar el umbral fisiológico de $680.0^\circ\text{C}\cdot\text{día}$ (BBCH 75), fija `pitHardeningReached = true`, sella `pitHardeningDate = date` y encola `PitHardeningStageReachedEvent` (`EV53`) para disparar `POL10` en *Crop Load Regulation*.
+  * `processPostAnthesisThermalTime(date: LocalDate, maxTemp: Temperature, minTemp: Temperature): void` - Procesa la integral térmica diaria post-floración calculando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$. Al alcanzar el umbral fisiológico de $680.0^\circ\text{C}\cdot\text{día}$ (BBCH 75), fija `pitHardeningReached = true`, sella `pitHardeningDate = date` y encola `PitHardeningStageReachedEvent` (`EV53`) para disparar `POL19` en *Crop Load Regulation*.
   * `getCalculatedBbi(): Optional<BiennialBearingIndex>`
   * `isColdRequirementSatisfied(): boolean`
   * `isPitHardened(): boolean`
@@ -142,7 +142,7 @@ Eventos inmutables en tiempo pasado que comunican hechos significativos del cicl
 * **`PotentialFloralYieldReadjustedEvent`**: `{ plotId: UUID, campaignYear: Integer, previousFactor: Double, revisedFactor: Double, reductionReason: String, occurredOn: Instant }` (EV34)
   * *Disparado cuando:* Se castiga la expectativa de floración y carga frutal potencial ante un déficit térmico invernal.
 * **`PitHardeningStageReachedEvent`**: `{ plotId: UUID, campaignYear: Integer, pitHardeningDate: LocalDate, accumulatedGdd: Double, occurredOn: Instant }` (EV53)
-  * *Disparado cuando:* La integral térmica post-antesis alcanza los $680.0^\circ\text{C}\cdot\text{día}$ ($T_{base}=10^\circ\text{C}$), confirmando el endurecimiento del endocarpio (estadio BBCH 75) y activando `POL10` en *Crop Load Regulation* para el cierre biológico irrevocable de prescripciones pendientes.
+  * *Disparado cuando:* La integral térmica post-antesis alcanza los $680.0^\circ\text{C}\cdot\text{día}$ ($T_{base}=10^\circ\text{C}$), confirmando el endurecimiento del endocarpio (estadio BBCH 75) y activando `POL19` en *Crop Load Regulation* para el cierre biológico irrevocable de prescripciones pendientes.
 
 ---
 
@@ -206,7 +206,7 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
   * *Flujo:* Verifica que la fecha pertenezca a la ventana invernal (Mayo-Agosto) -> carga el agregado `ChillAccumulationTracker` del predio -> invoca `processDailyTemperatures()` apoyándose en el servicio de dominio `ErezDynamicChillModel` -> actualiza acumulador de porciones, contador de olas de calor y factor de fertilidad floral -> persiste en el repositorio -> publica eventos generados (`WinterChillPortionsAccumulatedEvent`, alertas de cumplimiento o anomalías ENOS).
 * **`AccumulatePostAnthesisThermalTimeCommandHandler`** (CMD34 / Flujo C08):
   * *Entrada:* `AccumulatePostAnthesisThermalTimeCommand` (`plotId`, `date`, `maxTemp`, `minTemp`)
-  * *Flujo:* Valida que la fecha pertenezca al ciclo fenológico post-antesis (Septiembre a Diciembre) -> carga `ChillAccumulationTracker` del predio -> invoca `processPostAnthesisThermalTime(date, maxTemp, minTemp)` integrando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$ -> al acumular $\ge 680.0^\circ\text{C}\cdot\text{día}$, el agregado transiciona `pitHardeningReached = true`, sella `pitHardeningDate` y encola `PitHardeningStageReachedEvent` (`EV53`) -> persiste cambios en `ChillAccumulationTrackerRepository` -> publica eventos encolados para activar `POL10` en *Crop Load Regulation*.
+  * *Flujo:* Valida que la fecha pertenezca al ciclo fenológico post-antesis (Septiembre a Diciembre) -> carga `ChillAccumulationTracker` del predio -> invoca `processPostAnthesisThermalTime(date, maxTemp, minTemp)` integrando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$ -> al acumular $\ge 680.0^\circ\text{C}\cdot\text{día}$, el agregado transiciona `pitHardeningReached = true`, sella `pitHardeningDate` y encola `PitHardeningStageReachedEvent` (`EV53`) -> persiste cambios en `ChillAccumulationTrackerRepository` -> publica eventos encolados para activar `POL19` en *Crop Load Regulation*.
 
 ##### Query Handlers
 * **`ListPlotHarvestRecordsQueryHandler`** (TS22 / US20):

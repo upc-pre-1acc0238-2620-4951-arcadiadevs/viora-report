@@ -276,7 +276,7 @@ Cada manejador implementa `handle(command): Result`. Las fachadas `CropLoadComma
 - **`OnSamplingRoundCompletedEventHandler`** (POL09), atributos `commandBus`, `phenologyProjection`: `handle(SamplingRoundCompleted): void`. Aplica la prescripción automática cuando la ronda alcanza representatividad y la parcela no está en lignificación. Es el manejador que convierte el muestreo en prescripción sin intervención del productor.
 
   **Despacha `CMD26` en una transacción nueva, no en la que emitió `EV37`.** Encadenarlo dentro de aquella dejaría la llamada a `PlotContextPort` —que sale hacia otro bounded context— ejecutándose con el bloqueo pesimista de la prescripción ya adquirido, y una demora de Orchard haría rollback de la ingesta de campo recién sincronizada. La evidencia muestral ya está confirmada cuando `POL09` corre; la determinación es un paso posterior y separable. Si falla, la prescripción queda en `SAMPLING_IN_PROGRESS` con su ronda representativa y la determinación se reintenta, sin haber perdido un solo árbol evaluado.
-- **`OnPitHardeningStageReachedEventHandler`** (EV53 / POL10), atributo `commandBus`: `handle(PitHardeningStageReached): void`. Escucha `PitHardeningStageReachedEvent` (`EV53`) emitido por *Phenology and Historical Bearing Analytics* tras acumular los 680 GDD post-antesis ($T_{base}=10^\circ\text{C}$). Despacha `CloseThinningWindowByPhenology` (`CMD27`) con la fecha de lignificación consolidada para ejecutar el cierre biológico formal de la ventana de aclareo en el cuartel.
+- **`OnPitHardeningStageReachedEventHandler`** (EV53 / POL19), atributo `commandBus`: `handle(PitHardeningStageReached): void`. Escucha `PitHardeningStageReachedEvent` (`EV53`) emitido por *Phenology and Historical Bearing Analytics* tras acumular los 680 GDD post-antesis ($T_{base}=10^\circ\text{C}$). Despacha `CloseThinningWindowByPhenology` (`CMD27`) con la fecha de lignificación consolidada para ejecutar el cierre biológico formal de la ventana de aclareo en el cuartel.
 - **`OnThinningWindowClosedEventHandler`** (POL10 interno), atributo `prescriptions`: `handle(ThinningWindowClosedByPitHardening): void`. Expira las prescripciones pendientes de la parcela tras la ejecución de `CMD27`. Consumo interno del propio contexto.
 - **`OnColdRequirementFulfilledEventHandler`** (EV32), atributo `phenologyProjection`: `handle(ColdRequirementFulfilled): void`. Registra la salida del reposo invernal y habilita la ronda de muestreo de la campaña.
 - **`OnPotentialFloralYieldReadjustedEventHandler`** (EV34), atributo `phenologyProjection`: `handle(PotentialFloralYieldReadjusted): void`. Actualiza el factor de fertilidad floral vigente.
@@ -313,7 +313,7 @@ Implementaciones concretas de los repositorios, mapeos ORM sobre PostgreSQL y ad
 | `SpringDomainEventPublisher` | `dispatch(events)` síncrono dentro de la transacción, propagando fallos para rollback. |
 | `PostgresIdempotencyStore` | Huella de solicitud y resultado; reserva y confirmación dentro de la transacción de negocio. Sostiene la deduplicación de lotes de campo. |
 | `AgriculturalCampaignClockAdapter` | Implementa `CampaignClockPort` resolviendo el año agrícola vigente a partir del calendario fenológico regional del cultivo, que no coincide con el año civil. |
-| `PhenologicalScheduler` | Tarea programada que actúa como mecanismo periódico de verificación de respaldo o sincronización, delegando en `OnPitHardeningStageReachedEventHandler` (`POL10` / `EV53`) el disparo reactivo de `CMD27`. |
+| `PhenologicalScheduler` | Tarea programada que actúa como mecanismo periódico de verificación de respaldo o sincronización, delegando en `OnPitHardeningStageReachedEventHandler` (`POL19` / `EV53`) el disparo reactivo de `CMD27`. |
 | `CropLoadSecurityConfig` | Validación de JWT y rol `ROLE_PRODUCTOR`; la autorización efectiva se resuelve contra la titularidad de la parcela, no contra el rol solamente. |
 
 ##### 2. Modelo de datos y mapeos
@@ -347,7 +347,7 @@ Esquema lógico `crop_load`. Las claves foráneas son internas al contexto; `plo
       CHECK (window_opens_on IS NULL OR window_closes_on IS NULL OR window_opens_on < window_closes_on),
       -- Toda prescripción que completó la determinación ('PRESCRIBED','EXECUTED_OPTIMAL','EXECUTED_LATE','SUPERSEDED_BY_BOUNDARY_UPDATE')
       -- conserva obligatoriamente carga sostenible, remoción y revisión predial sellada.
-      -- Si se cierra por lignificación (POL10) durante el muestreo, o se anula por baja (POL16), estos campos son legítimamente nulos.
+      -- Si se cierra por lignificación (POL19) durante el muestreo, o se anula por baja (POL16), estos campos son legítimamente nulos.
       CHECK (status NOT IN ('PRESCRIBED', 'EXECUTED_OPTIMAL', 'EXECUTED_LATE', 'SUPERSEDED_BY_BOUNDARY_UPDATE')
              OR (sustainable_load IS NOT NULL AND removal_percentage IS NOT NULL
                  AND observed_plot_revision IS NOT NULL))
@@ -521,7 +521,7 @@ graph TB
         ExecutionCmdHandler["CMD28 ConfirmThinningExecutionHandler"]
         VoidCmdHandler["VoidPendingPrescriptionsHandler (POL16)"]
         QueryHandlers["Query Handlers: (RM10, historial, estado de ronda)"]
-        EventHandlers["Event Handlers / Políticas: (POL09, POL10, EV27, EV32, EV34, EV15-EV17)"]
+        EventHandlers["Event Handlers / Políticas: (POL09, POL10, POL19, EV27, EV32, EV34, EV15-EV17)"]
         Ports["Puertos: (PlotContext, CampaignClock, PhenologicalSignal)"]
     end
 
@@ -595,7 +595,7 @@ graph TB
 4. **Prescripción automática.** `POL09` reacciona a `EV37` y despacha `CMD26` **en una transacción nueva**, sin intervención del productor. El manejador resuelve el contexto predial antes de abrir esa transacción, compone `CropLoadInputs` con las señales fenológicas disponibles en la proyección local e invoca el motor. Separar las transacciones es lo que impide que la latencia de Orchard ponga en riesgo la evidencia de campo ya confirmada.
 5. **Ejecución del motor.** `SustainableCropLoadCalculator` combina densidad muestreada, vigor por diámetro de tronco, frío cumplido y, cuando existen, factor floral e índice de vecería. Opera de forma degradada ante las entradas opcionales ausentes y nunca rechaza el cálculo por esa causa. El agregado sella `observedPlotRevision` y emite `EV39`, más `EV40`, `EV41` o `EV42` según el resultado.
 6. **Propagación hacia otros contextos.** `EV40` alimenta el semáforo territorial de `Cooperative Operations` (`POL13`) y `EV37` recalibra su proyección de acopio (`POL15`). Ambas son reacciones en el límite transaccional del receptor, no llamadas desde aquí.
-7. **Cierre biológico.** `PhenologicalScheduler` detecta la lignificación del endocarpio y despacha `CMD27`. La transición es irrevocable y `POL10` expira las prescripciones pendientes de la parcela. A partir de ese punto el aclareo deja de inducir retorno floral y el sistema deja de recomendarlo.
+7. **Cierre biológico.** *Phenology* detecta la lignificación del endocarpio y emite `EV53`; `POL19` lo consume y despacha `CMD27`, con `PhenologicalScheduler` como mecanismo de respaldo. La transición es irrevocable y `POL10` expira las prescripciones pendientes de la parcela. A partir de ese punto el aclareo deja de inducir retorno floral y el sistema deja de recomendarlo.
 8. **Confirmación de la labor.** El productor declara fecha, porcentaje realmente removido y cuadrilla. `ThinningWindowSentinel` deriva la oportunidad comparando esa fecha con el cierre de ventana: `EV44` si fue oportuna, `EV45` si fue tardía. Nunca ambos. `EV45` viaja a Phenology, que aplica la penalización sobre la eficiencia mitigadora (`POL11`).
 9. **Baja de la parcela.** `PlotRemoved` (`EV17`) invalida la proyección predial y dispara la anulación de las prescripciones pendientes (`POL16`). La anulación no publica evento propio y no destruye la evidencia muestral.
 
@@ -876,7 +876,7 @@ Las doce cuestiones del modelo compartido y las seis preguntas del ciclo de vida
 
 | # | Cuestión | Resolución Aplicada y Estado |
 |---|---|---|
-| ~~P1~~ | **Lignificación del carozo (BBCH 75).** | **Cerrado.** Formalizado como `EV53: PitHardeningStageReachedEvent`, emitido por *Phenology* tras acumular $680.0^\circ\text{C}\cdot\text{día}$ post-antesis ($T_{base}=10^\circ\text{C}$). *Crop Load Regulation* lo consume en `OnPitHardeningStageReachedEventHandler` (`POL10`), despachando `CMD27` para cerrar la ventana de manera irrevocable (Invariante 3). |
+| ~~P1~~ | **Lignificación del carozo (BBCH 75).** | **Cerrado.** Formalizado como `EV53: PitHardeningStageReachedEvent`, emitido por *Phenology* tras acumular $680.0^\circ\text{C}\cdot\text{día}$ post-antesis ($T_{base}=10^\circ\text{C}$). *Crop Load Regulation* lo consume en `OnPitHardeningStageReachedEventHandler` (`POL19`), despachando `CMD27` para cerrar la ventana de manera irrevocable (Invariante 3). |
 | ~~P2~~ | **Doble autoridad sobre `POL08`.** | **Cerrado.** Se adopta la lectura de `Paso1`: *Phenology* es la autoridad que detecta la anomalía térmica y emite `PotentialFloralYieldReadjusted` (`EV34`). *Crop Load* consume `EV34` de forma reactiva en su proyección local y alimenta el cálculo de carga. |
 | ~~P3~~ | **Invariante 4 de `AGG04: Plot` vs baja de parcelas.** | **Cerrado.** Se confirma la inversión de dependencia: `Olive Orchard` emite `PlotRemoved` (`EV17`) sin consultar síncronamente. *Crop Load* compensa asíncronamente mediante `POL16`, transicionando las prescripciones pendientes a `VOIDED_BY_PLOT_REMOVAL`. |
 | ~~P4~~ | **Consumo de `EV44` en `Harvest Settlement`.** | **Cerrado.** Formalizada la política de enlace: *Harvest Settlement* escucha `ThinningExecutionConfirmed` (`EV44`) para registrar la fecha y remoción ejecutada en el expediente agronómico de fin de campaña. |
@@ -888,7 +888,7 @@ Las doce cuestiones del modelo compartido y las seis preguntas del ciclo de vida
 | ~~P11~~ | **Revisión predial y re-prescripción (`EV16`).** | **Cerrado.** Si ocurre `PlotBoundariesUpdated` (`EV16`) sobre una prescripción en estado `PRESCRIBED`, `supersedeByBoundaryUpdate` transiciona la prescripción a `SUPERSEDED_BY_BOUNDARY_UPDATE`, liberando la ranura en el índice parcial `uq_active_prescription_per_plot_campaign`. Se emite una nueva prescripción con la geometría actualizada conservando intacto el historial de la recomendación superada. |
 | ~~P12~~ | **Escritura y granularidad de agregados.** | **Cerrado.** Se confirma como decisión de diseño consciente mantener `FruitThinningPrescription` como Aggregate Root protegiendo la coherencia integral entre evidencia muestral acumulada y recomendación. Para prevenir contención concurrente en sincronización de campo, se apoya en claves de idempotencia `(actorId, plotId, clientBatchId)` y unicidad `uq_tree_tag_per_round` en la capa de aplicación. |
 
-> **Nota de trazabilidad sobre P1:** Se formalizó la emisión de `PitHardeningStageReachedEvent` (`EV53`) en *Phenology* tras acumular $680.0^\circ\text{C}\cdot\text{día}$ post-antesis ($T_{base}=10^\circ\text{C}$) y su consumo reactivo mediante `POL10` / `CMD27`, habiéndose retirado la nota provisoria previa que condicionaba el cierre fenológico.
+> **Nota de trazabilidad sobre P1:** Se formalizó la emisión de `PitHardeningStageReachedEvent` (`EV53`) en *Phenology* tras acumular $680.0^\circ\text{C}\cdot\text{día}$ post-antesis ($T_{base}=10^\circ\text{C}$) y su consumo reactivo mediante `POL19` / `CMD27`, habiéndose retirado la nota provisoria previa que condicionaba el cierre fenológico.
 
 ---
 
@@ -901,12 +901,12 @@ stateDiagram-v2
     [*] --> SAMPLING_IN_PROGRESS: Abrir prescripción (CMD24)
     SAMPLING_IN_PROGRESS --> SAMPLING_IN_PROGRESS: recordTreeSampling / ingestSamplingsBatch
     SAMPLING_IN_PROGRESS --> PRESCRIBED: determineSustainableCropLoad (CMD26) [>= 5 árboles]
-    SAMPLING_IN_PROGRESS --> CLOSED_BY_PIT_HARDENING: EV53 (POL10 / CMD27)
+    SAMPLING_IN_PROGRESS --> CLOSED_BY_PIT_HARDENING: EV53 (POL19 / CMD27)
     SAMPLING_IN_PROGRESS --> VOIDED_BY_PLOT_REMOVAL: EV17 (POL16)
 
     PRESCRIBED --> EXECUTED_OPTIMAL: confirmExecution (CMD28) [fecha <= window_closes_on]
     PRESCRIBED --> EXECUTED_LATE: confirmExecution (CMD28) [fecha > window_closes_on]
-    PRESCRIBED --> CLOSED_BY_PIT_HARDENING: EV53 (POL10 / CMD27)
+    PRESCRIBED --> CLOSED_BY_PIT_HARDENING: EV53 (POL19 / CMD27)
     PRESCRIBED --> SUPERSEDED_BY_BOUNDARY_UPDATE: EV16 (supersedeByBoundaryUpdate)
     PRESCRIBED --> VOIDED_BY_PLOT_REMOVAL: EV17 (POL16)
 
