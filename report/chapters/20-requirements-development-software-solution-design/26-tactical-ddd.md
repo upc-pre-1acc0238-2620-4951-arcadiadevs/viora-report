@@ -66,9 +66,9 @@ En las siguientes secciones se detalla el diseño táctico de los nueve contexto
 | `UserAccount` `Repository` | Repository | `save(account: UserAccount): UserAccount` | Persiste atómicamente el estado del agregado de cuenta. |
 | `UserAccount` `Registered` `Event` | Domain Event | `userId: UUID, email: String, role: String, occurredOn: Instant` | Notifica el alta de credenciales para inicializar el onboarding civil (`EV01`). |
 | `User` `Authenticated` `Event` | Domain Event | `userId: UUID, email: String, occurredOn: Instant` | Notifica el inicio de sesión exitoso para auditoría de accesos (`EV02`). |
-| `Password` `ChangedEvent` | Domain Event | `userId: UUID, occurredOn: Instant` | Señala la actualización voluntaria de contraseña (`EV04`). |
-| `PasswordReset` `RequestedEvent` | Domain Event | `userId: UUID, email: String, tokenValue: String, expiresAt: Instant` | Dispara la entrega del correo con el enlace de recuperación vía Brevo (`EV05`). |
-| `PasswordReset` `CompletedEvent` | Domain Event | `userId: UUID, email: String, occurredOn: Instant` | Confirma el restablecimiento exitoso de la credencial (`EV06`). |
+| `Password` `ChangedEvent` | Domain Event | `userId: UUID, occurredOn: Instant` | Señala la actualización voluntaria de contraseña (`EV05`). |
+| `PasswordReset` `RequestedEvent` | Domain Event | `userId: UUID, email: String, tokenValue: String, expiresAt: Instant` | Dispara la entrega del correo con el enlace de recuperación vía Brevo (`EV06`). |
+| `PasswordReset` `CompletedEvent` | Domain Event | `userId: UUID, email: String, occurredOn: Instant` | Confirma el restablecimiento exitoso de la credencial (`EV07`). |
 
 #### Interface Layer
 
@@ -262,8 +262,8 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `Profile` `Repository` | Repository | `findByUserId(userId: UserId): Optional<UserProfile>` | Recupera el perfil civil asociado a una cuenta de IAM. |
 | `Profile` `Repository` | Repository | `existsByUserId(userId: UserId): boolean` | Verifica si una cuenta ya posee un perfil inicializado. |
 | `Profile` `Repository` | Repository | `save(profile: UserProfile): UserProfile` | Persiste atómicamente el perfil y sus datos de contacto. |
-| `Profile` `CreatedEvent` | Domain Event | `profileId: UUID, userId: UUID, fullName: String, occurredOn: Instant` | Notifica la creación del perfil civil para habilitar contratación (`EV03`). |
-| `ContactProfile` `UpdatedEvent` | Domain Event | `profileId: UUID, userId: UUID, phone: String, email: String, occurredOn: Instant` | Propaga actualización de datos de contacto hacia la cooperativa (`POL03`). |
+| `Profile` `CreatedEvent` | Domain Event | `profileId: UUID, userId: UUID, fullName: String, occurredOn: Instant` | Notifica la creación del perfil civil para habilitar contratación (`EV08`). |
+| `ContactProfile` `UpdatedEvent` | Domain Event | `profileId: UUID, userId: UUID, phone: String, email: String, occurredOn: Instant` | Propaga actualización de datos de contacto hacia la cooperativa (`EV09`/`POL03`). |
 
 #### Interface Layer
 
@@ -534,12 +534,12 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `InvitationCode` `Batch` `Repository` | Repository | `findById(id: InvitationCodeBatchId): Optional<InvitationCodeBatch>` | Carga el lote de códigos para emisión o auditoría. |
 | `InvitationCode` `Batch` `Repository` | Repository | `findByFingerprint(fingerprint: CodeFingerprint): Optional<InvitationCodeBatch>` | Localiza el lote contenedor de un código específico presentado. |
 | `InvitationCode` `Batch` `Repository` | Repository | `save(batch: InvitationCodeBatch): InvitationCodeBatch` | Persiste lote y estado de códigos individuales. |
-| `Subscription` `Payment` `ApprovedEvent` | Domain Event | `subscriptionId: UUID, producerId: UUID, receiptId: UUID, occurredOn: Instant` | Confirma cobro exitoso por pasarela de pagos (`EV07`). |
-| `Subscription` `ActivatedEvent` | Domain Event | `subscriptionId: UUID, producerId: UUID, quotaHa: Decimal, occurredOn: Instant` | Notifica vigencia activa para habilitar registro predial (`EV08`). |
-| `Subscription` `PaymentFailed` `Event` | Domain Event | `subscriptionId: UUID, intentId: UUID, reasonCode: String, occurredOn: Instant` | Informa rechazo de transacción comercial (`EV09`). |
-| `Cooperative` `CodeRedeemed` `Event` | Domain Event | `subscriptionId: UUID, producerId: UUID, cooperativeId: UUID, codeId: UUID` | Notifica canje de código patrocinado para afiliación (`EV10`). |
-| `Invitation` `CodesBatch` `GeneratedEvent` | Domain Event | `batchId: UUID, licenseId: UUID, quantity: int, reservedArea: Decimal` | Registra reserva de cupos corporativos (`EV11`). |
-| `InvitationCode` `ExpiredEvent` | Domain Event | `batchId: UUID, licenseId: UUID, codeId: UUID, releasedQuota: Decimal` | Notifica liberación de cupo por código vencido (`EV12`/`POL17`). |
+| `Subscription` `Payment` `ApprovedEvent` | Domain Event | `subscriptionId: UUID, producerId: UUID, receiptId: UUID, occurredOn: Instant` | Confirma cobro exitoso por pasarela de pagos (`EV10`). |
+| `Subscription` `ActivatedEvent` | Domain Event | `subscriptionId: UUID, producerId: UUID, quotaHa: Decimal, occurredOn: Instant` | Notifica vigencia activa para habilitar registro predial (`EV11`). |
+| `Subscription` `PaymentFailed` `Event` | Domain Event | `subscriptionId: UUID, intentId: UUID, reasonCode: String, occurredOn: Instant` | Informa rechazo de transacción comercial (`EV12`). |
+| `Cooperative` `CodeRedeemed` `Event` | Domain Event | `subscriptionId: UUID, producerId: UUID, cooperativeId: UUID, codeId: UUID` | Notifica canje de código patrocinado para afiliación (`EV13`). |
+| `Invitation` `CodesBatch` `GeneratedEvent` | Domain Event | `batchId: UUID, licenseId: UUID, quantity: int, reservedArea: Decimal` | Registra reserva de cupos corporativos (`EV14`). |
+| `InvitationCode` `ExpiredEvent` | Domain Event | `batchId: UUID, licenseId: UUID, codeId: UUID, releasedQuota: Decimal` | Notifica liberación de cupo por código vencido (`EV52`/`POL17`). |
 
 #### Interface Layer
 
@@ -1656,7 +1656,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `FruitThinning` `Prescription` `Repository` | Repository | `findByPlotIdAndCampaign(plotId: PlotId, year: CampaignYear): Optional<FruitThinningPrescription>` | Carga la prescripción vigente para la campaña en el predio. |
 | `FruitThinning` `Prescription` `Repository` | Repository | `save(prescription: FruitThinningPrescription): FruitThinningPrescription` | Guarda estado de muestreos y prescripción. |
 | `SamplingRound` `CompletedEvent` | Domain Event | `prescriptionId: UUID, plotId: UUID, evaluatedTrees: int, occurredOn: Instant` | Notifica representatividad muestral suficiente para prescribir (`EV37`). |
-| `Sustainable` `CropLoad` `Determined` `Event` | Domain Event | `prescriptionId: UUID, plotId: UUID, removalPercentage: Double, occurredOn: Instant` | Emite prescripción formal de raleo frutal (`EV42`). |
+| `Sustainable` `CropLoad` `Determined` `Event` | Domain Event | `prescriptionId: UUID, plotId: UUID, removalPercentage: Double, occurredOn: Instant` | Emite prescripción formal de raleo frutal (`EV39`). |
 | `OverloadRisk` `DetectedEvent` | Domain Event | `prescriptionId: UUID, plotId: UUID, overloadFactor: Double, occurredOn: Instant` | Alerta riesgo de sobrecarga crítica hacia la cooperativa (`EV40`/`POL13`). |
 | `Thinning` `Execution` `ConfirmedEvent` | Domain Event | `prescriptionId: UUID, plotId: UUID, removalPct: Double, timeliness: String, occurredOn: Instant` | Confirma ejecución de la labor para liquidación de cosecha (`EV44`/`POL18`). |
 
