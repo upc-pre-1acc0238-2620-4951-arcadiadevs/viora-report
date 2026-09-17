@@ -1557,7 +1557,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
 | `recordTreeSampling` | `record: TreeSamplingRecord` | `void` | Incorpora conteo de brote garantizando no duplicidad de árbol. |
-| `ingestSamplingsBatch` | `records: List<TreeSamplingRecord>`,`evaluator: SamplingCoverageEvaluator` | `void` | Procesa lote móvil offline y emite `SamplingRoundCompletedEvent `al alcanzar representatividad ($N \ge 20$). |
+| `ingestSamplingsBatch` | `records: List<TreeSamplingRecord>`,`evaluator: SamplingCoverageEvaluator` | `void` | Procesa lote móvil offline y emite `SamplingRoundCompletedEvent `al alcanzar representatividad ($N \ge 5$). |
 | `determineSustainableCropLoad` | `inputs: AgronomicInputs`,`calc: CropLoadBalancingCalculatorService` | `void` | Calcula porcentaje óptimo de remoción y emite `SustainableCropLoadDeterminedEvent`. |
 | `confirmExecution` | `confirm: ExecutionConfirmation` | `void` | Registra ejecución de raleo emitiendo `ThinningExecutionConfirmedEvent`. |
 | `closeWindowByPitHardening` | `date: LocalDate` | `void` | Cierra la ventana de intervención oportuna por endurecimiento de carozo. |
@@ -1772,7 +1772,7 @@ WHERE status IN ('SAMPLING_IN_PROGRESS', 'PRESCRIBED');
 2. Al recuperar conectividad, `SamplingSyncWorkManager` despacha `POST` \nolinkurl{/api/v1/plots/{plotId}/samplings} con cabecera `Idempotency-Key` hacia `PlotSamplingController`.
 3. `PlotSamplingController` delega el procesamiento en `CropLoadCommandService` (`CMD24`, `CMD25`), mientras que las consultas de prescripciones y resúmenes muestrales son atendidas por `CropLoadQueryService`.
 4. `CropLoadCommandService` invoca `FieldSamplingDeduplicator` para filtrar duplicados y persiste los registros en `FruitThinningPrescriptionRepository`.
-5. Si el muestreo alcanza suficiencia estadística ($N \ge 20$), `CropLoadCommandService` invoca `CropLoadBalancingCalculatorService` y publica `CropLoadPrescribedEvent` (`EV42`) vía `SpringDomainEventPublisher`. Si detecta riesgo de sobrecarga, emite alerta hacia *Cooperative Operations* (`POL13`).
+5. Si el muestreo alcanza suficiencia estadística ($N \ge 5$), `CropLoadCommandService` invoca `CropLoadBalancingCalculatorService` y publica `ThinningPrescribedEvent` (`EV41`) vía `SpringDomainEventPublisher`. Si detecta riesgo de sobrecarga, emite alerta hacia *Cooperative Operations* (`POL13`).
 6. El productor confirma el aclareo mediante `POST` \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations} (`TS27` / `CMD28`); `ThinningExecutionController` delega en `CropLoadCommandService`, el cual actualiza la prescripción a `EXECUTED` en el repositorio y emite `ThinningExecutedEvent` (`EV44` bajo `POL18`).
 
 \begin{figure}[H]
