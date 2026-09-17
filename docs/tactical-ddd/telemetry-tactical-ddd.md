@@ -797,7 +797,7 @@ workspace "Viora - Telemetry Component Architecture" "Agroclimatic Telemetry Com
                 telemCtrl = component "PlotTelemetryController" "Exposes hourly telemetry query and ingestion endpoints" "Spring MVC Controller"
                 forecastCtrl = component "PlotForecastController" "Exposes 7-day weather forecast queries" "Spring MVC Controller"
                 
-                telemCommandService = component "TelemetryCommandService" "Coordinates IoT node registration/calibration (CMD15-17) and hourly reading ingestion (CMD18)" "Spring Service / Command Service"
+                telemCommandService = component "TelemetryCommandService" "Coordinates IoT node registration/calibration and hourly reading ingestion" "Spring Service / Command Service"
                 telemQueryService = component "TelemetryQueryService" "Handles queries for telemetry series, active sensor nodes, and 7-day weather forecast" "Spring Service / Query Service"
                 forecastScheduler = component "ForecastSyncScheduler" "Scheduled background task synchronizing weather forecast cache" "Spring @Scheduled Component"
                 
@@ -827,8 +827,8 @@ workspace "Viora - Telemetry Component Architecture" "Agroclimatic Telemetry Com
         crossApp -> forecastCtrl "Queries forecast [HTTPS/REST]"
         simulator -> telemCtrl "Ingests hourly readings [HTTPS/REST]"
 
-        iotCtrl -> telemCommandService "Delegates sensor commands (CMD15, CMD16, CMD17)"
-        telemCtrl -> telemCommandService "Delegates telemetry ingestion (CMD18)"
+        iotCtrl -> telemCommandService "Delegates sensor commands"
+        telemCtrl -> telemCommandService "Delegates telemetry ingestion"
         telemCtrl -> telemQueryService "Delegates telemetry series and threshold queries"
         forecastCtrl -> telemQueryService "Delegates forecast queries"
         forecastScheduler -> weatherAdapter "Triggers 3-hour forecast cache sync"
@@ -836,7 +836,7 @@ workspace "Viora - Telemetry Component Architecture" "Agroclimatic Telemetry Com
         telemCommandService -> evaluatorService "Evaluates microclimatic stress thresholds"
         telemCommandService -> vsnRepo "Loads / persists sensor nodes via domain port"
         telemCommandService -> seriesRepo "Persists telemetry series via domain port"
-        telemCommandService -> eventPublisher "Publishes domain events (EV21, EV22, EV23)"
+        telemCommandService -> eventPublisher "Publishes domain events"
         
         telemQueryService -> vsnRepo "Fetches sensor nodes via domain port"
         telemQueryService -> seriesRepo "Fetches telemetry series via domain port"

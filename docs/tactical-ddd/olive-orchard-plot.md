@@ -298,7 +298,7 @@ workspace "Viora - Olive Orchard Component Architecture" "Olive Orchard and Plot
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 plotCtrl = component "PlotController" "Exposes plot registration, delta sync, update and deletion REST endpoints" "Spring MVC Controller"
                 
-                plotCommandService = component "PlotCommandService" "Coordinates plot creation, polygon updates, and soft deletions (CMD12, CMD13, CMD14)" "Spring Service / Command Service"
+                plotCommandService = component "PlotCommandService" "Coordinates plot creation, polygon updates, and soft deletions" "Spring Service / Command Service"
                 plotQueryService = component "PlotQueryService" "Handles queries for plot details, boundary GeoJSON, and delta sync" "Spring Service / Query Service"
                 
                 geoValidator = component "GeospatialPolygonValidator" "Validates GeoJSON polygon topology, non-self-intersection, and net ha" "Domain Service / JTS Topology Suite"
@@ -323,9 +323,9 @@ workspace "Viora - Olive Orchard Component Architecture" "Olive Orchard and Plot
         plotCtrl -> plotQueryService "Delegates plot read and delta queries"
         
         plotCommandService -> geoValidator "Validates polygon coordinates and net hectares"
-        plotCommandService -> quotaPort "Verifies remaining entitlement quota (CMD12)"
+        plotCommandService -> quotaPort "Verifies remaining entitlement quota"
         plotCommandService -> plotRepo "Loads / persists plot records and revisions via domain port"
-        plotCommandService -> eventPublisher "Publishes domain events (EV15, EV16, EV17)"
+        plotCommandService -> eventPublisher "Publishes domain events"
         
         plotQueryService -> plotRepo "Fetches plot records and revisions via domain port"
 

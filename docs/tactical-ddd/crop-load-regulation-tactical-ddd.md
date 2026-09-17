@@ -972,14 +972,14 @@ workspace "Viora - Crop Load Component Architecture" "Crop Load Regulation and T
                 thinningCtrl = component "PlotThinningPrescriptionController" "Exposes active and historical prescription query endpoints" "Spring MVC Controller"
                 executionCtrl = component "ThinningExecutionController" "Exposes thinning execution confirmation endpoints" "Spring MVC Controller"
                 
-                cropLoadCommandService = component "CropLoadCommandService" "Coordinates sampling ingestion (CMD24-25), prescription calculation, and thinning execution (CMD28)" "Spring Service / Command Service"
+                cropLoadCommandService = component "CropLoadCommandService" "Coordinates sampling ingestion, prescription calculation, and thinning execution" "Spring Service / Command Service"
                 cropLoadQueryService = component "CropLoadQueryService" "Handles queries for thinning prescriptions, historical recommendations, and sampling summaries" "Spring Service / Query Service"
                 balancingService = component "CropLoadBalancingCalculatorService" "Domain service calculating sustainable load and thinning percentages" "Domain Service"
                 deduplicatorService = component "FieldSamplingDeduplicator" "Domain service ensuring idempotent batch ingestion from offline clients" "Domain Service"
                 
                 prescriptionRepo = component "FruitThinningPrescriptionRepository" "Domain repository interface for prescriptions and sampling rounds" "Domain Port / Interface"
                 prescriptionRepoAdapter = component "JpaFruitThinningPrescriptionRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for crop load regulation" "Spring Data JPA Adapter"
-                eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV42, EV43, EV44, and EV45 domain events" "Spring ApplicationEventPublisher"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches domain events" "Spring ApplicationEventPublisher"
             }
             db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
                 tags "Database"
@@ -995,15 +995,15 @@ workspace "Viora - Crop Load Component Architecture" "Crop Load Regulation and T
         nativeApp -> executionCtrl "Confirms thinning execution [HTTPS/REST]"
         crossApp -> executionCtrl "Confirms thinning execution [HTTPS/REST]"
 
-        samplingCtrl -> cropLoadCommandService "Delegates sampling commands (CMD24, CMD25)"
+        samplingCtrl -> cropLoadCommandService "Delegates sampling commands"
         samplingCtrl -> cropLoadQueryService "Delegates sampling summary queries"
         thinningCtrl -> cropLoadQueryService "Delegates prescription queries (RM10)"
-        executionCtrl -> cropLoadCommandService "Delegates execution confirmations (CMD28)"
+        executionCtrl -> cropLoadCommandService "Delegates execution confirmations"
 
         cropLoadCommandService -> deduplicatorService "Deduplicates client batches"
         cropLoadCommandService -> balancingService "Calculates sustainable crop load"
         cropLoadCommandService -> prescriptionRepo "Loads / persists prescriptions and samplings via domain port"
-        cropLoadCommandService -> eventPublisher "Publishes domain events (EV42, EV43, EV44, EV45)"
+        cropLoadCommandService -> eventPublisher "Publishes domain events"
         
         cropLoadQueryService -> prescriptionRepo "Fetches prescriptions and samplings via domain port"
 

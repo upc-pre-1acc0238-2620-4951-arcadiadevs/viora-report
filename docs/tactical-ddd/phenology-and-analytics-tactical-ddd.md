@@ -689,20 +689,20 @@ workspace "Viora - Phenology Component Architecture" "Phenology and Historical B
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 chillCtrl = component "PlotChillController" "Exposes winter chill accumulation and speedometer queries" "Spring MVC Controller"
                 phenoCtrl = component "PlotPhenologyController" "Exposes BBCH phenological stages and GDD tracking endpoints" "Spring MVC Controller"
-                harvestRecordCtrl = component "PlotHarvestRecordController" "Exposes historical harvest entries CRUD endpoints (CMD20, CMD21, CMD22)" "Spring MVC Controller"
+                harvestRecordCtrl = component "PlotHarvestRecordController" "Exposes historical harvest entries CRUD endpoints" "Spring MVC Controller"
                 bearingCtrl = component "PlotBearingController" "Exposes Hoblyn BBI computation and alternance severity metrics" "Spring MVC Controller"
                 
-                phenoCommandService = component "PhenologyCommandService" "Coordinates stage progression (CMD19), harvest entries (CMD20-22), and chill calculation" "Spring Service / Command Service"
+                phenoCommandService = component "PhenologyCommandService" "Coordinates stage progression, harvest entries, and chill calculation" "Spring Service / Command Service"
                 phenoQueryService = component "PhenologyQueryService" "Handles queries for chill accumulation, phenological stages, GDD, and Hoblyn BBI" "Spring Service / Query Service"
                 dailyChillJob = component "DailyChillComputationJob" "Scheduled background task executing daily Erez chill portion processing" "Spring @Scheduled Component"
                 
                 erezCalculator = component "ErezDynamicModelCalculator" "Domain service executing the two-step dynamic Erez chill portion algorithm" "Domain Service"
-                gddCalculator = component "GrowingDegreeDaysCalculator" "Calculates cumulative GDD post-anthesis triggering EV53 at 680 GDD" "Domain Service"
+                gddCalculator = component "GrowingDegreeDaysCalculator" "Calculates cumulative GDD post-anthesis triggering event at 680 GDD" "Domain Service"
                 bbiCalculator = component "HoblynBbiCalculatorService" "Computes Hoblyn Alternate Bearing Index and vegetative bias" "Domain Service"
                 
                 trackerRepo = component "ChillAccumulationTrackerRepository" "Domain repository interface for chill tracking and harvest persistence" "Domain Port / Interface"
                 trackerRepoAdapter = component "JpaChillAccumulationTrackerRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for phenology tracking" "Spring Data JPA Adapter"
-                eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV26, EV27, and EV53 domain events" "Spring ApplicationEventPublisher"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches domain events" "Spring ApplicationEventPublisher"
             }
             db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
                 tags "Database"
@@ -721,9 +721,9 @@ workspace "Viora - Phenology Component Architecture" "Phenology and Historical B
         crossApp -> bearingCtrl "Views sectorial BBI and chill progress [HTTPS/REST]"
 
         chillCtrl -> phenoQueryService "Delegates chill queries"
-        phenoCtrl -> phenoCommandService "Delegates stage progression commands (CMD19)"
+        phenoCtrl -> phenoCommandService "Delegates stage progression commands"
         phenoCtrl -> phenoQueryService "Delegates BBCH and GDD queries"
-        harvestRecordCtrl -> phenoCommandService "Delegates harvest logging and rectification (CMD20, CMD21, CMD22)"
+        harvestRecordCtrl -> phenoCommandService "Delegates harvest logging and rectification"
         harvestRecordCtrl -> phenoQueryService "Delegates historical yield queries"
         bearingCtrl -> phenoQueryService "Delegates BBI evaluation queries"
         dailyChillJob -> phenoCommandService "Triggers daily automated chill calculation"
@@ -731,7 +731,7 @@ workspace "Viora - Phenology Component Architecture" "Phenology and Historical B
         phenoCommandService -> erezCalculator "Executes 2-step dynamic chill portion model"
         phenoCommandService -> gddCalculator "Computes GDD (680 trigger for pit hardening)"
         phenoCommandService -> trackerRepo "Loads / persists trackers and yield logs via domain port"
-        phenoCommandService -> eventPublisher "Publishes domain events (EV26, EV27, EV53)"
+        phenoCommandService -> eventPublisher "Publishes domain events"
         
         phenoQueryService -> trackerRepo "Fetches trackers and yield logs via domain port"
         phenoQueryService -> bbiCalculator "Computes Hoblyn BBI from historical yield series"

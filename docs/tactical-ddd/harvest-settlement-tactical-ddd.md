@@ -571,15 +571,15 @@ workspace "Viora - Harvest Settlement Component Architecture" "Harvest Settlemen
                 settlementCtrl = component "PlotHarvestSettlementController" "Exposes annual harvest weighing settlement endpoints" "Spring MVC Controller"
                 reportCtrl = component "PlotAgronomicReportController" "Exposes stabilization curves, certification, and PDF dossier download" "Spring MVC Controller"
                 
-                settlementCommandService = component "HarvestSettlementCommandService" "Coordinates harvest settlement (CMD29) and dossier certification (CMD30)" "Spring Service / Command Service"
-                reportQueryService = component "AgronomicReportQueryService" "Handles queries for settlements, ARR stabilization curves, and dossier PDF streaming (TS28)" "Spring Service / Query Service"
+                settlementCommandService = component "HarvestSettlementCommandService" "Coordinates harvest settlement and dossier certification" "Spring Service / Command Service"
+                reportQueryService = component "AgronomicReportQueryService" "Handles queries for settlements, ARR stabilization curves, and dossier PDF streaming" "Spring Service / Query Service"
                 
                 curveCalculator = component "StabilizationCurveCalculatorService" "Calculates interannual variance and amplitude reduction rate (ARR)" "Domain Service"
                 pdfGenerator = component "OpenPdfAgronomicDossierAdapter" "Infrastructure adapter compiling binary PDF documents with SHA-256 seal" "Infrastructure Port / Adapter"
                 
                 reportRepo = component "AgronomicReportRepository" "Domain repository interface for agronomic report persistence" "Domain Port / Interface"
                 reportRepoAdapter = component "JpaAgronomicReportRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for settlements" "Spring Data JPA Adapter"
-                eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV46, EV47, and EV48 domain events" "Spring ApplicationEventPublisher"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches domain events" "Spring ApplicationEventPublisher"
             }
             db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
                 tags "Database"
@@ -593,15 +593,15 @@ workspace "Viora - Harvest Settlement Component Architecture" "Harvest Settlemen
         nativeApp -> reportCtrl "Downloads dossier PDF [GET .../agronomic-reports Accept: application/pdf]"
         crossApp -> reportCtrl "Downloads dossier PDF [GET .../agronomic-reports Accept: application/pdf]"
 
-        settlementCtrl -> settlementCommandService "Delegates SettleCampaignHarvestCommand (CMD29)"
+        settlementCtrl -> settlementCommandService "Delegates SettleCampaignHarvestCommand"
         settlementCtrl -> reportQueryService "Delegates settlement list/get queries"
-        reportCtrl -> settlementCommandService "Delegates GenerateAgronomicDossierCommand (CMD30)"
-        reportCtrl -> reportQueryService "Delegates GetAgronomicDossierQuery (TS28)"
+        reportCtrl -> settlementCommandService "Delegates GenerateAgronomicDossierCommand"
+        reportCtrl -> reportQueryService "Delegates GetAgronomicDossierQuery"
 
         settlementCommandService -> curveCalculator "Computes ARR curve and variance"
         settlementCommandService -> pdfGenerator "Compiles dossier PDF and stamps SHA-256"
         settlementCommandService -> reportRepo "Loads / persists reports via domain port"
-        settlementCommandService -> eventPublisher "Publishes EV46 (Harvest Settled), EV48 (Dossier Generated)"
+        settlementCommandService -> eventPublisher "Publishes Harvest Settled and Dossier Generated events"
 
         reportQueryService -> reportRepo "Fetches reports via domain port"
 

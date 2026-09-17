@@ -666,7 +666,7 @@ workspace "Viora - Cooperative Operations Component Architecture" "Cooperative O
                 intakeCtrl = component "CooperativeIntakeController" "Exposes early intake projections and harvest volume forecasts" "Spring MVC Controller"
                 riskCtrl = component "CooperativeRiskController" "Exposes territorial risk matrix and sectorial alert queries" "Spring MVC Controller"
                 
-                coopCommandService = component "CooperativeCommandService" "Coordinates cooperative registration, member affiliation/suspension, and territorial risk evaluation (CMD31)" "Spring Service / Command Service"
+                coopCommandService = component "CooperativeCommandService" "Coordinates cooperative registration, member affiliation/suspension, and territorial risk evaluation" "Spring Service / Command Service"
                 coopQueryService = component "CooperativeQueryService" "Handles queries for member rosters, early intake projections, and territorial risk alerts" "Spring Service / Query Service"
                 
                 riskService = component "TerritorialRiskAggregationService" "Consolidates active frost alerts and crop overload by geographic zone" "Domain Service"
@@ -674,7 +674,7 @@ workspace "Viora - Cooperative Operations Component Architecture" "Cooperative O
                 
                 coopRepo = component "CooperativeRepository" "Domain repository interface for cooperative and member persistence" "Domain Port / Interface"
                 coopRepoAdapter = component "JpaCooperativeRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for cooperatives" "Spring Data JPA Adapter"
-                eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV49 and member affiliation domain events" "Spring ApplicationEventPublisher"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches member affiliation domain events" "Spring ApplicationEventPublisher"
             }
             db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
                 tags "Database"
@@ -693,12 +693,12 @@ workspace "Viora - Cooperative Operations Component Architecture" "Cooperative O
         memberCtrl -> coopCommandService "Delegates affiliation/suspension commands"
         memberCtrl -> coopQueryService "Delegates member roster queries"
         intakeCtrl -> coopQueryService "Delegates intake projection queries"
-        riskCtrl -> coopCommandService "Delegates EvaluateTerritorialRiskCommand (CMD31)"
+        riskCtrl -> coopCommandService "Delegates EvaluateTerritorialRiskCommand"
         riskCtrl -> coopQueryService "Delegates territorial risk queries"
 
         coopCommandService -> riskService "Aggregates sectorial risk matrix"
         coopCommandService -> coopRepo "Loads / persists cooperatives and members via domain port"
-        coopCommandService -> eventPublisher "Publishes EV49 (Risk Matrix Evaluated)"
+        coopCommandService -> eventPublisher "Publishes Risk Matrix Evaluated event"
 
         coopQueryService -> intakeService "Aggregates early harvest intake"
         coopQueryService -> coopRepo "Fetches cooperatives, members, and risk evaluations via domain port"

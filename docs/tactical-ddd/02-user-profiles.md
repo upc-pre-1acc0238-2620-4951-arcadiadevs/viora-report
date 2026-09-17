@@ -268,7 +268,7 @@ workspace "Viora - User Profiles Component Architecture" "User Profiles Componen
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 profileController = component "ProfileController" "Exposes profile registration, query and contact update REST endpoints" "Spring MVC Controller"
                 
-                profileCommandService = component "ProfileCommandService" "Orchestrates profile creation and contact updates (CMD07, CMD08)" "Spring Service / Command Service"
+                profileCommandService = component "ProfileCommandService" "Orchestrates profile creation and contact updates" "Spring Service / Command Service"
                 profileQueryService = component "ProfileQueryService" "Handles profile retrieval and role verification queries" "Spring Service / Query Service"
                 
                 phoneValidator = component "PhoneNumberValidator" "Validates international E.164 phone formats and regional carriers" "Domain Service / libphonenumber"
@@ -291,7 +291,7 @@ workspace "Viora - User Profiles Component Architecture" "User Profiles Componen
         
         profileCommandService -> phoneValidator "Validates phone format against E.164"
         profileCommandService -> profileRepo "Loads / persists profiles via domain port"
-        profileCommandService -> eventPublisher "Publishes domain events (EV04, EV05)"
+        profileCommandService -> eventPublisher "Publishes domain events"
         
         profileQueryService -> profileRepo "Fetches profiles via domain port"
         

@@ -389,8 +389,8 @@ workspace "Viora - Subscription Component Architecture" "Subscription and Member
 
                 subCommandService = component "SubscriptionCommandService" "Coordinates write commands (subscription creation, payment intent, checkout preferences)" "Spring Service / Command Service"
                 subQueryService = component "SubscriptionQueryService" "Handles queries for current subscription, status, and contracted quota" "Spring Service / Query Service"
-                reconciliationCommandService = component "PaymentReconciliationCommandService" "Processes IPN notifications, verifies HMAC signatures, and activates subscriptions (CMD09)" "Spring Service / Command Service"
-                invitationCommandService = component "CooperativeInvitationCommandService" "Handles batch issuance (CMD11), expiry shortening (CMD33), and code redemption (CMD10)" "Spring Service / Command Service"
+                reconciliationCommandService = component "PaymentReconciliationCommandService" "Processes IPN notifications, verifies HMAC signatures, and activates subscriptions" "Spring Service / Command Service"
+                invitationCommandService = component "CooperativeInvitationCommandService" "Handles batch issuance, expiry shortening, and code redemption" "Spring Service / Command Service"
                 invitationQueryService = component "CooperativeInvitationQueryService" "Handles queries for invitation batches, available seats, and code status" "Spring Service / Query Service"
                 
                 codeGenerator = component "InvitationCodeGenerator" "Generates cryptographically secure non-sequential voucher codes" "Domain Service / Java Security"
@@ -425,10 +425,10 @@ workspace "Viora - Subscription Component Architecture" "Subscription and Member
 
         subCtrl -> subCommandService "Delegates subscription write operations (commands)"
         subCtrl -> subQueryService "Delegates subscription read operations (queries)"
-        redemptionCtrl -> invitationCommandService "Delegates code redemption (CMD10)"
-        invitationCtrl -> invitationCommandService "Delegates batch issuance (CMD11) and expiry shortening (CMD33)"
+        redemptionCtrl -> invitationCommandService "Delegates code redemption"
+        invitationCtrl -> invitationCommandService "Delegates batch issuance and expiry shortening"
         invitationCtrl -> invitationQueryService "Delegates batch and seat queries"
-        paymentWebhookCtrl -> reconciliationCommandService "Delegates IPN webhook commands (CMD09)"
+        paymentWebhookCtrl -> reconciliationCommandService "Delegates IPN webhook commands"
 
         subCommandService -> quotaPolicy "Validates requested hectares against plan boundaries"
         subCommandService -> subRepo "Loads / persists subscriptions via domain port"
@@ -438,12 +438,12 @@ workspace "Viora - Subscription Component Architecture" "Subscription and Member
 
         reconciliationCommandService -> subRepo "Updates subscription status to ACTIVE upon payment"
         reconciliationCommandService -> activationPolicy "Computes subscription period"
-        reconciliationCommandService -> eventPublisher "Publishes SubscriptionActivatedEvent (EV08)"
+        reconciliationCommandService -> eventPublisher "Publishes SubscriptionActivatedEvent"
         
         invitationCommandService -> codeGenerator "Generates secure code strings"
         invitationCommandService -> invitationRepo "Loads / persists invitation batches via domain port"
         invitationCommandService -> licenseRepo "Loads / persists licenses to manage seat quotas via domain port"
-        invitationCommandService -> eventPublisher "Publishes CooperativeCodeRedeemedEvent (EV10)"
+        invitationCommandService -> eventPublisher "Publishes CooperativeCodeRedeemedEvent"
 
         invitationQueryService -> invitationRepo "Fetches invitation batches via domain port"
         invitationQueryService -> licenseRepo "Fetches cooperative licenses via domain port"
