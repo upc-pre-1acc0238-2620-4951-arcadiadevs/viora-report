@@ -270,8 +270,6 @@ Finalmente, se seleccionaron nombres ubicuos para los bounded contexts, dando co
 
 A continuación, se explica en qué consiste cada uno de los 9 bounded contexts identificados para el ecosistema Viora:
 
-
-
 \noindent \textbf{Identity and Access Management (IAM):} También llamado "IAM", este bounded context genérico contiene el proceso de autenticación segura, inicio de sesión persistente, renovación de sesiones, recuperación de credenciales mediante tokens efímeros y asignación de privilegios de acceso según el rol (ver \autoref{fig:bc-iam}).
 
 \begin{figure}[H]
