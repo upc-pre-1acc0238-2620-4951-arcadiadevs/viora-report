@@ -972,6 +972,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 |:---|:---|:---:|:---|
 | `register` | `id: SensorNodeId`,`plotId: PlotId`,`name: SensorNodeName`,`type: SensorNodeType`,`depth: SensorDepth`,`texture: SoilTextureType`,`mult: CalibrationMultiplier` | `VirtualSensorNode` | Registra el nodo en el inventario predial y emite `VirtualSensorNodeRegisteredEvent`. |
 | `calibrate` | `depth: SensorDepth`,`texture: SoilTextureType`,`mult: CalibrationMultiplier` | `void` | Actualiza coeficientes de cálculo de humedad volumétrica. |
+| `rename` | `newName: SensorNodeName` | `void` | Actualiza la denominación del nodo garantizando unicidad en el predio. |
 | `unlink` | `void` | `void` | Desvincula lógicamente el sensor de la parcela activa. |
 
 ##### Modelos del Dominio: `TelemetrySeries` (`Aggregate Root`)
@@ -1125,7 +1126,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
 | `POST` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices} | `Create` `Io` `T` `Device` `Request` | `Device` `Resource` (201 Created) | Alta y vinculación de nodo sensor o sonda edáfica virtual (`US13`/`TS16`/`CMD15`). |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices} | N/A | `List` `Device` `Resource`(200 OK) | Consulta de inventario de dispositivos y estado de calibración (`US14`/`TS17`). |
-| `PUT` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices/{deviceId}} | `Calibrate` `Device` `Request` | `Device` `Resource` (200 OK) | Calibración de offset en sonda edáfica y factor edafológico (`US15`/`TS42`/`CMD16`). |
+| `PUT` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices/{deviceId}} | `Calibrate` `Device` `Request` | `Device` `Resource` (200 OK) | Renombrado del nodo y calibración de offset en sonda edáfica y factor edafológico (`US15`/`TS42`/`CMD16`). |
 | `DELETE` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices/{deviceId}} | N/A | `204 No Content` | Desvinculación lógica de la sonda preservando histórico (`US16`/`TS18`/`CMD17`). |
 | `POST` | \nolinkurl{/api/v1/plots/{plotId}/telemetries} | `Ingest` `Telemetry` `Request` | `Telemetry` `Resource` (201 Created) | Ingesta individual o en lote de lecturas de sensores (`US17`/`TS19`/`CMD18`). |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}/telemetries} | N/A (`?startDate=&endDate=`) | `List` `Telemetry` `Resource`(200 OK) | Consulta de series climáticas para gráficas y monitoreo (`US17`/`TS19`). |
@@ -1137,7 +1138,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
 | `CreateIo` `TDeviceRequest` | Request DTO | `{ name: String, deviceType: String, depthCm: Int, soilTextureType: String }` | Registro y alta de sonda edáfica virtual. |
-| `Calibrate` `DeviceRequest` | Request DTO | `{ depthCm: Int, calibrationMultiplier: Double, calibrationNotes: String }` | Ajuste físico y calibración edafológica de sonda. |
+| `Calibrate` `DeviceRequest` | Request DTO | `{ name: String, depthCm: Int, calibrationMultiplier: Double, calibrationNotes: String }` | Ajuste físico y calibración edafológica de sonda. |
 | `Ingest` `TelemetryRequest` | Request DTO | `{ sensorNodeId: UUID, readings: List<HourlyTelemetryReadingDto> }` | Lectura horaria o lote enviado por simulador o sensor. |
 | `DeviceResource` | Response DTO | `{ id: UUID, plotId: UUID, name: String, deviceType: String, status: String }` | Representación de nodo sensor vinculado. |
 | `Telemetry` `Resource` | Response DTO | `{ id: UUID, plotId: UUID, temperature: Double, humidity: Double, soilMoisture: Double, recordedAt: Instant }` | Representación pública de lectura agroclimática. |

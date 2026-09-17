@@ -176,7 +176,7 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
   * `POST /api/v1/plots/{plotId}/iot-devices` - Da de alta un nodo sensor virtual en la parcela (`TS16` / `CMD15` / `US13`). Responde `201 Created` con `IotDeviceResource`, `409 Conflict` ante nombre duplicado en el lote, o `400 Bad Request` por datos inválidos.
   * `GET /api/v1/plots/{plotId}/iot-devices` - Lista el inventario de nodos virtuales vinculados a la parcela (`TS17` / `US14`). Responde `200 OK` con arreglo de `IotDeviceResource`, o `404 Not Found` si la parcela no existe.
   * `GET /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Obtiene el detalle operativo de un nodo sensor virtual específico. Responde `200 OK` o `404 Not Found`.
-  * `PUT /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Configura y calibra la profundidad de la sonda edáfica y factores edafológicos (`TS42` / `CMD16` / `US15`). Responde `200 OK` con `IotDeviceResource` o `400 Bad Request`.
+  * `PUT /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Renombra el nodo y configura y calibra la profundidad de la sonda edáfica y factores edafológicos (`TS42` / `CMD16` / `US15`). Responde `200 OK` con `IotDeviceResource` o `400 Bad Request`.
   * `DELETE /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Desvincula lógicamente el nodo virtual preservando el historial previo (`TS18` / `CMD17` / `US16`). Responde `204 No Content` o `404 Not Found`.
 
 * **`PlotTelemetryController`** (Ruta base: `/api/v1/plots/{plotId}/telemetries`):
@@ -192,7 +192,7 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
 
 ##### Resources (DTOs / Request & Response Models)
 * **`CreateIotDeviceRequest`**: `{ name: String, type: String, depthCm: Integer, soilTextureType: String, calibrationMultiplier: Double }`
-* **`CalibrateIotDeviceRequest`**: `{ depthCm: Integer, soilTextureType: String, calibrationMultiplier: Double }`
+* **`CalibrateIotDeviceRequest`**: `{ name: String, depthCm: Integer, soilTextureType: String, calibrationMultiplier: Double }`
 * **`IotDeviceResource`**: `{ id: UUID, plotId: UUID, name: String, type: String, depthCm: Integer, soilTextureType: String, calibrationMultiplier: Double, status: String, lastReadingTimestamp: Instant, createdAt: Instant }`
 * **`IngestTelemetryBatchRequest`**: `{ sensorNodeId: UUID, readings: List<HourlyReadingItemRequest> }`
 * **`HourlyReadingItemRequest`**: `{ observedAt: Instant, soilMoisture30cm: Double, soilMoisture60cm: Double, airTemperature: Double, relativeHumidity: Double }`
