@@ -1925,10 +1925,16 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Handler | Type | Input Message (Command/Query/Event) | Orchestration Flow & Transactionality |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `EvaluateTerritorialRiskCommandHandler` | Command Handler | `EvaluateTerritorialRiskCommand` | Procesa incidentes de telemetría y sobrecarga, actualiza matriz y emite `EV49`. |
-| `ProjectCooperativeIntakeCommandHandler` | Command Handler | `ProjectCooperativeIntakeCommand` | Agrega muestreos y parcelas, evalúa representatividad ($60\%$), calcula tonelaje y emite `EV50`. |
-| `OnContactProfileUpdatedEventHandler` | Event Handler | `ContactProfileUpdatedEventEV09` | Aplica política `POL03`: sincroniza datos de contacto del socio en el padrón cooperativo. |
-| `GetCooperativeMembersQueryHandler` | Query Handler | `GetCooperativeMembersQuery` | Consulta padrón paginado filtrado por rol y cooperativa del gestor técnico. |
+| `EvaluateCooperativeRiskMatrixCommandHandler` | Command Handler | `EvaluateCooperativeRiskMatrixCommand` | Carga el agregado `Cooperative`, recopila alertas activas de telemetría y sobrecarga de las parcelas socias, invoca `evaluateTerritorialRiskMatrix(...)`, persiste y publica `CooperativeRiskMatrixEvaluatedEvent` (`EV49`) (`CMD31`/`US31`/`TS29`). |
+| `ProjectCooperativeIntakeVolumeCommandHandler` | Command Handler | `ProjectCooperativeIntakeVolumeCommand` | Invocado reactivamente ante `SamplingRoundCompletedEvent` (`EV37`); `@Transactional`; consulta resúmenes biométricos, invoca `projectIntakeVolume(...)`, verifica cobertura, persiste y publica `CooperativeIntakeVolumeProjectedEvent` (`EV50`) y, de corresponder, `LowSamplingCoverageWarnedForIntakeEvent` (`EV51`) (`CMD32`/`US32`/`TS30`). |
+| `GetCooperativeDirectoryQueryHandler` | Query Handler | `GetCooperativeDirectoryQuery` | Recupera el padrón de socios ordenado por apellido y estado de afiliación; aporta únicamente la porción gremial de `RM13` (`US08`). |
+| `GetTerritorialRiskMatrixQueryHandler` | Query Handler | `GetTerritorialRiskMatrixQuery` | Entrega el semáforo sectorial consolidado, resolviendo el sector por GPS con `locateSectorByCoordinates(lat, lon)` (`RM14`/`US12`/`US31`/`TS29`). |
+| `GetEarlyIntakeProjectionQueryHandler` | Query Handler | `GetEarlyIntakeProjectionQuery` | Entrega las toneladas proyectadas de aceituna verde y negra filtradas por campaña agrícola (`RM15`/`US32`/`TS30`). |
+| `OnCooperativeCodeRedeemedEventHandler` | Event Handler | `CooperativeCodeRedeemedEvent` (`EV13`) | Escucha el evento de *Subscription & Cooperative Membership* e invoca `affiliateProducer(...)` dando de alta al socio con la superficie concedida; no descuenta cupo, pues plazas y superficie se comprometieron al emitirse el código en `CooperativeLicense` (`AGG11`); idempotente ante reentregas (`POL02`). |
+| `OnContactProfileUpdatedEventHandler` | Event Handler | `ContactProfileUpdatedEvent` (`EV09`) | Aplica política `POL03`: sincroniza datos de contacto del socio en el padrón cooperativo. |
+| `OnOverloadRiskDetectedEventHandler` | Event Handler | `OverloadRiskDetectedEvent` (`EV40`) | Escucha el evento de *Crop Load Regulation & Thinning Advisory*; si la parcela pertenece a un socio agremiado, actualiza la matriz de riesgo del sector marcando alerta roja de sobrecarga (`POL13`). |
+| `OnWeatherForecastIngestedEventHandler` | Event Handler | `WeatherForecastIngestedEvent` (`EV25`) | Escucha el evento de *Agroclimatic Telemetry & Sensor Monitoring*; si se proyecta $T \le 1.5^\circ\text{C}$ a 48 horas en un sector, actualiza el semáforo a alerta de helada y despacha aviso regional (`POL14`). |
+| `OnSamplingRoundCompletedEventHandler` | Event Handler | `SamplingRoundCompletedEvent` (`EV37`) | Escucha el evento de *Crop Load Regulation & Thinning Advisory*; despacha `ProjectCooperativeIntakeVolumeCommand` para actualizar la proyección de acopio gremial (`POL15`). |
 
 #### Infrastructure Layer
 
