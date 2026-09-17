@@ -98,7 +98,7 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 * **Regla Reactiva Formal:**
   * **WHENEVER:** `CooperativeCodeRedeemed` (`EV13`)
   * **IF:** `producerAlreadyAffiliatedToCooperative == false`
-  * **THEN:** `AffiliateCooperativeProducer` (obteniendo los datos de contacto desde `Profile`).
+  * **THEN:** `AffiliateCooperativeProducer` (obteniendo los datos de contacto desde `Profile`) $\rightarrow$ emite `MemberAffiliated` (`EV54`).
 * **Lógica de Negocio Agronómica:** Al canjear un cupón corporativo, el productor obtiene su suscripción y, acto seguido, la política lo afilia formalmente a la cartera de socios de la cooperativa utilizando su identidad validada en `Profile`, haciéndolo visible para el gestor técnico en la matriz sectorial. La condición de guarda es únicamente de idempotencia frente a reentregas del evento: ni la validez del código ni la disponibilidad de cupo se reverifican aquí. La validez ya fue comprobada dentro de `CMD10` —el evento `EV13` es la prueba de que el canje prosperó— y el cupo de plazas y superficie se comprometió **al emitir** el código, no al canjearlo. Reverificar el cupo en este punto rechazaría precisamente los canjes de una cooperativa que agotó su emisión, que son los legítimos.
 
 ---
@@ -334,7 +334,7 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 | ID Política | Nombre de la Política | Evento Disparador (`EVxx`) | Contexto Origen $\rightarrow$ Destino | Comando / Acción Ejecutada |
 | :---: | :--- | :--- | :--- | :--- |
 | **POL01** | *Auto-Activation On Payment Approved* | `EV10` (`SubscriptionPaymentApproved`) | Suscripciones $\rightarrow$ Suscripciones | `ActivateSubscription` (`EV11`) |
-| **POL02** | *Producer Affiliation On Cooperative Code* | `EV13` (`CooperativeCodeRedeemed`) | Suscripciones $\rightarrow$ Cooperativa | `AffiliateCooperativeProducer` |
+| **POL02** | *Producer Affiliation On Cooperative Code* | `EV13` (`CooperativeCodeRedeemed`) | Suscripciones $\rightarrow$ Cooperativa | `AffiliateCooperativeProducer` (`EV54`) |
 | **POL03** | *Member Contact Sync On Profile Updated* | `EV09` (`ContactProfileUpdated`) | Profiles $\rightarrow$ Cooperativa | `UpdateCooperativeMemberContact` |
 | **POL04** | *Critical Hydric Stress Alert Dispatcher* | `EV22` (`HydricStressAlertTriggered`) | Telemetría $\rightarrow$ Telemetría | `SurfaceAgroclimaticInAppAlert` |
 | **POL05** | *Thermal Shock Flowering Protection* | `EV23` (`ThermalThresholdAlertTriggered`) | Telemetría $\rightarrow$ Telemetría | `SurfaceAgroclimaticInAppAlert` |
