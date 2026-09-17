@@ -164,7 +164,7 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
   * `GET /api/v1/plots/{plotId}/metrics?name=CHILLING` - Entrega el estado de acumulación de porciones de frío de Erez y alertas ENOS (`TS23` / `US22` / `US23`). Responde `200 OK` con `MetricResource` detallando unidades de frío, estado de satisfacción y flag `enosAnomalyDetected`.
 
 * **`PlotPhenologyController`** (Ruta base: `/api/v1/plots/{plotId}/phenology-observations`):
-  * `POST /api/v1/plots/{plotId}/phenology-observations` - Registro de observación visual de estadio fenológico en escala BBCH (`CMD20` / `EV53`). Responde `201 Created` con `PhenologyObservationResource`.
+  * `POST /api/v1/plots/{plotId}/phenology-observations` - Registro de observación visual de estadio fenológico en escala BBCH (`CMD35` / `EV53`). Responde `201 Created` con `PhenologyObservationResource`.
 
 * **`PlotChillComputationController`** (Ruta base: `/api/v1/plots/{plotId}/chill-computations`):
   * `POST /api/v1/plots/{plotId}/chill-computations` - Disparador bajo demanda para re-procesar las temperaturas telemétricas de una fecha en el modelo de Erez o forzar el cálculo de integral térmica (complementando la ejecución automática diaria de medianoche gestionada por `ChillComputationScheduler`). Responde `200 OK` con `ChillTrackerResource`.
@@ -204,7 +204,7 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
 * **`ComputeDailyChillAccumulationCommandHandler`** (CMD23 / US22 / US23):
   * *Entrada:* `ComputeDailyChillAccumulationCommand` (`plotId`, `date`, `hourlyTemperatures`)
   * *Flujo:* Verifica que la fecha pertenezca a la ventana invernal (Mayo-Agosto) -> carga el agregado `ChillAccumulationTracker` del predio -> invoca `processDailyTemperatures()` apoyándose en el servicio de dominio `ErezDynamicChillModel` -> actualiza acumulador de porciones, contador de olas de calor y factor de fertilidad floral -> persiste en el repositorio -> publica eventos generados (`WinterChillPortionsAccumulatedEvent`, alertas de cumplimiento o anomalías ENOS).
-* **`AccumulatePostAnthesisThermalTimeCommandHandler`** (CMD29 / Flujo C08):
+* **`AccumulatePostAnthesisThermalTimeCommandHandler`** (CMD34 / Flujo C08):
   * *Entrada:* `AccumulatePostAnthesisThermalTimeCommand` (`plotId`, `date`, `maxTemp`, `minTemp`)
   * *Flujo:* Valida que la fecha pertenezca al ciclo fenológico post-antesis (Septiembre a Diciembre) -> carga `ChillAccumulationTracker` del predio -> invoca `processPostAnthesisThermalTime(date, maxTemp, minTemp)` integrando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$ -> al acumular $\ge 680.0^\circ\text{C}\cdot\text{día}$, el agregado transiciona `pitHardeningReached = true`, sella `pitHardeningDate` y encola `PitHardeningStageReachedEvent` (`EV53`) -> persiste cambios en `ChillAccumulationTrackerRepository` -> publica eventos encolados para activar `POL10` en *Crop Load Regulation*.
 

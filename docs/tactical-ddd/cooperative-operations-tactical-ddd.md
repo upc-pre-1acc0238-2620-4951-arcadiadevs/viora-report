@@ -369,7 +369,7 @@ graph TD
         MemberEntity["CooperativeMember (Entity)"]
         ForecastingService["TerritorialIntakeForecastingService (Domain Service)"]
         RepoInterfaces["Interfaces de Dominio: (CooperativeRepository)"]
-        DomainEvents["Domain Events: (EV49, EV50, EV51)"]
+        DomainEvents["Domain Events: (EV49, EV50, EV51, EV54)"]
     end
 
     subgraph InfrastructureLayer ["Infrastructure Layer"]
@@ -796,7 +796,7 @@ Cooperative ..> TerritorialRiskAggregationService : uses
 Cooperative ..> YieldAggregationDomainService : uses for intake projections
 EarlyIntakeProjection ..> YieldAggregationDomainService : computed by
 Cooperative ..> CooperativeRiskMatrixEvaluatedEvent : emits (EV49)
-Cooperative ..> MemberAffiliatedEvent : emits (EV51 / POL02)
+Cooperative ..> MemberAffiliatedEvent : emits (EV54 / POL02)
 CooperativeRepository ..> Cooperative : manages
 @enduml
 ```

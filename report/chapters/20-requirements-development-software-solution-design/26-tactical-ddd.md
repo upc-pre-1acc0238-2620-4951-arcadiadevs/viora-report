@@ -1271,7 +1271,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 ### Bounded Context: Phenology and Historical Bearing Analytics
 
-**Propósito:** Gobierna la memoria biológica y el análisis plurianual de vecería del olivar. Modela el seguimiento de las fases fenológicas en escala BBCH (brotación, floración, cuajado, endurecimiento del carozo y maduración), calcula la acumulación de frío invernal mediante el modelo dinámico de Erez (unidades de frío / porciones de frío acumuladas), proyecta la fecha crítica de lignificación de carozo mediante grados-día de desarrollo acumulados ($680.0^\circ\text{C}\cdot\text{día}$ post-antesis disparando `EV53` / `CMD29`), y evalúa el Índice de Vecería Bienal de Hoblyn ($BBI$) a partir de las series plurianuales de cosecha (`POL07` / `EV27`).
+**Propósito:** Gobierna la memoria biológica y el análisis plurianual de vecería del olivar. Modela el seguimiento de las fases fenológicas en escala BBCH (brotación, floración, cuajado, endurecimiento del carozo y maduración), calcula la acumulación de frío invernal mediante el modelo dinámico de Erez (unidades de frío / porciones de frío acumuladas), proyecta la fecha crítica de lignificación de carozo mediante grados-día de desarrollo acumulados ($680.0^\circ\text{C}\cdot\text{día}$ post-antesis disparando `EV53` / `CMD34`), y evalúa el Índice de Vecería Bienal de Hoblyn ($BBI$) a partir de las series plurianuales de cosecha (`POL07` / `EV27`).
 
 #### Domain Layer
 
@@ -1392,7 +1392,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `PUT` | \nolinkurl{/api/v1/plots/{plotId}/harvest-records/{recordId}} | `Update` `Harvest` `Yield` `Request` | `Harvest` `Record` `Resource` (200 OK) | Rectificación de pesaje histórico de una campaña (`TS43`/`US21`/`CMD21`). |
 | `DELETE` | \nolinkurl{/api/v1/plots/{plotId}/harvest-records/{recordId}} | N/A | `204 No Content` | Eliminación de registro de cosecha erróneo (`TS43`/`US21`/`CMD22`). |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}/metrics} | N/A (`?name=BBI`/`?name=CHILLING`) | `Metric` `Resource` (200 OK) | Consulta de $BBI$ de Hoblyn y porciones de frío de Erez (`TS23`/`US20`/`US22`/`US23`). |
-| `POST` | \nolinkurl{/api/v1/plots/{plotId}/phenology-observations} | `Record` `Phenology` `Observation` `Request` | `Phenology` `Observation` `Resource` (201 Created) | Registro visual de estadio fenológico en escala BBCH (`CMD20`/`EV53`). |
+| `POST` | \nolinkurl{/api/v1/plots/{plotId}/phenology-observations} | `Record` `Phenology` `Observation` `Request` | `Phenology` `Observation` `Resource` (201 Created) | Registro visual de estadio fenológico en escala BBCH (`CMD35`/`EV53`). |
 
 ##### DTOs (Resources) y Mappers (Assemblers)
 
@@ -1416,8 +1416,8 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `DeleteHarvestYieldCommandHandler` | Command Handler | `DeleteHarvestYieldCommandCMD22` | Da de baja registro de cosecha erróneo (`TS43`) y revalúa suficiencia muestral del $BBI$. |
 | `ListHarvestRecordsQueryHandler` | Query Handler | `ListHarvestRecordsQuery` | Consulta cronológica de cosechas con filtro por campaña agrícola (`TS22`). |
 | `GetPlotMetricsQueryHandler` | Query Handler | `GetPlotMetricsQuery` | Consulta índices biológicos paramétricos ($BBI$ o Porciones de Frío de Erez) (`TS23`). |
-| `RecordPhenologicalObservationCommandHandler` | Command Handler | `RecordObservationCommand` | Actualiza estadio BBCH, recalcula sumas térmicas y emite `PhenologicalStageAdvancedEvent` (`EV53`). |
-| `AccumulateDailyGddCommandHandler` | Command Handler | `AccumulateDailyGddCommandCMD29` | `Suma GDD diarios post-antesis; si supera $680^\circ\text{C}\cdot\text{día}$, emite EV43 cerrando la ventana (POL10).` |
+| `RecordPhenologicalObservationCommandHandler` | Command Handler | `RecordPhenologicalObservationCommand` (`CMD35`) | Actualiza estadio BBCH, recalcula sumas térmicas y emite `PhenologicalStageAdvancedEvent` (`EV53`). |
+| `AccumulatePostAnthesisThermalTimeCommandHandler` | Command Handler | `AccumulatePostAnthesisThermalTimeCommand` (`CMD34`) | `Suma GDD diarios post-antesis; si supera $680^\circ\text{C}\cdot\text{día}$, emite `EV53` cerrando la ventana (POL10).` |
 | `ChillComputationScheduler` | Scheduled Task | `Scheduledcron000` | Procesa lecturas telemétricas nocturnas acumulando porciones de frío bajo modelo dinámico de Erez. |
 | `OnCampaignHarvestSettledEventHandler` | Event Handler | `CampaignHarvestSettledEventEV46` | Escucha cierre de cosecha en Liquidación y actualiza bitácora plurianual recalculando $BBI$ (`POL07`/`EV27`). |
 | `OnLateThinningExecutionRecordedEventHandler` | Event Handler | `LateThinningExecutionRecordedEventEV45` | Penaliza el factor de mitigación en un $70\%$ ante aclareo extemporáneo (`POL11`). |
@@ -1898,7 +1898,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `Cooperative` `Repository` | Repository | `findByTechnicalManagerUserId(userId: UserId): List<Cooperative>` | Lista cooperativas gestionadas por un responsable técnico. |
 | `Cooperative` `Repository` | Repository | `save(cooperative: Cooperative): Cooperative` | Persiste cooperativa, padrón de socios y proyecciones. |
 | `Cooperative` `RiskMatrix` `EvaluatedEvent` | Domain Event | `cooperativeId: UUID, severity: String, frostAlertsCount: int, occurredOn: Instant` | Notifica mapa de calor territorial a gestores cooperativos (`EV49`). |
-| `Member` `Affiliated` `Event` | Domain Event | `cooperativeId: UUID, memberId: UUID, producerUserId: UUID, occurredOn: Instant` | Confirma afiliación de productor al padrón cooperativo (`EV51`/`POL02`). |
+| `Member` `Affiliated` `Event` | Domain Event | `cooperativeId: UUID, memberId: UUID, producerUserId: UUID, occurredOn: Instant` | Confirma afiliación de productor al padrón cooperativo (`EV54`/`POL02`). |
 
 #### Interface Layer
 
