@@ -25,7 +25,9 @@ En las siguientes secciones se detalla el diseño táctico de los nueve contexto
 | **Propósito** | Delimita la consistencia transaccional para credenciales, autenticación y recuperación de cuenta. |
 | **Relaciones de Dominio** | Raíz autónoma. Referenciada lógicamente por ID desde `UserProfile` y `Subscription`. |
 
-###### Atributos de `UserAccount`
+\noindent
+**Atributos de `UserAccount`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -35,7 +37,9 @@ En las siguientes secciones se detalla el diseño táctico de los nueve contexto
 | `role` | `Role` | Rol canónico asignado: `ROLE_PRODUCER` o `ROLE_TECHNICAL_MANAGER`. |
 | `passwordResetToken` | `Optional<Password` `ResetToken>` | Token efímero de un solo uso con marca temporal de expiración a 15 minutos. |
 
-###### Métodos de `UserAccount`
+\noindent
+**Métodos de `UserAccount`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
@@ -57,7 +61,7 @@ En las siguientes secciones se detalla el diseño táctico de los nueve contexto
 ##### Servicios de Dominio, Repositorios y Eventos
 
 | Componente | Patrón | Firma / Contrato / Payload | Propósito en el Dominio |
-|:------------------------|:--------------------|:--------------------------------|:------------------------|
+|:------------------------|:----------------|:------------------------------------|:------------------------|
 | `HashingService` | Domain Service | `hash(raw: Password):` `HashedPassword` | Abstracción para el hashing criptográfico de contraseñas. |
 | `HashingService` | Domain Service | `matches(raw: Password,` `hashed: HashedPassword):` `boolean` | Verificación de coincidencia entre texto plano y hash criptográfico. |
 | `UserAccount` `Repository` | Repository | `findById(id: UserAccountId):` `Optional<UserAccount>` | Recupera la cuenta de usuario por su identificador único. |
@@ -65,7 +69,7 @@ En las siguientes secciones se detalla el diseño táctico de los nueve contexto
 | `UserAccount` `Repository` | Repository | `existsBy` `Email(email:` `EmailAddress):` `boolean` | Verifica la no duplicidad de correo para salvaguardar la unicidad. |
 | `UserAccount` `Repository` | Repository | `save(account: UserAccount):` `UserAccount` | Persiste atómicamente el estado del agregado de cuenta. |
 | `UserAccount` `Registered` `Event` | Domain Event | `userId: UUID, email: String,` `role: String, occurredOn: Instant` | Notifica el alta de credenciales para inicializar el onboarding civil. |
-| `UserAuthenticated` `Event` | Domain Event | `userId: UUID, email: String,` `occurredOn: Instant` | Notifica el inicio de sesión exitoso para auditoría de accesos. |
+| `User` `Authenticated` `Event` | Domain Event | `userId: UUID, email: String,` `occurredOn: Instant` | Notifica el inicio de sesión exitoso para auditoría de accesos. |
 | `PasswordChanged` `Event` | Domain Event | `userId: UUID,` `occurredOn: Instant` | Señala la actualización voluntaria de contraseña. |
 | `PasswordReset` `RequestedEvent` | Domain Event | `userId: UUID, email: String,` `tokenValue: String, expiresAt: Instant` | Dispara la entrega del correo con el enlace de recuperación vía Brevo. |
 | `PasswordReset` `CompletedEvent` | Domain Event | `userId: UUID, email: String,` `occurredOn: Instant` | Confirma el restablecimiento exitoso de la credencial. |
@@ -118,7 +122,7 @@ En las siguientes secciones se detalla el diseño táctico de los nueve contexto
 | `BCryptPassword` `Service` | Security Adapter | Spring Security Crypto | Implementa `HashingService` con costo de cómputo configurable. |
 | `BrevoEmail` `DeliveryAdapter` | External Adapter | Brevo REST API | Despacho de plantillas transaccionales para recuperación de contraseña. |
 
-##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+##### Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
 
 * **Gestión Segura de Sesión y Almacenamiento de Tokens:**
   * *Android Nativo (Kotlin):* Componente `SessionManager` que utiliza `EncryptedSharedPreferences` respaldado por **Android KeyStore** (cifrado AES-256-GCM) para la persistencia del par de tokens (access token y refresh token de 30 días) y claims de rol.
@@ -171,9 +175,12 @@ CREATE INDEX idx_user_accounts_reset_token
 | Architectural Layer | Main Component(s) | Architectural Responsibility | Key Technologies |
 |:---------------------|:------------------------------------------------|:--------------------------------------|:-------------------|
 | **Interface Layer** | `AuthController` | Exposición de endpoints REST para registro, login, refresh y reseteo. | Spring MVC, Jakarta Validation |
-| **Application Layer** | `UserAccountCommandService`; `UserAccountQueryService` | Orquestación de comandos de registro/autenticación/reseteo y consultas de sesión/credenciales. | Spring `@Transactional`, `@Service` |
+| **Application Layer** | `UserAccount` `CommandService`;
+`UserAccount` `QueryService` | Orquestación de comandos de registro/autenticación/reseteo y consultas de sesión/credenciales. | Spring `@Transactional`, `@Service` |
 | **Domain Layer** | `UserAccountRepository`; `BCryptPasswordHasher` | Contrato de persistencia de cuentas (puerto de dominio) y servicio de derivación de claves con sal. | Java / Spring Security Crypto |
-| **Infrastructure Layer** | `JpaUserAccountRepositoryAdapter`; `JwtTokenProvider`; `BrevoEmailDeliveryAdapter` | Implementación JPA sobre PostgreSQL, emisión de JWT y entrega de correos vía Brevo. | Spring Data JPA, Nimbus, Brevo API |
+| **Infrastructure Layer** | `JpaUserAccount` `RepositoryAdapter`;
+`JwtTokenProvider`;
+`BrevoEmailDeliveryAdapter` | Implementación JPA sobre PostgreSQL, emisión de JWT y entrega de correos vía Brevo. | Spring Data JPA, Nimbus, Brevo API |
 
 ##### Flujo de Comunicación y Conectividad
 1. El contenedor cliente (`Android Application` o `Cross-Platform Application`) envía `POST` \nolinkurl{/api/v1/auth/sign-in} con credenciales hacia `AuthController`.
@@ -219,7 +226,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 \caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para IAM. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 ### Bounded Context: User Profiles
 
@@ -235,7 +242,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Custodia la identidad civil, datos personales y de contacto verificados de los actores del sistema. |
 | **Relaciones de Dominio** | Vinculado 1:1 mediante referencia lógica externa (`userId`) con `UserAccount`. Referenciado por ID en predios y contratos. |
 
-###### Atributos de `UserProfile`
+\noindent
+**Atributos de `UserProfile`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -245,12 +254,14 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `country` | `Country` | Código de país ISO 3166-1 alpha-2 para localización. |
 | `phoneNumber` | `PhoneNumber` | Número telefónico normalizado bajo estándar internacional E.164. |
 
-###### Métodos de `UserProfile`
+\noindent
+**Métodos de `UserProfile`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
 | `create` | `userId: UserId`, `name: FullName`, `country: Country`, `phone: PhoneNumber` | `UserProfile` | Método fábrica que valida integridad de datos civiles y emite evento de creación de perfil. |
-| `updateContactInfo` | `name: FullName`, `country: Country`, `phone: PhoneNumber` | `void` | Actualiza datos de contacto y emite evento de actualización de contacto hacia la cooperativa. |
+| `updateContact` `Info` | `name: FullName`, `country: Country`, `phone: PhoneNumber` | `void` | Actualiza datos de contacto y emite evento de actualización de contacto hacia la cooperativa. |
 
 ##### Objetos de Valor (Value Objects)
 
@@ -265,10 +276,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 ##### Servicios de Dominio, Repositorios y Eventos
 
 | Componente | Patrón | Firma / Contrato / Payload | Propósito en el Dominio |
-|:------------------------|:--------------------|:--------------------------------|:------------------------|
+|:------------------------|:----------------|:------------------------------------|:------------------------|
 | `PhoneNumber` `Validator` | Domain Service | `validate(phone:` `PhoneNumber): boolean` | Validación estricta de estructura y longitud telefónica E.164. |
 | `Profile` `Repository` | Repository | `findById(id: ProfileId):` `Optional<UserProfile>` | Búsqueda de perfil por su identificador único universal. |
-| `Profile` `Repository` | Repository | `findByUserId(userId: UserId):` `Optional<UserProfile>` | Recupera el perfil civil asociado a una cuenta de IAM. |
+| `Profile` `Repository` | Repository | `findByUserId(` `userId: UserId):` `Optional<` `UserProfile>` | Recupera el perfil civil asociado a una cuenta de IAM. |
 | `Profile` `Repository` | Repository | `existsByUserId(` `userId:` `UserId): boolean` | Verifica si una cuenta ya posee un perfil inicializado. |
 | `Profile` `Repository` | Repository | `save(profile: UserProfile):` `UserProfile` | Persiste atómicamente el perfil y sus datos de contacto. |
 | `ProfileCreated` `Event` | Domain Event | `profileId: UUID, userId: UUID,` `fullName: String, occurredOn: Instant` | Notifica la creación del perfil civil para habilitar contratación. |
@@ -315,7 +326,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `JpaUserProfile` `RepositoryAdapter` | Adapter | Spring Component | Implementa el puerto de dominio `UserProfileRepository`. |
 | `Libphonenumber` `Adapter` | Service Adapter | Google libphonenumber | Parsing, validación y normalización a estándar E.164. |
 
-##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+##### Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
 
 * **Caché Local de Perfil y Acceso a Datos:**
   * *Android Nativo (Room / SQLite):* `ProfileDao` y entidad local `LocalProfileEntity` que almacenan en caché el nombre, país y teléfono del usuario autenticado para visualización instantánea en drawer y cabeceras de navegación sin requerir conexión continua.
@@ -365,9 +376,11 @@ CREATE INDEX idx_profiles_phone
 | Architectural Layer | Main Component(s) | Architectural Responsibility | Key Technologies |
 |:---------------------|:------------------------------------------------|:--------------------------------------|:-------------------|
 | **Interface Layer** | `ProfileController` | Endpoints REST para registro, consulta y actualización de perfil civil y contacto. | Spring MVC, Jakarta Validation |
-| **Application Layer** | `ProfileCommandService`; `ProfileQueryService` | Orquestación de comandos de alta y actualización de contacto y consultas de perfil civil. | Spring `@Transactional`, `@Service` |
+| **Application Layer** | `Profile` `CommandService`;
+`Profile` `QueryService` | Orquestación de comandos de alta y actualización de contacto y consultas de perfil civil. | Spring `@Transactional`, `@Service` |
 | **Domain Layer** | `ProfileRepository`; `PhoneNumberValidator` | Contrato de persistencia de perfil (puerto de dominio) y servicio de validación de formato internacional E.164. | Java puro / libphonenumber |
-| **Infrastructure Layer** | `JpaProfileRepositoryAdapter`; `DomainEventPublisher` | Persistencia JPA sobre PostgreSQL (`profiles.profiles`) y despacho de eventos de dominio. | Spring Data JPA, Spring Events |
+| **Infrastructure Layer** | `JpaProfile` `RepositoryAdapter`;
+`DomainEventPublisher` | Persistencia JPA sobre PostgreSQL (`profiles.profiles`) y despacho de eventos de dominio. | Spring Data JPA, Spring Events |
 
 ##### Flujo de Comunicación y Conectividad
 1. El contenedor cliente móvil (`Android Application` o `Cross-Platform Application`) despacha `PUT` \nolinkurl{/api/v1/profiles/{userId}} con datos de contacto hacia `ProfileController`.
@@ -410,7 +423,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 \caption*{\textit{Nota.} Estructura de la tabla profiles, índices y restricciones en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 ### Bounded Context: Subscription and Cooperative Membership
 
@@ -426,7 +439,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Delimita la consistencia de los derechos comerciales contratados, cálculo de vigencias y balance de superficie. |
 | **Relaciones de Dominio** | Referencia por ID a `ProducerId`,`CooperativeId `y opcionalmente a `InvitationCodeId`. |
 
-###### Atributos de `Subscription`
+\noindent
+**Atributos de `Subscription`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -434,18 +449,20 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `producerId` | `UserId` | Identificador del productor olivarero titular. |
 | `plan` | `SubscriptionPlan` | Modalidad comercial: individual o patrocinada cooperativa. |
 | `quota` | `HectaresQuota` | Límite máximo contratado de superficie predial en hectáreas. |
-| `status` | `SubscriptionStatus` | Estado del contrato:`PENDING_PAYMENT`,`ACTIVE`,`EXPIRED`,`CANCELLED`. |
-| `period` | `Optional<SubscriptionPeriod>` | Período de vigencia con marcas temporales de inicio y fin. |
+| `status` | `SubscriptionStatus` | Estado del contrato:`PENDING_` `PAYMENT`, `ACTIVE`, `EXPIRED`, `CANCELLED`. |
+| `period` | `Optional<` `SubscriptionPeriod>` | Período de vigencia con marcas temporales de inicio y fin. |
 
-###### Métodos de `Subscription`
+\noindent
+**Métodos de `Subscription`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
 | `requestPayment` | `terms: PaymentTerms` | `PaymentIntent` | Inicia intento de pago congelando cotización y cuota de hectáreas. |
-| `activateFromPayment` | `receipt: PaymentReceipt`, `period: SubscriptionPeriod` | `void` | Transiciona a activo tras verificación y emite evento de activación. |
+| `activateFrom` `Payment` | `receipt: PaymentReceipt`, `period: SubscriptionPeriod` | `void` | Transiciona a activo tras verificación y emite evento de activación. |
 | `activateFromCode` | `code: RedeemedCode`, `period: SubscriptionPeriod` | `void` | Activa contrato patrocinado por cooperativa y emite evento de canje. |
 | `expire` | `currentTime: Instant` | `void` | Invalida derechos de uso al vencer el plazo del ciclo contratado. |
-| `hasActiveEntitlement` | `currentTime: Instant` | `boolean` | Verifica si el productor dispone de cobertura vigente para sus parcelas. |
+| `hasActive` `Entitlement` | `currentTime: Instant` | `boolean` | Verifica si el productor dispone de cobertura vigente para sus parcelas. |
 
 ##### Modelos del Dominio: `CooperativeLicense` (`Aggregate Root`)
 
@@ -455,7 +472,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Administra el saldo corporativo global de plazas de agricultores y superficie de hectáreas para una cooperativa. |
 | **Relaciones de Dominio** | Referencia externa a `CooperativeId`. Gobierna lotes de códigos vinculados por `licenseId`. |
 
-###### Atributos de `CooperativeLicense`
+\noindent
+**Atributos de `CooperativeLicense`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -467,13 +486,15 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `totalAreaHa` | `Double` | Superficie máxima consolidada autorizada en hectáreas. |
 | `issuedAreaHa` | `Double` | Hectáreas actualmente comprometidas en lotes emitidos. |
 
-###### Métodos de `CooperativeLicense`
+\noindent
+**Métodos de `CooperativeLicense`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
 | `reserveQuota` | `seats: Int`, `area: Double` | `void` | Compromete plazas y superficie verificando disponibilidad; rechaza sobreemisión. |
 | `releaseQuota` | `seats: Int`, `area: Double` | `void` | Restaura plazas y hectáreas liberadas por caducidad de códigos. |
-| `hasAvailableCapacity` | `seats: Int`, `area: Double` | `boolean` | Consulta si la cooperativa cuenta con cupo libre para un nuevo lote. |
+| `hasAvailable` `Capacity` | `seats: Int`, `area: Double` | `boolean` | Consulta si la cooperativa cuenta con cupo libre para un nuevo lote. |
 
 ##### Modelos del Dominio: `InvitationCodeBatch` (`Aggregate Root`)
 
@@ -483,7 +504,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Gestiona la generación criptográfica, vigencia y canje de un lote de códigos de invitación. |
 | **Relaciones de Dominio** | Referencia a `LicenseId` y contiene una colección de entidades subordinadas `InvitationCode`. |
 
-###### Atributos de `InvitationCodeBatch`
+\noindent
+**Atributos de `InvitationCodeBatch`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -492,13 +515,15 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `codes` | `List<InvitationCode>` | Colección de códigos individuales de invitación emitidos. |
 | `status` | `BatchStatus` | Estado operativo del lote: `ACTIVE`, `EXHAUSTED`, `EXPIRED`. |
 
-###### Métodos de `InvitationCodeBatch`
+\noindent
+**Métodos de `InvitationCodeBatch`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
 | `generateCodes` | `count: Int`, `quotaHa: Double`, `days: Int` | `void` | Genera códigos criptográficos no secuenciales y emite evento de lote generado. |
 | `redeemCode` | `codeId: CodeId`, `producerId: UserId` | `InvitationCode` | Consume atómicamente un código disponible y retorna evidencia de canje. |
-| `shortenCodeExpiry` | `codeId: CodeId`, `newExpiry: Instant` | `void` | Anticipa la fecha límite de canje para un código no consumido. |
+| `shorten` `CodeExpiry` | `codeId: CodeId`, `newExpiry: Instant` | `void` | Anticipa la fecha límite de canje para un código no consumido. |
 
 ##### Modelos del Dominio: `InvitationCode` (`Internal Entity`)
 
@@ -508,7 +533,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Representa un vale digital unívoco e intransferible que otorga derecho de suscripción a un socio. |
 | **Relaciones de Dominio** | Subordinado estrictamente a `InvitationCodeBatch` (1 a N). |
 
-###### Atributos de `InvitationCode`
+\noindent
+**Atributos de `InvitationCode`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -518,7 +545,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `status` | `CodeStatus` | Estado: `AVAILABLE`, `REDEEMED`, `EXPIRED`. |
 | `expiresAt` | `Instant` | Fecha y hora límite improrrogable para su consumo. |
 
-###### Métodos de `InvitationCode`
+\noindent
+**Métodos de `InvitationCode`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
@@ -532,31 +561,31 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `SubscriptionId`, `LicenseId`, `BatchId` | `UUID v4` | Identificadores únicos universales inmutables. |
 | `HectaresQuota` | `Double` | Superficie máxima permitida bajo suscripción ($\ge 0.5\text{ ha}$). |
 | `SubscriptionPeriod` | `startsAt: Instant`, `endsAt: Instant` | Ventana temporal de vigencia activa del servicio. |
-| `SubscriptionStatus` | `Enum` | Estados del contrato: `PENDING_PAYMENT`, `ACTIVE`, `EXPIRED`, `CANCELLED`. |
+| `SubscriptionStatus` | `Enum` | Estados del contrato: `PENDING_` `PAYMENT`, `ACTIVE`, `EXPIRED`, `CANCELLED`. |
 | `CodeStatus` | `Enum` | Estados de la invitación: `AVAILABLE`, `REDEEMED`, `EXPIRED`, `REVOKED`. |
 | `Money` | `amount: BigDecimal`, `currency: String` | Monto dinerario exacto con divisa ISO 4217 (`PEN`). |
 
 ##### Servicios de Dominio, Repositorios y Eventos
 
 | Componente | Patrón | Firma / Contrato / Payload | Propósito en el Dominio |
-|:------------------------|:--------------------|:--------------------------------|:------------------------|
-| `HectareQuota` `Policy` | Domain Service | `requireWithinQuota(quota:` `HectaresQuota, ...): void` | Valida que la superficie predial no exceda el límite contratado. |
-| `Subscription` `ActivationPolicy` | Domain Service | `annualPeriod(approvedAt:` `Instant): SubscriptionPeriod` | Computa período anual estándar de 365 días desde aprobación. |
-| `Subscription` `ActivationPolicy` | Domain Service | `sponsoredPeriod(at: Instant,` `lic: SubscriptionPeriod)` | Alinea la vigencia del socio con la ventana temporal de la licencia. |
+|:------------------------|:----------------|:------------------------------------|:------------------------|
+| `HectareQuota` `Policy` | Domain Service | `requireWithin` `Quota(quota:` `HectaresQuota,` `...): void` | Valida que la superficie predial no exceda el límite contratado. |
+| `Subscription` `ActivationPolicy` | Domain Service | `annualPeriod(` `approvedAt:` `Instant):` `SubscriptionPeriod` | Computa período anual estándar de 365 días desde aprobación. |
+| `Subscription` `ActivationPolicy` | Domain Service | `sponsoredPeriod(` `at: Instant,` `lic:` `SubscriptionPeriod)` | Alinea la vigencia del socio con la ventana temporal de la licencia. |
 | `Subscription` `Repository` | Repository | `findById(id: SubscriptionId):` `Optional<Subscription>` | Recupera suscripción por identificador unívoco. |
-| `Subscription` `Repository` | Repository | `findCurrentByProducer(id:` `ProducerId): Optional<Subscription>` | Obtiene la suscripción vigente del productor olivarero. |
+| `Subscription` `Repository` | Repository | `findCurrentBy` `Producer(id:` `ProducerId):` `Optional<` `Subscription>` | Obtiene la suscripción vigente del productor olivarero. |
 | `Subscription` `Repository` | Repository | `save(sub: Subscription):` `Subscription` | Persiste atómicamente el estado del contrato. |
-| `CooperativeLicense` `Repository` | Repository | `findById(id: LicenseId):` `Optional<CooperativeLicense>` | Carga la licencia institucional de la cooperativa. |
-| `CooperativeLicense` `Repository` | Repository | `findCurrentByCooperative(id):` `Optional<CooperativeLicense>` | Obtiene la licencia corporativa activa de la cooperativa. |
+| `CooperativeLicense` `Repository` | Repository | `findById(` `id: LicenseId):` `Optional<` `CooperativeLicense>` | Carga la licencia institucional de la cooperativa. |
+| `CooperativeLicense` `Repository` | Repository | `findCurrentBy` `Cooperative(id):` `Optional<` `CooperativeLicense>` | Obtiene la licencia corporativa activa de la cooperativa. |
 | `CooperativeLicense` `Repository` | Repository | `save(lic: CooperativeLicense):` `CooperativeLicense` | Actualiza plazas y superficie disponible de la licencia. |
-| `InvitationCodeBatch` `Repository` | Repository | `findById(id: BatchId):` `Optional<InvitationCodeBatch>` | Carga el lote de códigos para emisión o auditoría. |
-| `InvitationCodeBatch` `Repository` | Repository | `findByFingerprint(fp):` `Optional<InvitationCodeBatch>` | Localiza el lote contenedor de un código específico presentado. |
+| `InvitationCodeBatch` `Repository` | Repository | `findById(id: BatchId):` `Optional<` `InvitationCodeBatch>` | Carga el lote de códigos para emisión o auditoría. |
+| `InvitationCodeBatch` `Repository` | Repository | `findByFingerprint(fp):` `Optional<` `InvitationCodeBatch>` | Localiza el lote contenedor de un código específico presentado. |
 | `InvitationCodeBatch` `Repository` | Repository | `save(batch: InvitationCodeBatch):` `InvitationCodeBatch` | Persiste lote y estado de códigos individuales. |
-| `SubscriptionPayment` `ApprovedEvent` | Domain Event | `subscriptionId: UUID,` `producerId: UUID, receiptId: UUID` | Confirma cobro exitoso por pasarela de pagos. |
+| `Subscription` `Payment` `ApprovedEvent` | Domain Event | `subscriptionId: UUID,` `producerId: UUID, receiptId: UUID` | Confirma cobro exitoso por pasarela de pagos. |
 | `Subscription` `ActivatedEvent` | Domain Event | `subscriptionId: UUID,` `producerId: UUID, quotaHa: Decimal` | Notifica vigencia activa para habilitar registro predial. |
-| `SubscriptionPayment` `FailedEvent` | Domain Event | `subscriptionId: UUID,` `intentId: UUID, reasonCode: String` | Informa rechazo de transacción comercial. |
+| `Subscription` `Payment` `FailedEvent` | Domain Event | `subscriptionId: UUID,` `intentId: UUID, reasonCode: String` | Informa rechazo de transacción comercial. |
 | `CooperativeCode` `RedeemedEvent` | Domain Event | `subscriptionId: UUID,` `producerId: UUID, cooperativeId: UUID` | Notifica canje de código patrocinado para afiliación. |
-| `InvitationCodesBatch` `GeneratedEvent` | Domain Event | `batchId: UUID, licenseId: UUID,` `quantity: int, reservedArea: Decimal` | Registra reserva de cupos corporativos. |
+| `Invitation` `CodesBatch` `GeneratedEvent` | Domain Event | `batchId: UUID, licenseId: UUID,` `quantity: int, reservedArea: Decimal` | Registra reserva de cupos corporativos. |
 | `InvitationCode` `ExpiredEvent` | Domain Event | `batchId: UUID, licenseId: UUID,` `codeId: UUID, releasedQuota: Decimal` | Notifica liberación de cupo por código vencido. |
 
 #### Interface Layer
@@ -565,29 +594,29 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Method | Route (Endpoint) | Request Body (DTO) | Response (DTO / Code) | Propósito |
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
-| `POST` | \nolinkurl{/api/v1/subscriptions} | `CreateSubscription` `Request` | `Subscription` `Resource` (201 Created) | Creación de intención contractual de suscripción individual. |
-| `POST` | \nolinkurl{/api/v1/subscriptions/{id}/checkouts} | `CreateCheckout` `Request` | `CheckoutResource` (201 Created) | Generación de preferencia de pago y URL de checkout en pasarela. |
+| `POST` | \nolinkurl{/api/v1/subscriptions} | `Create` `Subscription` `Request` | `Subscription` `Resource` (201 Created) | Creación de intención contractual de suscripción individual. |
+| `POST` | \nolinkurl{/api/v1/subscriptions/{id}/checkouts} | `CreateCheckout` `Request` | `Checkout` `Resource` (201 Created) | Generación de preferencia de pago y URL de checkout en pasarela. |
 | `GET` | \nolinkurl{/api/v1/subscriptions} | N/A | `Subscription` `Resource` (200 OK) | Consulta de suscripción activa del titular autenticado. |
 | `GET` | \nolinkurl{/api/v1/subscriptions/{id}} | N/A | `Subscription` `Resource` (200 OK) | Consulta detallada del contrato de suscripción. |
 | `GET` | \nolinkurl{/api/v1/subscription-plans} | N/A | `List<PlanOffer>` (200 OK) | Catálogo comercial de planes y tarifas vigentes. |
-| `POST` | \nolinkurl{/api/v1/payment-notifications/mercado-pago} | `PaymentNotification` `Request` | `200 OK` | Recepción asíncrona y reconciliación de pago externo. |
-| `POST` | \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} | `GenerateInvitation` `CodesBatchRequest` | `InvitationBatch` `Resource` (201 Created) | Emisión de lote de códigos por gestor contra cupo institucional. |
-| `GET` | \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} | N/A (`?page=0&size=20`) | `Page<Invitation` `BatchSummary>` (200 OK) | Consulta paginada y auditoría de códigos generados. |
-| `POST` | \nolinkurl{/api/v1/cooperative-code-redemptions} | `RedeemCooperative` `CodeRequest` | `Subscription` `Resource` (201 Created) | Canje de código corporativo por productor autenticado. |
-| `POST` | \nolinkurl{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} | `ShortenInvitation` `CodeExpiryRequest` | `200 OK` | Adelanto de vigencia para expiración anticipada. |
+| `POST` | \nolinkurl{/api/v1/payment-notifications/mercado-pago} | `Payment` `Notification` `Request` | `200 OK` | Recepción asíncrona y reconciliación de pago externo. |
+| `POST` | \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} | `Generate` `Invitation` `CodesBatchRequest` | `InvitationBatch` `Resource` (201 Created) | Emisión de lote de códigos por gestor contra cupo institucional. |
+| `GET` | \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} | N/A (`?page=0` `&size=20`) | `Page<Invitation` `BatchSummary>` (200 OK) | Consulta paginada y auditoría de códigos generados. |
+| `POST` | \nolinkurl{/api/v1/cooperative-code-redemptions} | `Redeem` `Cooperative` `CodeRequest` | `Subscription` `Resource` (201 Created) | Canje de código corporativo por productor autenticado. |
+| `POST` | \nolinkurl{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} | `Shorten` `Invitation` `CodeExpiryRequest` | `200 OK` | Adelanto de vigencia para expiración anticipada. |
 
 ##### DTOs (Resources) y Mappers (Assemblers)
 
 | Component | Type | Mapping / Structure | Purpose |
 |:---|:---|:---|:---|
-| `CreateSubscription` `Request` | Request DTO | `{ planCode: String, requestedQuotaHa: Double }` | Selección comercial contrastada con el catálogo del servidor. |
+| `Create` `Subscription` `Request` | Request DTO | `{ planCode: String, requestedQuotaHa: Double }` | Selección comercial contrastada con el catálogo del servidor. |
 | `CreateCheckout` `Request` | Request DTO | `{ returnUrl?: String }` | Solicitud de preferencia de cobro en pasarela externa. |
-| `GenerateInvitation` `CodesBatchRequest` | Request DTO | `{ quantity: Int, hectaresCapPerCode: Double, expiresAt: Instant }` | Parámetros para emisión de lote de códigos. |
-| `ShortenInvitation` `CodeExpiryRequest` | Request DTO | `{ newExpiresAt: Instant }` | Acortamiento de vigencia de código disponible. |
-| `RedeemCooperative` `CodeRequest` | Request DTO | `{ code: String }` | Código de activación ingresado por el productor. |
-| `PaymentNotification` `Request` | Request DTO | `{ externalNotificationId: String, externalPaymentId: String }` | Payload webhook de notificación de pasarela. |
+| `Generate` `Invitation` `CodesBatchRequest` | Request DTO | `{ quantity: Int, hectaresCapPerCode: Double, expiresAt: Instant }` | Parámetros para emisión de lote de códigos. |
+| `Shorten` `Invitation` `CodeExpiryRequest` | Request DTO | `{ newExpiresAt: Instant }` | Acortamiento de vigencia de código disponible. |
+| `Redeem` `Cooperative` `CodeRequest` | Request DTO | `{ code: String }` | Código de activación ingresado por el productor. |
+| `Payment` `Notification` `Request` | Request DTO | `{ externalNotificationId: String, externalPaymentId: String }` | Payload webhook de notificación de pasarela. |
 | `Subscription` `Resource` | Response DTO | `{ id: UUID, mode: String, status: String, quotaHa: Double, startsAt, endsAt, entitlementActive }` | Representación pública de suscripción vigente. |
-| `CheckoutResource` | Response DTO | `{ intentId: UUID, checkoutUrl: String, expiresAt: Instant }` | URL segura de checkout emitida por la pasarela. |
+| `Checkout` `Resource` | Response DTO | `{ intentId: UUID, checkoutUrl: String, expiresAt: Instant }` | URL segura de checkout emitida por la pasarela. |
 | `InvitationBatch` `Resource` | Response DTO | `{ id: UUID, quantity: Int, availableSeats: Int, availableAreaHa: Double, codes: List<String> }` | Lote de códigos entregado al gestor cooperativo. |
 | `Subscription` `ResourceAssembler` | Assembler | `toResource(` `Subscription):` `SubscriptionResource` | Mapeador del agregado a DTO público de presentación. |
 
@@ -612,13 +641,13 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | Component | Package / Role | Technology | Technical Responsibility |
 |:---|:---|:---|:---|
 | `Subscription` `JpaRepository` | Persistence | Spring Data JPA | Operaciones sobre esquemas `subscription` en PostgreSQL. |
-| `MercadoPagoGateway` `Adapter` | External Adapter | Mercado Pago SDK | Creación de preferencias de pago y consulta de órdenes de cobro. |
+| `MercadoPago` `Gateway` `Adapter` | External Adapter | Mercado Pago SDK | Creación de preferencias de pago y consulta de órdenes de cobro. |
 | `SpringEventBus` `Adapter` | Integration | Spring ApplicationEvent | Publicación y enrutamiento interno de eventos transaccionales. |
 
-##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+##### Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
 
 * **Coordinación de Pago Seguro (Hosted Checkout):**
-  * *Android Nativo (Kotlin):* Componente `AndroidHostedCheckoutCoordinator` que lanza Chrome Custom Tabs hacia la pasarela de Mercado Pago tras obtener `checkoutUrl` (`CheckoutResource`), reconsultando el estado autoritativo al regresar a la aplicación sin confiar en callbacks locales.
+  * *Android Nativo (Kotlin):* Componente `AndroidHostedCheckoutCoordinator` que lanza Chrome Custom Tabs hacia la pasarela de Mercado Pago tras obtener `checkoutUrl` (`Checkout` `Resource`), reconsultando el estado autoritativo al regresar a la aplicación sin confiar en callbacks locales.
   * *Cross-Platform (Flutter/Dart):* Componente `FlutterHostedCheckoutCoordinator` implementado con `url_launcher` para apertura controlada de checkout y refresco asíncrono del contrato.
 * **Caché Local de Derechos y Cupos (`entitlement_cache`):**
   * *Android Nativo (Room / SQLite):* `EntitlementCacheDao` y entidad `LocalEntitlementEntity` que custodian el estado del contrato (`status`), vigencia (`starts_at`, `ends_at`) y hectáreas autorizadas (`quota_ha`) asociadas al `account_id` para validación inmediata previa a la edición de polígonos.
@@ -635,18 +664,18 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `subscriptions` | `status` | `VARCHAR(30)` | `NOT NULL` | Estado (`ACTIVE`, `PENDING_PAYMENT`, `EXPIRED`). |
 | `subscriptions` | `starts_at` | `TIMESTAMPTZ` | `NULL` | Inicio de vigencia activa. |
 | `subscriptions` | `ends_at` | `TIMESTAMPTZ` | `NULL` | Término de vigencia activa. |
-| `cooperative_licenses` | `id` | `UUID` | `PRIMARY KEY` | Licencia corporativa institucional. |
-| `cooperative_licenses` | `cooperative_id` | `UUID` | `NOT NULL, UNIQUE` | Cooperativa propietaria del convenio. |
-| `cooperative_licenses` | `total_seats` | `INT` | `NOT NULL, CHECK` | Plazas máximas autorizadas. |
-| `cooperative_licenses` | `issued_seats` | `INT` | `NOT NULL, CHECK` | Plazas comprometidas en códigos vigentes. |
-| `cooperative_licenses` | `total_area_ha` | `NUMERIC(10,2)` | `NOT NULL` | Superficie máxima del convenio. |
-| `cooperative_licenses` | `issued_area_ha` | `NUMERIC(10,2)` | `NOT NULL` | Superficie comprometida en códigos vigentes. |
-| `invitation_codes` | `id` | `UUID` | `PRIMARY KEY` | Identificador único del código. |
-| `invitation_codes` | `batch_id` | `UUID` | `NOT NULL, FK` | Lote de procedencia. |
-| `invitation_codes` | `code_hash` | `VARCHAR(64)` | `NOT NULL, UNIQUE` | Hash SHA-256 del código alfanumérico. |
-| `invitation_codes` | `quota_ha` | `NUMERIC(8,2)` | `NOT NULL` | Cobertura en hectáreas que confiere el código. |
-| `invitation_codes` | `status` | `VARCHAR(30)` | `NOT NULL` | Estado (`AVAILABLE`, `REDEEMED`, `EXPIRED`). |
-| `invitation_codes` | `expires_at` | `TIMESTAMPTZ` | `NOT NULL` | Marca temporal límite para canje. |
+| `cooperative_` `licenses` | `id` | `UUID` | `PRIMARY KEY` | Licencia corporativa institucional. |
+| `cooperative_` `licenses` | `cooperative_` `id` | `UUID` | `NOT NULL, UNIQUE` | Cooperativa propietaria del convenio. |
+| `cooperative_` `licenses` | `total_seats` | `INT` | `NOT NULL, CHECK` | Plazas máximas autorizadas. |
+| `cooperative_` `licenses` | `issued_seats` | `INT` | `NOT NULL, CHECK` | Plazas comprometidas en códigos vigentes. |
+| `cooperative_` `licenses` | `total_area_ha` | `NUMERIC(10,2)` | `NOT NULL` | Superficie máxima del convenio. |
+| `cooperative_` `licenses` | `issued_area_ha` | `NUMERIC(10,2)` | `NOT NULL` | Superficie comprometida en códigos vigentes. |
+| `invitation_` `codes` | `id` | `UUID` | `PRIMARY KEY` | Identificador único del código. |
+| `invitation_` `codes` | `batch_id` | `UUID` | `NOT NULL, FK` | Lote de procedencia. |
+| `invitation_` `codes` | `code_hash` | `VARCHAR(64)` | `NOT NULL, UNIQUE` | Hash SHA-256 del código alfanumérico. |
+| `invitation_` `codes` | `quota_ha` | `NUMERIC(8,2)` | `NOT NULL` | Cobertura en hectáreas que confiere el código. |
+| `invitation_` `codes` | `status` | `VARCHAR(30)` | `NOT NULL` | Estado (`AVAILABLE`, `REDEEMED`, `EXPIRED`). |
+| `invitation_` `codes` | `expires_at` | `TIMESTAMPTZ` | `NOT NULL` | Marca temporal límite para canje. |
 
 ##### Script DDL de Base de Datos
 
@@ -701,13 +730,21 @@ CREATE TABLE subscription.invitation_codes (
 | Architectural Layer | Main Component(s) | Architectural Responsibility | Key Technologies |
 |:---------------------|:------------------------------------------------|:--------------------------------------|:-------------------|
 | **Interface Layer** | `SubscriptionController`; `PaymentWebhookController`; `CooperativeInvitationController`; `CodeRedemptionController` | Endpoints REST para suscripciones, checkout, webhooks IPN, canje y lotes de códigos. | Spring MVC, Webhook Filter |
-| **Application Layer** | `SubscriptionCommandService`; `SubscriptionQueryService`; `PaymentReconciliationCommandService`; `CooperativeInvitationCommandService`; `CooperativeInvitationQueryService` | Orquestación de comandos comerciales/pagos, consultas de planes/cuotas, conciliación IPN y canjes. | Spring `@Transactional`, `@Service` |
+| **Application Layer** | `Subscription` `CommandService`;
+`Subscription` `QueryService`;
+`PaymentReconciliation` `CommandService`;
+`CooperativeInvitation` `CommandService`;
+`CooperativeInvitation` `QueryService` | Orquestación de comandos comerciales/pagos, consultas de planes/cuotas, conciliación IPN y canjes. | Spring `@Transactional`, `@Service` |
 | **Domain Layer** | `SubscriptionRepository`; `CooperativeInvitationBatchRepository`; `CooperativeLicenseRepository`; `InvitationCodeGenerator`; `HectareQuotaPolicy`; `SubscriptionActivationPolicy` | Puertos de repositorio y servicios de dominio para cuotas de hectáreas, códigos y períodos de vigencia. | Java Security / SecureRandom |
-| **Infrastructure Layer** | `JpaSubscriptionRepositoryAdapter`; `JpaInvitationBatchRepositoryAdapter`; `JpaCooperativeLicenseRepositoryAdapter`; `MercadoPagoPaymentAdapter`; `DomainEventPublisher` | Adaptadores de persistencia JPA sobre PostgreSQL, cliente HTTP de Mercado Pago y publicador de eventos. | Spring Data JPA, HTTP Client |
+| **Infrastructure Layer** | `JpaSubscription` `RepositoryAdapter`;
+`JpaInvitationBatch` `RepositoryAdapter`;
+`JpaCooperativeLicense` `RepositoryAdapter`;
+`MercadoPagoPayment` `Adapter`;
+`DomainEventPublisher` | Adaptadores de persistencia JPA sobre PostgreSQL, cliente HTTP de Mercado Pago y publicador de eventos. | Spring Data JPA, HTTP Client |
 
 ##### Flujo de Comunicación y Conectividad
 1. El productor formaliza la intención de alta enviando `POST` \nolinkurl{/api/v1/subscriptions} hacia `SubscriptionController`, el cual delega en `SubscriptionCommandService`; este valida el cupo mediante `HectareQuotaPolicy` y persiste la suscripción en estado pendiente vía `SubscriptionRepository`.
-2. Seguidamente, despacha `POST` \nolinkurl{/api/v1/subscriptions/{id}/checkouts}; `SubscriptionCommandService` registra el `PaymentIntent`, se comunica con `MercadoPagoPaymentAdapter` y retorna el `checkoutUrl` seguro de Mercado Pago (`CheckoutResource`). Las consultas de suscripción y cuotas activas se resuelven a través de `SubscriptionQueryService`.
+2. Seguidamente, despacha `POST` \nolinkurl{/api/v1/subscriptions/{id}/checkouts}; `SubscriptionCommandService` registra el `PaymentIntent`, se comunica con `MercadoPagoPaymentAdapter` y retorna el `checkoutUrl` seguro de Mercado Pago (`Checkout` `Resource`). Las consultas de suscripción y cuotas activas se resuelven a través de `SubscriptionQueryService`.
 3. El usuario completa la transacción en el gateway; Mercado Pago notifica asíncronamente a `POST` \nolinkurl{/api/v1/payment-notifications/mercado-pago}.
 4. `PaymentWebhookController` autentica la firma criptográfica HMAC y delega el procesamiento en `PaymentReconciliationCommandService`.
 5. `PaymentReconciliationCommandService` actualiza el estado a activo mediante `SubscriptionRepository` y publica el evento de activación de suscripción vía `DomainEventPublisher`.
@@ -755,7 +792,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 \caption*{\textit{Nota.} Tablas relacionales de lotes y códigos de canje (Parte 2). Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 ---
 
@@ -773,7 +810,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Delimita la identidad geográfica, catastral y dendrométrica del cuartel olivarero y salvaguarda el historial de linderos. |
 | **Relaciones de Dominio** | Referencia externa por ID a `OwnerId`. Raíz espacial referenciada por telemetría, fenología y muestreos. |
 
-###### Atributos de `Plot`
+\noindent
+**Atributos de `Plot`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -787,12 +826,14 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `lastPruningDate` | `Optional<LocalDate>` | Fecha de última labor de poda registrada. |
 | `status` | `PlotStatus` | Estado del predio: `ACTIVE`, `REMOVED_SOFT_DELETE`. |
 
-###### Métodos de `Plot`
+\noindent
+**Métodos de `Plot`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
-| `create` | `producerId: UserId`, `name: PlotName`, `variety: OliveVariety`, `geom: PlotGeometry`, `frame: PlantationFrame` | `Plot` | Fábrica que valida topología poligonal, calcula área neta y emite `PlotDelimitedEvent`. |
-| `updateDendrometricData` | `frame: PlantationFrame`, `pruningDate: LocalDate` | `void` | Recalibra densidad arbórea efectiva y registra intervenciones silvícolas. |
+| `create` | `producerId: UserId`, `name: PlotName`, `variety: OliveVariety`, `geom: PlotGeometry`, `frame: PlantationFrame` | `Plot` | Fábrica que valida topología poligonal, calcula área neta y emite `PlotDelimited` `Event`. |
+| `update` `DendrometricData` | `frame: PlantationFrame`, `pruningDate: LocalDate` | `void` | Recalibra densidad arbórea efectiva y registra intervenciones silvícolas. |
 | `updateBoundaries` | `newGeometry: PlotGeometry`, `quotaChecker: HectareQuotaPolicy` | `void` | Valida nueva geometría contra cupo de suscripción y emite `PlotBoundariesUpdatedEvent`. |
 | `remove` | `reason: String` | `void` | Ejecuta baja lógica preservando trazabilidad histórica y emite `PlotRemovedEvent`. |
 
@@ -810,15 +851,15 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 ##### Servicios de Dominio, Repositorios y Eventos
 
 | Componente | Patrón | Firma / Contrato / Payload | Propósito en el Dominio |
-|:------------------------|:--------------------|:--------------------------------|:------------------------|
+|:------------------------|:----------------|:------------------------------------|:------------------------|
 | `Cadastral` `Geometry` `Service` | Domain Service | `validate(polygon: CadastralPolygon): void` | Verifica topología cerrada sin autointersecciones ni traslapes. |
 | `Cadastral` `Geometry` `Service` | Domain Service | `netAreaHa(polygon: CadastralPolygon): Decimal` | Calcula superficie neta en hectáreas geodésicas. |
 | `Dendrometry` `Service` | Domain Service | `calculate(areaHa: Decimal, grid: PlantingGrid, treeCount: int):` `DendrometricAttributes` | Deriva densidades teóricas y observadas por hectárea. |
 | `PlotRepository` | Repository | `findById(id: PlotId): Optional<Plot>` | Carga la parcela por su identificador primario. |
-| `PlotRepository` | Repository | `findActiveByOwner(ownerId: OwnerId): List<Plot>` | Lista parcelas activas del productor para gestión predial. |
-| `PlotRepository` | Repository | `sumActiveAreaByOwner(ownerId: OwnerId): Decimal` | Consolida superficie activa para auditoría de cuotas. |
+| `PlotRepository` | Repository | `findActiveByOwner(` `ownerId: OwnerId):` `List<Plot>` | Lista parcelas activas del productor para gestión predial. |
+| `PlotRepository` | Repository | `sumActiveAreaBy` `Owner(ownerId:` `OwnerId): Decimal` | Consolida superficie activa para auditoría de cuotas. |
 | `PlotRepository` | Repository | `save(plot: Plot): Plot` | Persiste atómicamente la entidad y linderos espaciales. |
-| `PlotDelimitedEvent` | Domain Event | `plotId: UUID, ownerId: UUID, polygon: String, variety: String, occurredOn: Instant` | Notifica alta de cuartel para inicializar telemetría. |
+| `PlotDelimited` `Event` | Domain Event | `plotId: UUID, ownerId: UUID, polygon: String, variety: String, occurredOn: Instant` | Notifica alta de cuartel para inicializar telemetría. |
 | `PlotBoundaries` `UpdatedEvent` | Domain Event | `plotId: UUID, ownerId: UUID, polygon: String, areaHa: Decimal, occurredOn: Instant` | Notifica alteración de linderos para recalibrar modelos. |
 | `PlotRemovedEvent` | Domain Event | `plotId: UUID, ownerId: UUID, reason: String, occurredOn: Instant` | Notifica baja lógica de parcela para desvincular sensores. |
 
@@ -829,7 +870,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | Method | Route (Endpoint) | Request Body (DTO) | Response (DTO / Code) | Propósito |
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
 | `POST` | \nolinkurl{/api/v1/plots} | `CreatePlot` `Request` | `PlotResource` (201 Created) | Delimitación y registro georreferenciado de parcela con validación de cuota. |
-| `GET` | \nolinkurl{/api/v1/plots} | N/A (`?updatedSince=`) | `List<PlotResource>` (200 OK) | Listado y sincronización incremental delta de parcelas activas. |
+| `GET` | \nolinkurl{/api/v1/plots} | N/A (`?updatedSince=`) | `List<` `PlotResource>` (200 OK) | Listado y sincronización incremental delta de parcelas activas. |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}} | N/A | `PlotResource` (200 OK) | Consulta de detalle agronómico, geometría y densidad arbórea. |
 | `PUT` | \nolinkurl{/api/v1/plots/{plotId}} | `UpdatePlot` `Request` (Req:`If-Match`) | `PlotResource` (200 OK) | Actualización de linderos y marco dendrométrico con control de concurrencia. |
 | `DELETE` | \nolinkurl{/api/v1/plots/{plotId}} | N/A | `204 No Content` | Baja lógica soberana de la parcela predial. |
@@ -841,7 +882,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `CreatePlotRequest` | Request DTO | `{ name: String, variety: String, geoJson: String, rowSpacingM: Double, treeSpacingM: Double }` | Entrada para registro predial. |
 | `UpdatePlotRequest` | Request DTO | `{ name: String, rowSpacingM: Double, treeSpacingM: Double, lastPruningDate: LocalDate }` | Modificación agronómica del lote (controlado con `If-Match`). |
 | `PlotResource` | Response DTO | `{ id: UUID, name: String, variety: String, areaHa: Double, treeDensity: Int, geoJson: String }` | Representación pública del predio. |
-| `PlotResourceAssembler` | Assembler | `toResource(` `Plot):` `PlotResource` | Mapeador a DTO con cálculo de métricas. |
+| `PlotResource` `Assembler` | Assembler | `toResource(` `Plot):` `PlotResource` | Mapeador a DTO con cálculo de métricas. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -864,7 +905,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `JpaPlotRepository` `Adapter` | Adapter | Spring Component | Implementa el puerto de dominio `PlotRepository`. |
 | `MapboxSpatial` `ValidationAdapter` | Adapter | GeoTools / JTS | Validación topológica de polígonos y cálculo esferoidal de área. |
 
-##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+##### Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
 
 * **Adaptador de Mapas y Edición Poligonal (Mapbox):**
   * *Android Nativo (Kotlin):* Componente `AndroidPlotMapAdapter` integrado con Mapbox Maps SDK para Android, permitiendo digitalizar vértices georreferenciados en pantalla, calcular visualmente la geometría y convertirla a GeoJSON RFC 7946 sin persistir desplazamientos del usuario como entidades de dominio.
@@ -883,10 +924,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `plots` | `variety` | `VARCHAR(50)` | `NOT NULL` | Variedad botánica de olivo cultivada. |
 | `plots` | `area_ha` | `NUMERIC(8,2)` | `NOT NULL, CHECK` | Superficie física calculada en hectáreas. |
 | `plots` | `row_spacing_m` | `NUMERIC(4,2)` | `NOT NULL` | Distancia entre hileras en metros. |
-| `plots` | `tree_spacing_m` | `NUMERIC(4,2)` | `NOT NULL` | Distancia entre plantas en metros. |
+| `plots` | `tree_spacing_` `m` | `NUMERIC(4,2)` | `NOT NULL` | Distancia entre plantas en metros. |
 | `plots` | `tree_density` | `INT` | `NOT NULL` | Densidad calculada de árboles/ha. |
-| `plots` | `polygon_geojson` | `TEXT` | `NOT NULL` | Polígono espacial en formato GeoJSON. |
-| `plots` | `last_pruning_date` | `DATE` | `NULL` | Fecha registrada de la última poda. |
+| `plots` | `polygon_` `geojson` | `TEXT` | `NOT NULL` | Polígono espacial en formato GeoJSON. |
+| `plots` | `last_pruning_` `date` | `DATE` | `NULL` | Fecha registrada de la última poda. |
 | `plots` | `status` | `VARCHAR(30)` | `NOT NULL` | Estado del predio (`ACTIVE`, `REMOVED`). |
 
 ##### Script DDL de Base de Datos
@@ -971,7 +1012,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 \caption*{\textit{Nota.} Estructura de la tabla plots, columnas espaciales e índices en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 ---
 
@@ -989,7 +1030,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Gestiona el inventario, profundidad y factor de calibración de los dispositivos sensores de suelo y microclima. |
 | **Relaciones de Dominio** | Referencia lógica a `PlotId`. |
 
-###### Atributos de `VirtualSensorNode`
+\noindent
+**Atributos de `VirtualSensorNode`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1003,7 +1046,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `status` | `SensorNodeStatus` | Estado: `ACTIVE`, `PAUSED`, `UNLINKED`. |
 | `lastReadingTimestamp` | `Instant` | Marca temporal de la última telemetría procesada. |
 
-###### Métodos de `VirtualSensorNode`
+\noindent
+**Métodos de `VirtualSensorNode`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
@@ -1020,25 +1065,29 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Agrupa las lecturas temporales horarias, pronósticos y eventos de estrés agroclimático para un sensor predial. |
 | **Relaciones de Dominio** | Referencia a `SensorNodeId` y `PlotId`. Compone lecturas horarias, pronósticos e incidentes. |
 
-###### Atributos de `TelemetrySeries`
+\noindent
+**Atributos de `TelemetrySeries`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
 | `id` | `TelemetrySeriesId` | Identificador único de la serie temporal. |
 | `sensorNodeId` | `SensorNodeId` | Nodo sensor emisor de los datos. |
 | `plotId` | `PlotId` | Parcela a la que pertenece la serie. |
-| `readings` | `List<HourlyTelemetryReading>` | Historial cronológico de mediciones horarias. |
-| `forecastDays` | `List<WeatherForecastDay>` | Pronóstico meteorológico a 7 días vigente. |
-| `incidents` | `List<AgroclimaticIncident>` | Registro de alertas activas e históricas de estrés. |
+| `readings` | `List<` `HourlyTelemetry` `Reading>` | Historial cronológico de mediciones horarias. |
+| `forecastDays` | `List<` `WeatherForecastDay>` | Pronóstico meteorológico a 7 días vigente. |
+| `incidents` | `List<` `AgroclimaticIncident>` | Registro de alertas activas e históricas de estrés. |
 | `currentStatus` | `TelemetrySeriesStatus` | Estado operativo: `NORMAL`, `HYDRIC_STRESS_ACTIVE`, `FROST_ALERT`. |
 
-###### Métodos de `TelemetrySeries`
+\noindent
+**Métodos de `TelemetrySeries`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
-| `ingestHourlyReading` | `reading: HourlyTelemetryReading`, `evaluator: AgroclimaticThresholdEvaluator` | `void` | Incorpora lectura horaria, evalúa umbrales y emite `TelemetryDataIngestedEvent`. |
-| `updateWeatherForecast` | `forecasts: List<WeatherForecastDay>` | `void` | Actualiza pronóstico semanal georreferenciado y emite `WeatherForecastIngestedEvent`. |
-| `getActiveIncidents` | `void` | `List<AgroclimaticIncident>` | Retorna incidentes abiertos de estrés hídrico o choque térmico. |
+| `ingestHourly` `Reading` | `reading: HourlyTelemetryReading`, `evaluator: AgroclimaticThresholdEvaluator` | `void` | Incorpora lectura horaria, evalúa umbrales y emite `TelemetryDataIngestedEvent`. |
+| `updateWeather` `Forecast` | `forecasts: List<WeatherForecastDay>` | `void` | Actualiza pronóstico semanal georreferenciado y emite `WeatherForecastIngestedEvent`. |
+| `getActiveIncidents` | `void` | `List<` `AgroclimaticIncident>` | Retorna incidentes abiertos de estrés hídrico o choque térmico. |
 
 ##### Modelos del Dominio: `HourlyTelemetryReading` (`Internal Entity`)
 
@@ -1048,7 +1097,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Captura los parámetros físicos y edafoclimáticos registrados en una hora determinada. |
 | **Relaciones de Dominio** | Subordinada a `TelemetrySeries` (1 a N). |
 
-###### Atributos de `HourlyTelemetryReading`
+\noindent
+**Atributos de `HourlyTelemetryReading`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1060,7 +1111,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `relativeHumidity` | `RelativeHumidity` | Humedad relativa del aire (%). |
 | `isSynthetic` | `boolean` | Indicador si la lectura proviene del simulador de contingencia. |
 
-###### Métodos de `HourlyTelemetryReading`
+\noindent
+**Métodos de `HourlyTelemetryReading`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
@@ -1074,7 +1127,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Almacena la predicción meteorológica para una jornada específica en el predio. |
 | **Relaciones de Dominio** | Subordinada a `TelemetrySeries` (1 a N). |
 
-###### Atributos de `WeatherForecastDay`
+\noindent
+**Atributos de `WeatherForecastDay`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1082,11 +1137,13 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `forecastDate` | `LocalDate` | Fecha calendario pronosticada. |
 | `maxTemperature` | `Temperature` | Temperatura máxima prevista (°C). |
 | `minTemperature` | `Temperature` | Temperatura mínima prevista (°C). |
-| `precipitationProbability` | `Percentage` | Probabilidad de precipitación pluvial (0-100%). |
+| `precipitation` `Probability` | `Percentage` | Probabilidad de precipitación pluvial (0-100%). |
 | `windSpeedKmh` | `WindSpeed` | Velocidad estimada del viento en km/h. |
 | `syncedAt` | `Instant` | Marca temporal de sincronización con Open-Meteo. |
 
-###### Métodos de `WeatherForecastDay`
+\noindent
+**Métodos de `WeatherForecastDay`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
@@ -1100,7 +1157,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Modela el ciclo de vida de una anomalía agroclimática que amenaza la fisiología del olivar. |
 | **Relaciones de Dominio** | Subordinada a `TelemetrySeries` (1 a N). |
 
-###### Atributos de `AgroclimaticIncident`
+\noindent
+**Atributos de `AgroclimaticIncident`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1114,7 +1173,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `thresholdValue` | `Double` | Umbral agronómico de referencia. |
 | `stressDurationMinutes` | `Long` | Minutos acumulados bajo condición de estrés. |
 
-###### Métodos de `AgroclimaticIncident`
+\noindent
+**Métodos de `AgroclimaticIncident`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
@@ -1130,7 +1191,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `SensorDepth` | `Int (30 o 60 cm)` | Estrato radicular objetivo de absorción de agua del olivo. |
 | `SoilTextureType` | `Enum` | `SANDY_LOAM`, `SANDY`, `LOAM`, `CLAY_LOAM`. |
 | `CalibrationMultiplier` | `Double` | Factor volumétrico de calibración edáfica en rango agronómico $[0.50, 2.00]$. |
-| `VolumetricWaterContent` | `Double (Porcentaje $\theta$)` | Humedad volumétrica de suelo entre $0.0\%$ y $100.0\%$. |
+| `VolumetricWaterContent` | `Double (Porcentaje $\theta_{VWC}$)` | Humedad volumétrica de suelo entre $0.0\%$ y $100.0\%$. |
 | `Temperature` | `Double (Celsius)` | Métrica de temperatura ambiental con precisión de décimas. |
 | `RelativeHumidity` | `Double (Porcentaje)` | Humedad ambiental entre $0.0\%$ y $100.0\%$. |
 | `IncidentSeverity` | `Enum` | Severidad del riesgo: `WARNING`, `CRITICAL`. |
@@ -1138,7 +1199,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 ##### Servicios de Dominio, Repositorios y Eventos
 
 | Componente | Patrón | Firma / Contrato / Payload | Propósito en el Dominio |
-|:------------------------|:--------------------|:--------------------------------|:------------------------|
+|:------------------------|:----------------|:------------------------------------|:------------------------|
 | `Agroclimatic` `Threshold` `Evaluator` | Domain Service | `evaluateHydricRisk(moisture30cm: Double, texture: SoilTextureType):` `HydricRiskResult` | Determina severidad de estrés hídrico según umbrales de textura. |
 | `Agroclimatic` `Threshold` `Evaluator` | Domain Service | `evaluateThermalRisk(temp: Double, rh: Double, stage: PhenologicalStage):` `ThermalRiskResult` | Evalúa golpe de calor o choque térmico según fenología. |
 | `Agroclimatic` `Threshold` `Evaluator` | Domain Service | `evaluateFrostRisk(minTemp: Double):` `FrostRiskResult` | Detecta alerta temprana de heladas radiativas o advectivas. |
@@ -1162,13 +1223,13 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | Method | Route (Endpoint) | Request Body (DTO) | Response (DTO / Code) | Propósito |
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
 | `POST` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices} | `CreateIoT` `DeviceRequest` | `DeviceResource` (201 Created) | Alta y vinculación de nodo sensor o sonda edáfica virtual. |
-| `GET` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices} | N/A | `List<DeviceResource>` (200 OK) | Consulta de inventario de dispositivos y estado de calibración. |
+| `GET` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices} | N/A | `List<` `DeviceResource>` (200 OK) | Consulta de inventario de dispositivos y estado de calibración. |
 | `PUT` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices/{deviceId}} | `CalibrateDevice` `Request` | `DeviceResource` (200 OK) | Renombrado del nodo y calibración de offset en sonda edáfica y factor edafológico. |
 | `DELETE` | \nolinkurl{/api/v1/plots/{plotId}/iot-devices/{deviceId}} | N/A | `204 No Content` | Desvinculación lógica de la sonda preservando histórico. |
-| `POST` | \nolinkurl{/api/v1/plots/{plotId}/telemetries} | `IngestTelemetry` `Request` | `TelemetryResource` (201 Created) | Ingesta individual o en lote de lecturas de sensores. |
-| `GET` | \nolinkurl{/api/v1/plots/{plotId}/telemetries} | N/A (`?startDate=&endDate=`) | `List<TelemetryResource>` (200 OK) | Consulta de series climáticas para gráficas y monitoreo. |
+| `POST` | \nolinkurl{/api/v1/plots/{plotId}/telemetries} | `IngestTelemetry` `Request` | `Telemetry` `Resource` (201 Created) | Ingesta individual o en lote de lecturas de sensores. |
+| `GET` | \nolinkurl{/api/v1/plots/{plotId}/telemetries} | N/A (`?startDate=` `&endDate=`) | `List<` `TelemetryResource>` (200 OK) | Consulta de series climáticas para gráficas y monitoreo. |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}/forecasts} | N/A | `WeatherForecast` `Resource` (200 OK) | Consulta de pronóstico meteorológico a 7 días vía Open-Meteo. |
-| `GET` | \nolinkurl{/api/v1/plots/{plotId}/incidents} | N/A (`?status=ACTIVE`) | `List<IncidentResource>` (200 OK) | Consulta de alertas e incidentes de estrés hídrico o térmico. |
+| `GET` | \nolinkurl{/api/v1/plots/{plotId}/incidents} | N/A (`?status=ACTIVE`) | `List<` `IncidentResource>` (200 OK) | Consulta de alertas e incidentes de estrés hídrico o térmico. |
 
 ##### DTOs (Resources) y Mappers (Assemblers)
 
@@ -1178,10 +1239,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `CalibrateDevice` `Request` | Request DTO | `{ name: String, depthCm: Int, calibrationMultiplier: Double, calibrationNotes: String }` | Ajuste físico y calibración edafológica de sonda. |
 | `IngestTelemetry` `Request` | Request DTO | `{ sensorNodeId: UUID, readings: List<HourlyTelemetryReadingDto> }` | Lectura horaria o lote enviado por simulador o sensor. |
 | `DeviceResource` | Response DTO | `{ id: UUID, plotId: UUID, name: String, deviceType: String, status: String }` | Representación de nodo sensor vinculado. |
-| `TelemetryResource` | Response DTO | `{ id: UUID, plotId: UUID, temperature: Double, humidity: Double, soilMoisture: Double, recordedAt: Instant }` | Representación pública de lectura agroclimática. |
+| `Telemetry` `Resource` | Response DTO | `{ id: UUID, plotId: UUID, temperature: Double, humidity: Double, soilMoisture: Double, recordedAt: Instant }` | Representación pública de lectura agroclimática. |
 | `WeatherForecast` `Resource` | Response DTO | `{ plotId: UUID, dailyForecasts: List<DailyForecastDto>, generatedAt: Instant }` | Proyección meteorológica a 7 días. |
 | `IncidentResource` | Response DTO | `{ id: UUID, plotId: UUID, incidentType: String, severity: String, triggeredAt: Instant }` | Alerta de estrés hídrico o térmico. |
-| `TelemetryResource` `Assembler` | Assembler | `toResource(` `TelemetryReading):` `TelemetryResource` | Convierte lectura interna a DTO de visualización. |
+| `Telemetry` `Resource` `Assembler` | Assembler | `toResource(` `TelemetryReading):` `Telemetry` `Resource` | Convierte lectura interna a DTO de visualización. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -1205,9 +1266,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `VirtualSensorNode` `JpaRepository` | Persistence | Spring Data JPA | Almacenamiento y calibración de nodos sensores virtuales. |
 | `TelemetrySeries` `JpaRepository` | Persistence | Spring Data JPA | Almacenamiento optimizado de series temporales horarias e incidentes. |
 | `OpenMeteoWeather` `ClientAdapter` | External Adapter | Spring RestClient | Consumo de pronósticos horarios y datos meteorológicos de Open-Meteo con caché. |
-| `InAppNotificationAdapter` | Notification | WebSocket / FCM | Difusión push e in-app de alertas de estrés hídrico y choque térmico. |
+| `InAppNotification` `Adapter` | Notification | WebSocket / FCM | Difusión push e in-app de alertas de estrés hídrico y choque térmico. |
 
-##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+##### Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
 
 * **Caché Local de Telemetría y Pronóstico Offline:**
   * *Android Nativo (Room / SQLite):* `TelemetryCacheDao` y entidades `LocalTelemetrySeriesEntity`, `LocalWeatherForecastEntity` que cachean las últimas 24 lecturas horarias y el pronóstico a 7 días de la parcela activa para consulta en campo sin red.
@@ -1219,15 +1280,15 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Table | Column | SQL Type (PostgreSQL) | Constraints / Indexes | Description & Domain Meaning |
 |:---|:---|:---|:---|:---|
-| `telemetry_readings` | `id` | `UUID` | `PRIMARY KEY` | Identificador de la lectura. |
-| `telemetry_readings` | `plot_id` | `UUID` | `NOT NULL, INDEX` | Parcela monitoreada. |
-| `telemetry_readings` | `temperature` | `NUMERIC(4,2)` | `NOT NULL` | Temperatura ambiente en grados Celsius. |
-| `telemetry_readings` | `humidity` | `NUMERIC(5,2)` | `NOT NULL` | Humedad relativa porcentual. |
-| `telemetry_readings` | `soil_moisture` | `NUMERIC(5,2)` | `NULL` | Humedad de suelo o potencial mátrico. |
-| `telemetry_readings` | `recorded_at` | `TIMESTAMPTZ` | `NOT NULL, INDEX` | Marca temporal exacta de la medición. |
+| `telemetry_` `readings` | `id` | `UUID` | `PRIMARY KEY` | Identificador de la lectura. |
+| `telemetry_` `readings` | `plot_id` | `UUID` | `NOT NULL, INDEX` | Parcela monitoreada. |
+| `telemetry_` `readings` | `temperature` | `NUMERIC(4,2)` | `NOT NULL` | Temperatura ambiente en grados Celsius. |
+| `telemetry_` `readings` | `humidity` | `NUMERIC(5,2)` | `NOT NULL` | Humedad relativa porcentual. |
+| `telemetry_` `readings` | `soil_moisture` | `NUMERIC(5,2)` | `NULL` | Humedad de suelo o potencial mátrico. |
+| `telemetry_` `readings` | `recorded_at` | `TIMESTAMPTZ` | `NOT NULL, INDEX` | Marca temporal exacta de la medición. |
 | `iot_devices` | `id` | `UUID` | `PRIMARY KEY` | Identificador de la sonda o sensor. |
 | `iot_devices` | `plot_id` | `UUID` | `NOT NULL` | Parcela asociada. |
-| `iot_devices` | `calibration_offset` | `NUMERIC(5,2)` | `NOT NULL DEFAULT 0` | Desviación calibrada de la sonda. |
+| `iot_devices` | `calibration_` `offset` | `NUMERIC(5,2)` | `NOT NULL DEFAULT 0` | Desviación calibrada de la sonda. |
 | `iot_devices` | `status` | `VARCHAR(30)` | `NOT NULL` | Estado del dispositivo (`ACTIVE`, `CALIBRATING`). |
 
 ##### Script DDL de Base de Datos
@@ -1266,8 +1327,8 @@ CREATE INDEX idx_telemetry_plot_time
 |:---------------------|:------------------------------------------------|:--------------------------------------|:-------------------|
 | **Interface Layer** | `PlotIotDeviceController`; `PlotTelemetryController`; `PlotForecastController` | Ingesta horaria, configuración de nodos sensores y consulta REST de series agroclimáticas y pronóstico. | Spring MVC, Jakarta Validation |
 | **Application Layer** | `TelemetryCommandService`; `TelemetryQueryService`; `ForecastSyncScheduler` | Orquestación de comandos de sensores/lecturas, consultas de series/alertas y tarea programada de clima. | Spring `@Transactional`, `@Scheduled`, `@Service` |
-| **Domain Layer** | `VirtualSensorNodeRepository`; `TelemetrySeriesRepository`; `AgroclimaticThresholdEvaluator` | Contratos de persistencia (puertos de dominio) y servicio de evaluación de estrés hídrico (SWP) y heladas. | Java puro / DDD |
-| **Infrastructure Layer** | `JpaVirtualSensorNodeRepositoryAdapter`; `JpaTelemetrySeriesRepositoryAdapter`; `OpenMeteoWeatherAdapter`; `SpringDomainEventPublisher` | Persistencia JPA en PostgreSQL, consumo API Open-Meteo con caché Caffeine (3h) y publicación de eventos. | Spring Data JPA, HTTP Client, Caffeine |
+| **Domain Layer** | `VirtualSensorNode` `Repository`; `TelemetrySeriesRepository`; `AgroclimaticThresholdEvaluator` | Contratos de persistencia (puertos de dominio) y servicio de evaluación de estrés hídrico (SWP) y heladas. | Java puro / DDD |
+| **Infrastructure Layer** | `JpaVirtualSensorNode` `RepositoryAdapter`; `JpaTelemetrySeriesRepositoryAdapter`; `OpenMeteoWeatherAdapter`; `SpringDomainEventPublisher` | Persistencia JPA en PostgreSQL, consumo API Open-Meteo y publicación de eventos. | Spring Data JPA, HTTP Client, Caffeine |
 
 ##### Flujo de Comunicación y Conectividad
 1. El nodo sensor o simulador despacha `POST` \nolinkurl{/api/v1/plots/{plotId}/telemetries} hacia `PlotTelemetryController`.
@@ -1310,7 +1371,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 \caption*{\textit{Nota.} Estructura de tablas de telemetría y dispositivos IoT en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 ---
 
@@ -1328,28 +1389,32 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Monitorea la acumulación invernal de frío (Modelo Dinámico de Erez), el tiempo térmico post-antesis y el índice de vecería de Hoblyn. |
 | **Relaciones de Dominio** | Referencia a `PlotId`. Compone bitácoras diarias de frío y registros históricos plurianuales de cosecha. |
 
-###### Atributos de `ChillAccumulationTracker`
+\noindent
+**Atributos de `ChillAccumulationTracker`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
 | `id` | `TrackerId` | Identificador único del seguidor de frío y fenología. |
 | `plotId` | `PlotId` | Parcela olivarera analizada. |
 | `currentCampaignYear` | `CampaignYear` | Año agrícola en curso de monitoreo. |
-| `harvestHistory` | `List<HistoricalHarvestEntry>` | Serie histórica plurianual de cosechas (mínimo 2 años). |
+| `harvestHistory` | `List<` `HistoricalHarvest` `Entry>` | Serie histórica plurianual de cosechas (mínimo 2 años). |
 | `calculatedBbi` | `BiennialBearingIndex` | Índice de vecería calculado según fórmula de Hoblyn [0.00, 1.00]. |
 | `dailyChillLogs` | `List<DailyChillLog>` | Bitácora diaria de avance de frío acumulado en mayo-agosto. |
 | `accumulatedGddPostAnthesis` | `Double` | Grados día de desarrollo acumulados tras plena floración. |
 | `pitHardeningReached` | `Boolean` | Indicador si se alcanzó el endurecimiento de carozo (~680 GDD). |
 
-###### Métodos de `ChillAccumulationTracker`
+\noindent
+**Métodos de `ChillAccumulationTracker`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
 | `registerHarvest` | `entry: HistoricalHarvestEntry` | `void` | Añade cosecha histórica, recalcula el BBI de Hoblyn y emite `BiennialBearingIndexAssessedEvent`. |
 | `rectifyHarvest` | `year: CampaignYear`, `yield: Double` | `void` | Corrige pesajes de cosechas previas actualizando el índice de alternancia. |
 | `deleteHarvest` | `year: CampaignYear` | `void` | Elimina registro histórico manteniendo la coherencia de la serie. |
-| `processDailyTemperatures` | `date: LocalDate`, `temps: List<Double>` | `void` | Computa porciones de frío de Erez considerando termodestrucción. |
-| `processPostAnthesisThermalTime` | `date: LocalDate`, `max: Double`, `min: Double` | `void` | Acumula GDD y detecta endurecimiento de carozo emitiendo `PitHardeningStageReachedEvent`. |
+| `processDaily` `Temperatures` | `date: LocalDate`, `temps: List<Double>` | `void` | Computa porciones de frío de Erez considerando termodestrucción. |
+| `processPostAnthesis` `ThermalTime` | `date: LocalDate`, `max: Double`, `min: Double` | `void` | Acumula GDD y detecta endurecimiento de carozo emitiendo `PitHardeningStageReachedEvent`. |
 
 ##### Modelos del Dominio: `HistoricalHarvestEntry` (`Internal Entity`)
 
@@ -1359,7 +1424,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Registra el rendimiento cuantitativo anual obtenido en una campaña previa para cálculo de alternancia. |
 | **Relaciones de Dominio** | Subordinada a `ChillAccumulationTracker` (1 a N). |
 
-###### Atributos de `HistoricalHarvestEntry`
+\noindent
+**Atributos de `HistoricalHarvestEntry`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1370,7 +1437,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `blackKg` | `Double` | Kilogramos de aceituna negra natural. |
 | `bearingClassification` | `BearingClassification` | Clasificación: `ON_YEAR`, `OFF_YEAR`, `BALANCED`. |
 
-###### Métodos de `HistoricalHarvestEntry`
+\noindent
+**Métodos de `HistoricalHarvestEntry`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
@@ -1385,22 +1454,26 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Almacena el cálculo matemático de porciones de frío acumuladas en una jornada invernal. |
 | **Relaciones de Dominio** | Subordinada a `ChillAccumulationTracker` (1 a N). |
 
-###### Atributos de `DailyChillLog`
+\noindent
+**Atributos de `DailyChillLog`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
 | `id` | `DailyChillLogId` | Identificador del registro diario de frío. |
 | `logDate` | `LocalDate` | Fecha invernal evaluada. |
-| `portionsAccumulatedToday` | `Double` | Porciones de frío aportadas por el ciclo térmico diario. |
+| `portions` `AccumulatedToday` | `Double` | Porciones de frío aportadas por el ciclo térmico diario. |
 | `totalAccumulatedToDate` | `Double` | Acumulado progresivo de porciones al cierre del día. |
 | `maxDayTemperature` | `Double` | Temperatura máxima diurna (°C). |
 | `minNightTemperature` | `Double` | Temperatura mínima nocturna (°C). |
 
-###### Métodos de `DailyChillLog`
+\noindent
+**Métodos de `DailyChillLog`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
-| `isDestructiveHeatOccurred` | `void` | `boolean` | Indica si temperaturas > 24 °C destruyeron el intermediario térmico inestable. |
+| `isDestructive` `HeatOccurred` | `void` | `boolean` | Indica si temperaturas > 24 °C destruyeron el intermediario térmico inestable. |
 
 ##### Objetos de Valor (Value Objects)
 
@@ -1408,7 +1481,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 |:---|:---|:---|
 | `TrackerId`, `HarvestEntryId`, `DailyChillLogId` | `UUID v4` | Identificadores únicos universales inmutables. |
 | `CampaignYear` | `Int` | Año de la campaña agrícola evaluada ($1980 \le year \le 2100$). |
-| `BiennialBearingIndex` | `Double ($0.0 \le BBI \le 1.0$)` | Índice de vecería de Hoblyn: $0$ (regularidad) a $1$ (alternancia extrema). |
+| `BiennialBearingIndex` | `Double [0.00, 1.00]` | Índice de vecería de Hoblyn: $0$ (regularidad) a $1$ (alternancia extrema). |
 | `BBCHStage` | `stageCode: Int, description: String` | Código estandarizado BBCH (ej. 65: Plena Floración, 75: Endurecimiento de Carozo). |
 | `GrowingDegreeDays` | `Double (Grados-Día)` | Acumulación térmica sobre umbral base ($T_{base} = 10^\circ\text{C}$). |
 | `DynamicErezPortion` | `Double` | Porciones de frío dinámico acumuladas según cinética Erez-Fishman. |
@@ -1416,13 +1489,13 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 ##### Servicios de Dominio, Repositorios y Eventos
 
 | Componente | Patrón | Firma / Contrato / Payload | Propósito en el Dominio |
-|:------------------------|:--------------------|:--------------------------------|:------------------------|
+|:------------------------|:----------------|:------------------------------------|:------------------------|
 | `ErezDynamic` `ModelCalculator` | Domain Service | `computePortions(temps: List<Double>): Double` | Implementa las ecuaciones diferenciales del Modelo Dinámico de Erez. |
 | `GrowingDegree` `DaysCalculator` | Domain Service | `calculateGdd(max: Double, min: Double, baseTemp: Double): Double` | Computa acumulación térmica post-antesis (base 10 °C). |
 | `HoblynBbi` `CalculatorService` | Domain Service | `calculateBbi(harvests: List<HistoricalHarvestEntry>):` `BiennialBearingIndex` | Evalúa la alternancia productiva interanual según Hoblyn. |
-| `ChillAccumulation` `TrackerRepository` | Repository | `findById(id: TrackerId): Optional<ChillAccumulationTracker>` | Carga el seguidor de frío y fenología por ID. |
-| `ChillAccumulation` `TrackerRepository` | Repository | `findByPlotIdAndCampaign(plotId: PlotId, year: CampaignYear):` `Optional<ChillAccumulationTracker>` | Recupera el tracker de una campaña agrícola en el predio. |
-| `ChillAccumulation` `TrackerRepository` | Repository | `save(tracker: ChillAccumulationTracker): ChillAccumulationTracker` | Persiste atómicamente el estado y bitácoras de frío. |
+| `Chill` `Accumulation` `TrackerRepository` | Repository | `findById(id: TrackerId): Optional<ChillAccumulationTracker>` | Carga el seguidor de frío y fenología por ID. |
+| `Chill` `Accumulation` `TrackerRepository` | Repository | `findByPlotIdAndCampaign(plotId: PlotId, year: CampaignYear):` `Optional<` `Chill` `Accumulation` `Tracker>` | Recupera el tracker de una campaña agrícola en el predio. |
+| `Chill` `Accumulation` `TrackerRepository` | Repository | `save(tracker: ChillAccumulationTracker): ChillAccumulationTracker` | Persiste atómicamente el estado y bitácoras de frío. |
 | `PitHardening` `StageReachedEvent` | Domain Event | `plotId: UUID, previousStage: String, newStage: String, gdd: Double, occurredOn: Instant` | Notifica cambio de fase fenológica (ej. carozo a 680 GDD). |
 | `BiennialBearing` `IndexAssessedEvent` | Domain Event | `plotId: UUID, bbiValue: Double, classification: String, occurredOn: Instant` | Informa severidad de vecería hacia Crop Load Regulation. |
 
@@ -1433,10 +1506,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | Method | Route (Endpoint) | Request Body (DTO) | Response (DTO / Code) | Propósito |
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
 | `POST` | \nolinkurl{/api/v1/plots/{plotId}/harvest-records} | `RecordHarvest` `YieldRequest` | `HarvestRecord` `Resource` (201 Created) | Asienta el volumen cosechado de una campaña anual. |
-| `GET` | \nolinkurl{/api/v1/plots/{plotId}/harvest-records} | N/A (`?campaignYear=`) | `List<HarvestRecordResource>` (200 OK) | Historial plurianual de cosechas con filtro opcional. |
+| `GET` | \nolinkurl{/api/v1/plots/{plotId}/harvest-records} | N/A (`?campaignYear=`) | `List<` `HarvestRecord` `Resource>` (200 OK) | Historial plurianual de cosechas con filtro opcional. |
 | `PUT` | \nolinkurl{/api/v1/plots/{plotId}/harvest-records/{recordId}} | `UpdateHarvest` `YieldRequest` | `HarvestRecord` `Resource` (200 OK) | Rectificación de pesaje histórico de una campaña. |
 | `DELETE` | \nolinkurl{/api/v1/plots/{plotId}/harvest-records/{recordId}} | N/A | `204 No Content` | Eliminación de registro de cosecha erróneo. |
-| `GET` | \nolinkurl{/api/v1/plots/{plotId}/metrics} | N/A (`?name=BBI`/`?name=CHILLING`) | `MetricResource` (200 OK) | Consulta de $BBI$ de Hoblyn y porciones de frío de Erez. |
+| `GET` | \nolinkurl{/api/v1/plots/{plotId}/metrics} | N/A (`?name=BBI` / `?name=CHILLING`) | `MetricResource` (200 OK) | Consulta de $BBI$ de Hoblyn y porciones de frío de Erez. |
 | `POST` | \nolinkurl{/api/v1/plots/{plotId}/phenology-observations} | `RecordPhenology` `ObservationRequest` | `Phenology` `ObservationResource` (201 Created) | Registro visual de estadio fenológico en escala BBCH. |
 
 ##### DTOs (Resources) y Mappers (Assemblers)
@@ -1473,11 +1546,11 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Package / Role | Technology | Technical Responsibility |
 |:----------------------------------|:-----------------|:-----------------|:----------------------------------------|
-| `PhenologyJpaRepository` | Persistence | Spring Data JPA | Acceso a tablas de fenología y frío en PostgreSQL. |
-| `JpaPhenologyRepository` `Adapter` | Adapter | Spring Component | Implementa contratos de persistencia de fenología. |
+| `Phenology` `JpaRepository` | Persistence | Spring Data JPA | Acceso a tablas de fenología y frío en PostgreSQL. |
+| `JpaPhenology` `Repository` `Adapter` | Adapter | Spring Component | Implementa contratos de persistencia de fenología. |
 | `ErezAlgorithmNative` `Adapter` | Domain Service Impl | Java Puro | Motor matemático optimizado para porciones de frío. |
 
-##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+##### Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
 
 * **Caché Local de Historial de Cosechas y Métricas Fenológicas:**
   * *Android Nativo (Room / SQLite):* Entidades `LocalHarvestRecordEntity` y `LocalPhenologyMetricEntity` gestionadas por `PhenologyCacheDao` para consultar memoria de vecería e índice $BBI$ sin conexión.
@@ -1489,15 +1562,15 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Table | Column | SQL Type (PostgreSQL) | Constraints / Indexes | Description & Domain Meaning |
 |:---|:---|:---|:---|:---|
-| `phenological_records` | `id` | `UUID` | `PRIMARY KEY` | Identificador del registro. |
-| `phenological_records` | `plot_id` | `UUID` | `NOT NULL, INDEX` | Parcela monitoreada. |
-| `phenological_records` | `current_stage` | `INT` | `NOT NULL` | Código numérico BBCH actual. |
-| `phenological_records` | `accumulated_gdd` | `NUMERIC(6,2)` | `NOT NULL DEFAULT 0` | Grados-día de desarrollo post-antesis. |
-| `phenological_records` | `is_window_closed` | `BOOLEAN` | `NOT NULL DEFAULT FALSE` | Indicador de carozo endurecido. |
-| `chill_trackers` | `id` | `UUID` | `PRIMARY KEY` | Identificador del seguimiento de frío. |
-| `chill_trackers` | `plot_id` | `UUID` | `NOT NULL` | Parcela asociada. |
-| `chill_trackers` | `campaign_year` | `INT` | `NOT NULL` | Año agrícola evaluado. |
-| `chill_trackers` | `erez_portions` | `NUMERIC(6,2)` | `NOT NULL` | Porciones de frío dinámico acumuladas. |
+| `phenological_` `records` | `id` | `UUID` | `PRIMARY KEY` | Identificador del registro. |
+| `phenological_` `records` | `plot_id` | `UUID` | `NOT NULL, INDEX` | Parcela monitoreada. |
+| `phenological_` `records` | `current_stage` | `INT` | `NOT NULL` | Código numérico BBCH actual. |
+| `phenological_` `records` | `accumulated_gdd` | `NUMERIC(6,2)` | `NOT NULL DEFAULT 0` | Grados-día de desarrollo post-antesis. |
+| `phenological_` `records` | `is_window_` `closed` | `BOOLEAN` | `NOT NULL DEFAULT FALSE` | Indicador de carozo endurecido. |
+| `chill_` `trackers` | `id` | `UUID` | `PRIMARY KEY` | Identificador del seguimiento de frío. |
+| `chill_` `trackers` | `plot_id` | `UUID` | `NOT NULL` | Parcela asociada. |
+| `chill_` `trackers` | `campaign_year` | `INT` | `NOT NULL` | Año agrícola evaluado. |
+| `chill_` `trackers` | `erez_portions` | `NUMERIC(6,2)` | `NOT NULL` | Porciones de frío dinámico acumuladas. |
 
 ##### Script DDL de Base de Datos
 
@@ -1531,16 +1604,16 @@ CREATE TABLE phenology.chill_trackers (
 |:---------------------|:------------------------------------------------|:--------------------------------------|:-------------------|
 | **Interface Layer** | `PlotChillController`; `PlotPhenologyController`; `PlotHarvestRecordController`; `PlotBearingController` | API REST para seguimiento fenológico, acumulación de frío, cosechas históricas y vecería. | Spring MVC, Jakarta Validation |
 | **Application Layer** | `PhenologyCommandService`; `PhenologyQueryService`; `DailyChillComputationJob` | Orquestación de comandos de estadios y cosechas, consultas de frío/vecería y tarea programada de frío Erez. | Spring `@Transactional`, `@Scheduled`, `@Service` |
-| **Domain Layer** | `ChillAccumulationTrackerRepository`; `ErezDynamicModelCalculator`; `GrowingDegreeDaysCalculator`; `HoblynBbiCalculatorService` | Contrato de persistencia (puerto de dominio), algoritmos biológicos Erez, GDD post-antesis e índice $BBI$ de Hoblyn. | Java puro / DDD |
-| **Infrastructure Layer** | `JpaChillAccumulationTrackerRepositoryAdapter`; `SpringDomainEventPublisher` | Persistencia JPA en PostgreSQL (`phenology.*`) y despacho de eventos de dominio. | Spring Data JPA, Spring Events |
+| **Domain Layer** | `ChillAccumulation` `TrackerRepository`; `ErezDynamicModelCalculator`; `GrowingDegreeDaysCalculator`; `HoblynBbiCalculatorService` | Contrato de persistencia (puerto de dominio), algoritmos biológicos Erez, GDD post-antesis e índice $BBI$ de Hoblyn. | Java puro / DDD |
+| **Infrastructure Layer** | `JpaChillAccumulation` `TrackerRepositoryAdapter`; `SpringDomainEventPublisher` | Persistencia JPA en PostgreSQL (`phenology`) y despacho de eventos de dominio. | Spring Data JPA, Spring Events |
 
 ##### Flujo de Comunicación y Conectividad
 1. El contenedor cliente móvil (`Android Application` o `Cross-Platform Application`) registra un estadio visual de floración con `POST` \nolinkurl{/api/v1/plots/{plotId}/phenology-observations} (o rectifica cosechas históricas vía `PlotHarvestRecordController`).
-2. `PlotPhenologyController` delega la mutación en `PhenologyCommandService`, actualizando el estadio a BBCH 65 en `ChillAccumulationTrackerRepository`. Las consultas de frío, GDD y vecería son atendidas por `PhenologyQueryService`.
+2. `PlotPhenologyController` delega la mutación en `PhenologyCommandService`, actualizando el estadio a BBCH 65 en `ChillAccumulation` `TrackerRepository`. Las consultas de frío, GDD y vecería son atendidas por `PhenologyQueryService`.
 3. Diariamente, `DailyChillComputationJob` activa `PhenologyCommandService` para ejecutar el cálculo dinámico de porciones de frío (`ErezDynamicModelCalculator`) y acumular grados-día (`GrowingDegreeDaysCalculator`).
 4. Al alcanzar $680^\circ\text{C}\cdot\text{día}$ acumulados, se transiciona `isWindowClosed = true` y `PhenologyCommandService` despacha `PitHardeningStageReachedEvent` vía `SpringDomainEventPublisher`.
 5. El evento es recibido reactivamente por *Crop Load Regulation*, invalidando prescripciones de aclareo pendientes.
-6. Ante la incorporación de cosechas históricas, `PhenologyCommandService` persiste los rendimientos en `ChillAccumulationTrackerRepository`, y `PhenologyQueryService` computa el índice $BBI$ de Hoblyn mediante `HoblynBbiCalculatorService`.
+6. Ante la incorporación de cosechas históricas, `PhenologyCommandService` persiste los rendimientos en `ChillAccumulation` `TrackerRepository`, y `PhenologyQueryService` computa el índice $BBI$ de Hoblyn mediante `HoblynBbiCalculatorService`.
 
 \begin{figure}[H]
 \caption{C4 Model - Component Level: Diagrama de Componentes de Phenology and Historical Bearing Analytics.}
@@ -1575,7 +1648,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 \caption*{\textit{Nota.} Estructura de tablas de fenología y acumulación térmica en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 ---
 
@@ -1593,7 +1666,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Consolida los muestreos de brotes en campo, determina la carga frutal sostenible y emite la prescripción de raleo manual. |
 | **Relaciones de Dominio** | Referencia a `PlotId`. Compone rondas de muestreo y la confirmación de ejecución de raleo. |
 
-###### Atributos de `FruitThinningPrescription`
+\noindent
+**Atributos de `FruitThinningPrescription`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1602,19 +1677,21 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `campaignYear` | `CampaignYear` | Año de la campaña de regulación. |
 | `observedPlotRevision` | `Long` | Versión catastral observada durante la prescripción. |
 | `samplingRounds` | `List<SamplingRound>` | Rondas de muestreo de frutos por entrenudo registradas. |
-| `sustainableLoad` | `SustainableCropLoad` | Carga frutal agronómicamente sostenible recomendada. |
+| `sustainableLoad` | `Sustainable` `CropLoad` | Carga frutal agronómicamente sostenible recomendada. |
 | `status` | `PrescriptionStatus` | Estado: `SAMPLING_IN_PROGRESS`, `PRESCRIBED`, `EXECUTED_OPTIMAL`, `CLOSED_BY_PIT_HARDENING`. |
-| `execution` | `ExecutionConfirmation` | Datos de auditoría de la labor de raleo en campo. |
+| `execution` | `Execution` `Confirmation` | Datos de auditoría de la labor de raleo en campo. |
 
-###### Métodos de `FruitThinningPrescription`
+\noindent
+**Métodos de `FruitThinningPrescription`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
-| `recordTreeSampling` | `record: TreeSamplingRecord` | `void` | Incorpora conteo de brote garantizando no duplicidad de árbol. |
-| `ingestSamplingsBatch` | `records: List<TreeSamplingRecord>`, `evaluator: SamplingCoverageEvaluator` | `void` | Procesa lote móvil offline y emite `SamplingRoundCompletedEvent` al alcanzar representatividad ($N \ge 5$). |
-| `determineSustainableCropLoad` | `inputs: AgronomicInputs`, `calc: CropLoadBalancingCalculatorService` | `void` | Calcula porcentaje óptimo de remoción y emite `SustainableCropLoadDeterminedEvent`. |
+| `recordTree` `Sampling` | `record: TreeSamplingRecord` | `void` | Incorpora conteo de brote garantizando no duplicidad de árbol. |
+| `ingestSamplings` `Batch` | `records: List<TreeSamplingRecord>`, `evaluator: SamplingCoverageEvaluator` | `void` | Procesa lote móvil offline y emite `SamplingRoundCompletedEvent` al alcanzar representatividad ($N \ge 5$). |
+| `determine` `Sustainable` `CropLoad` | `inputs: AgronomicInputs`, `calc: CropLoadBalancingCalculatorService` | `void` | Calcula porcentaje óptimo de remoción y emite `SustainableCropLoadDeterminedEvent`. |
 | `confirmExecution` | `confirm: ExecutionConfirmation` | `void` | Registra ejecución de raleo emitiendo `ThinningExecutionConfirmedEvent`. |
-| `closeWindowByPitHardening` | `date: LocalDate` | `void` | Cierra la ventana de intervención oportuna por endurecimiento de carozo. |
+| `closeWindowBy` `PitHardening` | `date: LocalDate` | `void` | Cierra la ventana de intervención oportuna por endurecimiento de carozo. |
 
 ##### Modelos del Dominio: `SamplingRound` (`Internal Entity`)
 
@@ -1624,22 +1701,26 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Agrupa un conjunto de árboles muestreados en un cuartel olivarero durante una jornada de evaluación. |
 | **Relaciones de Dominio** | Subordinada a `FruitThinningPrescription` (1 a N). |
 
-###### Atributos de `SamplingRound`
+\noindent
+**Atributos de `SamplingRound`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
 | `id` | `RoundId` | Identificador de la ronda de muestreo. |
 | `actorId` | `UserId` | Técnico o productor que recolectó las muestras. |
 | `clientBatchId` | `String` | Identificador de idempotencia del cliente móvil offline. |
-| `samplingRecords` | `List<TreeSamplingRecord>` | Muestras individuales de árboles recolectadas. |
+| `samplingRecords` | `List<` `TreeSampling` `Record>` | Muestras individuales de árboles recolectadas. |
 | `isRepresentative` | `Boolean` | Indicador si cumple el tamaño muestral mínimo representativo. |
 
-###### Métodos de `SamplingRound`
+\noindent
+**Métodos de `SamplingRound`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
 | `addRecord` | `record: TreeSamplingRecord` | `void` | Añade una muestra individual al lote de la ronda. |
-| `evaluateRepresentativeness` | `evaluator: SamplingCoverageEvaluator` | `void` | Valida que la cobertura de muestreo sea estadísticamente sólida. |
+| `evaluate` `Representativeness` | `evaluator: SamplingCoverageEvaluator` | `void` | Valida que la cobertura de muestreo sea estadísticamente sólida. |
 
 ##### Modelos del Dominio: `TreeSamplingRecord` (`Internal Entity`)
 
@@ -1649,7 +1730,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Captura los conteos de brotes, cuajado y vigor en un olivo individualizado. |
 | **Relaciones de Dominio** | Subordinada a `SamplingRound` (1 a N). |
 
-###### Atributos de `TreeSamplingRecord`
+\noindent
+**Atributos de `TreeSamplingRecord`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1660,13 +1743,15 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `trunkDiameterMm` | `Double` | Diámetro de tronco a 30 cm de altura para estimar área de sección transversal (TCSA). |
 | `samplingDate` | `LocalDate` | Fecha de recolección de la muestra. |
 
-###### Métodos de `TreeSamplingRecord`
+\noindent
+**Métodos de `TreeSamplingRecord`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
 | `getFruitsPerMeter` | `void` | `Double` | Calcula la densidad lineal de carga en frutos por metro de brote. |
 
-##### Modelos del Dominio: `ExecutionConfirmation` (`Internal Entity`)
+##### Modelos del Dominio: `Execution` `Confirmation` (`Internal Entity`)
 
 | Propiedad | Definición en el Dominio |
 |:---|:---|
@@ -1674,7 +1759,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Acredita la ejecución material de la labor de raleo manual en el cuartel. |
 | **Relaciones de Dominio** | Subordinada a `FruitThinningPrescription` (1 a 1). |
 
-###### Atributos de `ExecutionConfirmation`
+\noindent
+**Atributos de `Execution` `Confirmation`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1684,7 +1771,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `laborCrewSize` | `Int` | Número de operarios de campo participantes. |
 | `timeliness` | `ExecutionTimeliness` | Calificación: `OPTIMAL` (previo a carozo) o `LATE`. |
 
-###### Métodos de `ExecutionConfirmation`
+\noindent
+**Métodos de `Execution` `Confirmation`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
@@ -1702,16 +1791,16 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 ##### Servicios de Dominio, Repositorios y Eventos
 
 | Componente | Patrón | Firma / Contrato / Payload | Propósito en el Dominio |
-|:------------------------|:--------------------|:--------------------------------|:------------------------|
+|:------------------------|:----------------|:------------------------------------|:------------------------|
 | `CropLoadBalancing` `CalculatorService` | Domain Service | `calculateTargetRemoval(currentLoad: Double, bbi: Double, waterStatus: Double): Double` | Computa la tasa agronómica de remoción recomendada. |
 | `FieldSampling` `Deduplicator` | Domain Service | `deduplicate(samples: List<TreeSamplingRecord>): List<TreeSamplingRecord>` | Garantiza que no existan registros superpuestos del mismo árbol. |
 | `FruitThinning` `PrescriptionRepository` | Repository | `findById(id: PrescriptionId): Optional<FruitThinningPrescription>` | Carga la prescripción por su identificador primario. |
-| `FruitThinning` `PrescriptionRepository` | Repository | `findByPlotIdAndCampaign(plotId: PlotId, year: CampaignYear):` `Optional<FruitThinningPrescription>` | Carga la prescripción vigente para la campaña en el predio. |
+| `FruitThinning` `PrescriptionRepository` | Repository | `findByPlotIdAndCampaign(plotId: PlotId, year: CampaignYear):` `Optional<` `FruitThinning` `Prescription>` | Carga la prescripción vigente para la campaña en el predio. |
 | `FruitThinning` `PrescriptionRepository` | Repository | `save(prescription: FruitThinningPrescription): FruitThinningPrescription` | Guarda estado de muestreos y prescripción. |
 | `SamplingRound` `CompletedEvent` | Domain Event | `prescriptionId: UUID, plotId: UUID, evaluatedTrees: int, occurredOn: Instant` | Notifica representatividad muestral suficiente para prescribir. |
-| `SustainableCropLoad` `DeterminedEvent` | Domain Event | `prescriptionId: UUID, plotId: UUID, removalPercentage: Double, occurredOn: Instant` | Emite prescripción formal de raleo frutal. |
+| `Sustainable` `CropLoad` `DeterminedEvent` | Domain Event | `prescriptionId: UUID, plotId: UUID, removalPercentage: Double, occurredOn: Instant` | Emite prescripción formal de raleo frutal. |
 | `OverloadRisk` `DetectedEvent` | Domain Event | `prescriptionId: UUID, plotId: UUID, overloadFactor: Double, occurredOn: Instant` | Alerta riesgo de sobrecarga crítica hacia la cooperativa. |
-| `ThinningExecution` `ConfirmedEvent` | Domain Event | `prescriptionId: UUID, plotId: UUID, removalPct: Double, timeliness: String, occurredOn: Instant` | Confirma ejecución de la labor para liquidación de cosecha. |
+| `Thinning` `Execution` `ConfirmedEvent` | Domain Event | `prescriptionId: UUID, plotId: UUID, removalPct: Double, timeliness: String, occurredOn: Instant` | Confirma ejecución de la labor para liquidación de cosecha. |
 
 #### Interface Layer
 
@@ -1724,18 +1813,18 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `POST` | \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions} | N/A | `Prescription` `Resource` (201 Created) | Determinación de carga frutal sostenible y emisión de prescripción bajo demanda. |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions} | N/A (`?status=ACTIVE`) | `Prescription` `Resource` (200 OK) | Consulta de prescripción vigente o por campaña. |
 | `GET` | \nolinkurl{/api/v1/thinning-prescriptions/{id}} | N/A | `Prescription` `Resource` (200 OK) | Consulta de prescripción por identificador unívoco directo. |
-| `POST` | \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations} | `ConfirmExecution` `Request` | `ExecutionConfirmation` `Resource` (201 Created) | Declaración y confirmación de labor de aclareo oportuna o tardía. |
+| `POST` | \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations} | `Confirm` `Execution` `Request` | `Execution` `Confirmation` `Resource` (201 Created) | Declaración y confirmación de labor de aclareo oportuna o tardía. |
 
 ##### DTOs (Resources) y Mappers (Assemblers)
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `SubmitSamplingRequest` | Request DTO | `{ clientBatchId: String, samples: List<ShootSampleDto> }` | Lote de conteo capturado en campo offline. |
-| `SamplingSummaryResource` | Response DTO | `{ plotId: UUID, sampledTreesCount: Int, sampledShootsCount: Int, meanFruitsPerMeter: Double, isRepresentative: Boolean, treesNeeded: Int }` | Resumen de representatividad muestral. |
-| `PrescriptionResource` | Response DTO | `{ id: UUID, plotId: UUID, targetLoad: Double, percentageToRemove: Double, status: String, windowClosesOn: LocalDate }` | Asesoramiento oficial de aclareo. |
-| `ConfirmExecutionRequest` | Request DTO | `{ executedDate: LocalDate, removedKg: Double, notes: String }` | Declaración de ejecución de la labor. |
-| `ExecutionConfirmationResource` | Response DTO | `{ prescriptionId: UUID, confirmationStatus: String, executedDate: LocalDate, isOpportune: Boolean, recordedAt: Instant }` | Constancia de ejecución y sellado biológico. |
-| `Prescription` `ResourceAssembler` | Assembler | `toResource(` `FruitThinningPrescription):` `PrescriptionResource` | Mapeo a DTO con formateo agronómico. |
+| `SubmitSampling` `Request` | Request DTO | `{ clientBatchId: String, samples: List<ShootSampleDto> }` | Lote de conteo capturado en campo offline. |
+| `SamplingSummary` `Resource` | Response DTO | `{ plotId: UUID, sampledTreesCount: Int, sampledShootsCount: Int, meanFruitsPerMeter: Double, isRepresentative: Boolean, treesNeeded: Int }` | Resumen de representatividad muestral. |
+| `Prescription` `Resource` | Response DTO | `{ id: UUID, plotId: UUID, targetLoad: Double, percentageToRemove: Double, status: String, windowClosesOn: LocalDate }` | Asesoramiento oficial de aclareo. |
+| `ConfirmExecution` `Request` | Request DTO | `{ executedDate: LocalDate, removedKg: Double, notes: String }` | Declaración de ejecución de la labor. |
+| `ExecutionConfirmation` `Resource` | Response DTO | `{ prescriptionId: UUID, confirmationStatus: String, executedDate: LocalDate, isOpportune: Boolean, recordedAt: Instant }` | Constancia de ejecución y sellado biológico. |
+| `Prescription` `ResourceAssembler` | Assembler | `toResource(` `FruitThinningPrescription):` `Prescription` `Resource` | Mapeo a DTO con formateo agronómico. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -1758,9 +1847,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 |:----------------------------------|:-----------------|:-----------------|:----------------------------------------|
 | `ThinningPrescription` `JpaRepository` | Persistence | Spring Data JPA | Almacenamiento relacional de prescripciones en PostgreSQL. |
 | `FieldSamplingRound` `JpaRepository` | Persistence | Spring Data JPA | Ingesta transaccional con índice único de lote. |
-| `MobileOfflineStorageStrategy` | Client Persistence | Room (Android) / sqflite (Flutter) | Almacenamiento local SQLite y cola durable `WorkManager`. |
+| `MobileOffline` `StorageStrategy` | Client Persistence | Room (Android) / sqflite (Flutter) | Almacenamiento local SQLite y cola durable `WorkManager`. |
 
-##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+##### Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
 
 * **Almacenamiento Local Offline-First (Room / sqflite):**
   * *Android Nativo (Room / SQLite):* `SamplingDao` gestiona `LocalSamplingRoundEntity` y `LocalTreeSamplingEntity`, permitiendo registrar árboles evaluados en campo sin cobertura de red. La tabla `sync_queue` retiene los lotes pendientes con clave de idempotencia `(actor_id, plot_id, client_batch_id)`.
@@ -1774,17 +1863,17 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Table | Column | SQL Type (PostgreSQL) | Constraints / Indexes | Description & Domain Meaning |
 |:---|:---|:---|:---|:---|
-| `thinning_prescriptions` | `id` | `UUID` | `PRIMARY KEY` | Identificador de la prescripción. |
-| `thinning_prescriptions` | `plot_id` | `UUID` | `NOT NULL, INDEX` | Parcela asociada. |
-| `thinning_prescriptions` | `campaign_year` | `INT` | `NOT NULL` | Año agrícola de la labor. |
-| `thinning_prescriptions` | `target_fruits_m` | `NUMERIC(5,2)` | `NOT NULL` | Carga objetivo de frutos/m lineal. |
-| `thinning_prescriptions` | `percentage_remove` | `NUMERIC(4,2)` | `NOT NULL` | Porcentaje de remoción recomendado. |
-| `thinning_prescriptions` | `status` | `VARCHAR(30)` | `NOT NULL, INDEX` | Estado del ciclo de vida (7 estados). |
-| `thinning_prescriptions` | `window_closes_on` | `DATE` | `NOT NULL` | Fecha límite biológica de aclareo. |
-| `field_sampling_rounds` | `id` | `UUID` | `PRIMARY KEY` | Identificador de la ronda de muestreo. |
-| `field_sampling_rounds` | `plot_id` | `UUID` | `NOT NULL` | Parcela muestreada. |
-| `field_sampling_rounds` | `actor_id` | `UUID` | `NOT NULL` | Usuario que ejecutó el muestreo. |
-| `field_sampling_rounds` | `client_batch_id` | `VARCHAR(64)` | `NOT NULL` | Identificador UUID local para idempotencia. |
+| `thinning_` `prescriptions` | `id` | `UUID` | `PRIMARY KEY` | Identificador de la prescripción. |
+| `thinning_` `prescriptions` | `plot_id` | `UUID` | `NOT NULL, INDEX` | Parcela asociada. |
+| `thinning_` `prescriptions` | `campaign_year` | `INT` | `NOT NULL` | Año agrícola de la labor. |
+| `thinning_` `prescriptions` | `target_` `fruits_m` | `NUMERIC(5,2)` | `NOT NULL` | Carga objetivo de frutos/m lineal. |
+| `thinning_` `prescriptions` | `percentage_` `remove` | `NUMERIC(4,2)` | `NOT NULL` | Porcentaje de remoción recomendado. |
+| `thinning_` `prescriptions` | `status` | `VARCHAR(30)` | `NOT NULL, INDEX` | Estado del ciclo de vida (7 estados). |
+| `thinning_` `prescriptions` | `window_closes_on` | `DATE` | `NOT NULL` | Fecha límite biológica de aclareo. |
+| `field_sampling_` `rounds` | `id` | `UUID` | `PRIMARY KEY` | Identificador de la ronda de muestreo. |
+| `field_sampling_` `rounds` | `plot_id` | `UUID` | `NOT NULL` | Parcela muestreada. |
+| `field_sampling_` `rounds` | `actor_id` | `UUID` | `NOT NULL` | Usuario que ejecutó el muestreo. |
+| `field_sampling_` `rounds` | `client_batch_` `id` | `VARCHAR(64)` | `NOT NULL` | Identificador UUID local para idempotencia. |
 
 ##### Script DDL de Base de Datos
 
@@ -1828,14 +1917,14 @@ WHERE status IN ('SAMPLING_IN_PROGRESS', 'PRESCRIBED');
 |:---------------------|:------------------------------------------------|:--------------------------------------|:-------------------|
 | **Interface Layer** | `PlotSamplingController`; `PlotThinningPrescriptionController`; `ThinningExecutionController` | Endpoints REST para ingesta de muestreo de campo, consulta de prescripciones y confirmación de aclareo. | Spring MVC, Jakarta Validation |
 | **Application Layer** | `CropLoadCommandService`; `CropLoadQueryService` | Orquestación de comandos de muestreo y aclareo, consultas de prescripciones y resúmenes muestrales. | Spring `@Transactional`, `@Service` |
-| **Domain Layer** | `FruitThinningPrescriptionRepository`; `CropLoadBalancingCalculatorService`; `FieldSamplingDeduplicator` | Contrato de persistencia (puerto de dominio), cálculo de carga admisible y deduplicación de lotes offline. | Java puro / DDD |
-| **Infrastructure Layer** | `JpaFruitThinningPrescriptionRepositoryAdapter`; `SamplingSyncWorkManager`; `SpringDomainEventPublisher` | Persistencia JPA en PostgreSQL, sincronización en background en clientes móviles y publicación de eventos. | Spring Data JPA, WorkManager, SQLite |
+| **Domain Layer** | `FruitThinning` `PrescriptionRepository`; `CropLoadBalancingCalculatorService`; `FieldSamplingDeduplicator` | Contrato de persistencia (puerto de dominio), cálculo de carga admisible y deduplicación de lotes offline. | Java puro / DDD |
+| **Infrastructure Layer** | `JpaFruitThinning` `PrescriptionRepositoryAdapter`; `SamplingSyncWorkManager`; `SpringDomainEventPublisher` | Persistencia JPA en PostgreSQL, sincronización en background en clientes móviles y publicación de eventos. | Spring Data JPA, WorkManager, SQLite |
 
 ##### Flujo de Comunicación y Conectividad
 1. El agricultor registra muestras de brotes sin conexión en el contenedor de la aplicación cliente móvil (persistidas en Room/sqflite).
 2. Al recuperar conectividad, `SamplingSyncWorkManager` despacha `POST` \nolinkurl{/api/v1/plots/{plotId}/samplings} con cabecera `Idempotency-Key` hacia `PlotSamplingController`.
 3. `PlotSamplingController` delega el procesamiento en `CropLoadCommandService`, mientras que las consultas de prescripciones y resúmenes muestrales son atendidas por `CropLoadQueryService`.
-4. `CropLoadCommandService` invoca `FieldSamplingDeduplicator` para filtrar duplicados y persiste los registros en `FruitThinningPrescriptionRepository`.
+4. `CropLoadCommandService` invoca `FieldSamplingDeduplicator` para filtrar duplicados y persiste los registros en `FruitThinning` `PrescriptionRepository`.
 5. Si el muestreo alcanza suficiencia estadística ($N \ge 5$), `CropLoadCommandService` invoca `CropLoadBalancingCalculatorService` y publica `ThinningPrescribedEvent` vía `SpringDomainEventPublisher`. Si detecta riesgo de sobrecarga, emite alerta hacia *Cooperative Operations*.
 6. El productor confirma el aclareo mediante `POST` \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations}; `ThinningExecutionController` delega en `CropLoadCommandService`, el cual actualiza la prescripción a `EXECUTED` en el repositorio y emite `ThinningExecutedEvent`.
 
@@ -1872,13 +1961,13 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 \caption*{\textit{Nota.} Estructura de tablas, índices de idempotencia y restricciones en PostgreSQL para Crop Load Regulation. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 ---
 
 ### Bounded Context: Cooperative Operations and Territorial Intelligence
 
-**Propósito:** Agrupa la inteligencia territorial, la administración gremial y las proyecciones logísticas de acopio para organizaciones agrarias y cooperativas olivareras. Gobierna el Aggregate Root `Cooperative`, delimitado bajo la autoridad de un gestor técnico institucional único (`technicalManagerUserId: UserId`, validado mediante claims de token JWT con rol `ROLE_GESTOR_COOPERATIVA`). Administra el padrón unificado de socios (`cooperative_members`), evalúa el semáforo territorial de riesgos fenológicos, climáticos y de sobrecarga sectorial (`GET .../territorial-risk` con parámetros GPS `?latitude=&longitude=`), y proyecta tempranamente el volumen agregado de cosecha en toneladas verdes y negras (`EarlyIntakeProjection`), advirtiendo penalizaciones de confianza si la representatividad muestral del padrón es inferior al $50\%$.
+**Propósito:** Agrupa la inteligencia territorial, la administración gremial y las proyecciones logísticas de acopio para organizaciones agrarias y cooperativas olivareras. Gobierna el Aggregate Root `Cooperative`, delimitado bajo la autoridad de un gestor técnico institucional único (`technicalManagerUserId: UserId`, validado mediante claims de token JWT con rol `ROLE_GESTOR_COOPERATIVA`). Administra el padrón unificado de socios (`cooperative_` `members`), evalúa el semáforo territorial de riesgos fenológicos, climáticos y de sobrecarga sectorial (`GET .../territorial-risk` con parámetros GPS `?latitude=` `&longitude=`), y proyecta tempranamente el volumen agregado de cosecha en toneladas verdes y negras (`EarlyIntakeProjection`), advirtiendo penalizaciones de confianza si la representatividad muestral del padrón es inferior al $50\%$.
 
 #### Domain Layer
 
@@ -1888,9 +1977,11 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 |:---|:---|
 | **Estereotipo DDD** | Aggregate Root |
 | **Propósito** | Administra el padrón de socios olivareros, proyecta el volumen de cosecha temprana y evalúa la matriz territorial de riesgos. |
-| **Relaciones de Dominio** | Gobierna miembros (`CooperativeMember`), proyecciones de acopio y evaluaciones de riesgo territorial. |
+| **Relaciones de Dominio** | Gobierna miembros (`Cooperative` `Member`), proyecciones de acopio y evaluaciones de riesgo territorial. |
 
-###### Atributos de `Cooperative`
+\noindent
+**Atributos de `Cooperative`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1903,17 +1994,19 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `riskMatrix` | `TerritorialRiskMatrix` | Semáforo de riesgo geográfico por sector. |
 | `intakeProjection` | `EarlyIntakeProjection` | Estimación agregada de volumen de cosecha para almazara. |
 
-###### Métodos de `Cooperative`
+\noindent
+**Métodos de `Cooperative`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
-| `authorizeCodeIssuance` | `managerId: UserId` | `void` | Autoriza generación de lotes de códigos de patrocinio institucional. |
-| `affiliateProducer` | `userId: UserId`, `ha: Double`, `plots: List<PlotId>` | `CooperativeMember` | Incorpora productor al padrón y emite `MemberAffiliatedEvent`. |
-| `updateMemberContact` | `userId: UserId`, `name: String`, `phone: String`, `email: String` | `void` | Sincroniza datos de contacto del socio en el padrón. |
-| `evaluateTerritorialRiskMatrix` | `incidents: List<AgroclimaticIncident>` | `void` | Consolida alertas activas y emite `CooperativeRiskMatrixEvaluatedEvent`. |
-| `projectIntakeVolume` | `service: YieldAggregationDomainService` | `void` | Agrega proyecciones de cosecha a partir de muestras y floración. |
+| `authorizeCode` `Issuance` | `managerId: UserId` | `void` | Autoriza generación de lotes de códigos de patrocinio institucional. |
+| `affiliate` `Producer` | `userId: UserId`, `ha: Double`, `plots: List<PlotId>` | `Cooperative` `Member` | Incorpora productor al padrón y emite `MemberAffiliated` `Event`. |
+| `updateMember` `Contact` | `userId: UserId`, `name: String`, `phone: String`, `email: String` | `void` | Sincroniza datos de contacto del socio en el padrón. |
+| `evaluateTerritorial` `RiskMatrix` | `incidents: List<AgroclimaticIncident>` | `void` | Consolida alertas activas y emite `CooperativeRiskMatrixEvaluatedEvent`. |
+| `projectIntake` `Volume` | `service: YieldAggregationDomainService` | `void` | Agrega proyecciones de cosecha a partir de muestras y floración. |
 
-##### Modelos del Dominio: `CooperativeMember` (`Internal Entity`)
+##### Modelos del Dominio: `Cooperative` `Member` (`Internal Entity`)
 
 | Propiedad | Definición en el Dominio |
 |:---|:---|
@@ -1921,7 +2014,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Representa la membresía y situación gremial de un productor olivarero en la cooperativa. |
 | **Relaciones de Dominio** | Subordinada a `Cooperative` (1 a N). |
 
-###### Atributos de `CooperativeMember`
+\noindent
+**Atributos de `Cooperative` `Member`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -1932,7 +2027,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `totalDeclaredHa` | `Double` | Hectáreas olivareras declaradas ante la cooperativa. |
 | `status` | `MemberStatus` | Estado de membresía: `ACTIVE`, `SUSPENDED`, `RESIGNED`. |
 
-###### Métodos de `CooperativeMember`
+\noindent
+**Métodos de `Cooperative` `Member`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
@@ -1953,15 +2050,15 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 ##### Servicios de Dominio, Repositorios y Eventos
 
 | Componente | Patrón | Firma / Contrato / Payload | Propósito en el Dominio |
-|:------------------------|:--------------------|:--------------------------------|:------------------------|
+|:------------------------|:----------------|:------------------------------------|:------------------------|
 | `TerritorialRisk` `AggregationService` | Domain Service | `evaluateSectorRisk(alerts: List<AgroclimaticIncident>):` `TerritorialRiskMatrix` | Consolida semáforo territorial de heladas y estrés hídrico. |
 | `YieldAggregation` `DomainService` | Domain Service | `projectHarvestYield(samples: List<CropLoadSampling>, factor: Double):` `IntakeProjectionResult` | Agrega proyecciones tempranas de volumen de aceituna. |
-| `CooperativeRepository` | Repository | `findById(id: CooperativeId): Optional<Cooperative>` | Carga la cooperativa por su identificador primario. |
-| `CooperativeRepository` | Repository | `findByTaxId(taxId: TaxIdentificationNumber): Optional<Cooperative>` | Localiza la cooperativa por su registro fiscal único. |
-| `CooperativeRepository` | Repository | `findByTechnicalManagerUserId(userId: UserId): List<Cooperative>` | Lista cooperativas gestionadas por un responsable técnico. |
-| `CooperativeRepository` | Repository | `save(cooperative: Cooperative): Cooperative` | Persiste cooperativa, padrón de socios y proyecciones. |
+| `Cooperative` `Repository` | Repository | `findById(id: CooperativeId): Optional<Cooperative>` | Carga la cooperativa por su identificador primario. |
+| `Cooperative` `Repository` | Repository | `findByTaxId(taxId: TaxIdentificationNumber): Optional<Cooperative>` | Localiza la cooperativa por su registro fiscal único. |
+| `Cooperative` `Repository` | Repository | `findByTechnicalManagerUserId(userId: UserId): List<Cooperative>` | Lista cooperativas gestionadas por un responsable técnico. |
+| `Cooperative` `Repository` | Repository | `save(cooperative: Cooperative): Cooperative` | Persiste cooperativa, padrón de socios y proyecciones. |
 | `CooperativeRisk` `MatrixEvaluatedEvent` | Domain Event | `cooperativeId: UUID, severity: String, frostAlertsCount: int, occurredOn: Instant` | Notifica mapa de calor territorial a gestores cooperativos. |
-| `MemberAffiliatedEvent` | Domain Event | `cooperativeId: UUID, memberId: UUID, producerUserId: UUID, occurredOn: Instant` | Confirma afiliación de productor al padrón cooperativo. |
+| `MemberAffiliated` `Event` | Domain Event | `cooperativeId: UUID, memberId: UUID, producerUserId: UUID, occurredOn: Instant` | Confirma afiliación de productor al padrón cooperativo. |
 
 #### Interface Layer
 
@@ -1969,19 +2066,19 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Method | Route (Endpoint) | Request Body (DTO) | Response (DTO / Code) | Propósito |
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
-| `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members} | N/A (`?status=ACTIVE`) | `List<CooperativeMemberResource>` (200 OK) | Padrón de socios agremiados. |
-| `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members/{memberId}} | N/A | `CooperativeMember` `Resource` (200 OK) | Ficha gremial individual de socio. |
-| `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/territorial-risk} | N/A (`?latitude=&longitude=`) | `TerritorialRisk` `MatrixResource` (200 OK) | Semáforo territorial de riesgo fenológico y sobrecarga con geolocalización GPS. |
+| `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members} | N/A (`?status=ACTIVE`) | `List<` `Cooperative` `Member` `Resource>` (200 OK) | Padrón de socios agremiados. |
+| `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members/{memberId}} | N/A | `Cooperative` `Member` `Resource` (200 OK) | Ficha gremial individual de socio. |
+| `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/territorial-risk} | N/A (`?latitude=` `&longitude=`) | `TerritorialRisk` `MatrixResource` (200 OK) | Semáforo territorial de riesgo fenológico y sobrecarga con geolocalización GPS. |
 | `GET` | \nolinkurl{/api/v1/cooperatives/{cooperativeId}/intake-forecasts} | N/A (`?campaignYear=`) | `IntakeForecast` `Resource` (200 OK) | Proyección temprana agregada de acopio en toneladas. |
 
 ##### DTOs (Resources) y Mappers (Assemblers)
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `CooperativeMember` `Resource` | Response DTO | `{ id: UUID, producerUserId: UUID, fullName: String, contactPhone: String, totalDeclaredHa: Double, status: String }` | Datos de socio agremiado. |
+| `Cooperative` `Member` `Resource` | Response DTO | `{ id: UUID, producerUserId: UUID, fullName: String, contactPhone: String, totalDeclaredHa: Double, status: String }` | Datos de socio agremiado. |
 | `TerritorialRisk` `MatrixResource` | Response DTO | `{ cooperativeId: UUID, highRiskSectors: List<String>, generalStatus: String, evaluatedAt: Instant }` | Semáforo de riesgo territorial. |
 | `IntakeForecast` `Resource` | Response DTO | `{ cooperativeId: UUID, greenOlivesTons: Double, blackOlivesTons: Double, confidenceDegraded: Boolean }` | Proyección de acopio para salmuera y aceite. |
-| `CooperativeResource` `Assembler` | Assembler | `toResource(` `Cooperative):` `CooperativeResource` | Transformador a DTO público de presentación. |
+| `Cooperative` `Resource` `Assembler` | Assembler | `toResource(` `Cooperative):` `Cooperative` `Resource` | Transformador a DTO público de presentación. |
 #### Application Layer
 
 ##### Orquestación de Casos de Uso (Handlers)
@@ -2005,11 +2102,11 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Component | Package / Role | Technology | Technical Responsibility |
 |:----------------------------------|:-----------------|:-----------------|:----------------------------------------|
-| `CooperativeJpaRepository` | Persistence | Spring Data JPA | Acceso a tabla `cooperatives` y padrón de socios en PostgreSQL. |
-| `JpaCooperativeRepository` `Adapter` | Adapter | Spring Component | Implementa el puerto de dominio `CooperativeRepository`. |
+| `Cooperative` `JpaRepository` | Persistence | Spring Data JPA | Acceso a tabla `cooperatives` y padrón de socios en PostgreSQL. |
+| `JpaCooperative` `Repository` `Adapter` | Adapter | Spring Component | Implementa el puerto de dominio `Cooperative` `Repository`. |
 | `GpsSpatialSectoringAdapter` | GIS Adapter | GeoTools / JTS | Asocia coordenadas GPS (`lat, lon`) a sectores territoriales del valle olivarero. |
 
-##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+##### Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
 
 * **Caché Local de Padrón y Semáforo Territorial:**
   * *Android Nativo (Room / SQLite):* `CooperativeCacheDao` y entidades `LocalMemberEntity`, `LocalRiskMatrixEntity` para consulta inmediata del padrón de socios y matriz de riesgo sectorial sin dependencia de conectividad permanente.
@@ -2026,11 +2123,11 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `cooperatives` | `tax_id` | `VARCHAR(11)` | `NOT NULL, UNIQUE` | RUC institucional de 11 dígitos. |
 | `cooperatives` | `license_id` | `UUID` | `NOT NULL` | Referencia al contrato corporativo en Subscription. |
 | `cooperatives` | `technical_manager_user_id` | `UUID` | `NOT NULL` | Gestor técnico único autorizado de la cooperativa. |
-| `cooperative_members` | `id` | `UUID` | `PRIMARY KEY` | Identificador del socio en padrón. |
-| `cooperative_members` | `cooperative_id` | `UUID` | `NOT NULL, FK` | Cooperativa a la que pertenece. |
-| `cooperative_members` | `producer_user_id` | `UUID` | `NOT NULL` | Usuario productor socio. |
-| `cooperative_members` | `full_name` | `VARCHAR(150)` | `NOT NULL` | Nombre civil del socio. |
-| `cooperative_members` | `declared_ha` | `NUMERIC(8,2)` | `NOT NULL` | Hectáreas aportadas al padrón. |
+| `cooperative_` `members` | `id` | `UUID` | `PRIMARY KEY` | Identificador del socio en padrón. |
+| `cooperative_` `members` | `cooperative_` `id` | `UUID` | `NOT NULL, FK` | Cooperativa a la que pertenece. |
+| `cooperative_` `members` | `producer_user_id` | `UUID` | `NOT NULL` | Usuario productor socio. |
+| `cooperative_` `members` | `full_name` | `VARCHAR(150)` | `NOT NULL` | Nombre civil del socio. |
+| `cooperative_` `members` | `declared_ha` | `NUMERIC(8,2)` | `NOT NULL` | Hectáreas aportadas al padrón. |
 
 ##### Script DDL de Base de Datos
 
@@ -2072,15 +2169,15 @@ CREATE INDEX idx_coop_manager
 
 | Architectural Layer | Main Component(s) | Architectural Responsibility | Key Technologies |
 |:---------------------|:------------------------------------------------|:--------------------------------------|:-------------------|
-| **Interface Layer** | `CooperativeMemberController`; `CooperativeIntakeController`; `CooperativeRiskController` | API REST para padrón de socios, proyección de acopio y semáforo de riesgo territorial. | Spring MVC, Jakarta Validation |
+| **Interface Layer** | `CooperativeMember` `Controller`; `CooperativeIntakeController`; `CooperativeRiskController` | API REST para padrón de socios, proyección de acopio y semáforo de riesgo territorial. | Spring MVC, Jakarta Validation |
 | **Application Layer** | `CooperativeCommandService`; `CooperativeQueryService` | Orquestación de comandos de afiliación y evaluación de riesgos, y consultas de padrón, acopio y semáforo. | Spring `@Transactional`, `@Service` |
-| **Domain Layer** | `CooperativeRepository`; `TerritorialRiskAggregationService`; `YieldAggregationDomainService` | Contrato de persistencia (puerto de dominio), agregación de riesgo bioclimático y proyección de rendimiento. | Java puro / DDD |
-| **Infrastructure Layer** | `JpaCooperativeRepositoryAdapter`; `SpringDomainEventPublisher` | Persistencia JPA en PostgreSQL y despacho de eventos de dominio de riesgo territorial. | Spring Data JPA, Spring Events |
+| **Domain Layer** | `Cooperative` `Repository`; `TerritorialRiskAggregationService`; `YieldAggregationDomainService` | Contrato de persistencia (puerto de dominio), agregación de riesgo bioclimático y proyección de rendimiento. | Java puro / DDD |
+| **Infrastructure Layer** | `JpaCooperative` `RepositoryAdapter`; `SpringDomainEventPublisher` | Persistencia JPA en PostgreSQL y despacho de eventos de dominio de riesgo territorial. | Spring Data JPA, Spring Events |
 
 ##### Flujo de Comunicación y Conectividad
 1. El gestor técnico consulta el semáforo territorial desde la aplicación móvil o portal enviando `GET .../territorial-risk?latitude=-18.05&longitude=-70.25` hacia `CooperativeRiskController`.
 2. `CooperativeRiskController` delega la consulta en `CooperativeQueryService` (mientras que los comandos de afiliación, suspensión y evaluación formal de riesgo son atendidos por `CooperativeCommandService`).
-3. `CooperativeQueryService` consulta `CooperativeRepository` e interactúa con el servicio de dominio `TerritorialRiskAggregationService` para consolidar alertas de heladas y sobrecarga por sector agroclimático (*Sector Valle Bajo*, *Sector Costa*, *Sector Litoral*).
+3. `CooperativeQueryService` consulta `Cooperative` `Repository` e interactúa con el servicio de dominio `TerritorialRiskAggregationService` para consolidar alertas de heladas y sobrecarga por sector agroclimático (*Sector Valle Bajo*, *Sector Costa*, *Sector Litoral*).
 4. Se retorna `TerritorialRiskMatrixResource` resaltando el nivel de riesgo por cuadrante operativo.
 5. Para proyecciones de cosecha temprana, `CooperativeQueryService` invoca `YieldAggregationDomainService` exponiendo las toneladas estimadas a través de `CooperativeIntakeController`.
 
@@ -2117,13 +2214,13 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 \caption*{\textit{Nota.} Tablas de cooperativas, padrón de socios y claves foráneas en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 ---
 
 ### Bounded Context: Harvest Settlement and Performance Reporting
 
-**Propósito:** Custodia la memoria productiva consolidada y la emisión de certificaciones oficiales de cosecha de Viora. Es responsable del Aggregate Root `AgronomicReport`, administrando las liquidaciones cuantitativas de pesajes comerciales al cierre de campaña (`HarvestSettlement`), calculando la curva de atenuación interanual de vecería ($ARR$) y la varianza productiva mediante el servicio puro `StabilizationCurveCalculatorService`, vinculando la confirmación de aclareos en verde con el balance final, y emitiendo expedientes agronómicos certificados con firma criptográfica y hash SHA-256 inmutable, los cuales pueden ser consultados en JSON o descargados en PDF inmutable mediante negociación de contenidos HTTP (`Accept: application/pdf`).
+**Propósito:** Custodia la memoria productiva consolidada y la emisión de certificaciones oficiales de cosecha de Viora. Es responsable del Aggregate Root `AgronomicReport`, administrando las liquidaciones cuantitativas de pesajes comerciales al cierre de campaña (`Harvest` `Settlement`), calculando la curva de atenuación interanual de vecería ($ARR$) y la varianza productiva mediante el servicio puro `StabilizationCurveCalculatorService`, vinculando la confirmación de aclareos en verde con el balance final, y emitiendo expedientes agronómicos certificados con firma criptográfica y hash SHA-256 inmutable, los cuales pueden ser consultados en JSON o descargados en PDF inmutable mediante negociación de contenidos HTTP (`Accept: application/pdf`).
 
 #### Domain Layer
 
@@ -2133,9 +2230,11 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 |:---|:---|
 | **Estereotipo DDD** | Aggregate Root |
 | **Propósito** | Consolida la memoria productiva auditada de una parcela, evalúa la curva de atenuación de vecería y emite expedientes oficiales certificados. |
-| **Relaciones de Dominio** | Referencia a `PlotId` y `UserId`. Compone las liquidaciones anuales de cosecha (`HarvestSettlement`). |
+| **Relaciones de Dominio** | Referencia a `PlotId` y `UserId`. Compone las liquidaciones anuales de cosecha (`Harvest` `Settlement`). |
 
-###### Atributos de `AgronomicReport`
+\noindent
+**Atributos de `AgronomicReport`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -2146,16 +2245,18 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `trendCurve` | `StabilizationTrendCurve` | Curva y tasa de atenuación de vecería interanual (ARR). |
 | `dossierMetadata` | `DossierMetadata` | Sello criptográfico SHA-256 y firma del auditor colegiado. |
 
-###### Métodos de `AgronomicReport`
+\noindent
+**Métodos de `AgronomicReport`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
-| `settleCampaign` | `year: CampaignYear`, `greenKg: Double`, `blackKg: Double`, `notes: String` | `HarvestSettlement` | Asienta balance de cosecha y emite `CampaignHarvestSettledEvent`. |
-| `evaluateStabilizationTrend` | `calculator: StabilizationCurveCalculatorService` | `void` | Computa varianza interanual y tasa de estabilización de vecería. |
+| `settleCampaign` | `year: CampaignYear`, `greenKg: Double`, `blackKg: Double`, `notes: String` | `Harvest` `Settlement` | Asienta balance de cosecha y emite `CampaignHarvestSettledEvent`. |
+| `evaluateStabilization` `Trend` | `calculator: StabilizationCurveCalculatorService` | `void` | Computa varianza interanual y tasa de estabilización de vecería. |
 | `compileDossier` | `signature: AuditorSignature`, `pdfGen: AgronomicDossierPdfGenerator` | `byte[]` | Compila expediente binario PDF, estampa SHA-256 y emite `AgronomicDossierGeneratedEvent`. |
-| `isStabilizationTargetAchieved` | `void` | `boolean` | Determina si la reducción de fluctuación interanual supera el 30% esperado. |
+| `isStabilization` `TargetAchieved` | `void` | `boolean` | Determina si la reducción de fluctuación interanual supera el 30% esperado. |
 
-##### Modelos del Dominio: `HarvestSettlement` (`Internal Entity`)
+##### Modelos del Dominio: `Harvest` `Settlement` (`Internal Entity`)
 
 | Propiedad | Definición en el Dominio |
 |:---|:---|
@@ -2163,7 +2264,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | **Propósito** | Modela la liquidación formal de pesaje y destino comercial de aceituna para una campaña anual concreta. |
 | **Relaciones de Dominio** | Subordinada a `AgronomicReport` (1 a N). |
 
-###### Atributos de `HarvestSettlement`
+\noindent
+**Atributos de `Harvest` `Settlement`**
+
 
 | Atributo | Tipo | Descripción e Invariantes |
 |:---|:---|:---|
@@ -2174,11 +2277,13 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `totalHarvestWeight` | `OliveWeight` | Suma consolidada de cosecha en kilogramos. |
 | `status` | `SettlementStatus` | Estado: `DRAFT`, `SETTLED`, `AUDITED`. |
 
-###### Métodos de `HarvestSettlement`
+\noindent
+**Métodos de `Harvest` `Settlement`**
+
 
 | Método | Parámetros | Retorno | Comportamiento e Invariantes |
 |:---|:---|:---:|:---|
-| `calculateTotalWeight` | `void` | `OliveWeight` | Suma pesajes de verde y negra garantizando consistencia contable. |
+| `calculateTotal` `Weight` | `void` | `OliveWeight` | Suma pesajes de verde y negra garantizando consistencia contable. |
 | `markAsAudited` | `auditor: AuditorSignature` | `void` | Congela la liquidación bajo sello de auditoría técnica. |
 
 ##### Objetos de Valor (Value Objects)
@@ -2194,9 +2299,9 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 ##### Servicios de Dominio, Repositorios y Eventos
 
 | Componente | Patrón | Firma / Contrato / Payload | Propósito en el Dominio |
-|:------------------------|:--------------------|:--------------------------------|:------------------------|
-| `StabilizationCurve` `CalculatorService` | Domain Service | `computeCurve(settlements: List<HarvestSettlement>):` `StabilizationTrendCurve` | Computa varianza interanual y tasa de atenuación de vecería ($ARR$). |
-| `AgronomicDossierPdf` `Generator` | Output Port | `renderPdf(report: AgronomicReport): byte[]` | Contrato agnóstico para compilar binario PDF con sello criptográfico. |
+|:------------------------|:----------------|:------------------------------------|:------------------------|
+| `Stabilization` `Curve` `CalculatorService` | Domain Service | `computeCurve(settlements: List<HarvestSettlement>):` `StabilizationTrendCurve` | Computa varianza interanual y tasa de atenuación de vecería ($ARR$). |
+| `AgronomicDossier` `Pdf` `Generator` | Output Port | `renderPdf(report: AgronomicReport): byte[]` | Contrato agnóstico para compilar binario PDF con sello criptográfico. |
 | `AgronomicReport` `Repository` | Repository | `findById(id: ReportId): Optional<AgronomicReport>` | Carga el reporte agronómico por identificador primario. |
 | `AgronomicReport` `Repository` | Repository | `findByPlotId(plotId: PlotId): Optional<AgronomicReport>` | Recupera el reporte agronómico consolidado de una parcela. |
 | `AgronomicReport` `Repository` | Repository | `save(report: AgronomicReport): AgronomicReport` | Persiste atómicamente el reporte y sus liquidaciones. |
@@ -2209,19 +2314,19 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 
 | Method | Route (Endpoint) | Request Body (DTO) | Response (DTO / Code) | Propósito |
 |:-------:|:--------------------------|:------------------------|:------------------------|:-------------------------|
-| `POST` | \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements} | `SettleHarvest` `Request` | `HarvestSettlement` `Resource` (201 Created) | Asienta liquidación anual de cosecha. |
-| `GET` | \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements} | N/A (`?campaignYear=`) | `List<HarvestSettlementResource>` (200 OK) | Lista histórica de liquidaciones prediales. |
-| `GET` | \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements/{settlementId}} | N/A | `HarvestSettlement` `Resource` (200 OK) | Consulta liquidación puntual por su UUID. |
+| `POST` | \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements} | `SettleHarvest` `Request` | `Harvest` `Settlement` `Resource` (201 Created) | Asienta liquidación anual de cosecha. |
+| `GET` | \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements} | N/A (`?campaignYear=`) | `List<` `Harvest` `Settlement` `Resource>` (200 OK) | Lista histórica de liquidaciones prediales. |
+| `GET` | \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements/{settlementId}} | N/A | `Harvest` `Settlement` `Resource` (200 OK) | Consulta liquidación puntual por su UUID. |
 | `GET` | \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports} | N/A (`Accept: application/json` o `application/pdf`) | `AgronomicReport` `Resource` / `byte[]` (200 OK) | Consulta métricas (JSON) o descarga expediente oficial en PDF mediante Content Negotiation. |
-| `POST` | \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports/certifications} | `CertifyDossier` `Request` | `DossierCertification` `Resource` (201 Created) | Emite certificación colegiada oficial y estampa hash SHA-256. |
+| `POST` | \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports/certifications} | `CertifyDossier` `Request` | `Dossier` `Certification` `Resource` (201 Created) | Emite certificación colegiada oficial y estampa hash SHA-256. |
 
 ##### DTOs (Resources) y Mappers (Assemblers)
 
 | Component | Type | Mapping / Structure | Purpose |
 |:----------------------------------|:-----------------|:-----------------------------------|:---------------------------------------|
-| `SettleHarvestRequest` | Request DTO | `{ campaignYear: Int, greenOlivesKg: Double, blackOlivesKg: Double, notes: String }` | Datos del pesaje comercial asentado. |
-| `CertifyDossierRequest` | Request DTO | `{ auditorSignature: String, notes: String }` | Solicitud de certificación formal colegiada. |
-| `HarvestSettlement` `Resource` | Response DTO | `{ id: UUID, campaignYear: Int, totalYieldKg: Double, status: String, settledAt: Instant }` | Representación de liquidación anual. |
+| `SettleHarvest` `Request` | Request DTO | `{ campaignYear: Int, greenOlivesKg: Double, blackOlivesKg: Double, notes: String }` | Datos del pesaje comercial asentado. |
+| `CertifyDossier` `Request` | Request DTO | `{ auditorSignature: String, notes: String }` | Solicitud de certificación formal colegiada. |
+| `Harvest` `Settlement` `Resource` | Response DTO | `{ id: UUID, campaignYear: Int, totalYieldKg: Double, status: String, settledAt: Instant }` | Representación de liquidación anual. |
 | `AgronomicReport` `Resource` | Response DTO | `{ reportId: UUID, interannualVariance: Double, amplitudeReductionRate: Double, isEffective: Boolean }` | Resumen de estabilización interanual. |
 | `GenerateAgronomic` `DossierCommandAssembler` | Assembler | `toCommand(CertifyDossierRequest, plotId):` `GenerateAgronomicDossierCommand` | Ensamblador alineado al comando canónico. |
 #### Application Layer
@@ -2246,7 +2351,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 | `JpaAgronomicReport` `RepositoryAdapter` | Adapter | Spring Component | Implementa el puerto de dominio `AgronomicReportRepository`. |
 | `OpenPdfAgronomic` `DossierAdapter` | PDF Adapter | OpenPDF / iText | Renderizado en memoria del expediente técnico inmutable en PDF. |
 
-##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+##### Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
 
 * **Caché Local y Consultas Offline (`HarvestSettlementCacheDao` / `LocalDataAccess`):**
   * *Android Nativo (Room / SQLite):* `HarvestSettlementCacheDao` y entidades `CachedHarvestSettlementEntity`, `CachedAgronomicReportEntity` para consultar balances de campañas anteriores y métricas de mitigación de vecería ($ARR$) en campo sin conexión.
@@ -2254,25 +2359,25 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 * **Sincronización Resiliente de Liquidaciones (`SettlementSyncWorker` / WorkManager):**
   * Ante la formalización del pesaje en zonas desconectadas, el comando se encola en una tabla local `pending_settlements` gestionada por **Android Jetpack WorkManager** (`CoroutineWorker`) o un servicio en segundo plano en Flutter. Al restablecerse la conectividad HTTPS, el worker despacha la solicitud `POST /api/v1/plots/{plotId}/harvest-settlements` con cabecera de idempotencia para evitar duplicación.
 * **Descarga Segura y Verificación Criptográfica de Expedientes PDF:**
-  * Descarga en streaming mediante `DownloadManager` de Android o `dio` en Flutter al almacenamiento privado del dispositivo, contrastando el hash SHA-256 computado localmente contra el campo `verification_hash` para certificar la autenticidad e inmutabilidad del expediente oficial.
+  * Descarga en streaming mediante `DownloadManager` de Android o `dio` en Flutter al almacenamiento privado del dispositivo, contrastando el hash SHA-256 computado localmente contra el campo `verification_` `hash` para certificar la autenticidad e inmutabilidad del expediente oficial.
 
 ##### Diccionario de Datos Relacional (PostgreSQL)
 
 | Table | Column | SQL Type (PostgreSQL) | Constraints / Indexes | Description & Domain Meaning |
 |:---|:---|:---|:---|:---|
-| `agronomic_reports` | `id` | `UUID` | `PRIMARY KEY` | Identificador del expediente agronómico. |
-| `agronomic_reports` | `plot_id` | `UUID` | `NOT NULL, UNIQUE` | Parcela asociada. |
-| `agronomic_reports` | `producer_id` | `UUID` | `NOT NULL` | Productor titular. |
-| `agronomic_reports` | `interannual_variance` | `NUMERIC(8,2)` | `NOT NULL DEFAULT 0` | Varianza de rendimiento entre campañas. |
-| `agronomic_reports` | `amplitude_reduction_rate` | `NUMERIC(5,2)` | `NOT NULL DEFAULT 0` | Tasa de reducción de alternancia ($ARR$). |
-| `agronomic_reports` | `verification_hash` | `VARCHAR(64)` | `NULL` | Hash SHA-256 del expediente certificado. |
-| `harvest_settlements` | `id` | `UUID` | `PRIMARY KEY` | Identificador único de la liquidación anual. |
-| `harvest_settlements` | `report_id` | `UUID` | `NOT NULL, FK` | Reporte agronómico al que pertenece. |
-| `harvest_settlements` | `campaign_year` | `INT` | `NOT NULL` | Año agrícola liquidado. |
-| `harvest_settlements` | `green_olives_kg` | `NUMERIC(10,2)` | `NOT NULL CHECK (green_olives_kg >= 0)` | Kilos cosechados de aceituna verde. |
-| `harvest_settlements` | `black_olives_kg` | `NUMERIC(10,2)` | `NOT NULL CHECK (black_olives_kg >= 0)` | Kilos cosechados de aceituna negra. |
-| `harvest_settlements` | `total_yield_kg` | `NUMERIC(10,2)` | `NOT NULL CHECK (total_yield_kg > 0)` | Kilos totales consolidados de la campaña. |
-| `harvest_settlements` | `status` | `VARCHAR(30)` | `NOT NULL` | Estado (`AUDITED`, `SETTLED`). |
+| `agronomic_` `reports` | `id` | `UUID` | `PRIMARY KEY` | Identificador del expediente agronómico. |
+| `agronomic_` `reports` | `plot_id` | `UUID` | `NOT NULL, UNIQUE` | Parcela asociada. |
+| `agronomic_` `reports` | `producer_id` | `UUID` | `NOT NULL` | Productor titular. |
+| `agronomic_` `reports` | `interannual_` `variance` | `NUMERIC(8,2)` | `NOT NULL DEFAULT 0` | Varianza de rendimiento entre campañas. |
+| `agronomic_` `reports` | `amplitude_` `reduction_rate` | `NUMERIC(5,2)` | `NOT NULL DEFAULT 0` | Tasa de reducción de alternancia ($ARR$). |
+| `agronomic_` `reports` | `verification_` `hash` | `VARCHAR(64)` | `NULL` | Hash SHA-256 del expediente certificado. |
+| `harvest_` `settlements` | `id` | `UUID` | `PRIMARY KEY` | Identificador único de la liquidación anual. |
+| `harvest_` `settlements` | `report_id` | `UUID` | `NOT NULL, FK` | Reporte agronómico al que pertenece. |
+| `harvest_` `settlements` | `campaign_year` | `INT` | `NOT NULL` | Año agrícola liquidado. |
+| `harvest_` `settlements` | `green_olives_` `kg` | `NUMERIC(10,2)` | `NOT NULL CHECK (green_olives_kg >= 0)` | Kilos cosechados de aceituna verde. |
+| `harvest_` `settlements` | `black_olives_` `kg` | `NUMERIC(10,2)` | `NOT NULL CHECK (black_olives_kg >= 0)` | Kilos cosechados de aceituna negra. |
+| `harvest_` `settlements` | `total_yield_` `kg` | `NUMERIC(10,2)` | `NOT NULL CHECK (total_yield_kg > 0)` | Kilos totales consolidados de la campaña. |
+| `harvest_` `settlements` | `status` | `VARCHAR(30)` | `NOT NULL` | Estado (`AUDITED`, `SETTLED`). |
 
 ##### Script DDL de Base de Datos
 
@@ -2316,16 +2421,16 @@ CREATE TABLE settlement.harvest_settlements (
 | Architectural Layer | Main Component(s) | Architectural Responsibility | Key Technologies |
 |:---------------------|:------------------------------------------------|:--------------------------------------|:-------------------|
 | **Interface Layer** | `PlotHarvestSettlementController`; `PlotAgronomicReportController` | API REST para liquidación anual, métricas y descarga oficial de informe colegiado vía Content Negotiation. | Spring MVC, Content Negotiation |
-| **Application Layer** | `HarvestSettlementCommandService`; `AgronomicReportQueryService` | Orquestación de comandos de liquidación, certificación colegiada y consultas con streaming de PDF. | Spring `@Transactional`, `@Service` |
+| **Application Layer** | `HarvestSettlement` `CommandService`; `AgronomicReportQueryService` | Orquestación de comandos de liquidación, certificación colegiada y consultas con streaming de PDF. | Spring `@Transactional`, `@Service` |
 | **Domain Layer** | `AgronomicReportRepository`; `StabilizationCurveCalculatorService` | Contrato de persistencia (puerto de dominio) y servicio de cálculo de curva de atenuación de vecería ($ARR$). | Java puro / DDD |
-| **Infrastructure Layer** | `JpaAgronomicReportRepositoryAdapter`; `OpenPdfAgronomicDossierAdapter`; `SpringDomainEventPublisher` | Persistencia en PostgreSQL, compilación binaria OpenPDF con hash SHA-256 y publicación de eventos. | Spring Data JPA, OpenPDF |
+| **Infrastructure Layer** | `JpaAgronomicReport` `RepositoryAdapter`; `OpenPdfAgronomicDossierAdapter`; `SpringDomainEventPublisher` | Persistencia en PostgreSQL, compilación binaria OpenPDF con hash SHA-256 y publicación de eventos. | Spring Data JPA, OpenPDF |
 
 ##### Flujo de Comunicación y Conectividad
 1. El productor asienta la cosecha anual enviando `POST` \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements} desde la aplicación cliente móvil hacia `PlotHarvestSettlementController`.
-2. `PlotHarvestSettlementController` delega el comando `SettleCampaignHarvestCommand` en `HarvestSettlementCommandService`.
-3. `HarvestSettlementCommandService` carga el reporte desde `AgronomicReportRepository`, valida las reglas y delega en `StabilizationCurveCalculatorService` la actualización de la varianza interanual y la tasa de atenuación de vecería ($ARR$).
+2. `PlotHarvestSettlementController` delega el comando `SettleCampaignHarvestCommand` en `HarvestSettlement` `CommandService`.
+3. `HarvestSettlement` `CommandService` carga el reporte desde `AgronomicReportRepository`, valida las reglas y delega en `StabilizationCurveCalculatorService` la actualización de la varianza interanual y la tasa de atenuación de vecería ($ARR$).
 4. Se persiste el cierre mediante `AgronomicReportRepository` y se despacha `CampaignHarvestSettledEvent` vía `SpringDomainEventPublisher` hacia *Phenology*.
-5. Ante la solicitud `POST` \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports/certification}, `HarvestSettlementCommandService` compila el expediente colegiado, estampa la firma con `OpenPdfAgronomicDossierAdapter`, genera el hash SHA-256 inmutable y emite `AgronomicDossierGeneratedEvent`.
+5. Ante la solicitud `POST` \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports/certification}, `HarvestSettlement` `CommandService` compila el expediente colegiado, estampa la firma con `OpenPdfAgronomicDossierAdapter`, genera el hash SHA-256 inmutable y emite `AgronomicDossierGeneratedEvent`.
 6. Ante `GET` \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports} con cabecera `Accept: application/pdf`, `AgronomicReportQueryService` consulta `AgronomicReportRepository` y delega en `OpenPdfAgronomicDossierAdapter` transmitiendo el binario inmutable del informe oficial en streaming directo con hash SHA-256.
 
 \begin{figure}[H]
@@ -2361,4 +2466,4 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 \caption*{\textit{Nota.} Tablas de reporte agronómico y liquidaciones anuales en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
