@@ -28,6 +28,8 @@ Gestiona la memoria histórica de producción y la modelación bioclimática pre
 * **Productor / Aplicación Móvil** ➔ `LogHistoricalHarvests`
 * **Productor / Aplicación Móvil** ➔ `RectifyHistoricalHarvest`, `DeleteHistoricalHarvest`
 * **System** ➔ `ComputeDailyChillAccumulation`
+* **System** ➔ `AccumulatePostAnthesisThermalTime`
+* **Productor / Aplicación Móvil** ➔ `RecordPhenologicalObservation`
 
 ### **Ubiquitous Language**
 
@@ -56,6 +58,7 @@ El olivo necesita acumular una cantidad mínima de frío invernal para florecer 
 * `HistoricalHarvestRectified`, `HistoricalHarvestDeleted` ➔ **Aplicación móvil**
 * `WinterChillPortionsAccumulated` ➔ **Aplicación móvil**
 * `ColdRequirementFulfilled`, `PotentialFloralYieldReadjusted` ➔ **Crop Load Regulation & Thinning Advisory**
+* `PitHardeningStageReached` ➔ **Crop Load Regulation & Thinning Advisory**
 
 ---
 

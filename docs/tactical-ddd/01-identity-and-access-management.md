@@ -204,6 +204,14 @@ Estructura relacional en PostgreSQL para la tabla de cuentas de usuario:
 * **Ciclo de Vida de Tokens:** Access tokens de vida corta (15 min conforme a `TS02`) para mitigar ventanas de compromiso; refresh tokens almacenados con rotación y revocación (30 días conforme a `TS03`) ante cambio de credencial o cierre de sesión explícito.
 * **Auditoría Inmutable:** Registro riguroso de marcas temporales de creación y modificación en UTC (`created_at`, `updated_at`).
 
+##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+* **Gestión Segura de Sesión y Almacenamiento de Tokens:**
+  * *Android Nativo (Kotlin):* Componente `SessionManager` que utiliza `EncryptedSharedPreferences` respaldado por **Android KeyStore** (cifrado AES-256-GCM) para la persistencia del par de tokens (access token y refresh token de 30 días) y claims de rol.
+  * *Cross-Platform (Flutter/Dart):* Componente `SecureStorageSessionManager` apoyado en `flutter_secure_storage` (KeyStore en Android y Keychain en iOS).
+* **Intercepción y Renovación Transparente de Tokens:**
+  * *Interceptor HTTP (OkHttp / Dio):* `AuthInterceptor` intercepta peticiones HTTP salientes inyectando la cabecera `Authorization: Bearer <access_token>`.
+  * *Manejador de Renovación (Authenticator):* Ante respuestas `401 Unauthorized`, `TokenRefreshAuthenticator` bloquea momentáneamente la cola de peticiones, despacha de forma atómica la invocación a `POST /api/v1/auth/refresh-tokens` (`TS03`), actualiza los tokens en el almacenamiento seguro y reintenta la solicitud original sin degradar la experiencia del productor o técnico en campo.
+
 ---
 
 #### Bounded Context Software Architecture Component Level Diagrams
@@ -289,11 +297,19 @@ Estructura relacional en PostgreSQL para la tabla de cuentas de usuario:
 ```structurizr
 workspace "Viora - IAM Component Architecture" "Identity and Access Management Component View" {
     model {
-        producer = person "Olive Producer" "Manages credentials and signs in."
-        manager = person "Technical Manager" "Manages credentials and signs in."
         brevo = softwareSystem "Brevo Email API" "External transactional email delivery."
 
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with EncryptedSharedPreferences and KeyStore" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with flutter_secure_storage and KeyStore/Keychain" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for cache and credentials store" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for cache and credentials store" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 authController = component "AuthController" "Exposes authentication and password reset REST endpoints" "Spring MVC Controller"
                 
@@ -311,8 +327,10 @@ workspace "Viora - IAM Component Architecture" "Identity and Access Management C
             }
         }
 
-        producer -> authController "Authenticates / resets password [HTTPS/REST]"
-        manager -> authController "Authenticates / resets password [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes encrypted credentials and session metadata [KeyStore / SQLite]"
+        crossApp -> crossDb "Reads / writes encrypted credentials and session metadata [SecureStorage / SQLite]"
+        nativeApp -> authController "Authenticates / refreshes tokens / resets password [HTTPS/REST]"
+        crossApp -> authController "Authenticates / refreshes tokens / resets password [HTTPS/REST]"
         
         authController -> userCommandService "Delegates write operations (commands)"
         authController -> userQueryService "Delegates read operations (queries)"
@@ -320,7 +338,7 @@ workspace "Viora - IAM Component Architecture" "Identity and Access Management C
         userCommandService -> bcryptHasher "Hashes / matches passwords with salt"
         userCommandService -> jwtTokenProvider "Emits / validates JWT tokens"
         userCommandService -> userRepo "Loads / persists user accounts via domain port"
-        userCommandService -> emailAdapter "Envia emails de verificación y reseteo"
+        userCommandService -> emailAdapter "Dispatches verification and reset emails"
         
         userQueryService -> userRepo "Fetches user accounts via domain port"
         

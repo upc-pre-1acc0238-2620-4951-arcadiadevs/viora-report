@@ -282,15 +282,23 @@ Los diagramas se entregan como fuentes editables incluidas en este Markdown auto
 ```structurizr
 workspace "Viora - Olive Orchard Component Architecture" "Olive Orchard and Plot Management Component View" {
     model {
-        producer = person "Olive Producer" "Registers olive parcels, updates boundaries, and performs soft deletions."
-        manager = person "Technical Manager" "Inspects member parcels and verifies agronomic surface area."
         mapbox = softwareSystem "Mapbox API" "External geospatial vector tile and mapping service."
 
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Mapbox and Room offline plot cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with Mapbox and sqflite offline plot cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for plot polygon and attributes cache" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for plot polygon and attributes cache" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 plotCtrl = component "PlotController" "Exposes plot registration, delta sync, update and deletion REST endpoints" "Spring MVC Controller"
                 
-                plotCommandService = component "PlotCommandService" "Coordinates plot creation, polygon updates, and soft deletions (CMD12, CMD13, CMD14)" "Spring Service / Command Service"
+                plotCommandService = component "PlotCommandService" "Coordinates plot creation, polygon updates, and soft deletions" "Spring Service / Command Service"
                 plotQueryService = component "PlotQueryService" "Handles queries for plot details, boundary GeoJSON, and delta sync" "Spring Service / Query Service"
                 
                 geoValidator = component "GeospatialPolygonValidator" "Validates GeoJSON polygon topology, non-self-intersection, and net ha" "Domain Service / JTS Topology Suite"
@@ -304,16 +312,20 @@ workspace "Viora - Olive Orchard Component Architecture" "Olive Orchard and Plot
             }
         }
 
-        producer -> plotCtrl "Registers / modifies / deletes plots [HTTPS/REST]"
-        manager -> plotCtrl "Reads authorized member plots [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes plot_cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes plot_cache [SQLite / sqflite]"
+        nativeApp -> mapbox "Fetches vector tiles and renders map overlays"
+        crossApp -> mapbox "Fetches vector tiles and renders map overlays"
+        nativeApp -> plotCtrl "Registers / modifies / deletes plots [HTTPS/REST]"
+        crossApp -> plotCtrl "Registers / modifies / deletes plots [HTTPS/REST]"
 
         plotCtrl -> plotCommandService "Delegates plot write operations (commands)"
         plotCtrl -> plotQueryService "Delegates plot read and delta queries"
         
         plotCommandService -> geoValidator "Validates polygon coordinates and net hectares"
-        plotCommandService -> quotaPort "Verifies remaining entitlement quota (CMD12)"
+        plotCommandService -> quotaPort "Verifies remaining entitlement quota"
         plotCommandService -> plotRepo "Loads / persists plot records and revisions via domain port"
-        plotCommandService -> eventPublisher "Publishes domain events (EV15, EV16, EV17)"
+        plotCommandService -> eventPublisher "Publishes domain events"
         
         plotQueryService -> plotRepo "Fetches plot records and revisions via domain port"
 
@@ -574,9 +586,6 @@ entity "orchard.request_idempotency" as orchard_request_idempotency {
 }
 orchard_plots ||--o{ orchard_plot_revisions : "internal FK"
 orchard_plots |o--o{ orchard_request_idempotency : "scopes idempotency"
-note "External IDs have no cross-context FK.
-See DDL for composite keys, checks and partial indexes.
-One or more revisions/codes are ensured by application transactions." as N
 @enduml
 ```
 

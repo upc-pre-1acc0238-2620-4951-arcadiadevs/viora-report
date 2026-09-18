@@ -44,13 +44,14 @@ Gestiona la administración gremial, supervisión territorial e inteligencia sec
 ### **Business Decisions**
 
 *(Key business rules, policies and decisions)*
-La decisión: la cooperativa proyecta de forma agregada cuánto volumen de aceituna va a recibir para planificar logística (transporte, tanques, contratos). La proyección solo es confiable con al menos un 60% de cobertura muestral del padrón; de lo contrario, se advierte. Cada vez que un socio completa un muestreo representativo, la proyección se recalcula automáticamente.
+La decisión: la cooperativa proyecta de forma agregada cuánto volumen de aceituna va a recibir para planificar logística (transporte, tanques, contratos). La proyección solo es confiable con al menos un 50% de cobertura muestral del padrón; de lo contrario, se advierte. Cada vez que un socio completa un muestreo representativo, la proyección se recalcula automáticamente.
 
 ### **Outbound Communication**
 
 *(Messages ➔ Collaborators)*
 
 * `CooperativeRiskMatrixEvaluated`, `CooperativeIntakeVolumeProjected`, `LowSamplingCoverageWarnedForIntake` ➔ **Gestor / Aplicación Móvil**
+* `MemberAffiliated` ➔ **Gestor / Aplicación Móvil**
 
 ---
 

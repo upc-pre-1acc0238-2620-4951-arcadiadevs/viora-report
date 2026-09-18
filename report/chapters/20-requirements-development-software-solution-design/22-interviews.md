@@ -1,5 +1,7 @@
 ## Entrevistas
 
+Esta sección aborda la investigación cualitativa de campo a través de entrevistas en profundidad aplicadas a representantes de los dos segmentos objetivo del proyecto Viora: productores olivareros y gestores técnicos de organizaciones acopiadoras. El levantamiento empírico permite comprender de primera mano los desafíos operativos y económicos generados por la alternancia productiva del olivo en el sur del Perú, proporcionando los insumos necesarios para diseñar arquetipos de usuario y fundamentar la arquitectura de la solución de software.
+
 ### Diseño de entrevistas
 
 Para diseñar una solución que responda a la realidad del sector, se estructuran guías de entrevista adaptadas al productor olivarero y al gestor de acopio de la cooperativa. Estas preguntas recopilan testimonios directos sobre el manejo tradicional de la vecería y la planificación logística de la cosecha, permitiendo modelar arquetipos de usuario alineados con las dinámicas y necesidades reales.
@@ -103,7 +105,11 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 *   ¿Cuál es su estado civil y composición de su familia? (Familia)
 *   ¿Cuántos años de experiencia tiene trabajando en el sector agropecuario y cuál es su grado de estudios o especialización técnica? (Ocupación y educación)
 
+\newpage
+
 ### Registro de entrevistas
+
+En esta sección se presentan las fichas individuales de las seis entrevistas realizadas (tres por segmento), documentando datos sociodemográficos, marcas, canales, citas textuales y capturas de video con su enlace y minutaje de inicio.
 
 #### Segmento 1: Productores olivareros de la macro-región sur
 &nbsp;
@@ -162,6 +168,8 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 
 \vspace{1.5cm}
 
+\clearpage
+
 #### Segmento 2: Gestores técnicos de organizaciones olivareras
 &nbsp;
 
@@ -217,6 +225,8 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 \hline 
 \end{tabular}
 
+\clearpage
+
 ### Análisis de entrevistas
 
 Los porcentajes y descriptores de esta sección provienen de las fichas registradas y de los resúmenes individuales de cada entrevista a profundidad ($n=6$, con $3$ entrevistas por segmento), de modo que cada rasgo del arquetipo pueda rastrearse directamente hasta la evidencia empírica recolectada. Para efectos de concisión en las tablas de características, las fuentes se referencian mediante los códigos **E#1 a E#3** para los productores del Segmento 1 (Gustavo Calizaga, Cristóbal Barrientos y Alexandra Rosas) y **E#4 a E#6** para los gestores técnicos del Segmento 2 (Juan Maquera, Daniel Estrada y Maribel Vargas).
@@ -224,27 +234,39 @@ Los porcentajes y descriptores de esta sección provienen de las fichas registra
 #### Segmento 1: Productores olivareros de la macro-región sur
 &nbsp;
 
-Se analizaron **3 entrevistas** a productores representativos de la agricultura familiar y comercial de los valles de La Yarada Los Palos (Tacna) y Yauca (Arequipa). La información recopilada permitió cuantificar las principales regularidades operativas, agronómicas y tecnológicas del segmento.
+Se analizaron 3 entrevistas a productores representativos de la agricultura familiar y comercial de los valles de La Yarada Los Palos (Tacna) y Yauca (Arequipa). Como se detalla en la \autoref{tab:caracteristicas-productores}, la información recopilada permitió cuantificar las principales regularidades operativas, agronómicas y tecnológicas del segmento.
 
-\noindent \textbf{Características}
+\begin{longtable}{p{0.32\textwidth} p{0.10\textwidth} p{0.08\textwidth} p{0.44\textwidth}}
+\caption{Características empíricas consolidadas del segmento de productores olivareros} \label{tab:caracteristicas-productores} \\
+\hline
+\textbf{Característica} & \textbf{Mención} & \textbf{\%} & \textbf{Evidencia} \\ \hline
+\endfirsthead
+\hline
+\caption*{Tabla \ref{tab:caracteristicas-productores}. \textit{Características empíricas consolidadas del segmento de productores olivareros (Continuación)}} \\
+\hline
+\textbf{Característica} & \textbf{Mención} & \textbf{\%} & \textbf{Evidencia} \\ \hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{4}{l}{\parbox{14.0cm}{\vspace{0.15cm} \textit{Nota.} Elaboración propia basada en las entrevistas E\#1 a E\#3.}} \\
+\endlastfoot
+Experiencia agrícola y gestión directa ($\ge 5$ años) & 3/3 & 100\% & Todos gestionan sus parcelas: E\#1 (5 años), E\#2 (>15 años) y E\#3 (>10 años). \\
+Escala de tenencia reducida (1 a 4 hectáreas) & 3/3 & 100\% & Fundo de 4 ha en La Yarada (E\#1), 1 ha propia en Yauca (E\#2) y parcela familiar de 3 ha (E\#3). \\
+Predominio de variedad Criolla/Sevillana y destino a mesa ($80\%-100\%$) & 3/3 & 100\% & E\#1 (Sevillana mesa), E\#2 (80\% mesa / 20\% aceite) y E\#3 (80\% mesa / 20\% aceite). \\
+Vulnerabilidad crítica a la vecería y al ENOS (caídas del $66\%$ al $90\%$) & 3/3 & 100\% & Caídas drásticas: de 15 a 5 t/ha (-66\% en E\#1), pérdidas del 80\%-90\% por ENOS (E\#2) y caídas $>70\%$ hasta 1.5 t/ha (E\#3). \\
+Toma de decisiones empírica (calendario fijo y observación visual) & 3/3 & 100\% & Riego regulado por apreciación del suelo y poda por calendario tradicional sin telemetría cuantitativa en E\#1, E\#2 y E\#3. \\
+Retraso sistemático de poda y cosecha en campañas de alta carga (Año ON) & 3/3 & 100\% & E\#1 y E\#3 demoran la cosecha a julio/agosto por maduración tardía; E\#2 poda estrictamente 15 días postcosecha. \\
+Compensación económica informal en años OFF (precio en chacra y reventa) & 3/3 & 100\% & El déficit de volumen se compensa con alzas de precio (S/. 10–13/kg en E\#1 y E\#3) y acopio de fruta a terceros (E\#2 y E\#3). \\
+Ecosistema móvil Android (Samsung) y uso exclusivo de WhatsApp & 3/3 & 100\% & 100\% (E\#1, E\#2 y E\#3) utiliza smartphones Android (Samsung) y grupos/chats de WhatsApp como único canal de interacción técnica. \\
+Nula experiencia o adopción previa de tecnología IoT / sensores en campo & 3/3 & 100\% & Desconocimiento y ausencia de sensores o estaciones meteorológicas en los predios de E\#1, E\#2 y E\#3. \\
+Requerimiento indispensable de soporte sin conexión (Modo Offline) & 3/3 & 100\% & E\#1, E\#2 y E\#3 señalan la intermitencia y falta de cobertura móvil en sectores de La Yarada y Yauca como factor bloqueante. \\
+Disposición moderada con desconfianza inicial (Confianza del $40\%-50\%$) & 3/3 & 100\% & E\#1 y E\#3 declaran una confianza inicial del 40\%-50\%, exigiendo demostraciones prácticas y validación de pares locales (E\#2 coincide). \\
+Personalidad precavida/conservadora centrada en prevención sanitaria & 3/3 & 100\% & Enfoque fitosanitario preventivo y austeridad de insumos en años de descanso en E\#1, E\#2 y E\#3. \\
+Meta de diferenciación comercial (marca propia o fidelización) & 3/3 & 100\% & Aspiración de lanzar marca propia de aceituna de mesa (E\#1), mantener clientela en Lima (E\#2) o vender en salmuera con valor (E\#3). \\
+\end{longtable}
 
-\vspace{0.15cm}
-
-| Característica | Mención | % | Evidencia |
-| :----------------------------------- | :------: | :------: | :------------------------------------------------- |
-| **Experiencia agrícola y gestión directa ($\ge 5$ años)** | 3/3 | 100% | Todos gestionan sus parcelas: E#1 (5 años), E#2 (>15 años) y E#3 (>10 años). |
-| **Escala de tenencia reducida (1 a 4 hectáreas)** | 3/3 | 100% | Fundo de 4 ha en La Yarada (E#1), 1 ha propia en Yauca (E#2) y parcela familiar de 3 ha (E#3). |
-| **Predominio de variedad Criolla/Sevillana y destino a mesa ($80\%-100\%$)** | 3/3 | 100% | E#1 (Sevillana mesa), E#2 (80% mesa / 20% aceite) y E#3 (80% mesa / 20% aceite). |
-| **Vulnerabilidad crítica a la vecería y al ENOS (caídas del $66\%$ al $90\%$)** | 3/3 | 100% | Caídas drásticas: de 15 a 5 t/ha (-66% en E#1), pérdidas del 80%-90% por ENOS (E#2) y caídas $>70\%$ hasta 1.5 t/ha (E#3). |
-| **Toma de decisiones empírica (calendario fijo y observación visual)** | 3/3 | 100% | Riego regulado por apreciación del suelo y poda por calendario tradicional sin telemetría cuantitativa en E#1, E#2 y E#3. |
-| **Retraso sistemático de poda y cosecha en campañas de alta carga (Año ON)** | 3/3 | 100% | E#1 y E#3 demoran la cosecha a julio/agosto por maduración tardía; E#2 poda estrictamente 15 días postcosecha. |
-| **Compensación económica informal en años OFF (precio en chacra y reventa)** | 3/3 | 100% | El déficit de volumen se compensa con alzas de precio (S/. 10–13/kg en E#1 y E#3) y acopio de fruta a terceros (E#2 y E#3). |
-| **Ecosistema móvil Android (Samsung) y uso exclusivo de WhatsApp** | 3/3 | 100% | 100% (E#1, E#2 y E#3) utiliza smartphones Android (Samsung) y grupos/chats de WhatsApp como único canal de interacción técnica. |
-| **Nula experiencia o adopción previa de tecnología IoT / sensores en campo** | 3/3 | 100% | Desconocimiento y ausencia de sensores o estaciones meteorológicas en los predios de E#1, E#2 y E#3. |
-| **Requerimiento indispensable de soporte sin conexión (Modo Offline)** | 3/3 | 100% | E#1, E#2 y E#3 señalan la intermitencia y falta de cobertura móvil en sectores de La Yarada y Yauca como factor bloqueante. |
-| **Disposición moderada con desconfianza inicial (Confianza del $40\%-50\%$)** | 3/3 | 100% | E#1 y E#3 declaran una confianza inicial del 40%-50%, exigiendo demostraciones prácticas y validación de pares locales (E#2 coincide). |
-| **Personalidad precavida/conservadora centrada en prevención sanitaria** | 3/3 | 100% | Enfoque fitosanitario preventivo y austeridad de insumos en años de descanso en E#1, E#2 y E#3. |
-| **Meta de diferenciación comercial (marca propia o fidelización)** | 3/3 | 100% | Aspiración de lanzar marca propia de aceituna de mesa (E#1), mantener clientela en Lima (E#2) o vender en salmuera con valor (E#3). |
+\newpage
 
 \noindent \textbf{Insights}
 
@@ -265,26 +287,36 @@ La desconfianza inicial ante algoritmos dinámicos (40%–50%) solo se reduce cu
 #### Segmento 2: Gestores técnicos de organizaciones olivareras
 &nbsp;
 
-Se analizaron **3 entrevistas** a ingenieros agrónomos y responsables técnicos a cargo de la asistencia técnica y acopio en cooperativas y asociaciones olivareras de Tacna, consolidando una muestra con cobertura sobre más de 100 socios y 590 hectáreas.
+Se analizaron 3 entrevistas a ingenieros agrónomos y responsables técnicos a cargo de la asistencia técnica y acopio en cooperativas y asociaciones olivareras de Tacna, consolidando una muestra con cobertura sobre más de 100 socios y 590 hectáreas. Como se expone en la \autoref{tab:caracteristicas-gestores}, se sintetizan los hallazgos empíricos cuantitativos y cualitativos para este segmento.
 
-\noindent \textbf{Características}
-
-\vspace{0.15cm}
-
-| Característica | Mención | % | Evidencia |
-| :----------------------------------- | :------: | :------: | :------------------------------------------------- |
-| **Formación superior (universitaria/técnica) y especialización en gestión agrícola ($\ge 15$ años exp.)** | 3/3 | 100% | E#4 (Ing. Civil con especialización técnica de campo, >30 años exp.), E#5 (Ing. Agrónomo colegiado, 18 años) y E#6 (Ing. Agrónoma colegiada, 15 años). |
-| **Supervisión de carteras extensas (35 a 68 socios / 20 a 420 ha)** | 3/3 | 100% | E#4 (20 ha), E#5 (68 socios, 420 ha) y E#6 (35 socios, 150 ha bajo riego por goteo). |
-| **Rutina híbrida con predominio de trabajo en campo ($65\%-75\%$)** | 3/3 | 100% | E#4 (monitoreo presencial continuo), E#5 (75% en campo en pre-cosecha) y E#6 (65%–70% en campo). |
-| **Incertidumbre crítica y "ceguera logística" en acopio (error del $35\%-55\%$)** | 3/3 | 100% | E#4 (proyección empírica), E#5 (desviación del 35%–55%, salmueras 70% vacías) y E#6 (error 35%–45%, 600 t estimadas vs. 350 t reales). |
-| **Imposibilidad de supervisar podas y aclareos en ventanas biológicas útiles** | 3/3 | 100% | E#4 (asistencia directa limitada), E#5 (dificultad para auditar socios) y E#6 (socios no aclarean en nov-dic antes de la lignificación ni podan antes de agosto). |
-| **Prescripción nutricional a ciegas por falta de registros agroclimáticos** | 3/3 | 100% | E#4 (falta de alertas climáticas), E#5 (manejo reactivo) y E#6 (fertilización en ago-sep sin saber frío acumulado). |
-| **Ecosistema digital: Windows 11/Excel/Google Earth en oficina; Android/WhatsApp en campo** | 3/3 | 100% | E#4, E#5 y E#6 manejan registros en hojas de cálculo (Excel) y coordinan directivas técnicas y visitas vía WhatsApp. |
-| **Barreras severas para el escalamiento de sensores IoT (salinidad, conectividad y costos)** | 3/3 | 100% | E#4 (costo prohibitivo), E#5 (estación y tensiómetros con fallas por salinidad y robo) y E#6 (agua salina deteriora cápsulas de tensiómetros). |
-| **Parámetros de confianza: previsión con 60–75 días y margen de error $\le 10\%-15\%$** | 3/3 | 100% | E#4 (panel predictivo estadístico), E#5 (60–75 días de anticipación) y E#6 (previsión en ene-feb, error máx. 10%–15%). |
-| **Propuesta de incentivos comerciales en planta para impulsar la adopción** | 2/3 | 66.7% | E#5 y E#6 coinciden en otorgar prioridad en tolva de descarga y bonificación/sobreprecio por kilo con trazabilidad al día. |
-| **Personalidad analítica, metódica y pedagógica ante la resistencia al cambio** | 3/3 | 100% | E#4 (serenidad y organización), E#5 (analítico y paciente) y E#6 (metódica, analítica y pedagógica con los agricultores). |
-| **Meta estratégica: estabilización de volumen de acopio y eficiencia industrial** | 3/3 | 100% | E#4 (calibres exportables), E#5 (estabilizar 1800–2200 t) y E#6 (estabilizar 700–900 t reduciendo alternancia). |
+\begin{longtable}{p{0.32\textwidth} p{0.10\textwidth} p{0.08\textwidth} p{0.44\textwidth}}
+\caption{Características empíricas consolidadas del segmento de gestores técnicos} \label{tab:caracteristicas-gestores} \\
+\hline
+\textbf{Característica} & \textbf{Mención} & \textbf{\%} & \textbf{Evidencia} \\ \hline
+\endfirsthead
+\hline
+\caption*{Tabla \ref{tab:caracteristicas-gestores}. \textit{Características empíricas consolidadas del segmento de gestores técnicos (Continuación)}} \\
+\hline
+\textbf{Característica} & \textbf{Mención} & \textbf{\%} & \textbf{Evidencia} \\ \hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{4}{l}{\parbox{14.0cm}{\vspace{0.15cm} \textit{Nota.} Elaboración propia basada en las entrevistas E\#4 a E\#6.}} \\
+\endlastfoot
+Formación superior y especialización en gestión agrícola ($\ge 15$ años exp.) & 3/3 & 100\% & E\#4 (Ing. Civil con especialización de campo, >30 años), E\#5 (Ing. Agrónomo colegiado, 18 años) y E\#6 (Ing. Agrónoma colegiada, 15 años). \\
+Supervisión de carteras extensas (35 a 68 socios / 20 a 420 ha) & 3/3 & 100\% & E\#4 (20 ha), E\#5 (68 socios, 420 ha) y E\#6 (35 socios, 150 ha bajo riego por goteo). \\
+Rutina híbrida con predominio de trabajo en campo ($65\%-75\%$) & 3/3 & 100\% & E\#4 (monitoreo presencial continuo), E\#5 (75\% en campo en pre-cosecha) y E\#6 (65\%–70\% en campo). \\
+Incertidumbre crítica y ``ceguera logística'' en acopio (error del $35\%-55\%$) & 3/3 & 100\% & E\#4 (proyección empírica), E\#5 (desviación del 35\%–55\%, salmueras 70\% vacías) y E\#6 (error 35\%–45\%, 600 t estimadas vs. 350 t reales). \\
+Imposibilidad de supervisar podas y aclareos en ventanas biológicas útiles & 3/3 & 100\% & E\#4 (asistencia directa limitada), E\#5 (dificultad para auditar socios) y E\#6 (socios no aclarean en nov-dic antes de la lignificación ni podan antes de agosto). \\
+Prescripción nutricional a ciegas por falta de registros agroclimáticos & 3/3 & 100\% & E\#4 (falta de alertas climáticas), E\#5 (manejo reactivo) y E\#6 (fertilización en ago-sep sin saber frío acumulado). \\
+Ecosistema digital: Windows 11/Excel en oficina; Android/WhatsApp en campo & 3/3 & 100\% & E\#4, E\#5 y E\#6 manejan registros en hojas de cálculo (Excel) y coordinan directivas técnicas y visitas vía WhatsApp. \\
+Barreras severas para el escalamiento de sensores IoT en campo & 3/3 & 100\% & E\#4 (costo prohibitivo), E\#5 (estación y tensiómetros con fallas por salinidad y robo) y E\#6 (agua salina deteriora cápsulas de tensiómetros). \\
+Parámetros de confianza: previsión con 60–75 días y error $\le 10\%-15\%$ & 3/3 & 100\% & E\#4 (panel predictivo estadístico), E\#5 (60–75 días de anticipación) y E\#6 (previsión en ene-feb, error máx. 10\%–15\%). \\
+Propuesta de incentivos comerciales en planta para impulsar la adopción & 2/3 & 66.7\% & E\#5 y E\#6 coinciden en otorgar prioridad en tolva de descarga y bonificación/sobreprecio por kilo con trazabilidad al día. \\
+Personalidad analítica, metódica y pedagógica ante la resistencia al cambio & 3/3 & 100\% & E\#4 (serenidad y organización), E\#5 (analítico y paciente) y E\#6 (metódica, analítica y pedagógica con los agricultores). \\
+Meta estratégica: estabilización de volumen de acopio y eficiencia industrial & 3/3 & 100\% & E\#4 (calibres exportables), E\#5 (estabilizar 1800–2200 t) y E\#6 (estabilizar 700–900 t reduciendo alternancia). \\
+\end{longtable}
 
 \noindent \textbf{Insights}
 

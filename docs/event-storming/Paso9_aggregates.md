@@ -284,7 +284,7 @@ Un error habitual en sistemas agrícolas tradicionales es crear una tabla gigant
   * `TerritorialRiskMatrix` *(VO)*: Semáforo agregado por sector geográfico (verde, amarillo, rojo) que consolida alertas de estrés, frío y sobrecarga.
   * `EarlyIntakeProjection` *(VO)*: Estimación de toneladas proyectadas de acopio (verde y negra) ponderada por el porcentaje de muestreos completados.
 * **Invariantes Clave del Agregado:**
-  1. La proyección de acopio territorial exige que al menos el $60\%$ del padrón de socios haya completado muestreos representativos; de lo contrario, se emite obligatoriamente una advertencia de cobertura insuficiente.
+  1. La proyección de acopio territorial exige que al menos el $50\%$ del padrón de socios haya completado muestreos representativos; de lo contrario, se emite obligatoriamente una advertencia de cobertura insuficiente.
 * **Comandos Aceptados:** `CMD31` (*EvaluateCooperativeRiskMatrix*), `CMD32` (*ProjectCooperativeIntakeVolume*).
 * **Eventos de Dominio Emitidos:** `EV49`, `EV50`, `EV51`.
 * **US / BDD:** `US31`, `US32`.

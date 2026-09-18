@@ -368,11 +368,19 @@ Los diagramas se entregan como fuentes editables incluidas en este Markdown auto
 ```structurizr
 workspace "Viora - Subscription Component Architecture" "Subscription and Membership Component View" {
     model {
-        producer = person "Olive Producer" "Manages personal subscription, checkouts, and redeems invitation codes."
-        manager = person "Technical Manager" "Issues financed invitation code batches and manages code expiry."
         mercadoPago = softwareSystem "Mercado Pago API" "External payment gateway handling hosted checkout and IPN webhooks."
 
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline entitlement cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline entitlement cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for entitlement and quota cache" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for entitlement and quota cache" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 subCtrl = component "SubscriptionController" "Exposes subscription creation, checkout intent, and query REST endpoints" "Spring MVC Controller"
                 paymentWebhookCtrl = component "PaymentWebhookController" "Receives asynchronous IPN payment notifications from Mercado Pago" "Spring MVC Controller"
@@ -381,8 +389,8 @@ workspace "Viora - Subscription Component Architecture" "Subscription and Member
 
                 subCommandService = component "SubscriptionCommandService" "Coordinates write commands (subscription creation, payment intent, checkout preferences)" "Spring Service / Command Service"
                 subQueryService = component "SubscriptionQueryService" "Handles queries for current subscription, status, and contracted quota" "Spring Service / Query Service"
-                reconciliationCommandService = component "PaymentReconciliationCommandService" "Processes IPN notifications, verifies HMAC signatures, and activates subscriptions (CMD09)" "Spring Service / Command Service"
-                invitationCommandService = component "CooperativeInvitationCommandService" "Handles batch issuance (CMD11), expiry shortening (CMD33), and code redemption (CMD10)" "Spring Service / Command Service"
+                reconciliationCommandService = component "PaymentReconciliationCommandService" "Processes IPN notifications, verifies HMAC signatures, and activates subscriptions" "Spring Service / Command Service"
+                invitationCommandService = component "CooperativeInvitationCommandService" "Handles batch issuance, expiry shortening, and code redemption" "Spring Service / Command Service"
                 invitationQueryService = component "CooperativeInvitationQueryService" "Handles queries for invitation batches, available seats, and code status" "Spring Service / Query Service"
                 
                 codeGenerator = component "InvitationCodeGenerator" "Generates cryptographically secure non-sequential voucher codes" "Domain Service / Java Security"
@@ -405,17 +413,22 @@ workspace "Viora - Subscription Component Architecture" "Subscription and Member
             }
         }
 
-        producer -> subCtrl "Creates subscription / requests checkout / queries status [HTTPS/REST]"
-        producer -> redemptionCtrl "Redeems cooperative code [HTTPS/REST]"
-        manager -> invitationCtrl "Generates code batches / adjusts expiry / queries batches [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes entitlement_cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes entitlement_cache [SQLite / sqflite]"
+        nativeApp -> subCtrl "Creates subscription / requests checkout / queries status [HTTPS/REST]"
+        crossApp -> subCtrl "Creates subscription / requests checkout / queries status [HTTPS/REST]"
+        nativeApp -> redemptionCtrl "Redeems cooperative code [HTTPS/REST]"
+        crossApp -> redemptionCtrl "Redeems cooperative code [HTTPS/REST]"
+        nativeApp -> invitationCtrl "Generates code batches / adjusts expiry / queries batches [HTTPS/REST]"
+        crossApp -> invitationCtrl "Generates code batches / adjusts expiry / queries batches [HTTPS/REST]"
         mercadoPago -> paymentWebhookCtrl "Sends IPN payment notification [HTTPS/POST]"
 
         subCtrl -> subCommandService "Delegates subscription write operations (commands)"
         subCtrl -> subQueryService "Delegates subscription read operations (queries)"
-        redemptionCtrl -> invitationCommandService "Delegates code redemption (CMD10)"
-        invitationCtrl -> invitationCommandService "Delegates batch issuance (CMD11) and expiry shortening (CMD33)"
+        redemptionCtrl -> invitationCommandService "Delegates code redemption"
+        invitationCtrl -> invitationCommandService "Delegates batch issuance and expiry shortening"
         invitationCtrl -> invitationQueryService "Delegates batch and seat queries"
-        paymentWebhookCtrl -> reconciliationCommandService "Delegates IPN webhook commands (CMD09)"
+        paymentWebhookCtrl -> reconciliationCommandService "Delegates IPN webhook commands"
 
         subCommandService -> quotaPolicy "Validates requested hectares against plan boundaries"
         subCommandService -> subRepo "Loads / persists subscriptions via domain port"
@@ -425,12 +438,12 @@ workspace "Viora - Subscription Component Architecture" "Subscription and Member
 
         reconciliationCommandService -> subRepo "Updates subscription status to ACTIVE upon payment"
         reconciliationCommandService -> activationPolicy "Computes subscription period"
-        reconciliationCommandService -> eventPublisher "Publishes SubscriptionActivatedEvent (EV08)"
+        reconciliationCommandService -> eventPublisher "Publishes SubscriptionActivatedEvent"
         
         invitationCommandService -> codeGenerator "Generates secure code strings"
         invitationCommandService -> invitationRepo "Loads / persists invitation batches via domain port"
         invitationCommandService -> licenseRepo "Loads / persists licenses to manage seat quotas via domain port"
-        invitationCommandService -> eventPublisher "Publishes CooperativeCodeRedeemedEvent (EV10)"
+        invitationCommandService -> eventPublisher "Publishes CooperativeCodeRedeemedEvent"
 
         invitationQueryService -> invitationRepo "Fetches invitation batches via domain port"
         invitationQueryService -> licenseRepo "Fetches cooperative licenses via domain port"

@@ -38,7 +38,7 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
   * `rectifyHarvest(year: CampaignYear, newYield: YieldKg): void` - Modifica el volumen de una cosecha previa por error de pesaje en almazara, recalcula de inmediato el $BBI$ interanual y encola `HistoricalHarvestRectifiedEvent`.
   * `deleteHarvest(year: CampaignYear): void` - Elimina un registro erróneo o duplicado, reevalúa la suficiencia de datos ($\ge 3$ años) y encola `HistoricalHarvestDeletedEvent`.
   * `processDailyTemperatures(date: LocalDate, hourlyTemps: List<Temperature>): void` - Procesa las 24 lecturas horarias de temperatura invernal (Mayo a Agosto), ejecuta la cinética bi-etápica de Erez acumulando porciones de frío netas (`EV31`), verifica si se alcanzó el requerimiento varietal de 25 a 30 porciones (`EV32`), evalúa si ocurrió ola de calor ($>24^\circ\text{C}$ por $>3$ días consecutivos, `EV33`) y reajusta la fertilidad floral potencial (`EV34`).
-  * `processPostAnthesisThermalTime(date: LocalDate, maxTemp: Temperature, minTemp: Temperature): void` - Procesa la integral térmica diaria post-floración calculando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$. Al alcanzar el umbral fisiológico de $680.0^\circ\text{C}\cdot\text{día}$ (BBCH 75), fija `pitHardeningReached = true`, sella `pitHardeningDate = date` y encola `PitHardeningStageReachedEvent` (`EV53`) para disparar `POL10` en *Crop Load Regulation*.
+  * `processPostAnthesisThermalTime(date: LocalDate, maxTemp: Temperature, minTemp: Temperature): void` - Procesa la integral térmica diaria post-floración calculando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$. Al alcanzar el umbral fisiológico de $680.0^\circ\text{C}\cdot\text{día}$ (BBCH 75), fija `pitHardeningReached = true`, sella `pitHardeningDate = date` y encola `PitHardeningStageReachedEvent` (`EV53`) para disparar `POL19` en *Crop Load Regulation*.
   * `getCalculatedBbi(): Optional<BiennialBearingIndex>`
   * `isColdRequirementSatisfied(): boolean`
   * `isPitHardened(): boolean`
@@ -142,7 +142,7 @@ Eventos inmutables en tiempo pasado que comunican hechos significativos del cicl
 * **`PotentialFloralYieldReadjustedEvent`**: `{ plotId: UUID, campaignYear: Integer, previousFactor: Double, revisedFactor: Double, reductionReason: String, occurredOn: Instant }` (EV34)
   * *Disparado cuando:* Se castiga la expectativa de floración y carga frutal potencial ante un déficit térmico invernal.
 * **`PitHardeningStageReachedEvent`**: `{ plotId: UUID, campaignYear: Integer, pitHardeningDate: LocalDate, accumulatedGdd: Double, occurredOn: Instant }` (EV53)
-  * *Disparado cuando:* La integral térmica post-antesis alcanza los $680.0^\circ\text{C}\cdot\text{día}$ ($T_{base}=10^\circ\text{C}$), confirmando el endurecimiento del endocarpio (estadio BBCH 75) y activando `POL10` en *Crop Load Regulation* para el cierre biológico irrevocable de prescripciones pendientes.
+  * *Disparado cuando:* La integral térmica post-antesis alcanza los $680.0^\circ\text{C}\cdot\text{día}$ ($T_{base}=10^\circ\text{C}$), confirmando el endurecimiento del endocarpio (estadio BBCH 75) y activando `POL19` en *Crop Load Regulation* para el cierre biológico irrevocable de prescripciones pendientes.
 
 ---
 
@@ -164,7 +164,7 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
   * `GET /api/v1/plots/{plotId}/metrics?name=CHILLING` - Entrega el estado de acumulación de porciones de frío de Erez y alertas ENOS (`TS23` / `US22` / `US23`). Responde `200 OK` con `MetricResource` detallando unidades de frío, estado de satisfacción y flag `enosAnomalyDetected`.
 
 * **`PlotPhenologyController`** (Ruta base: `/api/v1/plots/{plotId}/phenology-observations`):
-  * `POST /api/v1/plots/{plotId}/phenology-observations` - Registro de observación visual de estadio fenológico en escala BBCH (`CMD20` / `EV53`). Responde `201 Created` con `PhenologyObservationResource`.
+  * `POST /api/v1/plots/{plotId}/phenology-observations` - Registro de observación visual de estadio fenológico en escala BBCH (`CMD35` / `EV53`). Responde `201 Created` con `PhenologyObservationResource`.
 
 * **`PlotChillComputationController`** (Ruta base: `/api/v1/plots/{plotId}/chill-computations`):
   * `POST /api/v1/plots/{plotId}/chill-computations` - Disparador bajo demanda para re-procesar las temperaturas telemétricas de una fecha en el modelo de Erez o forzar el cálculo de integral térmica (complementando la ejecución automática diaria de medianoche gestionada por `ChillComputationScheduler`). Responde `200 OK` con `ChillTrackerResource`.
@@ -204,9 +204,9 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
 * **`ComputeDailyChillAccumulationCommandHandler`** (CMD23 / US22 / US23):
   * *Entrada:* `ComputeDailyChillAccumulationCommand` (`plotId`, `date`, `hourlyTemperatures`)
   * *Flujo:* Verifica que la fecha pertenezca a la ventana invernal (Mayo-Agosto) -> carga el agregado `ChillAccumulationTracker` del predio -> invoca `processDailyTemperatures()` apoyándose en el servicio de dominio `ErezDynamicChillModel` -> actualiza acumulador de porciones, contador de olas de calor y factor de fertilidad floral -> persiste en el repositorio -> publica eventos generados (`WinterChillPortionsAccumulatedEvent`, alertas de cumplimiento o anomalías ENOS).
-* **`AccumulatePostAnthesisThermalTimeCommandHandler`** (CMD29 / Flujo C08):
+* **`AccumulatePostAnthesisThermalTimeCommandHandler`** (CMD34 / Flujo C08):
   * *Entrada:* `AccumulatePostAnthesisThermalTimeCommand` (`plotId`, `date`, `maxTemp`, `minTemp`)
-  * *Flujo:* Valida que la fecha pertenezca al ciclo fenológico post-antesis (Septiembre a Diciembre) -> carga `ChillAccumulationTracker` del predio -> invoca `processPostAnthesisThermalTime(date, maxTemp, minTemp)` integrando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$ -> al acumular $\ge 680.0^\circ\text{C}\cdot\text{día}$, el agregado transiciona `pitHardeningReached = true`, sella `pitHardeningDate` y encola `PitHardeningStageReachedEvent` (`EV53`) -> persiste cambios en `ChillAccumulationTrackerRepository` -> publica eventos encolados para activar `POL10` en *Crop Load Regulation*.
+  * *Flujo:* Valida que la fecha pertenezca al ciclo fenológico post-antesis (Septiembre a Diciembre) -> carga `ChillAccumulationTracker` del predio -> invoca `processPostAnthesisThermalTime(date, maxTemp, minTemp)` integrando $\text{GDD} = \max(0, \frac{T_{max} + T_{min}}{2} - 10.0)$ -> al acumular $\ge 680.0^\circ\text{C}\cdot\text{día}$, el agregado transiciona `pitHardeningReached = true`, sella `pitHardeningDate` y encola `PitHardeningStageReachedEvent` (`EV53`) -> persiste cambios en `ChillAccumulationTrackerRepository` -> publica eventos encolados para activar `POL19` en *Crop Load Regulation*.
 
 ##### Query Handlers
 * **`ListPlotHarvestRecordsQueryHandler`** (TS22 / US20):
@@ -341,6 +341,13 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
 * **Idempotencia en Registro de Cosechas:** Restricción `UNIQUE (plot_id, campaign_year)` que previene duplicación de campañas ante reintentos de red del cliente móvil.
 * **Manejo Centralizado de Excepciones (RFC 7807):** Retorno estructurado `ProblemDetail` ante insuficiencia de campañas ($<3$), años agrícolas futuros o rendimientos negativos (`TS31`).
 * **Auditoría Inmutable:** Marcas temporales automáticas `@CreatedDate` y `@LastModifiedDate` en todos los registros históricos.
+
+##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+* **Caché Local de Historial de Cosechas y Métricas Fenológicas:**
+  * *Android Nativo (Room / SQLite):* Entidades `LocalHarvestRecordEntity` y `LocalPhenologyMetricEntity` gestionadas por `PhenologyCacheDao` para consultar memoria de vecería e índice $BBI$ sin conexión.
+  * *Cross-Platform (sqflite / SQLite):* Tabla local `phenology_cache` con par `(plot_id, campaign_year)`.
+* **Visualización de Semáforo de Vecería:**
+  * Interfaz de usuario (`Agronomy and Harvest UI`) que traduce el valor decimal del $BBI$ en rangos visuales accesibles en campo (Leve, Moderado, Severo) y renderiza el avance de porciones de frío acumuladas contra la meta varietal de 25-30 UF.
 
 ---
 
@@ -668,42 +675,55 @@ erDiagram
 ```structurizr
 workspace "Viora - Phenology Component Architecture" "Phenology and Historical Bearing Analytics Component View" {
     model {
-        producer = person "Olive Producer" "Monitors winter chill portion accumulation and logs historical yields."
-        manager = person "Technical Manager" "Supervises cooperative chill fulfillment and biennial bearing indices."
-
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline phenology and chill cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline phenology and chill cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for phenological tracking and chill cache" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for phenological tracking and chill cache" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 chillCtrl = component "PlotChillController" "Exposes winter chill accumulation and speedometer queries" "Spring MVC Controller"
                 phenoCtrl = component "PlotPhenologyController" "Exposes BBCH phenological stages and GDD tracking endpoints" "Spring MVC Controller"
-                harvestRecordCtrl = component "PlotHarvestRecordController" "Exposes historical harvest entries CRUD endpoints (CMD20, CMD21, CMD22)" "Spring MVC Controller"
+                harvestRecordCtrl = component "PlotHarvestRecordController" "Exposes historical harvest entries CRUD endpoints" "Spring MVC Controller"
                 bearingCtrl = component "PlotBearingController" "Exposes Hoblyn BBI computation and alternance severity metrics" "Spring MVC Controller"
                 
-                phenoCommandService = component "PhenologyCommandService" "Coordinates stage progression (CMD19), harvest entries (CMD20-22), and chill calculation" "Spring Service / Command Service"
+                phenoCommandService = component "PhenologyCommandService" "Coordinates stage progression, harvest entries, and chill calculation" "Spring Service / Command Service"
                 phenoQueryService = component "PhenologyQueryService" "Handles queries for chill accumulation, phenological stages, GDD, and Hoblyn BBI" "Spring Service / Query Service"
                 dailyChillJob = component "DailyChillComputationJob" "Scheduled background task executing daily Erez chill portion processing" "Spring @Scheduled Component"
                 
                 erezCalculator = component "ErezDynamicModelCalculator" "Domain service executing the two-step dynamic Erez chill portion algorithm" "Domain Service"
-                gddCalculator = component "GrowingDegreeDaysCalculator" "Calculates cumulative GDD post-anthesis triggering EV53 at 680 GDD" "Domain Service"
+                gddCalculator = component "GrowingDegreeDaysCalculator" "Calculates cumulative GDD post-anthesis triggering event at 680 GDD" "Domain Service"
                 bbiCalculator = component "HoblynBbiCalculatorService" "Computes Hoblyn Alternate Bearing Index and vegetative bias" "Domain Service"
                 
                 trackerRepo = component "ChillAccumulationTrackerRepository" "Domain repository interface for chill tracking and harvest persistence" "Domain Port / Interface"
                 trackerRepoAdapter = component "JpaChillAccumulationTrackerRepositoryAdapter" "PostgreSQL Spring Data JPA implementation for phenology tracking" "Spring Data JPA Adapter"
-                eventPublisher = component "SpringDomainEventPublisher" "Dispatches EV26, EV27, and EV53 domain events" "Spring ApplicationEventPublisher"
+                eventPublisher = component "SpringDomainEventPublisher" "Dispatches domain events" "Spring ApplicationEventPublisher"
             }
             db = container "Viora Database" "PostgreSQL Relational Store" "PostgreSQL" {
                 tags "Database"
             }
         }
 
-        producer -> chillCtrl "Queries chill accumulation [HTTPS/REST]"
-        producer -> phenoCtrl "Logs stage / views GDD [HTTPS/REST]"
-        producer -> harvestRecordCtrl "Logs / rectifies yield history [HTTPS/REST]"
-        manager -> bearingCtrl "Views sectorial BBI and chill progress [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes phenology and chill cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes phenology and chill cache [SQLite / sqflite]"
+        nativeApp -> chillCtrl "Queries chill accumulation [HTTPS/REST]"
+        crossApp -> chillCtrl "Queries chill accumulation [HTTPS/REST]"
+        nativeApp -> phenoCtrl "Logs stage / views GDD [HTTPS/REST]"
+        crossApp -> phenoCtrl "Logs stage / views GDD [HTTPS/REST]"
+        nativeApp -> harvestRecordCtrl "Logs / rectifies yield history [HTTPS/REST]"
+        crossApp -> harvestRecordCtrl "Logs / rectifies yield history [HTTPS/REST]"
+        nativeApp -> bearingCtrl "Views sectorial BBI and chill progress [HTTPS/REST]"
+        crossApp -> bearingCtrl "Views sectorial BBI and chill progress [HTTPS/REST]"
 
         chillCtrl -> phenoQueryService "Delegates chill queries"
-        phenoCtrl -> phenoCommandService "Delegates stage progression commands (CMD19)"
+        phenoCtrl -> phenoCommandService "Delegates stage progression commands"
         phenoCtrl -> phenoQueryService "Delegates BBCH and GDD queries"
-        harvestRecordCtrl -> phenoCommandService "Delegates harvest logging and rectification (CMD20, CMD21, CMD22)"
+        harvestRecordCtrl -> phenoCommandService "Delegates harvest logging and rectification"
         harvestRecordCtrl -> phenoQueryService "Delegates historical yield queries"
         bearingCtrl -> phenoQueryService "Delegates BBI evaluation queries"
         dailyChillJob -> phenoCommandService "Triggers daily automated chill calculation"
@@ -711,7 +731,7 @@ workspace "Viora - Phenology Component Architecture" "Phenology and Historical B
         phenoCommandService -> erezCalculator "Executes 2-step dynamic chill portion model"
         phenoCommandService -> gddCalculator "Computes GDD (680 trigger for pit hardening)"
         phenoCommandService -> trackerRepo "Loads / persists trackers and yield logs via domain port"
-        phenoCommandService -> eventPublisher "Publishes domain events (EV26, EV27, EV53)"
+        phenoCommandService -> eventPublisher "Publishes domain events"
         
         phenoQueryService -> trackerRepo "Fetches trackers and yield logs via domain port"
         phenoQueryService -> bbiCalculator "Computes Hoblyn BBI from historical yield series"
@@ -800,7 +820,7 @@ class HoblynBbiCalculatorService <<DomainService>> {
   + calculateBBI(harvestEntries): Double
 }
 
-class PhenologicalStageTransitionedEvent <<DomainEvent>> {
+class PitHardeningStageReachedEvent <<DomainEvent>> {
   - plotId: UUID
   - stage: String
   - accumulatedGDD: Double
@@ -824,7 +844,7 @@ ChillAccumulationTracker "1" *--> "0..*" HistoricalHarvestEntry : logs
 ChillAccumulationTracker ..> ErezDynamicModelCalculator : calculates chill portions
 ChillAccumulationTracker ..> GrowingDegreeDaysCalculator : calculates cumulative GDD
 ChillAccumulationTracker ..> HoblynBbiCalculatorService : calculates Hoblyn BBI
-ChillAccumulationTracker ..> PhenologicalStageTransitionedEvent : emits (EV53 at 680 GDD)
+ChillAccumulationTracker ..> PitHardeningStageReachedEvent : emits (EV53 at 680 GDD)
 ChillAccumulationTracker ..> BiennialBearingIndexAssessedEvent : emits (EV27)
 ChillAccumulationTrackerRepository ..> ChillAccumulationTracker : manages
 @enduml

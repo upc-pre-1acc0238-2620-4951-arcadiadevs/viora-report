@@ -288,7 +288,7 @@ Bajo los principios de diseño de EventStorming, las operaciones de visualizaci�
 * **Propósito y Decisión que Habilita:** Tablero analítico de proyección temprana del volumen de cosecha que recibirá la planta procesadora de la cooperativa. Habilita la decisión de negociar contratos forward con la agroindustria y dimensionar las líneas de fermentación y tanques de salmuera.
 * **Componentes Visuales y Datos Clave:**
   * Proyección de acopio total en toneladas métricas, discriminando por destino: Aceituna de mesa (verde/negra) y aceituna para molienda de aceite de oliva virgen extra.
-  * Termómetro de cobertura muestral del padrón: Alerta destacada en ámbar si menos del 60% de los socios ha ingresado muestreos representativos.
+  * Termómetro de cobertura muestral del padrón: Alerta destacada en ámbar si menos del 50% de los socios ha ingresado muestreos representativos.
   * Gráfico de benchmarking comparativo de curvas de vecería entre sectores del valle.
 * **Eventos que Actualizan la Vista:** `EV50`, `EV51`.
 * **Comandos que Habilita:** `CMD32: ProjectCooperativeIntakeVolume`.
