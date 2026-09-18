@@ -69,7 +69,7 @@ No Shared Kernel applied in recommended map.
 |----|-------------|---------|
 | EXT01 | Payment Gateway Service -> bc8 | ACL + OHS |
 | EXT02 | Satellite Basemap & GIS Provider -> bc4 | PL (GeoJSON) |
-| EXT03 | Agroclimatic Weather API (SENAMHI) -> bc5 | ACL |
+| EXT03 | Agroclimatic Weather API -> bc5 | ACL |
 | EXT04 | bc9 -> Transactional Mail Service | ACL |
 
 ## Discarded alternatives
@@ -113,6 +113,7 @@ No Shared Kernel applied in recommended map.
 ## Sources
 | 2026-09-17 | Added `e15 bc6 -> bc8` (C/S). Subscription consumes `InstitutionalAccessPort.requireManager(actorId, cooperativeId)` in its `CMD11` and `CMD33` handlers; bc6 supplies it through `Cooperative.authorizeCodeIssuance(requesterUserId)`. bc9 cannot resolve it: its `ROLE_TECHNICAL_MANAGER` is a platform-wide role with no notion of which cooperative the manager acts for, and that association lives only in `Cooperative`. Subscription translates the contract into its own narrow port without adopting bc6 vocabulary, so C/S applies. |
 | 2026-09-17 | Added `e16 bc6 -> bc4` (C/S). Olive Orchard consumes `CooperativeScopePort.authorizedProducerIds(actorId, cooperativeId)` to resolve the cooperative plot listing, backed by bc6 authorisation and membership roll. Same shape as `e4`, whose `SubscriptionQuotaPort` was already mapped: excluding one while keeping the other would leave the map inconsistent with itself. |
+| 2026-09-17 | `EXT03` provider name dropped from the label. The architecture chapter fixes Open-Meteo across the four C4 views; `SENAMHI` was one of two reference providers carried over from `Paso8_external_systems.md`, and no other external entry names a provider. |
 
 - `01-context-map-elegido.drawio` — diagram `Context Map elegido` (`viora-context-map-main`)
 - `02-alternativas-descartadas.drawio` — diagram `Alternativas descartadas` (`viora-context-map-alternatives`)
