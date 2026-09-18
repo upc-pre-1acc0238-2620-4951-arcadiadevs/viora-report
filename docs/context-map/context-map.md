@@ -109,5 +109,5 @@ No Shared Kernel applied in recommended map.
 
 ## Sources
 
-- `01-context-map-recomendado.drawio` — diagram `Context Map recomendado` (`viora-context-map-main`)
+- `01-context-map-elegido.drawio` — diagram `Context Map elegido` (`viora-context-map-main`)
 - `02-alternativas-descartadas.drawio` — diagram `Alternativas descartadas` (`viora-context-map-alternatives`)
