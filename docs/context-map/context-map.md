@@ -1,6 +1,6 @@
 # Viora — Recommended Context Map
 
-Viora recommended Context Map: **9 bounded contexts, 14 relationships, 4 external integrations**. Crop Load Regulation & Thinning Advisory is the primary core context (thick border, OHS); Phenology and Harvest Settlement are the remaining core contexts; four supporting and two generic contexts complete the map. No Shared Kernel is applied.
+Viora recommended Context Map: **9 bounded contexts, 16 relationships, 4 external integrations**. Crop Load Regulation & Thinning Advisory is the primary core context (thick border, OHS); Phenology and Harvest Settlement are the remaining core contexts; four supporting and two generic contexts complete the map. No Shared Kernel is applied.
 
 ## Quick path
 
@@ -8,6 +8,7 @@ Viora recommended Context Map: **9 bounded contexts, 14 relationships, 4 externa
 - **Allowed direction:** every arrow points **upstream -> downstream**; upstream supplies, downstream consumes.
 - **Partnership is closed:** only `bc2 <-> bc1` and `bc2 <-> bc3` are Partnership (mutual). Do not add more.
 - **bc1 exposes events only:** after the removal-guard inversion, bc1 publishes domain events and exposes no query contract. Do not add `bc1 -> bc4`.
+- **bc6 is upstream of institutional authorisation:** bc6 owns which technical manager acts for which cooperative, so `bc6 -> bc8` and `bc6 -> bc4` are separate C/S relationships. `bc6 <-> bc8` is a pair of opposite C/S, **not** Partnership: `e5` carries asynchronous affiliation, `e15` carries synchronous authorisation, and they evolve independently.
 - **Forbidden patterns:** no new Shared Kernel without explicit approval; no Conformist where the downstream keeps its own language (use C/S); externals only via the listed ACL/PL/OHS entries.
 
 ## Bounded contexts
@@ -46,6 +47,8 @@ Rule: **arrow points upstream -> downstream.**
 | e12 | bc1 -> bc6 | C/S |
 | e13 | bc5 -> bc6 | C/S |
 | e14 | bc5 -> bc2 | C/S |
+| e15 | bc6 -> bc8 | C/S |
+| e16 | bc6 -> bc4 | C/S |
 
 Legend:
 
@@ -93,7 +96,7 @@ No Shared Kernel applied in recommended map.
 - [ ] Arrows always read **upstream -> downstream**.
 - [ ] Translate-does-not-adopt => **C/S, not CF**.
 - [ ] No new Shared Kernel without explicit approval.
-- [ ] Partnership only for **bc2 <-> bc1** and **bc2 <-> bc3**.
+- [ ] Partnership only for **bc2 <-> bc1** and **bc2 <-> bc3**. Two opposite C/S arrows are not a Partnership.
 - [ ] Externals only via the listed **ACL / PL / OHS** entries.
 - [ ] OHS providers: **bc1, bc4, bc8, bc9** (bc9 also PL).
 
@@ -108,6 +111,8 @@ No Shared Kernel applied in recommended map.
 > Open question: bc1 is listed as OHS while bc9 is OHS + PL. After the inversion, bc1's public surface is its eleven domain events consumed by three contexts. If a published, stable schema is what qualifies bc9 for PL, bc1 qualifies equally. Decide whether to align the classification or document why they differ.
 
 ## Sources
+| 2026-09-17 | Added `e15 bc6 -> bc8` (C/S). Subscription consumes `InstitutionalAccessPort.requireManager(actorId, cooperativeId)` in its `CMD11` and `CMD33` handlers; bc6 supplies it through `Cooperative.authorizeCodeIssuance(requesterUserId)`. bc9 cannot resolve it: its `ROLE_TECHNICAL_MANAGER` is a platform-wide role with no notion of which cooperative the manager acts for, and that association lives only in `Cooperative`. Subscription translates the contract into its own narrow port without adopting bc6 vocabulary, so C/S applies. |
+| 2026-09-17 | Added `e16 bc6 -> bc4` (C/S). Olive Orchard consumes `CooperativeScopePort.authorizedProducerIds(actorId, cooperativeId)` to resolve the cooperative plot listing, backed by bc6 authorisation and membership roll. Same shape as `e4`, whose `SubscriptionQuotaPort` was already mapped: excluding one while keeping the other would leave the map inconsistent with itself. |
 
 - `01-context-map-elegido.drawio` — diagram `Context Map elegido` (`viora-context-map-main`)
 - `02-alternativas-descartadas.drawio` — diagram `Alternativas descartadas` (`viora-context-map-alternatives`)
