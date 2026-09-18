@@ -36,12 +36,12 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 | 3. Subscription & Cooperative Membership:             04 Comandos (CMD09-CMD11, CMD33)  |
 | 4. Olive Orchard & Plot Management:                   03 Comandos (CMD12 - CMD14)       |
 | 5. Agroclimatic Telemetry & Sensor Monitoring:        05 Comandos (CMD15 - CMD19)       |
-| 6. Phenology & Historical Bearing Analytics:          04 Comandos (CMD20 - CMD23)       |
+| 6. Phenology & Historical Bearing Analytics:          06 Comandos (CMD20-CMD23, 34-35)  |
 | 7. Crop Load Regulation & Thinning Advisory (Core):   05 Comandos (CMD24 - CMD28)       |
 | 8. Harvest Settlement & Performance Reporting:        02 Comandos (CMD29 - CMD30)       |
 | 9. Cooperative Operations & Territorial Intelligence: 02 Comandos (CMD31 - CMD32)       |
 +-----------------------------------------------------------------------------------------+
-| TOTAL DE COMANDOS DEL SISTEMA (POST-ITS AZULES):      33 COMANDOS                       |
+| TOTAL DE COMANDOS DEL SISTEMA (POST-ITS AZULES):      35 COMANDOS                       |
 +-----------------------------------------------------------------------------------------+
 ```
 
@@ -55,7 +55,7 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 
 ---
 
-## 3. Catálogo Detallado de Comandos (CMD01 a CMD33)
+## 3. Catálogo Detallado de Comandos (CMD01 a CMD35)
 
 ### Contexto 1: Identity & Access Management (IAM)
 
@@ -341,6 +341,32 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
   * `EV33` (`WinterThermalAnomalyDetected`) si se detecta calor anómalo invernal (>24°C por >3 días).
   * `EV34` (`PotentialFloralYieldReadjusted`) reajustando la proyección de cuajado ante el déficit de frío.
 
+#### **CMD34: AccumulatePostAnthesisThermalTime**
+* **Iniciador / Actor:** `System Scheduler` (tarea programada de acumulación térmica post-antesis)
+* **Agregado Destino:** `ChillAccumulationTracker`
+* **US / BDD:** `US26`
+* **Propósito de Negocio:** Acumular diariamente la integral térmica post-antesis (grados-día base $10^\circ\text{C}$) hasta alcanzar el umbral varietal de $680.0^\circ\text{C}\cdot\text{día}$ que confirma el endurecimiento del endocarpio y sella la fecha fisiológica límite de aclareo.
+* **Payload Clave:** `plotId`, `date`, `dailyMeanTemperature`.
+* **Invariantes Clave:** Umbral de $680.0^\circ\text{C}\cdot\text{día}$ con $T_{base}=10^\circ\text{C}$; transición irrevocable una vez alcanzado el estadio BBCH 75.
+* **Evento(s) Resultante(s):**
+  * `EV53` (`PitHardeningStageReached`) al alcanzar el umbral térmico.
+
+#### **CMD35: RecordPhenologicalObservation**
+* **Iniciador / Actor:** `Producer`
+* **Agregado Destino:** `ChillAccumulationTracker`
+* **US / BDD:** `US26`
+* **Propósito de Negocio:** Registrar en campo la observación fenológica directa del estadio BBCH que confirma el endurecimiento del endocarpio, como vía complementaria al cómputo automático de la integral térmica post-antesis.
+* **Payload Clave:** `plotId`, `observationDate`, `bbchStage`, `observerId`.
+* **Invariantes Clave:** Estadio BBCH válido y coherente con la ventana fenológica vigente de la parcela.
+* **Evento(s) Resultante(s):**
+  * `EV53` (`PitHardeningStageReached`) al confirmarse el estadio BBCH 75.
+
+> **Incorporación posterior.** `CMD34` y `CMD35` no provienen de la asignación original del taller: se
+> incorporan con numeración al final, pero pertenecen a este Bounded Context y al **Timeline 6 (cuajado y
+> aclareo, cierre biológico por lignificación)**. Ambos convergen en el mismo evento `EV53`: `CMD34`
+> mediante el cómputo automatizado de la integral térmica, y `CMD35` mediante la constatación manual en
+> campo del estadio fenológico.
+
 ---
 
 ### Contexto 7: Crop Load Regulation & Thinning Advisory (Core Domain)
@@ -446,14 +472,14 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 * **US / BDD:** `US32`
 * **Propósito de Negocio:** Calcular la estimación temprana del volumen consolidado de acopio (toneladas de aceituna de mesa y para aceite) para planificar la logística de procesamiento de la cooperativa.
 * **Payload Clave:** `cooperativeId`, `forecastHarvestYear`.
-* **Invariantes Clave:** Si menos del 60% de los socios ha completado muestreos representativos, emitir una advertencia explícita de cobertura insuficiente de datos.
+* **Invariantes Clave:** Si menos del 50% de los socios ha completado muestreos representativos, emitir una advertencia explícita de cobertura insuficiente de datos.
 * **Evento(s) Resultante(s):**
   * `EV50` (`CooperativeIntakeVolumeProjected`).
   * `EV51` (`LowSamplingCoverageWarnedForIntake`) si la representatividad muestral del padrón es inferior a la cuota crítica.
 
 ---
 
-## 4. Matriz de Trazabilidad Comandos $\rightarrow$ Domain Events (EV01 - EV52)
+## 4. Matriz de Trazabilidad Comandos $\rightarrow$ Domain Events (EV01 - EV54)
 
 | ID Comando | Comando Imperativo (PascalCase) | Actor / Iniciador | Agregado Destino | Domain Event(s) Resultante(s) |
 | :---: | :--- | :--- | :--- | :--- |
@@ -490,9 +516,11 @@ Para asegurar rigor formal bajo principios de Domain-Driven Design (DDD) y el pa
 | **CMD31** | `EvaluateCooperativeRiskMatrix` | `System Scheduler` / `TechnicalManager` | `Cooperative` | `EV49` |
 | **CMD32** | `ProjectCooperativeIntakeVolume` | `TechnicalManager` / `System Scheduler` | `Cooperative` | `EV50`, `EV51` |
 | **CMD33** | `ShortenInvitationCodeExpiry` | `TechnicalManager` | `InvitationCodeBatch` | `EV52` |
+| **CMD34** | `AccumulatePostAnthesisThermalTime` | `System Scheduler` | `ChillAccumulationTracker` | `EV53` |
+| **CMD35** | `RecordPhenologicalObservation` | `Producer` | `ChillAccumulationTracker` | `EV53` |
 
 ---
 
 ## 5. Consideraciones de Cierre
 
-La especificación formal de los 33 comandos y sus actores respectivos completa el modelo transaccional de entrada para Viora. Estos comandos actúan como canalizadores de interacción que, al ser recibidos por los agregados de dominio en sus respectivos 9 Bounded Contexts, disparan las invariantes del negocio y generan los eventos inmutables que dinamizan la arquitectura reactiva del sistema.
+La especificación formal de los 35 comandos y sus actores respectivos completa el modelo transaccional de entrada para Viora. Estos comandos actúan como canalizadores de interacción que, al ser recibidos por los agregados de dominio en sus respectivos 9 Bounded Contexts, disparan las invariantes del negocio y generan los eventos inmutables que dinamizan la arquitectura reactiva del sistema.

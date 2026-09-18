@@ -1,12 +1,20 @@
 # Capítulo II: Requirements Development and Software Solution Design
 
+En este capítulo se desarrolla el proceso integral de ingeniería de requisitos y diseño arquitectónico de la solución Viora. A partir de una evaluación exhaustiva del mercado de tecnologías agrícolas y de las soluciones existentes, se identifican las brechas competitivas que fundamentan nuestra propuesta de valor. Posteriormente, mediante técnicas de investigación cualitativa centradas en el usuario (Needfinding), se levantan y analizan las necesidades reales de productores y gestores técnicos de organizaciones olivareras en el sur del Perú. Dicho entendimiento se formaliza en artefactos de modelado ágil y especificación de requisitos, para luego estructurar la arquitectura de software bajo los enfoques estratégico y táctico de Domain-Driven Design (DDD), garantizando una solución modular, escalable y estrictamente alineada con la lógica del dominio agronómico.
+
 ## Competidores
 
+En esta sección se identifican y analizan las principales soluciones tecnológicas existentes en el mercado agrícola internacional y regional vinculadas a la gestión de cultivos, la analítica predictiva de cosechas y el monitoreo agronómico. El propósito es examinar las capacidades operativas y modelos de negocio de herramientas representativas del sector para identificar brechas funcionales no resueltas frente a la problemática de la alternancia productiva del olivo, delimitando el espacio de oportunidad para una propuesta especializada de nicho.
+
 ### Análisis competitivo
+
+Con el objetivo de profundizar en el conocimiento de las alternativas existentes y contrastar sus capacidades frente a las necesidades de la macro-región sur, se desarrolla una evaluación multidimensional. Como se observa en la \autoref{tab:competitive-landscape}, el Competitive Analysis Landscape examina el perfil corporativo, propuesta de valor, mercado objetivo, estrategias comerciales, cartera de productos, modelos de precios, canales de distribución y análisis FODA de cada solución frente a Viora.
+
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.5}
 \begin{longtable}{|p{0.8cm}|p{2.4cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}|p{2.7cm}|}
+\caption{Competitive analysis landscape de la solución Viora frente a competidores del sector} \label{tab:competitive-landscape} \\
 \hline
 \multicolumn{6}{|c|}{\textbf{Competitive analysis landscape}} \\ \hline
 \multicolumn{2}{|p{3.2cm}|}{¿Por qué llevar a cabo este análisis?} & \multicolumn{4}{p{10.8cm}|}{Este análisis permite identificar las brechas funcionales y comerciales de las soluciones agrícolas actuales frente al fenómeno de la vecería (alternancia productiva) del olivo. Al contrastar herramientas generalistas de gestión de costos (Agroptima), sistemas de predicción basados en IA (RawData) y plataformas de soporte a la decisión especializadas (Agrigenio Olivo), se valida la oportunidad de posicionamiento estratégico de Viora: una solución de nicho agro-fisiológica, de diseño offline-first y orientada a la previsión logística de acopio en el sur del Perú.} \\ \hline
@@ -17,6 +25,10 @@
 \multicolumn{2}{|c|}{Criterios} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Viora \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/viora-brand/viora-isologotipo-green.png} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Agrigenio Olivo \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/logos/competitors/agrigenio.png} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} Agroptima \\ \vspace{0.15cm} \includegraphics[width=2.0cm]{report/assets/logos/competitors/agroptima.jpg} \vspace{0.2cm}}} & \multicolumn{1}{c|}{\parbox{2.7cm}{\centering \vspace{0.2cm} RawData \\ \vspace{0.15cm} \includegraphics[height=1.0cm]{report/assets/logos/competitors/rawData.jpg} \vspace{0.2cm}}} \\ \hline
 \endhead
 \hline
+\endfoot
+\hline
+\multicolumn{6}{l}{\parbox{14.0cm}{\vspace{0.15cm} \textit{Nota.} Elaboración propia.}} \\
+\endlastfoot
 \multirow{5}{0.8cm}{\centering\rotatebox{90}{Perfil}} & Overview & Plataforma SaaS AgTech B2B de nicho agronómico especializada en la gestión fisiológica y estabilización de la alternancia productiva (vecería) en olivares del sur del Perú. & Sistema de Soporte a la Decisión (DSS) agronómica especializada en modelado fenológico y epidemiológico del olivo, mediante la integración de datos de estaciones climáticas y sensores de campo. & Software de gestión agrícola integral (FMIS) y cuaderno digital, fundado en España y adquirido por el Grupo ISAGRI en 2022. & Plataforma SaaS de analítica predictiva mediante IA para estimación de cosecha y digitalización de recursos humanos en campo. \\ \cline{2-6} 
  & Ventaja competitiva ¿Qué valor ofrece a los clientes? & \textbf{Ventaja:} Algoritmo exclusivo de cuantificación del índice BBI acoplado a protocolos dinámicos de intervención fisiológica (aclareo, poda) e integración de datos con procesadoras industriales. \par \vspace{0.15cm} \textbf{Valor:} Mitiga las pérdidas de rendimiento de hasta un 90\% en años OFF, optimiza el calibre del fruto en años ON y aporta certidumbre logística a la cadena de acopio. & \textbf{Ventaja:} Modelos predictivos matemáticos con 7 días de anticipación para riesgos de plagas (mosca, prays) e infecciones fúngicas (repilo, antracnosis), y cálculo de la degradación de fungicidas. \par \vspace{0.15cm} \textbf{Valor:} Reducción del uso de fitosanitarios, mitigación de pérdidas por estrés abiótico y optimización de costes operativos. & \textbf{Ventaja:} Interfaz intuitiva enfocada en la facilidad de uso en campo sin capacitación técnica avanzada y cálculo automático del margen económico por parcela y cultivo. \par \vspace{0.15cm} \textbf{Valor:} Reducción de carga administrativa, cumplimiento del cuaderno de explotación y visibilidad financiera precisa de la rentabilidad antes de la venta del producto. & \textbf{Ventaja:} Modelos predictivos de rendimiento agrícola con precisión documentada del 95\%, combinando visión computacional, análisis de imágenes y datos históricos. \par \vspace{0.15cm} \textbf{Valor:} Previsión confiable de los volúmenes de recepción, optimización de la logística de planta y reducción de la incertidumbre comercial en las centrales de acopio. \\ \hline
 \multirow{4}{0.8cm}{\centering\rotatebox{90}{\parbox{2.0cm}{\centering Perfil de\\Marketing}}} & Mercado objetivo & Productores olivareros medianos y grandes de Tacna, cooperativas agrarias y plantas de procesamiento de aceituna de mesa y aceite de oliva en el sur del Perú. & Productores olivareros profesionales, gestores de medianas y grandes fincas, y técnicos agrícolas que requieren control fitosanitario predictivo. & Agricultores individuales, explotaciones agrícolas medianas o grandes y empresas de servicios de maquinaria en España y Latinoamérica. & Cooperativas agrarias, empresas agroexportadoras de alto volumen y grandes comercializadoras del sector hortofrutícola. \\ \cline{2-6} 
@@ -33,17 +45,20 @@
 
 ### Estrategias y tácticas frente a competidores
 
-Para viabilizar el ingreso de Viora al sector olivarero y posicionarnos frente a competidores establecidos, estructuramos una matriz de estrategias cruzadas. Esta matriz define las tácticas iniciales para mitigar la presencia de herramientas como Agrigenio, Agroptima y RawData, aprovechando sus limitaciones en soporte de campo y su enfoque en cultivos masivos para destacar la alta especialización de nuestra plataforma en la alternancia productiva del olivo.
+En la \autoref{tab:matriz-foda-cruzada} se sintetizan las estrategias cruzadas para posicionar a Viora en el sector olivarero frente a las soluciones analizadas.
 
-\begin{center}
+\begin{table}[H]
+\caption{Matriz FODA cruzada de estrategias y tácticas frente a competidores} \label{tab:matriz-foda-cruzada}
+\centering
 \small
-\renewcommand{\arraystretch}{1.5}
-\begin{longtable}{|p{3.0cm}|p{5.5cm}|p{5.5cm}|}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{|p{3.0cm}|p{5.5cm}|p{5.5cm}|}
 \hline
 \textbf{Matriz FODA Cruzada} & \textbf{Fortalezas (F)} \par \vspace{0.05cm} - F1: Foco en vecería y algoritmo BBI. \par - F2: Riego y nutrición por $\Psi_{\text{stem}}$ y $N, K$. \par - F3: App offline-first nativa/Flutter. \par - F4: Inteligencia de acopio B2B. & \textbf{Debilidades (D)} \par \vspace{0.05cm} - D1: Dependencia de series históricas. \par - D2: Toma de datos manual en campo. \par - D3: Marca nueva sin tracción. \\ \hline
 \textbf{Oportunidades (O)} \par \vspace{0.05cm} - O1: Tacna concentra el 81.4\% de olivares (Agraria, 2021). \par - O2: Necesidad de previsión en almazaras (Agraria, 2021). \par - O3: Crecimiento de agroexportaciones (MIDAGRI, 2025). & \textbf{Estrategias FO (Ofensivas)} \par \vspace{0.05cm} - FO1: Capturar el mercado de Tacna ofreciendo el panel de acopio B2B a las almazaras asociadas [F1, F4, O1, O2]. \par \vspace{0.05cm} - FO2: Usar el canal de la app offline-first para captar productores de forma ágil y masiva aprovechando la densidad olivarera de Tacna [F3, O1]. & \textbf{Estrategias DO (Reorientación)} \par \vspace{0.05cm} - DO1: Mitigar la falta de tracción inicial aliándose con almazaras para digitalizar conjuntamente parcelas de proveedores históricos [D3, O2]. \par \vspace{0.05cm} - DO2: Participar en gremios de agroexportadores para realizar demostraciones técnicas y acelerar la penetración de mercado [D3, O3]. \\ \hline
 \textbf{Amenazas (A)} \par \vspace{0.05cm} - A1: Anomalías térmicas invernales por ENOS (Calvo et al., 2024). \par - A2: Volatilidad de fletes y logística naviera (Agraria, 2021). & \textbf{Estrategias FA (Defensivas)} \par \vspace{0.05cm} - FA1: Integrar simulaciones de impacto ENOS en el BBI para estabilizar la nutrición y mitigar mermas [F1, F2, A1]. \par \vspace{0.05cm} - FA2: Apoyar la planificación de acopio ante cuellos de botella logísticos marítimos [F4, A2]. & \textbf{Estrategias DA (Supervivencia)} \par \vspace{0.05cm} - DA1: Diseñar planes de contingencia híbridos (muestreos guiados + calibración) para paliar la falta de historial en temporadas bajo crisis climática ENOS [D1, D2, A1]. \\ \hline
-\end{longtable}
-\end{center}
+\end{tabular}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{table}
 
 \clearpage

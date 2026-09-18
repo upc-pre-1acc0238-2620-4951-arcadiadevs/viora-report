@@ -50,7 +50,7 @@
 \textbf{Código} & \textbf{Apellidos y Nombres} \tabularnewline 
 U20241d924 & Espada Lazo, Piero Anthony \tabularnewline
 U202415749 & Li Gayoso, Diana Carolina \tabularnewline  
-U202416274 & Paredes Maza, Víctor Juan de Dios \tabularnewline
+U202416274 & Paredes Maza, Victor Juan de Dios \tabularnewline
 U202411774 & Santi Guerrero, Fabrizio Alonso \tabularnewline
 U202412248 & Trinidad León, Jahat Jassiel \tabularnewline 
 \end{tabular} }

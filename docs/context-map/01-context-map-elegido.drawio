@@ -1,0 +1,193 @@
+<mxfile host="65bd71144e">
+    <diagram name="Context Map recomendado" id="viora-context-map-main">
+        <mxGraphModel dx="1918" dy="791" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="900" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="title" value="&lt;b&gt;Viora — Context Map&lt;/b&gt;&lt;br&gt;&lt;i&gt;Mapa elegido — 9 bounded contexts, 16 relaciones, 4 integraciones externas&lt;/i&gt;" style="text;html=1;align=left;verticalAlign=middle;fontSize=16;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="10" width="700" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="ext1" value="Payment Gateway Service&lt;br&gt;&lt;i&gt;EXT01&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="70" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="bc8" value="&lt;b&gt;Subscription &amp;amp;&lt;br&gt;Cooperative Membership&lt;/b&gt;&lt;br&gt;&lt;i&gt;Generic&lt;/i&gt; · &lt;b&gt;OHS&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="185" width="200" height="75" as="geometry"/>
+                </mxCell>
+                <mxCell id="bc7" value="&lt;b&gt;User Profiles&lt;/b&gt;&lt;br&gt;&lt;i&gt;Supporting&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="330" width="200" height="75" as="geometry"/>
+                </mxCell>
+                <mxCell id="bc9" value="&lt;b&gt;Identity &amp;amp; Access&lt;br&gt;Management&lt;/b&gt;&lt;br&gt;&lt;i&gt;Generic&lt;/i&gt; · &lt;b&gt;OHS + PL&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="475" width="200" height="75" as="geometry"/>
+                </mxCell>
+                <mxCell id="ext4" value="Transactional Mail Service&lt;br&gt;&lt;i&gt;EXT04&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="60" y="620" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="bc4" value="&lt;b&gt;Olive Orchard &amp;amp;&lt;br&gt;Plot Management&lt;/b&gt;&lt;br&gt;&lt;i&gt;Supporting&lt;/i&gt; · &lt;b&gt;OHS&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="475" width="200" height="75" as="geometry"/>
+                </mxCell>
+                <mxCell id="ext2" value="Satellite Basemap &amp;amp; GIS Provider&lt;br&gt;&lt;i&gt;EXT02&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="360" y="620" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="bc2" value="&lt;b&gt;Phenology &amp;amp; Historical&lt;br&gt;Bearing Analytics&lt;/b&gt;&lt;br&gt;&lt;i&gt;Core&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="520" y="70" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bc1" value="&lt;b&gt;Crop Load Regulation&lt;br&gt;&amp;amp; Thinning Advisory&lt;/b&gt;&lt;br&gt;&lt;i&gt;Core primario&lt;/i&gt; · &lt;b&gt;OHS&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=3;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1120" y="70" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bc3" value="&lt;b&gt;Harvest Settlement &amp;amp;&lt;br&gt;Performance Reporting&lt;/b&gt;&lt;br&gt;&lt;i&gt;Core&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="870" y="200" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="bc5" value="&lt;b&gt;Agroclimatic Telemetry&lt;br&gt;&amp;amp; Sensor Monitoring&lt;/b&gt;&lt;br&gt;&lt;i&gt;Supporting&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="475" width="200" height="75" as="geometry"/>
+                </mxCell>
+                <mxCell id="ext3" value="Agroclimatic Weather API&lt;br&gt;&lt;i&gt;EXT03&lt;/i&gt;" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="620" width="200" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="bc6" value="&lt;b&gt;Cooperative Operations &amp;amp;&lt;br&gt;Territorial Intelligence&lt;/b&gt;&lt;br&gt;&lt;i&gt;Supporting&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1320" y="330" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="e1" value="CF" style="endArrow=blockThin;html=1;fontSize=11;fontStyle=1;endFill=1;" parent="1" source="bc9" target="bc7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;" parent="1" source="bc7" target="bc8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;jumpStyle=arc;" parent="1" source="bc7" target="bc6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="360" y="368"/>
+                            <mxPoint x="550" y="368"/>
+                            <mxPoint x="920" y="368"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e4" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;jumpStyle=arc;" parent="1" source="bc8" target="bc4" edge="1">
+                    <mxGeometry x="-0.1886" relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="320" y="223"/>
+                            <mxPoint x="320" y="510"/>
+                        </Array>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e5" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.25;entryDx=0;entryDy=0;jumpStyle=arc;" parent="1" source="bc8" target="bc6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="320" y="204"/>
+                            <mxPoint x="510" y="204"/>
+                            <mxPoint x="510" y="310"/>
+                            <mxPoint x="920" y="310"/>
+                            <mxPoint x="920" y="350"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e6" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;" parent="1" source="bc4" target="bc5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;jumpStyle=arc;" parent="1" source="bc4" target="bc2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="460" y="110"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e8" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;jumpStyle=arc;" parent="1" source="bc4" target="bc1" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="510" y="330"/>
+                            <mxPoint x="1220" y="330"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e9" value="Partnership" style="endArrow=blockThin;startArrow=blockThin;html=1;fontSize=11;fontStyle=1;endFill=1;startFill=1;strokeWidth=2;" parent="1" source="bc2" target="bc1" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e10" value="Partnership" style="endArrow=blockThin;startArrow=blockThin;html=1;fontSize=11;fontStyle=1;endFill=1;startFill=1;strokeWidth=2;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" parent="1" source="bc2" target="bc3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="920" y="130"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e11" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" parent="1" source="bc1" target="bc3" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1170" y="240"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e12" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;" parent="1" source="bc1" target="bc6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1420" y="110"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e13" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;" parent="1" source="bc5" target="bc6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="1040" y="510"/>
+                            <mxPoint x="1040" y="470"/>
+                            <mxPoint x="1420" y="470"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e14" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;jumpStyle=arc;" parent="1" source="bc5" target="bc2" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="780" y="200"/>
+                            <mxPoint x="620" y="200"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e15" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;entryX=1;entryY=0.75;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;jumpStyle=arc;" parent="1" source="bc6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="1320" y="367.15789473684214" as="sourcePoint"/>
+                        <mxPoint x="260" y="250.25" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="1370" y="440"/>
+                            <mxPoint x="1000" y="440"/>
+                            <mxPoint x="400" y="440"/>
+                            <mxPoint x="400" y="250"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="e16" value="C/S" style="endArrow=blockThin;html=1;fontSize=11;endFill=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;jumpStyle=arc;" parent="1" source="bc6" target="bc4" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="640" y="390"/>
+                            <mxPoint x="640" y="494"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="x1" value="ACL + OHS" style="endArrow=blockThin;html=1;dashed=1;fontSize=10;endFill=1;strokeColor=#d79b00;" parent="1" source="ext1" target="bc8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="x2" value="PL (GeoJSON)" style="endArrow=blockThin;html=1;dashed=1;fontSize=10;endFill=1;strokeColor=#d79b00;" parent="1" source="ext2" target="bc4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="x3" value="ACL" style="endArrow=blockThin;html=1;dashed=1;fontSize=10;endFill=1;strokeColor=#d79b00;" parent="1" source="ext3" target="bc5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="x4" value="ACL" style="endArrow=blockThin;html=1;dashed=1;fontSize=10;endFill=1;strokeColor=#d79b00;" parent="1" source="bc9" target="ext4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="leg" value="&lt;b&gt;Leyenda&lt;/b&gt;&lt;br&gt;&lt;br&gt;La flecha apunta de &lt;b&gt;upstream&lt;/b&gt; a &lt;b&gt;downstream&lt;/b&gt;.&lt;br&gt;&lt;br&gt;&lt;b&gt;C/S&lt;/b&gt; — Customer / Supplier&lt;br&gt;&lt;b&gt;CF&lt;/b&gt; — Conformist&lt;br&gt;&lt;b&gt;Partnership&lt;/b&gt; — dependencia mutua&lt;br&gt;&lt;b&gt;OHS&lt;/b&gt; — Open Host Service&lt;br&gt;&lt;b&gt;PL&lt;/b&gt; — Published Language&lt;br&gt;&lt;b&gt;ACL&lt;/b&gt; — Anticorruption Layer&lt;br&gt;&lt;br&gt;&lt;i&gt;No se aplicó Shared Kernel:&lt;br&gt;ver alternativa descartada.&lt;/i&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#ffffff;strokeColor=#999999;fontSize=11;" parent="1" vertex="1">
+                    <mxGeometry x="1320" y="490" width="260" height="230" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg1" value="Core" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1320" y="740" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg2" value="Supporting" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1410" y="740" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg3" value="Generic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1500" y="740" width="80" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="lg4" value="Sistema externo" style="rounded=1;whiteSpace=wrap;html=1;dashed=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" parent="1" vertex="1">
+                    <mxGeometry x="1320" y="780" width="170" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

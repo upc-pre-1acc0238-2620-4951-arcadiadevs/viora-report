@@ -65,14 +65,15 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 | POL16: Prescription Voiding On Plot Removal           (Baja Predial -> Regulación Carga)      |
 | POL17: Quota Release On Invitation Code Expiry        (Códigos -> Licencia Corporativa)       |
 | POL18: Historic Record Update On Thinning Execution   (Aclareo -> Liquidación Cosecha)        |
+| POL19: Thinning Window Closure On Pit Hardening       (Fenología -> Regulación Carga)         |
 +-----------------------------------------------------------------------------------------------+
-| TOTAL DE POLÍTICAS REACTIVAS FORMALIZADAS: 18 POLÍTICAS (POL01 - POL18)                       |
+| TOTAL DE POLÍTICAS REACTIVAS FORMALIZADAS: 19 POLÍTICAS (POL01 - POL19)                       |
 +-----------------------------------------------------------------------------------------------+
 ```
 
 ---
 
-## 3. Catálogo Detallado de Políticas Reactivas (POL01 a POL18)
+## 3. Catálogo Detallado de Políticas Reactivas (POL01 a POL19)
 
 ---
 
@@ -97,7 +98,7 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 * **Regla Reactiva Formal:**
   * **WHENEVER:** `CooperativeCodeRedeemed` (`EV13`)
   * **IF:** `producerAlreadyAffiliatedToCooperative == false`
-  * **THEN:** `AffiliateCooperativeProducer` (obteniendo los datos de contacto desde `Profile`).
+  * **THEN:** `AffiliateCooperativeProducer` (obteniendo los datos de contacto desde `Profile`) $\rightarrow$ emite `MemberAffiliated` (`EV54`).
 * **Lógica de Negocio Agronómica:** Al canjear un cupón corporativo, el productor obtiene su suscripción y, acto seguido, la política lo afilia formalmente a la cartera de socios de la cooperativa utilizando su identidad validada en `Profile`, haciéndolo visible para el gestor técnico en la matriz sectorial. La condición de guarda es únicamente de idempotencia frente a reentregas del evento: ni la validez del código ni la disponibilidad de cupo se reverifican aquí. La validez ya fue comprobada dentro de `CMD10` —el evento `EV13` es la prueba de que el canje prosperó— y el cupo de plazas y superficie se comprometió **al emitir** el código, no al canjearlo. Reverificar el cupo en este punto rechazaría precisamente los canjes de una cooperativa que agotó su emisión, que son los legítimos.
 
 ---
@@ -315,12 +316,25 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 
 ---
 
+### **POL19: Thinning Window Closure On Pit Hardening Policy**
+* **Contexto Emisor:** `Phenology & Historical Bearing Analytics`
+* **Contexto Receptor:** `Crop Load Regulation & Thinning Advisory`
+* **Agregado Origen $\rightarrow$ Agregado Destino:** `ChillAccumulationTracker` $\rightarrow$ `FruitThinningPrescription`
+* **US / BDD:** `US26`, `US27` (Escenario 3)
+* **Regla Reactiva Formal:**
+  * **WHENEVER:** `PitHardeningStageReached` (`EV53`)
+  * **IF:** `prescriptionStatus in ['SAMPLING_IN_PROGRESS', 'PRESCRIBED']`
+  * **THEN:** `CloseThinningWindowByPhenology` (`CMD27`) $\rightarrow$ emite `ThinningWindowClosedByPitHardening` (`EV43`).
+* **Lógica de Negocio Agronómica:** Cuando la integral térmica post-antesis acumulada alcanza los $680.0^\circ\text{C}\cdot\text{día}$ (con $T_{base}=10^\circ\text{C}$), el endocarpio completa su lignificación (estadio fenológico BBCH 75, endurecimiento del carozo), un hecho biológico irreversible que sella la fecha límite fisiológica para aclarear. La política traduce este hito fenológico de `Phenology & Historical Bearing Analytics` en el cierre formal de la ventana de aclareo dentro de `Crop Load Regulation & Thinning Advisory`, evitando que el sistema siga aceptando muestreos o determine una prescripción nueva sobre una ventana que la fisiología del olivo ya cerró.
+
+---
+
 ## 4. Matriz de Trazabilidad: Evento Disparador $\rightarrow$ Política $\rightarrow$ Comando Destino
 
 | ID Política | Nombre de la Política | Evento Disparador (`EVxx`) | Contexto Origen $\rightarrow$ Destino | Comando / Acción Ejecutada |
 | :---: | :--- | :--- | :--- | :--- |
 | **POL01** | *Auto-Activation On Payment Approved* | `EV10` (`SubscriptionPaymentApproved`) | Suscripciones $\rightarrow$ Suscripciones | `ActivateSubscription` (`EV11`) |
-| **POL02** | *Producer Affiliation On Cooperative Code* | `EV13` (`CooperativeCodeRedeemed`) | Suscripciones $\rightarrow$ Cooperativa | `AffiliateCooperativeProducer` |
+| **POL02** | *Producer Affiliation On Cooperative Code* | `EV13` (`CooperativeCodeRedeemed`) | Suscripciones $\rightarrow$ Cooperativa | `AffiliateCooperativeProducer` (`EV54`) |
 | **POL03** | *Member Contact Sync On Profile Updated* | `EV09` (`ContactProfileUpdated`) | Profiles $\rightarrow$ Cooperativa | `UpdateCooperativeMemberContact` |
 | **POL04** | *Critical Hydric Stress Alert Dispatcher* | `EV22` (`HydricStressAlertTriggered`) | Telemetría $\rightarrow$ Telemetría | `SurfaceAgroclimaticInAppAlert` |
 | **POL05** | *Thermal Shock Flowering Protection* | `EV23` (`ThermalThresholdAlertTriggered`) | Telemetría $\rightarrow$ Telemetría | `SurfaceAgroclimaticInAppAlert` |
@@ -337,9 +351,10 @@ $$\mathbf{WHENEVER}\text{ [Domain Event]}\; [\mathbf{IF}\text{ Condition}] \long
 | **POL16** | *Prescription Voiding On Plot Removal* | `EV17` (`PlotRemoved`) | Parcelas $\rightarrow$ Regulación Carga | `VoidPendingThinningPrescriptions` |
 | **POL17** | *Quota Release On Invitation Code Expiry* | `EV52` (`InvitationCodeExpired`) | Suscripciones $\rightarrow$ Suscripciones | `ReleaseLicenseQuota` |
 | **POL18** | *Historic Record Update On Thinning Execution* | `EV44` (`ThinningExecutionConfirmed`) | Regulación Carga $\rightarrow$ Liquidación Cosecha | `RecordThinningExecutionOnCycleLog` |
+| **POL19** | *Thinning Window Closure On Pit Hardening* | `EV53` (`PitHardeningStageReached`) | Fenología $\rightarrow$ Regulación Carga | `CloseThinningWindowByPhenology` (`EV43`) |
 
 ---
 
 ## 5. Consideraciones de Cierre
 
-Las 18 políticas reactivas formalizadas orquestan la automatización asíncrona del ecosistema Viora. Al desacoplar la emisión de eventos de la ejecución de comandos receptores, se garantiza que las alertas fenológicas, la sincronización de contactos de socios, la protección frente al estrés hídrico, la devolución de cupo corporativo y las proyecciones cooperativas se actualicen dinámicamente preservando la autonomía y consistencia de cada contexto delimitado.
+Las 19 políticas reactivas formalizadas orquestan la automatización asíncrona del ecosistema Viora. Al desacoplar la emisión de eventos de la ejecución de comandos receptores, se garantiza que las alertas fenológicas, la sincronización de contactos de socios, la protección frente al estrés hídrico, la devolución de cupo corporativo y las proyecciones cooperativas se actualicen dinámicamente preservando la autonomía y consistencia de cada contexto delimitado.

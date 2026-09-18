@@ -91,7 +91,7 @@ De acuerdo con las especificaciones funcionales y el modelo de requerimientos de
 * **Bounded Context Relacionado:** `Olive Orchard & Plot Management`
 * **Agregado Asociado:** `Plot`
 * **Eventos y Comandos Vinculados:**
-  * Alimenta las vistas: `RM02` (`PlotCadastralMapView`) y `RM13` (`CooperativeTerritorialRiskMatrixView`).
+  * Alimenta las vistas: `RM03` (`PlotCadastralMapView`) y `RM14` (`CooperativeTerritorialRiskMatrixView`).
   * Habilita los comandos: `CMD12: DelimitPlot` y `CMD13: UpdatePlotBoundaries`.
   * Genera el evento: `EV15` (`PlotDelimited`).
 * **Historias de Usuario:** `US09`, `US10`, `US12`.

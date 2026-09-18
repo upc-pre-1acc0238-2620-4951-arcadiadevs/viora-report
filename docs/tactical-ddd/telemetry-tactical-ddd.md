@@ -176,7 +176,7 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
   * `POST /api/v1/plots/{plotId}/iot-devices` - Da de alta un nodo sensor virtual en la parcela (`TS16` / `CMD15` / `US13`). Responde `201 Created` con `IotDeviceResource`, `409 Conflict` ante nombre duplicado en el lote, o `400 Bad Request` por datos inválidos.
   * `GET /api/v1/plots/{plotId}/iot-devices` - Lista el inventario de nodos virtuales vinculados a la parcela (`TS17` / `US14`). Responde `200 OK` con arreglo de `IotDeviceResource`, o `404 Not Found` si la parcela no existe.
   * `GET /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Obtiene el detalle operativo de un nodo sensor virtual específico. Responde `200 OK` o `404 Not Found`.
-  * `PUT /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Configura y calibra la profundidad de la sonda edáfica y factores edafológicos (`TS42` / `CMD16` / `US15`). Responde `200 OK` con `IotDeviceResource` o `400 Bad Request`.
+  * `PUT /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Renombra el nodo y configura y calibra la profundidad de la sonda edáfica y factores edafológicos (`TS42` / `CMD16` / `US15`). Responde `200 OK` con `IotDeviceResource` o `400 Bad Request`.
   * `DELETE /api/v1/plots/{plotId}/iot-devices/{deviceId}` - Desvincula lógicamente el nodo virtual preservando el historial previo (`TS18` / `CMD17` / `US16`). Responde `204 No Content` o `404 Not Found`.
 
 * **`PlotTelemetryController`** (Ruta base: `/api/v1/plots/{plotId}/telemetries`):
@@ -192,7 +192,7 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
 
 ##### Resources (DTOs / Request & Response Models)
 * **`CreateIotDeviceRequest`**: `{ name: String, type: String, depthCm: Integer, soilTextureType: String, calibrationMultiplier: Double }`
-* **`CalibrateIotDeviceRequest`**: `{ depthCm: Integer, soilTextureType: String, calibrationMultiplier: Double }`
+* **`CalibrateIotDeviceRequest`**: `{ name: String, depthCm: Integer, soilTextureType: String, calibrationMultiplier: Double }`
 * **`IotDeviceResource`**: `{ id: UUID, plotId: UUID, name: String, type: String, depthCm: Integer, soilTextureType: String, calibrationMultiplier: Double, status: String, lastReadingTimestamp: Instant, createdAt: Instant }`
 * **`IngestTelemetryBatchRequest`**: `{ sensorNodeId: UUID, readings: List<HourlyReadingItemRequest> }`
 * **`HourlyReadingItemRequest`**: `{ observedAt: Instant, soilMoisture30cm: Double, soilMoisture60cm: Double, airTemperature: Double, relativeHumidity: Double }`
@@ -409,6 +409,13 @@ Estructura relacional en PostgreSQL para las tablas de este Bounded Context:
 * **Tolerancia a Fallos del Servicio Meteorológico:** Open-Meteo se consume mediante un circuito resiliente con caché local en memoria (Caffeine) con un TTL de 3 horas. Si la API externa no responde o falla por conectividad, se retorna de inmediato el último pronóstico almacenado en caché notificando la antigüedad de la sincronización (`TS20` / `US19` Escenario 2).
 * **Manejo Centralizado de Excepciones (RFC 7807):** Toda violación de invariantes de dominio (ej. profundidad inválida, nombre duplicado, rangos de fechas ilógicos) se traduce en un payload estructurado `ProblemDetail` conforme al estándar RFC 7807 (`TS31`), retornando códigos `400 Bad Request`, `404 Not Found` o `409 Conflict`.
 * **Auditoría Inmutable:** Marcas temporales `created_at` y `updated_at` administradas automáticamente vía Spring Data JPA Auditing (`@CreatedDate`, `@LastModifiedDate`).
+
+##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+* **Caché Local de Telemetría y Pronóstico Offline:**
+  * *Android Nativo (Room / SQLite):* `TelemetryCacheDao` y entidades `LocalTelemetrySeriesEntity`, `LocalWeatherForecastEntity` que cachean las últimas 24 lecturas horarias y el pronóstico a 7 días de la parcela activa para consulta en campo sin red.
+  * *Cross-Platform (sqflite / SQLite):* Tablas `telemetry_cache` y `forecast_cache` con clave compuesta `(plot_id, fetched_at)` gestionadas por `LocalDataAccess`.
+* **Visualización y Alertas en Dispositivo:**
+  * Componentes de interfaz móvil (`Agronomy and Harvest UI`) que renderizan curvas de humedad de suelo a 30/60 cm y activan banners de alerta local inmediata ante incidentes críticos de estrés hídrico (`HydricStressAlertTriggeredEvent`).
 
 ---
 
@@ -771,18 +778,26 @@ erDiagram
 ```structurizr
 workspace "Viora - Telemetry Component Architecture" "Agroclimatic Telemetry Component View" {
     model {
-        producer = person "Olive Producer" "Monitors soil moisture, SWP thresholds, and microclimate conditions."
-        manager = person "Technical Manager" "Monitors cooperative sectorial telemetry and agroclimatic incidents."
         openMeteo = softwareSystem "Open-Meteo API" "External weather forecast provider."
         simulator = softwareSystem "Telemetry Simulator" "Ingests synthetic hourly agroclimatic readings via edge API."
 
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline telemetry cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline telemetry cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database for telemetry series and forecast cache" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database for telemetry series and forecast cache" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 iotCtrl = component "PlotIotDeviceController" "Exposes IoT sensor node registration, calibration and lifecycle endpoints" "Spring MVC Controller"
                 telemCtrl = component "PlotTelemetryController" "Exposes hourly telemetry query and ingestion endpoints" "Spring MVC Controller"
                 forecastCtrl = component "PlotForecastController" "Exposes 7-day weather forecast queries" "Spring MVC Controller"
                 
-                telemCommandService = component "TelemetryCommandService" "Coordinates IoT node registration/calibration (CMD15-17) and hourly reading ingestion (CMD18)" "Spring Service / Command Service"
+                telemCommandService = component "TelemetryCommandService" "Coordinates IoT node registration/calibration and hourly reading ingestion" "Spring Service / Command Service"
                 telemQueryService = component "TelemetryQueryService" "Handles queries for telemetry series, active sensor nodes, and 7-day weather forecast" "Spring Service / Query Service"
                 forecastScheduler = component "ForecastSyncScheduler" "Scheduled background task synchronizing weather forecast cache" "Spring @Scheduled Component"
                 
@@ -802,14 +817,18 @@ workspace "Viora - Telemetry Component Architecture" "Agroclimatic Telemetry Com
             }
         }
 
-        producer -> iotCtrl "Manages sensors [HTTPS/REST]"
-        producer -> telemCtrl "Queries telemetry [HTTPS/REST]"
-        producer -> forecastCtrl "Queries forecast [HTTPS/REST]"
-        manager -> telemCtrl "Monitors sectorial telemetry [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes telemetry and forecast cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes telemetry and forecast cache [SQLite / sqflite]"
+        nativeApp -> iotCtrl "Manages sensors [HTTPS/REST]"
+        crossApp -> iotCtrl "Manages sensors [HTTPS/REST]"
+        nativeApp -> telemCtrl "Queries telemetry [HTTPS/REST]"
+        crossApp -> telemCtrl "Queries telemetry [HTTPS/REST]"
+        nativeApp -> forecastCtrl "Queries forecast [HTTPS/REST]"
+        crossApp -> forecastCtrl "Queries forecast [HTTPS/REST]"
         simulator -> telemCtrl "Ingests hourly readings [HTTPS/REST]"
 
-        iotCtrl -> telemCommandService "Delegates sensor commands (CMD15, CMD16, CMD17)"
-        telemCtrl -> telemCommandService "Delegates telemetry ingestion (CMD18)"
+        iotCtrl -> telemCommandService "Delegates sensor commands"
+        telemCtrl -> telemCommandService "Delegates telemetry ingestion"
         telemCtrl -> telemQueryService "Delegates telemetry series and threshold queries"
         forecastCtrl -> telemQueryService "Delegates forecast queries"
         forecastScheduler -> weatherAdapter "Triggers 3-hour forecast cache sync"
@@ -817,7 +836,7 @@ workspace "Viora - Telemetry Component Architecture" "Agroclimatic Telemetry Com
         telemCommandService -> evaluatorService "Evaluates microclimatic stress thresholds"
         telemCommandService -> vsnRepo "Loads / persists sensor nodes via domain port"
         telemCommandService -> seriesRepo "Persists telemetry series via domain port"
-        telemCommandService -> eventPublisher "Publishes domain events (EV21, EV22, EV23)"
+        telemCommandService -> eventPublisher "Publishes domain events"
         
         telemQueryService -> vsnRepo "Fetches sensor nodes via domain port"
         telemQueryService -> seriesRepo "Fetches telemetry series via domain port"
@@ -942,14 +961,14 @@ interface TelemetrySeriesRepository <<Repository>> {
   + save(series: TelemetrySeries): TelemetrySeries
 }
 
-class VirtualSensorNodeRegisteredEvent <<DomainEvent>> {
+class VirtualSensorNodeLinkedEvent <<DomainEvent>> {
   - sensorNodeId: UUID
   - plotId: UUID
   - name: String
   - occurredOn: Instant
 }
 
-class HourlyTelemetryReadingIngestedEvent <<DomainEvent>> {
+class TelemetryDataIngestedEvent <<DomainEvent>> {
   - seriesId: UUID
   - sensorNodeId: UUID
   - readingId: UUID
@@ -965,7 +984,7 @@ class HydricStressAlertTriggeredEvent <<DomainEvent>> {
   - occurredOn: Instant
 }
 
-class WeatherForecastSyncedEvent <<DomainEvent>> {
+class WeatherForecastIngestedEvent <<DomainEvent>> {
   - seriesId: UUID
   - plotId: UUID
   - forecastDate: LocalDate
@@ -978,10 +997,10 @@ TelemetrySeries "1" *--> "0..7" WeatherForecastDay : holds
 TelemetrySeries "1" *--> "0..*" AgroclimaticIncident : tracks
 TelemetrySeries ..> AgroclimaticThresholdEvaluator : uses
 AgroclimaticThresholdEvaluator ..> HourlyTelemetryReading : evaluates readings
-VirtualSensorNode ..> VirtualSensorNodeRegisteredEvent : emits
-TelemetrySeries ..> HourlyTelemetryReadingIngestedEvent : emits (EV21)
+VirtualSensorNode ..> VirtualSensorNodeLinkedEvent : emits
+TelemetrySeries ..> TelemetryDataIngestedEvent : emits (EV21)
 TelemetrySeries ..> HydricStressAlertTriggeredEvent : emits (EV22)
-TelemetrySeries ..> WeatherForecastSyncedEvent : emits (EV25)
+TelemetrySeries ..> WeatherForecastIngestedEvent : emits (EV25)
 VirtualSensorNodeRepository ..> VirtualSensorNode : manages
 TelemetrySeriesRepository ..> TelemetrySeries : manages
 @enduml

@@ -1,6 +1,10 @@
 # Capítulo I: Presentación
 
+En este capítulo inicial se introduce la identidad de la organización y el marco estratégico sobre el cual se fundamenta el proyecto. Se expone la visión, misión y conformación multidisciplinaria del equipo de trabajo, seguido de la caracterización de la problemática que enfrentan los productores y organizaciones olivareras en el sur del país. Asimismo, se describe el enfoque de diseño centrado en el usuario adoptado para formular una solución orientada a estabilizar la producción y generar previsibilidad en la cadena de valor agrícola.
+
 ## Startup Profile
+
+Esta sección presenta la identidad institucional de ArcadiaDevs como equipo desarrollador y empresa emergente de base tecnológica. Se detallan los principios que orientan nuestro trabajo, la motivación detrás de nuestra marca y los perfiles de los integrantes que articulan la iniciativa, destacando los roles, competencias y responsabilidades asumidas para el diseño y construcción de la plataforma Viora.
 
 ### Descripción de la Startup
 
@@ -44,7 +48,7 @@ Somos un equipo de ingeniería y diseño que convierte evidencia agronómica dis
 \hfill
 \begin{minipage}[c]{0.72\textwidth}
 \raggedright
-\hspace*{0.5in}Estabilizar la producción del olivar peruano mediante una plataforma basada en datos que traduce la evidencia agronómica en decisiones de manejo de carga dimensionadas y oportunas, permitiendo al productor romper el ciclo de alternancia y a la cadena de valor planificar con previsibilidad.
+\hspace*{0.5in}Estabilizar la producción del olivar peruano mediante una plataforma basada en datos que traduce la evidencia agronómica en decisiones de manejo de carga dimensionadas y oportunas, permitiendo al productor atenuar la severidad de la alternancia, mitigar el impacto del año OFF y a la cadena de valor planificar con previsibilidad.
 \end{minipage}
 \vspace{0.25cm}
 }}
@@ -79,48 +83,6 @@ Somos un equipo de ingeniería y diseño que convierte evidencia agronómica dis
 ### Perfiles de integrantes del equipo
 
 ```{=latex}
-\noindent\textbf{Paredes Maza, Víctor (U202416274) - CEO \& Product Owner}
-
-\noindent\begin{minipage}[c]{0.22\textwidth}
-\centering
-\includegraphics[width=0.9\linewidth]{report/assets/members/victor.png}
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.74\textwidth}
-\raggedright
-\hspace*{0.5in}Soy Víctor Paredes Maza, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CEO de Viora. Me especializo en diseño de producto y desarrollo frontend, con conocimientos en Angular, TypeScript, HTML/CSS y herramientas de diseño como Figma, además de motion graphics con GSAP y Three.js. Aporto al equipo la definición de la visión del producto, la construcción del sistema de diseño y la coordinación de sprints bajo GitFlow y Conventional Commits. Me caracterizo por mi criterio estético y mi atención al detalle, enfocado en construir productos útiles, consistentes y confiables. Actualmente amplío mi dominio hacia el backend con Spring Boot para liderar el producto de extremo a extremo.
-\end{minipage}
-
-\vspace{0.6cm}
-
-\noindent\textbf{Santi Guerrero, Fabrizio Alonso (U202411774) - CPO \& System Architect}
-
-\noindent\begin{minipage}[c]{0.22\textwidth}
-\centering
-\includegraphics[width=0.9\linewidth]{report/assets/members/santi.png}
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.74\textwidth}
-\raggedright
-\hspace*{0.5in}Soy Fabrizio Santi Guerrero, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CPO de Viora. Me especializo en arquitectura de software y desarrollo backend con conocimientos en SQL, C++, Python, Java y JavaScript. Aporto al equipo una sólida capacidad analítica y lógica desarrollada en programación competitiva. Me caracterizo por mi perseverancia y disciplina, enfocado en diseñar soluciones estructuradas y robustas de alta calidad.
-\end{minipage}
-
-\vspace{0.6cm}
-
-\noindent\textbf{Trinidad León, Jahat Jassiel (U202412248) - CTO \& Integrador DevOps}
-
-\noindent\begin{minipage}[c]{0.22\textwidth}
-\centering
-\includegraphics[width=0.9\linewidth]{report/assets/members/jahat.png}
-\end{minipage}
-\hfill
-\begin{minipage}[c]{0.74\textwidth}
-\raggedright
-\hspace*{0.5in}Soy Jahat Trinidad, tengo 25 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CTO de Viora. Me especializo en desarrollo backend con C++ y bases de datos, con conocimientos en SQL, Java y JavaScript, además de experiencia en frontend con Angular y React. Aporto al equipo la capacidad de convertir problemas ambiguos en diseños claros y robustos, el liderazgo técnico del flujo de trabajo bajo GitFlow con gestión por sprints y la integración continua de las entregas desde mi rol de Integrador DevOps. Me caracterizo por mi pensamiento lógico, mi enfoque en abstracciones claras y mi perseverancia para construir sistemas eficientes y confiables. Actualmente profundizo en arquitectura de software y prácticas de automatización para liderar la evolución técnica del producto.
-\end{minipage}
-
-\vspace{0.6cm}
-
 \noindent\textbf{Espada Lazo, Piero Anthony (U20241d924) - COO, Researcher \& QA}
 
 \noindent\begin{minipage}[c]{0.22\textwidth}
@@ -145,8 +107,49 @@ Somos un equipo de ingeniería y diseño que convierte evidencia agronómica dis
 \begin{minipage}[c]{0.74\textwidth}
 \raggedright
 \hspace*{0.5in}Soy Diana Li Gayoso, tengo 19 años, estudio Ingeniería de Software en la Universidad Peruana de Ciencias Aplicadas y soy CMO Viora. Cuento con conocimientos en arquitectura de software y desarrollo backend, así como en SQL y C++. Me considero una persona responsable, disciplinada y perseverante, con capacidad para afrontar retos y adaptarme a diferentes situaciones. Me caracterizo por mi compromiso, resiliencia y puntualidad, además de mi constante interés por seguir aprendiendo y mejorar mis habilidades.
+\end{minipage}
 
+\vspace{0.6cm}
+
+\noindent\textbf{Paredes Maza, Victor Juan de Dios (U202416274) - CEO \& Product Owner}
+
+\noindent\begin{minipage}[c]{0.22\textwidth}
+\centering
+\includegraphics[width=0.9\linewidth]{report/assets/members/victor.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.74\textwidth}
+\raggedright
+\hspace*{0.5in}Soy Victor Paredes Maza, tengo 19 años, estudio Ingeniería de Software en la UPC y soy CEO de Viora. Me especializo en diseño de producto y frontend con Angular, TypeScript y Figma. Aporto la visión estratégica del producto, el diseño de interfaces y la coordinación de sprints bajo GitFlow. Me caracterizo por mi atención al detalle y enfoque en construir soluciones útiles, consistentes y de alto impacto.
+\end{minipage}
+
+\newpage
+
+\noindent\textbf{Santi Guerrero, Fabrizio Alonso (U202411774) - CPO \& System Architect}
+
+\noindent\begin{minipage}[c]{0.22\textwidth}
+\centering
+\includegraphics[width=0.9\linewidth]{report/assets/members/santi.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.74\textwidth}
+\raggedright
+\hspace*{0.5in}Soy Fabrizio Santi Guerrero, tengo 19 años, estudio Ingeniería de Software en la UPC y soy CPO de Viora. Me especializo en arquitectura de software y backend con Java, Spring Boot y SQL. Aporto al equipo una sólida capacidad analítica y lógica, enfocado en diseñar soluciones estructuradas, escalables y de alta calidad.
+\end{minipage}
+
+\vspace{0.6cm}
+
+\noindent\textbf{Trinidad León, Jahat Jassiel (U202412248) - CTO \& Integrador DevOps}
+
+\noindent\begin{minipage}[c]{0.22\textwidth}
+\centering
+\includegraphics[width=0.9\linewidth]{report/assets/members/jahat.png}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.74\textwidth}
+\raggedright
+\hspace*{0.5in}Soy Jahat Trinidad, tengo 25 años, estudio Ingeniería de Software en la UPC y soy CTO de Viora. Me especializo en desarrollo backend, bases de datos y DevOps con C++, Java, SQL y Angular. Aporto el liderazgo técnico del flujo de trabajo bajo GitFlow, la integración continua de entregables y la resolución estructurada de problemas complejos. Me caracterizo por mi pensamiento lógico y enfoque en construir sistemas confiables.
 \end{minipage}
 ```
 
-\newpage
+\clearpage

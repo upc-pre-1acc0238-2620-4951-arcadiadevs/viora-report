@@ -158,6 +158,13 @@ Estructura relacional en PostgreSQL para la tabla de perfiles de usuario:
 * **Control de Autorización y Titularidad (Owner Check):** En los endpoints `/api/v1/profiles/{userId}`, el filtro de seguridad y el controlador validan que el `userId` solicitado coincida exactamente con el claim del token JWT (`sub` / `userId`), denegando la consulta o modificación con `403 Forbidden` ante intentos de acceso a perfiles ajenos (`TS04`, `TS05`).
 * **Auditoría Inmutable:** Registro riguroso de marcas temporales de creación y modificación en UTC (`created_at`, `updated_at`) mediante `@CreatedDate` y `@LastModifiedDate`.
 
+##### 5. Perspectiva Táctica de la Aplicación Móvil (Android / Flutter)
+* **Caché Local de Perfil y Acceso a Datos:**
+  * *Android Nativo (Room / SQLite):* `ProfileDao` y entidad local `LocalProfileEntity` que almacenan en caché el nombre, país y teléfono del usuario autenticado para visualización instantánea en drawer y cabeceras de navegación sin requerir conexión continua.
+  * *Cross-Platform (sqflite / SQLite):* Tabla local `local_profiles` administrada por `LocalDataAccess` con invalidación explícita ante mutaciones (`ContactProfileUpdatedEvent`).
+* **Validación de Formatos en Cliente:**
+  * Componentes de interfaz móvil (`Account and Profile UI`) que incorporan validación reactiva de formato E.164 previa al envío de formularios de onboarding y edición de contacto, sincronizando el feedback de error en tiempo real.
+
 ---
 
 #### Bounded Context Software Architecture Component Level Diagrams
@@ -247,14 +254,21 @@ Estructura relacional en PostgreSQL para la tabla de perfiles de usuario:
 ```structurizr
 workspace "Viora - User Profiles Component Architecture" "User Profiles Component View" {
     model {
-        producer = person "Olive Producer" "Manages contact details and personal profile."
-        manager = person "Technical Manager" "Manages contact details and institutional identity."
-
         viora = softwareSystem "Viora Platform" {
+            nativeApp = container "Android Application" "Mobile client with Room offline profile cache" "Kotlin / Jetpack Compose"
+            crossApp = container "Cross-Platform Application" "Mobile client with sqflite offline profile cache" "Flutter / Dart"
+            
+            androidDb = container "Android Local Database" "Local offline SQLite database caching user profile metadata" "Room / SQLite" {
+                tags "Database"
+            }
+            crossDb = container "Cross-Platform Local Database" "Local offline SQLite database caching user profile metadata" "sqflite / SQLite" {
+                tags "Database"
+            }
+
             backend = container "Modular Backend API" "Spring Boot core service" "Java / Spring Boot" {
                 profileController = component "ProfileController" "Exposes profile registration, query and contact update REST endpoints" "Spring MVC Controller"
                 
-                profileCommandService = component "ProfileCommandService" "Orchestrates profile creation and contact updates (CMD07, CMD08)" "Spring Service / Command Service"
+                profileCommandService = component "ProfileCommandService" "Orchestrates profile creation and contact updates" "Spring Service / Command Service"
                 profileQueryService = component "ProfileQueryService" "Handles profile retrieval and role verification queries" "Spring Service / Query Service"
                 
                 phoneValidator = component "PhoneNumberValidator" "Validates international E.164 phone formats and regional carriers" "Domain Service / libphonenumber"
@@ -267,15 +281,17 @@ workspace "Viora - User Profiles Component Architecture" "User Profiles Componen
             }
         }
 
-        producer -> profileController "Reads / updates profile [HTTPS/REST]"
-        manager -> profileController "Reads / updates profile [HTTPS/REST]"
+        nativeApp -> androidDb "Reads / writes local profile cache [SQLite / Room]"
+        crossApp -> crossDb "Reads / writes local profile cache [SQLite / sqflite]"
+        nativeApp -> profileController "Reads / updates profile [HTTPS/REST]"
+        crossApp -> profileController "Reads / updates profile [HTTPS/REST]"
         
         profileController -> profileCommandService "Delegates write operations (commands)"
         profileController -> profileQueryService "Delegates read operations (queries)"
         
         profileCommandService -> phoneValidator "Validates phone format against E.164"
         profileCommandService -> profileRepo "Loads / persists profiles via domain port"
-        profileCommandService -> eventPublisher "Publishes domain events (EV04, EV05)"
+        profileCommandService -> eventPublisher "Publishes domain events"
         
         profileQueryService -> profileRepo "Fetches profiles via domain port"
         

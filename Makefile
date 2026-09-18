@@ -3,9 +3,9 @@ PDF_DEFAULTS=pandoc/report.yaml
 REFERENCE_DOC=pandoc/templates/reference.docx
 
 ifeq ($(OS),Windows_NT)
-  PHASE := $(shell powershell -NoProfile -Command "$$d = Get-Date -Format 'yyyyMMdd'; if ($$d -lt '20260917') { 'av1' } elseif ($$d -lt '20261005') { 'tb1' } elseif ($$d -lt '20261112') { 'av2' } else { 'tb2' }")
+  PHASE := $(shell powershell -NoProfile -Command "$$d = Get-Date -Format 'yyyyMMdd'; if ($$d -lt '20260919') { 'av1' } elseif ($$d -lt '20261005') { 'tb1' } elseif ($$d -lt '20261112') { 'av2' } else { 'tb2' }")
 else
-  PHASE := $(shell d=$$(date +%Y%m%d); if [ "$$d" -lt "20260917" ]; then echo "av1"; elif [ "$$d" -lt "20261005" ]; then echo "tb1"; elif [ "$$d" -lt "20261112" ]; then echo "av2"; else echo "tb2"; fi)
+  PHASE := $(shell d=$$(date +%Y%m%d); if [ "$$d" -lt "20260919" ]; then echo "av1"; elif [ "$$d" -lt "20261005" ]; then echo "tb1"; elif [ "$$d" -lt "20261112" ]; then echo "av2"; else echo "tb2"; fi)
 endif
 
 
