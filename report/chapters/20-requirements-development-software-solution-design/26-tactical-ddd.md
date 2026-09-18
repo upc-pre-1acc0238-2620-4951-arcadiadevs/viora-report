@@ -54,7 +54,7 @@ En la \autoref{tab:tactical-2} se presentan los atributos, tipos de datos e inva
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo UserAccount en Identity and Access Management (IAM).} \label{tab:tactical-2} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -311,8 +311,8 @@ En la \autoref{tab:tactical-9} se detallan los adaptadores técnicos y component
 \hline
 \multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{UserAccount} \texttt{JpaRepository} & Persistence & Spring Data JPA & Acceso a tabla \texttt{user\_accounts} sobre PostgreSQL. \\
-\texttt{JpaUserAccount} \texttt{RepositoryAdapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{UserAccountRepository}. \\
+\texttt{UserAccount} \texttt{JpaRepository} & Persistence & Spring Data JPA & Acceso a tabla \texttt{user\_} \texttt{accounts} sobre PostgreSQL. \\
+\texttt{JpaUserAccount} \texttt{RepositoryAdapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{UserAccount} \texttt{Repository}. \\
 \texttt{JwtTokenProvider} & Security & JJWT / Nimbus & Emisión, firma criptográfica HMAC-SHA256 y parseo de tokens JWT. \\
 \texttt{BCryptPassword} \texttt{Service} & Security Adapter & Spring Security Crypto & Implementa \texttt{HashingService} con costo de cómputo configurable. \\
 \texttt{BrevoEmail} \texttt{DeliveryAdapter} & External Adapter & Brevo REST API & Despacho de plantillas transaccionales para recuperación de contraseña. \\
@@ -354,14 +354,14 @@ En la \autoref{tab:tactical-10} se expone el diccionario de datos relacional con
 \hline
 \multicolumn{5}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{user\_accounts} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador único inmutable de la cuenta. \\
-\texttt{user\_accounts} & \texttt{email} & \texttt{VARCHAR(255)} & \texttt{NOT NULL, UNIQUE} & Correo electrónico normalizado para inicio de sesión. \\
-\texttt{user\_accounts} & \texttt{password\_hash} & \texttt{VARCHAR(255)} & \texttt{NOT NULL} & Hash seguro derivado con sal (BCrypt). \\
-\texttt{user\_accounts} & \texttt{role} & \texttt{VARCHAR(50)} & \texttt{NOT NULL, CHECK} & Rol del usuario (\texttt{ROLE\_PRODUCER}, \texttt{ROLE\_TECHNICAL\_MANAGER}). \\
-\texttt{user\_accounts} & \texttt{reset\_token} & \texttt{VARCHAR(100)} & \texttt{NULL} & Token criptográfico temporal de restablecimiento. \\
-\texttt{user\_accounts} & \texttt{reset\_token\_} \texttt{expires\_at} & \texttt{TIMESTAMPTZ} & \texttt{NULL} & Fecha y hora límite para uso del token de recuperación. \\
-\texttt{user\_accounts} & \texttt{created\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL DEFAULT NOW()} & Marca temporal de auditoría de creación. \\
-\texttt{user\_accounts} & \texttt{updated\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL DEFAULT NOW()} & Marca temporal de última modificación. \\
+\texttt{user\_} \texttt{accounts} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador único inmutable de la cuenta. \\
+\texttt{user\_} \texttt{accounts} & \texttt{email} & \texttt{VARCHAR(255)} & \texttt{NOT NULL, UNIQUE} & Correo electrónico normalizado para inicio de sesión. \\
+\texttt{user\_} \texttt{accounts} & \texttt{password\_hash} & \texttt{VARCHAR(255)} & \texttt{NOT NULL} & Hash seguro derivado con sal (BCrypt). \\
+\texttt{user\_} \texttt{accounts} & \texttt{role} & \texttt{VARCHAR(50)} & \texttt{NOT NULL, CHECK} & Rol del usuario (\texttt{ROLE\_PRODUCER}, \texttt{ROLE\_TECHNICAL\_MANAGER}). \\
+\texttt{user\_} \texttt{accounts} & \texttt{reset\_token} & \texttt{VARCHAR(100)} & \texttt{NULL} & Token criptográfico temporal de restablecimiento. \\
+\texttt{user\_} \texttt{accounts} & \texttt{reset\_token\_} \texttt{expires\_at} & \texttt{TIMESTAMPTZ} & \texttt{NULL} & Fecha y hora límite para uso del token de recuperación. \\
+\texttt{user\_} \texttt{accounts} & \texttt{created\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL DEFAULT NOW()} & Marca temporal de auditoría de creación. \\
+\texttt{user\_} \texttt{accounts} & \texttt{updated\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL DEFAULT NOW()} & Marca temporal de última modificación. \\
 \end{longtable}
 \end{center}
 
@@ -419,7 +419,7 @@ En la \autoref{tab:tactical-11} se esquematiza la distribución arquitectónica 
 \endlastfoot
 Interface & \texttt{AuthController} & Exposición de endpoints REST para registro, login, refresh y reseteo. & Spring MVC, Jakarta Validation \\
 Application & \texttt{UserAccount} \texttt{CommandService}; \texttt{UserAccount} \texttt{QueryService} & Orquestación de comandos de registro/autenticación/reseteo y consultas de sesión/credenciales. & Spring \texttt{@Transactional}, \texttt{@Service} \\
-Domain & \texttt{UserAccountRepository}; \texttt{BCryptPasswordHasher} & Contrato de persistencia de cuentas (puerto de dominio) y servicio de derivación de claves con sal. & Java / Spring Security Crypto \\
+Domain & \texttt{UserAccount} \texttt{Repository}; \texttt{BCryptPasswordHasher} & Contrato de persistencia de cuentas (puerto de dominio) y servicio de derivación de claves con sal. & Java / Spring Security Crypto \\
 Infrastructure & \texttt{JpaUserAccount} \texttt{RepositoryAdapter}; \texttt{JwtTokenProvider}; \texttt{BrevoEmailDeliveryAdapter} & Implementación JPA sobre PostgreSQL, emisión de JWT y entrega de correos vía Brevo. & Spring Data JPA, Nimbus, Brevo API \\
 \end{longtable}
 \end{center}
@@ -435,8 +435,10 @@ Infrastructure & \texttt{JpaUserAccount} \texttt{RepositoryAdapter}; \texttt{Jwt
 6. Se dispara el evento de autenticación a través del publicador de eventos para auditoría.
 7. Se retorna `AuthenticatedUserResource` (`200 OK`) a la aplicación cliente.
 
+A continuación, en la \autoref{fig:c4-component-iam} se esquematiza el diagrama de componentes del Bounded Context Identity and Access Management:
+
 \begin{figure}[H]
-\caption{C4 Model - Component Level: Diagrama de Componentes de Identity and Access Management.}
+\caption{C4 Model - Component Level: Diagrama de Componentes de Identity and Access Management.} \label{fig:c4-component-iam}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-iam.png}
@@ -446,13 +448,13 @@ Infrastructure & \texttt{JpaUserAccount} \texttt{RepositoryAdapter}; \texttt{Jwt
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML y de diseño de base de datos para el Bounded Context Identity and Access Management.
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-iam}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-iam}) para el Bounded Context Identity and Access Management:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Identity and Access Management.}
+\caption{Diagrama de Clases UML: Domain Layer de Identity and Access Management.} \label{fig:class-diagram-iam}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-iam.png}
@@ -463,7 +465,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Identity and Access Management.}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Identity and Access Management.} \label{fig:database-diagram-iam}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-iam.png}
@@ -515,7 +517,7 @@ En la \autoref{tab:tactical-13} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo UserProfile en User Profiles.} \label{tab:tactical-13} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -864,7 +866,7 @@ En la \autoref{tab:tactical-22} se esquematiza la distribución arquitectónica 
 \endlastfoot
 Interface & \texttt{ProfileController} & Endpoints REST para alta, consulta y actualización de perfiles de usuario. & Spring MVC, Jakarta Validation \\
 Application & \texttt{Profile} \texttt{CommandService}; \texttt{Profile} \texttt{QueryService} & Orquestación de comandos de alta y actualización de contacto y consultas de perfil civil. & Spring \texttt{@Transactional}, \texttt{@Service} \\
-Domain & \texttt{ProfileRepository}; \texttt{PhoneNumberValidator} & Contrato de persistencia de perfil (puerto de dominio) y servicio de validación de formato internacional E.164. & Java puro / libphonenumber \\
+Domain & \texttt{Profile} \texttt{Repository}; \texttt{PhoneNumberValidator} & Contrato de persistencia de perfil (puerto de dominio) y servicio de validación de formato internacional E.164. & Java puro / libphonenumber \\
 Infrastructure & \texttt{JpaProfile} \texttt{RepositoryAdapter}; \texttt{DomainEventPublisher} & Persistencia JPA sobre PostgreSQL (\texttt{profiles.profiles}) y despacho de eventos de dominio. & Spring Data JPA, Spring Events \\
 \end{longtable}
 \end{center}
@@ -879,8 +881,10 @@ Infrastructure & \texttt{JpaProfile} \texttt{RepositoryAdapter}; \texttt{DomainE
 5. Se persisten las modificaciones atómicamente en PostgreSQL a través de `ProfileRepository` (implementado por `JpaProfileRepositoryAdapter`).
 6. Se despacha el evento de actualización de contacto vía `DomainEventPublisher`, el cual es consumido asíncronamente por *Cooperative Operations* para actualizar el padrón de socios.
 
+A continuación, en la \autoref{fig:c4-component-profiles} se esquematiza el diagrama de componentes del Bounded Context User Profiles:
+
 \begin{figure}[H]
-\caption{C4 Model - Component Level: Diagrama de Componentes de User Profiles.}
+\caption{C4 Model - Component Level: Diagrama de Componentes de User Profiles.} \label{fig:c4-component-profiles}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-profiles.png}
@@ -890,13 +894,13 @@ Infrastructure & \texttt{JpaProfile} \texttt{RepositoryAdapter}; \texttt{DomainE
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML y de diseño de base de datos para el Bounded Context User Profiles.
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-profiles}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-profiles}) para el Bounded Context User Profiles:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de User Profiles.}
+\caption{Diagrama de Clases UML: Domain Layer de User Profiles.} \label{fig:class-diagram-profiles}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-profiles.png}
@@ -907,10 +911,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de User Profiles.}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de User Profiles.} \label{fig:database-diagram-profiles}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-profiles.png}
+\includegraphics[width=0.60\textwidth]{report/assets/tactical-diagrams/database-diagram-profiles.png}
 \caption*{\textit{Nota.} Estructura de la tabla profiles, índices y restricciones en PostgreSQL. Elaboración propia.}
 \end{figure}
 
@@ -959,7 +963,7 @@ En la \autoref{tab:tactical-24} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo Subscription en Subscription and Cooperative Membership.} \label{tab:tactical-24} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -979,7 +983,7 @@ En la \autoref{tab:tactical-24} se presentan los atributos, tipos de datos e inv
 \texttt{producerId} & \texttt{UserId} & Identificador del productor olivarero titular. \\
 \texttt{plan} & \texttt{SubscriptionPlan} & Modalidad comercial: individual o patrocinada cooperativa. \\
 \texttt{quota} & \texttt{HectaresQuota} & Límite máximo contratado de superficie predial en hectáreas. \\
-\texttt{status} & \texttt{SubscriptionStatus} & Estado del contrato:\texttt{PENDING\_} \texttt{PAYMENT}, \texttt{ACTIVE}, \texttt{EXPIRED}, \texttt{CANCELLED}. \\
+\texttt{status} & \texttt{Subscription} \texttt{Status} & Estado del contrato:\texttt{PENDING\_} \texttt{PAYMENT}, \texttt{ACTIVE}, \texttt{EXPIRED}, \texttt{CANCELLED}. \\
 \texttt{period} & \texttt{Optional<} \texttt{SubscriptionPeriod>} & Período de vigencia con marcas temporales de inicio y fin. \\
 \end{longtable}
 \end{center}
@@ -1051,7 +1055,7 @@ En la \autoref{tab:tactical-27} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo CooperativeLicense en Subscription and Cooperative Membership.} \label{tab:tactical-27} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -1142,7 +1146,7 @@ En la \autoref{tab:tactical-30} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo InvitationCodeBatch en Subscription and Cooperative Membership.} \label{tab:tactical-30} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -1230,7 +1234,7 @@ En la \autoref{tab:tactical-33} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo InvitationCode en Subscription and Cooperative Membership.} \label{tab:tactical-33} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -1309,7 +1313,7 @@ En la \autoref{tab:tactical-35} se especifican los objetos de valor inmutables (
 \texttt{SubscriptionId}, \texttt{LicenseId}, \texttt{BatchId} & \texttt{UUID v4} & Identificadores únicos universales inmutables. \\
 \texttt{HectaresQuota} & \texttt{Double} & Superficie máxima permitida bajo suscripción ($\ge 0.5\text{ ha}$). \\
 \texttt{SubscriptionPeriod} & \texttt{startsAt: Instant}, \texttt{endsAt: Instant} & Ventana temporal de vigencia activa del servicio. \\
-\texttt{SubscriptionStatus} & \texttt{Enum} & Estados del contrato: \texttt{PENDING\_} \texttt{PAYMENT}, \texttt{ACTIVE}, \texttt{EXPIRED}, \texttt{CANCELLED}. \\
+\texttt{Subscription} \texttt{Status} & \texttt{Enum} & Estados del contrato: \texttt{PENDING\_} \texttt{PAYMENT}, \texttt{ACTIVE}, \texttt{EXPIRED}, \texttt{CANCELLED}. \\
 \texttt{CodeStatus} & \texttt{Enum} & Estados de la invitación: \texttt{AVAILABLE}, \texttt{REDEEMED}, \texttt{EXPIRED}, \texttt{REVOKED}. \\
 \texttt{Money} & \texttt{amount: BigDecimal}, \texttt{currency: String} & Monto dinerario exacto con divisa ISO 4217 (\texttt{PEN}). \\
 \end{longtable}
@@ -1642,7 +1646,7 @@ En la \autoref{tab:tactical-42} se esquematiza la distribución arquitectónica 
 \endlastfoot
 Interface & \texttt{SubscriptionController}; \texttt{PaymentWebhookController}; \texttt{CooperativeInvitationController}; \texttt{CodeRedemptionController} & Endpoints REST para suscripciones, checkout, webhooks IPN, canje y lotes de códigos. & Spring MVC, Webhook Filter \\
 Application & \texttt{Subscription} \texttt{CommandService}; \texttt{Subscription} \texttt{QueryService}; \texttt{PaymentReconciliation} \texttt{CommandService}; \texttt{CooperativeInvitation} \texttt{CommandService}; \texttt{CooperativeInvitation} \texttt{QueryService} & Orquestacinnn de comandos comerciales/pagos, consultas de planes/cuotas, conciliación IPN y canjes. & Spring \texttt{@Transactional}, \texttt{@Service} \\
-Domain & \texttt{SubscriptionRepository}; \texttt{CooperativeInvitationBatchRepository}; \texttt{CooperativeLicenseRepository}; \texttt{InvitationCodeGenerator}; \texttt{HectareQuotaPolicy}; \texttt{SubscriptionActivationPolicy} & Puertos de repositorio y servicios de dominio para cuotas de hectáreas, códigos y períodos de vigencia. & Java Security / SecureRandom \\
+Domain & \texttt{Subscription} \texttt{Repository}; \texttt{CooperativeInvitation} \texttt{BatchRepository}; \texttt{CooperativeLicense} \texttt{Repository}; \texttt{InvitationCodeGenerator}; \texttt{HectareQuotaPolicy}; \texttt{SubscriptionActivationPolicy} & Puertos de repositorio y servicios de dominio para cuotas de hectáreas, códigos y períodos de vigencia. & Java Security / SecureRandom \\
 Infrastructure & \texttt{JpaSubscription} \texttt{RepositoryAdapter}; \texttt{JpaInvitationBatch} \texttt{RepositoryAdapter}; \texttt{JpaCooperativeLicense} \texttt{RepositoryAdapter}; \texttt{MercadoPagoPayment} \texttt{Adapter}; \texttt{DomainEventPublisher} & Adaptadores de persistencia JPA sobre PostgreSQL, cliente HTTP de Mercado Pago y publicador de eventos. & Spring Data JPA, HTTP Client \\
 \end{longtable}
 \end{center}
@@ -1658,8 +1662,10 @@ Infrastructure & \texttt{JpaSubscription} \texttt{RepositoryAdapter}; \texttt{Jp
 6. En el modelo corporativo, el socio canjea su cupo con `POST` \nolinkurl{/api/v1/cooperative-code-redemptions}; `CodeRedemptionController` delega en `CooperativeInvitationCommandService`, el cual valida el código contra `CooperativeInvitationBatchRepository`, marca el código como redimido y emite evento de canje hacia *Cooperative Operations*.
 7. El gestor cooperativo puede consultar el estado de lotes y cupos mediante `CooperativeInvitationQueryService`, o bien acortar la vigencia de un código disponible despachando `POST` \nolinkurl{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} hacia `CooperativeInvitationCommandService`, lo cual dispara evento de expiración y restituye cupos a la licencia en `CooperativeLicenseRepository`.
 
+A continuación, en la \autoref{fig:c4-component-subscription} se esquematiza el diagrama de componentes del Bounded Context Subscription and Cooperative Membership:
+
 \begin{figure}[H]
-\caption{C4 Model - Component Level: Diagrama de Componentes de Subscription and Cooperative Membership.}
+\caption{C4 Model - Component Level: Diagrama de Componentes de Subscription and Cooperative Membership.} \label{fig:c4-component-subscription}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-subscription.png}
@@ -1669,13 +1675,13 @@ Infrastructure & \texttt{JpaSubscription} \texttt{RepositoryAdapter}; \texttt{Jp
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML y de diseño de base de datos para el Bounded Context Subscription and Cooperative Membership.
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-subscription}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-subscription-part1} y \autoref{fig:database-diagram-subscription-part2}) para el Bounded Context Subscription and Cooperative Membership:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Subscription and Cooperative Membership.}
+\caption{Diagrama de Clases UML: Domain Layer de Subscription and Cooperative Membership.} \label{fig:class-diagram-subscription}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-subscription.png}
@@ -1686,18 +1692,18 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Subscription and Cooperative Membership (Parte 1).}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Subscription and Cooperative Membership (Parte 1).} \label{fig:database-diagram-subscription-part1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.65\textwidth]{report/assets/tactical-diagrams/database-diagram-subscription-part1.png}
+\includegraphics[width=0.35\textwidth]{report/assets/tactical-diagrams/database-diagram-subscription-part1.png}
 \caption*{\textit{Nota.} Tablas relacionales principales y acumuladores de cuotas (Parte 1). Elaboración propia.}
 \end{figure}
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Subscription and Cooperative Membership (Parte 2).}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Subscription and Cooperative Membership (Parte 2).} \label{fig:database-diagram-subscription-part2}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.65\textwidth]{report/assets/tactical-diagrams/database-diagram-subscription-part2.png}
+\includegraphics[width=0.35\textwidth]{report/assets/tactical-diagrams/database-diagram-subscription-part2.png}
 \caption*{\textit{Nota.} Tablas relacionales de lotes y códigos de canje (Parte 2). Elaboración propia.}
 \end{figure}
 
@@ -1746,7 +1752,7 @@ En la \autoref{tab:tactical-44} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo Plot en Olive Orchard and Plot Management.} \label{tab:tactical-44} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -1865,10 +1871,10 @@ En la \autoref{tab:tactical-47} se definen los servicios puros de dominio, los c
 \texttt{Cadastral} \texttt{Geometry} \texttt{Service} & Domain Service & \texttt{validate(polygon: CadastralPolygon): void} & Verifica topología cerrada sin autointersecciones ni traslapes. \\
 \texttt{Cadastral} \texttt{Geometry} \texttt{Service} & Domain Service & \texttt{netAreaHa(polygon: CadastralPolygon): Decimal} & Calcula superficie neta en hectáreas geodésicas. \\
 \texttt{Dendrometry} \texttt{Service} & Domain Service & \texttt{calculate(areaHa: Decimal, grid: PlantingGrid, treeCount: int):} \texttt{DendrometricAttributes} & Deriva densidades teóricas y observadas por hectárea. \\
-\texttt{PlotRepository} & Repository & \texttt{findById(id: PlotId): Optional<Plot>} & Carga la parcela por su identificador primario. \\
-\texttt{PlotRepository} & Repository & \texttt{findActiveByOwner(} \texttt{ownerId: OwnerId):} \texttt{List<Plot>} & Lista parcelas activas del productor para gestión predial. \\
-\texttt{PlotRepository} & Repository & \texttt{sumActiveAreaBy} \texttt{Owner(ownerId:} \texttt{OwnerId): Decimal} & Consolida superficie activa para auditoría de cuotas. \\
-\texttt{PlotRepository} & Repository & \texttt{save(plot: Plot): Plot} & Persiste atómicamente la entidad y linderos espaciales. \\
+\texttt{Plot} \texttt{Repository} & Repository & \texttt{findById(id: PlotId): Optional<Plot>} & Carga la parcela por su identificador primario. \\
+\texttt{Plot} \texttt{Repository} & Repository & \texttt{findActiveByOwner(} \texttt{ownerId: OwnerId):} \texttt{List<Plot>} & Lista parcelas activas del productor para gestión predial. \\
+\texttt{Plot} \texttt{Repository} & Repository & \texttt{sumActiveAreaBy} \texttt{Owner(ownerId:} \texttt{OwnerId): Decimal} & Consolida superficie activa para auditoría de cuotas. \\
+\texttt{Plot} \texttt{Repository} & Repository & \texttt{save(plot: Plot): Plot} & Persiste atómicamente la entidad y linderos espaciales. \\
 \texttt{PlotDelimited} \texttt{Event} & Domain Event & \texttt{plotId: UUID, ownerId: UUID, polygon: String, variety: String, occurredOn: Instant} & Notifica alta de cuartel para inicializar telemetría. \\
 \texttt{PlotBoundaries} \texttt{UpdatedEvent} & Domain Event & \texttt{plotId: UUID, ownerId: UUID, polygon: String, areaHa: Decimal, occurredOn: Instant} & Notifica alteración de linderos para recalibrar modelos. \\
 \texttt{PlotRemovedEvent} & Domain Event & \texttt{plotId: UUID, ownerId: UUID, reason: String, occurredOn: Instant} & Notifica baja lógica de parcela para desvincular sensores. \\
@@ -2004,8 +2010,8 @@ En la \autoref{tab:tactical-51} se detallan los adaptadores técnicos y componen
 \hline
 \multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{PlotJpaRepository} & Persistence & Spring Data JPA & Acceso a tabla \texttt{plots} en PostgreSQL con soporte PostGIS/GeoJSON. \\
-\texttt{JpaPlotRepository} \texttt{Adapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{PlotRepository}. \\
+\texttt{PlotJpa} \texttt{Repository} & Persistence & Spring Data JPA & Acceso a tabla \texttt{plots} en PostgreSQL con soporte PostGIS/GeoJSON. \\
+\texttt{JpaPlotRepository} \texttt{Adapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{Plot} \texttt{Repository}. \\
 \texttt{MapboxSpatial} \texttt{ValidationAdapter} & Adapter & GeoTools / JTS & Validación topológica de polígonos y cálculo esferoidal de área. \\
 \end{longtable}
 \end{center}
@@ -2119,8 +2125,8 @@ En la \autoref{tab:tactical-53} se esquematiza la distribución arquitectónica 
 \endlastfoot
 Interface & \texttt{PlotController} & Controladores REST con parámetro canónico \texttt{{plotId}} para registro, actualización, baja y sincronización delta. & Spring MVC, Jakarta Validation \\
 Application & \texttt{PlotCommandService}; \texttt{PlotQueryService} & Orquestación de comandos de predio, control de concurrencia optimista (\texttt{If-Match}) y consultas de parcelas. & Spring \texttt{@Transactional}, \texttt{@Service} \\
-Domain & \texttt{PlotRepository}; \texttt{GeospatialPolygonValidator}; \texttt{SubscriptionQuotaPort} & Contrato de persistencia (puerto de dominio), validación topológica JTS y verificación de cupo de ha. & Java puro / JTS Topology Suite \\
-Infrastructure & \texttt{JpaPlotRepositoryAdapter}; \texttt{DomainEventPublisher} & Persistencia JPA en PostgreSQL con soporte geoespacial PostGIS y despacho de eventos de dominio. & Spring Data JPA, PostGIS, Hibernate Spatial \\
+Domain & \texttt{Plot} \texttt{Repository}; \texttt{GeospatialPolygonValidator}; \texttt{SubscriptionQuotaPort} & Contrato de persistencia (puerto de dominio), validación topológica JTS y verificación de cupo de ha. & Java puro / JTS Topology Suite \\
+Infrastructure & \texttt{JpaPlotRepository} \texttt{Adapter}; \texttt{DomainEventPublisher} & Persistencia JPA en PostgreSQL con soporte geoespacial PostGIS y despacho de eventos de dominio. & Spring Data JPA, PostGIS, Hibernate Spatial \\
 \end{longtable}
 \end{center}
 
@@ -2134,8 +2140,10 @@ Infrastructure & \texttt{JpaPlotRepositoryAdapter}; \texttt{DomainEventPublisher
 5. Se persiste el predio y su registro de revisión histórica en PostgreSQL a través del puerto `PlotRepository` (implementado por `JpaPlotRepositoryAdapter`).
 6. Se dispara `PlotRegisteredEvent` vía `DomainEventPublisher`, permitiendo que *Telemetry* y *Phenology* sincronicen el seguimiento agronómico.
 
+A continuación, en la \autoref{fig:c4-component-orchard} se esquematiza el diagrama de componentes del Bounded Context Olive Orchard and Plot Management:
+
 \begin{figure}[H]
-\caption{C4 Model - Component Level: Diagrama de Componentes de Olive Orchard and Plot Management.}
+\caption{C4 Model - Component Level: Diagrama de Componentes de Olive Orchard and Plot Management.} \label{fig:c4-component-orchard}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-orchard.png}
@@ -2145,13 +2153,13 @@ Infrastructure & \texttt{JpaPlotRepositoryAdapter}; \texttt{DomainEventPublisher
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML y de diseño de base de datos para el Bounded Context Olive Orchard.
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-orchard}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-orchard}) para el Bounded Context Olive Orchard and Plot Management:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Olive Orchard and Plot Management.}
+\caption{Diagrama de Clases UML: Domain Layer de Olive Orchard and Plot Management.} \label{fig:class-diagram-orchard}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-orchard.png}
@@ -2162,10 +2170,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Olive Orchard and Plot Management.}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Olive Orchard and Plot Management.} \label{fig:database-diagram-orchard}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-orchard.png}
+\includegraphics[width=0.60\textwidth]{report/assets/tactical-diagrams/database-diagram-orchard.png}
 \caption*{\textit{Nota.} Estructura de la tabla plots, columnas espaciales e índices en PostgreSQL. Elaboración propia.}
 \end{figure}
 
@@ -2214,7 +2222,7 @@ En la \autoref{tab:tactical-55} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo VirtualSensorNode en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-55} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -2308,7 +2316,7 @@ En la \autoref{tab:tactical-58} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo TelemetrySeries en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-58} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -2399,7 +2407,7 @@ En la \autoref{tab:tactical-61} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo HourlyTelemetryReading en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-61} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -2488,7 +2496,7 @@ En la \autoref{tab:tactical-64} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo WeatherForecastDay en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-64} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -2577,7 +2585,7 @@ En la \autoref{tab:tactical-67} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo AgroclimaticIncident en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-67} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -2897,10 +2905,10 @@ En la \autoref{tab:tactical-75} se expone el diccionario de datos relacional con
 \texttt{telemetry\_} \texttt{readings} & \texttt{humidity} & \texttt{NUMERIC(5,2)} & \texttt{NOT NULL} & Humedad relativa porcentual. \\
 \texttt{telemetry\_} \texttt{readings} & \texttt{soil\_moisture} & \texttt{NUMERIC(5,2)} & \texttt{NULL} & Humedad de suelo o potencial mátrico. \\
 \texttt{telemetry\_} \texttt{readings} & \texttt{recorded\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL, INDEX} & Marca temporal exacta de la medición. \\
-\texttt{iot\_devices} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador de la sonda o sensor. \\
-\texttt{iot\_devices} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL} & Parcela asociada. \\
-\texttt{iot\_devices} & \texttt{calibration\_} \texttt{offset} & \texttt{NUMERIC(5,2)} & \texttt{NOT NULL DEFAULT 0} & Desviación calibrada de la sonda. \\
-\texttt{iot\_devices} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL} & Estado del dispositivo (\texttt{ACTIVE}, \texttt{CALIBRATING}). \\
+\texttt{iot\_} \texttt{devices} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador de la sonda o sensor. \\
+\texttt{iot\_} \texttt{devices} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL} & Parcela asociada. \\
+\texttt{iot\_} \texttt{devices} & \texttt{calibration\_} \texttt{offset} & \texttt{NUMERIC(5,2)} & \texttt{NOT NULL DEFAULT 0} & Desviación calibrada de la sonda. \\
+\texttt{iot\_} \texttt{devices} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL} & Estado del dispositivo (\texttt{ACTIVE}, \texttt{CALIBRATING}). \\
 \end{longtable}
 \end{center}
 
@@ -2962,8 +2970,8 @@ En la \autoref{tab:tactical-76} se esquematiza la distribución arquitectónica 
 \endlastfoot
 Interface & \texttt{PlotIotDeviceController}; \texttt{PlotTelemetryController}; \texttt{PlotForecastController} & Ingesta horaria, configuración de nodos sensores y consulta REST de series agroclimáticas y pronóstico. & Spring MVC, Jakarta Validation \\
 Application & \texttt{TelemetryCommandService}; \texttt{TelemetryQueryService}; \texttt{ForecastSyncScheduler} & Orquestación de comandos de sensores/lecturas, consultas de series/alertas y tarea programada de clima. & Spring \texttt{@Transactional}, \texttt{@Scheduled}, \texttt{@Service} \\
-Domain & \texttt{VirtualSensorNode} \texttt{Repository}; \texttt{TelemetrySeriesRepository}; \texttt{AgroclimaticThresholdEvaluator} & Contratos de persistencia (puertos de dominio) y servicio de evaluación de estrés hídrico (SWP) y heladas. & Java puro / DDD \\
-Infrastructure & \texttt{JpaVirtualSensorNode} \texttt{RepositoryAdapter}; \texttt{JpaTelemetrySeriesRepositoryAdapter}; \texttt{OpenMeteoWeatherAdapter}; \texttt{SpringDomainEventPublisher} & Persistencia JPA en PostgreSQL, consumo API Open-Meteo y publicación de eventos. & Spring Data JPA, HTTP Client, Caffeine \\
+Domain & \texttt{VirtualSensorNode} \texttt{Repository}; \texttt{TelemetrySeries} \texttt{Repository}; \texttt{AgroclimaticThresholdEvaluator} & Contratos de persistencia (puertos de dominio) y servicio de evaluación de estrés hídrico (SWP) y heladas. & Java puro / DDD \\
+Infrastructure & \texttt{JpaVirtualSensorNode} \texttt{RepositoryAdapter}; \texttt{JpaTelemetrySeries} \texttt{RepositoryAdapter}; \texttt{OpenMeteoWeatherAdapter}; \texttt{SpringDomainEventPublisher} & Persistencia JPA en PostgreSQL, consumo API Open-Meteo y publicación de eventos. & Spring Data JPA, HTTP Client, Caffeine \\
 \end{longtable}
 \end{center}
 
@@ -2977,8 +2985,10 @@ Infrastructure & \texttt{JpaVirtualSensorNode} \texttt{RepositoryAdapter}; \text
 5. Si se excede el umbral crítico, `TelemetryCommandService` dispara `HydricStressAlertTriggeredEvent` vía `SpringDomainEventPublisher`, notificando in-app a la aplicación cliente.
 6. En paralelo, `ForecastSyncScheduler` sincroniza periódicamente la predicción meteorológica consumiendo la API de Open-Meteo vía `OpenMeteoWeatherAdapter`.
 
+A continuación, en la \autoref{fig:c4-component-telemetry} se esquematiza el diagrama de componentes del Bounded Context Agroclimatic Telemetry:
+
 \begin{figure}[H]
-\caption{C4 Model - Component Level: Diagrama de Componentes de Agroclimatic Telemetry.}
+\caption{C4 Model - Component Level: Diagrama de Componentes de Agroclimatic Telemetry.} \label{fig:c4-component-telemetry}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-telemetry.png}
@@ -2988,16 +2998,16 @@ Infrastructure & \texttt{JpaVirtualSensorNode} \texttt{RepositoryAdapter}; \text
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML y de diseño de base de datos para el Bounded Context Agroclimatic Telemetry.
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-telemetry}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-telemetry}) para el Bounded Context Agroclimatic Telemetry:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Agroclimatic Telemetry.}
+\caption{Diagrama de Clases UML: Domain Layer de Agroclimatic Telemetry.} \label{fig:class-diagram-telemetry}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-telemetry.png}
+\includegraphics[width=0.70\textwidth]{report/assets/tactical-diagrams/class-diagram-telemetry.png}
 \caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de Telemetría. Elaboración propia.}
 \end{figure}
 
@@ -3005,10 +3015,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Agroclimatic Telemetry.}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Agroclimatic Telemetry.} \label{fig:database-diagram-telemetry}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-telemetry.png}
+\includegraphics[width=0.65\textwidth]{report/assets/tactical-diagrams/database-diagram-telemetry.png}
 \caption*{\textit{Nota.} Estructura de tablas de telemetría y dispositivos IoT en PostgreSQL. Elaboración propia.}
 \end{figure}
 
@@ -3057,7 +3067,7 @@ En la \autoref{tab:tactical-78} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo ChillAccumulationTracker en Phenology and Historical Bearing Analytics.} \label{tab:tactical-78} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -3151,7 +3161,7 @@ En la \autoref{tab:tactical-81} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo HistoricalHarvestEntry en Phenology and Historical Bearing Analytics.} \label{tab:tactical-81} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -3240,7 +3250,7 @@ En la \autoref{tab:tactical-84} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo DailyChillLog en Phenology and Historical Bearing Analytics.} \label{tab:tactical-84} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -3620,8 +3630,10 @@ Infrastructure & \texttt{JpaChillAccumulation} \texttt{TrackerRepositoryAdapter}
 5. El evento es recibido reactivamente por *Crop Load Regulation*, invalidando prescripciones de aclareo pendientes.
 6. Ante la incorporación de cosechas históricas, `PhenologyCommandService` persiste los rendimientos en `ChillAccumulation` `TrackerRepository`, y `PhenologyQueryService` computa el índice $BBI$ de Hoblyn mediante `HoblynBbiCalculatorService`.
 
+A continuación, en la \autoref{fig:c4-component-phenology} se esquematiza el diagrama de componentes del Bounded Context Phenology and Historical Bearing Analytics:
+
 \begin{figure}[H]
-\caption{C4 Model - Component Level: Diagrama de Componentes de Phenology and Historical Bearing Analytics.}
+\caption{C4 Model - Component Level: Diagrama de Componentes de Phenology and Historical Bearing Analytics.} \label{fig:c4-component-phenology}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-phenology.png}
@@ -3631,13 +3643,13 @@ Infrastructure & \texttt{JpaChillAccumulation} \texttt{TrackerRepositoryAdapter}
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML y de diseño de base de datos para el Bounded Context Phenology and Historical Bearing Analytics.
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-phenology}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-phenology}) para el Bounded Context Phenology and Historical Bearing Analytics:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Phenology and Historical Bearing Analytics.}
+\caption{Diagrama de Clases UML: Domain Layer de Phenology and Historical Bearing Analytics.} \label{fig:class-diagram-phenology}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-phenology.png}
@@ -3648,7 +3660,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Phenology.}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Phenology.} \label{fig:database-diagram-phenology}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-phenology.png}
@@ -3700,7 +3712,7 @@ En la \autoref{tab:tactical-95} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo FruitThinningPrescription en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-95} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -3794,7 +3806,7 @@ En la \autoref{tab:tactical-98} se presentan los atributos, tipos de datos e inv
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo SamplingRound en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-98} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -3882,7 +3894,7 @@ En la \autoref{tab:tactical-101} se presentan los atributos, tipos de datos e in
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo TreeSamplingRecord en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-101} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -3970,7 +3982,7 @@ En la \autoref{tab:tactical-104} se presentan los atributos, tipos de datos e in
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo ExecutionConfirmation en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-104} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -4358,8 +4370,10 @@ Infrastructure & \texttt{JpaFruitThinning} \texttt{PrescriptionRepositoryAdapter
 5. Si el muestreo alcanza suficiencia estadística ($N \ge 5$), `CropLoadCommandService` invoca `CropLoadBalancingCalculatorService` y publica `ThinningPrescribedEvent` vía `SpringDomainEventPublisher`. Si detecta riesgo de sobrecarga, emite alerta hacia *Cooperative Operations*.
 6. El productor confirma el aclareo mediante `POST` \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations}; `ThinningExecutionController` delega en `CropLoadCommandService`, el cual actualiza la prescripción a `EXECUTED` en el repositorio y emite `ThinningExecutedEvent`.
 
+A continuación, en la \autoref{fig:c4-component-crop-load} se esquematiza el diagrama de componentes del Bounded Context Crop Load Regulation:
+
 \begin{figure}[H]
-\caption{C4 Model - Component Level: Diagrama de Componentes de Crop Load Regulation.}
+\caption{C4 Model - Component Level: Diagrama de Componentes de Crop Load Regulation.} \label{fig:c4-component-crop-load}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-crop-load.png}
@@ -4369,13 +4383,13 @@ Infrastructure & \texttt{JpaFruitThinning} \texttt{PrescriptionRepositoryAdapter
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML y de diseño de base de datos para el Bounded Context Crop Load Regulation.
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-crop-load}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-crop-load}) para el Bounded Context Crop Load Regulation:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Crop Load Regulation and Thinning Advisory.}
+\caption{Diagrama de Clases UML: Domain Layer de Crop Load Regulation and Thinning Advisory.} \label{fig:class-diagram-crop-load}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-crop-load.png}
@@ -4386,7 +4400,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Crop Load Regulation.}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Crop Load Regulation.} \label{fig:database-diagram-crop-load}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-crop-load.png}
@@ -4438,7 +4452,7 @@ En la \autoref{tab:tactical-115} se presentan los atributos, tipos de datos e in
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo Cooperative en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-115} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -4532,7 +4546,7 @@ En la \autoref{tab:tactical-118} se presentan los atributos, tipos de datos e in
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo CooperativeMember en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-118} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -4918,8 +4932,10 @@ Infrastructure & \texttt{JpaCooperative} \texttt{RepositoryAdapter}; \texttt{Spr
 4. Se retorna `TerritorialRiskMatrixResource` resaltando el nivel de riesgo por cuadrante operativo.
 5. Para proyecciones de cosecha temprana, `CooperativeQueryService` invoca `YieldAggregationDomainService` exponiendo las toneladas estimadas a través de `CooperativeIntakeController`.
 
+A continuación, en la \autoref{fig:c4-component-cooperative} se esquematiza el diagrama de componentes del Bounded Context Cooperative Operations:
+
 \begin{figure}[H]
-\caption{C4 Model - Component Level: Diagrama de Componentes de Cooperative Operations.}
+\caption{C4 Model - Component Level: Diagrama de Componentes de Cooperative Operations.} \label{fig:c4-component-cooperative}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-cooperative.png}
@@ -4929,13 +4945,13 @@ Infrastructure & \texttt{JpaCooperative} \texttt{RepositoryAdapter}; \texttt{Spr
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML y de diseño de base de datos para el Bounded Context Cooperative Operations.
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-cooperative}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-cooperative}) para el Bounded Context Cooperative Operations:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Cooperative Operations and Territorial Intelligence.}
+\caption{Diagrama de Clases UML: Domain Layer de Cooperative Operations and Territorial Intelligence.} \label{fig:class-diagram-cooperative}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-cooperative.png}
@@ -4946,7 +4962,7 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Cooperative Operations.}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Cooperative Operations.} \label{fig:database-diagram-cooperative}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-cooperative.png}
@@ -4998,7 +5014,7 @@ En la \autoref{tab:tactical-129} se presentan los atributos, tipos de datos e in
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo AgronomicReport en Harvest Settlement and Performance Reporting.} \label{tab:tactical-129} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -5089,7 +5105,7 @@ En la \autoref{tab:tactical-132} se presentan los atributos, tipos de datos e in
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.22\textwidth} p{0.18\textwidth} p{0.49\textwidth}}
+\begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo HarvestSettlement en Harvest Settlement and Performance Reporting.} \label{tab:tactical-132} \\
 \hline
 \textbf{Atributo} & \textbf{Tipo} & \textbf{Descripción e Invariantes} \\
@@ -5340,7 +5356,7 @@ En la \autoref{tab:tactical-139} se detallan los adaptadores técnicos y compone
 \multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
 \texttt{AgronomicReport} \texttt{JpaRepository} & Persistence & Spring Data JPA & Acceso a tablas de reporte y liquidaciones en PostgreSQL. \\
-\texttt{JpaAgronomicReport} \texttt{RepositoryAdapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{AgronomicReportRepository}. \\
+\texttt{JpaAgronomicReport} \texttt{RepositoryAdapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{AgronomicReport} \texttt{Repository}. \\
 \texttt{OpenPdfAgronomic} \texttt{DossierAdapter} & PDF Adapter & OpenPDF / iText & Renderizado en memoria del expediente técnico inmutable en PDF. \\
 \end{longtable}
 \end{center}
@@ -5462,7 +5478,7 @@ En la \autoref{tab:tactical-141} se esquematiza la distribución arquitectónica
 \endlastfoot
 Interface & \texttt{PlotHarvestSettlement} \texttt{Controller}; \texttt{PlotAgronomicReportController} & API REST para liquidación anual, métricas y descarga oficial de informe colegiado vía Content Negotiation. & Spring MVC, Content Negotiation \\
 Application & \texttt{HarvestSettlement} \texttt{CommandService}; \texttt{AgronomicReportQueryService} & Orquestación de comandos de liquidación, certificación colegiada y consultas con streaming de PDF. & Spring \texttt{@Transactional}, \texttt{@Service} \\
-Domain & \texttt{AgronomicReportRepository}; \texttt{StabilizationCurveCalculatorService} & Contrato de persistencia (puerto de dominio) y servicio de cálculo de curva de atenuación de vecería ($ARR$). & Java puro / DDD \\
+Domain & \texttt{AgronomicReport} \texttt{Repository}; \texttt{StabilizationCurveCalculatorService} & Contrato de persistencia (puerto de dominio) y servicio de cálculo de curva de atenuación de vecería ($ARR$). & Java puro / DDD \\
 Infrastructure & \texttt{JpaAgronomicReport} \texttt{RepositoryAdapter}; \texttt{OpenPdfAgronomicDossierAdapter}; \texttt{SpringDomainEventPublisher} & Persistencia en PostgreSQL, compilación binaria OpenPDF con hash SHA-256 y publicación de eventos. & Spring Data JPA, OpenPDF \\
 \end{longtable}
 \end{center}
@@ -5477,8 +5493,10 @@ Infrastructure & \texttt{JpaAgronomicReport} \texttt{RepositoryAdapter}; \texttt
 5. Ante la solicitud `POST` \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports/certification}, `HarvestSettlement` `CommandService` compila el expediente colegiado, estampa la firma con `OpenPdfAgronomicDossierAdapter`, genera el hash SHA-256 inmutable y emite `AgronomicDossierGeneratedEvent`.
 6. Ante `GET` \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports} con cabecera `Accept: application/pdf`, `AgronomicReportQueryService` consulta `AgronomicReportRepository` y delega en `OpenPdfAgronomicDossierAdapter` transmitiendo el binario inmutable del informe oficial en streaming directo con hash SHA-256.
 
+A continuación, en la \autoref{fig:c4-component-settlement} se esquematiza el diagrama de componentes del Bounded Context Harvest Settlement and Performance Reporting:
+
 \begin{figure}[H]
-\caption{C4 Model - Component Level: Diagrama de Componentes de Harvest Settlement and Performance Reporting.}
+\caption{C4 Model - Component Level: Diagrama de Componentes de Harvest Settlement and Performance Reporting.} \label{fig:c4-component-settlement}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-settlement.png}
@@ -5488,13 +5506,13 @@ Infrastructure & \texttt{JpaAgronomicReport} \texttt{RepositoryAdapter}; \texttt
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML y de diseño de base de datos para el Bounded Context Harvest Settlement and Performance Reporting.
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-settlement}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-settlement}) para el Bounded Context Harvest Settlement and Performance Reporting:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Harvest Settlement and Performance Reporting.}
+\caption{Diagrama de Clases UML: Domain Layer de Harvest Settlement and Performance Reporting.} \label{fig:class-diagram-settlement}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-settlement.png}
@@ -5505,10 +5523,10 @@ A continuación se presentan los diagramas de clases UML y de diseño de base de
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Harvest Settlement.}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Harvest Settlement.} \label{fig:database-diagram-settlement}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-settlement.png}
+\includegraphics[width=0.65\textwidth]{report/assets/tactical-diagrams/database-diagram-settlement.png}
 \caption*{\textit{Nota.} Tablas de reporte agronómico y liquidaciones anuales en PostgreSQL. Elaboración propia.}
 \end{figure}
 
