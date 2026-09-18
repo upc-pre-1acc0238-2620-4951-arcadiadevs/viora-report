@@ -629,7 +629,7 @@ La arquitectura estratégica consolidada articula los nueve bounded contexts a t
 \caption{Context Map de Viora: mapa de relaciones estructurales adoptado.} \label{fig:context-map}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/context-map/context-map.png}
+\includegraphics[width=0.95\textwidth]{report/assets/context-map/01-context-map-elegido.png}
 \caption*{\textit{Nota.} Topología estratégica compuesta por 9 bounded contexts, 16 relaciones internas y 4 integraciones externas. La dirección de las flechas indica la dependencia desde el contexto proveedor (\textit{Upstream}) hacia el contexto consumidor (\textit{Downstream}). Elaboración propia.}
 \end{figure}
 
