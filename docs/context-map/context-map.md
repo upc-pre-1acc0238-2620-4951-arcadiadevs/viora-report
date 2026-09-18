@@ -74,6 +74,10 @@ No Shared Kernel applied in recommended map.
 
 ## Discarded alternatives
 
+Exploration ran at two levels. A and B below are topology-level candidates: they regroup capabilities across contexts, and they are the two drawn in `02-alternativas-descartadas.drawio`. Relationship-level candidates — a single edge evaluated and then inverted or withdrawn — are recorded in `## Change log` instead, since they have no comparable topology to draw. Both levels are reported in the chapter as alternatives A to D.
+
+Earlier revisions of this map are not candidates. They are successive states of the same design whose documentary omissions were corrected as the tactical layer pinned down the contracts; the change log records each one as an added missing edge, never as a rejected alternative.
+
 ### A: Shared Kernel between Phenology (bc2) and Harvest Settlement (bc3)
 
 - **Candidate:** Shared Kernel owning `AgronomicReport`, `HistoricalHarvestEntry`, `BiennialBearingIndex`.
