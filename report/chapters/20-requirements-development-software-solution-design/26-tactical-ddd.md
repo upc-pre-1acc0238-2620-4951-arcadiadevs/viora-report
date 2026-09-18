@@ -329,7 +329,7 @@ En la \autoref{tab:tactical-10} se expone el diccionario de datos relacional con
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.12\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.20\textwidth} p{0.27\textwidth}}
+\begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Identity and Access Management (IAM).} \label{tab:tactical-10} \\
 \hline
 \textbf{Table} & \textbf{Column} & \textbf{SQL Type (PostgreSQL)} & \textbf{Constraints / Indexes} & \textbf{Description \& Domain Meaning} \\
@@ -767,7 +767,7 @@ En la \autoref{tab:tactical-21} se expone el diccionario de datos relacional con
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.12\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.20\textwidth} p{0.27\textwidth}}
+\begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en User Profiles.} \label{tab:tactical-21} \\
 \hline
 \textbf{Table} & \textbf{Column} & \textbf{SQL Type (PostgreSQL)} & \textbf{Constraints / Indexes} & \textbf{Description \& Domain Meaning} \\
@@ -1492,7 +1492,7 @@ En la \autoref{tab:tactical-41} se expone el diccionario de datos relacional con
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.12\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.20\textwidth} p{0.27\textwidth}}
+\begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Subscription and Cooperative Membership.} \label{tab:tactical-41} \\
 \hline
 \textbf{Table} & \textbf{Column} & \textbf{SQL Type (PostgreSQL)} & \textbf{Constraints / Indexes} & \textbf{Description \& Domain Meaning} \\
@@ -1514,18 +1514,18 @@ En la \autoref{tab:tactical-41} se expone el diccionario de datos relacional con
 \texttt{subscrip-} \texttt{tions} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL} & Estado (\texttt{ACTIVE}, \texttt{PENDING\_PAYMENT}, \texttt{EXPIRED}). \\
 \texttt{subscrip-} \texttt{tions} & \texttt{starts\_at} & \texttt{TIMESTAMPTZ} & \texttt{NULL} & Inicio de vigencia activa. \\
 \texttt{subscrip-} \texttt{tions} & \texttt{ends\_at} & \texttt{TIMESTAMPTZ} & \texttt{NULL} & Término de vigencia activa. \\
-\texttt{cooperative\_} \allowbreak \texttt{licenses} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Licencia corporativa institucional. \\
-\texttt{cooperative\_} \allowbreak \texttt{licenses} & \texttt{cooperative\_} \allowbreak \texttt{id} & \texttt{UUID} & \texttt{NOT NULL, UNIQUE} & Cooperativa propietaria del convenio. \\
-\texttt{cooperative\_} \allowbreak \texttt{licenses} & \texttt{total\_seats} & \texttt{INT} & \texttt{NOT NULL, CHECK} & Plazas máximas autorizadas. \\
-\texttt{cooperative\_} \allowbreak \texttt{licenses} & \texttt{issued\_seats} & \texttt{INT} & \texttt{NOT NULL, CHECK} & Plazas comprometidas en códigos vigentes. \\
-\texttt{cooperative\_} \allowbreak \texttt{licenses} & \texttt{total\_area\_ha} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL} & Superficie máxima del convenio. \\
-\texttt{cooperative\_} \allowbreak \texttt{licenses} & \texttt{issued\_area\_ha} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL} & Superficie comprometida en códigos vigentes. \\
-\texttt{invitation\_} \allowbreak \texttt{codes} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador único del código. \\
-\texttt{invitation\_} \allowbreak \texttt{codes} & \texttt{batch\_id} & \texttt{UUID} & \texttt{NOT NULL, FK} & Lote de procedencia. \\
-\texttt{invitation\_} \allowbreak \texttt{codes} & \texttt{code\_hash} & \texttt{VARCHAR(64)} & \texttt{NOT NULL, UNIQUE} & Hash SHA-256 del código alfanumérico. \\
-\texttt{invitation\_} \allowbreak \texttt{codes} & \texttt{quota\_ha} & \texttt{NUMERIC(8,2)} & \texttt{NOT NULL} & Cobertura en hectáreas que confiere el código. \\
-\texttt{invitation\_} \allowbreak \texttt{codes} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL} & Estado (\texttt{AVAILABLE}, \texttt{REDEEMED}, \texttt{EXPIRED}). \\
-\texttt{invitation\_} \allowbreak \texttt{codes} & \texttt{expires\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL} & Marca temporal límite para canje. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Licencia corporativa institucional. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{coop-} \texttt{erative\_} \texttt{id} & \texttt{UUID} & \texttt{NOT NULL, UNIQUE} & Cooperativa propietaria del convenio. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{total\_seats} & \texttt{INT} & \texttt{NOT NULL, CHECK} & Plazas máximas autorizadas. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{issued\_seats} & \texttt{INT} & \texttt{NOT NULL, CHECK} & Plazas comprometidas en códigos vigentes. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{total\_area\_ha} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL} & Superficie máxima del convenio. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{issued\_area\_ha} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL} & Superficie comprometida en códigos vigentes. \\
+\texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador único del código. \\
+\texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{batch\_id} & \texttt{UUID} & \texttt{NOT NULL, FK} & Lote de procedencia. \\
+\texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{code\_hash} & \texttt{VARCHAR(64)} & \texttt{NOT NULL, UNIQUE} & Hash SHA-256 del código alfanumérico. \\
+\texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{quota\_ha} & \texttt{NUMERIC(8,2)} & \texttt{NOT NULL} & Cobertura en hectáreas que confiere el código. \\
+\texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL} & Estado (\texttt{AVAILABLE}, \texttt{REDEEMED}, \texttt{EXPIRED}). \\
+\texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{expires\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL} & Marca temporal límite para canje. \\
 \end{longtable}
 \end{center}
 
@@ -1984,7 +1984,7 @@ En la \autoref{tab:tactical-52} se expone el diccionario de datos relacional con
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.12\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.20\textwidth} p{0.27\textwidth}}
+\begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Olive Orchard and Plot Management.} \label{tab:tactical-52} \\
 \hline
 \textbf{Table} & \textbf{Column} & \textbf{SQL Type (PostgreSQL)} & \textbf{Constraints / Indexes} & \textbf{Description \& Domain Meaning} \\
@@ -2809,7 +2809,7 @@ En la \autoref{tab:tactical-75} se expone el diccionario de datos relacional con
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.12\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.20\textwidth} p{0.27\textwidth}}
+\begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-75} \\
 \hline
 \textbf{Table} & \textbf{Column} & \textbf{SQL Type (PostgreSQL)} & \textbf{Constraints / Indexes} & \textbf{Description \& Domain Meaning} \\
@@ -3442,7 +3442,7 @@ En la \autoref{tab:tactical-92} se expone el diccionario de datos relacional con
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.12\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.20\textwidth} p{0.27\textwidth}}
+\begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Phenology and Historical Bearing Analytics.} \label{tab:tactical-92} \\
 \hline
 \textbf{Table} & \textbf{Column} & \textbf{SQL Type (PostgreSQL)} & \textbf{Constraints / Indexes} & \textbf{Description \& Domain Meaning} \\
@@ -3457,11 +3457,11 @@ En la \autoref{tab:tactical-92} se expone el diccionario de datos relacional con
 \hline
 \multicolumn{5}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{phenological\_} \allowbreak \texttt{records} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador del registro. \\
-\texttt{phenological\_} \allowbreak \texttt{records} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL, INDEX} & Parcela monitoreada. \\
-\texttt{phenological\_} \allowbreak \texttt{records} & \texttt{current\_stage} & \texttt{INT} & \texttt{NOT NULL} & Código numérico BBCH actual. \\
-\texttt{phenological\_} \allowbreak \texttt{records} & \texttt{accumulated\_} \texttt{gdd} & \texttt{NUMERIC(6,2)} & \texttt{NOT NULL DEFAULT 0} & Grados-día de desarrollo post-antesis. \\
-\texttt{phenological\_} \allowbreak \texttt{records} & \texttt{is\_window\_} \texttt{closed} & \texttt{BOOLEAN} & \texttt{NOT NULL DEFAULT FALSE} & Indicador de carozo endurecido. \\
+\texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador del registro. \\
+\texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL, INDEX} & Parcela monitoreada. \\
+\texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{current\_stage} & \texttt{INT} & \texttt{NOT NULL} & Código numérico BBCH actual. \\
+\texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{accumulated\_} \texttt{gdd} & \texttt{NUMERIC(6,2)} & \texttt{NOT NULL DEFAULT 0} & Grados-día de desarrollo post-antesis. \\
+\texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{is\_window\_} \texttt{closed} & \texttt{BOOLEAN} & \texttt{NOT NULL DEFAULT FALSE} & Indicador de carozo endurecido. \\
 \texttt{chill\_} \texttt{trackers} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador del seguimiento de frío. \\
 \texttt{chill\_} \texttt{trackers} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL} & Parcela asociada. \\
 \texttt{chill\_} \texttt{trackers} & \texttt{campaign\_year} & \texttt{INT} & \texttt{NOT NULL} & Año agrícola evaluado. \\
@@ -4150,7 +4150,7 @@ En la \autoref{tab:tactical-112} se expone el diccionario de datos relacional co
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.12\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.20\textwidth} p{0.27\textwidth}}
+\begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-112} \\
 \hline
 \textbf{Table} & \textbf{Column} & \textbf{SQL Type (PostgreSQL)} & \textbf{Constraints / Indexes} & \textbf{Description \& Domain Meaning} \\
@@ -4676,7 +4676,7 @@ En la \autoref{tab:tactical-125} se detallan los adaptadores técnicos y compone
 \hline
 \multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{Cooperative} \texttt{JpaRepository} & Persistence & Spring Data JPA & Acceso a tabla \texttt{cooperatives} y padrón de socios en PostgreSQL. \\
+\texttt{Cooperative} \texttt{JpaRepository} & Persistence & Spring Data JPA & Acceso a tabla \texttt{cooper-} \texttt{atives} y padrón de socios en PostgreSQL. \\
 \texttt{JpaCooperative} \texttt{Repository} \texttt{Adapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{Cooperative} \texttt{Repository}. \\
 \texttt{GpsSpatial} \texttt{SectoringAdapter} & GIS Adapter & GeoTools / JTS & Asocia coordenadas GPS (\texttt{lat, lon}) a sectores territoriales del valle olivarero. \\
 \end{longtable}
@@ -4700,7 +4700,7 @@ En la \autoref{tab:tactical-126} se expone el diccionario de datos relacional co
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.12\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.20\textwidth} p{0.27\textwidth}}
+\begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-126} \\
 \hline
 \textbf{Table} & \textbf{Column} & \textbf{SQL Type (PostgreSQL)} & \textbf{Constraints / Indexes} & \textbf{Description \& Domain Meaning} \\
@@ -4715,16 +4715,16 @@ En la \autoref{tab:tactical-126} se expone el diccionario de datos relacional co
 \hline
 \multicolumn{5}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{cooperatives} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador de la cooperativa. \\
-\texttt{cooperatives} & \texttt{name} & \texttt{VARCHAR(150)} & \texttt{NOT NULL} & Razón social de la organización agraria. \\
-\texttt{cooperatives} & \texttt{tax\_id} & \texttt{VARCHAR(11)} & \texttt{NOT NULL, UNIQUE} & RUC institucional de 11 dígitos. \\
-\texttt{cooperatives} & \texttt{license\_id} & \texttt{UUID} & \texttt{NOT NULL} & Referencia al contrato corporativo en Subscription. \\
-\texttt{cooperatives} & \texttt{technical\_} \texttt{manager\_} \texttt{user\_id} & \texttt{UUID} & \texttt{NOT NULL} & Gestor técnico único autorizado de la cooperativa. \\
-\texttt{cooperative\_} \allowbreak \texttt{members} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador del socio en padrón. \\
-\texttt{cooperative\_} \allowbreak \texttt{members} & \texttt{cooperative\_} \allowbreak \texttt{id} & \texttt{UUID} & \texttt{NOT NULL, FK} & Cooperativa a la que pertenece. \\
-\texttt{cooperative\_} \allowbreak \texttt{members} & \texttt{producer\_} \texttt{user\_id} & \texttt{UUID} & \texttt{NOT NULL} & Usuario productor socio. \\
-\texttt{cooperative\_} \allowbreak \texttt{members} & \texttt{full\_name} & \texttt{VARCHAR(150)} & \texttt{NOT NULL} & Nombre civil del socio. \\
-\texttt{cooperative\_} \allowbreak \texttt{members} & \texttt{declared\_ha} & \texttt{NUMERIC(8,2)} & \texttt{NOT NULL} & Hectáreas aportadas al padrón. \\
+\texttt{cooperat-} \texttt{ives} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador de la cooperativa. \\
+\texttt{cooperat-} \texttt{ives} & \texttt{name} & \texttt{VARCHAR(150)} & \texttt{NOT NULL} & Razón social de la organización agraria. \\
+\texttt{cooperat-} \texttt{ives} & \texttt{tax\_id} & \texttt{VARCHAR(11)} & \texttt{NOT NULL, UNIQUE} & RUC institucional de 11 dígitos. \\
+\texttt{cooperat-} \texttt{ives} & \texttt{license\_id} & \texttt{UUID} & \texttt{NOT NULL} & Referencia al contrato corporativo en Subscription. \\
+\texttt{cooperat-} \texttt{ives} & \texttt{technical\_} \texttt{manager\_} \texttt{user\_id} & \texttt{UUID} & \texttt{NOT NULL} & Gestor técnico único autorizado de la cooperativa. \\
+\texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador del socio en padrón. \\
+\texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{coop-} \texttt{erative\_} \texttt{id} & \texttt{UUID} & \texttt{NOT NULL, FK} & Cooperativa a la que pertenece. \\
+\texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{producer\_} \texttt{user\_id} & \texttt{UUID} & \texttt{NOT NULL} & Usuario productor socio. \\
+\texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{full\_name} & \texttt{VARCHAR(150)} & \texttt{NOT NULL} & Nombre civil del socio. \\
+\texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{declared\_ha} & \texttt{NUMERIC(8,2)} & \texttt{NOT NULL} & Hectáreas aportadas al padrón. \\
 \end{longtable}
 \end{center}
 
@@ -5242,7 +5242,7 @@ En la \autoref{tab:tactical-140} se expone el diccionario de datos relacional co
 \begin{center}
 \small
 \renewcommand{\arraystretch}{1.2}
-\begin{longtable}{p{0.12\textwidth} p{0.15\textwidth} p{0.15\textwidth} p{0.20\textwidth} p{0.27\textwidth}}
+\begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Harvest Settlement and Performance Reporting.} \label{tab:tactical-140} \\
 \hline
 \textbf{Table} & \textbf{Column} & \textbf{SQL Type (PostgreSQL)} & \textbf{Constraints / Indexes} & \textbf{Description \& Domain Meaning} \\
