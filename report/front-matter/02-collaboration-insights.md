@@ -31,7 +31,11 @@
 - **Repositorio del servicio web (Backend)** upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform:
 
   [https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform](https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform)
-  
+
+- **Repositorio del simulador de telemetría IoT** upc-pre-1acc0238-2620-4951-arcadiadevs/viora-telemetry-simulator:
+
+  [https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-telemetry-simulator](https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-telemetry-simulator)
+
 
 \noindent \textbf{Estadísticas de colaboración}
 
