@@ -97,6 +97,95 @@ A continuación, se sintetizan las consideraciones técnicas y de runtime adopta
 
 ### Source Code Management
 
+Para garantizar la integridad, trazabilidad, reproducibilidad y el trabajo colaborativo en la ingeniería de la solución distribuida de Viora, ArcadiaDevs ha establecido un esquema de organización basado en el control de versiones descentralizado mediante Git y GitHub.
+
+#### Estrategia de repositorios
+&nbsp;
+
+Se utiliza GitHub bajo la organización institucional `upc-pre-1acc0238-2620-4951-arcadiadevs` como plataforma central para la custodia, revisión y gestión del código fuente. La solución adopta una arquitectura de repositorios independientes para desacoplar el ciclo de vida, las pruebas y los despliegues de cada producto digital:
+
+* **Landing Page (`viora-landing-page`):** Contiene la maquetación semántica estructurada en HTML5, hojas de estilo CSS3 y scripts en JavaScript nativo del sitio web público de conversión y presentación comercial de Viora.
+  \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-landing-page}
+
+* **Mobile Application Android (`viora-mobile-android`):** Repositorio dedicado al cliente móvil nativo desarrollado en Kotlin para Android, implementado con Jetpack Compose para la interfaz reactiva, persistencia local desconectada con Room SQLite y consumo de servicios REST.
+  \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-mobile-android}
+
+* **Cross-Platform Mobile Application (`viora-mobile-flutter`):** Repositorio correspondiente al cliente móvil multiplataforma desarrollado con Flutter y lenguaje Dart, integrando almacenamiento local con sqflite y la misma lógica de negocio orientada a roles.
+  \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-mobile-flutter}
+
+* **Web Services & Platform Backend (`viora-platform`):** Centraliza la lógica de negocio y arquitectura modular construida en Java 21 con Spring Boot 3 y Spring Data JPA. Comprende los doce componentes de backend, la persistencia relacional sobre PostgreSQL 16 y la documentación interactiva OpenAPI/Swagger.
+  \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform}
+
+* **IoT Telemetry Simulator (`viora-telemetry-simulator`):** Repositorio dedicado al servicio ejecutable autónomo en Java/Docker que simula el comportamiento de los nodos sensores en campo. Genera lecturas sintéticas periódicas de temperatura, humedad ambiental y humedad del suelo, despachándolas vía HTTP REST hacia el Backend API.
+  \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-telemetry-simulator}
+
+* **Acceptance Testing Suite (`viora-acceptance-tests`):** Repositorio enfocado en el aseguramiento de calidad del software mediante pruebas automatizadas de aceptación basadas en comportamiento (BDD), orquestadas con Cucumber JVM y sintaxis Gherkin.
+  \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-acceptance-tests}
+
+* **Technical Report Documentation (`viora-report`):** Repositorio bajo enfoque *Documentation-as-Code* que alberga el código fuente en Markdown, plantillas LaTeX, fuentes PlantUML y la configuración de compilación de los informes técnicos del proyecto.
+  \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-report}
+
+#### Flujo de trabajo de control de versiones: GitFlow
+&nbsp;
+
+Para gobernar el ciclo de vida del código fuente de manera predecible y aislar los incrementos inestables de los entornos productivos, el equipo aplica rigurosamente el modelo de ramificación GitFlow propuesto por @driessen2010.
+
+\noindent \textbf{Ramas principales (de larga duración):}
+
+* `main`: Representa el estado estable, auditado y listo para producción. Únicamente incorpora cambios consolidados a través de fusiones (*merges*) provenientes de ramas de estabilización de versión (*release*) o correcciones de emergencia en caliente (*hotfixes*). Cada integración en `main` se asocia indefectiblemente con una etiqueta de versión (*tag*).
+* `develop`: Es la rama central de integración continua. Refleja el estado de desarrollo más reciente y consolida las funcionalidades aprobadas para el siguiente ciclo o sprint antes de ser promovidas a estabilización.
+
+\noindent \textbf{Ramas auxiliares (de soporte temporal):}
+
+* **Ramas de funcionalidad (`feature/<nombre-caracteristica>`):** Empleadas para el desarrollo de requisitos específicos, historias de usuario o épicas delimitadas. Nacen a partir de `develop` y se reintegran exclusivamente a `develop` mediante solicitudes de extracción (*Pull Requests*) una vez finalizada la tarea y aprobada la revisión por pares.
+* **Ramas de estabilización (*Release*) (`release/vX.Y.Z`):** Se bifurcan desde `develop` cuando las funcionalidades del sprint alcanzan el estado de congelamiento. En esta rama se ejecutan únicamente ajustes menores de documentación, resolución de defectos y pruebas integrales antes de realizar la doble fusión hacia `main` (con su respectiva etiqueta de versión) y hacia `develop`.
+* **Ramas de corrección urgente (*Hotfix*) (`hotfix/<descripcion-defecto>`):** Se originan de manera excepcional directamente desde `main` para solventar fallos críticos identificados en producción. Una vez validada la corrección, la rama se fusiona de inmediato tanto en `main` (incrementando la versión de parche) como en `develop` para preservar la sincronización de la base de código.
+
+#### Convenciones de versionamiento: Semantic Versioning 2.0.0
+&nbsp;
+
+El equipo estandariza la nomenclatura de versiones de software y etiquetas (*tags*) aplicando la especificación *Semantic Versioning 2.0.0* [@semver]. Cada versión se expresa formalmente mediante tres componentes numéricos cardinales:
+
+\begin{equation*}
+\textbf{vMAYOR.MENOR.PARCHE} \quad (\text{ejemplo: } \text{v1.0.0})
+\end{equation*}
+
+* **MAYOR (X.0.0):** Se incrementa cuando se introducen modificaciones arquitecturales sustanciales o cambios en los contratos de interfaces y APIs que rompen la compatibilidad hacia atrás (*breaking changes*).
+* **MENOR (X.Y.0):** Se incrementa cuando se incorporan nuevas funcionalidades o casos de uso que preservan la compatibilidad regresiva con los clientes existentes.
+* **PARCHE (X.Y.Z):** Se incrementa al implementar correcciones de defectos, optimizaciones de rendimiento o parches de seguridad que no alteran la interfaz pública ni agregan características funcionales nuevas.
+
+#### Estándar de mensajería: Conventional Commits 1.0.0
+&nbsp;
+
+A fin de preservar un historial de confirmaciones semánticamente estructurado, legible por humanos y apto para la generación automatizada de bitácoras de cambios (*changelogs*), ArcadiaDevs implementa la especificación *Conventional Commits 1.0.0* [@conventionalcommits]. 
+
+La estructura formal obligatoria para cada mensaje de confirmación se define de la siguiente manera:
+
+\begin{verbatim}
+<tipo>(<alcance>): <descripcion>
+
+[cuerpo opcional]
+
+[pie de mensaje opcional]
+\end{verbatim}
+
+\noindent \textbf{Tipos de confirmación admitidos:}
+
+* `feat`: Incorporación de una nueva funcionalidad, endpoint o pantalla de usuario.
+* `fix`: Corrección de un defecto o fallo técnico en el sistema.
+* `docs`: Cambios o ampliaciones exclusivas en la documentación técnica del proyecto.
+* `style`: Ajustes cosméticos que no alteran el significado del código (formateo, indentación, espacios en blanco).
+* `refactor`: Modificaciones internas del código que no añaden funcionalidades ni corrigen errores de comportamiento.
+* `test`: Adición o refactorización de suites de pruebas automatizadas unitarias, de integración o de aceptación (BDD).
+* `chore`: Actualización de tareas de compilación, scripts de automatización, dependencias o herramientas del entorno.
+
+\noindent \textbf{Reglas de redacción de los componentes:}
+
+* **Alcance (*scope*):** Elemento contextual entre paréntesis que designa el módulo, bounded context o componente técnico intervenido (ej. `auth`, `telemetry`, `crop-load`, `scm`).
+* **Descripción (*subject*):** Resumen sucinto del cambio, redactado en modo imperativo, tiempo presente, en minúsculas y sin punto final.
+* **Cuerpo (*body*):** Bloque opcional separado por una línea en blanco que detalla la motivación técnica del cambio y el contraste con el comportamiento previo.
+* **Cambios disruptivos (*Breaking Changes*):** Si la confirmación introduce una incompatibilidad en la API o arquitectura, se añade obligatoriamente un signo de exclamación tras el tipo/alcance (ej. `feat(api)!: modify authentication payload`) o se declara una nota `BREAKING CHANGE:` en el pie del mensaje explicando el impacto y los pasos de migración requeridos.
+
 \newpage
 
 ### Source Code Style Guide & Conventions 
