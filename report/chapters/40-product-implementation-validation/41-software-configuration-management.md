@@ -359,7 +359,7 @@ El componente `viora-telemetry-simulator` se despliega como un servicio en segun
 #### Despliegue y distribución de aplicaciones móviles (Firebase App Distribution)
 &nbsp;
 
-El cliente móvil nativo de Viora, custodiado en el repositorio `viora-mobile-android`, está implementado en lenguaje Kotlin con Jetpack Compose y Android SDK 34 (`compileSdk` 34, `minSdk` 26). Para posibilitar la evaluación del software en dispositivos físicos de prueba conforme a los requisitos del curso, el equipo utiliza Firebase App Distribution como canal corporativo de distribución continua.
+La solución móvil de Viora comprende tanto el cliente móvil nativo custodiado en `viora-mobile-android` (Kotlin, Jetpack Compose y Android SDK 34) como el cliente móvil multiplataforma en `viora-mobile-flutter` (Dart y motor Flutter). Para posibilitar la evaluación del software en dispositivos físicos de prueba conforme a los requisitos del curso y a la topología modelada en la \autoref{fig:c4-deployment-ch4}, el equipo utiliza Firebase App Distribution como canal corporativo centralizado de distribución continua.
 
 \noindent \textbf{Selección técnica de la variante de compilación (*Build Variant*):}
 
@@ -387,6 +387,10 @@ El despliegue hacia Firebase App Distribution se ejecuta automáticamente median
 3. **Compilación y empaquetado:** Ejecuta `./gradlew assembleRelease`, produciendo el binario optimizado `app-release.apk`.
 4. **Firma y alineación:** Aplica las utilidades `zipalign` y `apksigner` para asegurar el cumplimiento de las restricciones de empaquetado de Android.
 5. **Carga y publicación en Firebase:** Utiliza la acción oficial de distribución (`wzieba/Firebase-Distribution-Github-Action`) autenticada mediante una cuenta de servicio de Google Cloud (`FIREBASE_SERVICE_ACCOUNT_KEY`), publicando el APK y despachando las notas de versión (*release notes*) correspondientes.
+
+\noindent \textbf{Distribución del cliente multiplataforma Flutter:}
+
+De manera homóloga al cliente nativo, la aplicación móvil multiplataforma versionada en `viora-mobile-flutter` se compila bajo el modo optimizado de producción mediante el Flutter CLI (`flutter build apk --release`). El binario generado (`app-release.apk`) incorpora código de máquina nativo AOT (*Ahead-Of-Time*) y dependencias minificadas. Su distribución se efectúa a través del mismo proyecto de Firebase App Distribution bajo un identificador de aplicación complementario, garantizando que los evaluadores puedan alternar y contrastar el desempeño de ambas implementaciones sobre sus terminales físicos.
 
 \noindent \textbf{Procedimiento de contingencia local:}
 
