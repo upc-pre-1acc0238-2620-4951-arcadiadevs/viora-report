@@ -93,4 +93,16 @@ A continuación, se sintetizan las consideraciones técnicas y de runtime adopta
 * **Software Deployment:** Despliegue continuo de la Landing Page en Vercel; contenedorización del backend Java 21 en Docker desplegado como servicio web en Render; persistencia administrada en Filess.io (PostgreSQL 16); y distribución controlada de paquetes APK para Android mediante Firebase App Distribution.
 * **Software Documentation:** Documentación formal de contratos REST mediante OpenAPI Specification; estructuración de diagramas de arquitectura C4 Model con Structurizr; generación automatizada de diagramas UML mediante PlantUML; y compilación tipográfica del informe técnico mediante Pandoc + XeLaTeX bajo arquitectura *Documentation-as-Code*.
 
-\vspace{0.3cm}
+\newpage
+
+### Source Code Management
+
+\newpage
+
+### Source Code Style Guide & Conventions 
+
+\newpage
+
+### Software Deployment Configuration
+
+\newpage
