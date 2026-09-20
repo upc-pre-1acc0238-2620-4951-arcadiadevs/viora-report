@@ -38,11 +38,13 @@ En la \autoref{tab:dev-environment-tools} se detalla la matriz integral de herra
 
 \textbf{Project Management} & Discord & Comunicación sincrónica del equipo, coordinación técnica diaria y sesiones de pair programming. & SaaS Cloud (Freemium) \newline \url{https://discord.com} \\ \hline
 
+\textbf{Project Management} & Arcadia To-Do & Asignación de tareas operativas internas, seguimiento de fechas de entrega y repositorio centralizado de enlaces y documentación clave para el equipo. & SaaS Cloud (In-house) \newline \url{https://arcadia-to-do-application.vercel.app} \\ \hline
+
 \textbf{Requirements Management} & Miro & Elaboración colaborativa del Big Picture EventStorming y profundización en comandos, eventos y agregados. & SaaS Cloud (Educativo) \newline \url{https://miro.com} \\ \hline
 
 \textbf{Requirements Management} & UXPressia & Modelado de artefactos de diseño centrado en el usuario: User Personas, Empathy Maps, Journey Maps e Impact Maps. & SaaS Cloud (Educativo) \newline \url{https://uxpressia.com} \\ \hline
 
-\textbf{Requirements Management} & Lucidchart & Elaboración de flujos de interacción de usuario (User Flows) y esquemas de navegación (Wireflows). & SaaS Cloud (Educativo) \newline \url{https://www.lucidchart.com} \\ \hline
+\textbf{Requirements Management} & Lucidchart & Elaboración de Bounded Context Canvases, flujos de interacción (User Flows) y esquemas de navegación (Wireflows). & SaaS Cloud (Educativo) \newline \url{https://www.lucidchart.com} \\ \hline
 
 \textbf{Product UX/UI Design} & Figma & Diseño del sistema de componentes atómicos UI bajo Material Design 3 y prototipado interactivo de alta fidelidad. & SaaS Cloud / Desktop \newline \url{https://www.figma.com} \\ \hline
 
@@ -52,11 +54,9 @@ En la \autoref{tab:dev-environment-tools} se detalla la matriz integral de herra
 
 \textbf{Software Development} \newline (Mobile Android) & Android Studio & IDE oficial para el desarrollo del cliente móvil nativo Android con Kotlin, Jetpack Compose, Room SQLite y Android SDK 34. & Local (Google Freeware / Apache) \newline \url{https://developer.android.com/studio} \\ \hline
 
-\textbf{Software Development} \newline (Mobile Flutter) & Flutter SDK \newline v3.24.x (Stable) & Framework de desarrollo multiplataforma con lenguaje Dart 3.5.x para la compilación del cliente móvil cross-platform de Viora. & Local (BSD 3-Clause) \newline \url{https://flutter.dev} \\ \hline
-
 \textbf{Software Development} \newline (Landing Page) & Visual Studio \newline Code & Editor de código fuente para la maquetación semántica y estilizado del sitio estático Landing Page (HTML5, CSS3, JavaScript). & Local (MIT License) \newline \url{https://code.visualstudio.com} \\ \hline
 
-\textbf{Software Development} \newline (Database Engine) & PostgreSQL 16 & Sistema gestor de base de datos relacional para la persistencia transaccional y espacial de parcelas, telemetría y suscripciones. & Servidor Cloud (Open Source) \newline \url{https://www.postgresql.org} \\ \hline
+\textbf{Software Development} \newline (Database Engine) & PostgreSQL 16 & Sistema gestor de base de datos relacional para la persistencia transaccional y espacial de parcelas, telemetría y suscripciones. & Local \newline \url{https://www.postgresql.org} \\ \hline
 
 \textbf{Software Testing} \newline (API Testing) & Swagger UI & Inspección, validación y ejecución interactiva de contratos de endpoints RESTful bajo especificación OpenAPI. & Local / Web (Apache 2.0) \newline \url{https://swagger.io} \\ \hline
 
@@ -76,7 +76,7 @@ En la \autoref{tab:dev-environment-tools} se detalla la matriz integral de herra
 
 \textbf{Software Documentation} & PlantUML & Herramienta de modelado basada en código (Diagram-as-Code) para la generación determinista de diagramas de clases y base de datos. & Local (GPL / Apache) \newline \url{https://plantuml.com} \\ \hline
 
-\textbf{Software Documentation} & Pandoc + \newline XeLaTeX & Motor de procesamiento documental y tipográfico para la compilación automatizada del informe técnico en formatos PDF y DOCX. & Local (GPL / LPPL) \newline \url{https://pandoc.org} \\ \hline
+\textbf{Software Documentation} & Pandoc + \newline XeLaTeX & Motor de procesamiento documental y tipográfico para la compilación automatizada del informe técnico en formato PDF. & Local (GPL / LPPL) \newline \url{https://pandoc.org} \\ \hline
 
 \end{longtable}
 
@@ -84,13 +84,13 @@ En la \autoref{tab:dev-environment-tools} se detalla la matriz integral de herra
 
 A continuación, se sintetizan las consideraciones técnicas y de runtime adoptadas para cada área operativa:
 
-* **Project Management:** Uso de Trello para la administración del Product Backlog (89 ítems) y tableros Kanban por Sprint; complementado con Discord para la comunicación sincrónica y acuerdos técnicos de ArcadiaDevs.
-* **Requirements Management:** Miro para la facilitación colaborativa del Big Picture EventStorming y definición de eventos de dominio; UXPressia para el modelado de artefactos de diseño centrado en el usuario (Personas, Journey Maps e Impact Maps); y Lucidchart para los flujos de navegación (User Flows y Wireflows).
+* **Project Management:** Uso de Trello para la administración del Product Backlog (89 ítems) y tableros Kanban por Sprint; Arcadia To-Do como plataforma in-house para la asignación de tareas internas, control de fechas límite y repositorio de enlaces documentales; complementado con Discord para la comunicación técnica sincrónica de ArcadiaDevs.
+* **Requirements Management:** Miro para la facilitación colaborativa del Big Picture EventStorming y definición de eventos de dominio; UXPressia para el modelado de artefactos de diseño centrado en el usuario (Personas, Journey Maps e Impact Maps); y Lucidchart para los Bounded Context Canvases y flujos de navegación (User Flows y Wireflows).
 * **Product UX/UI Design:** Figma como estándar de diseño atómico basado en Material Design 3, definiendo componentes modulares, paleta cromática contextual (tonos tierra y verde olivo) y prototipos interactivos de alta fidelidad para Android y web.
-* **Software Development (Backend & Database):** Estandarización corporativa en OpenJDK 21 LTS (Eclipse Temurin) enlazado a la variable de entorno `JAVA_HOME`. Desarrollo sobre IntelliJ IDEA con Spring Boot 3 y Spring Data JPA, utilizando PostgreSQL 16 como motor relacional transaccional alojado en la nube.
-* **Software Development (Mobile & Web):** Para el cliente nativo `viora-mobile-android`, Android Studio con Android SDK Platform 34 (Android 14, `minSdk` 26) y Jetpack Compose. Para el cliente cross-platform `viora-mobile-flutter`, Flutter SDK v3.24.x (canal `stable`) y Dart 3.5.x con seguridad nula estricta (*Sound Null Safety*). Maquetación de `viora-landing-page` en Visual Studio Code bajo HTML5 semántico, CSS3 y JavaScript.
+* **Software Development (Backend & Database):** Estandarización corporativa en OpenJDK 21 LTS (Eclipse Temurin) enlazado a la variable de entorno `JAVA_HOME`. Desarrollo sobre IntelliJ IDEA con Spring Boot 3 y Spring Data JPA, utilizando PostgreSQL 16 como motor relacional transaccional en entorno local.
+* **Software Development (Mobile & Web):** Para el cliente nativo `viora-mobile-android`, Android Studio con Android SDK Platform 34 (Android 14, `minSdk` 26) y Jetpack Compose. Maquetación de `viora-landing-page` en Visual Studio Code bajo HTML5 semántico, CSS3 y JavaScript.
 * **Software Testing:** Inspección y prueba interactiva de contratos de endpoints RESTful mediante Swagger UI, y pruebas automatizadas de aceptación BDD con Cucumber JVM en el repositorio `viora-acceptance-tests`.
-* **Software Deployment:** Despliegue continuo de la Landing Page en Vercel; contenedorización del backend Java 21 en Docker desplegado como servicio web en Render; persistencia administrada en Filess.io (PostgreSQL 16); y distribución controlada de paquetes APK para Android y Flutter mediante Firebase App Distribution.
+* **Software Deployment:** Despliegue continuo de la Landing Page en Vercel; contenedorización del backend Java 21 en Docker desplegado como servicio web en Render; persistencia administrada en Filess.io (PostgreSQL 16); y distribución controlada de paquetes APK para Android mediante Firebase App Distribution.
 * **Software Documentation:** Documentación formal de contratos REST mediante OpenAPI Specification; estructuración de diagramas de arquitectura C4 Model con Structurizr; generación automatizada de diagramas UML mediante PlantUML; y compilación tipográfica del informe técnico mediante Pandoc + XeLaTeX bajo arquitectura *Documentation-as-Code*.
 
 \vspace{0.3cm}
