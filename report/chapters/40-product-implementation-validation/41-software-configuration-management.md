@@ -264,9 +264,9 @@ Para la aplicación multiplataforma en `viora-mobile-flutter`, el equipo aplica 
 
 ### Software Deployment Configuration
 
-Para garantizar que los productos digitales que integran el ecosistema Viora se publiquen y operen de forma reproducible, resiliente y continua, ArcadiaDevs ha diseñado una infraestructura de despliegue moderna basada en el paradigma de Entrega Continua (*Continuous Delivery*) y en los principios de paridad entre desarrollo y producción (*Environment Parity*) postulados por *The Twelve-Factor App*. 
+Para garantizar que los productos digitales que integran el ecosistema Viora se publiquen y operen de forma reproducible, resiliente y continua, ArcadiaDevs ha diseñado una infraestructura de despliegue moderna basada en el paradigma de Entrega Continua y en los principios de paridad entre desarrollo y producción. 
 
-La estrategia de despliegue desacopla la arquitectura en cuatro componentes de alojamiento especializados: red de distribución de borde (*Edge Network*) en Vercel para la Landing Page, entorno de ejecución gestionado en Render para los servicios web de backend y el simulador de telemetría, base de datos relacional administrada en Filess.io para la persistencia transaccional, y distribución privada de binarios mediante Firebase App Distribution para el cliente móvil Android. La orquestación de compilación, firma y publicación se automatiza a través de pipelines de integración continua en GitHub Actions, minimizando la intervención manual y garantizando la trazabilidad entre el código fuente auditado en Git y los artefactos desplegados en la nube.
+La estrategia de despliegue desacopla la arquitectura en cuatro componentes de alojamiento especializados: red de distribución de borde en Vercel para la Landing Page, entorno de ejecución gestionado en Render para los servicios web de backend y el simulador de telemetría, base de datos relacional administrada en Filess.io para la persistencia transaccional, y distribución privada de binarios mediante Firebase App Distribution para las aplicaciones móviles (Android nativo y Flutter). La orquestación de compilación, firma y publicación se automatiza a través de pipelines de integración continua en GitHub Actions, minimizando la intervención manual y garantizando la trazabilidad entre el código fuente auditado en Git y los artefactos desplegados en la nube.
 
 #### Arquitectura de despliegue de la solución (C4 Model Nivel 4)
 &nbsp;
@@ -279,14 +279,14 @@ En la \autoref{fig:c4-deployment-ch4} se expone la arquitectura global de despli
 \caption{C4 Model - Nivel 4: Diagrama de Despliegue de la solución Viora.} \label{fig:c4-deployment-ch4}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.95\textwidth]{report/assets/c4-model/viora-deployment.png}
+\includegraphics[width=0.60\textwidth]{report/assets/c4-model/viora-deployment.png}
 \caption*{\textit{Nota.} Topología física de despliegue de Viora en Vercel, Render, Filess.io, Firebase App Distribution, dispositivos Android de prueba y nodos SaaS externos. Elaboración propia.}
 \end{figure}
 
 \begin{figure}[H]
 \caption{C4 Model - Leyenda de notación del Diagrama de Despliegue.} \label{fig:c4-deployment-key-ch4}
 \centering
-\includegraphics[width=0.7\textwidth]{report/assets/c4-model/viora-deployment-key.png}
+\includegraphics[width=0.6\textwidth]{report/assets/c4-model/viora-deployment-key.png}
 \caption*{\textit{Nota.} Clave de notación de nodos de infraestructura, contenedores desplegados y servicios externos. Elaboración propia.}
 \end{figure}
 
@@ -326,15 +326,15 @@ La capa de servicios web de Viora, versionada en el repositorio `viora-platform`
 
 Se aprovecha el entorno de ejecución nativo de Java ofrecido por Render, lo que simplifica la administración de la infraestructura al no requerir la gestión manual de demonios Docker en el nivel de desarrollo. Los parámetros operacionales configurados en Render comprenden:
 
-* **Entorno de ejecución (*Environment*):** Java (OpenJDK 21).
-* **Comando de compilación (*Build Command*):** `./mvnw clean package -DskipTests` (o `./gradlew build -x test`), el cual resuelve las dependencias corporativas, compila el código fuente y genera el archivo ejecutable `.jar` optimizado.
-* **Comando de inicio (*Start Command*):** `java -Dserver.port=$PORT -jar target/viora-platform-0.0.1-SNAPSHOT.jar`, asociando la aplicación al puerto dinámico asignado por el balanceador de carga de Render.
-* **Variables de entorno inyectadas:** Para cumplir con el principio de configuración desacoplada, se inyectan como variables de entorno seguras en el panel de Render:
-  * `SPRING_PROFILES_ACTIVE=prod`: Activa el perfil de configuración productivo en Spring Boot.
-  * `PORT=8080`: Puerto de escucha del servidor embebido Tomcat.
-  * `SPRING_DATASOURCE_URL`: Cadena de conexión JDBC con protocolo SSL forzado apuntando a Filess.io (`jdbc:postgresql://<host>:<port>/<database>?sslmode=require`).
-  * `SPRING_DATASOURCE_USERNAME` y `SPRING_DATASOURCE_PASSWORD`: Credenciales seguras de acceso a la base de datos remota.
-  * `SECURITY_JWT_SECRET_KEY`: Clave criptográfica privada para la firma y validación de tokens de sesión JWT.
+* Entorno de ejecución (*Environment*): Java (OpenJDK 21).
+* Comando de compilación (*Build Command*): `./mvnw clean package -DskipTests` (o `./gradlew build -x test`), el cual resuelve las dependencias corporativas, compila el código fuente y genera el archivo ejecutable `.jar` optimizado.
+* Comando de inicio (*Start Command*): `java -Dserver.port=$PORT -jar target/viora-platform-0.0.1-SNAPSHOT.jar`, asociando la aplicación al puerto dinámico asignado por el balanceador de carga de Render.
+* Variables de entorno inyectadas: para cumplir con el principio de configuración desacoplada, se inyectan como variables de entorno seguras en el panel de Render:
+  * `SPRING_PROFILES_ACTIVE=prod`: activa el perfil de configuración productivo en Spring Boot.
+  * `PORT=8080`: puerto de escucha del servidor embebido Tomcat.
+  * `SPRING_DATASOURCE_URL`: cadena de conexión JDBC con protocolo SSL forzado apuntando a Filess.io (`jdbc:postgresql://<host>:<port>/<database>?sslmode=require`).
+  * `SPRING_DATASOURCE_USERNAME` y `SPRING_DATASOURCE_PASSWORD`: credenciales seguras de acceso a la base de datos remota.
+  * `SECURITY_JWT_SECRET_KEY`: clave criptográfica privada para la firma y validación de tokens de sesión JWT.
   * Claves de integración de proveedores externos (Mapbox, Open-Meteo, Brevo y Mercado Pago).
 
 \noindent \textbf{Persistencia y sincronización del esquema en Filess.io:}
@@ -363,20 +363,20 @@ La solución móvil de Viora comprende tanto el cliente móvil nativo custodiado
 
 \noindent \textbf{Selección técnica de la variante de compilación (*Build Variant*):}
 
-Para la distribución a través de Firebase se selecciona formalmente la variante **`release` (`app-release.apk`)**. A diferencia de la variante `debug` (la cual mantiene habilitada la bandera `android:debuggable=true`, incluye librerías de tracing y carece de optimizaciones), la variante `release` incorpora:
+Para la distribución a través de Firebase se selecciona la variante `release` (`app-release.apk`). A diferencia de la variante `debug` (la cual mantiene habilitada la bandera `android:debuggable=true`, incluye librerías de tracing y carece de optimizaciones), la variante `release` incorpora:
 
-* **Optimización y ofuscación R8:** Ejecuta minificación de código, remoción de clases no utilizadas y ofuscación de nombres de métodos y variables, reduciendo el tamaño del binario y protegiendo el código contra técnicas de descompilación.
-* **Seguridad de red estricta:** Aplica políticas obligatorias de *Network Security Config*, forzando el cifrado en tránsito HTTPS y denegando tráfico en texto plano.
-* **Fidelidad de ejecución:** Permite evaluar el comportamiento de la aplicación en el dispositivo físico bajo condiciones de memoria, consumo de batería y fluidez de interfaz idénticas a las que experimentará el usuario final.
+* Optimización y ofuscación R8: ejecuta minificación de código, remoción de clases no utilizadas y ofuscación de nombres de métodos y variables, reduciendo el tamaño del binario y protegiendo el código contra técnicas de descompilación.
+* Seguridad de red estricta: aplica políticas obligatorias de *Network Security Config*, forzando el cifrado en tránsito HTTPS y denegando tráfico en texto plano.
+* Fidelidad de ejecución: permite evaluar el comportamiento de la aplicación en el dispositivo físico bajo condiciones de memoria, consumo de batería y fluidez de interfaz idénticas a las que experimentará el usuario final.
 
 \noindent \textbf{Gestión de firma criptográfica (*Signing Config*):}
 
 La compilación `release` se firma digitalmente utilizando un almacén de claves criptográficas (*Keystore* JKS). Para proteger la clave privada sin comprometerla en el control de versiones, el archivo keystore se codifica en formato Base64 y se inyecta dinámicamente en el entorno de ejecución mediante secretos de repositorio en GitHub Actions:
 
-* `ANDROID_KEYSTORE_BASE64`: Cadena codificada que reconstruye el archivo `.jks` en el ejecutor.
-* `ANDROID_KEY_ALIAS`: Identificador del alias de la clave criptográfica.
-* `ANDROID_KEY_PASSWORD`: Contraseña de la clave privada de firma.
-* `ANDROID_STORE_PASSWORD`: Contraseña del almacén de claves.
+* `ANDROID_KEYSTORE_BASE64`: cadena codificada que reconstruye el archivo `.jks` en el ejecutor.
+* `ANDROID_KEY_ALIAS`: identificador del alias de la clave criptográfica.
+* `ANDROID_KEY_PASSWORD`: contraseña de la clave privada de firma.
+* `ANDROID_STORE_PASSWORD`: contraseña del almacén de claves.
 
 \noindent \textbf{Pipeline automatizado de distribución en GitHub Actions:}
 
@@ -394,21 +394,23 @@ De manera homóloga al cliente nativo, la aplicación móvil multiplataforma ver
 
 \noindent \textbf{Procedimiento de contingencia local:}
 
-En caso de que se requiera compilar y distribuir una versión de prueba de forma manual fuera del pipeline de integración continua, cualquier ingeniero autorizado de ArcadiaDevs puede ejecutar los siguientes comandos desde la terminal local:
+En caso de requerir compilar y distribuir una versión de prueba manualmente fuera del pipeline de integración continua, el equipo de ingeniería puede ejecutar los siguientes comandos desde la consola local:
 
-\begin{verbatim}
+```bash
 ./gradlew assembleRelease
-firebase appdistribution:distribute app/build/outputs/apk/release/app-release.apk \
+
+firebase appdistribution:distribute \
+  app/build/outputs/apk/release/app-release.apk \
   --app 1:1029384756:android:abcd1234ef5678 \
-  --groups arcadiadevs-internal,upc-evaluators \
-  --release-notes "Compilación manual de prueba - Sprint Review"
-\end{verbatim}
+  --groups arcadiadevs-internal,viora-client-testers \
+  --release-notes "Validación con clientes"
+```
 
-\noindent \textbf{Organización de grupos de evaluadores (*Tester Groups*):}
+\noindent \textbf{Organización de grupos de evaluadores:}
 
-Firebase App Distribution gestiona las autorizaciones de acceso mediante dos grupos temáticos de evaluadores:
+Firebase App Distribution gestiona las autorizaciones y la entrega de binarios mediante dos grupos temáticos:
 
-* **`arcadiadevs-internal`:** Comprende las direcciones de correo electrónico de los desarrolladores y líderes técnicos de ArcadiaDevs. Este grupo recibe compilaciones inmediatas para la ejecución de pruebas de humo (*smoke testing*) y validación de funcionalidades recién integradas.
-* **`upc-evaluators`:** Agrupa al docente titular, asistentes de cátedra y evaluadores del proyecto. Los miembros de este grupo reciben notificaciones automatizadas por correo con un enlace seguro de instalación inalámbrica, permitiéndoles descargar el APK directamente en sus dispositivos Android para la sustentación y calificación de cada entrega.
+* `arcadiadevs-internal` (Equipo interno de ingeniería): comprende las cuentas de los desarrolladores y líderes técnicos de ArcadiaDevs. Este grupo recibe compilaciones preliminares inmediatas tras cada integración para la ejecución de pruebas de humo, verificación de endpoints y aseguramiento de calidad interno antes de cualquier exposición a usuarios finales.
+* `viora-client-testers` (Clientes y usuarios de validación): agrupa a los representantes reales de los dos segmentos objetivo del proyecto (productores olivareros independientes y gestores técnicos de cooperativas). Los integrantes de este grupo reciben acceso a las versiones estables de las aplicaciones móviles (Android nativo y Flutter) instaladas directamente sobre sus terminales físicos, permitiéndoles interactuar con los flujos de usuario y evaluar las tareas clave durante las sesiones de entrevistas de validación.
 
 \newpage
