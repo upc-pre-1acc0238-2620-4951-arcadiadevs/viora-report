@@ -195,9 +195,68 @@ La estructura formal obligatoria para cada mensaje de confirmación se define de
 * **Cuerpo (*body*):** Bloque opcional separado por una línea en blanco que detalla la motivación técnica del cambio y el contraste con el comportamiento previo.
 * **Cambios disruptivos (*Breaking Changes*):** Si la confirmación introduce una incompatibilidad en la API o arquitectura, se añade obligatoriamente un signo de exclamación tras el tipo/alcance (ej. `feat(api)!: modify authentication payload`) o se declara una nota `BREAKING CHANGE:` en el pie del mensaje explicando el impacto y los pasos de migración requeridos.
 
-\newpage
-
 ### Source Code Style Guide & Conventions 
+
+Para garantizar la consistencia, legibilidad, mantenibilidad y el trabajo colaborativo en la base de código de Viora, ArcadiaDevs ha establecido un conjunto de estándares y convenciones de codificación obligatorios. Como directriz transversal a todos los repositorios, toda la nomenclatura (nombres de paquetes, clases, interfaces, métodos, variables, atributos, parámetros, comentarios técnicos y nombres de archivos) se redactará exclusivamente en idioma inglés, asegurando la interoperabilidad con bibliotecas internacionales y siguiendo las mejores prácticas de la industria.
+
+A continuación, se detallan las guías de estilo adoptadas para cada una de las tecnologías y lenguajes utilizados en la solución:
+
+#### Especificaciones de comportamiento: Gherkin
+&nbsp;
+
+Para la redacción de los criterios de aceptación en historias de usuario y la automatización de pruebas BDD en el repositorio `viora-acceptance-tests`, se siguen las directrices oficiales de @cucumbergherkin:
+
+* **Idioma y palabras clave:** Todas las palabras reservadas (`Feature`, `Scenario`, `Scenario Outline`, `Given`, `When`, `Then`, `And`, `But`, `Examples`) se declaran en inglés.
+* **Estructura comprobable:** Cada escenario modela un flujo de interacción concreto sin hacer referencia a detalles efímeros de interfaz gráfica ni elementos visuales transitorios.
+* **Parametrización y reusabilidad:** Se prioriza el uso de `Scenario Outline` junto con tablas de datos en `Examples` para validar múltiples combinaciones de entrada y respuesta esperada, evitando duplicación innecesaria.
+
+#### Estructura web: HTML5
+&nbsp;
+
+La maquetación del sitio estático `viora-landing-page` se rige por los estándares de @w3schoolshtml5 y las recomendaciones de @googlehtmlcss:
+
+* **Sintaxis y elementos:** Se emplean minúsculas para todas las etiquetas y atributos HTML. Los valores de los atributos deben delimitarse obligatoriamente con comillas dobles.
+* **Semántica estructural:** Es mandatorio el uso de elementos semánticos de HTML5 (`<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<footer>`) para optimizar la indexación SEO y la navegación accesible.
+* **Accesibilidad (a11y):** Toda imagen debe incorporar su correspondiente atributo `alt` descriptivo, y cada elemento de formulario interactivo debe estar asociado inequívocamente con su elemento `<label>`.
+
+#### Estilos y diseño visual: CSS3
+&nbsp;
+
+Para las hojas de estilo de la Landing Page, se adoptan las directrices de @googlehtmlcss complementadas con la metodología de nomenclatura BEM (*Block, Element, Modifier*):
+
+* **Formato e indentación:** Se establece una indentación consistente de 2 espacios sin tabulaciones. Las reglas se declaran con una propiedad por línea.
+* **Nomenclatura BEM:** Se utiliza la notación en minúsculas con guiones (*kebab-case*) para estructurar los selectores (ej. `.viora-card`, `.viora-card__title`, `.viora-card--highlighted`).
+* **Especificidad y selectores:** Se restringe el uso de selectores de tipo anidados para maximizar el rendimiento del motor de renderizado. Queda estrictamente prohibido el uso de selectores por identificador (`#id`) para aplicar estilos visuales, reservándolos únicamente para anclajes o enlaces con JavaScript.
+
+#### Lógica del servidor: Java y Spring Boot
+&nbsp;
+
+El desarrollo del Backend API en el repositorio `viora-platform` y del simulador `viora-telemetry-simulator` se fundamenta en la @googlejava y en las convenciones arquitectónicas de @springbootfeatures:
+
+* **Convenciones de nomenclatura:** Los nombres de clases, interfaces y tipos enumerados se escriben en *UpperCamelCase* (ej. `CropLoadAssessmentService`, `TelemetryRecord`). Los métodos y variables locales adoptan *lowerCamelCase* (ej. `calculateBearingIndex`, `plotId`). Las constantes inmutables y valores de enumeración se definen en mayúsculas sostenidas con guion bajo (*CONSTANT\_CASE*, ej. `MAX_SAMPLE_INTERVAL_HOURS`).
+* **Bloques y control de flujo:** Es obligatorio el uso de llaves delimitadoras `{}` en todas las estructuras de control (`if`, `else`, `for`, `while`), incluso en sentencias que contengan una única instrucción.
+* **Documentación Javadoc:** Toda clase de dominio, servicio de aplicación y controlador REST público debe contar con bloques de documentación Javadoc (`/** ... */`), especificando las etiquetas `@param`, `@return` y `@throws` cuando corresponda.
+* **Estructura modular en Spring Boot:** Se ubica la clase anotada con `@SpringBootApplication` en el paquete raíz (`pe.edu.upc.viora.platform`) para habilitar el escaneo automático de componentes. Se aplica inyección de dependencias mediante constructores y se estructuran los paquetes respetando la separación en capas de la arquitectura limpia y DDD táctico.
+
+#### Cliente móvil nativo: Kotlin y Android
+&nbsp;
+
+El desarrollo del cliente móvil Android en `viora-mobile-android` se rige por la guía oficial @androidkotlinstyle de Google:
+
+* **Nomenclatura en Kotlin:** Clases, objetos y funciones componibles de Jetpack Compose adoptan *PascalCase* (ej. `PlotCardView`, `ThinningScheduleScreen`). Las propiedades y funciones estándar emplean *camelCase* (ej. `fetchOfflineSamples()`).
+* **Inmutabilidad:** Se prioriza el uso de variables inmutables (`val`) sobre mutables (`var`), y el empleo de colecciones de solo lectura para salvaguardar el estado de la UI.
+* **Compose y corrutinas:** El manejo de concurrencia y flujos asíncronos para operaciones de base de datos local (Room) y peticiones de red se gestiona mediante Kotlin Coroutines y `StateFlow`, delimitando el ciclo de vida en ViewModels.
+* **KDoc:** Se utiliza sintaxis KDoc (`/** ... */`) para documentar clases de repositorio, casos de uso y componentes reutilizables de UI.
+
+#### Cliente móvil multiplataforma: Dart y Flutter
+&nbsp;
+
+Para la aplicación multiplataforma en `viora-mobile-flutter`, el equipo aplica la guía oficial de estilo @effectivedart:
+
+* **Nomenclatura de archivos y clases:** Los nombres de archivos de código fuente, recursos y carpetas se redactan obligatoriamente en minúsculas con guiones bajos (*snake\_case*, ej. `plot_repository.dart`, `harvest_history_screen.dart`). Las clases, *mixins* y extensiones se definen en *UpperCamelCase* (ej. `AgronomicRecordViewModel`).
+* **Identificadores y métodos:** Las funciones, métodos, variables y parámetros se nombran en *lowerCamelCase*. Los miembros privados se prefijan con guion bajo (`_privateField`).
+* **Seguridad nula estricta (*Sound Null Safety*):** Todo el código se compila bajo modo estricto de seguridad nula, evitando el operador de aserción no nula (`!`) sin validación previa.
+* **Documentación con dartdoc:** Se emplea la convención de barras triples (`///`) para la documentación de cabecera de Widgets, modelos de datos y servicios Dio.
 
 \newpage
 
