@@ -9,13 +9,26 @@ En esta sección se detallan los acuerdos fundamentales alcanzados por el equipo
 
 A continuación, en la \autoref{tab:sprint-planning-1} se presenta el cuadro resumen del Sprint Planning Meeting, el cual integra la logística de la sesión, los responsables de la documentación y el Sprint Goal formulado bajo el estándar de Scrum.org para garantizar que este primer incremento de software entregue valor tangible a los productores y organizaciones olivareras.
 
-\begin{table}[H]
-\caption{Resumen de la sesión de planificación del Sprint 1 (Sprint Planning 1)} \label{tab:sprint-planning-1}
-\centering
+\begin{center}
 \small
 \renewcommand{\arraystretch}{1.25}
-\begin{tabular}{|p{4.2cm}|p{10.8cm}|}
+\begin{longtable}{|p{4.2cm}|p{10.8cm}|}
+\caption{Resumen de la sesión de planificación del Sprint 1 (Sprint Planning 1)} \label{tab:sprint-planning-1} \\
 \hline
+\textbf{Aspecto / Parámetro} & \textbf{Detalle del compromiso de planificación} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Aspecto / Parámetro} & \textbf{Detalle del compromiso de planificación} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{2}{l}{\parbox{15cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia.}} \\
+\endlastfoot
+
 \textbf{Sprint \#} & Sprint 1 \\ \hline
 \textbf{Sprint Planning Background} & Sesión de planificación virtual para definir los compromisos del primer incremento de software de Viora. \\ \hline
 \textbf{Date} & 2026-09-21 \\ \hline
@@ -28,9 +41,10 @@ A continuación, en la \autoref{tab:sprint-planning-1} se presenta el cuadro res
 \textbf{Sprint 1 Goal} & \textbf{Nuestro enfoque se orienta a} presentar de manera comercial y diferenciada la propuesta de valor y tarifas de Viora a visitantes y organizaciones olivareras, habilitar la digitalización y captura de datos agronómicos en campo sin conexión para el segmento de productores olivareros, e incrementar las capacidades de integración y desarrollo mediante servicios web desacoplados para el equipo de aplicaciones cliente. \textbf{Creemos que esto entrega} mayor aceleración en la captación y conversión de clientes calificados interesados en los planes de suscripción, reducción del costo operativo de levantamiento de datos en predio y validación temprana de mercado para los productores agrícolas, y celeridad de construcción técnica con contratos estables para los desarrolladores de software. \textbf{Esto se confirmará cuando} los visitantes del sitio web consulten las tarifas en moneda nacional (PEN) en no más de tres interacciones y accedan a los enlaces de descarga directa, los productores olivareros registren exitosamente una parcela georreferenciada y almacenen muestreos de cuajado locales desconectados en la aplicación móvil nativa (Kotlin con Jetpack Compose y Room SQLite), y los desarrolladores clientes consuman los endpoints documentados con OpenAPI en Swagger UI cubriendo más del 70\% de los servicios web del backend fundacional y de gestión agronómica sin requerir intervención del equipo de base de datos. \\ \hline
 \textbf{Sprint 1 Velocity} & 130 \\ \hline
 \textbf{Sum of Story Points} & 119 \\ \hline
-\end{tabular}
-\caption*{\textit{Nota.} Elaboración propia.}
-\end{table}
+\end{longtable}
+\end{center}
+
+\clearpage
 
 #### Aspect Leaders and Collaborators 
 &nbsp;
@@ -54,14 +68,14 @@ A continuación, en la \autoref{tab:lacx-sprint-1} se expone la matriz de asigna
 \centering
 \small
 \renewcommand{\arraystretch}{1.25}
-\begin{tabular}{|p{4.2cm}|p{2.3cm}|c|c|c|c|c|c|c|}
+\begin{tabular}{|p{2.5cm}|p{2.42cm}|c|c|c|c|c|c|c|}
 \hline
 \textbf{Team Member} & \textbf{GitHub User} & \textbf{Comm.} & \textbf{Orchard} & \textbf{Telem.} & \textbf{Pheno.} & \textbf{Thin.} & \textbf{Harv.} & \textbf{Shared} \\ \hline
+Espada Lazo, Piero Anthony & espadita2510 \newline pierodeveloper25 & C & \textbf{L} & C & C & C & C & \textbf{L} \\ \hline
+Li Gayoso, Diana Carolina & peruvianMiau & C & C & C & C & C & \textbf{L} & C \\ \hline
 Paredes Maza, Victor Juan de Dios & DaronCameloft & \textbf{L} & C & C & C & C & C & C \\ \hline
-Espada Lazo, Piero Anthony & espadita2510 & C & \textbf{L} & C & C & C & C & \textbf{L} \\ \hline
 Santi Guerrero, Fabrizio Alonso & Santi2007939 & C & C & C & \textbf{L} & \textbf{L} & C & C \\ \hline
 Trinidad León, Jahat Jassiel & trinity-bytes & C & C & \textbf{L} & C & C & C & C \\ \hline
-Li Gayoso, Diana Carolina & peruvianMiau & C & C & C & C & C & \textbf{L} & C \\ \hline
 \end{tabular}
 \caption*{\textit{Nota.} L = Leader (Líder responsable del aspecto); C = Collaborator (Colaborador técnico). Elaboración propia.}
 \end{table}
