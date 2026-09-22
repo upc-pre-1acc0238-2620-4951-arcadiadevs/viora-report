@@ -2622,7 +2622,7 @@ En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual art
 
 ### Product Backlog
 
-El Product Backlog de Viora consolida y prioriza los 89 ítems de trabajo del sistema (43 Historias de Usuario, 43 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica, la resolución de spikes críticos (modelo dinámico de Erez, persistencia local offline y pasarela de cobro), la entrega de las pantallas centrales del productor olivarero (delimitación parcelaria, monitoreo de frío, cálculo del índice BBI y muestreo sin conectividad) y el 70% del backend fundacional. Siguiendo las buenas prácticas ágiles, todas las historias de usuario y técnicas de gestión de identidad y accesos (IAM) se posponen al Sprint 3, dado que no aportan valor agronómico directo al usuario final; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, pasarela de pagos y herramientas territoriales de la cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, el cierre productivo de campaña, la proyección logística de acopio diferenciado entre aceituna verde y negra, y la exportación de reportes técnicos auditables en formato PDF.
+El Product Backlog de Viora consolida y prioriza los 89 ítems de trabajo del sistema (43 Historias de Usuario, 43 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica, la resolución de spikes críticos orientados al productor (modelo dinámico de Erez y persistencia local offline-first), la entrega de las pantallas centrales del productor olivarero (delimitación parcelaria, monitoreo de frío, cálculo del índice BBI y muestreo guiado sin conectividad) y más del 70% de los servicios web del backend fundacional y de gestión agronómica predial del productor. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro), mientras que las historias de gestión de identidad y accesos (IAM) se posponen al Sprint 3; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, la pasarela de pagos y las herramientas territoriales y códigos de cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, los cuadros de mando territoriales de acopio y la exportación de reportes técnicos auditables en formato PDF.
 
 A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integral del Product Backlog del sistema Viora, detallando el orden de ejecución, identificador, denominación técnica, estimación de esfuerzo en puntos de historia (*Story Points*) y la asignación a su respectivo ciclo de iteración (*Sprint*).
 
@@ -2656,84 +2656,84 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 9 & US41 & Selección de idioma y localización de contenidos en la Landing Page & 2 & Sprint 1 \\ \hline
 10 & SPK01 & Investigación y modelado dinámico de Erez para cálculo de frío en backend & 3 & Sprint 1 \\ \hline
 11 & SPK02 & Investigación de persistencia local SQLite y protocolo offline-first & 3 & Sprint 1 \\ \hline
-12 & SPK03 & Investigación e integración de Checkout Pro en Mercado Pago Sandbox y webhooks & 3 & Sprint 1 \\ \hline
-13 & US09 & Delimitación georreferenciada de parcela con GPS y caracterización agronómica inicial & 5 & Sprint 1 \\ \hline
-14 & US10 & Consulta y modificación de linderos y datos dendrométricos de parcela & 3 & Sprint 1 \\ \hline
-15 & US17 & Monitoreo agroclimático y consulta de series temporales de suelo y microclima & 5 & Sprint 1 \\ \hline
-16 & US20 & Registro retrospectivo de campañas históricas de cosecha y cálculo del Índice de Vecería (BBI) & 5 & Sprint 1 \\ \hline
-17 & US21 & Modificación y rectificación de registros históricos de cosecha & 2 & Sprint 1 \\ \hline
-18 & US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & 5 & Sprint 1 \\ \hline
-19 & US25 & Consulta de representatividad estadística e historial de árboles muestreados en campo & 3 & Sprint 1 \\ \hline
-20 & US13 & Vinculación y alta de nodo sensor virtual a una parcela & 3 & Sprint 1 \\ \hline
-21 & US14 & Consulta de inventario y estado operativo de nodos sensores virtuales en parcela & 2 & Sprint 1 \\ \hline
-22 & TS31 & Manejo centralizado de excepciones y errores bajo estándar RFC 7807 & 1 & Sprint 1 \\ \hline
-23 & TS32 & Convenciones de persistencia relacional, nomenclatura ORM y tipado espacial & 1 & Sprint 1 \\ \hline
-24 & TS33 & Generación dinámica y documentación interactiva de contratos de API con OpenAPI 3.0 & 1 & Sprint 1 \\ \hline
-25 & TS34 & Resolución de localización y mensajes internacionalizados mediante cabecera Accept-Language & 1 & Sprint 1 \\ \hline
-26 & TS11 & Creación y delimitación poligonal de parcelas georreferenciadas & 5 & Sprint 1 \\ \hline
-27 & TS12 & Listado y sincronización incremental delta de parcelas & 3 & Sprint 1 \\ \hline
-28 & TS13 & Consulta detallada de información agronómica y espacial de parcela & 2 & Sprint 1 \\ \hline
-29 & TS14 & Actualización y rectificación integral de parcela con bloqueo optimista & 3 & Sprint 1 \\ \hline
-30 & TS15 & Eliminación y baja lógica de parcela del inventario & 2 & Sprint 1 \\ \hline
-31 & TS16 & Alta y vinculación de nodo sensor virtual a parcela & 3 & Sprint 1 \\ \hline
-32 & TS17 & Consulta de inventario de nodos virtuales vinculados a parcela & 2 & Sprint 1 \\ \hline
-33 & TS18 & Desvinculación de nodo virtual preservando trazabilidad histórica & 2 & Sprint 1 \\ \hline
-34 & TS19 & Consulta de series temporales de telemetría ambiental y de suelo & 3 & Sprint 1 \\ \hline
-35 & TS20 & Consulta de pronóstico meteorológico geolocalizado a 7 días & 3 & Sprint 1 \\ \hline
-36 & TS21 & Asentamiento de cosecha anual por campaña para auditoría productiva & 3 & Sprint 1 \\ \hline
-37 & TS22 & Consulta del historial plurianual de cosechas de la parcela & 2 & Sprint 1 \\ \hline
-38 & TS23 & Cálculo y entrega de métricas de vecería BBI y frío dinámico de Erez & 5 & Sprint 1 \\ \hline
-39 & TS24 & Registro y sincronización de muestreos guiados de cuajado en campo & 5 & Sprint 1 \\ \hline
-40 & TS25 & Consulta de representatividad estadística y estado de muestreo & 3 & Sprint 1 \\ \hline
-41 & TS26 & Consulta de prescripción técnica de aclareo y ventana fenológica & 3 & Sprint 1 \\ \hline
-42 & TS27 & Confirmación y registro de ejecución de labor de aclareo en campo & 3 & Sprint 1 \\ \hline
-43 & TS08 & Generación de lote de códigos de activación para socios cooperativos & 3 & Sprint 1 \\ \hline
-44 & TS09 & Consulta y auditoría de códigos de activación de cooperativa & 2 & Sprint 1 \\ \hline
-45 & TS10 & Canje de código de activación de socio para vinculación cooperativa & 3 & Sprint 1 \\ \hline
-46 & US22 & Monitoreo dinámico de porciones de frío invernal acumuladas mediante el modelo de Erez & 5 & Sprint 2 \\ \hline
-47 & US23 & Detección de anomalías térmicas invernales y advertencia de riesgo floral por efecto ENOS & 3 & Sprint 2 \\ \hline
-48 & US26 & Cálculo de carga frutal objetivo sostenible y rendimiento potencial de campaña & 5 & Sprint 2 \\ \hline
-49 & US27 & Prescripción técnica in-app de porcentaje y ventana fenológica de aclareo & 5 & Sprint 2 \\ \hline
-50 & US28 & Registro y confirmación de ejecución de aclareo en campo & 3 & Sprint 2 \\ \hline
-51 & US06 & Suscripción individual al Plan Productor mediante pasarela de pago digital & 5 & Sprint 2 \\ \hline
-52 & US07 & Activación de cuenta de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
-53 & US08 & Administración de la cartera de socios productores y consulta de cuota corporativa & 3 & Sprint 2 \\ \hline
-54 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con geolocalización GPS & 5 & Sprint 2 \\ \hline
-55 & TS06 & Generación de preferencia de checkout para suscripción de productor independiente & 3 & Sprint 2 \\ \hline
-56 & TS07 & Recepción y procesamiento de webhooks de notificación de pagos & 5 & Sprint 2 \\ \hline
-57 & TS28 & Generación y descarga de reporte agronómico auditable en formato PDF & 5 & Sprint 2 \\ \hline
-58 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico & 3 & Sprint 2 \\ \hline
-59 & TS30 & Proyección agregada temprana de volumen de acopio cooperativo & 5 & Sprint 2 \\ \hline
-60 & US29 & Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva & 3 & Sprint 3 \\ \hline
-61 & US30 & Emisión, certificación criptográfica y exportación del expediente agronómico en PDF & 5 & Sprint 3 \\ \hline
-62 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 3 \\ \hline
-63 & US32 & Proyección agregada temprana de volumen de acopio de aceituna verde y negra para la cooperativa & 5 & Sprint 3 \\ \hline
-64 & US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & 3 & Sprint 3 \\ \hline
-65 & US19 & Consulta de pronóstico meteorológico geolocalizado a 7 días & 3 & Sprint 3 \\ \hline
-66 & US15 & Configuración y calibración de nodo sensor virtual en parcela & 2 & Sprint 3 \\ \hline
-67 & US16 & Desvinculación y baja de nodo sensor virtual de una parcela & 2 & Sprint 3 \\ \hline
-68 & US11 & Baja y remoción de parcela del inventario productivo & 2 & Sprint 3 \\ \hline
-69 & US42 & Configuración y cambio de idioma de la interfaz en la aplicación móvil & 2 & Sprint 3 \\ \hline
-70 & US01 & Registro de cuenta de acceso y credenciales seguras con asignación de rol & 3 & Sprint 3 \\ \hline
-71 & US02 & Inicio de sesión y autenticación persistente mediante tokens & 3 & Sprint 3 \\ \hline
-72 & US03 & Consulta y actualización de datos de perfil y contacto & 2 & Sprint 3 \\ \hline
-73 & US04 & Cambio seguro de contraseña de acceso & 2 & Sprint 3 \\ \hline
-74 & US05 & Recuperación de contraseña olvidada mediante enlace por correo & 3 & Sprint 3 \\ \hline
-75 & TS01 & Registro de credenciales de cuenta de usuario y asignación de rol en IAM & 3 & Sprint 3 \\ \hline
-76 & TS02 & Autenticación de usuarios y emisión de tokens JWT con claims de rol & 3 & Sprint 3 \\ \hline
-77 & TS03 & Renovación periódica de tokens de sesión mediante Refresh Token & 2 & Sprint 3 \\ \hline
-78 & TS04 & Consulta de información de perfil del usuario autenticado & 2 & Sprint 3 \\ \hline
-79 & TS05 & Actualización parcial de datos de perfil con validación telefónica E.164 & 2 & Sprint 3 \\ \hline
-80 & US43 & Completado de perfil de usuario y contacto validado bajo estándar E.164 & 3 & Sprint 3 \\ \hline
-81 & TS35 & Creación y completado inicial de perfil de usuario con validación telefónica E.164 & 3 & Sprint 3 \\ \hline
-82 & TS36 & Actualización de contraseña para sesión de usuario autenticado & 2 & Sprint 3 \\ \hline
-83 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 3 \\ \hline
-84 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 3 \\ \hline
-85 & TS39 & Asentamiento formal y balance de liquidación de cosecha de fin de campaña & 3 & Sprint 3 \\ \hline
-86 & TS40 & Certificación criptográfica colegiada del expediente agronómico inmutable & 3 & Sprint 3 \\ \hline
-87 & TS41 & Revocación anticipada y ajuste de vigencia de código de activación cooperativo & 2 & Sprint 3 \\ \hline
-88 & TS42 & Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela & 2 & Sprint 3 \\ \hline
-89 & TS43 & Rectificación de pesaje y baja de registro erróneo de cosecha en histórico fenológico & 2 & Sprint 3 \\ \hline
+12 & US09 & Delimitación georreferenciada de parcela con GPS y caracterización agronómica inicial & 5 & Sprint 1 \\ \hline
+13 & US10 & Consulta y modificación de linderos y datos dendrométricos de parcela & 3 & Sprint 1 \\ \hline
+14 & US17 & Monitoreo agroclimático y consulta de series temporales de suelo y microclima & 5 & Sprint 1 \\ \hline
+15 & US20 & Registro retrospectivo de campañas históricas de cosecha y cálculo del Índice de Vecería (BBI) & 5 & Sprint 1 \\ \hline
+16 & US21 & Modificación y rectificación de registros históricos de cosecha & 2 & Sprint 1 \\ \hline
+17 & US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & 5 & Sprint 1 \\ \hline
+18 & US25 & Consulta de representatividad estadística e historial de árboles muestreados en campo & 3 & Sprint 1 \\ \hline
+19 & US13 & Vinculación y alta de nodo sensor virtual a una parcela & 3 & Sprint 1 \\ \hline
+20 & US14 & Consulta de inventario y estado operativo de nodos sensores virtuales en parcela & 2 & Sprint 1 \\ \hline
+21 & TS31 & Manejo centralizado de excepciones y errores bajo estándar RFC 7807 & 1 & Sprint 1 \\ \hline
+22 & TS32 & Convenciones de persistencia relacional, nomenclatura ORM y tipado espacial & 1 & Sprint 1 \\ \hline
+23 & TS33 & Generación dinámica y documentación interactiva de contratos de API con OpenAPI 3.0 & 1 & Sprint 1 \\ \hline
+24 & TS34 & Resolución de localización y mensajes internacionalizados mediante cabecera Accept-Language & 1 & Sprint 1 \\ \hline
+25 & TS11 & Creación y delimitación poligonal de parcelas georreferenciadas & 5 & Sprint 1 \\ \hline
+26 & TS12 & Listado y sincronización incremental delta de parcelas & 3 & Sprint 1 \\ \hline
+27 & TS13 & Consulta detallada de información agronómica y espacial de parcela & 2 & Sprint 1 \\ \hline
+28 & TS14 & Actualización y rectificación integral de parcela con bloqueo optimista & 3 & Sprint 1 \\ \hline
+29 & TS15 & Eliminación y baja lógica de parcela del inventario & 2 & Sprint 1 \\ \hline
+30 & TS16 & Alta y vinculación de nodo sensor virtual a parcela & 3 & Sprint 1 \\ \hline
+31 & TS17 & Consulta de inventario de nodos virtuales vinculados a parcela & 2 & Sprint 1 \\ \hline
+32 & TS18 & Desvinculación de nodo virtual preservando trazabilidad histórica & 2 & Sprint 1 \\ \hline
+33 & TS19 & Consulta de series temporales de telemetría ambiental y de suelo & 3 & Sprint 1 \\ \hline
+34 & TS20 & Consulta de pronóstico meteorológico geolocalizado a 7 días & 3 & Sprint 1 \\ \hline
+35 & TS21 & Asentamiento de cosecha anual por campaña para auditoría productiva & 3 & Sprint 1 \\ \hline
+36 & TS22 & Consulta del historial plurianual de cosechas de la parcela & 2 & Sprint 1 \\ \hline
+37 & TS23 & Cálculo y entrega de métricas de vecería BBI y frío dinámico de Erez & 5 & Sprint 1 \\ \hline
+38 & TS24 & Registro y sincronización de muestreos guiados de cuajado en campo & 5 & Sprint 1 \\ \hline
+39 & TS25 & Consulta de representatividad estadística y estado de muestreo & 3 & Sprint 1 \\ \hline
+40 & TS26 & Consulta de prescripción técnica de aclareo y ventana fenológica & 3 & Sprint 1 \\ \hline
+41 & TS27 & Confirmación y registro de ejecución de labor de aclareo en campo & 3 & Sprint 1 \\ \hline
+42 & TS39 & Asentamiento formal y balance de liquidación de cosecha de fin de campaña & 3 & Sprint 1 \\ \hline
+43 & TS40 & Certificación criptográfica colegiada del expediente agronómico inmutable & 3 & Sprint 1 \\ \hline
+44 & TS42 & Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela & 2 & Sprint 1 \\ \hline
+45 & TS43 & Rectificación de pesaje y baja de registro erróneo de cosecha en histórico fenológico & 2 & Sprint 1 \\ \hline
+46 & SPK03 & Investigación e integración de Checkout Pro en Mercado Pago Sandbox y webhooks & 3 & Sprint 2 \\ \hline
+47 & TS08 & Generación de lote de códigos de activación para socios cooperativos & 3 & Sprint 2 \\ \hline
+48 & TS09 & Consulta y auditoría de códigos de activación de cooperativa & 2 & Sprint 2 \\ \hline
+49 & TS10 & Canje de código de activación de socio para vinculación cooperativa & 3 & Sprint 2 \\ \hline
+50 & US22 & Monitoreo dinámico de porciones de frío invernal acumuladas mediante el modelo de Erez & 5 & Sprint 2 \\ \hline
+51 & US23 & Detección de anomalías térmicas invernales y advertencia de riesgo floral por efecto ENOS & 3 & Sprint 2 \\ \hline
+52 & US26 & Cálculo de carga frutal objetivo sostenible y rendimiento potencial de campaña & 5 & Sprint 2 \\ \hline
+53 & US27 & Prescripción técnica in-app de porcentaje y ventana fenológica de aclareo & 5 & Sprint 2 \\ \hline
+54 & US28 & Registro y confirmación de ejecución de aclareo en campo & 3 & Sprint 2 \\ \hline
+55 & US06 & Suscripción individual al Plan Productor mediante pasarela de pago digital & 5 & Sprint 2 \\ \hline
+56 & US07 & Activación de cuenta de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
+57 & US08 & Administración de la cartera de socios productores y consulta de cuota corporativa & 3 & Sprint 2 \\ \hline
+58 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con geolocalización GPS & 5 & Sprint 2 \\ \hline
+59 & TS06 & Generación de preferencia de checkout para suscripción de productor independiente & 3 & Sprint 2 \\ \hline
+60 & TS07 & Recepción y procesamiento de webhooks de notificación de pagos & 5 & Sprint 2 \\ \hline
+61 & TS28 & Generación y descarga de reporte agronómico auditable en formato PDF & 5 & Sprint 2 \\ \hline
+62 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico & 3 & Sprint 2 \\ \hline
+63 & TS30 & Proyección agregada temprana de volumen de acopio cooperativo & 5 & Sprint 2 \\ \hline
+64 & US29 & Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva & 3 & Sprint 3 \\ \hline
+65 & US30 & Emisión, certificación criptográfica y exportación del expediente agronómico en PDF & 5 & Sprint 3 \\ \hline
+66 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 3 \\ \hline
+67 & US32 & Proyección agregada temprana de volumen de acopio de aceituna verde y negra para la cooperativa & 5 & Sprint 3 \\ \hline
+68 & US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & 3 & Sprint 3 \\ \hline
+69 & US19 & Consulta de pronóstico meteorológico geolocalizado a 7 días & 3 & Sprint 3 \\ \hline
+70 & US15 & Configuración y calibración de nodo sensor virtual en parcela & 2 & Sprint 3 \\ \hline
+71 & US16 & Desvinculación y baja de nodo sensor virtual de una parcela & 2 & Sprint 3 \\ \hline
+72 & US11 & Baja y remoción de parcela del inventario productivo & 2 & Sprint 3 \\ \hline
+73 & US42 & Configuración y cambio de idioma de la interfaz en la aplicación móvil & 2 & Sprint 3 \\ \hline
+74 & US01 & Registro de cuenta de acceso y credenciales seguras con asignación de rol & 3 & Sprint 3 \\ \hline
+75 & US02 & Inicio de sesión y autenticación persistente mediante tokens & 3 & Sprint 3 \\ \hline
+76 & US03 & Consulta y actualización de datos de perfil y contacto & 2 & Sprint 3 \\ \hline
+77 & US04 & Cambio seguro de contraseña de acceso & 2 & Sprint 3 \\ \hline
+78 & US05 & Recuperación de contraseña olvidada mediante enlace por correo & 3 & Sprint 3 \\ \hline
+79 & TS01 & Registro de credenciales de cuenta de usuario y asignación de rol en IAM & 3 & Sprint 3 \\ \hline
+80 & TS02 & Autenticación de usuarios y emisión de tokens JWT con claims de rol & 3 & Sprint 3 \\ \hline
+81 & TS03 & Renovación periódica de tokens de sesión mediante Refresh Token & 2 & Sprint 3 \\ \hline
+82 & TS04 & Consulta de información de perfil del usuario autenticado & 2 & Sprint 3 \\ \hline
+83 & TS05 & Actualización parcial de datos de perfil con validación telefónica E.164 & 2 & Sprint 3 \\ \hline
+84 & US43 & Completado de perfil de usuario y contacto validado bajo estándar E.164 & 3 & Sprint 3 \\ \hline
+85 & TS35 & Creación y completado inicial de perfil de usuario con validación telefónica E.164 & 3 & Sprint 3 \\ \hline
+86 & TS36 & Actualización de contraseña para sesión de usuario autenticado & 2 & Sprint 3 \\ \hline
+87 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 3 \\ \hline
+88 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 3 \\ \hline
+89 & TS41 & Revocación anticipada y ajuste de vigencia de código de activación cooperativo & 2 & Sprint 3 \\ \hline
 \end{longtable}
 \end{center}
 

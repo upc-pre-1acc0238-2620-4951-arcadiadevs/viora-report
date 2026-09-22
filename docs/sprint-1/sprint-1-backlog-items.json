@@ -1,16 +1,16 @@
 {
   "sprint": 1,
-  "sprintGoal": "Presentar de manera transparente y diferenciada la propuesta de valor y planes de Viora a potenciales clientes, posibilitar la digitalización temprana de predios y captura de datos en campo sin conexión para productores olivareros, y proveer una suite robusta de servicios web desacoplados para el equipo de desarrollo de aplicaciones móviles.",
+  "sprintGoal": "Presentar de manera comercial y diferenciada la propuesta de valor y tarifas de Viora a visitantes y organizaciones olivareras, habilitar la digitalización y captura de datos agronómicos en campo sin conexión para el segmento de productores olivareros, e incrementar las capacidades de integración y desarrollo mediante servicios web desacoplados para el equipo de aplicaciones cliente.",
   "targetVelocityStoryPoints": 130,
-  "committedStoryPoints": 120,
+  "committedStoryPoints": 119,
   "totalItems": 45,
   "metrics": {
     "userStoriesCount": 18,
     "userStoriesStoryPoints": 47,
-    "technicalStoriesCount": 24,
-    "technicalStoriesStoryPoints": 64,
-    "spikeStoriesCount": 3,
-    "spikeStoriesStoryPoints": 9
+    "technicalStoriesCount": 25,
+    "technicalStoriesStoryPoints": 66,
+    "spikeStoriesCount": 2,
+    "spikeStoriesStoryPoints": 6
   },
   "items": [
     {
@@ -147,18 +147,6 @@
     },
     {
       "order": 12,
-      "id": "SPK03",
-      "type": "Spike Story",
-      "category": "Technical Spike & Feasibility",
-      "title": "Investigación e integración de Checkout Pro en Mercado Pago Sandbox y webhooks",
-      "storyPoints": 3,
-      "epic": "EP14",
-      "priority": "Alta",
-      "userRole": "Equipo de Desarrollo (Móvil y Backend)",
-      "description": "Como equipo de desarrollo (móvil y backend),\\newline queremos investigar y prototipar la integración de Mercado Pago Checkout Pro (Sandbox) y webhooks en nuestras aplicaciones móviles Android (Kotlin) / Flutter y backend Spring Boot Java para la Plataforma Viora,\\newline para que podamos entender las implicaciones técnicas, riesgos potenciales de transacción y esfuerzo requerido para la implementación completa en los componentes móvil y backend."
-    },
-    {
-      "order": 13,
       "id": "US09",
       "type": "User Story",
       "category": "Client Application Core",
@@ -170,7 +158,7 @@
       "description": "Como Productor Olivarero, quiero delimitar el contorno de mi parcela capturando los vértices mediante el sensor GPS del dispositivo móvil o fijándolos sobre la cartografía satelital, registrando la variedad de olivo cultivada y el marco de plantación, para establecer la base territorial y dendrométrica de mi lote necesaria para dimensionar el potencial productivo y regular la carga frutal."
     },
     {
-      "order": 14,
+      "order": 13,
       "id": "US10",
       "type": "User Story",
       "category": "Client Application Core",
@@ -182,7 +170,7 @@
       "description": "Como Productor Olivarero, quiero consultar y actualizar los linderos perimétricos, el nombre o el marco de plantación de una parcela existente, para corregir mediciones topográficas tras labores de replante y mantener al día la caracterización dendrométrica del olivar."
     },
     {
-      "order": 15,
+      "order": 14,
       "id": "US17",
       "type": "User Story",
       "category": "Client Application Core",
@@ -194,7 +182,7 @@
       "description": "Como Productor Olivarero, quiero consultar las lecturas periódicas de temperatura ambiental, humedad relativa y humedad del suelo registradas en mi parcela, para supervisar el confort hídrico del olivar y detectar oportunamente riesgos de estrés térmico en floración o déficit de humedad en cuajado."
     },
     {
-      "order": 16,
+      "order": 15,
       "id": "US20",
       "type": "User Story",
       "category": "Client Application Core",
@@ -206,7 +194,7 @@
       "description": "Como Productor Olivarero, quiero registrar los volúmenes totales cosechados en campañas agrícolas de años anteriores en mi parcela, para que el sistema calcule el Índice de Vecería de Hoblyn ($BBI$) y determine la intensidad histórica de alternancia de mi cuartel."
     },
     {
-      "order": 17,
+      "order": 16,
       "id": "US21",
       "type": "User Story",
       "category": "Client Application Core",
@@ -218,7 +206,7 @@
       "description": "Como Productor Olivarero, quiero corregir o actualizar las cifras de kilogramos cosechados en una campaña anterior, para subsanar errores de digitación de boletas de pesaje en almazara y recalcular con precisión el índice BBI histórico de la parcela."
     },
     {
-      "order": 18,
+      "order": 17,
       "id": "US24",
       "type": "User Story",
       "category": "Client Application Core",
@@ -230,7 +218,7 @@
       "description": "Como Productor Olivarero, quiero registrar los conteos de brotes y frutos de muestra a pie de árbol sin requerir conexión a internet, para asentar la densidad real de cuajado directamente en el olivar y sincronizar automáticamente las observaciones al restablecer la conectividad celular o de red."
     },
     {
-      "order": 19,
+      "order": 18,
       "id": "US25",
       "type": "User Story",
       "category": "Client Application Core",
@@ -242,7 +230,7 @@
       "description": "Como Productor Olivarero, quiero consultar el avance de la ronda de muestreo y revisar la lista de árboles evaluados en mi predio, para saber si alcancé la representatividad mínima requerida ($\\ge 5$ árboles) e identificar qué árboles ya fueron evaluados a pie de campo."
     },
     {
-      "order": 20,
+      "order": 19,
       "id": "US13",
       "type": "User Story",
       "category": "Client Application Core",
@@ -254,7 +242,7 @@
       "description": "Como Productor Olivarero, quiero dar de alta un nodo sensor virtual (estación microclimática o sonda de humedad de suelo) en una de mis parcelas asignándole una denominación y tipo, para habilitar la ingesta y recepción de series telemétricas en el lote sin requerir el despliegue de hardware físico en campo."
     },
     {
-      "order": 21,
+      "order": 20,
       "id": "US14",
       "type": "User Story",
       "category": "Client Application Core",
@@ -266,7 +254,7 @@
       "description": "Como Productor Olivarero, quiero consultar el inventario de nodos sensores virtuales vinculados a mi parcela y su estado de transmisión simulada, para comprobar qué puntos de monitoreo se encuentran activos alimentando los modelos agroclimáticos del olivar."
     },
     {
-      "order": 22,
+      "order": 21,
       "id": "TS31",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -278,7 +266,7 @@
       "description": "Como ingeniero de plataforma core, quiero implementar un interceptor global de excepciones en el backend, para garantizar que todas las respuestas de error sigan el estándar RFC 7807 (Problem Details) con códigos HTTP semánticos y sin exponer trazas internas."
     },
     {
-      "order": 23,
+      "order": 22,
       "id": "TS32",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -290,7 +278,7 @@
       "description": "Como ingeniero de plataforma core, quiero configurar la estrategia de mapeo objeto-relacional en el ORM, para normalizar la conversión automática de propiedades camelCase a snake\\_case y persistir tipos geométricos espaciales WGS84 de forma consistente."
     },
     {
-      "order": 24,
+      "order": 23,
       "id": "TS33",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -302,7 +290,7 @@
       "description": "Como ingeniero de plataforma core, quiero integrar el generador de contratos OpenAPI 3.0 en el backend, para exponer una interfaz Swagger UI interactiva y esquemas JSON que documenten exhaustivamente todos los endpoints del sistema."
     },
     {
-      "order": 25,
+      "order": 24,
       "id": "TS34",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -314,7 +302,7 @@
       "description": "Como ingeniero de plataforma core, quiero configurar el resolvedor de localización y los catálogos de recursos MessageSource en el backend, para interceptar el encabezado HTTP Accept-Language y entregar mensajes de validación y errores RFC 7807 traducidos en Español o Inglés."
     },
     {
-      "order": 26,
+      "order": 25,
       "id": "TS11",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -326,7 +314,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero enviar los vértices poligonales en formato WGS84 a la API, para registrar una nueva parcela y persistir sus propiedades agronómicas."
     },
     {
-      "order": 27,
+      "order": 26,
       "id": "TS12",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -338,7 +326,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero consultar el inventario de parcelas con soporte de marcas temporales, para actualizar la base de datos local SQLite mediante sincronización delta eficiente."
     },
     {
-      "order": 28,
+      "order": 27,
       "id": "TS13",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -350,7 +338,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar el detalle de una parcela mediante su ID, para visualizar la ficha agronómica completa del predio en la interfaz de usuario."
     },
     {
-      "order": 29,
+      "order": 28,
       "id": "TS14",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -362,7 +350,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero enviar los datos actualizados de la parcela junto con la cabecera de control de versión a la API, para rectificar linderos poligonales, densidad de árboles o nombre del lote previniendo colisiones de concurrencia."
     },
     {
-      "order": 30,
+      "order": 29,
       "id": "TS15",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -374,7 +362,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar a la API la remoción de una parcela, para dar de baja predios registrados por error o desafectados de la producción."
     },
     {
-      "order": 31,
+      "order": 30,
       "id": "TS16",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -386,7 +374,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero registrar un nodo sensor virtual (microclima o sonda de suelo a 30/60 cm) en la API, para activar la simulación de telemetría agroclimática en la parcela."
     },
     {
-      "order": 32,
+      "order": 31,
       "id": "TS17",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -398,7 +386,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar el listado de nodos virtuales de una parcela a la API, para desplegar su estado operativo y última lectura simulada en la interfaz."
     },
     {
-      "order": 33,
+      "order": 32,
       "id": "TS18",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -410,7 +398,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar la desvinculación de un nodo virtual a la API, para retirar sensores obsoletos preservando las lecturas históricas asociadas al lote."
     },
     {
-      "order": 34,
+      "order": 33,
       "id": "TS19",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -422,7 +410,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar las lecturas horarias de microclima y humedad de suelo a la API, para graficar las curvas térmicas e hídricas en los paneles de control de la parcela."
     },
     {
-      "order": 35,
+      "order": 34,
       "id": "TS20",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -434,7 +422,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar el pronóstico meteorológico para la coordenada centroide de la parcela, para advertir al productor sobre olas de calor, heladas o vientos desecantes."
     },
     {
-      "order": 36,
+      "order": 35,
       "id": "TS21",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -446,7 +434,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero enviar los kilogramos cosechados al cierre de la temporada a la API, para registrar la producción anual del lote y alimentar el cálculo del índice BBI."
     },
     {
-      "order": 37,
+      "order": 36,
       "id": "TS22",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -458,7 +446,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar el historial de cosechas de una parcela a la API, para renderizar la curva interanual de rendimiento productivo en la interfaz."
     },
     {
-      "order": 38,
+      "order": 37,
       "id": "TS23",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -470,7 +458,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar los indicadores matemáticos de vecería y frío invernal a la API, para desplegar el índice BBI y las porciones de frío acumuladas con alertas térmicas ENOS."
     },
     {
-      "order": 39,
+      "order": 38,
       "id": "TS24",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -482,7 +470,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero enviar los registros de conteo de frutos y brotes tomados a pie de árbol a la API, para sincronizar los muestreos offline y calcular la carga frutal del predio."
     },
     {
-      "order": 40,
+      "order": 39,
       "id": "TS25",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -494,7 +482,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar el estado de representatividad de muestreos a la API, para notificar al usuario si ha evaluado suficientes árboles para generar prescripciones confiables."
     },
     {
-      "order": 41,
+      "order": 40,
       "id": "TS26",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -506,7 +494,7 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero solicitar la prescripción agronómica de regulación de carga a la API, para desplegar el porcentaje de remoción recomendado y la fecha límite antes del endurecimiento del carozo."
     },
     {
-      "order": 42,
+      "order": 41,
       "id": "TS27",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
@@ -518,40 +506,52 @@
       "description": "Como desarrollador de aplicaciones cliente, quiero enviar la confirmación de la labor de aclareo ejecutada a la API, para registrar la fecha de intervención y recalcular la proyección de calibre comercial."
     },
     {
-      "order": 43,
-      "id": "TS08",
+      "order": 42,
+      "id": "TS39",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
-      "title": "Generación de lote de códigos de activación para socios cooperativos",
+      "title": "Asentamiento formal y balance de liquidación de cosecha de fin de campaña",
       "storyPoints": 3,
-      "epic": "EP10",
+      "epic": "EP12",
       "priority": "Alta",
       "userRole": "Desarrollador de Aplicaciones Cliente",
-      "description": "Como desarrollador de aplicaciones cliente, quiero solicitar la creación de códigos de activación institucionales a la API, para que el gestor técnico pueda distribuirlos a los socios de la cooperativa."
+      "description": "Como desarrollador de aplicaciones cliente, quiero enviar el pesaje formal definitivo de cosecha (aceituna verde y negra) al cierre de campaña a la API, para asentar la liquidación oficial de la parcela, computar el balance contra la prescripción y congelar el expediente de campaña."
+    },
+    {
+      "order": 43,
+      "id": "TS40",
+      "type": "Technical Story",
+      "category": "Backend Architecture & Microservices",
+      "title": "Certificación criptográfica colegiada del expediente agronómico inmutable",
+      "storyPoints": 3,
+      "epic": "EP12",
+      "priority": "Alta",
+      "userRole": "Desarrollador de Aplicaciones Cliente",
+      "description": "Como desarrollador de aplicaciones cliente, quiero enviar la rúbrica y número de colegiatura del profesional agronómico a la API, para certificar oficialmente el expediente de la parcela y generar el hash criptográfico SHA-256 inmutable de auditoría."
     },
     {
       "order": 44,
-      "id": "TS09",
+      "id": "TS42",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
-      "title": "Consulta y auditoría de códigos de activación de cooperativa",
+      "title": "Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela",
       "storyPoints": 2,
-      "epic": "EP10",
+      "epic": "EP15",
       "priority": "Media",
       "userRole": "Desarrollador de Aplicaciones Cliente",
-      "description": "Como desarrollador de aplicaciones cliente, quiero solicitar el listado de códigos de activación de una cooperativa a la API, para mostrar al gestor los códigos disponibles, canjeados y los socios vinculados."
+      "description": "Como desarrollador de aplicaciones cliente, quiero enviar los factores de calibración y offset ambiental al nodo sensor registrado en la API, para ajustar las lecturas telemétricas según las condiciones de suelo y microclima del lote."
     },
     {
       "order": 45,
-      "id": "TS10",
+      "id": "TS43",
       "type": "Technical Story",
       "category": "Backend Architecture & Microservices",
-      "title": "Canje de código de activación de socio para vinculación cooperativa",
-      "storyPoints": 3,
-      "epic": "EP10",
-      "priority": "Alta",
+      "title": "Rectificación de pesaje y baja de registro erróneo de cosecha en histórico fenológico",
+      "storyPoints": 2,
+      "epic": "EP12",
+      "priority": "Media",
       "userRole": "Desarrollador de Aplicaciones Cliente",
-      "description": "Como desarrollador de aplicaciones cliente, quiero enviar el código de activación provisto por el socio a la API, para afiliar al productor a la licencia colectiva de la cooperativa sin cobro individual."
+      "description": "Como desarrollador de aplicaciones cliente, quiero enviar solicitudes de rectificación o eliminación de pesajes de cosecha pasados a la API, para subsanar errores de digitación en campañas históricas y recomputar el Índice de Vecería (BBI) del olivar."
     }
   ]
 }
