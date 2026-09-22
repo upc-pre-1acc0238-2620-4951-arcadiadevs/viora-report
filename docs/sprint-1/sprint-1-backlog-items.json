@@ -536,7 +536,7 @@
       "category": "Backend Architecture & Microservices",
       "title": "Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela",
       "storyPoints": 2,
-      "epic": "EP15",
+      "epic": "EP11",
       "priority": "Media",
       "userRole": "Desarrollador de Aplicaciones Cliente",
       "description": "Como desarrollador de aplicaciones cliente, quiero enviar los factores de calibración y offset ambiental al nodo sensor registrado en la API, para ajustar las lecturas telemétricas según las condiciones de suelo y microclima del lote."
