@@ -363,7 +363,7 @@ La solución móvil de Viora comprende tanto el cliente móvil nativo custodiado
 
 \noindent \textbf{Selección técnica de la variante de compilación (*Build Variant*):}
 
-Para la distribución a través de Firebase se selecciona la variante `release` (`app-release.apk`). A diferencia de la variante `debug` (la cual mantiene habilitada la bandera `android:debuggable=true`, incluye librerías de tracing y carece de optimizaciones), la variante `release` incorpora:
+Para la distribución a través de Firebase se selecciona la variante `release` (`app-release.apk`). A diferencia de la variante `debug` (la cual mantiene habilitada la bandera `android:debuggable=true`, incluye bibliotecas de tracing y carece de optimizaciones), la variante `release` incorpora:
 
 * Optimización y ofuscación R8: ejecuta minificación de código, remoción de clases no utilizadas y ofuscación de nombres de métodos y variables, reduciendo el tamaño del binario y protegiendo el código contra técnicas de descompilación.
 * Seguridad de red estricta: aplica políticas obligatorias de *Network Security Config*, forzando el cifrado en tránsito HTTPS y denegando tráfico en texto plano.

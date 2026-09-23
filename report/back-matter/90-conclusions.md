@@ -1,6 +1,6 @@
 # Conclusiones {-}
 
-En este apartado final se consolidan los resultados globales derivados del proceso de investigación, modelado del negocio y diseño arquitectónico del proyecto Viora. La sección integra la síntesis valorativa del trabajo realizado y proyecta las directrices estratégicas que guiarán la evolución continua de los productos digitales que conforman la solución.
+En este capítulo final se consolidan los resultados globales derivados del proceso de investigación, modelado del negocio y diseño arquitectónico del proyecto Viora. La sección integra la síntesis valorativa del trabajo realizado y proyecta las directrices estratégicas que guiarán la evolución continua de los productos digitales que conforman la solución.
 
 ## Conclusiones y recomendaciones {-}
 

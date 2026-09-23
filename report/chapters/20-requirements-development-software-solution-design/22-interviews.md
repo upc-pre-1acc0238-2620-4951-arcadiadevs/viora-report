@@ -260,7 +260,7 @@ Retraso sistemático de poda y cosecha en campañas de alta carga (Año ON) & 3/
 Compensación económica informal en años OFF (precio en chacra y reventa) & 3/3 & 100\% & El déficit de volumen se compensa con alzas de precio (S/. 10–13/kg en E\#1 y E\#3) y acopio de fruta a terceros (E\#2 y E\#3). \\
 Ecosistema móvil Android (Samsung) y uso exclusivo de WhatsApp & 3/3 & 100\% & 100\% (E\#1, E\#2 y E\#3) utiliza smartphones Android (Samsung) y grupos/chats de WhatsApp como único canal de interacción técnica. \\
 Nula experiencia o adopción previa de tecnología IoT / sensores en campo & 3/3 & 100\% & Desconocimiento y ausencia de sensores o estaciones meteorológicas en los predios de E\#1, E\#2 y E\#3. \\
-Requerimiento indispensable de soporte sin conexión (Modo Offline) & 3/3 & 100\% & E\#1, E\#2 y E\#3 señalan la intermitencia y falta de cobertura móvil en sectores de La Yarada y Yauca como factor bloqueante. \\
+Requisito indispensable de soporte sin conexión (Modo Offline) & 3/3 & 100\% & E\#1, E\#2 y E\#3 señalan la intermitencia y falta de cobertura móvil en sectores de La Yarada y Yauca como factor bloqueante. \\
 Disposición moderada con desconfianza inicial (Confianza del $40\%-50\%$) & 3/3 & 100\% & E\#1 y E\#3 declaran una confianza inicial del 40\%-50\%, exigiendo demostraciones prácticas y validación de pares locales (E\#2 coincide). \\
 Personalidad precavida/conservadora centrada en prevención sanitaria & 3/3 & 100\% & Enfoque fitosanitario preventivo y austeridad de insumos en años de descanso en E\#1, E\#2 y E\#3. \\
 Meta de diferenciación comercial (marca propia o fidelización) & 3/3 & 100\% & Aspiración de lanzar marca propia de aceituna de mesa (E\#1), mantener clientela en Lima (E\#2) o vender en salmuera con valor (E\#3). \\
