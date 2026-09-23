@@ -2,10 +2,11 @@
 
 ## Product Design
 
-Esta sección documenta el diseño de producto de Viora como parte integral de la arquitectura del sistema, cubriendo tanto las bases visuales compartidas como la organización del contenido y la propuesta de interacción de las tres superficies del ecosistema: la aplicación del productor, la aplicación del gestor técnico y el landing informativo. El desarrollo se organiza en cinco bloques: Style Guidelines, Information Architecture, Landing Page UI Design, Mobile Applications UX/UI Design y Mobile Applications Prototyping.
+Esta sección documenta el diseño de producto de Viora como parte integral de la arquitectura del sistema, cubriendo tanto las bases visuales compartidas como la organización del contenido y la propuesta de interacción de las dos superficies del ecosistema: el landing informativo y la aplicación móvil, que ofrece experiencias diferenciadas para el productor olivarero y el gestor técnico según el rol autenticado. El desarrollo se organiza en cinco bloques: Style Guidelines, Information Architecture, Landing Page UI Design, Mobile Applications UX/UI Design y Mobile Applications Prototyping.
 
 ### Style Guidelines
 
+En esta sección se establece el repositorio central de recursos visuales y de comunicación que el equipo utiliza de forma común. Viora define una única guía de estilo, compartida por el landing y la aplicación móvil, de modo que ambas superficies mantengan la misma presentación sin guías web y móvil paralelas.
 
 #### General Style Guidelines
 
@@ -22,7 +23,7 @@ Como se observa en la \autoref{fig:gsg-index}, la guía se organiza en ocho apar
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
-**Branding.** El logotipo de Viora integra el isotipo, una hoja contenida en un círculo, dentro de la letra "o" del nombre. Así, la marca remite al olivo sin recurrir a una ilustración literal. Se definen cinco variaciones con usos precisos: positivo sobre fondo claro, negativo sobre verde Forest, isotipo aislado, versión sobre el acento Harvest y el ícono de aplicación. La paleta de marca se aplica con una proporción de uso fija: Cream 55 %, Forest 25 %, Shadow 10 %, Harvest 7 % y Tierra 3 %. La marca vive sobre Cream y Forest, mientras que Harvest y Tierra funcionan como acentos puntuales y nunca como fondos extensos. Esta proporción aplica el principio de énfasis: si el amarillo y el terracota aparecen poco, cada vez que aparecen señalan algo importante. La lámina también verifica el contraste de cada combinación de texto y fondo, y descarta las que no alcanzan el mínimo de legibilidad (texto Forest sobre Tierra, 2.2:1, y texto Tierra sobre Harvest, 2.4:1). Como se observa en la \autoref{fig:gsg-branding}, la marca se complementa con cuatro valores (Natural, Cercana, Precisa y Confiable) que anticipan el tono de comunicación descrito más adelante.
+**Branding.** El logotipo de Viora integra el isotipo, una hoja contenida en un círculo, dentro de la letra "o" del nombre. Así, la marca remite al olivo sin recurrir a una ilustración literal. Se definen cinco variaciones con usos precisos: positivo sobre fondo claro, negativo sobre verde Forest, isotipo aislado, versión sobre el acento Harvest y el ícono de aplicación. La paleta de marca se aplica con una proporción de uso fija: Cream 55 %, Forest 25 %, Shadow (green/900) 10 %, Harvest 7 % y Tierra 3 %. La marca vive sobre Cream y Forest, mientras que Harvest y Tierra funcionan como acentos puntuales y nunca como fondos extensos. Esta proporción aplica el principio de énfasis: si el amarillo y el terracota aparecen poco, cada vez que aparecen señalan algo importante. La lámina también verifica el contraste de cada combinación de texto y fondo, y descarta las que no alcanzan el mínimo de legibilidad (texto Forest sobre Tierra, 2.2:1, y texto Tierra sobre Harvest, 2.4:1). Como se observa en la \autoref{fig:gsg-branding}, la marca se complementa con cuatro valores (Natural, Cercana, Precisa y Confiable) que anticipan el tono de comunicación descrito más adelante.
 
 \begin{figure}[H]
 \caption{Branding de Viora.} \label{fig:gsg-branding}
@@ -31,7 +32,7 @@ Como se observa en la \autoref{fig:gsg-index}, la guía se organiza en ocho apar
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
-**Colors.** El color principal es Forest (green/800, #2E4A3A), acompañado por un tono más oscuro (green/900, #1F2C26), el acento Harvest (harvest/300, #E8B923) y el secundario Tierra (terracotta/500, #C15A2E). A partir de cada color de marca se generó una escala tonal de once pasos en el espacio de color OKLCH, que mantiene una progresión de luminosidad perceptualmente uniforme entre pasos. A estas escalas se suma una escala neutra cálida (Warm Grey), teñida con el crema de la marca, para superficies, bordes y textos; el negro puro no se usa en ningún punto de la interfaz. Los colores de estado (Error, Warning, Info y Success) se definen con un tono sólido para íconos y énfasis, y tonos suaves para contenedores; Warning reutiliza la escala Harvest para no introducir un amarillo adicional. Finalmente, como se observa en la \autoref{fig:gsg-colors}, todas las escalas se asignan a los roles semánticos de Material 3 (primary, secondary, tertiary, error y sus contenedores, además de las superficies y contornos). Los diseñadores eligen roles y no pasos de escala, lo que garantiza que un mismo significado se represente siempre con el mismo color en todas las pantallas.
+**Colors.** El color principal es Forest (green/800, #2E4A3A), acompañado por un tono más oscuro, Shadow (green/900, #1F2C26), el acento Harvest (harvest/300, #E8B923) y el secundario Tierra (terracotta/500, #C15A2E). A partir de cada color de marca se generó una escala tonal de once pasos en el espacio de color OKLCH, que mantiene una progresión de luminosidad perceptualmente uniforme entre pasos. A estas escalas se suma una escala neutra cálida (Warm Grey), teñida con el crema de la marca, para superficies, bordes y textos; el negro puro no se usa en ningún punto de la interfaz. Los colores de estado (Error, Warning, Info y Success) se definen con un tono sólido para íconos y énfasis, y tonos suaves para contenedores; Warning reutiliza la escala Harvest para no introducir un amarillo adicional. Finalmente, como se observa en la \autoref{fig:gsg-colors}, todas las escalas se asignan a los roles semánticos de Material 3 (primary, secondary, tertiary, error y sus contenedores, además de las superficies y contornos). Los diseñadores eligen roles y no pasos de escala, lo que garantiza que un mismo significado se represente siempre con el mismo color en todas las pantallas.
 
 \begin{figure}[H]
 \caption{Sistema de color de Viora.} \label{fig:gsg-colors}
@@ -58,7 +59,7 @@ Como se observa en la \autoref{fig:gsg-index}, la guía se organiza en ocho apar
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
-**Iconography.** Los íconos de interfaz provienen del set de Material 3 disponible en Jetpack Compose. Los íconos de dominio se toman de Material Symbols Rounded (peso 400, sin relleno, 24 dp), disponibles como Icons.Rounded en Compose y como Symbols rounded en Flutter, lo que asegura que ambas aplicaciones muestren exactamente los mismos símbolos. Como se observa en la \autoref{fig:gsg-iconography}, los íconos de dominio se agrupan según los módulos funcionales de Viora: lotes y parcelas, vecería y BBI, frío y clima, carga frutal, plan de intervención, bitácora de mediciones, alertas priorizadas y portafolio organizacional. Cada concepto del dominio tiene un solo ícono asignado, lo que refuerza su reconocimiento por repetición.
+**Iconography.** Los íconos de interfaz y de dominio se toman de Material Symbols Rounded (peso 400, sin relleno, 24 dp), el set de íconos de Material 3. Ambas implementaciones incorporan la misma fuente de símbolos: en Kotlin, como recursos vectoriales o fuente variable de Material Symbols, y en Flutter, mediante el paquete material_symbols_icons. Así, las dos aplicaciones muestran los mismos símbolos. Como se observa en la \autoref{fig:gsg-iconography}, los íconos de dominio se agrupan según los módulos funcionales de Viora: lotes y parcelas, vecería y BBI, frío y clima, carga frutal, plan de intervención, bitácora de mediciones, alertas priorizadas y portafolio organizacional. Cada concepto del dominio tiene un solo ícono asignado, lo que refuerza su reconocimiento por repetición.
 
 \begin{figure}[H]
 \caption{Iconografía de Viora.} \label{fig:gsg-iconography}
@@ -76,7 +77,7 @@ Como se observa en la \autoref{fig:gsg-index}, la guía se organiza en ocho apar
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
-**Buttons & Items.** El contenido de las pantallas se construye con componentes de Material 3 en todas las plataformas: Kotlin con Jetpack Compose y Flutter con ThemeData de Material 3 producen interfaces visualmente idénticas en Android. En iOS, la aplicación en Flutter mantiene el contenido en Material 3 y solo adapta la capa de navegación y los controles flotantes al estilo Liquid Glass de la plataforma, para respetar los comportamientos que el usuario de iPhone espera. Los botones tienen cinco estilos y dos tamaños, y la jerarquía de acciones es explícita: Filled para la acción principal, Tonal u Outlined para las secundarias y Text para descartar, con un máximo de un botón Filled por pantalla. El FAB es la única superficie amarilla grande de la aplicación y se reserva para la acción más frecuente de la pantalla, como registrar un conteo. Las cards tienen tres tipos con propósito fijo: Elevated para lotes, Filled para métricas y Outlined para alertas y contenido secundario. Como se observa en la \autoref{fig:gsg-buttons}, la navegación principal en Android es una barra inferior con cuatro destinos (Inicio, Lotes, Plan y Bitácora), que en iOS se convierte en una barra flotante con el mismo contenido.
+**Buttons & Items.** El contenido de las pantallas se construye con componentes de Material 3 en todas las plataformas: Kotlin con Jetpack Compose y Flutter con ThemeData de Material 3 producen interfaces visualmente equivalentes en Android. En iOS, la aplicación en Flutter mantiene el contenido en Material 3 y se propone adaptar solo la capa de navegación y los controles flotantes al estilo Liquid Glass de la plataforma, sujeto a validación técnica durante el desarrollo, para respetar los comportamientos que el usuario de iPhone espera. Los botones tienen cinco estilos y dos tamaños, y la jerarquía de acciones es explícita: Filled para la acción principal, Tonal u Outlined para las secundarias y Text para descartar, con un máximo de un botón Filled por pantalla. El FAB es la única superficie amarilla grande de la aplicación y se reserva para la acción más frecuente de la pantalla, como registrar un conteo. Las cards tienen tres tipos con propósito fijo: Elevated para lotes, Filled para métricas y Outlined para alertas y contenido secundario. Como se observa en la \autoref{fig:gsg-buttons}, la navegación principal en Android es una barra inferior de cuatro destinos (en la experiencia del productor: Inicio, Lotes, Plan y Bitácora), que en iOS se convierte en una barra flotante con el mismo contenido.
 
 \begin{figure}[H]
 \caption{Botones y componentes de Viora.} \label{fig:gsg-buttons}
@@ -103,16 +104,18 @@ Como se observa en la \autoref{fig:gsg-tone}, la guía de calibración resume es
 
 ### Information Architecture
 
+En esta sección se presentan las decisiones que determinan cómo se organiza, nombra, busca y recorre el contenido del landing y de la aplicación móvil, con el fin de que visitantes y usuarios encuentren lo que necesitan sin esfuerzo. Se abordan los Organization Systems, Labeling Systems, SEO Tags and Meta Tags, Searching Systems y Navigation Systems.
+
 
 #### Organization Systems
 
-En esta sección se explica cómo se agrupa y ordena la información en las dos experiencias de Viora: el landing informativo y la aplicación móvil. Para ambas se aplicó la técnica de Content Organization Steps, que organiza el contenido en tres pasos sucesivos:
+En esta sección se explica cómo se agrupa y ordena la información en las dos experiencias de Viora: el landing informativo y la aplicación móvil. Se aplicó la técnica de Content Organization Steps, que organiza el contenido en tres pasos sucesivos:
 
 1. **Ontology:** listar las piezas críticas de información, es decir, lo que el producto quiere decir.
 2. **Taxonomy:** agrupar esas piezas en partes claramente articuladas.
 3. **Choreography:** decidir el orden y las rutas por las que el usuario recorre esos grupos.
 
-Las piezas de ambas ontologías se derivan de las User Stories del Product Backlog, de modo que cada elemento de la arquitectura de información tiene un origen trazable en un requisito.
+Las piezas de ambas ontologías se derivan de las User Stories del Product Backlog, de modo que cada elemento de la arquitectura de información tiene un origen trazable en un requisito. En el landing se aplican los tres pasos; en la aplicación móvil, este apartado abarca la ontología y la taxonomía, y los recorridos de tarea se describen en Navigation Systems.
 
 **Landing Page.** Como se observa en la \autoref{fig:os-landing-ontology}, la ontología del landing reúne 22 piezas de información derivadas de las historias US33 a US41: la propuesta de valor, el problema de la alternancia productiva, la solución, las funcionalidades y los casos de uso, el contexto de las cosechas de Tacna, los dos segmentos con sus beneficios, los planes de acceso, el equipo y los elementos de soporte (descarga de la aplicación, idioma y documentos legales). Se incluyen también los videos About the Product y About the Team, que deben incrustarse en el landing.
 
@@ -123,17 +126,16 @@ Las piezas de ambas ontologías se derivan de las User Stories del Product Backl
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
-Como se observa en la \autoref{fig:os-landing-taxonomy}, esas piezas se agrupan en siete bloques:
+Como se observa en la \autoref{fig:os-landing-taxonomy}, esas piezas se agrupan en seis bloques:
 
 1. Propuesta: Hero, propuesta de valor, problema y solución.
 2. Producto: Features, Use Cases y video del producto.
-3. Contexto y segmentos: cosechas de Tacna, productor y asesor o gestor, cada uno con sus beneficios.
-4. Acceso: Plan Productor, Plan Cooperativa e invitación al asesor.
+3. Contexto y segmentos: cosechas de Tacna, productor y gestor técnico, cada uno con sus beneficios.
+4. Acceso: Plan Productor, Plan Cooperativa y código de cooperativa para socios.
 5. Institucional: equipo, ArcadiaDevs y video del equipo.
-6. Conversión y legal: CTA final, descarga de la aplicación, términos y privacidad.
-7. Navegación global: idioma y footer.
+6. Conversión, legal y navegación global: CTA final, descarga de la aplicación, términos, privacidad, idioma y footer.
 
-Cada color del tablero identifica un bloque.
+Cada color del tablero identifica un bloque. El idioma y el footer se ubican en una columna contigua por razones de espacio, pero forman parte del sexto bloque.
 
 \begin{figure}[H]
 \caption{Landing Page Taxonomy de Viora.} \label{fig:os-landing-taxonomy}
@@ -180,7 +182,7 @@ La taxonomía, que se observa en la \autoref{fig:os-mobile-taxonomy}, reorganiza
 | Campaign Close and Reports | Productor y gestor | Harvest Settlement; Technical Reports |
 | Cooperative Intelligence | Gestor | Territorial Risk; Intake Forecast |
 
-La diferencia principal respecto a la ontología es la matriz de riesgo territorial (US12). Aunque pertenece a la épica de parcelas, en la taxonomía se ubica en Cooperative Intelligence, porque es una vista de trabajo del gestor y comparte contexto con el semáforo reactivo de la US31.
+Respecto a la ontología, la taxonomía introduce dos reubicaciones. Las cuatro piezas de la US12 (matriz de riesgo territorial, sector actual por GPS, selección manual de sector y semáforo con contadores) pertenecen a la épica de parcelas, pero se ubican en Cooperative Intelligence, porque son vistas de trabajo del gestor y comparten contexto con el semáforo reactivo de la US31. Además, las piezas de internacionalización de la US42 (idioma de la aplicación y formatos regionales) se integran en Profile and Settings, dentro de Identity and Account, porque son preferencias de la cuenta.
 
 \begin{figure}[H]
 \caption{Mobile App Taxonomy de Viora.} \label{fig:os-mobile-taxonomy}
@@ -189,20 +191,11 @@ La diferencia principal respecto a la ontología es la matriz de riesgo territor
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
-<!-- TODO: redactar la explicación de la Mobile App Choreography cuando el diagrama esté terminado. -->
-
-\begin{figure}[H]
-\caption{Mobile App Choreography de Viora.} \label{fig:os-mobile-choreography}
-\centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/organization-systems/mobile-app-choreography.png}
-\caption*{\textit{Nota.} Elaboración propia.}
-\end{figure}
-
 **Sistemas de organización visual.** Según la naturaleza de cada grupo de información, se aplica uno de tres sistemas de organización visual, como se detalla a continuación:
 
 | Sistema | Landing Page | Aplicación móvil | Sustento |
 |:-------------------|:------------------------|:-----------------------------|:------------------------|
-| Jerárquico (visual hierarchy) | Hero, Features, planes de acceso y About Us: un mensaje principal con detalles subordinados. | Pantallas de inicio por rol, detalle de parcela y lectura de carga frutal: el dato principal domina y el contexto se subordina. El tipo de card distingue el rol de cada bloque: Elevated para lotes, Filled para métricas y Outlined para alertas. | El usuario necesita captar lo esencial de un vistazo antes de profundizar, especialmente en campo, donde la atención es breve. |
+| Jerárquico (visual hierarchy) | Hero, Features, planes de acceso y Equipo: un mensaje principal con detalles subordinados. | Pantallas de inicio por rol, detalle de parcela y lectura de carga frutal: el dato principal domina y el contexto se subordina. El tipo de card distingue el rol de cada bloque: Elevated para lotes, Filled para métricas y Outlined para alertas. | El usuario necesita captar lo esencial de un vistazo antes de profundizar, especialmente en campo, donde la atención es breve. |
 | Secuencial (step-by-step to accomplish) | Recorrido de scroll del problema a la solución, casos de uso (problema, módulo, resultado) y transición animada entre segmentos. | Registro y rol (US01, US43), suscripción con pago (US06), delimitación de parcela con GPS (US09), muestreo de cuajado árbol por árbol (US24), prescripción y registro de aclareo (US27, US28) y cierre de campaña (US29, US30). | Son tareas con un orden obligatorio, donde saltar un paso invalida el resultado; guiarlas paso a paso reduce errores y, en el muestreo, permite avanzar sin conexión. |
 | Matricial | Comparación de planes de acceso según características. | Matriz de riesgo territorial y semáforo por sector (US12, US31), series temporales de sensores por variable y rango (US17), historial de campañas frente al BBI (US20) y proyección de acopio de aceituna verde y negra (US32). | La información tiene dos dimensiones que el usuario necesita cruzar para decidir, como sector frente a nivel de riesgo o campaña frente a producción. |
 
@@ -212,7 +205,7 @@ La diferencia principal respecto a la ontología es la matriz de riesgo territor
 |:-------------------------|:------------------------------------|:------------------------------------|
 | Cronológico | Historial de campañas y cálculo del BBI (US20), series temporales de 24 horas, 7 días y 30 días (US17), pronóstico a 7 días (US19), acumulación de frío de la temporada invernal (US22), ventana de aclareo con fecha límite (US27) y bitácora de la parcela (US28). | El productor piensa en campañas y temporadas: la vecería solo se entiende al comparar años sucesivos, y las intervenciones dependen de ventanas fenológicas con fecha. |
 | Por tópicos | Las ocho secciones de la taxonomía móvil (parcelas, monitoreo, alternancia y frío, carga y aclareo, cierre, entre otras) y los bloques del landing. | Cada sección responde a un tipo de decisión distinto, y el usuario llega buscando un tema, no una función aislada. |
-| Por audiencia | Separación de la aplicación por rol (productor y gestor), secciones exclusivas del gestor (Cooperative Admin y Cooperative Intelligence) y, en el landing, los segmentos y planes diferenciados para productor y cooperativa. | Los dos segmentos tienen objetivos distintos: el productor gestiona su parcela y el gestor supervisa el territorio y la cartera de socios. |
+| Por audiencia | Separación de la aplicación por rol (productor y gestor), la sección exclusiva del gestor (Cooperative Intelligence), el subgrupo Cooperative Admin de Subscription and Membership y, en el landing, los segmentos y planes diferenciados para productor y cooperativa. | Los dos segmentos tienen objetivos distintos: el productor gestiona su parcela y el gestor supervisa el territorio y la cartera de socios. |
 | Alfabético | Padrón de socios de la cooperativa (US08), selección manual de sector (US12), selector de variedad de olivo (US09) y selector de idioma (US42). | Se reserva para listas de nombres propios donde el usuario ya conoce el elemento que busca; en el resto de la aplicación, el orden alfabético no aporta significado. |
 
 #### Labeling Systems
@@ -230,6 +223,7 @@ Viora utiliza etiquetas breves y consistentes que permiten anticipar el contenid
 | Equipo | ArcadiaDevs, integrantes y video About the Team. |
 | Descargar app | Acceso al medio de distribución móvil disponible. |
 | Ver Plan Productor / Ver Plan Cooperativa | Desplazamiento desde cada segmento a su modalidad de acceso. |
+| Canjear código | Remite a la aplicación para canjear el código de activación que la cooperativa entrega a sus socios; el socio no paga de forma individual. |
 | Términos y condiciones / Privacidad | Documentos legales correspondientes. |
 | Español / English | Selección del idioma del contenido. |
 
@@ -246,7 +240,7 @@ No se utiliza “Contacto” como destino de un formulario, porque la organizaci
 | Muestreo de cuajado | Ronda de observaciones de árboles, brotes y frutos. “Registrar muestreo” inicia la captura. |
 | Carga frutal | Evaluación calculada a partir de los insumos agronómicos; no equivale al pesaje real de cosecha. |
 | Prescripción | Porcentaje de remoción y ventana de aclareo calculados por el sistema. |
-| Registrar aclareo | Fecha y porcentaje realmente ejecutados por el productor. No es un acuse de lectura. |
+| Registrar aclareo | Fecha y porcentaje realmente ejecutados por el productor. |
 | Ventana de aclareo | Estado y fecha límite informados por el sistema. Una fecha vencida se acompaña de la advertencia correspondiente. |
 | Cosecha / Registrar cosecha | Kilogramos de la campaña, diferenciados en aceituna verde y negra cuando corresponda. |
 | Cerrar campaña | Confirmación del cierre productivo; se diferencia del registro retrospectivo de cosechas. |
@@ -296,13 +290,13 @@ El alcance de Viora comprende una Landing Page pública, dos implementaciones de
 - **Meta Keywords:** Viora, privacidad, datos personales
 - **Meta Author:** ArcadiaDevs
 
-Se incluye Keywords para cumplir el enunciado, aunque Google Search no utiliza esa etiqueta para indexación o posicionamiento. Title y Description se redactan de forma concisa y acorde con el contenido; las cifras de 60 y 155 caracteres no se presentan como límites técnicos obligatorios de Google. Fuente: [Google Search Central, metadatos admitidos](https://developers.google.com/search/docs/crawling-indexing/special-tags).
+Se incluye Keywords para cumplir el enunciado, aunque Google Search no utiliza esa etiqueta para indexación o posicionamiento. Title y Description se redactan de forma concisa y acorde con el contenido, con 42 y 148 caracteres respectivamente, para favorecer que se muestren sin truncarse en los resultados de búsqueda. Fuente: [Google Search Central, metadatos admitidos](https://developers.google.com/search/docs/crawling-indexing/special-tags).
 
-Para compartir la landing se establecen `og:title` = “Viora: gestión del olivar y aclareo guiado”, `og:description` = la descripción de la landing, `og:type` = `website` y `og:locale` = `es_PE`. La URL canónica, `og:url` y la URL absoluta de `og:image` se completarán con el dominio definitivo y el recurso de marca aprobado; no se inventan direcciones ni se publican placeholders. La versión inglesa debe localizar también sus metadatos y declarar el idioma correcto del documento.
+Para compartir la landing se establecen `og:title` = “Viora: gestión del olivar y aclareo guiado”, `og:description` = la descripción de la landing, `og:type` = `website` y `og:locale` = `es_PE`. La URL canónica, `og:url` y la URL absoluta de `og:image` se completarán con el dominio definitivo y el recurso de marca aprobado. La versión inglesa debe localizar también sus metadatos y declarar el idioma correcto del documento.
 
-La privacidad de los datos de cuenta y parcelas depende de la autenticación y autorización del sistema. Las directivas de indexación no sustituyen estos controles. No se atribuye a una ley una obligación específica de configurar SEO para pantallas móviles.
+La privacidad de los datos de cuenta y parcelas depende de la autenticación y autorización del sistema. Las directivas de indexación no sustituyen estos controles.
 
-**Elementos ASO.** La identidad pública propuesta es “Viora”, para productores y gestores. Kotlin y Flutter son implementaciones tecnológicas, no aplicaciones separadas por audiencia. Las fichas de distribución que se utilicen deben describir las capacidades de ambos roles. En el AV1 la distribución de pruebas está definida mediante Firebase App Distribution; estos valores preparan la descripción del producto y no afirman una publicación actual en Google Play o App Store.
+**Elementos ASO.** La identidad pública propuesta es “Viora”, para productores y gestores. Kotlin y Flutter son implementaciones tecnológicas, no aplicaciones separadas por audiencia. Las fichas de distribución que se utilicen deben describir las capacidades de ambos roles. En el AV1 la distribución de pruebas está definida mediante Firebase App Distribution; los valores siguientes definen la ficha que se utilizará cuando la aplicación se publique en tienda.
 
 | Elemento solicitado | Valor propuesto |
 |:-----------------------------|:---------------------------------------------------------------------|
@@ -322,7 +316,7 @@ Las restricciones de tienda se verificaron en [Google Play Console](https://supp
 
 #### Searching Systems
 
-Viora ofrece búsqueda contextual dentro de los inventarios y registros, junto con filtros apropiados para cada consulta. No se plantea un buscador universal sobre todos los datos. Las opciones siguientes concretan decisiones de interfaz sobre la información requerida por las historias de usuario; no presuponen que cada filtro constituya un endpoint ya implementado.
+Viora ofrece búsqueda contextual dentro de los inventarios y registros, junto con filtros apropiados para cada consulta. No se plantea un buscador universal sobre todos los datos. Las opciones siguientes concretan decisiones de interfaz sobre la información requerida por las historias de usuario.
 
 **Landing Page.** Por su extensión y recorrido secuencial, el sitio no necesita un buscador interno. El menú por secciones, los enlaces entre casos de uso y funcionalidades y los accesos desde cada segmento a su plan permiten localizar la información. Los documentos legales se encuentran en el pie de página.
 
@@ -330,10 +324,10 @@ Viora ofrece búsqueda contextual dentro de los inventarios y registros, junto c
 
 | Consulta y respaldo | Medio y filtros propuestos | Presentación y orden |
 |:-------------------------|:------------------------------------|:------------------------------------|
-| Lotes del productor (US09–US11) | Nombre del lote; variedad registrada; activos o archivados. Las variedades proceden de los valores disponibles, sin fijar una lista de dos opciones en esta sección. | Tarjetas con nombre, variedad y estado; orden alfabético por nombre. |
+| Lotes del productor (US09–US11) | Nombre del lote; variedad registrada; activos o archivados. El filtro de variedad ofrece las variedades registradas en el sistema: Arbequina, Criolla, Manzanilla y Sevillana. | Tarjetas con nombre, variedad y estado; orden alfabético por nombre. |
 | Historial de cosechas e índice BBI (US20, US21) | Selección de lote y año de campaña. | Campañas recientes primero, con año y volumen. La serie comparativa y el BBI se muestran con contexto y estado de suficiencia del historial. |
 | Muestreos y árboles evaluados (US24, US25) | Lote, campaña, fecha y estado de sincronización; identificación del árbol dentro de la ronda. | Rondas recientes primero y detalle de árboles, brotes y frutos; estado local o sincronizado visible. |
-| Plan de aclareo (US26–US28) | Selección de lote y campaña para consultar evaluación, prescripción y registros de ejecución. | Carga, porcentaje prescrito, fecha límite y labores registradas, distinguiendo lo calculado de lo ejecutado. No se ofrece búsqueda de acuses del gestor. |
+| Plan de aclareo (US26–US28) | Selección de lote y campaña para consultar evaluación, prescripción y registros de ejecución. | Carga, porcentaje prescrito, fecha límite y labores registradas, distinguiendo lo calculado de lo ejecutado. |
 | Nodos virtuales y clima (US13–US19) | Lote y nodo; selección de variable y períodos de 24 horas, 7 días o 30 días para las series. | Inventario por nombre o identificador; series gráficas en orden temporal ascendente, con unidades, fuente y actualización. El pronóstico se presenta aparte, por días. |
 | Cartera y riesgo territorial del gestor (US08, US12, US31) | Nombre de socio; sector territorial y nivel de riesgo en la vista de parcelas. | Padrón de socios alfabético; mapa o matriz territorial por sector y prioridad. El riesgo se atribuye a la parcela o sector evaluado, sin convertirlo automáticamente en atributo de la membresía. |
 | Acopio cooperativo (US32) | Selección de campaña; lectura diferenciada de aceituna verde y negra. | Resumen de tonelaje y cobertura de muestreo. Se advierte cuando la estimación es preliminar. |
@@ -364,7 +358,7 @@ En pantallas estrechas, el menú se despliega sin cambiar los destinos. Los enla
 
 Cuenta se abre desde el encabezado y agrupa perfil, idioma y suscripción o código de cooperativa; no introduce una quinta pestaña. Las rutas hacia un mismo registro reutilizan su detalle y conservan el contexto de origen. “Plan” corresponde al manejo agronómico, mientras que la modalidad comercial se consulta en Suscripción.
 
-**Aplicación: experiencia del gestor.** Se propone un menú por rol con Inicio, Riesgo territorial, Acopio, Socios y Cuenta. Esta agrupación concreta las áreas compartidas y exclusivas de la taxonomía; no se presenta como un árbol de seis secciones previamente aprobado. Inicio resume el estado de la organización; Riesgo territorial abre la matriz o mapa y el detalle autorizado de parcela; Acopio permite revisar la campaña y sus proyecciones; Socios reúne la cartera y los accesos a la administración de membresías y cupos; Cuenta contiene perfil e idioma. Los expedientes se abren desde el contexto de la parcela y campaña, conforme a US30.
+**Aplicación: experiencia del gestor.** El gestor utiliza la misma barra inferior de cuatro destinos, con contenido propio de su rol: Inicio, Riesgo territorial, Acopio y Socios. Esta agrupación concreta las áreas compartidas y exclusivas de la taxonomía. Inicio resume el estado de la organización; Riesgo territorial abre la matriz o mapa y el detalle autorizado de parcela; Acopio permite revisar la campaña y sus proyecciones; Socios reúne la cartera y los accesos a la administración de membresías y cupos; al igual que en la experiencia del productor, Cuenta se abre desde el encabezado y contiene perfil e idioma. Los expedientes se abren desde el contexto de la parcela y campaña, conforme a US30.
 
 Los destinos de gestor se aplican en Kotlin y Flutter según el rol autenticado. La supervisión no concede automáticamente permisos para editar los datos del productor ni para emitir prescripciones manuales. El diseño debe permitir consultar la cartera durante una visita de campo; no presupone que el gestor trabaje siempre en oficina o con conexión estable.
 
@@ -381,11 +375,9 @@ Los destinos de gestor se aplican en Kotlin y Flutter según el rol autenticado.
 
 Los formularios indican el paso actual y permiten retroceder sin perder los datos ya guardados. La acción Atrás retorna a la pantalla de origen; cuando se abandona una edición sin guardar, se explica la consecuencia. El encabezado identifica lote y campaña en las pantallas que lo requieren. No se exige una hilera permanente de migas de pan en teléfonos: el contexto se conserva mediante títulos y navegación de retorno.
 
-**Conectividad y acceso directo.** La captura de muestreos conserva los registros localmente y diferencia su guardado de la aceptación del servidor. Las pantallas pueden mostrar información previamente almacenada y autorizada con su fecha de actualización, sin garantizar que esté completa o vigente. Los cálculos de carga y prescripción, la actualización del riesgo y acopio, el cierre confirmado, la generación de PDF y las operaciones de suscripción requieren la comunicación correspondiente con el servidor. No se establece un nuevo flujo de cosecha offline sin un requisito que lo respalde.
+**Conectividad y acceso directo.** La captura de muestreos conserva los registros localmente y diferencia su guardado de la aceptación del servidor. Las pantallas pueden mostrar información previamente almacenada y autorizada con su fecha de actualización, sin garantizar que esté completa o vigente. Los cálculos de carga y prescripción, la actualización del riesgo y acopio, el cierre confirmado, la generación de PDF y las operaciones de suscripción requieren la comunicación correspondiente con el servidor.
 
 Los enlaces profundos hacia detalles validan sesión, rol y acceso al recurso antes de mostrar datos. Si el recurso no está disponible localmente y no hay conexión, se informa y se permite volver o reintentar. Una prescripción almacenada muestra su fecha y no se presenta como recién calculada. Al retornar de un pago, la aplicación consulta el estado validado por el servidor antes de mostrar la suscripción como activada.
-
-Las propuestas de menú del gestor y ubicación de accesos secundarios deben trasladarse al diagrama Mobile App Choreography, cuya explicación sigue pendiente en el archivo fuente, y comprobarse durante el QA de los wireflows. Así se documentan como decisiones de diseño de esta sección, sin atribuirles una validación previa en Miro.
 
 ### Landing Page UI Design
 
