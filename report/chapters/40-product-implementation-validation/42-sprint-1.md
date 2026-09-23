@@ -59,7 +59,7 @@ En el presente Sprint 1, los aspectos seleccionados comprenden los dominios de s
 * **Phenology (Phenology and Historical Bearing Analytics):** Cubre la memoria histórica de cosechas plurianuales, rectificación de pesajes históricos (TS43), la formulación matemática del Índice de Vecería ($BBI$) y el spike de viabilidad técnica sobre acumulación de frío invernal mediante el modelo dinámico de Erez (SPK01).
 * **Thinning (Crop Load Regulation and Thinning Advisory):** Representa el núcleo de valor primario (*Core Domain*), abarcando la toma de muestras de frutos cuajados a pie de árbol, la evaluación de representatividad estadística, la emisión de prescripciones técnicas de aclareo antes del endurecimiento del carozo y el spike de persistencia local offline-first con SQLite (SPK02).
 * **Harvest (Harvest Settlement and Performance Reporting):** Comprende el asentamiento formal de fin de campaña (TS39) y la certificación criptográfica SHA-256 del expediente inmutable de parcela (TS40) para certificar el rendimiento productivo.
-* **Shared (Shared Architecture \& Core Foundations):** Agrupa los fundamentos arquitecturales transversales en Spring Boot 3 / Java 21, incluyendo el controlador global de excepciones bajo RFC 7807, las convenciones de persistencia JPA y la documentación interactiva OpenAPI / Swagger UI.
+* **Shared (Shared Architecture \& Core Foundations):** Agrupa los fundamentos arquitecturales transversales en Spring Boot 4 (v4.1.1) / Java 21, incluyendo el controlador global de excepciones bajo RFC 7807, las convenciones de persistencia JPA y la documentación interactiva OpenAPI / Swagger UI.
 
 A continuación, en la \autoref{tab:lacx-sprint-1} se expone la matriz de asignación de liderazgo y colaboración de ArcadiaDevs para el Sprint 1:
 

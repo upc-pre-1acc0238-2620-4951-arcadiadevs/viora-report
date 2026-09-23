@@ -50,7 +50,7 @@ Diseño UX/UI de producto & Figma & Diseño del sistema de componentes atómicos
 
 Desarrollo de software \newline (Runtime Java) & OpenJDK 21 \newline LTS (Temurin) & Kit de desarrollo Java universal corporativo. Provee el compilador, máquina virtual (JVM) y runtime para el Backend y Gradle. & Local (Eclipse Open Source) \newline \url{https://adoptium.net} \\[0.15cm]
 
-Desarrollo de software \newline (Backend API) & IntelliJ IDEA & Entorno de desarrollo integrado (IDE) principal para la construcción del Backend RESTful con Spring Boot 3 y Java 21. & Local (JetBrains / Apache 2.0) \newline \url{https://www.jetbrains.com/idea} \\[0.15cm]
+Desarrollo de software \newline (Backend API) & IntelliJ IDEA & Entorno de desarrollo integrado (IDE) principal para la construcción del Backend RESTful con Spring Boot 4 (v4.1.1) y Java 21. & Local (JetBrains / Apache 2.0) \newline \url{https://www.jetbrains.com/idea} \\[0.15cm]
 
 Desarrollo de software \newline (Mobile Android) & Android Studio & IDE oficial para el desarrollo del cliente móvil nativo Android con Kotlin, Jetpack Compose, Room SQLite y Android SDK 34. & Local (Google Freeware / Apache) \newline \url{https://developer.android.com/studio} \\[0.15cm]
 
@@ -89,7 +89,7 @@ A continuación, se sintetizan las consideraciones técnicas y de runtime adopta
 * **Gestión de proyectos (*Project Management*):** Uso de Trello para la administración del Product Backlog (89 ítems) y tableros Kanban por Sprint; Arcadia To-Do como plataforma in-house para la asignación de tareas operativas internas, control de fechas límite y repositorio de enlaces documentales; complementado con Discord para la comunicación técnica sincrónica de ArcadiaDevs.
 * **Gestión de requisitos (*Requirements Management*):** Miro para la facilitación colaborativa del Big Picture EventStorming y definición de eventos de dominio; UXPressia para el modelado de artefactos de diseño centrado en el usuario (Personas, Journey Maps e Impact Maps); y Lucidchart para los Bounded Context Canvases y flujos de navegación (User Flows y Wireflows).
 * **Diseño UX/UI de producto (*Product UX/UI Design*):** Figma como estándar de diseño atómico basado en Material Design 3, definiendo componentes modulares, paleta cromática contextual (tonos tierra y verde olivo) y prototipos interactivos de alta fidelidad para Android y web.
-* **Desarrollo de software (Backend y base de datos):** Estandarización corporativa en OpenJDK 21 LTS (Eclipse Temurin) enlazado a la variable de entorno `JAVA_HOME`. Desarrollo sobre IntelliJ IDEA con Spring Boot 3 y Spring Data JPA, utilizando PostgreSQL 16 como motor relacional transaccional en entorno local.
+* **Desarrollo de software (Backend y base de datos):** Estandarización corporativa en OpenJDK 21 LTS (Eclipse Temurin) enlazado a la variable de entorno `JAVA_HOME`. Desarrollo sobre IntelliJ IDEA con Spring Boot 4 (v4.1.1) y Spring Data JPA, utilizando PostgreSQL 16 como motor relacional transaccional en entorno local.
 * **Desarrollo de software (Mobile y Web):** Para el cliente nativo `viora-mobile-android`, Android Studio con Android SDK Platform 34 (Android 14, `minSdk` 26) y Jetpack Compose. Para el cliente cross-platform `viora-mobile-flutter`, Flutter SDK v3.24.x y Dart 3.5.x. Maquetación de `viora-landing-page` en Visual Studio Code bajo HTML5 semántico, CSS3 y JavaScript.
 * **Pruebas de software (*Software Testing*):** Inspección y prueba interactiva de contratos de endpoints RESTful mediante Swagger UI, y pruebas automatizadas de aceptación BDD con Cucumber JVM en el repositorio `viora-acceptance-tests`.
 * **Despliegue de software (*Software Deployment*):** Despliegue continuo de la Landing Page en Vercel; contenedorización del backend Java 21 en Docker desplegado como servicio web en Render; persistencia administrada en Filess.io (PostgreSQL 16); y distribución controlada de paquetes APK para Android y Flutter mediante Firebase App Distribution.
@@ -118,7 +118,7 @@ Se utiliza GitHub bajo la organización institucional `upc-pre-1acc0238-2620-495
   \par \vspace{0.08cm}
   \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-mobile-flutter}
 
-* **Web Services & Platform Backend (`viora-platform`):** Centraliza la lógica de negocio y arquitectura modular construida en Java 21 con Spring Boot 3 y Spring Data JPA. Comprende los doce componentes de backend, la persistencia relacional sobre PostgreSQL 16 y la documentación interactiva OpenAPI/Swagger.
+* **Web Services & Platform Backend (`viora-platform`):** Centraliza la lógica de negocio y arquitectura modular construida en Java 21 con Spring Boot 4 (v4.1.1) y Spring Data JPA. Comprende los doce componentes de backend, la persistencia relacional sobre PostgreSQL 16 y la documentación interactiva OpenAPI/Swagger.
   \par \vspace{0.08cm}
   \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform}
 
@@ -236,7 +236,7 @@ El desarrollo del Backend API en el repositorio `viora-platform` y del simulador
 * **Convenciones de nomenclatura:** Los nombres de clases, interfaces y tipos enumerados se escriben en *UpperCamelCase* (ej. `CropLoadAssessmentService`, `TelemetryRecord`). Los métodos y variables locales adoptan *lowerCamelCase* (ej. `calculateBearingIndex`, `plotId`). Las constantes inmutables y valores de enumeración se definen en mayúsculas sostenidas con guion bajo (*CONSTANT\_CASE*, ej. `MAX_SAMPLE_INTERVAL_HOURS`).
 * **Bloques y control de flujo:** Es obligatorio el uso de llaves delimitadoras `{}` en todas las estructuras de control (`if`, `else`, `for`, `while`), incluso en sentencias que contengan una única instrucción.
 * **Documentación Javadoc:** Toda clase de dominio, servicio de aplicación y controlador REST público debe contar con bloques de documentación Javadoc (`/** ... */`), especificando las etiquetas `@param`, `@return` y `@throws` cuando corresponda.
-* **Estructura modular en Spring Boot:** Se ubica la clase anotada con `@SpringBootApplication` en el paquete raíz (`pe.edu.upc.viora.platform`) para habilitar el escaneo automático de componentes. Se aplica inyección de dependencias mediante constructores y se estructuran los paquetes respetando la separación en capas de la arquitectura limpia y DDD táctico.
+* **Estructura modular en Spring Boot:** Se ubica la clase anotada con `@SpringBootApplication` en el paquete raíz (`com.arcadiadevs.viora.platform`) para habilitar el escaneo automático de componentes. Se aplica inyección de dependencias mediante constructores y se estructuran los paquetes respetando la separación en capas de la arquitectura limpia y DDD táctico.
 
 \newpage
 
@@ -320,7 +320,7 @@ El despliegue hacia la infraestructura de Vercel se encuentra automatizado media
 #### Despliegue de servicios web de backend y base de datos cloud
 &nbsp;
 
-La capa de servicios web de Viora, versionada en el repositorio `viora-platform`, está construida en Java 21 utilizando el framework Spring Boot 3 y arquitectura hexagonal organizada por Bounded Contexts. Su despliegue productivo se ejecuta sobre el runtime nativo de Render en estrecha integración con una instancia de PostgreSQL 16 alojada en Filess.io.
+La capa de servicios web de Viora, versionada en el repositorio `viora-platform`, está construida en Java 21 utilizando el framework Spring Boot 4 (v4.1.1) y arquitectura hexagonal organizada por Bounded Contexts. Su despliegue productivo se ejecuta sobre el runtime nativo de Render en estrecha integración con una instancia de PostgreSQL 16 alojada en Filess.io.
 
 \noindent \textbf{Configuración del entorno en Render:}
 
