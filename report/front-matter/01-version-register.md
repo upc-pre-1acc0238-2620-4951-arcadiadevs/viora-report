@@ -34,6 +34,7 @@ v0.9.0 & 16/09/26 & Li Gayoso, Diana Carolina & Verificación de Student Outcome
 v0.10.0 & 17/09/26 & Santi Guerrero, Fabrizio Alonso & Revisión general y corrección de formato de texto, tablas y citas \tabularnewline \hline
 v1.0.0 & 17/09/26 & Santi Guerrero, Fabrizio Alonso & Agregado de Collaboration Insights del reporte \tabularnewline \hline
 v1.1.0 & 19/09/26 & Espada Lazo, Piero Anthony & Redacción de Software Configuration Management \tabularnewline \hline
+v1.2.0 & 22/09/26 & Paredes Maza, Victor Juan de Dios & Redacción de Style Guidelines \tabularnewline \hline
 \end{longtable}
 
 \newpage
