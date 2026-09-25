@@ -33,6 +33,7 @@ v0.8.0 & 15/09/26 & Trinidad Leon, Jahat Jassiel & Creación de DDD táctico \ta
 v0.9.0 & 16/09/26 & Li Gayoso, Diana Carolina & Verificación de Student Outcome y objetivos SMART \tabularnewline \hline
 v0.10.0 & 17/09/26 & Santi Guerrero, Fabrizio Alonso & Revisión general y corrección de formato de texto, tablas y citas \tabularnewline \hline
 v1.0.0 & 17/09/26 & Santi Guerrero, Fabrizio Alonso & Agregado de Collaboration Insights del reporte \tabularnewline \hline
+v1.1.0 & 19/09/26 & Espada Lazo, Piero Anthony & Redacción de Software Configuration Management \tabularnewline \hline
 \end{longtable}
 
 \newpage
