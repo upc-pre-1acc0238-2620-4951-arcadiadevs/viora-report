@@ -431,13 +431,256 @@ Los enlaces profundos hacia detalles validan sesión, rol y acceso al recurso an
 
 #### Mobile Applications Wireflow Diagrams
 
-> **Sección pendiente de redacción.**
->
-> *Qué exige el enunciado:* presentar los wireflows, considerando un wireflow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance, recomendándose elaborar antes los task flows correspondientes; cada wireflow requiere una meta de usuario redactada y una explicación del flujo representado.
->
-> *Insumos disponibles en el repositorio:* el catálogo de marca de `report/assets/viora-brand/` (paleta, isologotipo, isotipo, icono). El equipo ya emplea Lucidchart y Figma para su material gráfico, de modo que la herramienta de trabajo no requiere decisión nueva.
->
-> *Enlace con la arquitectura de información:* cada wireflow debe recorrer únicamente las rutas de navegación y los enlaces profundos declarados en Navigation Systems.
+Un wireflow combina las pantallas de la aplicación con el flujo de acciones que lleva de una a otra. Su propósito es mostrar cómo una persona de usuario alcanza una meta concreta, qué información ve y entrega en cada paso y qué hace el sistema con ella. Esta sección presenta un wireflow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance. El alcance es el de los 17 flujos centrales del catálogo del equipo (F01 a F17) para las dos personas de Viora: Teodoro Mamani, productor olivarero que usa la App Productor (Kotlin), y Rubén Ticona, gestor técnico que usa la App Gestor (Flutter). Los flujos F01, F02 y F03 (crear la cuenta, iniciar sesión y mantener la cuenta al día) existen para ambas personas, de modo que el conjunto suma 20 wireflows. Cada uno incluye una meta de usuario redactada en primera persona y una explicación del flujo representado.
+
+Las pantallas provienen del prototipo de alta fidelidad en Figma y se organizaron y anotaron en Lucidchart. Cada wireflow representa únicamente la ruta esperada (*happy path*): las rutas alternativas y los casos de error se tratan en la sección Mobile Applications User Flow Diagrams. Según el enunciado, todo cambio de estado de una pantalla se dibuja como un paso adicional con su nuevo estado. Por ello un mismo código de pantalla puede aparecer más de una vez en un wireflow; por ejemplo, la ronda de muestreo P52 se muestra primero "Sin conexión" y después con "Muestra suficiente". Los 20 wireflows pueden consultarse en su versión editable en la carpeta «Viora · Mobile Wireflows» de Lucidchart (<https://lucid.app/folder/invitations/accept?invitationId=inv_fdf3ec56-200e-409b-b85f-5223df6799c2>), con un documento por wireflow.
+
+La notación es la misma en todos los diagramas. Cada paso se rotula con "PASO n" seguido del código y el nombre de la pantalla. Las cajas verdes describen la acción del usuario que lleva al paso siguiente. El rombo amarillo marca un punto de decisión, y la caja amarilla con borde punteado indica un evento del sistema o una nota pendiente. La caja con borde amarillo sólido al final del recorrido señala la meta cumplida. Las pantallas en gris desaturado son pantallas reutilizadas de otra aplicación o persona. Cuando un wireflow tiene más de una ruta válida, los pasos de cada ruta llevan un sufijo de letra (1B, 2A, 3B) y los rótulos de la rama indican la condición que los separa.
+
+Los wireflows recorren únicamente destinos declarados en Navigation Systems: los cuatro destinos inferiores de cada rol (Inicio, Lotes, Plan y Bitácora para el productor; Inicio, Riesgo territorial, Acopio y Socios para el gestor), la apertura de Cuenta desde el encabezado y las hojas o detalles que se abren desde esos destinos. Ningún diagrama introduce una quinta pestaña. En el prototipo, el productor y el gestor se implementan como dos aplicaciones separadas por rol (App Productor en Kotlin y App Gestor en Flutter), en lugar de una única aplicación con selección de rol. Esta es una decisión de diseño del prototipo; por ello el rol queda definido por la aplicación que se instala y los wireflows de creación de cuenta no incluyen una pantalla de elección de rol. Los wireflows amplían además los recorridos de tarea de Navigation Systems al catálogo completo de 17 flujos. La siguiente tabla resume el conjunto.
+
+| Código | Meta de usuario | Persona y aplicación | User Stories |
+|:-------|:----------------|:---------------------|:-------------|
+| WF-F01 | Crear mi cuenta y entrar por primera vez (productor) | Teodoro, App Productor | US01, US43 |
+| WF-F01 | Crear mi cuenta y entrar por primera vez (gestor) | Rubén, App Gestor | US01, US43 |
+| WF-F02 | Iniciar sesión y recuperar mi acceso (productor) | Teodoro, App Productor | US02, US05 |
+| WF-F02 | Iniciar sesión y recuperar mi acceso (gestor) | Rubén, App Gestor | US02, US05 |
+| WF-F03 | Mantener mi cuenta al día (productor) | Teodoro, App Productor | US03, US04, US42 |
+| WF-F03 | Mantener mi cuenta al día (gestor) | Rubén, App Gestor | US03, US04, US42 |
+| WF-F04 | Activar mi acceso con pago o código | Teodoro, App Productor | US06, US07 |
+| WF-F05 | Saber qué hacer hoy en mi olivar | Teodoro, App Productor | US18 |
+| WF-F06 | Registrar un lote | Teodoro, App Productor | US09 |
+| WF-F07 | Mantener mis lotes al día | Teodoro, App Productor | US10, US11 |
+| WF-F08 | Configurar el monitoreo del lote | Teodoro, App Productor | US13, US14, US15 |
+| WF-F09 | Vigilar el clima del lote | Teodoro, App Productor | US17, US18, US19 |
+| WF-F10 | Conocer la vecería de mi lote | Teodoro, App Productor | US20 |
+| WF-F11 | Seguir el frío invernal | Teodoro, App Productor | US22, US23 |
+| WF-F12 | Muestrear el cuajado sin conexión | Teodoro, App Productor | US24, US25 |
+| WF-F13 | Aclarear a tiempo | Teodoro, App Productor | US26, US27, US28 |
+| WF-F14 | Cerrar la campaña y obtener el expediente | Teodoro, App Productor | US29, US30 |
+| WF-F15 | Priorizar mis visitas de campo | Rubén, App Gestor | US12, US30, US31 |
+| WF-F16 | Proyectar el acopio de la campaña | Rubén, App Gestor | US32 |
+| WF-F17 | Administrar socios y códigos | Rubén, App Gestor | US08 |
+
+**WF-F01 · Crear mi cuenta y entrar por primera vez (productor).** Meta de usuario: «Quiero crear mi cuenta con mi rol para entrar a Viora con las herramientas que me corresponden.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US01 y US43. Como se observa en la \autoref{fig:wf-f01-teodoro}, el recorrido va de la pantalla inicial a la verificación del correo, con una decisión sobre el código de cooperativa.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F01: crear mi cuenta y entrar por primera vez (productor).} \label{fig:wf-f01-teodoro}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f01-teodoro.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+El splash (T01) termina por sí solo y abre la bienvenida (T02), donde Teodoro toca «Comenzar» y avanza por la lámina para productores (pasos 2 y 3). Luego el flujo pasa a la captura de datos: escribe su nombre (T02b) y su celular (T02b2), y el sistema los conserva para el resumen final. En T02c el sistema le pregunta si su cooperativa le dio un código y el diagrama plantea la decisión. Si tiene código, lo escribe y toca «Guardar código», y el flujo salta directamente a las alertas. Si no lo tiene, toca «No tengo código» y pasa por T02d, donde elige cuántas hectáreas maneja; el sistema le muestra un plan estimado de S/ 7,920 al año para 12 ha (paso 7, solo sin código). Ambas ramas convergen en T02e, donde toca «Activar alertas» y responde al permiso de notificaciones del sistema operativo con «Permitir». En T02f revisa un resumen con rol, nombre, acceso y alertas, y toca «Crear mi cuenta». Finalmente, en T04 escribe su correo y una contraseña que cumple los criterios mostrados (8 caracteres, letras y números), y en T04a ingresa el código de 6 dígitos que el sistema le envía por correo. La meta se cumple porque la cuenta queda creada y verificada con el rol de productor, y el flujo continúa en WF-F04 para activar el acceso.
+
+**WF-F01 · Crear mi cuenta y entrar por primera vez (gestor).** Meta de usuario: «Quiero crear mi cuenta con mi rol para entrar a Viora con las herramientas que me corresponden.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a las historias US01 y US43. La \autoref{fig:wf-f01-ruben} muestra que el recorrido es más corto en la captura de datos y termina con una decisión sobre la habilitación de su organización.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F01: crear mi cuenta y entrar por primera vez (gestor).} \label{fig:wf-f01-ruben}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f01-ruben.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Los tres primeros pasos replican el inicio del productor, con la lámina dirigida a gestores técnicos. Rubén escribe su nombre (T02b) y su celular (T02b2), activa las alertas y responde al permiso del sistema (pasos 6 y 7). A diferencia del productor, no ingresa código de cooperativa ni hectáreas: su resumen (T02f) muestra solo el rol de gestor técnico, el nombre y las alertas. Luego crea su cuenta con correo y contraseña (T04) y confirma el código de 6 dígitos que recibe por correo (T04a). Después de la verificación, el diagrama plantea una decisión: si su cooperativa ya lo habilitó, entra directamente a Inicio (G10). Si aún no lo hizo, el sistema muestra «Tu organización aún no te habilita» (G01), con su rol, el estado "Pendiente de habilitación" y su correo. Cuando la cooperativa lo habilita, el sistema le avisa por correo y Rubén entra a G10. La meta se cumple porque Rubén llega a su Inicio con las herramientas de gestor técnico, y la habilitación de la cooperativa condiciona ese acceso.
+
+**WF-F02 · Iniciar sesión y recuperar mi acceso (productor).** Meta de usuario: «Quiero entrar a mi cuenta sin reingresar mis datos a cada rato, y recuperarla por mi cuenta si olvido la clave.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US02 y US05. La \autoref{fig:wf-f02-teodoro} representa el recorrido de recuperación de la contraseña, que parte de la pantalla de inicio de sesión y regresa a ella.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F02: iniciar sesión y recuperar mi acceso (productor).} \label{fig:wf-f02-teodoro}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f02-teodoro.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde Iniciar sesión (T03), Teodoro toca «¿Olvidaste tu contraseña?» y llega a T06, donde su correo aparece ya escrito y toca «Enviar enlace». El sistema le envía un enlace de un solo uso y T07 le indica que revise su correo. Al abrir ese enlace, llega a T08, donde escribe una nueva contraseña y su confirmación mientras la pantalla verifica los criterios (8 caracteres, letras y números, coincidencia). Al tocar «Guardar contraseña», el sistema la actualiza, cierra sus otras sesiones por seguridad y muestra «Listo, ya puedes entrar». El diagrama muestra ese cambio de estado de T08 como un paso aparte (paso 5). Teodoro toca «Iniciar sesión», vuelve a T03 con su correo y entra con la nueva contraseña a Inicio (P10). La meta se cumple porque Teodoro recupera su acceso por su propia cuenta, sin intervención de terceros, y llega a su Inicio.
+
+**WF-F02 · Iniciar sesión y recuperar mi acceso (gestor).** Meta de usuario: «Quiero entrar a mi cuenta sin reingresar mis datos a cada rato, y recuperarla por mi cuenta si olvido la clave.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a las historias US02 y US05. Como se observa en la \autoref{fig:wf-f02-ruben}, el recorrido es el mismo que el del productor y solo cambia el destino final.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F02: iniciar sesión y recuperar mi acceso (gestor).} \label{fig:wf-f02-ruben}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f02-ruben.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Las pantallas T03, T06, T07 y T08 se reutilizan y por eso aparecen desaturadas. Rubén solicita el enlace con su correo, abre el mensaje, crea una nueva contraseña que cumple los criterios y confirma el cambio. El sistema actualiza la clave y cierra sus otras sesiones. Luego inicia sesión de nuevo y entra a Inicio (G10) de la App Gestor, que resume el semáforo del valle, los indicadores de su cooperativa y las visitas sugeridas. La meta se cumple porque Rubén recupera su acceso por su propia cuenta y llega a su Inicio.
+
+**WF-F03 · Mantener mi cuenta al día (productor).** Meta de usuario: «Quiero mantener al día mis datos de contacto, mi clave y mi idioma.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US03, US04 y US42. La \autoref{fig:wf-f03-teodoro} muestra que todo el mantenimiento parte de Mi cuenta (P95), que se abre desde el encabezado.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F03: mantener mi cuenta al día (productor).} \label{fig:wf-f03-teodoro}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f03-teodoro.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde Inicio (P10), Teodoro toca su avatar y abre Mi cuenta (P95), que agrupa datos personales, seguridad, preferencias y sesión. Esto es coherente con Navigation Systems, donde Cuenta se abre desde el encabezado y no es una quinta pestaña. Al tocar «Celular» llega a Datos personales (P96), corrige su número, que el sistema valida con formato internacional, y toca «Guardar cambios». Regresa a P95 y toca «Cambiar contraseña» (P97), donde escribe la contraseña actual y la nueva con sus confirmaciones, y el sistema la actualiza. De nuevo en P95, toca «Idioma» y abre una hoja (P98) en la que elige English y toca «Cambiar a English». El sistema aplica el cambio de inmediato, sin cerrar la sesión, y P95 aparece ya en inglés. Cada retorno a P95 se dibuja como un paso propio porque la pantalla muestra datos actualizados. La meta se cumple porque los datos de contacto, la contraseña y el idioma quedan al día sin cerrar sesión.
+
+**WF-F03 · Mantener mi cuenta al día (gestor).** Meta de usuario: «Quiero mantener al día mis datos de contacto, mi clave y mi idioma.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a las historias US03, US04 y US42. La \autoref{fig:wf-f03-ruben} repite el recorrido del productor sobre las mismas pantallas de cuenta, con los datos y la insignia de licencia del gestor.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F03: mantener mi cuenta al día (gestor).} \label{fig:wf-f03-ruben}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f03-ruben.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+El recorrido comienza en Inicio (G10). Rubén toca su avatar, abre Mi cuenta (P95), actualiza su celular en Datos personales (P96), cambia su contraseña (P97) y cambia el idioma a English mediante la hoja P98. En cada cambio, el sistema valida los datos escritos y los guarda; tras el cambio de idioma, P95 se muestra en inglés con el mismo contenido. Las pantallas P95 a P98 se reutilizan del productor y por eso aparecen desaturadas. La meta se cumple porque sus datos, su clave y su idioma quedan actualizados sin cerrar sesión.
+
+**WF-F04 · Activar mi acceso con pago o código.** Meta de usuario: «Quiero habilitar Viora pagando mi plan o con el código que me dio mi cooperativa.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US06 y US07. En la \autoref{fig:wf-f04}, el rombo de decisión separa las dos rutas de activación: el pago con Mercado Pago (pasos 2A y 3A) y el canje de código de cooperativa (pasos 2B a 4B). Ambas llegan al mismo Inicio.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F04: activar mi acceso con pago o código.} \label{fig:wf-f04}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f04.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Teodoro parte de Plan Productor (P02), donde ve sus hectáreas (12 ha), el total anual (S/ 7,920) y su equivalente mensual. El diagrama pregunta si tiene código de cooperativa. Si no lo tiene, toca «Pagar con Mercado Pago» y paga en Checkout Pro. La pantalla P04 muestra primero «Confirmando tu pago…»; cuando Mercado Pago confirma el pago al servidor, cambia a «Bienvenido a Viora», con el plan, la vigencia y el envío del comprobante a su correo. Esto concuerda con Navigation Systems: la aplicación no muestra la suscripción como activada hasta que el servidor valida el pago. Si tiene código, toca «Tengo un código de cooperativa», escribe el código en P05 y toca «Canjear código». La pantalla pasa al estado «Validando tu código…» y, cuando la cooperativa confirma que el código está vigente, P06 informa «Tu cooperativa cubre tu plan», con la cooperativa, el cupo cubierto y la vigencia. En ambas rutas, Teodoro toca «Ir al inicio» y llega a Inicio sin lotes (P10), que lo invita a dibujar su primer lote en el mapa. La meta se cumple porque el acceso queda activo, ya sea por pago o por código, y Teodoro puede registrar su primer lote.
+
+**WF-F05 · Saber qué hacer hoy en mi olivar.** Meta de usuario: «Al abrir la app quiero ver de un vistazo cómo están mis lotes y qué es lo urgente de la temporada.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a la historia US18, cuyos resúmenes provienen de US17, US19 y US27. La \autoref{fig:wf-f05} muestra un recorrido lineal de tres pantallas, que va del resumen de Inicio al detalle de una alerta crítica.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F05: saber qué hacer hoy en mi olivar.} \label{fig:wf-f05}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f05.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Al abrir la aplicación, Teodoro ve Inicio (P10) con la fase de la campaña, el clima del día, las alertas activas, su alternancia y sus lotes. Lee la tarjeta de la fase y toca «2 alertas activas». En el Centro de alertas (T14) el sistema clasifica las alertas por prioridad (críticas, de atención y normalizadas) y muestra, por ejemplo, un golpe de calor en La Yarada 02. Al tocar «Ver qué hacer» en la alerta crítica, abre el detalle (T15), con la serie de temperaturas máximas de la semana frente al umbral y una lista «Qué hacer». En el prototipo actual, esa lista aún no es interactiva. La meta se cumple porque Teodoro sabe qué atender hoy y en qué lote.
+
+**WF-F06 · Registrar un lote.** Meta de usuario: «Quiero registrar mi parcela con su contorno, variedad y marco de plantación para que Viora conozca su potencial.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a la historia US09. La \autoref{fig:wf-f06} sigue el asistente de tres pasos del registro y tiene una decisión de repetición mientras se marcan las esquinas del contorno.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F06: registrar un lote.} \label{fig:wf-f06}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f06.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde Lotes (P20), Teodoro toca «Registrar lote» y en Método (P21) elige «Caminar el contorno» y toca «Empezar a caminar». En P22 el sistema usa el GPS del teléfono, con una precisión indicada, para registrar cada esquina que marca y calcula un área provisional. Con dos esquinas, el sistema indica que se necesitan al menos tres para cerrar el contorno. Teodoro camina a la siguiente esquina y toca «Marcar esquina 3». El diagrama plantea entonces una decisión: mientras no haya marcado todas las esquinas, repite «Marcar esquina»; cuando termina, toca «Cerrar contorno». En Caracterización (P24) escribe el nombre, elige la variedad e indica el marco de plantación, y el sistema calcula la densidad (204 árboles por hectárea) y el área neta. Toca «Revisar lote» y en P25 revisa el resumen, incluida la parte de las hectáreas de su plan que usará el lote. Al tocar «Guardar lote», el sistema registra el lote y abre su detalle (P26) con la confirmación «Lote guardado». Este recorrido coincide con el de "Dar de alta un lote" de Navigation Systems. La meta se cumple porque el lote queda registrado con su contorno, área, variedad y densidad.
+
+**WF-F07 · Mantener mis lotes al día.** Meta de usuario: «Quiero corregir los datos de un lote, o retirarlo de mi inventario sin perder su historial.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US10 y US11. En la \autoref{fig:wf-f07}, el rombo «¿Corregir o retirar el lote?» separa dos rutas que parten del mismo menú de opciones.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F07: mantener mis lotes al día.} \label{fig:wf-f07}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f07.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde el detalle del lote (P26), Teodoro toca «Más opciones» y se abre la hoja P27, con las acciones editar datos, ajustar el contorno, sensores del lote y archivar. Si elige corregir, toca «Editar datos del lote» y en Editar lote (P28) cambia, por ejemplo, el marco de plantación; el sistema recalcula la densidad (de 72 a 100 árboles por hectárea) y el área. Al tocar «Guardar cambios», regresa al detalle con los datos corregidos (paso 4). Si elige retirar, toca «Archivar lote» y el sistema muestra un diálogo de confirmación que explica que conserva la historia del lote y libera sus hectáreas (de 4,0 a 1,5 ha usadas del plan). Al confirmar, el lote aparece en la lista de Lotes, pestaña Archivados (P20), marcado con «historial conservado» y con la opción «Restaurar lote». Hay dos metas cumplidas, una por ruta: el lote queda corregido con área y densidad recalculadas, o sale de su inventario con su historial intacto.
+
+**WF-F08 · Configurar el monitoreo del lote.** Meta de usuario: «Quiero vincular nodos virtuales a mi lote para recibir lecturas de clima y suelo.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US13, US14 y US15. La \autoref{fig:wf-f08} muestra el recorrido de vinculación y ajuste de un nodo. Se dejó fuera la acción de desvincular un nodo, que el catálogo considera una ruta alternativa y se trata en los User Flow Diagrams.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F08: configurar el monitoreo del lote.} \label{fig:wf-f08}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f08.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde el detalle del lote (P26), Teodoro toca «Más opciones» y, en la hoja P27, «Sensores del lote». En P85 ve los nodos del lote con su estado y su última lectura, y la pantalla aclara que son nodos virtuales que simulan lecturas con el clima de las coordenadas del lote. Toca «Vincular un nodo» y en la hoja P86 escribe el nombre, elige el tipo (microclima o sonda de suelo) y la profundidad (30 o 60 cm). Al tocar «Vincular nodo», el sistema lo registra y P85 lo muestra en la lista. Luego abre «Sonda Sector Norte» (P87), donde ve su última lectura, ajusta el nombre o la profundidad y define si transmite lecturas. Al tocar «Guardar cambios», vuelve a P85 con la configuración actualizada. La meta se cumple porque los nodos quedan vinculados y el lote recibe lecturas de clima y suelo.
+
+**WF-F09 · Vigilar el clima del lote.** Meta de usuario: «Quiero ver la temperatura y la humedad de mi lote, y el pronóstico, para programar riegos y labores.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US17, US18 y US19. En la \autoref{fig:wf-f09} se muestran dos entradas a la misma lectura: desde Inicio y desde una alerta de estrés hídrico.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F09: vigilar el clima del lote.} \label{fig:wf-f09}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f09.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+En la ruta principal, Teodoro toca «Hoy en tu campo · 7 días» en Inicio (P10) y abre el Clima del lote (P90), que muestra la temperatura actual, el pronóstico de siete días, las lecturas de los sensores y el contraste entre día y noche. Después de revisar las lecturas y el pronóstico, toca «Humedad del suelo» y llega a P91, con la última lectura, su estado (en rango), la serie de 24 horas, 7 días o 30 días y los valores mínimo, promedio y máximo. En la entrada alternativa, una alerta de estrés hídrico lo lleva por el Centro de alertas (T14) al detalle de la alerta (T15), donde toca «Humedad del suelo» y llega a la misma P91. La meta se cumple porque Teodoro conoce la humedad del suelo y el pronóstico para programar su riego.
+
+**WF-F10 · Conocer la vecería de mi lote.** Meta de usuario: «Quiero registrar mis cosechas pasadas para saber qué tan fuerte es la alternancia de mi lote.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a la historia US20. La \autoref{fig:wf-f10} muestra cómo el registro de una campaña histórica actualiza el índice de vecería. La corrección de una campaña ya registrada se deja para los User Flow Diagrams.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F10: conocer la vecería de mi lote.} \label{fig:wf-f10}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f10.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde el detalle del lote (P26), Teodoro toca «Vecería del lote» y abre Alternancia (P40), que muestra el índice de vecería del lote (0,51, vecería severa), la cosecha por campaña y las campañas registradas. Toca «Agregar campaña» y en la hoja P41 elige el año (2021) y escribe los kilos cosechados (10 500 kg); la hoja anticipa cómo cambiará el índice (de 0,51 a 0,48). Al tocar «Guardar campaña», el sistema registra la campaña y recalcula el índice, y P40 vuelve a mostrarse con el aviso «Campaña 2021 agregada», cinco campañas registradas y el nuevo índice. La meta se cumple porque Teodoro sabe qué tan fuerte es la vecería de su lote con el índice recalculado.
+
+**WF-F11 · Seguir el frío invernal.** Meta de usuario: «Quiero saber cuánto frío ha acumulado mi olivar este invierno para anticipar cómo será la floración.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US22 y US23. La \autoref{fig:wf-f11} dibuja dos entradas a la misma pantalla de frío invernal, y una nota señala una conexión pendiente del prototipo.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F11: seguir el frío invernal.} \label{fig:wf-f11}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f11.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+En la ruta principal, Teodoro ve Inicio (P10) en fase de reposo invernal, con la acumulación de porciones de frío, y toca «Ver mi frío» en la tarjeta de fase. Llega a Frío invernal (P80), donde el sistema muestra las porciones acumuladas respecto de la meta, la fecha estimada de completarlas, los días sobre 24 °C, el estado del fenómeno de El Niño y el gráfico del frío acumulado frente al invierno pasado. En la entrada alternativa, un pico cálido invernal genera un aviso (T15, «Invierno cálido»), que explica qué cambia. Teodoro lee el aviso, toca «Ver mi frío» y P80 aparece en su estado «Tu frío se frenó», con las porciones recalculadas. La nota punteada indica que el prototipo aún no tiene la entrada desde el detalle del lote (P26), que el catálogo sí prevé. La meta se cumple porque Teodoro sabe cuánto frío ha acumulado su olivar y qué esperar de la floración.
+
+**WF-F12 · Muestrear el cuajado sin conexión.** Meta de usuario: «Quiero contar brotes y frutos árbol por árbol en el campo, aunque no tenga señal, y que se envíe solo cuando vuelva la cobertura.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US24 y US25. La \autoref{fig:wf-f12} es el wireflow con más cambios de estado: la ronda de muestreo se dibuja sin conexión, con muestra suficiente y sincronizada.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F12: muestrear el cuajado sin conexión.} \label{fig:wf-f12}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f12.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde Bitácora (P50), Teodoro toca «+» y el menú de acciones (paso 2) le ofrece registrar un muestreo de cuajado, un aclareo, una cosecha o una nota. Elige «Muestreo de cuajado» y en Nuevo muestreo (P51) selecciona el lote (Lote Norte) y toca «Continuar ronda». En la Ronda de muestreo (P52) el sistema avisa que no hay conexión y que los registros se guardan en el teléfono. Teodoro toca «Agregar árbol» y en P53 anota los brotes y los frutos cuajados del árbol (40 brotes y 24 frutos para el árbol A-14); la pantalla calcula la relación de frutos por brote. Al tocar «Guardar árbol», el diagrama plantea la decisión «¿Ya van 5 árboles?». Si no, vuelve a la ronda con un árbol más; si sí, P52 muestra la muestra suficiente y Teodoro toca «Finalizar ronda». P54 informa «Ronda guardada» con el resumen (5 árboles, 0,59 frutos por brote, 209 brotes y 123 frutos) y avisa que el plan se habilita cuando se sincronice. Cuando vuelve la señal, el sistema envía la ronda por sí solo (evento del sistema) y P54 pasa a «Ronda completa» con el estado sincronizado. Esto es coherente con Navigation Systems, que distingue el guardado local de la aceptación del servidor. La meta se cumple porque la muestra queda registrada y sincronizada, y habilita el plan del lote.
+
+**WF-F13 · Aclarear a tiempo.** Meta de usuario: «Quiero saber cuánta fruta debo quitar y hasta qué fecha, y dejar registrado lo que hice.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US26, US27 y US28. La \autoref{fig:wf-f13} recorre el destino Plan, de la selección del lote a la confirmación del registro.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F13: aclarear a tiempo.} \label{fig:wf-f13}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f13.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+En Plan (P60), el sistema indica cuántos lotes necesitan aclareo esta semana, y Teodoro toca «La Yarada 02». En P61 ve la carga frutal estimada frente al objetivo sostenible, una advertencia sobre el riesgo de vecería y la prescripción: quitar el 30 % de los frutos entre dos fechas, con los días que quedan. Toca «Registrar aclareo» y en P62 confirma la fecha y el porcentaje de frutos que quitó, y puede agregar una nota. Al tocar «Guardar aclareo», el sistema registra el aclareo y P63 confirma «Aclareo registrado», con el calibre esperado y la estimación actualizada, además del aviso «Guardado en Bitácora». El recorrido no regresa a P60 porque esa pantalla no muestra un cambio de estado visible. Este recorrido corresponde al de "Consultar y registrar aclareo" de Navigation Systems. La meta se cumple porque Teodoro sabe cuánto quitar y hasta cuándo, y su aclareo queda en la Bitácora.
+
+**WF-F14 · Cerrar la campaña y obtener el expediente.** Meta de usuario: «Quiero registrar los kilos cosechados, cerrar la campaña y descargar el expediente de mi lote.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US29 y US30. La \autoref{fig:wf-f14} dibuja el recorrido de cierre desde la tarjeta de fase de cosecha. Una caja punteada señala una conexión pendiente del prototipo.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F14: cerrar la campaña y obtener el expediente.} \label{fig:wf-f14}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f14.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+En Inicio (P10), en fase de cosecha, Teodoro toca «Registrar cosecha» en la tarjeta de fase y elige el lote en la hoja P70 («La Yarada 02»). En Registrar cosecha (P71) escribe los kilos de aceituna verde y negra, y el sistema calcula el total (20 800 kg); la pantalla advierte que al asentar la cosecha se cierra la campaña. Al tocar «Asentar cosecha», un diálogo (P72) le pide confirmar, porque después no podrá cambiar esos kilos. Al confirmar, el sistema asienta la cosecha, cierra la campaña 2026 y P73 muestra «Campaña cerrada» con el comprobante de liquidación. El paso siguiente (tocar «Ver expediente del lote» y llegar a P76) aún no está conectado en el prototipo, y por eso se dibuja punteado. En el Expediente del lote (P76), el sistema consolida los datos de la campaña y un código de verificación. Teodoro toca «Descargar PDF» y la hoja P77 informa que el PDF está listo, con las opciones abrir, compartir por WhatsApp o guardar en el teléfono. Navigation Systems ubica el cierre de campaña en Bitácora; este wireflow lo inicia desde la tarjeta de fase de Inicio, que abre el mismo flujo de registro de cosecha. La meta se cumple porque la campaña queda cerrada y el expediente del lote queda disponible en PDF.
+
+**WF-F15 · Priorizar mis visitas de campo.** Meta de usuario: «Quiero saber qué sectores y parcelas socias están en riesgo, empezando por donde estoy, para decidir a quién visitar.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a las historias US12, US30 y US31. En la \autoref{fig:wf-f15}, el recorrido desciende desde el sector hasta el expediente técnico de una parcela, dentro del destino Riesgo territorial.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F15: priorizar mis visitas de campo.} \label{fig:wf-f15}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f15.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde Inicio (G10), Rubén toca «Ver riesgo territorial». La primera vez, el sistema le solicita permiso de ubicación (G20, hoja), para abrir el mapa en el sector donde está; Rubén toca «Permitir ubicación». En Riesgo territorial (G20) ve el mapa con los niveles de riesgo y un resumen de su sector, «La Yarada Baja». Al tocar el sector, llega a G22, con las parcelas en rojo y la lista por prioridad, ordenada por cercanía. Toca la parcela con más prioridad y abre la parcela del socio (G23), en modo de solo lectura, con su carga frutal, la prescripción vigente y las opciones de contacto. Esto es coherente con Navigation Systems, donde la supervisión no concede permisos de edición sobre los datos del productor. Al tocar «Ver expediente técnico», abre el expediente (T16). Este recorrido concuerda con el de "Priorizar una visita" de Navigation Systems y con el acceso a expedientes desde el contexto de la parcela (US30). La meta se cumple porque Rubén sabe qué parcelas visitar primero y puede consultar el expediente del socio.
+
+**WF-F16 · Proyectar el acopio de la campaña.** Meta de usuario: «Quiero estimar cuántas toneladas de aceituna verde y negra entregarán los socios para planificar la planta y los contratos.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a la historia US32. La \autoref{fig:wf-f16} muestra el recorrido por el destino Acopio y la selección de la campaña.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F16: proyectar el acopio de la campaña.} \label{fig:wf-f16}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f16.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde Inicio (G10), Rubén toca la tarjeta «Acopio» y abre la pantalla Acopio (G30). El sistema proyecta las toneladas totales de la campaña (1 240 t), separadas en aceituna verde (780 t) y negra (460 t), y muestra la cobertura de muestreo (37 de 60 parcelas, 62 %) y el detalle por sector. Rubén toca el selector «Campaña 2026» y la hoja le ofrece las campañas disponibles, con la campaña en curso y las cerradas. Al elegir la campaña, G30 se muestra de nuevo con los datos de la campaña seleccionada. Navigation Systems describe este recorrido como Acopio → campaña → volúmenes verde y negro → cobertura y advertencias. La meta se cumple porque Rubén conoce las toneladas proyectadas de verde y negra y la cobertura de muestreo que las respalda.
+
+**WF-F17 · Administrar socios y códigos.** Meta de usuario: «Quiero ver mi padrón de socios y el cupo de la licencia, y entregar códigos de activación a los socios nuevos.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a la historia US08. En la \autoref{fig:wf-f17}, el recorrido pasa del cupo de la licencia a la generación de nuevos códigos de activación.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F17: administrar socios y códigos.} \label{fig:wf-f17}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f17.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde Inicio (G10), Rubén toca la tarjeta «48 / 60 plazas» y abre Socios (G40), donde ve el cupo de la licencia (48 de 60 plazas, con 12 libres), los códigos por canjear, las hectáreas contratadas y el padrón de socios con su estado. Revisa el padrón y el cupo, y toca «Códigos por canjear» para llegar a Códigos (G42), que agrupa los códigos por estado (por canjear, canjeados y vencidos). Toca «Generar códigos» y en la hoja G43 define la cantidad (5), las hectáreas y el vencimiento (7, 15 o 30 días); la hoja anticipa cómo cambiará el cupo (de 48 a 53 de 60 plazas). Al tocar «Generar 5 códigos», el sistema crea los códigos y G44 los muestra listos para copiar o compartir por WhatsApp. La meta se cumple porque Rubén conoce su padrón y su cupo, y tiene los códigos listos para entregar a los socios nuevos.
 
 #### Mobile Applications Mock-ups
 
