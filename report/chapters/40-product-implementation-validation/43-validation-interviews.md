@@ -1,78 +1,73 @@
 ## Validation Interviews
 
-El proceso de validación cualitativa constituye una fase medular dentro del ciclo de desarrollo de Viora, permitiendo contrastar las hipótesis de diseño y valor agronómico formuladas durante las fases iniciales del proyecto frente a la experiencia real de los usuarios finales en campo. Tras el despliegue del portal público de aterrizaje (*Landing Page*), el equipo de ArcadiaDevs condujo una serie de sesiones de interacción guiada con actores clave del sector olivícola en la macro-región sur del Perú. 
+Esta sección aborda la investigación cualitativa de validación en campo a través de sesiones de interacción guiada con representantes de los dos segmentos objetivo del proyecto Viora: productores olivareros independientes y gestores técnicos de organizaciones agrícolas. La evaluación permite contrastar de primera mano la claridad comunicacional de la propuesta de valor, la idoneidad técnica de los módulos explicativos sobre la vecería y el monitoreo fenológico, la transparencia de los planes comerciales y la viabilidad del modo sin conexión desplegado en el portal de aterrizaje (*Landing Page*).
 
-El propósito central de estas sesiones radicó en evaluar de manera directa la claridad comunicacional del producto digital, la idoneidad técnica de los módulos explicativos sobre la vecería y el monitoreo fenológico, la transparencia de la estructura de planes comerciales (Plan Productor y Plan Cooperativa), la viabilidad operativa del modo sin conexión a internet y la percepción de utilidad para la toma anticipada de decisiones en el olivar. Los hallazgos recolectados nutren tanto la iteración de la interfaz web como la especificación de requerimientos de las aplicaciones móviles nativas y multiplataforma del ecosistema.
+### Diseño de entrevistas
 
-### Diseño de Entrevistas
+Para la validación de la propuesta de Viora se estructuran sesiones de evaluación adaptadas al productor olivarero y al gestor técnico de cooperativas. Durante cada sesión, los participantes interactúan con la *Landing Page* de Viora para evaluar la claridad de la propuesta de valor, la comprensión del problema agronómico abordado, la estructura de la información y la disposición de las opciones de acceso al servicio, permitiendo validar los arquetipos de usuario y fundamentar los flujos de las aplicaciones móviles.
 
-Para asegurar que las sesiones de evaluación recopilaran evidencia cualitativa rigurosa y comparable, se elaboró un instrumento metodológico semiestructurado basado en el diseño de preguntas de investigación del proyecto. El protocolo delimita los flujos de navegación requeridos, los escenarios de interacción y las métricas de percepción para los dos segmentos objetivo del ecosistema: productores olivareros independientes (representados por el arquetipo de Teodoro Mamani) y gestores técnicos de organizaciones agrícolas (arquetipo de Rubén Ticona).
+#### **Segmento 1: Productores olivareros de la región sur**
+&nbsp;
 
-Las sesiones se diseñaron para recorrer de manera secuencial los siguientes componentes del portal de aterrizaje:
-1. **Identificación de la propuesta de valor (Sección Principal / *Hero Section*):** Evaluación de la primera impresión, comprensión del propósito de la plataforma a partir de la narrativa y el video explicativo institucional, e interpretación de los títulos y llamados a la acción (*Call to Action*).
-2. **Comprensión del problema agronómico (Módulo de Alternancia Productiva y Vecería):** Validación de la pertinencia técnica con la que se aborda la alternancia de cosecha en el sur del Perú y la representatividad de las estadísticas territoriales de mermas de producción (hasta un 90\% en campañas críticas por eventos climáticos).
-3. **Módulos técnicos especializados (Carga Frutal, Frío Invernal y Ventana de Aclareo):** Medición de la claridad y valor percibido de las herramientas analíticas para estimar kilos por árbol, contabilizar porciones de frío acumuladas y determinar la fecha oportuna de aclareo manual antes del endurecimiento del hueso de la aceituna.
-4. **Propuesta comercial y condiciones de acceso (Planes y Tarifas):** Evaluación de la transparencia de las tarifas por hectárea del Plan Productor (S/ 55 por hectárea al mes) y del modelo de licencias institucionales para cooperativas con emisión de códigos de activación para los socios.
-5. **Respaldo operativo y confianza técnica (Arquitectura *Offline-First* y Descargos Legales):** Medición del alivio generado por la capacidad de registrar muestras de campo sin señal móvil y verificación de la formalidad transmitida por los términos legales y descargos técnicos.
-
-A continuación, se detalla la estructura formal de las guías de entrevista aplicadas a cada segmento.
-
-#### Segmento 1: Productores olivareros independientes
-
-\noindent \textbf{Objetivo:} Determinar si el productor comprende con inmediatez que Viora es un asistente digital agronómico diseñado específicamente para mitigar la vecería en el olivo, evaluar su reacción ante el modelo de suscripción mensual por hectárea y medir la tranquilidad que le confiere el soporte de trabajo en campo sin conectividad a internet.
+**Objetivo:** Determinar si el productor comprende con inmediatez que Viora es un asistente digital agronómico diseñado específicamente para mitigar la vecería en el olivo, evaluar su reacción ante el modelo de suscripción mensual por hectárea y medir la tranquilidad que le confiere el soporte de trabajo en campo sin conectividad a internet.
 
 \noindent \textbf{1. Datos generales y perfil del predio}
-* ¿Cuál es su nombre completo y edad?
-* ¿En qué distrito, valle o sector reside y mantiene sus parcelas de olivo?
-* ¿Cuál es su ocupación principal y cuántos años de experiencia tiene en el sector olivícola?
-* ¿Cuántas hectáreas de cultivo de olivo administra actualmente?
-* ¿Qué variedades de olivo cultiva predominantemente en su predio y qué porcentaje destina a aceituna de mesa frente a aceite?
 
-\noindent \textbf{2. Interacción y evaluación del portal de aterrizaje}
-* Al observar la portada inicial, ¿qué entiende que ofrece Viora y qué mensaje le transmite?
-* ¿Qué problema agronómico considera que resuelve la plataforma presentada?
-* La explicación sobre el ciclo de la vecería y la alternancia de cosecha, ¿coincide con las dificultades que experimenta en su olivar?
-* ¿La información presentada sobre los módulos de carga frutal, frío invernal y aclareo le parece clara y fácil de entender?
-* Las métricas territoriales presentadas sobre la producción y mermas en Tacna y Arequipa, ¿le resultan representativas de la realidad local?
-* Al revisar las condiciones y costos del Plan Productor, ¿la información sobre la suscripción mensual le parece transparente y comprensible?
-* ¿Qué beneficio o elemento visual de la página le llamó más la atención?
-* ¿Hay algún término, sección o explicación que le haya generado dudas o confusión?
-* ¿Considera que una herramienta con las características descritas aportaría valor al manejo de su parcela? ¿Por qué?
+*   ¿Cuál es su nombre completo y edad? (Datos demográficos)
+*   ¿En qué distrito, valle o sector reside y mantiene sus parcelas de olivo? (Ubicación del predio)
+*   ¿Cuál es su ocupación principal y cuántos años de experiencia tiene en el sector olivícola? (Trayectoria agrícola)
+*   ¿Cuántas hectáreas de cultivo de olivo administra actualmente? (Escala de producción)
+*   ¿Qué variedades de olivo cultiva predominantemente en su predio? (Variedad de cultivo)
+
+\noindent \textbf{2. Landing page (Interacción y evaluación de la plataforma)}
+
+*   Al observar la portada inicial, ¿qué entiende que ofrece Viora? (Propuesta de valor y primera impresión)
+*   ¿Qué problema agronómico considera que resuelve la plataforma presentada? (Problema central y vecería)
+*   La explicación sobre el ciclo de la vecería y la alternancia de cosecha, ¿coincide con las dificultades que experimenta en su olivar? (Validación de alternancia)
+*   ¿La información presentada sobre los módulos de carga frutal, frío invernal y aclareo le parece clara y fácil de entender? (Claridad técnica de módulos)
+*   Las métricas territoriales presentadas sobre la producción y mermas en Tacna, ¿le resultan representativas de la realidad local? (Representatividad territorial)
+*   Al revisar las condiciones y costos del Plan Productor, ¿la información sobre la suscripción mensual le parece transparente y comprensible? (Transparencia de tarifas)
+*   ¿Qué beneficio o elemento visual de la página le llamó más la atención? (Aspectos destacados / Modo offline)
+*   ¿Hay algún término, sección o explicación que le haya generado dudas o confusión? (Fricciones cognitivas / Idioma)
+*   ¿Considera que una herramienta con las características descritas aportaría valor al manejo de su parcela? ¿Por qué? (Percepción de valor)
 
 \noindent \textbf{3. Preguntas de cierre y evaluación de valor}
-* En una escala del 1 al 5, ¿qué tan útil considera la propuesta de Viora para la gestión del olivo?
-* ¿Considera que contar con estimaciones de carga y recomendaciones de intervención le permitiría tomar decisiones con mayor anticipación?
-* Frente a la posibilidad de reducir las pérdidas de una campaña baja, ¿considera razonable el modelo de acceso propuesto? ¿Estaría dispuesto a pagar por la suscripción?
-* ¿Tiene algún comentario o sugerencia para mejorar la información presentada en el sitio web?
 
-\vspace{0.4cm}
+*   En una escala del 1 al 5, ¿qué tan útil considera la propuesta de Viora para la gestión del olivo? (Calificación de utilidad cuantitativa)
+*   ¿Considera que contar con estimaciones de carga y recomendaciones de intervención le permitiría tomar decisiones con mayor anticipación? (Toma de decisiones anticipada)
+*   Frente a la posibilidad de reducir las pérdidas de una campaña baja, ¿considera razonable el modelo de acceso propuesto? (Disposición de pago y modelo de acceso)
+*   ¿Tiene algún comentario o sugerencia para mejorar la información presentada en el sitio web? (Sugerencias de mejora y retroalimentación)
 
-#### Segmento 2: Gestores técnicos y administradores de cooperativas
+#### **Segmento 2: Gestores técnicos de organizaciones olivareras**
+&nbsp;
 
-\noindent \textbf{Objetivo:} Evaluar si el portal comunica con suficiente solvencia técnica el respaldo metodológico del sistema, verificar la claridad del Plan Cooperativa basado en códigos de activación para los agricultores asociados y ponderar el interés de adopción institucional para coordinar la logística de acopio en planta.
+**Objetivo:** Evaluar si el portal comunica con suficiente solvencia técnica el respaldo metodológico del sistema, verificar la claridad del Plan Cooperativa basado en códigos de activación para los agricultores asociados y ponderar el interés de adopción institucional para coordinar la logística de acopio en planta.
 
 \noindent \textbf{1. Datos generales y ámbito organizacional}
-* ¿Cuál es su nombre completo y edad?
-* ¿En qué distrito, institución o cooperativa agraria labora actualmente?
-* ¿Cuál es su profesión o cargo dentro de la organización?
-* ¿Cuántos años de experiencia tiene en la asistencia técnica y supervisión de olivares?
-* ¿Cuántos productores asociados o hectáreas supervisa de forma agregada durante una campaña agrícola?
 
-\noindent \textbf{2. Interacción y evaluación del portal de aterrizaje}
-* Al revisar la plataforma, ¿cómo percibe la propuesta orientada a organizaciones bajo la premisa de supervisión de parcelas dispersas?
-* ¿La distinción entre las necesidades del productor individual y las herramientas para cooperativas le resulta clara y pertinente?
-* La información técnica mostrada sobre seguimiento de frío invernal y monitoreo fenológico, ¿responde a los criterios que utiliza en la supervisión de campo?
-* ¿La explicación del Plan Cooperativa y el sistema de activación para socios le parece comprensible y viable para una organización agrícola?
-* ¿El contenido presentado le transmite el respaldo técnico y metodológico necesario para evaluar una adopción institucional?
-* ¿Qué funcionalidad o ventaja presentada considera de mayor impacto para la gestión técnica de una cooperativa?
-* ¿Identificó algún aspecto de la información que considere ambiguo o que requiera mayor detalle técnico?
-* ¿Considera que la plataforma facilitaría la articulación entre el equipo técnico y los productores asociados? ¿Por qué?
+*   ¿Cuál es su nombre completo y edad? (Datos demográficos)
+*   ¿En qué distrito, institución o cooperativa agraria labora actualmente? (Ámbito institucional)
+*   ¿Cuál es su profesión o cargo dentro de la organización? (Rol y responsabilidad)
+*   ¿Cuántos años de experiencia tiene en la asistencia técnica y supervisión de olivares? (Trayectoria profesional)
+*   ¿Cuántos productores o hectáreas supervisa de forma agregada durante una campaña? (Escala de supervisión)
+
+\noindent \textbf{2. Landing page (Interacción y evaluación de la plataforma)}
+
+*   Al revisar la plataforma, ¿cómo percibe la propuesta orientada a organizaciones bajo la premisa de supervisión de parcelas dispersas? (Supervisión agregada)
+*   ¿La distinción entre las necesidades del productor individual y las herramientas para cooperativas le resulta clara y pertinente? (Diferenciación de segmentos)
+*   La información técnica mostrada sobre seguimiento de frío invernal y monitoreo fenológico, ¿responde a los criterios que utiliza en la supervisión de campo? (Criterio técnico de frío)
+*   ¿La explicación del Plan Cooperativa y el sistema de activación para socios le parece comprensible y viable para una organización agrícola? (Sistema de códigos de activación)
+*   ¿El contenido presentado le transmite el respaldo técnico y metodológico necesario para evaluar una adopción institucional? (Formalidad y respaldo institucional)
+*   ¿Qué funcionalidad o ventaja presentada considera de mayor impacto para la gestión técnica de una cooperativa? (Impacto operativo / Semáforo territorial)
+*   ¿Identificó algún aspecto de la información que considere ambiguo o que requiera mayor detalle técnico? (Puntos de mejora técnica)
+*   ¿Considera que la plataforma facilitaría la articulación entre el equipo técnico y los productores asociados? ¿Por qué? (Articulación técnica)
 
 \noindent \textbf{3. Preguntas de cierre y evaluación institucional}
-* En una escala del 1 al 5, ¿qué tan pertinente considera la solución de Viora para la coordinación técnica y comercial en cooperativas?
-* ¿Considera que contar con datos de campo estandarizados mejoraría la precisión en las estimaciones de acopio de aceituna verde y negra?
-* ¿Estaría dispuesto a recomendar la evaluación de esta plataforma a los directivos o miembros de su organización?
-* ¿Qué recomendaciones o consideraciones adicionales sugeriría para fortalecer la propuesta del sitio web?
+
+*   En una escala del 1 al 5, ¿qué tan pertinente considera la solución de Viora para la coordinación técnica y comercial en cooperativas? (Calificación de pertinencia)
+*   ¿Considera que contar con datos de campo estandarizados mejoraría la precisión en las estimaciones de acopio de aceituna verde y negra? (Estandarización de acopio)
+*   ¿Estaría dispuesto a recomendar la evaluación de esta plataforma a los directivos o miembros de su organización? (Adopción y recomendación directiva)
+*   ¿Qué recomendaciones o consideraciones adicionales sugeriría para fortalecer la propuesta del sitio web? (Sugerencias y requerimientos adicionales)
 
 \newpage
 
