@@ -22,21 +22,20 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 \noindent \textbf{2. Landing page (Interacción y evaluación de la plataforma)}
 
 *   Al observar la portada inicial, ¿qué entiende que ofrece Viora? (Propuesta de valor y primera impresión)
-*   ¿Qué problema agronómico considera que resuelve la plataforma presentada? (Problema central y vecería)
-*   La explicación sobre el ciclo de la vecería y la alternancia de cosecha, ¿coincide con las dificultades que experimenta en su olivar? (Validación de alternancia)
-*   ¿La información presentada sobre los módulos de carga frutal, frío invernal y aclareo le parece clara y fácil de entender? (Claridad técnica de módulos)
-*   Las métricas territoriales presentadas sobre la producción y mermas en Tacna, ¿le resultan representativas de la realidad local? (Representatividad territorial)
-*   Al revisar las condiciones y costos del Plan Productor, ¿la información sobre la suscripción mensual le parece transparente y comprensible? (Transparencia de tarifas)
-*   ¿Qué beneficio o elemento visual de la página le llamó más la atención? (Aspectos destacados / Modo offline)
-*   ¿Hay algún término, sección o explicación que le haya generado dudas o confusión? (Fricciones cognitivas / Idioma)
-*   ¿Considera que una herramienta con las características descritas aportaría valor al manejo de su parcela? ¿Por qué? (Percepción de valor)
-
+*   ¿Qué problema agronómico considera que resuelve la plataforma presentada?
+*   La explicación sobre el ciclo de la vecería y la alternancia de cosecha, ¿coincide con las dificultades que experimenta en su olivar?
+*   ¿La información presentada sobre los módulos de carga frutal, frío invernal y aclareo le parece clara y fácil de entender?
+*   Las métricas territoriales presentadas sobre la producción y mermas en Tacna, ¿le resultan representativas de la realidad local?
+*   Al revisar las condiciones y costos del Plan Productor, ¿la información sobre la suscripción mensual le parece transparente y comprensible?
+*   ¿Qué beneficio o elemento visual de la página le llamó más la atención?
+*   ¿Hay algún término, sección o explicación que le haya generado dudas o confusión?
+*   ¿Considera que una herramienta con las características descritas aportaría valor al manejo de su parcela? ¿Por qué?
 \noindent \textbf{3. Preguntas de cierre y evaluación de valor}
 
-*   En una escala del 1 al 5, ¿qué tan útil considera la propuesta de Viora para la gestión del olivo? (Calificación de utilidad cuantitativa)
-*   ¿Considera que contar con estimaciones de carga y recomendaciones de intervención le permitiría tomar decisiones con mayor anticipación? (Toma de decisiones anticipada)
+*   En una escala del 1 al 5, ¿qué tan útil considera la propuesta de Viora para la gestión del olivo?
+*   ¿Considera que contar con estimaciones de carga y recomendaciones de intervención le permitiría tomar decisiones con mayor anticipación?
 *   Frente a la posibilidad de reducir las pérdidas de una campaña baja, ¿considera razonable el modelo de acceso propuesto? (Disposición de pago y modelo de acceso)
-*   ¿Tiene algún comentario o sugerencia para mejorar la información presentada en el sitio web? (Sugerencias de mejora y retroalimentación)
+\newpage
 
 #### **Segmento 2: Gestores técnicos de organizaciones olivareras**
 &nbsp;
@@ -62,6 +61,8 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 *   ¿Identificó algún aspecto de la información que considere ambiguo o que requiera mayor detalle técnico? (Puntos de mejora técnica)
 *   ¿Considera que la plataforma facilitaría la articulación entre el equipo técnico y los productores asociados? ¿Por qué? (Articulación técnica)
 
+\newpage
+
 \noindent \textbf{3. Preguntas de cierre y evaluación institucional}
 
 *   En una escala del 1 al 5, ¿qué tan pertinente considera la solución de Viora para la coordinación técnica y comercial en cooperativas? (Calificación de pertinencia)
@@ -69,15 +70,14 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 *   ¿Estaría dispuesto a recomendar la evaluación de esta plataforma a los directivos o miembros de su organización? (Adopción y recomendación directiva)
 *   ¿Qué recomendaciones o consideraciones adicionales sugeriría para fortalecer la propuesta del sitio web? (Sugerencias y requerimientos adicionales)
 
+### Registro de entrevistas
+
+En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo minucioso de la interacción con el portal web y la evidencia gráfica correspondiente.
+
+#### Segmento 1: Productores olivareros de la región sur
+&nbsp;
+
 \newpage
-
-### Registro de Entrevistas
-
-En concordancia con los acuerdos metodológicos establecidos para el hito TB1 y la autorización del docente del curso respecto a la representatividad muestral en zonas agrícolas dispersas, se presenta el registro de cuatro sesiones de validación cualitativa (dos correspondientes al Segmento 1 de productores independientes y dos correspondientes al Segmento 2 de gestores técnicos). 
-
-Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo minucioso de la interacción y la evidencia gráfica mediante captura de pantalla de la sesión.
-
-\vspace{0.3cm}
 
 \noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
 \hline 
@@ -116,6 +116,11 @@ Cada ficha detalla los datos demográficos y agronómicos del participante, el i
 \end{tabular}
 
 \newpage
+
+#### Segmento 2: Gestores técnicos de organizaciones olivareras
+&nbsp;
+
+\vspace{0.3cm}
 
 \noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
 \hline 
@@ -157,7 +162,7 @@ Cada ficha detalla los datos demográficos y agronómicos del participante, el i
 
 ### Evaluaciones según heurísticas
 
-Con el objetivo de complementar las impresiones cualitativas directas de los participantes y someter el portal de aterrizaje a un análisis de ingeniería de interacción formal, se ejecutó una evaluación heurística de experiencia de usuario (*User Experience*). Para este proceso se adoptó rigurosamente la metodología estipulada en el Anexo E del marco de evaluación académica, la cual integra tres marcos normativos consolidados:
+Con el objetivo de complementar las impresiones cualitativas directas de los participantes y someter el portal de aterrizaje a un análisis de ingeniería de interacción formal, se ejecutó una evaluación heurística de experiencia de usuario (*User Experience*). Para este análisis se aplicó un marco de inspección heurística multidimensional, el cual integra tres dimensiones normativas consolidadas de ingeniería de usabilidad:
 1. **Heurísticas de Usabilidad de Nielsen:** Evaluación de los principios de diseño de interfaces de Jakob Nielsen, tales como la correspondencia con el mundo real, la prevención de errores, la flexibilidad de uso y el reconocimiento frente al recuerdo.
 2. **Principios de Diseño Inclusivo (*Inclusive Design Principles*):** Análisis de accesibilidad y adaptación perceptual, velando por ofrecer alternativas comparables, considerar el contexto de uso rural y brindar control y elección sobre la información al usuario.
 3. **Heurísticas de Arquitectura de la Información (*Information Architecture*):** Inspección de la capacidad de localización (*Findability*), claridad taxonómica y transparencia en las vías de contacto comercial.
@@ -180,7 +185,7 @@ En la \autoref{tab:heuristic-summary} se presenta la matriz consolidadora de los
 \hline
 \endfoot
 \hline
-\multicolumn{4}{l}{\parbox{15.5cm}{\vspace{0.12cm} \textit{Nota.} Escala de severidad según Anexo E (1: Superficial, 2: Menor, 3: Mayor, 4: Catastrófico). Evaluación realizada sobre la versión desplegada en producción. Elaboración propia.}} \\
+\multicolumn{4}{l}{\parbox{15.5cm}{\vspace{0.12cm} \textit{Nota.} Escala de severidad estándar de usabilidad (1: Superficial, 2: Menor, 3: Mayor, 4: Catastrófico). Evaluación realizada sobre la versión desplegada en producción. Elaboración propia.}} \\
 \endlastfoot
 1 & Carga inicial predeterminada en inglés sin detección automática del idioma regional del navegador. & 2 & Usabilidad: Flexibilidad y eficiencia de uso / Diseño Inclusivo: Considerar el contexto. \\ \hline
 2 & Ausencia de un canal de comunicación directa inmediata (enlace a WhatsApp o soporte rápido) en la barra de navegación o pie de página. & 2 & Usabilidad: Reconocimiento antes que recuerdo / Arquitectura de Información: Is it Findable? \\ \hline
