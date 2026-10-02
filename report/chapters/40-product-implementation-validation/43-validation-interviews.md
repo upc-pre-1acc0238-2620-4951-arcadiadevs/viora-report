@@ -165,77 +165,132 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 
 ### Evaluaciones según heurísticas
 
-Con el objetivo de complementar las impresiones cualitativas directas de los participantes y someter el portal de aterrizaje a un análisis de ingeniería de interacción formal, se ejecutó una evaluación heurística de experiencia de usuario (*User Experience*). Para este análisis se aplicó un marco de inspección heurística multidimensional, el cual integra tres dimensiones normativas consolidadas de ingeniería de usabilidad:
-1. **Heurísticas de Usabilidad de Nielsen:** Evaluación de los principios de diseño de interfaces de Jakob Nielsen, tales como la correspondencia con el mundo real, la prevención de errores, la flexibilidad de uso y el reconocimiento frente al recuerdo.
-2. **Principios de Diseño Inclusivo (*Inclusive Design Principles*):** Análisis de accesibilidad y adaptación perceptual, velando por ofrecer alternativas comparables, considerar el contexto de uso rural y brindar control y elección sobre la información al usuario.
-3. **Heurísticas de Arquitectura de la Información (*Information Architecture*):** Inspección de la capacidad de localización (*Findability*), claridad taxonómica y transparencia en las vías de contacto comercial.
-
-A partir del análisis de las grabaciones y de los puntos de fricción reportados por los evaluadores en campo, se identificaron cuatro hallazgos heurísticos, clasificados en una escala de severidad que oscila entre 1 (problema superficial) y 4 (catastrófico o bloqueante).
-
-En la \autoref{tab:heuristic-summary} se presenta la matriz consolidadora de los hallazgos identificados en el portal web de Viora.
+Esta sección contiene el proceso de evaluación de las sesiones de validación basado en heurísticas, considerando heurísticas de usabilidad, arquitectura de información e inclusive design de la experiencia propuesta.
 
 \vspace{0.3cm}
 
-\renewcommand{\arraystretch}{1.3}
-\begin{longtable}{c p{6.8cm} c p{5.5cm}}
-\caption{Matriz resumen de hallazgos en la evaluación heurística de UX de la Landing Page.} \label{tab:heuristic-summary} \\
+\begin{center}
+\textbf{--- UX Heuristics \& Principles Evaluation ---} \\
+\textbf{-- Usability - Inclusive Design - Information Architecture --}
+\end{center}
+
+\vspace{0.2cm}
+
+\noindent \begin{tabular}{p{4.2cm} p{11cm}}
+\textbf{CARRERA:} & Ingeniería de Software \\
+\textbf{CURSO:} & 1ACC0238 - Aplicaciones para Dispositivos Móviles \\
+\textbf{NRC:} & 4951 \\
+\textbf{PROFESORES:} & Todos \\
+\textbf{AUDITOR:} & ArcadiaDevs \\
+\textbf{CLIENTES:} & Alexandra Rosas, Cristóbal Benito Barrientos Carpio, Ing. Daniel Estrada, Ing. Maribel Vargas \\
+\textbf{Site o App a Evaluar:} & Landing page \\
+\end{tabular}
+
+\vspace{0.35cm}
+
+\noindent \textbf{TAREAS A EVALUAR:}
+
+El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas en la Landing Page:
+
+1. Exploración de la propuesta de valor agronómica y módulos de frío invernal y balance de carga frutal.
+2. Consulta y diferenciación de planes comerciales (Plan Productor vs. Plan Cooperativa).
+3. Cambio de idioma de la interfaz (español / inglés) y navegación en cabecera.
+4. Localización de vías de contacto comercial y canales de soporte técnico.
+
+No están incluidas en esta versión de la evaluación las siguientes tareas:
+
+1. Registro y autenticación transaccional de nuevos usuarios con pasarela de pago.
+2. Muestreo de campo de racimos y brotes sin conexión (reservado para la aplicación móvil).
+3. Exportación automatizada de consolidados de cosecha a formatos descargables (Excel/PDF).
+
+\newpage
+
+\noindent \textbf{ESCALA DE SEVERIDAD:} Los errores identificados han sido puntuados tomando en cuenta la siguiente escala:
+
+\renewcommand{\arraystretch}{0.98}
+\begin{longtable}{c p{14.2cm}}
 \hline
-\textbf{\#} & \textbf{Problema identificado} & \textbf{Severidad (1--4)} & \textbf{Heurística / Principio violado} \\ \hline
+\textbf{Nivel} & \textbf{Descripción} \\ \hline
 \endfirsthead
 \hline
-\textbf{\#} & \textbf{Problema identificado} & \textbf{Severidad (1--4)} & \textbf{Heurística / Principio violado} \\ \hline
+\textbf{Nivel} & \textbf{Descripción} \\ \hline
 \endhead
 \hline
 \endfoot
+1 & Problema superficial: Puede ser fácilmente superado por el usuario y ocurre con muy poca frecuencia. No necesita ser corregido a no ser que exista disponibilidad de tiempo. \\ \hline
+2 & Problema menor: Puede ocurrir un poco más frecuentemente o es un poco más difícil de superar para el usuario. Se le debe asignar una prioridad baja de cara al siguiente ciclo de desarrollo. \\ \hline
+3 & Problema mayor: Ocurre frecuentemente o los usuarios no son capaces de resolverlo. Es importante que sea corregido y se le debe asignar una prioridad alta. \\ \hline
+4 & Problema muy grave: Error de gran impacto que impide al usuario continuar con el uso de la herramienta. Es imperativo que sea corregido antes del lanzamiento oficial. \\ \hline
+\end{longtable}
+
+\noindent \textbf{TABLA RESUMEN:}
+
+\renewcommand{\arraystretch}{0.95}
+\begin{longtable}{c p{7.0cm} c p{5.8cm}}
+\caption{Matriz resumen de hallazgos en la evaluación heurística de UX de la Landing Page.} \label{tab:heuristic-summary} \\
 \hline
-\multicolumn{4}{l}{\parbox{15.5cm}{\vspace{0.12cm} \textit{Nota.} Escala de severidad estándar de usabilidad (1: Superficial, 2: Menor, 3: Mayor, 4: Catastrófico). Evaluación realizada sobre la versión desplegada en producción. Elaboración propia.}} \\
-\endlastfoot
+\textbf{\#} & \textbf{Problema} & \textbf{Escala de severidad} & \textbf{Heurística/Principio violada(o)} \\ \hline
+\endfirsthead
+\hline
+\textbf{\#} & \textbf{Problema} & \textbf{Escala de severidad} & \textbf{Heurística/Principio violada(o)} \\ \hline
+\endhead
+\hline
+\endfoot
 1 & Carga inicial predeterminada en inglés sin detección automática del idioma regional del navegador. & 2 & Usabilidad: Flexibilidad y eficiencia de uso / Diseño Inclusivo: Considerar el contexto. \\ \hline
 2 & Ausencia de un canal de comunicación directa inmediata (enlace a WhatsApp o soporte rápido) en la barra de navegación o pie de página. & 2 & Usabilidad: Reconocimiento antes que recuerdo / Arquitectura de Información: Is it Findable? \\ \hline
 3 & Carencia de un botón o formulario específico para solicitar demostración comercial o cotización institucional en el Plan Cooperativa. & 2 & Arquitectura de Información: Is it Clear? / Usabilidad: Coincidencia entre el sistema y el mundo real. \\ \hline
 4 & Ausencia de una opción visible para previsualizar capturas del módulo móvil o exportar consolidados de acopio a formatos descargables (Excel / PDF). & 1 & Diseño Inclusivo: Brindar elección / Usabilidad: Flexibilidad y control del usuario. \\ \hline
 \end{longtable}
 
-\vspace{0.3cm}
+\newpage
 
-A continuación, se desarrollan las fichas analíticas correspondientes a cada problema identificado, explicitando el principio vulnerado, la descripción del obstáculo experimentado por el usuario y la recomendación técnica de diseño y desarrollo orientada a optimizar la solución.
+\noindent \textbf{DESCRIPCIÓN DE PROBLEMAS:}
 
-\vspace{0.4cm}
+\vspace{0.2cm}
 
-\noindent \textbf{Problema \#1: Carga inicial en idioma inglés sin detección regional automática}
+\noindent \textbf{PROBLEMA \#1: Carga inicial en idioma inglés sin detección regional automática}
 \begin{itemize}
-  \item \textbf{Severidad:} 2 (Problema menor de usabilidad con impacto directo en la primera impresión de usuarios agrícolas tradicionales).
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 2 (Problema menor de usabilidad con impacto en la primera impresión de usuarios agrícolas).
   \item \textbf{Heurística violada:} Usabilidad: Flexibilidad y eficiencia de uso / Diseño Inclusivo: Considerar el contexto (*Consider situation*).
-  \item \textbf{Descripción del problema:} Durante la sesión de validación con productores (observado puntualmente en la interacción de Alexandra Rosas), el portal cargó de manera predeterminada en inglés al abrirse desde dispositivos con configuraciones del sistema no homogeneizadas. Aunque la interfaz cuenta con un selector de idiomas funcional en la cabecera, este comportamiento inicial provocó un desconcierto momentáneo en el agricultor, generándole la falsa impresión de que la plataforma era extranjera o de compleja operación.
-  \item \textbf{Recomendación de ingeniería de UI/UX:} Implementar un algoritmo de detección lingüística del lado del cliente (`navigator.language` / `navigator.languages`) y encabezados HTTP `Accept-Language`, configurando el español (`es-PE` / `es`) como idioma por defecto incondicional para accesos geolocalizados en el Perú. Asimismo, se debe incrementar el contraste visual y tamaño táctil del selector de idioma en la barra de navegación superior.
+  \item \textbf{Problema:} Durante la sesión de validación con productores (observado en la interacción de Alexandra Rosas), el portal cargó de manera predeterminada en inglés al abrirse desde dispositivos con configuraciones del sistema no homogeneizadas. Aunque la interfaz cuenta con un selector de idiomas funcional en la cabecera, este comportamiento inicial provocó desconcierto momentáneo en el agricultor, generándole la impresión de que la plataforma era extranjera o de compleja operación.
+  \item \textbf{Recomendación:} Implementar un algoritmo de detección lingüística del lado del cliente (\texttt{navigator.language}) y encabezados HTTP \texttt{Accept-Language}, configurando el español (\texttt{es-PE} / \texttt{es}) como idioma por defecto incondicional para accesos geolocalizados en el Perú. Asimismo, incrementar el contraste visual y tamaño táctil del selector de idioma en la cabecera.
 \end{itemize}
 
-\vspace{0.4cm}
+\vspace{0.25cm}
 
-\noindent \textbf{Problema \#2: Ausencia de canal directo de mensajería rápida para asistencia técnica}
+\noindent \textbf{PROBLEMA \#2: Ausencia de canal directo de mensajería rápida para asistencia técnica}
 \begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
   \item \textbf{Severidad:} 2 (Problema menor de usabilidad que restringe la conversión y asistencia en campo).
   \item \textbf{Heurística violada:} Usabilidad: Reconocimiento antes que recuerdo (*Recognition rather than recall*) / Arquitectura de la Información: *Is it Findable?*
-  \item \textbf{Descripción del problema:} Tanto productores independientes como evaluadores técnicos señalaron que en las zonas rurales de Tacna y Arequipa la vía de coordinación predilecta es la mensajería instantánea por WhatsApp. En la versión actual de la página de aterrizaje, los enlaces de contacto remiten a formularios de suscripción estándar o correos electrónicos institucionales, lo cual incrementa la fricción cognitiva para aquellos agricultores que desean resolver dudas operativas inmediatas sobre la compatibilidad de sus parcelas o los pasos de instalación.
-  \item \textbf{Recomendación de ingeniería de UI/UX:} Incorporar un botón flotante accesible (*Floating Action Button*) en la esquina inferior derecha con el ícono reconocido de WhatsApp que enlace a una línea de atención y soporte técnico agronómico directo (`https://wa.me/...`), garantizando que no oculte información crucial ni elementos de llamada a la acción en resoluciones móviles.
+  \item \textbf{Problema:} Tanto productores independientes como evaluadores técnicos señalaron que en las zonas rurales de Tacna y Arequipa la vía de coordinación predilecta es la mensajería instantánea por WhatsApp. En la versión actual de la página de aterrizaje, los enlaces de contacto remiten a formularios de suscripción estándar o correos electrónicos institucionales, lo cual incrementa la fricción cognitiva para aquellos agricultores que desean resolver dudas operativas inmediatas sobre la compatibilidad de sus parcelas o los pasos de instalación.
+  \item \textbf{Recomendación:} Incorporar un botón flotante accesible (*Floating Action Button*) en la esquina inferior derecha con el ícono reconocido de WhatsApp que enlace a una línea de atención y soporte técnico agronómico directo (\url{https://wa.me/...}), garantizando no obstaculizar botones de acción en pantallas móviles.
 \end{itemize}
 
-\vspace{0.4cm}
+\newpage
 
-\noindent \textbf{Problema \#3: Carencia de flujo diferenciado para cotizaciones institucionales en el Plan Cooperativa}
+\noindent \textbf{PROBLEMA \#3: Carencia de flujo diferenciado para cotizaciones institucionales en el Plan Cooperativa}
 \begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
   \item \textbf{Severidad:} 2 (Problema menor de arquitectura de información que ralentiza el ciclo de ventas corporativo).
   \item \textbf{Heurística violada:} Arquitectura de la Información: *Is it Clear?* / Usabilidad: Coincidencia entre el sistema y el mundo real (*Match between system and the real world*).
-  \item \textbf{Descripción del problema:} En la sección de planes comerciales, la tarjeta correspondiente al Plan Cooperativa describe con precisión los beneficios agregados (supervisión de socios, emisión de códigos de activación y semáforo territorial), pero dirige al usuario hacia el mismo canal genérico de registro que el Plan Productor. Los gestores técnicos (destacado por el Ing. Daniel Estrada) manifestaron que las cooperativas agrarias requieren solicitar cotizaciones a medida en función del volumen de asociados o coordinar demostraciones técnicas formales para comités de administración antes de autorizar cualquier contratación.
-  \item \textbf{Recomendación de ingeniería de UI/UX:} Reemplazar el botón estándar de la tarjeta del Plan Cooperativa por una acción específica rotulada como "Solicitar demostración guiada" o "Cotizar para mi organización", enlazando a un diálogo modal o formulario corporativo conciso que capture el nombre de la cooperativa, número aproximado de hectáreas/socios y datos de contacto institucional.
+  \item \textbf{Problema:} En la sección de planes comerciales, la tarjeta correspondiente al Plan Cooperativa describe con precisión los beneficios agregados (supervisión de socios, emisión de códigos de activación y semáforo territorial), pero dirige al usuario hacia el mismo canal genérico de registro que el Plan Productor. Los gestores técnicos (destacado por el Ing. Daniel Estrada) manifestaron que las cooperativas agrarias requieren solicitar cotizaciones a medida en función del volumen de asociados o coordinar demostraciones técnicas formales para comités de administración antes de autorizar cualquier contratación.
+  \item \textbf{Recomendación:} Reemplazar el botón estándar de la tarjeta del Plan Cooperativa por una acción específica rotulada como "Solicitar demostración guiada" o "Cotizar para mi organización", enlazando a un diálogo modal o formulario corporativo conciso que capture el nombre de la cooperativa, número aproximado de hectáreas/socios y datos de contacto institucional.
 \end{itemize}
 
-\vspace{0.4cm}
+\vspace{0.25cm}
 
-\noindent \textbf{Problema \#4: Falta de previsualización de muestras de campo y exportación de consolidados}
+\noindent \textbf{PROBLEMA \#4: Falta de previsualización de muestras de campo y exportación de consolidados}
 \begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
   \item \textbf{Severidad:} 1 (Problema superficial de valor agregado que enriquecería la confianza técnica del usuario).
   \item \textbf{Heurística violada:} Diseño Inclusivo: Brindar elección (*Provide choice*) / Usabilidad: Flexibilidad y control del usuario (*User control and freedom*).
-  \item \textbf{Descripción del problema:} La Ing. Maribel Vargas manifestó que, si bien la narrativa técnica sobre la ventana de aclareo y la carga frutal es sólida, los evaluadores con formación agronómica sienten curiosidad por conocer de antemano la apariencia visual del formulario de muestreo móvil en la parcela. Adicionalmente, destacó la conveniencia de que los paneles analíticos permitan exportar resúmenes de estimación de cosecha a formatos universales (planillas de cálculo o documentos PDF) para su presentación en asambleas de acopio.
-  \item \textbf{Recomendación de ingeniería de UI/UX:} Incorporar en el carrusel de funcionalidades del portal una galería interactiva (*mockups* en dispositivos móviles reales) que exhiba el flujo de captura de datos de racimos y brotes sin señal. Asimismo, añadir en el texto descriptivo del Plan Cooperativa la mención explícita sobre la capacidad de exportar reportes ejecutivos en formato Excel y PDF.
+  \item \textbf{Problema:} La Ing. Maribel Vargas manifestó que, si bien la narrativa técnica sobre la ventana de aclareo y la carga frutal es sólida, los evaluadores con formación agronómica sienten curiosidad por conocer de antemano la apariencia visual del formulario de muestreo móvil en la parcela. Adicionalmente, destacó la conveniencia de que los paneles analíticos permitan exportar resúmenes de estimación de cosecha a formatos universales (planillas de cálculo o documentos PDF) para su presentación en asambleas de acopio.
+  \item \textbf{Recomendación:} Incorporar en el carrusel de funcionalidades del portal una galería interactiva (*mockups* en dispositivos móviles reales) que exhiba el flujo de captura de datos de racimos y brotes sin señal. Asimismo, añadir en el texto descriptivo del Plan Cooperativa la mención explícita sobre la capacidad de exportar reportes ejecutivos en formato Excel y PDF.
 \end{itemize}
+
