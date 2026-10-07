@@ -405,6 +405,232 @@ viora-mobile-android & feature/alerts-by-plot & 91956e2 & fix(home): count and o
 #### Software Deployment Evidence for Sprint Review 
 &nbsp;
 
+En esta sección se resumen los procesos de despliegue (\textit{deployment}) realizados durante el Sprint 1 para los productos digitales de Viora: el portal comercial (\textit{Landing Page}), los servicios web con su base de datos en la nube y la aplicación móvil nativa para Android. Las actividades comprendieron la creación de cuentas y proyectos en los proveedores cloud, la configuración de los recursos de cada plataforma, la preparación del proyecto móvil para firmar y distribuir sus versiones y la automatización de ese despliegue mediante GitHub Actions. En la \autoref{tab:deployment-summary-sprint-1} se resume qué se desplegó, dónde y cómo; a continuación se detalla cada producto con sus evidencias.
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}p{0.19\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|}
+\caption{Resumen de los Despliegues del Sprint 1 por Producto Digital} \label{tab:deployment-summary-sprint-1} \\
+\hline
+\textbf{Producto} & \textbf{Repositorio} & \textbf{Plataforma} & \textbf{Mecanismo de despliegue} & \textbf{Estado} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Producto} & \textbf{Repositorio} & \textbf{Plataforma} & \textbf{Mecanismo de despliegue} & \textbf{Estado} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{5}{l}{\parbox{15.5cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir de las consolas de Vercel, Render, Filess.io, Firebase y GitHub.}} \\
+\endlastfoot
+
+Landing Page & \texttt{viora-landing-page} & Vercel & Integración con Git: cada \textit{push} a \texttt{main} publica producción & Publicado (versión 1.1.0) \\ \hline
+Servicios web (API RESTful) & \texttt{viora-platform} & Render (\textit{Web Service} con Docker) & Despliegue automático desde la rama \texttt{main} & Publicado \\ \hline
+Base de datos & No aplica & Filess.io (PostgreSQL 15.6) & Provisión desde el panel del proveedor; conexión mediante variables de entorno en Render & Disponible \\ \hline
+Aplicación móvil Android & \texttt{viora-mobile-android} & Firebase App Distribution & APK \textit{release} firmado; distribución manual de la 1.0.0 y flujo de GitHub Actions disponible desde la \textit{release} 1.0.1 & Versión 1.0.0 (10) distribuida a 6 verificadores \\ \hline
+\end{longtable}
+\end{center}
+
+\noindent \textbf{Landing Page (Vercel):}
+
+El repositorio `viora-landing-page` se conectó a Vercel importándolo desde GitHub en el espacio del líder del equipo (plan \textit{Hobby}), con el \textit{preset} de aplicación Vite y la raíz del repositorio como directorio de trabajo (\autoref{fig:deploy-vercel-new-s1}). Además, el archivo `vercel.json` declara el \textit{framework} (Vite).
+
+\begin{figure}[H]
+\caption{Creación del proyecto viora-landing-page en Vercel.} \label{fig:deploy-vercel-new-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.55\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/01-vercel-new-project.jpeg}
+\caption*{\textit{Nota.} Captura del asistente de importación de Vercel. Elaboración propia.}
+\end{figure}
+
+En la configuración del entorno de producción se definió `main` como rama de producción: cada \textit{commit} publicado en esa rama genera un despliegue de producción y Vercel asigna automáticamente el dominio público (\autoref{fig:deploy-vercel-branch-s1}). Las demás ramas generan vistas previas (\textit{previews}), sin requerir credenciales adicionales en GitHub.
+
+\begin{figure}[H]
+\caption{Rama de producción del proyecto en Vercel.} \label{fig:deploy-vercel-branch-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/02-vercel-production-branch.jpeg}
+\caption*{\textit{Nota.} Captura de la configuración de entornos de Vercel (\textit{Branch Tracking}). Elaboración propia.}
+\end{figure}
+
+Vercel permite además crear un despliegue de producción de forma manual a partir de una rama o de un \textit{commit}, como el `5540e99` (\textit{Merge branch 'release/1.0.0' into main}) de la \autoref{fig:deploy-vercel-manual-s1}.
+
+\begin{figure}[H]
+\caption{Creación manual de un despliegue de producción en Vercel.} \label{fig:deploy-vercel-manual-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.55\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/03-vercel-create-deployment.jpeg}
+\caption*{\textit{Nota.} Captura del cuadro \textit{Create Deployment} de Vercel. Elaboración propia.}
+\end{figure}
+
+El resultado es el despliegue de producción de la \autoref{fig:deploy-vercel-prod-s1}: estado \textit{Ready}, rama `main`, \textit{commit} `ba66bb6` (\textit{Merge branch 'release/1.1.0' into main}) y dominio `viora-landing-page-sable.vercel.app`.
+
+\begin{figure}[H]
+\caption{Despliegue de producción del Landing Page en Vercel.} \label{fig:deploy-vercel-prod-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/04-vercel-production-deployment.jpeg}
+\caption*{\textit{Nota.} Captura del resumen del proyecto en Vercel. Elaboración propia.}
+\end{figure}
+
+La calidad del código se valida antes de integrar mediante el flujo `ci.yml` de GitHub Actions (análisis estático con \textit{lint}, verificación de formato y compilación), que se ejecuta en cada \textit{pull request} hacia `develop` o `main` y en cada \textit{push} a `develop`. En este Sprint se publicaron las versiones 1.0.0 y 1.1.0 (26/09/2026), accesibles en \url{https://viora-landing-page-sable.vercel.app/}.
+
+\noindent \textbf{Servicios web de backend (Render):}
+
+La API RESTful `viora-platform` se despliega en Render como un servicio web (\textit{Web Service}) creado directamente desde el repositorio de GitHub de la organización. Render detectó el `Dockerfile` del proyecto y autocompletó la configuración con el entorno Docker. Dicho archivo es de dos etapas: la primera compila el proyecto con Maven y JDK 21 y la segunda ejecuta el `.jar` resultante sobre la imagen ligera `eclipse-temurin:21-jre-alpine`, con un usuario sin privilegios y el puerto tomado de la variable `PORT` que asigna Render.
+
+En la \autoref{fig:deploy-render-config-s1} se muestran los parámetros del servicio: repositorio de origen `viora-platform`, nombre `viora-platform`, lenguaje Docker, rama `main`, región Ohio (US East) y una instancia gratuita de 0,1 CPU y 512 MB de RAM.
+
+\begin{figure}[H]
+\caption{Configuración del Web Service viora-platform en Render.} \label{fig:deploy-render-config-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/backend/01-render-web-service-configuration.jpeg}
+\caption*{\textit{Nota.} Captura del panel de Render durante la creación del servicio. Elaboración propia.}
+\end{figure}
+
+La configuración sensible no se versiona: se carga como variables de entorno en el panel de Render (\autoref{fig:deploy-render-env-s1}), a saber `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_DRIVER_CLASS_NAME`, `SPRING_DATASOURCE_USERNAME` y `SPRING_DATASOURCE_PASSWORD` para la conexión a la base de datos, `SPRING_JPA_HIBERNATE_DDL_AUTO` y `SPRING_JPA_SHOW_SQL` para el comportamiento de Hibernate, además de `CORS_ALLOWED_ORIGINS` y `PORT`. El panel oculta los valores, por lo que las credenciales no quedan expuestas en la evidencia.
+
+\begin{figure}[H]
+\caption{Variables de entorno del servicio en Render.} \label{fig:deploy-render-env-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/backend/02-render-environment-variables.jpeg}
+\caption*{\textit{Nota.} Captura del panel de Render; los valores permanecen ocultos. Elaboración propia.}
+\end{figure}
+
+El despliegue es continuo (\autoref{fig:deploy-render-live-s1}): al integrarse en `main` el *pull request* #22 de la rama `hotfix/deploy`, Render lo activó automáticamente (*Auto-Deploy*) a partir del *commit* `9590e85`, construyó la imagen en 3 min 34 s y publicó el servicio con el estado *Deploy succeeded* y el mensaje *Your service is live*, el 1 de octubre de 2026 a las 18:17 (GMT-5).
+
+\begin{figure}[H]
+\caption{Despliegue exitoso de viora-platform en Render.} \label{fig:deploy-render-live-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/backend/03-render-deploy-live.jpeg}
+\caption*{\textit{Nota.} Captura del historial de despliegues de Render. Elaboración propia.}
+\end{figure}
+
+Al ser un plan gratuito, Render suspende la instancia tras un periodo de inactividad y advierte que reactivarla puede retrasar las peticiones 50 segundos o más; en nuestras pruebas la primera petición posterior llegó a superar el minuto. Es una limitación asumida para el entorno académico. La documentación interactiva de la API (OpenAPI) se publica en \url{https://viora-platform.onrender.com/swagger-ui/index.html}.
+
+\noindent \textbf{Base de datos en la nube (Filess.io):}
+
+La base de datos relacional se aprovisionó en Filess.io como base de datos compartida (\textit{Shared Database}). En la \autoref{fig:deploy-filess-create-s1} se muestra la selección del motor PostgreSQL 15.6.0 entre las opciones del proveedor (PostgreSQL, MySQL, MariaDB y MongoDB), el nombre `viora` y la región automática.
+
+\begin{figure}[H]
+\caption{Creación de la base de datos PostgreSQL en Filess.io.} \label{fig:deploy-filess-create-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/database/01-filess-new-postgresql-database.jpeg}
+\caption*{\textit{Nota.} Captura del asistente de Filess.io. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:deploy-filess-list-s1} confirma la instancia creada el 1 de octubre de 2026: `viora_thoughage` (nombre completo asignado por el proveedor), motor PostgreSQL, región Nürnberg (Alemania) y estado *Available*. Las credenciales de conexión se inyectan en Render mediante las variables `SPRING_DATASOURCE_*` y no forman parte del repositorio.
+
+\begin{figure}[H]
+\caption{Base de datos disponible en Filess.io.} \label{fig:deploy-filess-list-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/database/02-filess-database-available.jpeg}
+\caption*{\textit{Nota.} Captura del listado de bases de datos compartidas de Filess.io. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Aplicación móvil Android (Firebase App Distribution):}
+
+El despliegue de la aplicación móvil se realiza con Firebase App Distribution, que permite instalar las versiones en dispositivos físicos de prueba, tal como exige el curso. Los pasos realizados durante el Sprint fueron los siguientes.
+
+\noindent \textit{1. Proyecto en Firebase.} Se creó el proyecto `viora-app-kotlin` con la cuenta del líder del equipo, en el plan Spark (sin costo) (\autoref{fig:deploy-firebase-project-s1}).
+
+\begin{figure}[H]
+\caption{Proyecto viora-app-kotlin en la consola de Firebase.} \label{fig:deploy-firebase-project-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/01-firebase-project-overview.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{2. Registro de la aplicación.} Se registró la aplicación Android con el nombre de paquete `pe.edu.upc.viora` (el `applicationId` del proyecto) y el alias *Viora Android*, lo que generó el identificador de aplicación `1:1085458528165:android:956ca686ddeaa2f2b95a4c` (\autoref{fig:deploy-firebase-app-s1}). Como App Distribution solo recibe el binario compilado, no fue necesario incorporar el SDK de Firebase ni el archivo `google-services.json` a la aplicación.
+
+\begin{figure}[H]
+\caption{Aplicación Android registrada en Firebase.} \label{fig:deploy-firebase-app-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/02-firebase-android-app-registered.png}
+\caption*{\textit{Nota.} Captura de la configuración del proyecto en Firebase del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{3. Grupos de verificadores.} En App Distribution se crearon los grupos `arcadiadevs-internal`, con las cuentas institucionales del equipo (cinco al crearlo), y `viora-client-testers`, aún sin integrantes y destinado a los productores y gestores que participarán en la validación (\autoref{fig:deploy-firebase-groups-s1}).
+
+\begin{figure}[H]
+\caption{Grupos de verificadores en Firebase App Distribution.} \label{fig:deploy-firebase-groups-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/03-app-distribution-tester-groups.png}
+\caption*{\textit{Nota.} Captura de la pestaña «Verificadores y grupos» del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{4. Compilación y firma de la versión release.} Se generó con `keytool` un almacén de claves PKCS12 (RSA de 4096 bits, alias `viora`), que se conserva fuera del repositorio, y se configuró Gradle para firmar con él la variante `release` (el detalle se documenta en la sección \textit{Software Deployment Configuration}). La compilación `assembleRelease` produjo el archivo `app-release.apk` de la versión 1.0.0 (código de versión 10), de unos 115 MB, cuya firma se verificó con `apksigner` antes de distribuirlo (\autoref{fig:deploy-release-apk-s1}).
+
+\begin{figure}[H]
+\caption{APK de la variante release generado por Gradle.} \label{fig:deploy-release-apk-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.80\textwidth]{report/assets/sprint-deployment/sprint-1/application/04-signed-release-apk.png}
+\caption*{\textit{Nota.} Captura de la carpeta de salida de la compilación (\texttt{app/build/outputs/apk/release}) del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{5. Carga y distribución.} El APK se subió a App Distribution y se distribuyó al grupo `arcadiadevs-internal` (seis verificadores: cinco cuentas institucionales y una cuenta personal del líder del equipo) con las notas de versión «Viora 1.0.0 — versión estable del Sprint 1» (\autoref{fig:deploy-release-upload-s1}). Firebase registra la versión `1.0.0 (10)` el 7 de octubre de 2026 a las 16:54 (UTC-5).
+
+\begin{figure}[H]
+\caption{Carga de la versión 1.0.0 (10) y distribución a seis verificadores.} \label{fig:deploy-release-upload-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/05-release-upload-notes.png}
+\caption*{\textit{Nota.} Captura del paso final de la distribución en Firebase App Distribution. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{6. Invitación a los verificadores.} Cada verificador recibe un correo de Firebase App Distribution con las instrucciones para empezar a probar: abrir el mensaje en el celular, aceptar la invitación con su cuenta de Google, habilitar la instalación desde orígenes desconocidos y descargar la aplicación (\autoref{fig:deploy-tester-email-s1}). La invitación tiene una vigencia de 30 días.
+
+\begin{figure}[H]
+\caption{Correo de invitación a probar la aplicación.} \label{fig:deploy-tester-email-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.45\textwidth]{report/assets/sprint-deployment/sprint-1/application/06-tester-invitation-email.png}
+\caption*{\textit{Nota.} Correo enviado por Firebase App Distribution. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{7. Seguimiento y validación en dispositivo físico.} La consola registra el estado de cada invitación (\autoref{fig:deploy-distribution-status-s1}): al momento de la captura, de 6 invitados, 3 habían aceptado la invitación y 2 habían descargado la aplicación, sin comentarios.
+
+\begin{figure}[H]
+\caption{Estado de la distribución de la versión 1.0.0 (10).} \label{fig:deploy-distribution-status-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/07-distribution-status.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:deploy-device-install-s1} documenta la instalación en un teléfono Xiaomi a través del enlace del correo. Como la aplicación no se distribuye por Google Play, Play Protect advierte que no conoce al desarrollador y ofrece continuar con «Instalar de todas formas», un comportamiento esperado en las distribuciones de prueba; después, el análisis de seguridad del teléfono no detecta riesgos en la versión 1.0.0 (114,9 MB) y la aplicación abre y muestra el Inicio sincronizado con el backend.
+
+\begin{figure}[H]
+\caption{Instalación y ejecución de la versión 1.0.0 en un teléfono Android físico.} \label{fig:deploy-device-install-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.30\textwidth]{report/assets/sprint-deployment/sprint-1/application/09-device-play-protect.jpeg}\hspace{0.02\textwidth}\includegraphics[width=0.30\textwidth]{report/assets/sprint-deployment/sprint-1/application/10-device-security-check.jpeg}\hspace{0.02\textwidth}\includegraphics[width=0.30\textwidth]{report/assets/sprint-deployment/sprint-1/application/11-device-app-running.jpeg}
+\caption*{\textit{Nota.} De izquierda a derecha: aviso de Google Play Protect, verificación de seguridad del teléfono y la aplicación en ejecución. Capturas de un teléfono Xiaomi del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{8. Automatización con GitHub Actions.} Para no repetir estos pasos a mano, se creó el flujo `.github/workflows/deploy-android.yml` (\textit{commits} `a9e824b` y `b084879` de la rama `feature/android-deploy-pipeline`, integrada en `develop` en `321ed92` y publicada en `main` con la \textit{release} 1.0.1 en `c862b3b`). El flujo se activa al publicar una etiqueta de versión `X.Y.Z` o de forma manual; verifica que la etiqueta coincida con la versión de la aplicación, ejecuta las pruebas unitarias, reconstruye el almacén de claves desde un secreto, compila y firma el APK, comprueba la firma y lo distribuye al grupo `arcadiadevs-internal`. Para ello se configuraron en el repositorio los secretos que muestra la \autoref{fig:deploy-github-secrets-s1} (almacén de claves en Base64, alias y contraseñas, cuenta de servicio de Firebase y token público de Mapbox) y la variable `FIREBASE_APP_ID`. El detalle de cada paso se describe en la sección \textit{Software Deployment Configuration}.
+
+\begin{figure}[H]
+\caption{Secretos del repositorio viora-mobile-android para el pipeline de despliegue.} \label{fig:deploy-github-secrets-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/08-github-actions-secrets.png}
+\caption*{\textit{Nota.} Captura de la configuración de GitHub Actions del 7/10/2026; GitHub solo muestra los nombres, nunca los valores. Elaboración propia.}
+\end{figure}
+
 #### Team Collaboration Insights during Sprint 
 &nbsp;
 
