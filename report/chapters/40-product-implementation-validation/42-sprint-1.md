@@ -340,6 +340,59 @@ TS43 & Rectificación de pesaje y baja de registro erróneo de cosecha en histó
 #### Development Evidence for Sprint Review
 &nbsp;
 
+En esta sección se documentan y sustentan los avances técnicos alcanzados en la implementación de los productos de software que integran el ecosistema Viora durante el Sprint 1: el portal institucional y comercial (\textit{Landing Page}), los servicios web y la base arquitectural del backend (\textit{Platform}) y la aplicación móvil nativa (\textit{Mobile Android}). Cada uno de estos productos se gestiona mediante su respectivo repositorio de código fuente bajo la organización oficial de desarrollo en GitHub, compartiendo todos la raíz común \texttt{upc-pre-1acc0238-2620-4951-arcadiadevs/}. Con el objetivo de optimizar la diagramación, evitar desbordamientos y favorecer la legibilidad de la matriz, dicho prefijo organizacional es omitido en la columna de repositorio, identificándose directamente como \texttt{viora-landing-page}, \texttt{viora-platform} y \texttt{viora-mobile-android}.
+
+Asimismo, como evidencia representativa de la actividad de ingeniería, control de versiones y flujo de trabajo colaborativo durante el ciclo, se ha decidido presentar 6 commits relevantes registrados en cada repositorio. Para cada registro se especifica la rama de origen donde fue creado o integrado el cambio, el identificador abreviado del commit (SHA-1), el mensaje principal (\textit{Commit Message}), la descripción técnica de los cambios implementados (\textit{Commit Message Body}) y la fecha formal de asentamiento (\textit{Committed on Date}).
+
+A continuación, en la \autoref{tab:development-evidence-sprint-1} se expone la matriz detallada de evidencias de desarrollo para el Sprint Review:
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\centering\arraybackslash}p{0.07\textwidth}|>{\raggedright\arraybackslash}p{0.22\textwidth}|p{0.27\textwidth}|>{\centering\arraybackslash}p{0.13\textwidth}|}
+\caption{Evidencias de Desarrollo para Sprint Review (Commits por Repositorio)} \label{tab:development-evidence-sprint-1} \\
+\hline
+\textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{6}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir del historial de control de versiones Git de ArcadiaDevs en GitHub.}} \\
+\endlastfoot
+
+% viora-landing-page
+viora-landing-page & main & ba66bb6 & Merge branch 'release/1.1.0' into main & Despliegue de la versión 1.1.0 en la rama principal de producción, integrando metadatos de posicionamiento SEO y optimizaciones de entrega estática. & 26/09/2026 \\ \hline
+viora-landing-page & develop & c885682 & Merge branch 'feature/seo-meta' into develop. & Integración de la rama de metadatos SEO en el flujo de desarrollo activo previo a la preparación del release 1.1.0. & 26/09/2026 \\ \hline
+viora-landing-page & feature/seo-meta & 315ed5d & feat(seo): add canonical url, social cards, robots and sitemap & Incorporación de URL canónica, metaetiquetas Open Graph y Twitter Cards, archivo robots.txt y sitemap.xml para indexación web. & 26/09/2026 \\ \hline
+viora-landing-page & main & 5540e99 & Merge branch 'release/1.0.0' into main & Lanzamiento oficial de la versión base 1.0.0 de la landing page comercial de Viora con soporte de video y catálogo de planes. & 26/09/2026 \\ \hline
+viora-landing-page & develop & d58465a & Merge branch 'feature/deploy-polish' into develop. & Fusión de refinamientos visuales, ajustes responsivos de tipografía y optimizaciones de audio ambiental en la rama develop. & 26/09/2026 \\ \hline
+viora-landing-page & feature/deploy-polish & 267d1d4 & chore(sound): drop the brush kit from the theme, plans and notturno beds & Limpieza y depuración de pistas instrumentales y efectos percusivos en las capas de audio ambiental para optimizar el peso de assets. & 26/09/2026 \\ \hline
+
+% viora-platform
+viora-platform & main & 2471144 & Merge branch 'release/0.34.0' into main & Pase a producción de la versión 0.34.0 del backend con telemetría horaria sintética y optimización de consultas batch JPA. & 07/10/2026 \\ \hline
+viora-platform & develop & d7a235a & Merge branch 'feature/virtual-node-hourly-telemetry' into develop. & Integración de la telemetría horaria calculada para nodos virtuales y batching en la rama de desarrollo activo. & 07/10/2026 \\ \hline
+viora-platform & feature/virtual-node-hourly-telemetry & 5517488 & perf(shared): batch the lazy collections and the inserts & Configuración de inserciones por lotes (batch inserts) y optimización de carga perezosa en colecciones JPA para reducir la latencia de base de datos. & 07/10/2026 \\ \hline
+viora-platform & feature/virtual-node-hourly-telemetry & 107a9d6 & fix(telemetry): draw one point per day in the incident weekly trend & Corrección en el cálculo de series temporales de incidentes agroclimáticos para asegurar la agregación de exactamente un punto diario en el gráfico semanal. & 07/10/2026 \\ \hline
+viora-platform & feature/virtual-node-hourly-telemetry & 6c33b15 & feat(telemetry): fill the virtual node hours with the observed weather & Implementación del adaptador climático horario para completar lecturas agroclimáticas sintéticas en parcelas con nodos virtuales. & 07/10/2026 \\ \hline
+viora-platform & feature/virtual-node-hourly-telemetry & e0e17ae & test(shared): keep the tests independent of the machine language & Desacoplamiento de las aserciones de pruebas de integración respecto a la configuración regional (locale) de la máquina de ejecución. & 07/10/2026 \\ \hline
+
+% viora-mobile-android
+viora-mobile-android & feature/winter-chilling & d0858b5 & docs(odd): update specification with zero hardcoded text verification & Verificación y actualización de la especificación técnica ODD para garantizar la ausencia total de textos fijos y validar la internacionalización en recursos de cadena. & 07/10/2026 \\ \hline
+viora-mobile-android & feature/winter-chilling & 1efbf1f & fix(phenology): localize date formatting and fallbacks to eliminate hardcoded texts & Migración de fechas y mensajes de fallback a strings.xml para evitar cadenas quemadas en las vistas de seguimiento fenológico de frío invernal. & 07/10/2026 \\ \hline
+viora-mobile-android & feature/winter-chilling & 6ffbe9b & docs(odd): update specification with figma color refinements & Actualización documental de tokens de color y lineamientos de diseño contrastados contra el prototipo oficial de Figma. & 07/10/2026 \\ \hline
+viora-mobile-android & feature/winter-chilling & e892f55 & fix(phenology): refine background and card colors to match figma palette exactly & Ajuste cromático de componentes WinterChillScreen y hojas modales en Jetpack Compose para alinearse estrictamente a la paleta de Figma. & 07/10/2026 \\ \hline
+viora-mobile-android & main & d25c6dd & Merge branch 'release/0.17.1' into main & Despliegue de la versión 0.17.1 en la rama principal conteniendo correcciones de adaptabilidad en dispositivos con pantallas estrechas. & 07/10/2026 \\ \hline
+viora-mobile-android & develop & fa2a461 & Merge branch 'feature/narrow-screen-fixes' into develop. & Integración de soluciones a problemas de diseño responsivo y desbordamiento en pantallas móviles compactas dentro de la rama develop. & 07/10/2026 \\ \hline
+\end{longtable}
+\end{center}
+
 #### Testing Suite Evidence for Sprint Review 
 &nbsp;
 
