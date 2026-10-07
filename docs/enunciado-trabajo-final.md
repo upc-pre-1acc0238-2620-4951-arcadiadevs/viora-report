@@ -686,112 +686,186 @@ Sprint Goal
 ***We believe it delivers** an easier plan selection to visitors, more flexibility on enrollment* *to students, and opportunities for implementing more enrollment-related features in* *the Learning Center ecosystem to development team* 
 ***This will be confirmed when** visitors can subscribe directly with and specific plan in no* *more than three steps, students can cancel previously requested enrollments without* *intervention of support staff, and developers implement new features related to* *enrollments using the implemented endpoints without intervention of backend* *development team.”*
 
-## Aspect Leaders and Collaborators
+### Aspect Leaders and Collaborators
 
 En esta sección el equipo incluye la elaboración de un artefacto Leadership-and- Collaboration Matrix (LACX), que indique por cada aspecto dentro del alcance del Sprint, quién es el líder y quién o quiénes son colaboradores en dicho aspecto, con el fin de brindar mayor claridad y efectividad en la comunicación al interior del equipo. La sección incluye una introducción donde se explica cuáles son los principales aspectos que se toma en cuenta en el Sprint. Dependiendo del Sprint un aspecto puede ser un subconjunto del alcance funcional de la solución (por ejemplo feature, bounded context, etc.). A continuación se incluye un cuadro con la siguiente estructura.
 
-| Team Member | GitHub Username | Aspect Name 1 | Aspect Name 2 | … | Aspect Name n |
+| Team Member (Last Name, First Name) | GitHub Username | Aspect Name 1 Leader (L)/Collaborator (C) | Aspect Name 2 Leader (L)/Collaborator (C) | … | Aspect Name n Leader (L)/Collaborator (C) |
 | --- | --- | --- | --- | --- | --- |
-| (Last Name, First |  | Leader (L) / | Leader (L) / |  | Leader (L) / |
-| Name) |  | Collaborator (C) | Collaborator (C) |  | Collaborator (C) |
-| Jiménez Rosas, | ajimenezrosas | L | C | … |  |
-| Arturo Eduardo |  |  |  |  |  |
+| Jiménez Rosas, Arturo Eduardo | ajimenezrosas | L | C | … |  |
+| Rodríguez Peña, Jorge Andrés | Japr91 | C | C | … |  |
 
-<u></u>Página 27 de 52 V4.0
+La organización de líderes y colaboradores debe tener relación con la posterior selección de tasks en el Sprint.
 
-| Jorge Andrés | Rodríguez Peña, | Japr91 |  | C |  | C | … |  |  | L |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  | Sprint Backlog n constraint general). | selección de tasks en el Sprint. |  |  | A continuación, la estructura de la tabla de control de estado para un Sprint. | La organización de líderes y colaboradores debe tener relación con la posterior Una sección de Sprint Backlog debe iniciar con una introducción que resuma el objetivo principal del Sprint y a continuación presente un screenshot del Board para el Sprint en la herramienta de control indicada (por ejemplo Trello), junto con el URL público del Board. A continuación, debe incluir una tabla donde se especifique los User Stories asignados al Sprint, junto con los Work-items/Tasks resultantes de la descomposición de los User Stories o Tasks adicionales que no dependen de un User Story en particular (por ejemplo, un task que debe realizarse para satisfacer un |  |  |  |  |  |  |
-| Sprint # | Sprint n |  |  |  |  |  |  |  |  |  |  |  |
-|  | User Story |  | Work | -Item / Task |  |  |  |  |  |  |  |  |
-| Id | Title se presenta a cont |  | Id Development Evidence for Sprint Review | Title inuación. |  | Description En esta sección se explica y presenta los avances en implementación con relación a los productos de la solución según el alcance del Sprint: Landing Page, Web Applications, Web Services y otros. La sección inicia con una introducción que resume los principales avances en la implementación. Debe elaborarse una tabla que incluya para cada repositorio los commits relacionados con la implementación. La estructura requerida | (Hours) | Estimation | Assigned To | do | Status (To- / Process To-Review / Done) | In- / |
-| Repository | user/repositoryname |  | Testing Suite Evidence for Sprint Review | Branch feature/loremipsum | Commit Id 14ca4e3 Página 28 de 52 | Commit Message feat: En esta sección se explica y presenta el conjunto de Unit Tests, Integration Tests y Acceptance Tests automatizados, para Web Services relacionados con los User Stories especificados en el Sprint. En el caso de los tests de BDD debe elaborarse los archivos .feature utilizando el lenguaje Gherkin y los archivos Steps en el lenguaje de programación. En esta sección se debe incluir la relación de tests diseñados. En el caso de los Unit Tests, debe indicarse con qué clases y comportamientos se relacionan. En el caso de los Integration Tests ó Acceptance Tests bajo el enfoque BDD, se incluye el | consectetur adipiscing elit | Fusce ut velit ut. | Commit Message Body Curabitur quis placerat nulla. quam, condimentum rutrum |  | Commited on (Date) 04/09/2021 V4.0 |  |
+### Sprint Backlog n 
 
-***
+Una sección de Sprint Backlog debe iniciar con una introducción que resuma el objetivo principal del Sprint y a continuación presente un screenshot del Board para el Sprint en la herramienta de control indicada (por ejemplo Trello), junto con el URL público del Board. A continuación, debe incluir una tabla donde se especifique los User Stories asignados al Sprint, junto con los Work-items/Tasks resultantes de la descomposición de los User Stories o Tasks adicionales que no dependen de un User Story en particular (por ejemplo, un task que debe realizarse para satisfacer un constraint general).
 
-código de los .feature Files, explicando con qué User Stories se relacionan. También debe incluirse la ruta del repositorio de control de versiones para los proyectos de Testing, junto con los id de commits relacionados con los avances en Testing para este Sprint. Debe elaborarse una tabla que incluya para cada repositorio los commits <u></u>relacionados con testing. La estructura requerida se presenta a continuación.
+A continuación, la estructura de la tabla de control de estado para un Sprint.
 
-| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Commited on (Date) |
-| --- | --- | --- | --- | --- | --- |
-| user/repositoryname | feature/loremipsum | 14ca4e3 | test: consectetur adipiscing elit | Curabitur quis placerat nulla. Fusce malesuada faucibus quam, ut condimentum velit rutrum ut. | 04/09/2021 |
-| este Sprint. Page, Web Services | Execution Evidence for Sprint Review Services Documentation Evidence for Sprint Review Software Deployment Evidence for Sprint Review explicaciones de los pasos realizados durante el Sprint. Team Collaboration Insights for Sprint Review | Esta sección inicia con un resumen que explique lo alcanzado en este Sprint y presenta screenshots de las principales vistas implementadas, junto con un enlace a un video que ilustre y explique la visualización y navegación logrados en este Sprint. En esta sección se incluye la relación de Endpoints documentados con OpenAPI, relacionados con el alcance del Sprint. La sección inicia con una introducción en la que se resume los logros alcanzados en relación con Documentación de Web Services para este Sprint. Debe elaborarse una tabla en la que se incluya, para cada Endpoint, la indicación de acciones implementadas, junto con los enlaces correspondientes a la documentación desplegada (o URL local en Sprints previos al despliegue de Web Services). Indicar las acciones soportadas incluyendo para cada acción el verbo http (get, post, put, delete, patch), sintaxis de llamada, especificación de posibles parámetros, así como ejemplo y explicación del response. Adicionalmente, debe incluirse y explicarse capturas en imágenes de la interacción, utilizando datos de muestra, con la documentación elaborada. Debe incluirse el URL del repositorio de Web Services, junto con los id de los commits relacionados con Documentación para En esta sección se resume los procesos realizados en relación con Deployment durante este Sprint. La sección inicia con una introducción explicando qué se ha realizado con respecto a despliegue durante este Sprint. Abarca actividades de creación de cuentas, configuración de recursos en cloud providers, configuración de proyectos de desarrollo para integración o automatización de labor de Deployment, entre otros. Se considera dentro del proceso de Deployment todos los productos digitales: Landing En esta sección el equipo explica cómo se han desarrollado las actividades de implementación y se presenta capturas en imagen de los analíticos de colaboración y Página 29 de 52 | y Aplicaciones. Se debe adicionar capturas en imagen y |  | V4.0 |
+<table>
+  <thead>
+    <tr>
+      <th>Sprint #</th>
+      <th colspan="7">Sprint n</th>
+    </tr>
+    <tr>
+      <th colspan="2">User Story</th>
+      <th colspan="6">Work-Item / Task</th>
+    </tr>
+    <tr>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Id</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Estimation (Hours)</th>
+      <th>Assigned To</th>
+      <th>Status (To-Do / In-Process / To-Review / Done)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
-***
+### Development Evidence for Sprint Review 
 
-commits en GitHub, realizados por los miembros del equipo, así como la redacción de la interpretación de estos analíticos por parte del equipo. Todos los miembros del equipo deben tener participación en la implementación de cada uno de los productos según corresponda en el Sprint: Landing Page, Web Services y Aplicaciones.
+En esta sección se explica y presenta los avances en implementación con relación a los productos de la solución según el alcance del Sprint: Landing Page, Web Applications, Web Services y otros. La sección inicia con una introducción que resume los principales avances en la implementación. Debe elaborarse una tabla que incluya para cada repositorio los commits relacionados con la implementación. La estructura requerida se presenta a continuación.
 
-## Validation Interviews
+<table>
+  <thead>
+    <tr>
+      <th>Repository</th>
+      <th>Branch</th>
+      <th>Commit Id</th>
+      <th>Commit Message</th>
+      <th>Commit Message Body</th>
+      <th>Commited on (Date)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>user/repositoryname</td>
+      <td>feature/loremipsum</td>
+      <td>14ca4e3</td>
+      <td>feat: consectetur adipiscing elit</td>
+      <td>Curabitur quis placerat nulla. Fusce malesuada faucibus quam, ut condimentum velit rutrum ut.</td>
+      <td>04/09/2021</td>
+    </tr>
+  </tbody>
+</table>
+
+### Testing Suite Evidence for Sprint Review
+
+En esta sección se explica y presenta el conjunto de Unit Tests, Integration Tests y Acceptance Tests automatizados, para Web Services relacionados con los User Stories especificados en el Sprint. En el caso de los tests de BDD debe elaborarse los archivos .feature utilizando el lenguaje Gherkin y los archivos Steps en el lenguaje de programación. En esta sección se debe incluir la relación de tests diseñados. En el caso de los Unit Tests, debe indicarse con qué clases y comportamientos se relacionan. En el caso de los Integration Tests ó Acceptance Tests bajo el enfoque BDD, se incluye el código de los .feature Files, explicando con qué User Stories se relacionan. También debe incluirse la ruta del repositorio de control de versiones para los proyectos de Testing, junto con los id de commits relacionados con los avances en Testing para este Sprint. Debe elaborarse una tabla que incluya para cada repositorio los commits relacionados con testing. La estructura requerida se presenta a continuación.
+
+<table>
+  <thead>
+    <tr>
+      <th>Repository</th>
+      <th>Branch</th>
+      <th>Commit Id</th>
+      <th>Commit Message</th>
+      <th>Commit Message Body</th>
+      <th>Commited on (Date)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>user/repositoryname</td>
+      <td>feature/loremipsum</td>
+      <td>14ca4e3</td>
+      <td>test: consectetur adipiscing elit</td>
+      <td>Curabitur quis placerat nulla. Fusce malesuada faucibus quam, ut condimentum velit rutrum ut.</td>
+      <td>04/09/2021</td>
+    </tr>
+  </tbody>
+</table>
+
+### Execution Evidence for Sprint Review 
+
+Esta sección inicia con un resumen que explique lo alcanzado en este Sprint y presenta screenshots de las principales vistas implementadas, junto con un enlace a un video que ilustre y explique la visualización y navegación logrados en este Sprint.
+
+### Services Documentation Evidence for Sprint Review
+
+En esta sección se incluye la relación de Endpoints documentados con OpenAPI, relacionados con el alcance del Sprint. La sección inicia con una introducción en la que se resume los logros alcanzados en relación con Documentación de Web Services para este Sprint. Debe elaborarse una tabla en la que se incluya, para cada Endpoint, la indicación de acciones implementadas, junto con los enlaces correspondientes a la documentación desplegada (o URL local en Sprints previos al despliegue de Web Services). Indicar las acciones soportadas incluyendo para cada acción el verbo http (get, post, put, delete, patch), sintaxis de llamada, especificación de posibles parámetros, así como ejemplo y explicación del response. Adicionalmente, debe incluirse y explicarse capturas en imágenes de la interacción, utilizando datos de muestra, con la documentación elaborada. Debe incluirse el URL del repositorio de Web Services, junto con los id de los commits relacionados con Documentación para este Sprint.
+
+### Software Deployment Evidence for Sprint Review
+
+En esta sección se resume los procesos realizados en relación con Deployment durante este Sprint. La sección inicia con una introducción explicando qué se ha realizado con respecto a despliegue durante este Sprint. Abarca actividades de creación de cuentas, configuración de recursos en cloud providers, configuración de proyectos de desarrollo para integración o automatización de labor de Deployment, entre otros. Se considera dentro del proceso de Deployment todos los productos digitales: Landing Page, Web Services y Aplicaciones. Se debe adicionar capturas en imagen y explicaciones de los pasos realizados durante el Sprint.
+
+### Team Collaboration Insights for Sprint Review
+En esta sección el equipo explica cómo se han desarrollado las actividades de implementación y se presenta capturas en imagen de los analíticos de colaboración y commits en GitHub, realizados por los miembros del equipo, así como la redacción de la interpretación de estos analíticos por parte del equipo. Todos los miembros del equipo deben tener participación en la implementación de cada uno de los productos según corresponda en el Sprint: Landing Page, Web Services y Aplicaciones.
+
+### Validation Interviews
 
 En esta sección, el equipo registra y explica las actividades de entrevistas de validación durante el proyecto. Se debe realizar entrevistas de validación en las que usuarios de los segmentos objetivo interactúen con el landing page y con las aplicaciones. Incluye secciones internas para Diseño de Entrevistas, Registro de Entrevistas, Evaluaciones según heurísticas. Para el proceso de validación debe aplicarse el formato de evaluación heurística indicado para el proyecto.
 
-## Diseño de Entrevistas
+### Diseño de Entrevistas
 
 En esta sección el equipo establece por cada segmento objetivo los elementos a incluir en la sesión de validación, incluyendo el Landing Page y las aplicaciones. Aquí se especifica también cuáles serán los user flows de las aplicaciones, que formarán parte del proceso de validación.
 
-## Registro de Entrevistas
+### Registro de Entrevistas
 
 Para cada segmento se requiere de 3 a 5 entrevistas. Para cada una de las entrevistas se debe indicar la información de nombres, apellidos, edad, distrito, un screenshot de un cuadro de video y el URL del video subido en el OneDrive facilitado por el docente, incluyendo el timing donde inicia la entrevista y su duración. La entrevista debe ser registrada en video, que sirve de evidencia de entrevistas. Para cada entrevista debe redactarse en este informe un resumen, que explique de forma descriptiva las principales apreciaciones del entrevistado con respecto a las tareas asignadas. Ver otras indicaciones importantes en el *Anexo C. Indicaciones para secciones que incluyen* *Videos*.
 
-## Evaluaciones según heurísticas
+### Evaluaciones según heurísticas
 
 Esta sección contiene el proceso de evaluación de las sesiones de validación basado en heurísticas, considerando heurísticas de usabilidad, arquitectura de información e inclusive design de la experiencia propuesta. Para esto la sección debe contener la estructura del formato para evaluaciones de heurísticas indicado en el *Anexo E.* *Formato para Evaluación de User Experience según Heurísticas*.
 
-## Conclusiones y recomendaciones
+### Conclusiones y recomendaciones
 
 En esta sección el equipo enuncia las conclusiones sobre el trabajo, incluyendo los resultados a los que ha llegado en relación a los Problem Statements especificados, los assumptions realizados frente al comportamiento real de los segmentos, los Hypotheses Statements establecidos y los criterios de éxito especificados en el proceso de Lean UX, en contraste con los resultados obtenidos de las validaciones. Igualmente incluye recomendaciones sobre los siguientes pasos en relación a Roadmap de los productos digitales que forman parte del alcance del modelo de negocio digital.
 
-<u></u>Página 30 de 52 V4.0
-
-***
-
-## Video About-the-Product
+### Video About-the-Product
 
 En esta sección el equipo introduce y describe el contenido del Video About-the- Product, el cual tiene como público objetivo los visitantes al Landing Page, quienes desean conocer sobre el modelo de negocio y las características principales de los productos de software, al igual que los usuarios de las Aplicaciones, quienes desean realizar tareas relacionadas con los procesos soportados por la solución. El tono que utilice en la comunicación debe ser consistente con el tono adoptado para el producto y debe incluirse al menos un testimonio positivo de un usuario que haya participado en las entrevistas de validación. Debe incluirse también en esta sección un screenshot del Video, el URL de la versión publicada en el OneDrive facilitado por el docente (y además, el URL de la versión publicada en YouTube utilizada para incrustarse en el Landing Page), así como el timing (duración) del mismo. Ver otras indicaciones importantes en el *Anexo C. Indicaciones para secciones que incluyen Videos*.
 
-## Video App Validation
+### Video App Validation
 
 En esta sección, el equipo documenta la evaluación de la aplicación a través de la prueba de usuarios. Para llevar a cabo este proceso, se utiliza Firebase App Distribution, permitiendo la distribución y prueba de la aplicación en distintos dispositivos antes de su lanzamiento. Además, se debe considerar el Formato para Evaluación de User Experience según Heurísticas (ver Anexo E).
 
-## Video About-The-Team
+### Video About-The-Team
 
 En esta sección el equipo elabora un resumen de los aspectos más relevantes del video About-The-Team, la pauta de secuencias de contenido (secciones con el timing de inicio de cada una, es decir hh:mm:ss de cada sección dentro del video) incluyendo además un cuadro de video representativo del mismo, junto con el URL de la versión publicada en Microsoft Stream (y además, el URL de la versión publicada en YouTube utilizada para incrustarse en el Landing Page). Este video resume el proceso de trabajo realizado, incluyendo escenas con imágenes o video de sesiones de trabajo real del equipo, complementando con narración (voz en off) del proceso. Incluye además el testimonio ante cámara de cada participante describiendo actividades realizadas, logro de outcomes y desarrollo de competencias alcanzados. Ver otras indicaciones importantes en el *Anexo C. Indicaciones para* *secciones que incluyen Videos*.
 
-## Glosario
+### Glosario
 
-En esta sección se definen los términos clave utilizados en el documento, proporcionando una comprensión clara de los conceptos técnicos y metodológicos. El glosario es esencial para asegurar que los lectores, ya sean técnicos o no, tengan acceso a las definiciones precisas de los términos que se emplean a lo largo del trabajo. Este espacio no solo sirve como referencia, sino que también facilita la comunicación y evita malentendidos, especialmente en documentos que abarcan temas complejos como la arquitectura de software, diseño de sistemas y metodologías de desarrollo. Se incluirán definiciones de términos utilizados en la creación de diagramas de arquitectura de software, diseño de interfaces de usuario (UI/UX), patrones de diseño y otros conceptos relevantes para el contexto del proyecto. Además, se agregarán
+En esta sección se definen los términos clave utilizados en el documento, proporcionando una comprensión clara de los conceptos técnicos y metodológicos. El glosario es esencial para asegurar que los lectores, ya sean técnicos o no, tengan acceso a las definiciones precisas de los términos que se emplean a lo largo del trabajo. Este espacio no solo sirve como referencia, sino que también facilita la comunicación y evita malentendidos, especialmente en documentos que abarcan temas complejos como la arquitectura de software, diseño de sistemas y metodologías de desarrollo. Se incluirán definiciones de términos utilizados en la creación de diagramas de arquitectura de software, diseño de interfaces de usuario (UI/UX), patrones de diseño y otros conceptos relevantes para el contexto del proyecto. Además, se agregarán explicaciones de abreviaturas y acrónimos que podrían no ser familiares para todos los stakeholders.
 
-<u></u>Página 31 de 52 V4.0
+### Bibliografía
 
-***
+En esta sección el equipo especifica todas las referencias bibliográficas en formato APA, utilizadas como base para el desarrollo del trabajo o referenciadas en secciones del informe. 
 
-explicaciones de abreviaturas y acrónimos que podrían no ser familiares para todos los stakeholders.
+Importante: 
+El informe final debe incluir estos puntos:
 
-## Bibliografía
+  1. Incorporar en la Bibliografía como mínimo 4 papers de fuentes académicas ubicadas en Q1 o Q2, con no más de dos años de antigüedad. 2 de los papers relacionados con el dominio del problema y 2 referidos a técnicas para desarrollo de aplicaciones móviles aplicadas en el proyecto.
+  2. Asímismo, en la Bibliografía se debe considerar categorías de recursos bibliográficos. Las categorías de referencia para investigación incluyen: a) dominio de negocio; b) métodos, técnicas, approaches aplicados en ciclo de ingeniería de software; c) lenguajes, frameworks y herramientas para desarrollo de software utilizados. Adicionalmente, se requiere que dichas fuentes bibliográficas sean citadas de forma explícita con el formato APA en el documento de Final Project Report (ver anexo G).
 
-En esta sección el equipo especifica todas las referencias bibliográficas en formato APA, utilizadas como base para el desarrollo del trabajo o referenciadas en secciones del informe. Importante: El informe final debe incluir estos puntos:
-
-1. Incorporar en la Bibliografía como mínimo 4 papers de fuentes académicas ubicadas en Q1 o Q2, con no más de dos años de antigüedad. 2 de los papers relacionados con el dominio del problema y 2 referidos a técnicas para desarrollo de aplicaciones móviles aplicadas en el proyecto.
-2. Asímismo, en la Bibliografía se debe considerar categorías de recursos bibliográficos. Las categorías de referencia para investigación incluyen: a) dominio de negocio; b) métodos, técnicas, approaches aplicados en ciclo de ingeniería de software; c) lenguajes, frameworks y herramientas para desarrollo de software utilizados. Adicionalmente, se requiere que dichas fuentes bibliográficas sean citadas de forma explícita con el formato APA en el documento de Final Project Report (ver anexo G).
-
-## Anexos
+### Anexos
 
 En esta sección, el equipo incluye como anexos tablas, documentos, gráficos, u otros elementos que por su extensión o grado de importancia ameriten aparecer en esta sección. Cada sección de anexo debe iniciar en una nueva página diferenciando el título con una letra mayúscula (Ejemplo: Anexo A, Anexo B, etc.)
 
-## <u></u>Ética y responsabilidad
+## Ética y responsabilidad
 
 Se debe redactar los términos y condiciones de servicio, los cuales deben estar expuestos vía un enlace en el footer del Landing Page y en la aplicación móvil, el momento que el usuario registre su cuenta. En la redacción debe evidenciarse responsabilidad ética y profesional, según los principios del código de ética de software engineering de ACM/IEEE y del CIP, así como los términos y condiciones de servicio. Del mismo modo se debe evidenciar transparencia y responsabilidad profesional en el proceso del ciclo de vida del producto, evidenciando por escrito, vía capturas y en video según corresponda, el proceso de ingeniería de software que sigue el equipo, así como la aplicación de herramientas y servicios para el desarrollo colaborativo como el control de versiones den GitHub.
 
-## <u></u>Internacionalización & Accessibilidad
+## Internacionalización & Accessibilidad
 
-Debe evidenciarse que el ciclo de vida de la solución y los productos elaborados están dirigidos por un enfoque inclusivo. En el caso de los productos, éstos deben incluir características de *Internationalization* bajo i18n (En el caso del Landing Page, mobile App y Web Services) y *Accessibility* bajo a11y (en el caso del Landing Page y mobile App). Considere como base los idiomas English (en\_US), Latin American Spanish (es\_419). Incluya en las experiencias web la configuración de ARIA attributes. Tome consideraciones adecuadas para internationalization y accessibility en los demás
+Debe evidenciarse que el ciclo de vida de la solución y los productos elaborados están dirigidos por un enfoque inclusivo. En el caso de los productos, éstos deben incluir características de *Internationalization* bajo i18n (En el caso del Landing Page, mobile App y Web Services) y *Accessibility* bajo a11y (en el caso del Landing Page y mobile App). Considere como base los idiomas English (en\_US), Latin American Spanish (es\_419). Incluya en las experiencias web la configuración de ARIA attributes. Tome consideraciones adecuadas para internationalization y accessibility en los demás productos digitales de la solución. El idioma por defecto para los mensajes, interfaz de usuario e interfaz de documentación en todos los productos de la solución (Landing Page, Web Services, Aplicaciones) debe ser en **inglés**.
 
-<u></u>Página 32 de 52 V4.0
-
-***
-
-productos digitales de la solución. El idioma por defecto para los mensajes, interfaz de usuario e interfaz de documentación en todos los productos de la solución (Landing Page, Web Services, Aplicaciones) debe ser en **inglés**.
-
-## <u></u>Tecnología
+## Tecnología
 
 - Para elaborar los *User Personas*, *Empathy Maps*, *Journey Maps* e *Impact Maps* se utilizará *UXPressia*.
 - Para la elaboración de Wireframes, Mock-ups y Prototypes, se utilizará Figma.
@@ -803,300 +877,455 @@ productos digitales de la solución. El idioma por defecto para los mensajes, in
 - Para la documentación de Web Services se utilizará *OpenAPI Specification* vía Swagger.
 - Para las Mobile Applications, se utilizará Kotlin en Android para el desarrollo de aplicaciones nativas. En cuanto a la estrategia Cross-Platform, se empleará Flutter con Dart o, alternativamente, Kotlin Multiplatform (KMP) con Kotlin.
 - Para el control de proyectos, se utilizará JetBrains YouTrack / Jira Software / Trello.
-- Para el almacenamiento y control de versiones de código se utilizará GIT gestionado desde GitHub aplicando GitFlow Workflow, Conventional Commits y Semantic Versioning. <u></u>Página 33 de 52 V4.0
+- Para el almacenamiento y control de versiones de código se utilizará GIT gestionado desde GitHub aplicando GitFlow Workflow, Conventional Commits y Semantic Versioning. 
 
-***
-
-# <u></u>Evaluación del Trabajo Final
+## Evaluación del Trabajo Final
 
 El trabajo está dividido en 4 entregables.
 
-**1. Primer Hito: AV1. Sprint Review** Fecha: **Semana 4** Aspectos a incluir: Carátula Registro de Versiones del Informe Project Report Collaboration Insights Contenido Student Outcome Capítulo I: Presentación Capítulo II: Requirements Development and Software Solution Design Conclusiones Bibliografía Anexos.
-**2. Segundo Hito: TB1**. **Stage Review** Fecha: **Semana 7** *Consideraciones* Debe incluir versión actualizada de Registro de Versiones del Informe, Project Report Collaboration Insights y Sección Student Outcome. Debe incluir versión corregida y mejorada de artefactos previamente presentados. Debe estar desplegado el Landing Page. Debe estar desplegado al 70% el backend. Deben mostrarse las pantallas core de la aplicación. Debe incluir en el informe: Capítulo III: Solution UI/UX Design Capítulo IV: Product Implementation & Validation
+**1. Primer Hito: AV1. Sprint Review** Fecha: **Semana 4** 
+Aspectos a incluir: 
+Carátula 
+Registro de Versiones del Informe 
+Project Report Collaboration Insights 
+Contenido Student Outcome 
+Capítulo I: Presentación 
+Capítulo II: Requirements Development and Software Solution Design 
+Conclusiones 
+Bibliografía 
+Anexos.
+
+**2. Segundo Hito: TB1**. **Stage Review** Fecha: **Semana 7** 
+*Consideraciones* 
+Debe incluir versión actualizada de Registro de Versiones del Informe, Project Report Collaboration Insights y Sección Student Outcome. 
+Debe incluir versión corregida y mejorada de artefactos previamente presentados. 
+Debe estar desplegado el Landing Page. 
+Debe estar desplegado al 70% el backend. 
+Deben mostrarse las pantallas core de la aplicación. 
+
+Debe incluir en el informe: 
+Capítulo III: Solution UI/UX Design 
+Capítulo IV: Product Implementation & Validation
 Nota: En esta entrega se debe presentar el Sprint 1
-Conclusiones Bibliografía Anexos.
-**3. Tercer Hito: AV2. Sprint Review** Fecha: **Semana 12** *Consideraciones* Debe incluir versión actualizada de Registro de Versiones del Informe, Project Report Collaboration Insights y Sección Student Outcome. Debe incluir versión corregida y mejorada de artefactos previamente presentados. Debe estar desplegado el Landing Page. Debe estar desplegado al 100% el backend en un sitio público con su documentación. Deben mostrarse las principales funcionalidades core de la aplicación. Elabora la primera versión del video con la validación de la aplicación. Elabora la primera versión del video About-the-Product. Elabora la primera versión del video About-the-Team. <u></u>Página 34 de 52 V4.0
+Conclusiones 
+Bibliografía 
+Anexos.
 
-***
+**3. Tercer Hito: AV2. Sprint Review** Fecha: **Semana 12** 
+*Consideraciones* 
+Debe incluir versión actualizada de Registro de Versiones del Informe, Project Report Collaboration Insights y Sección Student Outcome. 
+Debe incluir versión corregida y mejorada de artefactos previamente presentados. 
+Debe estar desplegado el Landing Page. 
+Debe estar desplegado al 100% el backend en un sitio público con su documentación. 
+Deben mostrarse las principales funcionalidades core de la aplicación. 
+Elabora la primera versión del video con la validación de la aplicación. 
+Elabora la primera versión del video About-the-Product. 
+Elabora la primera versión del video About-the-Team. 
 
-Debe incluir en el informe: Capítulo IV: Product Implementation & Validation
-
+Debe incluir en el informe: 
+Capítulo IV: Product Implementation & Validation
 Nota: En esta entrega se debe presentar el Sprint 2
+Conclusiones 
+Bibliografía 
+Anexos.
 
-Conclusiones Bibliografía Anexos.
+**4. Cuarto Hito: TB2. Release Review** Fecha: **Semana 15** 
+*Consideraciones* 
+Debe incluir versión actualizada de Registro de Versiones del Informe, Project Report Collaboration Insights y Sección Student Outcome. 
+Debe incluir versión corregida y mejorada de artefactos previamente presentados. 
+Debe estar desplegado el Landing Page. 
+Debe estar desplegado al 100% el backend en un sitio público con su documentación. 
+Debe presentrarse la aplicación con todas las funcionalidades indicadas en el product backlog. 
+La aplicación debe estar desplegada en Firebase App Distribution u otro servicio similar. 
+Presenta la versión final del video con la validación de la aplicación. 
+Presenta la versión final del video About-the-Product. 
+Presenta la versión final del video About-the-Team. 
 
-**4. Cuarto Hito: TB2. Release Review** Fecha: **Semana 15** *Consideraciones* Debe incluir versión actualizada de Registro de Versiones del Informe, Project Report Collaboration Insights y Sección Student Outcome. Debe incluir versión corregida y mejorada de artefactos previamente presentados. Debe estar desplegado el Landing Page. Debe estar desplegado al 100% el backend en un sitio público con su documentación. Debe presentrarse la aplicación con todas las funcionalidades indicadas en el product backlog. La aplicación debe estar desplegada en Firebase App Distribution u otro servicio similar. Presenta la versión final del video con la validación de la aplicación. Presenta la versión final del video About-the-Product. Presenta la versión final del video About-the-Team. Debe incluir en el informe: Capítulo IV: Product Implementation & Validation
+Debe incluir en el informe: 
+Capítulo IV: Product Implementation & Validation
 Nota: En esta entrega se debe presentar el Sprint 3
-Se incluye además la versión final de: Conclusiones Bibliografía Anexos. <u></u>Página 35 de 52 V4.0
 
-***
+Se incluye además la versión final de: 
+Conclusiones 
+Bibliografía 
+Anexos.
 
 ## Referencias
 
-- The Markdown Guide <u></u><https://www.markdownguide.org/>
-- How to use PlantUML with Markdown <u></u><https://gist.github.com/noamtamim/f11982b28602bd7e604c233fbe9d910f>
-- Seriously, what’s your (startup’s) problem? <u></u><https://medium.com/@jakemendel/seriously-whats-your-startup-s-problem-> <u></u>b3a884c54ab4
-- 5W+2H-Técnica de análisis de problemas <u></u><https://www.progressalean.com/5w2h-tecnica-de-analisis-de-problemas/>
-- Ubiquitous Language <u></u><https://martinfowler.com/bliki/UbiquitousLanguage.html>
-- Ubiquitous Language: Unambigulously define the term and concepts of a business domain. <u></u><https://openpracticelibrary.com/practice/ubiquitous-language/>
-- Lean UX – Chapter 3 <u></u><https://www.scribd.com/document/655516553/Leanux-Sampler>
-- Mike Cohn’s Mountain Goat Software Blog – User Stories Articles <u></u><https://www.mountaingoatsoftware.com/blog/tag/user-stories>
-- User vs. Buyer Persona: Differences and free template <u></u><https://uxpressia.com/blog/user-persona-vs-buyer-persona-difference>
-- How to create an Impact Map in 4 easy steps? <u></u><https://uxpressia.com/blog/build-impact-map-4-easy-steps>
-- Empathy Map: Build empathy for your users through a conversation informed by your team’s observations. <u></u><https://www.ibm.com/design/thinking/page/toolkit/activity/empathy-map>
-- How to build a customer empathy map (example + template) <u></u><https://uxpressia.com/blog/empathy-map-free-template>
-- Empathy Mapping: The First Step in Design Thinking <u></u><https://www.nngroup.com/articles/empathy-mapping/>
-- Adobe XD tutorials <u></u><https://helpx.adobe.com/xd/tutorials.html>
-- Acceptance Criteria in Scrum: Explanation, Examples, and Template <u></u><https://dzone.com/articles/acceptance-criteria-in-software-explanation-> <u></u>exampl
-- A Beginner’s Guide to finding User Needs <u></u><https://jdittrich.github.io/userNeedResearchBook/>
-- Using a Requirements Traceability Matrix to improve project quality <u></u><https://www.modernrequirements.com/blogs/using-a-requirements-> <u></u>traceability-matrix-to-improve-project-quality/
-- Otiscole Customer Portfolio – What’s Cookin’ <u></u><http://otiscole.com>
-- A step-by-step guide to scenario mapping <u></u><http://www.uxforthemasses.com/scenario-mapping/>
-
-  Página 36 de 52 *V4.0*
-
-***
-
-- What are User Flows in User Experience (UX) Design? <u></u><https://careerfoundry.com/en/blog/ux-design/what-are-user-flows/>
-- Design Systems 101 <u></u><https://www.nngroup.com/articles/design-systems-101/>
-- Front-End Style-Guides: Definition, Requirements, Component Checklist <u></u><https://www.nngroup.com/articles/front-end-style-guides/>
-- The Four Dimensions of Tone of Voice <u></u><https://www.nngroup.com/articles/tone-of-voice-dimensions/>
-- A successful Git branching model <u></u><https://nvie.com/posts/a-successful-git-branching-model/>
-- Semantic Versioning 2.0.0 <u></u><https://semver.org/>
-- Conventional Commits <u></u><https://www.conventionalcommits.org/>
-- HTML Style Guide and Coding Conventions <u></u><https://www.w3schools.com/html/html5_syntax.asp>
-- Google HTML/CSS Style Guide <u></u><https://google.github.io/styleguide/htmlcssguide.html>
-- Gherkin Conventions for Readable Specifications <u></u><https://specflow.org/gherkin/gherkin-conventions-for-readable-> <u></u>specifications/
-- Structurizr-Embedding diagrams <u></u><https://docs.structurizr.com/cloud/embed>
-- Figma Learn <u></u><https://help.figma.com/hc/en-us/categories/23557013073047-Courses-> <u></u>tutorials-projects
-- SEO and meta descriptions: Everything you need to know <u></u><https://searchengineland.com/seo-meta-descriptions-everything-to-know-> 447910
-- Must-know HTML Tags for SEO and Digital Marketing <u></u><https://seranking.com/blog/html-tags-in-seo/>
-- Using PlantUML for Creating Clear and Concise Diagrams <u></u><https://connect2grp.medium.com/using-plantuml-for-creating-clear-and-> <u></u>concise-diagrams-2fc621529560
-- Big Picture EventStorming <u></u><https://github.com/ddd-by-examples/library/blob/master/docs/big-> <u></u>picture.md
-- Design Level EventStorming <u></u><https://github.com/ddd-by-examples/library/blob/master/docs/design-> level.md
-- Domain-Driven Architecture Diagrams <u></u><https://medium.com/nick-tune-tech-strategy-blog/domain-driven-> <u></u>architecture-diagrams-139a75acb578
-- Domain Storytelling and Requirements <u></u><https://domainstorytelling.org/#dst-requirements>
-
-  Página 37 de 52 *V4.0*
-
-***
-
-- Domain Driven Design: Tackling Complexity in the Heart of Software <u></u><https://openpracticelibrary.com/perspective/domain-driven-design/>
-- Angular coding style guide <u></u><https://angular.io/guide/styleguide>
-- Google Java Style Guide <u></u><https://google.github.io/styleguide/javaguide.html>
-- Google TypeScript Style Guide <u></u><https://google.github.io/styleguide/tsguide.html>
-- Spring Boot Features <u></u><https://docs.spring.io/spring-> <u></u>boot/docs/current/reference/html/features.html
-- Full List of Meta Tags, Why They Matter for SEO & How to Write Them <u></u><https://blog.hubspot.com/marketing/meta-tags>
-- How to Write a User Story for an API Product <u></u><https://sameera17w.medium.com/how-to-write-a-user-story-for-an-api-> <u></u>product-7af6abd4ad2e
-- Learn Android Studio-Official Android courses <u></u><https://developer.android.com/courses?gad_source=1&gclid=CjwKCAiAmrS7> <u></u>BhBJEiwAei59i4xM- <u></u>QTejWHCeTx1dNVG9d3iWd5TfG9PDJHb8YkmKrASbePGq4ngHhoCBe0QAvD\_ <u></u>BwE\&gclsrc=aw.ds\&hl=es-419
-- Learn Flutter-Official Flutter courses <u></u><https://esflutter.dev/learn/>
-- Firebase App Distribution <u></u><https://firebase.google.com/docs/app-distribution?hl=es>
-- Kotlin Multiplatform Overview <https://developer.android.com/kotlin/multiplatform>
-- Kotlin Multiplatform <u></u><https://kotlinlang.org/docs/multiplatform.html>
+- The Markdown Guide
+  https://www.markdownguide.org/
+- How to use PlantUML with Markdown
+  https://gist.github.com/noamtamim/f11982b28602bd7e604c233fbe9d910f
+- Seriously, what’s your (startup’s) problem?
+  https://medium.com/@jakemendel/seriously-whats-your-startup-s-problem-b3a884c54ab4
+- 5W+2H - Técnica de análisis de problemas
+  https://www.progressalean.com/5w2h-tecnica-de-analisis-de-problemas/
+- Ubiquitous Language
+  https://martinfowler.com/bliki/UbiquitousLanguage.html
+- Ubiquitous Language: Unambigulously define the term and concepts of a business domain.
+  https://openpracticelibrary.com/practice/ubiquitous-language/
+- Lean UX – Chapter 3
+  https://www.scribd.com/document/655516553/Leanux-Sampler
+- Mike Cohn’s Mountain Goat Software Blog – User Stories Articles
+  https://www.mountaingoatsoftware.com/blog/tag/user-stories
+- User vs. Buyer Persona: Differences and free template
+  https://uxpressia.com/blog/user-persona-vs-buyer-persona-difference
+- How to create an Impact Map in 4 easy steps?
+  https://uxpressia.com/blog/build-impact-map-4-easy-steps
+- Empathy Map: Build empathy for your users through a conversation informed by your team’s observations.
+  https://www.ibm.com/design/thinking/page/toolkit/activity/empathy-map
+- How to build a customer empathy map (example + template)
+  https://uxpressia.com/blog/empathy-map-free-template
+- Empathy Mapping: The First Step in Design Thinking
+  https://www.nngroup.com/articles/empathy-mapping/
+- Adobe XD tutorials
+  https://helpx.adobe.com/xd/tutorials.html
+- Acceptance Criteria in Scrum: Explanation, Examples, and Template
+  https://dzone.com/articles/acceptance-criteria-in-software-explanation-exampl
+- A Beginner’s Guide to finding User Needs
+  https://jdittrich.github.io/userNeedResearchBook/
+- Using a Requirements Traceability Matrix to improve project quality
+  https://www.modernrequirements.com/blogs/using-a-requirements-traceability-matrix-to-improve-project-quality/
+- Otiscole Customer Portfolio – What’s Cookin’
+  http://otiscole.com
+- A step-by-step guide to scenario mapping
+  http://www.uxforthemasses.com/scenario-mapping/
+- What are User Flows in User Experience (UX) Design?
+  https://careerfoundry.com/en/blog/ux-design/what-are-user-flows/
+- Design Systems 101
+  https://www.nngroup.com/articles/design-systems-101/
+- Front-End Style-Guides: Definition, Requirements, Component Checklist
+  https://www.nngroup.com/articles/front-end-style-guides/
+- The Four Dimensions of Tone of Voice
+  https://www.nngroup.com/articles/tone-of-voice-dimensions/
+- A successful Git branching model
+  https://nvie.com/posts/a-successful-git-branching-model/
+- Semantic Versioning 2.0.0
+  https://semver.org/
+- Conventional Commits
+  https://www.conventionalcommits.org/
+- HTML Style Guide and Coding Conventions
+  https://www.w3schools.com/html/html5_syntax.asp
+- Google HTML/CSS Style Guide
+  https://google.github.io/styleguide/htmlcssguide.html
+- Gherkin Conventions for Readable Specifications
+  https://specflow.org/gherkin/gherkin-conventions-for-readable-specifications/
+- Structurizr - Embedding diagrams
+  https://docs.structurizr.com/cloud/embed
+- Figma Learn
+  https://help.figma.com/hc/en-us/categories/23557013073047-Courses-tutorials-projects
+- SEO and meta descriptions: Everything you need to know
+  https://searchengineland.com/seo-meta-descriptions-everything-to-know-447910
+- Must-know HTML Tags for SEO and Digital Marketing
+  https://seranking.com/blog/html-tags-in-seo/
+- Using PlantUML for Creating Clear and Concise Diagrams
+  https://connect2grp.medium.com/using-plantuml-for-creating-clear-and-concise-diagrams-2fc621529560
+- Big Picture EventStorming
+  https://github.com/ddd-by-examples/library/blob/master/docs/big-picture.md
+- Design Level EventStorming
+  https://github.com/ddd-by-examples/library/blob/master/docs/design-level.md
+- Domain-Driven Architecture Diagrams
+  https://medium.com/nick-tune-tech-strategy-blog/domain-driven-architecture-diagrams-139a75acb578
+- Domain Storytelling and Requirements
+  https://domainstorytelling.org/#dst-requirements
+- Domain Driven Design: Tackling Complexity in the Heart of Software
+  https://openpracticelibrary.com/perspective/domain-driven-design/
+- Angular coding style guide
+  https://angular.io/guide/styleguide
+- Google Java Style Guide
+  https://google.github.io/styleguide/javaguide.html
+- Google TypeScript Style Guide
+  https://google.github.io/styleguide/tsguide.html
+- Spring Boot Features
+  https://docs.spring.io/spring-boot/docs/current/reference/html/features.html
+- Full List of Meta Tags, Why They Matter for SEO & How to Write Them
+  https://blog.hubspot.com/marketing/meta-tags
+- How to Write a User Story for an API Product
+  https://sameera17w.medium.com/how-to-write-a-user-story-for-an-api-product-7af6abd4ad2e
+- Learn Android Studio - Official Android courses
+  https://developer.android.com/courses?gad_source=1&gclid=CjwKCAiAmrS7BhBJEiwAei59i4xM-QTejWHCeTx1dNVG9d3iWd5TfG9PDJHb8YkmKrASbePGq4ngHhoCBe0QAvD_BwE&gclsrc=aw.ds&hl=es-419
+- Learn Flutter - Official Flutter courses
+  https://esflutter.dev/learn/
+- Firebase App Distribution
+  https://firebase.google.com/docs/app-distribution?hl=es
+- Kotlin Multiplatform Overview
+  https://developer.android.com/kotlin/multiplatform
+- Kotlin Multiplatform
+  https://kotlinlang.org/docs/multiplatform.html
 - Create your Kotlin Multiplatform app
-- <u></u><https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-> <u></u>create-first-app.html
+  https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-create-first-app.html
 
-  Página 38 de 52 *V4.0*
 
-| Anexos |  |  |
-| --- | --- | --- |
-| Página 39 de 52 | V4.0 |  |
+## Anexos
 
-***
-
-## Anexo A. Estructura recomendada para la sección Student Outcome
+### Anexo A. Estructura recomendada para la sección Student Outcome
 
 Cada participante del equipo debe sustentar evidencia de cómo las actividades realizadas en el trabajo final han ayudado a desarrollar las dimensiones del student outcome. Por ello en esta sección debe haber una subsección por cada alumno donde éste describa por escrito la relación entre el outcome, sus dimensiones y el trabajo que ha realizado. Esto se complementa con lo reflejado en los testimonios expuestos que forman parte del video About The Team.
 
 El curso contribuye al cumplimiento del Student Outcome ABET:
 
-## ABET-EAC-Student Outcome 7
+#### ABET-EAC-Student Outcome 7
 
-**Criterio:** *La capacidad de adquirir y aplicar nuevos conocimientos según sea* *necesario, utilizando estrategias deaprendizaje apropiadas*.
+  **Criterio:** *La capacidad de adquirir y aplicar nuevos conocimientos según sea* *necesario, utilizando estrategias deaprendizaje apropiadas*.
 
 En el siguiente cuadro se describe las acciones realizadas y enunciados de conclusiones
 
-por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET –
-
-## EAC-Student Outcome 7.
+por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 7.
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 | --- | --- | --- |
 | Actualiza conceptos y conocimientos necesarios para su desarrollo profesional y en especial para su proyecto en soluciones de software. |  |  |
 | Reconoce la necesidad del aprendizaje permanente para el desempeño profesional y el desarrollo de proyectos en soluciones de software. |  |  |
 
-Página 40 de 52 *V4.0*
+### Anexo B. Estructura para el Informe de participación
 
-***
-
-## Anexo B. Estructura para el Informe de participación
-
-El Final Project Individual Member Performance Report es un documento en word donde el Team Leader del equipo resume la participación de cada integrante y la asigna a cada uno, una calificación entre 0 y 20. Estructura del nombre de archivo: *upc-pre-<periodo></periodo>-1acc0238-<nrc></nrc>-<startup></startup>-* *performance-\<avn/tbn> (.docx y .pdf)*
+El Final Project Individual Member Performance Report es un documento en word donde el Team Leader del equipo resume la participación de cada integrante y la asigna a cada uno, una calificación entre 0 y 20. 
+Estructura del nombre de archivo: *upc-pre-202620-1acc0238-4951-ArcadiaDevs-performance-avn/tbn(.docx y .pdf)*
 
 Adjuntar el archivo en todas las entregas programadas junto al final Project.
 
-| Participant Performance Report |  |  |  |  |  |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Nombre de Startup | Solvers Squad | Nombre de Producto | Health Advisor |  |  |  |  |
-| Entrega | AV1 / TB1 / AV2 / TB2 | Team Leader | Jiménez Rosas, Arturo Eduardo |  |  |  |  |
-| Ítem | Estudiante | Responsabilidades | Cumplió a tiempo | cumplió a destiempo | cumplió parcialmente | no cumplió (Cero) | Calificación asignada |
-| 1 | Jiménez Rosas, Arturo Eduardo | Vivamus commodo libero eget venenatis imperdiet. | X Etiam imperdiet quam condimentum velit tempor porttitor. … Suspendisse blandit nisl quis mauris vehicula faucibus. | … | X |  | 13 X |
-| 2 | Rodríguez Peña, Jorge Andrés | Duis lacinia purus eu urna euismod, at auctor felis pellentesque. | X Duis porta lectus sit amet tortor aliquam, in dictum magna ullamcorper. … Praesent mattis arcu ut nunc tempus facilisis. | X … X |  |  | 20 |
-| … |  |  |  |  |  |  |  |
-| n | Barrera Robles, Luis Miguel | No participó |  |  |  | X | 0 |
+<table>
+  <thead>
+    <tr>
+      <th colspan="8">Participant Performance Report</th>
+    </tr>
+    <tr>
+      <th>Nombre de Startup</th>
+      <td>Solvers Squad</td>
+      <th>Nombre de Producto</th>
+      <td>Health Advisor</td>
+      <td colspan="4"></td>
+    </tr>
+    <tr>
+      <th>Entrega</th>
+      <td>AV1 / TB1 / AV2 / TB2</td>
+      <th>Team Leader</th>
+      <td>Jiménez Rosas, Arturo Eduardo</td>
+      <td colspan="4"></td>
+    </tr>
+    <tr>
+      <th>Ítem</th>
+      <th>Estudiante</th>
+      <th>Responsabilidades</th>
+      <th>Cumplió a tiempo</th>
+      <th>Cumplió a destiempo</th>
+      <th>Cumplió parcialmente</th>
+      <th>No cumplió (cero)</th>
+      <th>Calificación asignada</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Jiménez Rosas, Arturo Eduardo</td>
+      <td>Vivamus commodo libero eget venenatis imperdiet.<br>Etiam imperdiet quam condimentum velit tempor porttitor.<br>…<br>Suspendisse blandit nisl quis mauris vehicula faucibus.</td>
+      <td>X</td>
+      <td>…</td>
+      <td>X</td>
+      <td></td>
+      <td>13</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Rodríguez Peña, Jorge Andrés</td>
+      <td>Duis lacinia purus eu urna euismod, at auctor felis pellentesque.<br>Duis porta lectus sit amet tortor aliquam, in dictum magna ullamcorper.<br>…<br>Praesent mattis arcu ut nunc tempus facilisis.</td>
+      <td>X</td>
+      <td>X<br>…<br>X</td>
+      <td></td>
+      <td></td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>…</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>n</td>
+      <td>Barrera Robles, Luis Miguel</td>
+      <td>No participó</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>X</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
 
-<u></u>Página 41 de 52 V4.0
-
-***
-
-## Anexo C. Indicaciones para secciones que incluyen videos
+### Anexo C. Indicaciones para secciones que incluyen videos
 
 **Indicaciones generales:**
 
 - Los videos deben demostrar un nivel de edición y acabado de calidad **aceptable** a **destacable**. Es necesario incluir una pantalla inicial de presentación, música de fondo, y garantizar que las escenas sigan una secuencia coherente. Además, cada escena debe contar con una descripción en texto que detalle a los participantes involucrados y las actividades realizadas.
 - Asimismo, se debe incorporar elementos relacionados con el branding de la startup o producto, lo cual puede incluir animaciones que refuercen su identidad visual.
 
-| Sección | Características del video | Sobre el contenido | Integración y entrega |
-| --- | --- | --- | --- |
-| Needfinding Interviews | Cantidad de videos: 1 Nomenclatura: upc-pre-<periodo></periodo>-1acc0238-<nrc></nrc>-<startup></startup>- needfinding-\\<avn/tbn>(.mp4) Formato: .mp4 Duración: En función a cantidad de entrevistas (considerar edición de 3 a 5 minutos por entrevista). | Consolida todas las entrevistas realizadas, incluyendo en cada entrevista títulos con información del entrevistado, el segmento objetivo y la fecha de la entrevista. | Subir el video en el OneDrive indicado por el docente. Incluir en el informe screenshot del video con enlace al mismo. Incluir redacción de introducción a la sección y registro de cada entrevista, así como el análisis general donde se identifican las variables y los valores representativos a nivel objetivo y subjetivo que servirán de base para la definición de los User Persona. Seguir especificaciones del enunciado. |
-| Prototypes Navigation / Product Navigation | Cantidad de videos: 1 Nomenclatura: upc-pre-<periodo></periodo>-1acc0238-<nrc></nrc>-<startup></startup>- \\<prototype/product>navigation-\\<avn/tbn> (.mp4) Formato: .mp4 Duración: En función a cantidad de user flows de aplicaciones (considerar edición de 3 a 5 minutos por aplicación). | Consolida demostración del flujo de navegación del Landing Page y las aplicaciones, priorizando los user flows relacionados con el core business. | Subir el video en el OneDrive indicado por el docente. Incluir en el informe screenshot del video con enlace al mismo. Incluir redacción de introducción a la sección, resumiendo los flujos de navegación que se incluyen en el video. |
-| Validation Interviews | Cantidad de Videos: 1 Nomenclatura: upc-pre-<periodo></periodo>-1acc0238-<nrc></nrc>-<startup></startup>- validation -\\<avn/tbn> (.mp4) Formato: .mp4 Duración: En función a cantidad de entrevistas (considerar edición de 3 a 5 minutos por entrevista). | Consolida sesiones y entrevistas de validación en las que usuarios de los segmentos objetivo interactúen con el landing page y con la aplicación móvil, manifestando sus observaciones. Para cada entrevista se debe incluir títulos con información del entrevistado, el segmento objetivo y la fecha de la entrevista. | Subir el video en el OneDrive indicado por el docente. Incluir en el informe screenshot del video con enlace al mismo. Incluir redacción de introducción a la sección y redacción de registro de cada entrevista, junto con la evaluación de heurísticas de usabilidad, arquitectura de información y diseño inclusivo para la sesión de evaluación. Seguir especificaciones del enunciado y formatos indicados. |
-| About the Product | Cantidad de videos: 1 Nomenclatura: upc-pre-<periodo></periodo>-1acc0238-<nrc></nrc>-<startup></startup>- about-the-product-\\<avn/tbn>(.mp4) Formato: .mp4 Duración: De 1 a 2 minutos. | Orientación promocional, resumiendo el modelo de negocio, las características y beneficios del producto, incluyendo algunas escenas de interacción con el producto y al menos una opinión por cada segmento objetivo. | Subir el video en el OneDrive indicado por el docente y en YouTube. Incluir en el informe screenshot del video con enlace al mismo. Incluir redacción de introducción a la sección. Adicionalmente, incrustar el video en una sección adecuada del Landing Page. Seguir especificaciones del enunciado. |
-| About the Team | Cantidad de videos: 1 Nomenclatura: upc-pre-<periodo></periodo>-1acc0238-<nrc></nrc>-<startup></startup>- about-the-team-\\<avn/tbn>(.mp4) Formato: .mp4 Duración: En función al contenido (considerar 5 minutos para la sección de retrospectiva del grupo y 1 minuto por cada testimonio de miembro del equipo). | Video que resume el proceso de trabajo realizado, incluyendo escenas de sesiones de trabajo real del equipo, complementando con narración (voz en off) del proceso. Incluye además el testimonio ante cámara de cada participante describiendo actividades realizadas, logro del student outcome y desarrollo de competencias alcanzados. | Subir el video en el OneDrive indicado por el docente. y en YouTube. Incluir redacción de introducción a la sección, resumiendo el proceso de trabajo y los logros alcanzados por los miembros del requipo. Adicionalmente, incrustar el video en una sección adecuada del Landing Page. Seguir especificaciones del enunciado. |
+<table>
+  <thead>
+    <tr>
+      <th>Sección</th>
+      <th>Características del video</th>
+      <th>Sobre el contenido</th>
+      <th>Integración y entrega</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Needfinding Interviews</td>
+      <td>Cantidad de videos: 1<br>Nomenclatura: upc-pre-&lt;periodo&gt;-1acc0238-&lt;NRC&gt;-&lt;startup&gt;-needfinding-&lt;avn/tbn&gt;(.mp4)<br>Formato: .mp4<br>Duración: En función a la cantidad de entrevistas (considerar una edición de 3 a 5 minutos por entrevista).</td>
+      <td>Consolida todas las entrevistas realizadas, incluyendo en cada entrevista títulos con información del entrevistado, el segmento objetivo y la fecha de la entrevista.</td>
+      <td>Subir el video en el OneDrive indicado por el docente.<br>Incluir en el informe un screenshot del video con enlace al mismo.<br>Incluir la introducción, el registro de cada entrevista y el análisis general de las variables representativas que servirán de base para la definición de los User Persona.</td>
+    </tr>
+    <tr>
+      <td>Prototypes Navigation / Product Navigation</td>
+      <td>Cantidad de videos: 1<br>Nomenclatura: upc-pre-&lt;periodo&gt;-1acc0238-&lt;NRC&gt;-&lt;startup&gt;-&lt;prototype/product&gt;navigation-&lt;avn/tbn&gt;(.mp4)<br>Formato: .mp4<br>Duración: En función a la cantidad de user flows de aplicaciones (considerar una edición de 3 a 5 minutos por aplicación).</td>
+      <td>Consolida la demostración del flujo de navegación del Landing Page y las aplicaciones, priorizando los user flows relacionados con el core business.</td>
+      <td>Subir el video en el OneDrive indicado por el docente.<br>Incluir en el informe un screenshot del video con enlace al mismo.<br>Incluir una introducción que resuma los flujos de navegación demostrados.</td>
+    </tr>
+    <tr>
+      <td>Validation Interviews</td>
+      <td>Cantidad de videos: 1<br>Nomenclatura: upc-pre-&lt;periodo&gt;-1acc0238-&lt;NRC&gt;-&lt;startup&gt;-validation-&lt;avn/tbn&gt;(.mp4)<br>Formato: .mp4<br>Duración: En función a la cantidad de entrevistas (considerar una edición de 3 a 5 minutos por entrevista).</td>
+      <td>Consolida sesiones y entrevistas de validación en las que usuarios de los segmentos objetivo interactúan con el Landing Page y la aplicación móvil. Cada entrevista incluye información del entrevistado, el segmento objetivo y la fecha.</td>
+      <td>Subir el video en el OneDrive indicado por el docente.<br>Incluir en el informe un screenshot del video con enlace al mismo.<br>Incluir la introducción, el registro de cada entrevista y la evaluación de heurísticas de usabilidad, arquitectura de información y diseño inclusivo.</td>
+    </tr>
+    <tr>
+      <td>About the Product</td>
+      <td>Cantidad de videos: 1<br>Nomenclatura: upc-pre-&lt;periodo&gt;-1acc0238-&lt;NRC&gt;-&lt;startup&gt;-about-the-product-&lt;avn/tbn&gt;(.mp4)<br>Formato: .mp4<br>Duración: De 1 a 2 minutos.</td>
+      <td>Orientación promocional que resume el modelo de negocio, las características y los beneficios del producto. Incluye escenas de interacción y al menos una opinión por cada segmento objetivo.</td>
+      <td>Subir el video en el OneDrive indicado por el docente y en YouTube.<br>Incluir en el informe un screenshot del video con enlace al mismo y una introducción.<br>Incrustar el video en una sección adecuada del Landing Page.</td>
+    </tr>
+    <tr>
+      <td>About the Team</td>
+      <td>Cantidad de videos: 1<br>Nomenclatura: upc-pre-&lt;periodo&gt;-1acc0238-&lt;NRC&gt;-&lt;startup&gt;-about-the-team-&lt;avn/tbn&gt;(.mp4)<br>Formato: .mp4<br>Duración: En función del contenido, considerando 5 minutos para la retrospectiva y 1 minuto por cada testimonio.</td>
+      <td>Resume el proceso de trabajo mediante escenas de sesiones reales del equipo y narración en off. Incluye el testimonio ante cámara de cada participante sobre sus actividades, el logro del Student Outcome y las competencias alcanzadas.</td>
+      <td>Subir el video en el OneDrive indicado por el docente y en YouTube.<br>Incluir en el informe un screenshot del video con enlace al mismo y una introducción que resuma el proceso y los logros del equipo.<br>Incrustar el video en una sección adecuada del Landing Page.</td>
+    </tr>
+  </tbody>
+</table>
 
-<u></u>Página 42 de 52 V4.0
-
-***
-
-## Anexo D. Ejemplo de Spike Story
+### Anexo D. Ejemplo de Spike Story
 
 **Spike**: Investigar la Integración de Stripe para el Procesamiento de Pagos en la Plataforma ACME Learning Center
 
-## Contexto
+#### Contexto
 
-La Plataforma ACME Learning Center consta de una aplicación web construida con Angular 20 y TypeScript, un código base Kotlin Multiplatform Mobile (KMM) dirigido a Android e iOS con lógica compartida en Kotlin y UI específica por plataforma (Kotlin/Java para Android, interoperabilidad con Swift para iOS), y un backend Spring Boot utilizando Java 24 para servicios web RESTful. La aplicación web Angular 20 utiliza TypeScript 5.8 para un desarrollo con tipos seguros, Angular Material para componentes de UI, y RxJS para programación reactiva, con dependencias gestionadas mediante npm, aprovechando características estabilizadas de Angular 20 como zoneless change detection y signal-based APIs para mejorar el rendimiento. La aplicación KMM usa Kotlin para la lógica de negocio compartida, con componentes específicos por plataforma para la UI de pagos. El backend emplea Spring Boot 3.5.5 (la última versión estable compatible con Java 24 a agosto de 2025), utilizando Spring MVC para endpoints REST, Spring Data JPA para interacciones con la base de datos, y Maven para la gestión de dependencias, incluyendo `spring-boot-starter-web`, `spring-boot-starter-data-jpa`, y `stripe-java` (versión 26.x.x, compatible con Java 24). El equipo busca integrar Stripe para habilitar un procesamiento de pagos seguro y escalable para compras de cursos, suscripciones o pagos únicos en plataformas web y móviles. Las motivaciones incluyen garantizar el cumplimiento de PCI, maximizar la reutilización de código mediante KMM, ofrecer experiencias de usuario fluidas en web y móvil, mantener un procesamiento robusto en el backend, y alinear con los requisitos comerciales para soluciones de pago rentables y conformes, aprovechando características de Java 24 (e.g., records, pattern matching) y mejoras de Spring Boot
+La Plataforma ACME Learning Center consta de una aplicación web construida con Angular 20 y TypeScript, un código base Kotlin Multiplatform Mobile (KMM) dirigido a Android e iOS con lógica compartida en Kotlin y UI específica por plataforma (Kotlin/Java para Android, interoperabilidad con Swift para iOS), y un backend Spring Boot utilizando Java 24 para servicios web RESTful. La aplicación web Angular 20 utiliza TypeScript 5.8 para un desarrollo con tipos seguros, Angular Material para componentes de UI, y RxJS para programación reactiva, con dependencias gestionadas mediante npm, aprovechando características estabilizadas de Angular 20 como zoneless change detection y signal-based APIs para mejorar el rendimiento. La aplicación KMM usa Kotlin para la lógica de negocio compartida, con componentes específicos por plataforma para la UI de pagos. El backend emplea Spring Boot 3.5.5 (la última versión estable compatible con Java 24 a agosto de 2025), utilizando Spring MVC para endpoints REST, Spring Data JPA para interacciones con la base de datos, y Maven para la gestión de dependencias, incluyendo `spring-boot-starter-web`, `spring-boot-starter-data-jpa`, y `stripe-java` (versión 26.x.x, compatible con Java 24). El equipo busca integrar Stripe para habilitar un procesamiento de pagos seguro y escalable para compras de cursos, suscripciones o pagos únicos en plataformas web y móviles. Las motivaciones incluyen garantizar el cumplimiento de PCI, maximizar la reutilización de código mediante KMM, ofrecer experiencias de usuario fluidas en web y móvil, mantener un procesamiento robusto en el backend, y alinear con los requisitos comerciales para soluciones de pago rentables y conformes, aprovechando características de Java 24 (e.g., records, pattern matching) y mejoras de Spring Boot 3.5.5 (e.g., soporte mejorado para GraalVM, características de observabilidad).
 
-3.5.5 (e.g., soporte mejorado para GraalVM, características de observabilidad).
-
-## Spike Story
+#### Spike Story
 
 **Como** equipo de desarrollo (web, móvil y backend), **quiero** investigar y prototipar la integración de Stripe en nuestra aplicación web Angular, aplicación móvil Kotlin Multiplatform Mobile (KMM), y backend Spring Boot Java para la Plataforma ACME Learning Center, **para** que podamos entender las implicaciones técnicas, riesgos potenciales y esfuerzo requerido para la implementación completa en los componentes web, móvil y backend.
 
-## Criterios de Aceptación (en formato Given-When-Then)
+#### Criterios de Aceptación (en formato Given-When-Then)
 
-1. Revisa la Documentación de la API de Stripe -Dado que el equipo necesita entender las capacidades de Stripe para el procesamiento de pagos en web y móvil, Cuando el desarrollador revisa la documentación de la API de Stripe (e.g., Payments, Checkout, Mobile SDKs, Stripe.js), <u></u>Página 43 de 52 V4.0
-
-***
-
-Entonces el desarrollador identifica y documenta el producto o flujo de Stripe más adecuado (e.g., Stripe Checkout para pagos alojados o Payment Intents para flujos personalizados en web/móvil) para la plataforma ACME en un informe compartido.
+1. Revisa la Documentación de la API de Stripe
+   - Dado que el equipo necesita entender las capacidades de Stripe para el procesamiento de pagos en web y móvil, 
+   - Cuando el desarrollador revisa la documentación de la API de Stripe (e.g., Payments, Checkout, Mobile SDKs, Stripe.js).
+   - Entonces el desarrollador identifica y documenta el producto o flujo de Stripe más adecuado (e.g., Stripe Checkout para pagos alojados o Payment Intents para flujos personalizados en web/móvil) para la plataforma ACME en un informe compartido.
 
 2. Evalúa la Compatibilidad Web
-
-- Dado la aplicación web Angular 20/TypeScript, Cuando el desarrollador evalúa la compatibilidad con las herramientas del lado del
-
-  cliente de Stripe (e.g., Stripe.js, Stripe Elements para integración con Angular), Entonces el desarrollador documenta los requisitos de integración web (e.g., configuración de componentes Angular, definiciones de tipos TypeScript, RxJS o signals para manejo asíncrono de pagos) en el informe.
+   - Dado la aplicación web Angular 20/TypeScript, 
+   - Cuando el desarrollador evalúa la compatibilidad con las herramientas del lado del cliente de Stripe (e.g., Stripe.js, Stripe Elements para integración con Angular), 
+   - Entonces el desarrollador documenta los requisitos de integración web (e.g., configuración de componentes Angular, definiciones de tipos TypeScript, RxJS o signals para manejo asíncrono de pagos) en el informe
 
 3. Evalúa la Compatibilidad Móvil
-
-- Dado la arquitectura Kotlin Multiplatform Mobile (KMM) para Android e iOS, Cuando el desarrollador evalúa la compatibilidad con los Mobile SDKs de Stripe
-
-  (e.g., Stripe Android SDK para Kotlin/Java, Stripe iOS SDK para Swift, lógica compartida en Kotlin), Entonces el desarrollador documenta los requisitos de integración móvil (e.g., componentes de UI específicos por plataforma, lógica de negocio compartida para manejo de tokens) en el informe.
+   - Dado la arquitectura Kotlin Multiplatform Mobile (KMM) para Android e iOS, 
+   - Cuando el desarrollador evalúa la compatibilidad con los Mobile SDKs de Stripe (e.g., Stripe Android SDK para Kotlin/Java, Stripe iOS SDK para Swift, lógica compartida en Kotlin), 
+   - Entonces el desarrollador documenta los requisitos de integración móvil (e.g., componentes de UI específicos por plataforma, lógica de negocio compartida para manejo de tokens) en el informe.
 
 4. Evalúa la Compatibilidad del Backend
+   - Dado el backend Spring Boot 3.5.5 usando Java 24 para servicios RESTful, 
+   - Cuando el desarrollador evalúa la compatibilidad con la librería Java de Stripe (e.g.,`stripe-java` versión 26.x.x), 
+   - Entonces el desarrollador documenta los requisitos de integración del backend (e.g., configuración de endpoints REST usando Spring MVC, manejo de webhooks en controladores, uso de records de Java 24 para modelos de datos) en el informe.
 
-- Dado el backend Spring Boot 3.5.5 usando Java 24 para servicios RESTful, Cuando el desarrollador evalúa la compatibilidad con la librería Java de Stripe (e.g.,
-
-  `stripe-java` versión 26.x.x), Entonces el desarrollador documenta los requisitos de integración del backend (e.g., configuración de endpoints REST usando Spring MVC, manejo de webhooks en controladores, uso de records de Java 24 para modelos de datos) en el informe.
-
-5. Identifica Implicaciones de Seguridad
-
-- Dado la necesidad de garantizar un procesamiento de pagos seguro en web, móvil
-
-  y backend, Cuando el desarrollador analiza los riesgos de seguridad potenciales (e.g., cumplimiento de PCI, tokenización en Stripe.js/Mobile SDKs, comunicación segura de APIs entre Angular/KMM y Spring Boot), Entonces el desarrollador incluye un resumen de riesgos y las características de mitigación de Stripe (e.g., tokenización del lado del cliente, validación del backend con Spring Security) en el informe.
+5. Identifica Implicaciones de Seguridad 
+   - Dado la necesidad de garantizar un procesamiento de pagos seguro en web, móvil y backend, 
+   - Cuando el desarrollador analiza los riesgos de seguridad potenciales (e.g., cumplimiento de PCI, tokenización en Stripe.js/Mobile SDKs, comunicación segura de APIs entre Angular/KMM y Spring Boot), 
+   - Entonces el desarrollador incluye un resumen de riesgos y las características de mitigación de Stripe (e.g., tokenización del lado del cliente, validación del backend con Spring Security) en el informe.
 
 6. Evalúa el Impacto en el Rendimiento
-
-- Dado los requisitos de rendimiento de la plataforma para web, móvil y backend, Cuando el desarrollador evalúa el impacto de la integración de Stripe en web (e.g.,
-
-  capacidad de respuesta de la aplicación Angular 20 con zoneless change detection), móvil (e.g., rendimiento del flujo de pagos en la aplicación KMM), y backend (e.g., latencia de APIs en endpoints de Spring Boot 3.5.5), Entonces el desarrollador documenta los hallazgos, incluyendo cualquier posible cuello de botella, en el informe.
-
-<u></u>Página 44 de 52 V4.0
-
-***
+   - Dado los requisitos de rendimiento de la plataforma para web, móvil y backend, 
+   - Cuando el desarrollador evalúa el impacto de la integración de Stripe en web (e.g. capacidad de respuesta de la aplicación Angular 20 con zoneless change detection), móvil (e.g., rendimiento del flujo de pagos en la aplicación KMM), y backend (e.g., latencia de APIs en endpoints de Spring Boot 3.5.5), 
+   - Entonces el desarrollador documenta los hallazgos, incluyendo cualquier posible cuello de botella, en el informe.
 
 7. Verifica los Requisitos de Cumplimiento
-
-- Dado que la plataforma debe cumplir con regulaciones como GDPR o PCI-DSS, Cuando el desarrollador revisa las características de cumplimiento de Stripe (e.g.,
-
-  minimización de datos en Stripe.js/Mobile SDKs, almacenamiento seguro en Spring Boot con JPA), Entonces el desarrollador documenta cualquier consideración de cumplimiento o pasos adicionales necesarios en el informe.
+   - Dado que la plataforma debe cumplir con regulaciones como GDPR o PCI-DSS,
+   - Cuando el desarrollador revisa las características de cumplimiento de Stripe (e.g., minimización de datos en Stripe.js/Mobile SDKs y almacenamiento seguro en Spring Boot con JPA),
+   - Entonces el desarrollador documenta cualquier consideración de cumplimiento o paso adicional necesario en el informe.
 
 8. Identifica Dependencias y Costos
-
-- Dado la necesidad de entender las dependencias externas para la integración de
-
-  Stripe, Cuando el desarrollador investiga las configuraciones requeridas (e.g., cuenta de Stripe, Stripe.js en package.json de Angular, Mobile SDKs en build.gradle de KMM, `stripe-java` en pom.xml de Spring Boot, webhooks), Entonces el desarrollador lista las dependencias y señala cualquier costo asociado (e.g., tarifas por transacción, características premium) en el informe.
+   - Dado que el equipo necesita entender las dependencias externas para la integración de Stripe,
+   - Cuando el desarrollador investiga las configuraciones requeridas (e.g., cuenta de Stripe, Stripe.js en package.json de Angular, Mobile SDKs en build.gradle de KMM, `stripe-java` en pom.xml de Spring Boot y webhooks),
+   - Entonces el desarrollador lista las dependencias y señala cualquier costo asociado (e.g., tarifas por transacción y características premium) en el informe.
 
 9. Prototipa la Integración de Stripe
-
-- Dado la necesidad de validar la viabilidad de Stripe, Cuando el desarrollador construye un proof-of-concept mínimo (e.g., un flujo de
-
-  pago de prueba en Angular 20 usando Stripe.js/Elements, en KMM usando Mobile SDKs, integrado con endpoints REST de Spring Boot 3.5.5 para Payment Intents), Entonces el PoC es funcional, registrado en una rama del repositorio, y referenciado en el informe.
+   - Dado que el equipo necesita validar la viabilidad de Stripe,
+   - Cuando el desarrollador construye un proof-of-concept mínimo (e.g., un flujo de pago de prueba en Angular 20 usando Stripe.js/Elements, en KMM usando Mobile SDKs e integrado con endpoints REST de Spring Boot 3.5.5 para Payment Intents),
+   - Entonces el PoC es funcional, está registrado en una rama del repositorio y se encuentra referenciado en el informe.
 
 10. Estima el Esfuerzo
-
-- Dado que el equipo necesita una estimación de esfuerzo para la implementación
-
-  de Stripe, Cuando el desarrollador desglosa la integración en tareas de web (Angular 20), móvil (KMM), y backend (Spring Boot 3.5.5 con Java 24) basadas en los hallazgos del Spike (e.g., configuración de componentes Angular: 4 horas, configuración de Mobile SDK: 5 horas, API de backend: 7 horas), Entonces el desarrollador proporciona una estimación aproximada de puntos de historia para la funcionalidad completa en el informe.
+   - Dado que el equipo necesita una estimación de esfuerzo para la implementación de Stripe,
+   - Cuando el desarrollador desglosa la integración en tareas web (Angular 20), móviles (KMM) y de backend (Spring Boot 3.5.5 con Java 24), basadas en los hallazgos del Spike (e.g., configuración de componentes Angular: 4 horas, configuración de Mobile SDK: 5 horas y API de backend: 7 horas),
+   - Entonces el desarrollador proporciona una estimación aproximada de puntos de historia para la funcionalidad completa en el informe.
 
 11. Documenta y Comparte los Hallazgos
+   - Dado que el Spike está completo,
+   - Cuando el desarrollador compila todos los hallazgos en un informe compartido,
+   - Entonces el informe incluye pros y contras, el enfoque recomendado (e.g., usar Checkout alojado o un flujo personalizado en web/móvil) y cualquier bloqueador, y es revisado en una reunión de equipo o sesión de refinamiento.
 
-- Dado que el Spike está completo, Cuando el desarrollador compila todos los hallazgos en un informe compartido, Entonces el informe incluye pros/contras, enfoque recomendado (e.g., usar
-
-  Checkout alojado vs. flujo personalizado en web/móvil), y cualquier bloqueador, y es revisado en una reunión de equipo o sesión de refinamiento.
-
-## Definition of Done (DoD)
+#### Definition of Done (DoD)
 
 - El código del PoC está registrado en una rama del repositorio.
-- El informe se comparte y revisa en una reunión de equipo o sesión de refinamiento del backlog. <u></u>Página 45 de 52 V4.0
-
-***
-
+- El informe se comparte y revisa en una reunión de equipo o sesión de refinamiento del backlog. 
 - Los hallazgos se utilizan para crear o refinar historias de implementación en el backlog.
-- El Spike está limitado a 8-16 horas y se completa dentro del sprint. <u></u>Página 46 de 52 V4.0
+- El Spike está limitado a 8-16 horas y se completa dentro del sprint. 
 
-***
+### Anexo E. Formato para Evaluación de User Experience según Heurísticas
 
-## Anexo E. Formato para Evaluación de User Experience según Heurísticas
+```markdown
+# **UX Heuristics & Principles Evaluation** 
+**Usability-Inclusive Design-Information Architecture**
 
-**UX Heuristics & Principles Evaluation** **Usability-Inclusive Design-Information Architecture**
+**CARRERA : Ingeniería de Software** 
+**CURSO : 1acc0238 Aplicaciones para dispositivos móviles** 
+**NRC :** Código de la NRC 
+**PROFESORES : Todos** 
+**AUDITOR :** Nombre del Grupo que ejecuta la Sesión de evaluación 
+**CLIENTE(S) :** Nombre de las personas que participan en la sesión
 
-**CARRERA : Ingeniería de Software** **CURSO : 1acc0238 Aplicaciones para dispositivos móviles** **NRC :** Código de la NRC **PROFESORES : Todos** **AUDITOR :** Nombre del Grupo que ejecuta la Sesión de evaluación **CLIENTE(S) :** Nombre de las personas que participan en la sesión
+NOTA: Los contenidos de este formato (en color plomo) son referidos a un sitio web de ejemplo. Use este formato como referencia de la estructura que tiene que ser entregada y elimine el contenido en plomo. Coloque su contenido con color azul. 
 
-NOTA: Los contenidos de este formato (en color plomo) son referidos a un sitio web de ejemplo. Use este formato como referencia de la estructura que tiene que ser entregada y elimine el contenido en plomo. Coloque su contenido con color azul. SITE o APP A EVALUAR: Nombre de App
+## SITE o APP A EVALUAR: 
 
-TAREAS A EVALUAR: El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas:
+Nombre de App
 
-## 1. Registro de un usuario nuevo 2. Publicación de un post
+## TAREAS A EVALUAR: 
 
-## 3. Búsqueda de un paquete turístico 4. Reserva de un viaje
+El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas:
 
-## 5. Cancelación de una reserva 6. Agregar ítems a un pedido
-
-## 7. Pago de un paquete turístico 8. Etc.
+1. Registro de un usuario nuevo 
+2. Publicación de un post
+3. Búsqueda de un paquete turístico 
+4. Reserva de un viaje
+5. Cancelación de una reserva 6. Agregar ítems a un pedido
+6. Pago de un paquete turístico 
+8. Etc.
 
 No están incluidas en esta versión de la evaluación las siguientes tareas:
 
-## 1. Compartir reservas entre usuarios 2. Presentar ofertas de último minuto
+1. Compartir reservas entre usuarios 
+2. Presentar ofertas de último minuto
+3. Administrar puntos del programa de fidelización de viajes
+4. Guardar “alerta de paquetes” 
+5. Etc.
 
-***3.*** Administrar puntos del programa de fidelización de viajes
+## ESCALA DE SEVERIDAD: 
 
-## 4. Guardar “alerta de paquetes” 5. Etc.
-
-<u></u>Página 47 de 52 V4.0
-
-***
-
-ESCALA DE SEVERIDAD: *Los errores serán puntuados tomando en cuenta la siguiente escala de severidad*
+*Los errores serán puntuados tomando en cuenta la siguiente escala de severidad*
 
 | Nivel | Descripción |
 | --- | --- |
@@ -1105,7 +1334,7 @@ ESCALA DE SEVERIDAD: *Los errores serán puntuados tomando en cuenta la siguient
 | 3 | Problema mayor: Ocurre frecuentemente o los usuarios no son capaces de resolverlos. Es importante que sean corregidos y se les debe asignar una prioridad alta. |
 | 4 | Problema muy grave: Un error de gran impacto que impide al usuario continuar con el uso de la herramienta. Es imperativo que sea corregido antes del lanzamiento. |
 
-TABLA RESUMEN:
+## TABLA RESUMEN:
 
 | # | Problema | Escala de severidad | Heurística/Principio violada(o) |
 | --- | --- | --- | --- |
@@ -1118,7 +1347,7 @@ TABLA RESUMEN:
 
 Etc.
 
-DESCRIPCIÓN DE PROBLEMAS:
+## DESCRIPCIÓN DE PROBLEMAS:
 
 *PROBLEMA #1: No hay un control que permita regresar a la tienda durante el trámite de compra*
 
@@ -1131,30 +1360,62 @@ DESCRIPCIÓN DE PROBLEMAS:
 *Recomendación:*
 
 *La más práctica es que al momento en que queramos realizar dicho trámite, el navegador lo abra en una ventana aparte para* *no perder los cambios realizados en nuestro carrito de compras.*
+```
 
-Página 48 de 52 *V4.0*
-
-***
-
-## Anexo F. Errores típicos en la traducción y uso de términos para Ingeniería de
-
-## Software
+### Anexo F. Errores típicos en la traducción y uso de términos para Ingeniería deSoftware
 
 La competencia de comunicación efectiva juega un rol fundamental en los procesos de Ingeniería de Software. El ingeniero de software debe comunicarse empleando códigos apropiados de acuerdo con la audiencia a la que se dirige, sea a través de la preparación de informes técnicos, presentaciones en proyectos colaborativos, demostraciones, entre otras actividades. En todos los casos, debe validar los atributos de calidad antes de la entrega o presentación, así como validar que el mensaje llegue satisfactoriamente.
 
 La tabla a continuación resume los errores más comunes en la traducción de términos en el área de ingeniería de software. En general, los errores de traducción se consideran errores de comunicación y son objeto de penalización.
 
-| Término original | Traducción correcta | Traducción incorrecta | Explicación |
-| --- | --- | --- | --- |
-| Library⁴ 4 Vea la traducción de library en <https://www.collinsdictionary.com/dictionary/english-spanish/library>. | Biblioteca | Librería | Error común producto de la semejanza fonética, pero biblioteca (library) y librería (bookstore) tienen significados diferentes. |
-| Requirement⁵ 5 Vea la traducción de requirement en <https://www.collinsdictionary.com/dictionary/english-spanish/requirement>. | Requisito | Requerimiento | Error común debido a la semejanza fonética, sin embargo, requisito (requirement) y requerimiento (request) tienen diferente significado. |
-| Request⁶ 6 Vea la traducción de request en <https://www.collinsdictionary.com/dictionary/english-spanish/request>. | Solicitud / Petición / Requerimiento | Requisito | Consecuencia de la traducción incorrecta de requirement. |
-| Application⁷ 7 Vea la traducción de application en <https://www.collinsdictionary.com/dictionary/english-spanish/application>. | Aplicación | Aplicativo | Aplicativo en español no existe como sustantivo. Aplicativo es un sustantivo solo en portugués. |
-| Elicit⁸ 8 Vea la traducción de elicit en <https://www.collinsdictionary.com/dictionary/english-spanish/elicit>. | Obtener | Elicitar | Elicitar no existe en español. |
+<table>
+  <thead>
+    <tr>
+      <th>Término original</th>
+      <th>Traducción correcta</th>
+      <th>Traducción incorrecta</th>
+      <th>Explicación</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><em>Library</em><sup>4</sup></td>
+      <td>Biblioteca</td>
+      <td>Librería</td>
+      <td>Error común producto de la semejanza fonética, pero biblioteca (library) y librería (bookstore) tienen significados diferentes.</td>
+    </tr>
+    <tr>
+      <td><em>Requirement</em><sup>5</sup></td>
+      <td>Requisito</td>
+      <td>Requerimiento</td>
+      <td>Error común debido a la semejanza fonética, sin embargo, requisito (requirement) y requerimiento (request) tienen diferente significado.</td>
+    </tr>
+    <tr>
+      <td><em>Request</em><sup>6</sup></td>
+      <td>Solicitud /<br>Petición /<br>Requerimiento</td>
+      <td>Requisito</td>
+      <td>Consecuencia de la traducción incorrecta de requirement.</td>
+    </tr>
+    <tr>
+      <td><em>Application</em><sup>7</sup></td>
+      <td>Aplicación</td>
+      <td>Aplicativo</td>
+      <td><em>Aplicativo</em> en español no existe como sustantivo. <em>Aplicativo</em> es un sustantivo solo en portugués.</td>
+    </tr>
+    <tr>
+      <td><em>Elicit</em><sup>8</sup></td>
+      <td>Obtener</td>
+      <td>Elicitar</td>
+      <td>Elicitar no existe en español.</td>
+    </tr>
+  </tbody>
+</table>
 
-Página 49 de 52 *V4.0*
-
-***
+<sup>4</sup> Vea la traducción de <em>library</em> en <https://www.collinsdictionary.com/dictionary/english-spanish/library>.<br>
+<sup>5</sup> Vea la traducción de <em>requirement</em> en <https://www.collinsdictionary.com/dictionary/english-spanish/requirement>.<br>
+<sup>6</sup> Vea la traducción de <em>request</em> en <https://www.collinsdictionary.com/dictionary/english-spanish/request>.<br>
+<sup>7</sup> Vea la traducción de <em>application</em> en <https://www.collinsdictionary.com/dictionary/english-spanish/application>.<br>
+<sup>8</sup> Vea la traducción de <em>elicit</em> en <https://www.collinsdictionary.com/dictionary/english-spanish/elicit>.
 
 También se considera un error el uso de forma oral o escrita de traducciones incorrectas resultado de la mutación de términos originales en inglés, de uso típico en ingeniería de software. Términos como *deploy* (desplegar), *deployment* (despliegue), *test* (probar/prueba, según el contexto de uso), *testing* (pruebas) por ejemplo, son de uso típico en ingeniería de software.
 
@@ -1166,114 +1427,77 @@ Igualmente se considera un error de comunicación, el uso del término *metodolo
 
 Ver definición de *apartado* en <https://dle.rae.es/apartado>. Ver definición de *metodología* en <https://dle.rae.es/metodología>
 
-<u></u>Página 50 de 52 V4.0
-
-***
-
-## Anexo G. Categorías de recursos bibliográficos
+### Anexo G. Categorías de recursos bibliográficos
 
 El presente anexo establece los criterios para la organización y uso de las fuentes bibliográficas en el Informe de Trabajo Final, con el objetivo de asegurar coherencia entre el sustento teórico, metodológico y tecnológico del proyecto.
 
 Las referencias incluidas en la sección de Bibliografía deben organizarse considerando las siguientes categorías:
 
-## Dominio de negocio
+#### Dominio de negocio
 
 Corresponde a las fuentes que describen el contexto del problema, el sector en el que se desarrolla la solución y las características de los segmentos objetivo.
 
 Estas fuentes deben permitir sustentar:
+   - La problemática identificada.
+   - La relevancia de la solución propuesta.
+   - Las características del entorno y del mercado.
 
-- La problemática identificada.
+Se consideran dentro de esta categoría:
+  - Artículos científicos relacionados con el dominio (por ejemplo, salud, educación, comercio electrónico, fintech, entre otros).
+  - Reportes de mercado y estudios estadísticos.
+  - Informes de organismos oficiales o entidades especializadas.
 
-- La relevancia de la solución propuesta.
+Ejemplos:
+  - Estudios sobre adopción de aplicaciones móviles en un sector específico.
+  - Reportes sobre comportamiento de usuarios en plataformas digitales.
+  - Investigaciones sobre problemáticas existentes en el dominio abordado.
 
-- Las características del entorno y del mercado.
-
-  Se consideran dentro de esta categoría:
-
-- Artículos científicos relacionados con el dominio (por ejemplo, salud, educación, comercio electrónico, fintech, entre otros).
-
-- Reportes de mercado y estudios estadísticos.
-
-- Informes de organismos oficiales o entidades especializadas.
-
-  Ejemplos:
-
-- Estudios sobre adopción de aplicaciones móviles en un sector específico.
-
-- Reportes sobre comportamiento de usuarios en plataformas digitales.
-
-- Investigaciones sobre problemáticas existentes en el dominio abordado.
-
-## Métodos y técnicas de ingeniería de software
+#### Métodos y técnicas de ingeniería de software
 
 Incluye fuentes que sustentan los enfoques, metodologías, técnicas y buenas prácticas aplicadas durante el ciclo de vida del proyecto.
 
 Estas fuentes deben permitir justificar:
+  - La selección de metodologías de desarrollo.
+  - El uso de técnicas de levantamiento y validación de requisitos.
+  - Las decisiones relacionadas con diseño y arquitectura de software.
 
-- La selección de metodologías de desarrollo.
-
-- El uso de técnicas de levantamiento y validación de requisitos.
-
-- Las decisiones relacionadas con diseño y arquitectura de software.
-
-  Se consideran dentro de esta categoría:
-
-- Enfoques ágiles (Scrum, Kanban).
-
-- Lean UX.
-
-- Domain-Driven Design (DDD).
-
-- Modelos y patrones de arquitectura de software.
-
-- Técnicas de especificación de requisitos (User Stories, Impact Mapping, entre otros). <u></u>Página 51 de 52 V4.0
-
-***
+Se consideran dentro de esta categoría:
+   - Enfoques ágiles (Scrum, Kanban).
+   - Lean UX.
+   - Domain-Driven Design (DDD).
+   - Modelos y patrones de arquitectura de software.
+   - Técnicas de especificación de requisitos (User Stories, Impact, entre otros).
 
 Ejemplos:
+  - Artículos sobre la aplicación de metodologías ágiles en desarrollo de software.
+  - Fuentes académicas que sustenten el uso de Lean UX.
+  - Documentación técnica sobre patrones arquitectónicos.
 
-- Artículos sobre la aplicación de metodologías ágiles en desarrollo de software.
-- Fuentes académicas que sustenten el uso de Lean UX.
-- Documentación técnica sobre patrones arquitectónicos.
-
-## Lenguajes, frameworks y herramientas
+### Lenguajes, frameworks y herramientas
 
 Corresponde a fuentes técnicas relacionadas con las tecnologías utilizadas en la implementación de la solución.
 
 Estas fuentes deben permitir sustentar:
+   - La selección de tecnologías.
+   - El uso de frameworks y herramientas.
+   - Las decisiones técnicas adoptadas durante el desarrollo.
 
-- La selección de tecnologías.
+Se consideran dentro de esta categoría:
+   - Lenguajes de programación utilizados en el proyecto.
+   - Frameworks de desarrollo (frontend, backend y mobile).
+   - Herramientas de diseño, modelado y gestión.
+   - APIs y servicios externos.
 
-- El uso de frameworks y herramientas.
+Ejemplos:
+   - Documentación oficial de frameworks para desarrollo móvil o web.
+   - Guías técnicas de herramientas de diseño de interfaces.
+   - Documentación de servicios REST y especificaciones como OpenAPI.
 
-- Las decisiones técnicas adoptadas durante el desarrollo.
-
-  Se consideran dentro de esta categoría:
-
-- Lenguajes de programación utilizados en el proyecto.
-
-- Frameworks de desarrollo (frontend, backend y mobile).
-
-- Herramientas de diseño, modelado y gestión.
-
-- APIs y servicios externos.
-
-  Ejemplos:
-
-- Documentación oficial de frameworks para desarrollo móvil o web.
-
-- Guías técnicas de herramientas de diseño de interfaces.
-
-- Documentación de servicios REST y especificaciones como OpenAPI.
-
-## Consideraciones generales
+### Consideraciones generales
 
 El equipo debe garantizar que:
+   - Todas las categorías descritas estén representadas en la Bibliografía.
+   - Exista coherencia entre las fuentes utilizadas y las secciones del informe.
+   - Las referencias contribuyan de manera directa al sustento del proyecto.
 
-- Todas las categorías descritas estén representadas en la Bibliografía.
-- Exista coherencia entre las fuentes utilizadas y las secciones del informe.
-- Las referencias contribuyan de manera directa al sustento del proyecto.
-
-  La correcta clasificación de las fuentes permite evidenciar un enfoque integral, alineando el contexto del problema, las decisiones metodológicas y la implementación tecnológica de la solución.
-
-<u></u>Página 52 de 52 V4.0 
+La correcta clasificación de las fuentes permite evidenciar un enfoque integral, alineando el contexto del problema, las decisiones metodológicas y la implementación tecnológica de la solución.
