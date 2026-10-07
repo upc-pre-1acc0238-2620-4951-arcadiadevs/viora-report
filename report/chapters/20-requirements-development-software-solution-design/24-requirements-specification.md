@@ -203,13 +203,13 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US01} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP01} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro de cuenta de acceso y credenciales seguras con asignación de rol} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario nuevo de Viora (Productor Olivarero o Gestor Técnico), \textbf{quiero} registrar una cuenta en la plataforma ingresando mi correo electrónico, una contraseña segura y seleccionando mi rol de trabajo, \textbf{para} darme de alta en el sistema y disponer de una identidad de acceso que me permita autenticarme.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario nuevo de Viora (Productor Olivarero o Gestor Técnico), \textbf{quiero} registrar una cuenta en la plataforma ingresando mi correo electrónico y una contraseña segura desde la aplicación móvil de mi segmento, \textbf{para} darme de alta en el sistema y disponer de una identidad de acceso con el rol asignado automáticamente según la aplicación cliente utilizada.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación exitosa de cuenta de acceso con asignación de rol}\newline
-\textbf{Given} un usuario que no posee una cuenta registrada en la plataforma.\newline
-\textbf{When} solicita su registro proporcionando un correo electrónico válido, una contraseña segura y su rol de trabajo (Productor Olivarero o Gestor Técnico).\newline
-\textbf{Then} el sistema crea la cuenta de acceso en estado activo con el rol correspondiente asignado.\newline
-\textbf{And} el usuario puede autenticarse satisfactoriamente con esas credenciales.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación exitosa de cuenta de acceso con asignación de rol por aplicación cliente}\newline
+\textbf{Given} un usuario que no posee una cuenta registrada en la plataforma y accede desde la aplicación móvil de su segmento (App Productor en Android o App Gestor en Flutter).\newline
+\textbf{When} solicita su registro proporcionando un correo electrónico válido y una contraseña segura.\newline
+\textbf{Then} el sistema crea la cuenta de acceso en estado activo con el rol correspondiente a la aplicación desde la que se registró (Productor Olivarero o Gestor Técnico).\newline
+\textbf{And} el usuario puede autenticarse satisfactoriamente en dicha aplicación con esas credenciales.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por correo electrónico ya registrado}\newline
 \textbf{Given} un usuario que intenta registrarse en el sistema.\newline
 \textbf{When} ingresa una dirección de correo electrónico que ya se encuentra asociada a una cuenta existente.\newline
@@ -219,7 +219,12 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{Given} un usuario que solicita el registro de una nueva cuenta de acceso.\newline
 \textbf{When} ingresa una contraseña que posee menos de 8 caracteres o carece de combinación alfanumérica.\newline
 \textbf{Then} el sistema rechaza la operación sin registrar la cuenta.\newline
-\textbf{And} notifica el incumplimiento de las políticas de complejidad requeridas para la contraseña.} \\ \hline
+\textbf{And} notifica el incumplimiento de las políticas de complejidad requeridas para la contraseña.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Rechazo de autenticación cruzada en aplicación de segmento no correspondiente}\newline
+\textbf{Given} un usuario registrado con rol de un segmento específico (por ejemplo, Productor Olivarero).\newline
+\textbf{When} intenta iniciar sesión en la aplicación cliente correspondiente al otro segmento (por ejemplo, App Gestor Técnico en Flutter).\newline
+\textbf{Then} el sistema rechaza el acceso informando que las credenciales corresponden a otro perfil de usuario.\newline
+\textbf{And} orienta al usuario hacia la aplicación móvil oficial correspondiente a su rol.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -884,12 +889,12 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US24} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP06} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} registrar los conteos de brotes y frutos de muestra a pie de árbol sin requerir conexión a internet, \textbf{para} asentar la densidad real de cuajado directamente en el olivar y sincronizar automáticamente las observaciones al restablecer la conectividad celular o de red.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} registrar los conteos de brotes y frutos de muestra a pie de árbol (con el diámetro de tronco como dato dendrométrico opcional) sin requerir conexión a internet, \textbf{para} asentar la densidad real de cuajado directamente en el olivar y sincronizar automáticamente las observaciones al restablecer la conectividad celular o de red.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro offline de conteo de frutos a pie de árbol}\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro offline de conteo de frutos a pie de árbol con diámetro de tronco opcional}\newline
 \textbf{Given} un productor olivarero ubicado en campo sin cobertura celular ni acceso a internet.\newline
-\textbf{When} registra el número de árbol muestreado, total de brotes observados y frutos cuajados en la muestra y confirma el guardado.\newline
-\textbf{Then} la aplicación móvil almacena el registro en la base de datos local del dispositivo.\newline
+\textbf{When} registra el número de árbol muestreado, total de brotes observados, frutos cuajados en la muestra y opcionalmente el diámetro del tronco en milímetros (\texttt{trunkDiameterMm}), confirmando el guardado.\newline
+\textbf{Then} la aplicación móvil almacena el registro en la base de datos local del dispositivo tanto si incluye el diámetro del tronco como si dicho campo opcional se deja en blanco.\newline
 \textbf{And} clasifica el muestreo como pendiente de sincronización permitiendo continuar con la evaluación de los siguientes árboles.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Sincronización automática de muestreos al recuperar conexión}\newline
 \textbf{Given} un dispositivo con muestreos de cuajado pendientes de sincronización en su almacenamiento local.\newline
@@ -1001,18 +1006,27 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US28} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP06} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro y confirmación de ejecución de aclareo en campo} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} registrar la fecha y el porcentaje real de frutos removidos durante las labores de aclareo en mi parcela, \textbf{para} asentar la ejecución de la práctica de manejo en la bitácora del lote y permitir al sistema actualizar la estimación de calibre y cosecha final.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} registrar la fecha y el porcentaje real de frutos removidos durante las labores de aclareo en mi parcela, \textbf{para} asentar la ejecución de la práctica de manejo en la bitácora del lote, estimar el estado de carga residual y, cuando exista calibración de la variedad, proyectar el rango de calibre comercial esperado.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro exitoso de intervención de aclareo ejecutada}\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro exitoso de intervención de aclareo y proyección de calibre COI}\newline
 \textbf{Given} un productor con una prescripción de aclareo activa para su predio.\newline
-\textbf{When} registra la fecha de intervención en campo y confirma el porcentaje de fruta removido según la recomendación.\newline
+\textbf{When} registra la fecha de ejecución (\texttt{executedDate}) en campo y confirma el porcentaje real de fruta removida (\texttt{actualRemovalPercentage}).\newline
 \textbf{Then} el sistema actualiza la bitácora agronómica del lote marcando la labor como ejecutada.\newline
-\textbf{And} recalcula la proyección de calibre comercial de aceituna esperado para la cosecha.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Notificación por ejecución registrada fuera de la ventana fenológica}\newline
+\textbf{And} muestra la carga residual y su estado de balance; si el modelo de la variedad se encuentra calibrado, proyecta el calibre comercial COI más probable con su intervalo de confianza al 80 \%.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Advertencia por ejecución tardía fuera de la ventana fenológica}\newline
 \textbf{Given} un productor registrando la ejecución de aclareo.\newline
 \textbf{When} la fecha ingresada es posterior a la fecha límite prescrita por endurecimiento del carozo.\newline
 \textbf{Then} el sistema guarda el registro de la labor en la bitácora.\newline
-\textbf{And} notifica una advertencia indicando que la eficacia para mitigar la vecería será reducida debido a la lignificación del carozo.} \\ \hline
+\textbf{And} notifica una advertencia indicando que la eficacia para mitigar la vecería será reducida debido a la lignificación del carozo, omitiendo la proyección de calibre por ejecución tardía fuera de ventana.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Modelo varietal en fase de calibración sin observaciones suficientes}\newline
+\textbf{Given} un lote cuya variedad aún no cuenta con el número mínimo de campañas cosechadas y liquidadas para calibrar el modelo estadístico.\newline
+\textbf{When} el productor confirma la ejecución del aclareo.\newline
+\textbf{Then} el sistema calcula y exhibe el balance de carga residual.\newline
+\textbf{And} clasifica la proyección de calibre en estado 'En calibración', informando cuántas campañas adicionales de liquidación se requieren sin arrojar cifras no respaldadas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Carga residual fuera de rango biológico admisible}\newline
+\textbf{Given} un lote donde la intensidad de remoción informada resulta en una carga residual fuera del dominio experimental de calibración (por ejemplo, 100 \% de defrutado o sobrecarga extrema sin aclareo efectivo).\newline
+\textbf{When} el sistema evalúa la proyección de tamaño de fruto.\newline
+\textbf{Then} marca el estado de proyección como no aplicable o no estimado, absteniéndose de extrapolar calibres fuera del rango de validez del modelo.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1027,16 +1041,20 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US29} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP07} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} asentar formalmente el pesaje real de cosecha al término de la temporada discriminando kilos de aceituna verde y negra, \textbf{para} formalizar la liquidación de entrega y auditar la curva interanual de atenuación de vecería.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} asentar formalmente el pesaje real de cosecha al término de la temporada discriminando kilos de aceituna verde y negra e indicando opcionalmente el calibre comercial de venta (\texttt{commercialFruitsPerKg}), \textbf{para} formalizar la liquidación de entrega, alimentar la calibración empírica del modelo varietal y auditar la curva interanual de atenuación de vecería.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Asentamiento exitoso de liquidación de cosecha}\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Asentamiento exitoso de liquidación de cosecha con calibre comercial opcional}\newline
 \textbf{Given} la culminación de las faenas de cosecha de la campaña en curso.\newline
-\textbf{When} el productor o la almazara asienta los kilogramos recolectados (\texttt{greenOlivesKg} y \texttt{blackOlivesKg}).\newline
-\textbf{Then} el sistema emite el comprobante inmutable de liquidación, actualiza la curva de estabilización productiva y bloquea el año contra modificaciones no autorizadas.} \\
+\textbf{When} el productor o la almazara asienta los kilogramos recolectados (\texttt{greenOlivesKg} y \texttt{blackOlivesKg}) e ingresa opcionalmente el calibre comercial de venta (\texttt{commercialFruitsPerKg} en escala COI).\newline
+\textbf{Then} el sistema emite el comprobante inmutable de liquidación, registra la observación para calibración de calibre, actualiza la curva de estabilización productiva y bloquea el año contra modificaciones no autorizadas.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Campaña previamente liquidada}\newline
 \textbf{Given} un intento de registrar un pesaje sobre una campaña ya asentada.\newline
 \textbf{When} el sistema valida la unicidad anual.\newline
-\textbf{Then} responde con código \texttt{409 Conflict} preservando la inmutabilidad de auditoría.} \\ \hline
+\textbf{Then} responde con código \texttt{409 Conflict} preservando la inmutabilidad de auditoría.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Calibre comercial fuera de rango biológico admisible}\newline
+\textbf{Given} un registro de liquidación que incluye el dato opcional de calibre de venta.\newline
+\textbf{When} el valor de \texttt{commercialFruitsPerKg} es menor o igual a cero o excede el límite agronómico de frutos por kilogramo configurable en el sistema.\newline
+\textbf{Then} el sistema rechaza la solicitud notificando error de validación biológica (\texttt{400 Bad Request}).} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1302,18 +1320,19 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US40} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Visitante} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP09} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Redirección y acceso a la descarga oficial de la aplicación móvil} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Visitante, \textbf{quiero} disponer de accesos directos hacia los repositorios oficiales de distribución móvil, \textbf{para} descargar e instalar la aplicación en mi dispositivo e iniciar mi experiencia en la plataforma.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Visitante, \textbf{quiero} distinguir accesos directos hacia las aplicaciones móviles oficiales según mi segmento (App Productor Olivarero en Android/Kotlin o App Gestor Técnico en Flutter), \textbf{para} descargar e instalar la aplicación correspondiente a mi actividad e iniciar mi experiencia en la plataforma.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Acceso guiado a la descarga según la plataforma del dispositivo}\newline
-\textbf{Given} un visitante que decide adoptar la solución móvil de Viora.\newline
-\textbf{When} solicita el acceso a la descarga de la aplicación.\newline
-\textbf{Then} el sistema provee el enlace directo y verificado hacia la tienda oficial de distribución de aplicaciones correspondiente al sistema operativo del usuario.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Acceso guiado a la descarga según segmento y plataforma del dispositivo}\newline
+\textbf{Given} un visitante que decide adoptar una solución móvil de Viora.\newline
+\textbf{When} solicita el acceso a la descarga diferenciada para Productor Olivarero o Gestor Técnico.\newline
+\textbf{Then} el sistema provee los enlaces directos y verificados hacia los repositorios oficiales de distribución móvil según el segmento y sistema operativo seleccionado.\newline
 \textbf{And} confirma los requisitos mínimos de compatibilidad del sistema operativo para una instalación exitosa.\newline
-\textbf{And} los botones y badges de descarga se adaptan al ancho de pantalla manteniendo un área táctil mínima de 48 por 48 píxeles en dispositivos móviles.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Orientación de primeros pasos al completar la instalación}\newline
-\textbf{Given} un visitante que finaliza la instalación de la aplicación móvil.\newline
+\textbf{And} los botones y badges de descarga mantienen un área táctil mínima de 48 por 48 píxeles en dispositivos móviles.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Orientación de primeros pasos al completar la instalación sin ambigüedad de segmentos}\newline
+\textbf{Given} un visitante que finaliza la instalación de la aplicación móvil específica de su segmento.\newline
 \textbf{When} abre la aplicación por primera vez en su dispositivo.\newline
-\textbf{Then} el sistema ofrece la alternativa de iniciar sesión con credenciales previas o activar una nueva cuenta de productor olivarero o cooperativa.} \\ \hline
+\textbf{Then} el sistema ofrece la alternativa de iniciar sesión con credenciales previas o crear una nueva cuenta del segmento correspondiente a la aplicación instalada (Productor Olivarero o Gestor Técnico).\newline
+\textbf{And} omite cualquier referencia a tipos de cuenta corporativa o de cooperativa no contemplados en el modelo de roles del sistema.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1398,6 +1417,8 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{And} resalta los campos requeridos solicitando su debido diligenciamiento.} \\ \hline
 \end{longtable}
 \endgroup
+
+
 
 \clearpage
 
@@ -1745,20 +1766,24 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS14} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización y rectificación integral de parcela con bloqueo optimista} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los datos actualizados de la parcela junto con la cabecera de control de versión a la API, \textbf{para} rectificar linderos poligonales, densidad de árboles o nombre del lote previniendo colisiones de concurrencia.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los datos actualizados de la parcela mediante el método PUT junto con el parámetro de ruta \texttt{{plotId}}, la cabecera \texttt{If-Match} y los datos en el cuerpo JSON, \textbf{para} rectificar linderos poligonales, marco de plantación o atributos agronómicos previniendo colisiones de concurrencia.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Actualización exitosa con control de concurrencia}\newline
-\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} con cabecera \texttt{If-Match} conteniendo la versión actual y cuerpo JSON con los datos modificados.\newline
-\textbf{When} la API valida la titularidad, verifica que la versión coincida, recalcula la superficie si variaron las coordenadas y persiste los cambios.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{PlotResource} actualizado con nueva cabecera ETag.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Conflicto de versión por modificación concurrente}\newline
-\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} con una cabecera \texttt{If-Match} que difiere de la versión persistida en el almacén de datos.\newline
-\textbf{When} el interceptor de concurrencia optimista detecta conflicto de modificación simultánea.\newline
-\textbf{Then} la API responde \texttt{412 Precondition Failed} bajo el estándar RFC 7807 impidiendo sobreescrituras concurrentes.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado sobre parcela ajena}\newline
-\textbf{Given} una solicitud PUT enviada por un usuario no propietario del predio.\newline
-\textbf{When} la API evalúa la titularidad en el contexto de inventario parcelario.\newline
-\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Actualización exitosa con control de concurrencia (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} con parámetro de ruta \texttt{plotId}, cabecera \texttt{If-Match} conteniendo el ETag de la versión actual y cuerpo JSON con \texttt{name}, \texttt{cultivar}, \texttt{plantingYear}, \texttt{spacing}, \texttt{coordinates} e \texttt{irrigationType}.\newline
+\textbf{When} la API valida la titularidad del predio, comprueba que la versión en \texttt{If-Match} coincida con la persistida, recalcula la superficie geodésica si variaron las coordenadas y persiste los cambios.\newline
+\textbf{Then} la API responde \texttt{200 OK}, retorna \texttt{PlotResponse} actualizado y emite una nueva cabecera \texttt{ETag} con la versión incrementada.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Conflicto de concurrencia optimista por versión desactualizada (HTTP 412 Precondition Failed)}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} donde el valor de la cabecera \texttt{If-Match} no coincide con la versión actual del recurso en la base de datos.\newline
+\textbf{When} el interceptor de concurrencia optimista detecta el conflicto de modificación concurrente.\newline
+\textbf{Then} la API responde \texttt{412 Precondition Failed} bajo el estándar RFC 7807 (\texttt{ProblemDetail}), impidiendo sobreescrituras simultáneas y preservando la integridad del registro.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parámetros inválidos o inconsistencia en linderos geométricos (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} cuyo cuerpo contiene coordenadas poligonales no cerradas, valores nulos requeridos o datos agronómicos fuera de rango admisible.\newline
+\textbf{When} el validador de contratos procesa el cuerpo de la petición.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} detallando las violaciones de validación de campos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Cuartel no encontrado en el inventario (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} con un identificador \texttt{plotId} inexistente o archivado.\newline
+\textbf{When} el servicio de dominio consulta el repositorio parcelario.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1997,16 +2022,20 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS24} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro y sincronización de muestreos guiados de cuajado en campo} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los registros de conteo de frutos y brotes tomados a pie de árbol a la API, \textbf{para} sincronizar los muestreos offline y calcular la carga frutal del predio.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los registros de conteo de frutos y brotes tomados a pie de árbol mediante el método POST con parámetro de ruta \texttt{{plotId}} y cuerpo JSON con árboles evaluados (incluyendo el diámetro de tronco como atributo opcional nullable), \textbf{para} sincronizar los muestreos offline y calcular la carga frutal del predio sin bloquear el proceso si no se midió el tronco.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Sincronización exitosa de lote de muestreos}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} con cuerpo JSON conteniendo la lista de árboles evaluados con número de brotes y frutos observados.\newline
-\textbf{When} la API valida los conteos, calcula el promedio de frutos por brote y la carga estimada del predio.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{SamplingBatchResource} con el resumen del lote de muestreos.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Datos de muestreo inconsistentes}\newline
-\textbf{Given} una solicitud POST con conteos negativos o árbol duplicado en el mismo lote de muestreo.\newline
-\textbf{When} la API valida la consistencia agronómica.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Sincronización exitosa de lote de muestreos con o sin diámetro de tronco (HTTP 201 Created)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} con parámetro de ruta \texttt{plotId} y cuerpo JSON con \texttt{campaignYear}, \texttt{samplingDate} y el arreglo \texttt{trees} (\texttt{treeNumber}, \texttt{shootsCount}, \texttt{fruitsCount}, y \texttt{trunkDiameterMm} como atributo opcional nullable).\newline
+\textbf{When} la API valida los conteos, comprueba la existencia de la parcela, procesa los registros admitiendo la presencia o ausencia de \texttt{trunkDiameterMm} sin exigir su medición obligatoria y computa la tasa promedio de frutos por brote.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando \texttt{SamplingBatchResponse} con \texttt{treesSampled}, \texttt{averageFruitPerShoot}, \texttt{cropLoadIndex} y el estado de suficiencia estadística.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por conteos negativos o incongruencia biológica (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} con conteos negativos, números de árbol duplicados en el mismo lote o valores de frutos por brote biológicamente inverosímiles.\newline
+\textbf{When} el servicio de validación evalúa la integridad agronómica del lote.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} indicando las violaciones de restricción del lote de muestreo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela no encontrada en el repositorio (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} con un parámetro de ruta \texttt{plotId} inexistente en el sistema.\newline
+\textbf{When} la API intenta asociar el lote de muestreo al predio.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2045,17 +2074,17 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS26} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de prescripción técnica de aclareo y ventana fenológica} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la prescripción agronómica de regulación de carga a la API, \textbf{para} desplegar el porcentaje de remoción recomendado y la fecha límite antes del endurecimiento del carozo.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar la prescripción agronómica activa mediante el método GET al endpoint \url{/api/v1/plots/{plotId}/thinning-prescriptions/active} con parámetro de ruta \texttt{{plotId}}, \textbf{para} desplegar el porcentaje de remoción recomendado, la ventana fenológica de intervención y la lista explícita de bloqueadores en caso de información faltante.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Prescripción generada satisfactoriamente}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/thinning-prescriptions} con muestreos suficientes en el lote.\newline
-\textbf{When} la API compara la carga real frente a la capacidad fisiológica del árbol y calcula la fecha límite fenológica.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{ThinningPrescriptionResource} con el porcentaje de remoción frutal sugerido, fecha inicio, fecha límite antes de lignificación del carozo y diagnóstico de sobrecarga (> 30\%).\newline
-\textbf{And} entrega las instrucciones operativas de aclareo manual o mecánico.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Muestreo insuficiente para emitir prescripción}\newline
-\textbf{Given} una solicitud GET en un lote con menos de 5 árboles evaluados.\newline
-\textbf{When} la API evalúa la representatividad.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request} indicando que no es posible formular prescripciones sin alcanzar la muestra mínima.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de prescripción activa o bloqueadores diagnósticos (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/thinning-prescriptions/active} con parámetro de ruta \texttt{plotId}.\newline
+\textbf{When} la API evalúa la representatividad del muestreo y la fecha de plena floración registrada para el cuartel.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{ThinningPrescriptionResponse} conteniendo: \texttt{status}, \texttt{targetRemovalPercentage}, \texttt{recommendedWindowStart}, \texttt{recommendedWindowEnd}, \texttt{phenologicalStage}, \texttt{isOverloaded}, la lista explícita \texttt{blockers} (por ejemplo, \texttt{SAMPLING\_NOT\_REPRESENTATIVE} o \texttt{FULL\_BLOOM\_MISSING}) e instrucciones operativas de manejo.\newline
+\textbf{And} entrega las orientaciones técnicas para desbloquear la prescripción en caso de requerir mediciones adicionales.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cuartel no encontrado o sin prescripción activa (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/thinning-prescriptions/active} con un identificador \texttt{plotId} inexistente o que no posee ninguna prescripción emitida en la campaña.\newline
+\textbf{When} el servicio de aplicación consulta el contexto de aclareo.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2070,20 +2099,24 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS27} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Confirmación y registro de ejecución de labor de aclareo en campo} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la confirmación de la labor de aclareo ejecutada a la API, \textbf{para} registrar la fecha de intervención y recalcular la proyección de calibre comercial.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la confirmación de ejecución de aclareo mediante el método POST a \url{/api/v1/plots/{plotId}/thinning-prescriptions/active/confirmations} con parámetro de ruta \texttt{{plotId}} y cuerpo JSON (\texttt{executedDate}, \texttt{actualRemovalPercentage}, \texttt{removedKg}, \texttt{laborCrewSize}, \texttt{notes}), \textbf{para} asentar la práctica en la bitácora, actualizar el balance de carga residual y proyectar el calibre comercial COI.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro exitoso de ejecución de aclareo}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/thinning-prescriptions/{id}/execution-confirmations} con cuerpo JSON: \texttt{executionDate}, \texttt{actualRemovalPercentage} y \texttt{notes}.\newline
-\textbf{When} la API valida que el porcentaje esté entre 0\% y 100\% y persiste la intervención agronómica.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{ExecutionConfirmationResource} con el nuevo balance de carga y calibre proyectado.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Porcentaje de remoción fuera de rango}\newline
-\textbf{Given} una solicitud POST con un porcentaje mayor al 100\% o negativo.\newline
-\textbf{When} la API valida la entrada.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Prescripción inexistente o ya confirmada}\newline
-\textbf{Given} una solicitud POST dirigida a una prescripción inexistente o que ya fue confirmada previamente.\newline
-\textbf{When} el servicio de aplicación evalúa el estado del agregado.\newline
-\textbf{Then} la API responde \texttt{404 Not Found} o \texttt{409 Conflict} según corresponda.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Confirmación exitosa con balance de carga y proyección de calibre COI (HTTP 201 Created)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/thinning-prescriptions/active/confirmations} con parámetro de ruta \texttt{plotId} y cuerpo JSON con \texttt{executedDate}, \texttt{actualRemovalPercentage} (entre 0 y 100), \texttt{removedKg}, \texttt{laborCrewSize} y \texttt{notes}.\newline
+\textbf{When} la API valida los campos, registra la confirmación de aclareo en la bitácora del cuartel y evalúa la proyección de calibre según la calibración del modelo de la variedad.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando \texttt{ExecutionConfirmationResponse} conteniendo \texttt{id}, \texttt{executedDate}, \texttt{actualRemovalPercentage}, \texttt{loadBalance} (\texttt{residualLoadIndex}, \texttt{loadState}), \texttt{caliberProjection} (\texttt{status}: \texttt{ESTIMATED} o \texttt{IN\_CALIBRATION}, \texttt{probableGrade}, \texttt{confidenceInterval80}) y la marca temporal de confirmación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Confirmación con 100 \% de remoción y calibre no aplicable (HTTP 201 Created)}\newline
+\textbf{Given} una solicitud POST donde \texttt{actualRemovalPercentage} es igual a 100.0 (defrutado total sanitario o severo).\newline
+\textbf{When} la API registra la intervención en el predio.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando el balance con carga residual en cero y \texttt{caliberProjection.status} en \texttt{NOT\_APPLICABLE}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Porcentaje de remoción fuera de rango o fecha inválida (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud POST con un porcentaje de remoción negativo, mayor a 100 \% o una fecha de ejecución futura.\newline
+\textbf{When} el servicio valida las restricciones de dominio agronómico.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Cuartel o prescripción activa inexistente (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud POST dirigida a un \texttt{plotId} inexistente o que carece de prescripción activa susceptible de confirmación.\newline
+\textbf{When} el servicio consulta el agregado en el contexto de Thinning.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2379,20 +2412,24 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS39} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Asentamiento formal y balance de liquidación de cosecha de fin de campaña} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar el pesaje formal definitivo de cosecha (aceituna verde y negra) al cierre de campaña a la API, \textbf{para} asentar la liquidación oficial de la parcela, computar el balance contra la prescripción y congelar el expediente de campaña.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la liquidación formal de cosecha mediante el método POST a \url{/api/v1/plots/{plotId}/harvest-settlements} con parámetro de ruta \texttt{{plotId}} y cuerpo JSON (\texttt{campaignYear}, \texttt{greenOlivesKg}, \texttt{blackOlivesKg}, \texttt{commercialFruitsPerKg}, \texttt{notes}), \textbf{para} asentar la balanza oficial de fin de campaña, computar el balance frente a la prescripción y congelar la curva de estabilización interanual.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Asentamiento exitoso de liquidación de cosecha}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/harvest-settlements} con cuerpo JSON: \texttt{campaignYear}, \texttt{greenYieldKg}, \texttt{blackYieldKg} y \texttt{settlementNotes}.\newline
-\textbf{When} la API valida la titularidad del predio, comprueba que el año no haya sido liquidado previamente, computa el tonelaje total y registra la liquidación oficial.\newline
-\textbf{Then} la API responde \texttt{201 Created}, retorna \texttt{HarvestSettlementResource} con el balance de campaña y emite \texttt{CampaignHarvestSettledEvent}.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Campaña ya liquidada previamente para la parcela}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/harvest-settlements} para un año agrícola que ya cuenta con liquidación formal asentada.\newline
-\textbf{When} el servicio de aplicación detecta conflicto de duplicidad de cierre.\newline
-\textbf{Then} la API responde \texttt{409 Conflict} impidiendo la sobreescritura del balance definitivo.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Pesajes inconsistentes o valores negativos}\newline
-\textbf{Given} una solicitud POST con cifras de kilogramos negativas o incongruentes.\newline
-\textbf{When} la API valida las restricciones de dominio agronómico.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Asentamiento exitoso de liquidación de cosecha con balance y estabilización (HTTP 201 Created)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/harvest-settlements} con parámetro de ruta \texttt{plotId} y cuerpo JSON con \texttt{campaignYear}, \texttt{greenOlivesKg}, \texttt{blackOlivesKg}, \texttt{commercialFruitsPerKg} opcional y \texttt{notes}.\newline
+\textbf{When} la API valida la titularidad, comprueba que la suma total de kilos sea estrictamente positiva, comprueba que la campaña no haya sido liquidada previamente, computa el balance frente a la prescripción de aclareo (\texttt{thinningBalance}) y calcula la curva de estabilización de vecería (\texttt{stabilization}: índice de Hoblyn y ARR).\newline
+\textbf{Then} la API responde \texttt{201 Created}, retorna \texttt{HarvestSettlementResource} con el desglose auditado y publica el evento de dominio \texttt{CampaignHarvestSettledEvent}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parámetros inválidos o inconsistencia en pesajes (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud POST con kilogramos negativos, total de cosecha igual a cero, año de campaña fuera de rango (2000–2100) o calibre comercial menor o igual a cero.\newline
+\textbf{When} el validador de dominio procesa el cuerpo del mensaje.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} indicando los errores de restricción de datos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela no encontrada o inactiva (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud POST con un identificador \texttt{plotId} inexistente en el contexto de inventario parcelario.\newline
+\textbf{When} la API busca el cuartel en el repositorio.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Conflicto por campaña ya liquidada previamente (HTTP 409 Conflict)}\newline
+\textbf{Given} una solicitud POST dirigida a un año de campaña agrícola que ya cuenta con una liquidación formal registrada e inmutable para dicha parcela.\newline
+\textbf{When} el servicio de aplicación valida la regla de unicidad anual de cierre de campaña.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} impidiendo la sobreescritura de los pesajes oficiales.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2407,20 +2444,28 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS40} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Certificación criptográfica colegiada del expediente agronómico inmutable} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la rúbrica y número de colegiatura del profesional agronómico a la API, \textbf{para} certificar oficialmente el expediente de la parcela y generar el hash criptográfico SHA-256 inmutable de auditoría.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} registrar la certificación colegiada del expediente mediante el método POST a \url{/api/v1/plots/{plotId}/certifications} con parámetro de ruta \texttt{{plotId}} y cuerpo JSON (\texttt{campaignYear}, \texttt{auditorSignature}, \texttt{certifiedBy}, \texttt{cipNumber}, \texttt{notes}), \textbf{para} sellar el dossier técnico de la campaña y generar la huella criptográfica SHA-256 inmutable de no repudiación.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Certificación exitosa y generación de hash criptográfico}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/agronomic-reports/certifications} con cuerpo JSON: \texttt{campaignYear}, \texttt{certifiedBy}, \texttt{cipNumber} y \texttt{certificationNotes}.\newline
-\textbf{When} la API valida la existencia de la liquidación de cosecha, compila el estado integral del expediente y computa la huella digital criptográfica SHA-256.\newline
-\textbf{Then} la API responde \texttt{201 Created}, retorna \texttt{DossierCertificationResource} con el hash de verificación y emite \texttt{AgronomicDossierGeneratedEvent}.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Intento de doble certificación sobre expediente auditado}\newline
-\textbf{Given} una solicitud POST sobre una campaña que ya cuenta con certificación colegiada emitida.\newline
-\textbf{When} la API evalúa la inmutabilidad del expediente.\newline
-\textbf{Then} la API responde \texttt{409 Conflict} garantizando la no repudiación del documento.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela sin liquidación de campaña previa}\newline
-\textbf{Given} una solicitud POST sobre una parcela cuya campaña aún no ha sido liquidada formalmente.\newline
-\textbf{When} el servicio de dominio verifica las precondiciones de auditoría.\newline
-\textbf{Then} la API responde \texttt{422 Unprocessable Entity}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Emisión exitosa de certificación colegiada y hash SHA-256 (HTTP 201 Created)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/certifications} con parámetro de ruta \texttt{plotId} y cuerpo JSON con \texttt{campaignYear}, \texttt{auditorSignature}, \texttt{certifiedBy}, \texttt{cipNumber} y \texttt{notes}.\newline
+\textbf{When} la API comprueba que la campaña especificada cuenta con liquidación oficial previa, compila el expediente documental y calcula la huella criptográfica SHA-256 inmutable.\newline
+\textbf{Then} la API responde \texttt{201 Created}, retorna \texttt{DossierCertificationResource} conteniendo \texttt{certificationId}, \texttt{plotId}, \texttt{campaignYear}, \texttt{verificationHash}, \texttt{auditorSignature}, \texttt{certifiedBy}, \texttt{cipNumber} y \texttt{certifiedAt}, y emite el evento \texttt{AgronomicDossierGeneratedEvent}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Datos de firma o colegiatura inválidos (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud POST con campos de firma en blanco, número CIP que excede los 20 caracteres o notas mayores a 1000 caracteres.\newline
+\textbf{When} la API procesa y valida los atributos del comando.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} detallando las inconsistencias de validación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela no encontrada o inactiva (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud POST dirigida a un \texttt{plotId} que no existe en el catálogo parcelario.\newline
+\textbf{When} la API evalúa la existencia del cuartel.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Precondición incumplida por campaña sin liquidación formal (HTTP 422 Unprocessable Content)}\newline
+\textbf{Given} una solicitud POST sobre una campaña agrícola que aún no ha completado su proceso de liquidación oficial de cosecha.\newline
+\textbf{When} el servicio de dominio valida las precondiciones de certificación documental.\newline
+\textbf{Then} la API responde \texttt{422 Unprocessable Content} indicando la violación de regla de negocio.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Conflicto por expediente previamente certificado (HTTP 409 Conflict)}\newline
+\textbf{Given} una solicitud POST sobre una campaña que ya dispone de un expediente colegiado certificado e inmutable.\newline
+\textbf{When} el sistema verifica la unicidad de certificación de la campaña.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} preservando la no repudiación del expediente.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2463,20 +2508,24 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS42} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los factores de calibración y offset ambiental al nodo sensor registrado en la API, \textbf{para} ajustar las lecturas telemétricas según las condiciones de suelo y microclima del lote.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los parámetros de calibración mediante el método PUT al endpoint \url{/api/v1/plots/{plotId}/iot-devices/{deviceId}} con parámetros de ruta \texttt{{plotId}}, \texttt{{deviceId}} y cabecera \texttt{If-Match}, \textbf{para} ajustar las lecturas telemétricas según las condiciones edafoclimáticas del predio previniendo inconsistencias de concurrencia.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Calibración exitosa de nodo sensor virtual}\newline
-\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}/iot-devices/{deviceId}} con cuerpo JSON conteniendo \texttt{temperatureOffset}, \texttt{humidityOffset}, \texttt{soilCorrectionFactor} y \texttt{calibrationNotes}.\newline
-\textbf{When} la API valida la titularidad del lote, comprueba el estado activo de la sonda y aplica los factores de corrección edafoclimática.\newline
-\textbf{Then} la API responde \texttt{200 OK}, retorna \texttt{DeviceResource} actualizado y persiste los coeficientes de calibración.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Dispositivo inexistente o desvinculado de la parcela}\newline
-\textbf{Given} una solicitud PUT hacia un identificador de sonda no vinculado a la parcela especificada.\newline
-\textbf{When} la API consulta el inventario telemétrico.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Calibración exitosa de sonda IoT con concurrencia optimista (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}/iot-devices/{deviceId}} con parámetros de ruta \texttt{plotId} y \texttt{deviceId}, cabecera \texttt{If-Match} con el ETag de versión actual y cuerpo JSON con \texttt{multiplier}, \texttt{temperatureOffset}, \texttt{humidityOffset} y \texttt{soilCorrectionFactor}.\newline
+\textbf{When} la API valida la titularidad del cuartel, verifica la coincidencia del ETag de versión, comprueba que el dispositivo esté activo y persiste los nuevos coeficientes de calibración.\newline
+\textbf{Then} la API responde \texttt{200 OK}, retorna \texttt{IoTDeviceResponse} actualizado y emite una nueva cabecera \texttt{ETag}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parámetros de calibración fuera de rangos admisibles (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud PUT con un multiplicador menor o igual a cero o valores de offset que exceden los límites físicos de medición de la sonda.\newline
+\textbf{When} el validador de dominio procesa la carga útil.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} indicando las restricciones físicas violadas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Dispositivo o cuartel no encontrado (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud PUT con un \texttt{plotId} o \texttt{deviceId} inexistente o donde el dispositivo no pertenece a la parcela indicada.\newline
+\textbf{When} la API busca el dispositivo en el catálogo telemétrico.\newline
 \textbf{Then} la API responde \texttt{404 Not Found}.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parámetros de calibración fuera del rango físico admisible}\newline
-\textbf{Given} una solicitud PUT con valores de offset que exceden los límites físicos tolerados.\newline
-\textbf{When} el validador de dominio procesa los atributos.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Conflicto de versión por concurrencia optimista (HTTP 412 Precondition Failed)}\newline
+\textbf{Given} una solicitud PUT donde el valor de la cabecera \texttt{If-Match} no coincide con la versión actual de la sonda en la base de datos.\newline
+\textbf{When} el interceptor de concurrencia detecta una modificación simultánea previa.\newline
+\textbf{Then} la API responde \texttt{412 Precondition Failed} bajo el estándar RFC 7807.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2489,26 +2538,336 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS43} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Rectificación de pesaje y baja de registro erróneo de cosecha en histórico fenológico} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Rectificación de pesaje de cosecha anual con bloqueo optimista} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar solicitudes de rectificación o eliminación de pesajes de cosecha pasados a la API, \textbf{para} subsanar errores de digitación en campañas históricas y recomputar el Índice de Vecería (BBI) del olivar.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar una solicitud de rectificación de pesaje mediante el método PUT a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con parámetros de ruta \texttt{{plotId}}, \texttt{{recordId}}, cabecera \texttt{If-Match} y cuerpo JSON (\texttt{rectifiedYieldKg}, \texttt{rectificationReason}), \textbf{para} corregir inconsistencias en pesajes históricos y recomputar reactivamente el Índice de Vecería (BBI).} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Rectificación exitosa de pesaje histórico de campaña}\newline
-\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con cuerpo JSON: \texttt{rectifiedYieldKg} y \texttt{rectificationReason}.\newline
-\textbf{When} la API valida la titularidad, verifica que el valor sea positivo, actualiza el pesaje en la serie histórica y dispara el recálculo reactivo del BBI.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{HarvestRecordResource} actualizado.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Baja física de registro erróneo de cosecha}\newline
-\textbf{Given} una solicitud DELETE a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} emitida por el titular de la parcela.\newline
-\textbf{When} la API valida la propiedad y elimina el registro erróneo del histórico productivo.\newline
-\textbf{Then} la API responde \texttt{204 No Content} y actualiza el balance plurianual.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Registro de cosecha inexistente}\newline
-\textbf{Given} una solicitud PUT o DELETE sobre un \texttt{recordId} no registrado.\newline
-\textbf{When} la API consulta la persistencia.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Rectificación exitosa de pesaje histórico con recálculo de BBI (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con parámetros de ruta \texttt{plotId} y \texttt{recordId}, cabecera \texttt{If-Match} con la versión actual y cuerpo JSON con \texttt{rectifiedYieldKg} y \texttt{rectificationReason}.\newline
+\textbf{When} la API valida la titularidad, verifica que el pesaje sea estrictamente positivo, actualiza la serie histórica fenológica, recálcula reactivamente el Índice de Vecería (BBI) del cuartel y persiste la auditoría de rectificación.\newline
+\textbf{Then} la API responde \texttt{200 OK}, retorna \texttt{HarvestRecordResponse} actualizado y emite la cabecera \texttt{ETag} con la versión actualizada.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Datos de rectificación inconsistentes o motivo insuficiente (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud PUT con \texttt{rectifiedYieldKg} menor o igual a cero o con un motivo de rectificación ausente o con menos de 10 caracteres.\newline
+\textbf{When} el validador procesa el cuerpo de la petición.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Registro de cosecha o cuartel no encontrado (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud PUT hacia un \texttt{plotId} o \texttt{recordId} inexistente en el repositorio fenológico.\newline
+\textbf{When} el servicio consulta la persistencia de cosechas.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Conflicto de concurrencia optimista en rectificación (HTTP 412 Precondition Failed)}\newline
+\textbf{Given} una solicitud PUT donde la cabecera \texttt{If-Match} no coincide con la versión actual del registro de cosecha.\newline
+\textbf{When} el interceptor detecta colisión de modificaciones concurrentes.\newline
+\textbf{Then} la API responde \texttt{412 Precondition Failed} previniendo sobreescrituras desfasadas.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS44} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Restauración de cuartel olivícola archivado} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la restauración de una parcela dada de baja mediante el método POST a \url{/api/v1/plots/{plotId}/restore} con parámetro de ruta \texttt{{plotId}}, \textbf{para} reintegrar el cuartel al inventario productivo activo sin pérdida de historial ni geometrías.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Restauración exitosa de cuartel archivado (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/restore} con parámetro de ruta \texttt{plotId} correspondiente a un cuartel previamente eliminado de manera lógica (\texttt{ARCHIVED}).\newline
+\textbf{When} la API valida la titularidad del predio y reactiva el estado operativo del cuartel a \texttt{ACTIVE}.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{PlotResponse} con estado activo y emite una cabecera \texttt{ETag} actualizada.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cuartel no encontrado en el sistema (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/restore} con un identificador \texttt{plotId} que no existe en el repositorio.\newline
+\textbf{When} la API busca el cuartel en el almacén de datos.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Conflicto por cuartel que ya se encuentra activo (HTTP 409 Conflict)}\newline
+\textbf{Given} una solicitud POST dirigida a un cuartel cuyo estado actual ya es \texttt{ACTIVE}.\newline
+\textbf{When} el servicio evalúa las transiciones de ciclo de vida del predio.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} notificando que el cuartel no se encuentra archivado.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS45} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Eliminación de registro erróneo de cosecha en histórico fenológico} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} eliminar un pesaje de cosecha asentado por error mediante el método DELETE a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con parámetros de ruta \texttt{{plotId}} y \texttt{{recordId}}, \textbf{para} purgar datos anómalos del historial y recalcular el Índice de Vecería (BBI) del cuartel.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Eliminación exitosa de registro de cosecha (HTTP 204 No Content)}\newline
+\textbf{Given} una solicitud DELETE a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con parámetros de ruta \texttt{plotId} y \texttt{recordId}.\newline
+\textbf{When} la API valida la titularidad del predio, elimina el registro erróneo del histórico plurianual y recomputa reactivamente el balance y el índice BBI del cuartel.\newline
+\textbf{Then} la API responde \texttt{204 No Content} con cuerpo vacío confirmando la remoción definitiva del registro.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Registro de cosecha o cuartel no encontrado (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud DELETE con un identificador \texttt{plotId} o \texttt{recordId} inexistente en el repositorio fenológico.\newline
+\textbf{When} la API verifica la existencia del registro en la base de datos.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS46} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta global de incidentes agroclimáticos con contadores y filtrado} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar la lista general de incidentes mediante el método GET al endpoint \url{/api/v1/agroclimatic-incidents} con parámetros de consulta de estado y paginación, \textbf{para} poblar el centro de alertas de la aplicación móvil y desplegar los contadores de severidad territorial.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta paginada exitosa con contadores de severidad (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/agroclimatic-incidents} con parámetros de consulta opcionales \texttt{activeOnly}, \texttt{status}, \texttt{page} y \texttt{size}.\newline
+\textbf{When} la API consulta el contexto de telemetría y evalúa los incidentes de helada, ola de calor y estrés hídrico registrados para las parcelas del usuario.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando una lista paginada de \texttt{AgroclimaticIncidentResponse} junto con contadores consolidados por nivel de severidad (\texttt{CRITICAL}, \texttt{WARNING}, \texttt{INFO}).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parámetros de consulta con formato inválido (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/agroclimatic-incidents} con un valor no reconocido para \texttt{status} o paginación negativa.\newline
+\textbf{When} la capa de transporte valida los parámetros de consulta.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} detallando el error de sintaxis en los parámetros.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS47} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de incidentes agroclimáticos asociados a un cuartel específico} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar los incidentes agroclimáticos de una parcela mediante el método GET a \url{/api/v1/plots/{plotId}/agroclimatic-incidents} con parámetro de ruta \texttt{{plotId}} y filtros de consulta, \textbf{para} desplegar los riesgos agroclimáticos y recomendaciones en la ficha individual del cuartel.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado exitoso de incidentes del cuartel (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/agroclimatic-incidents} con parámetro de ruta \texttt{plotId} y parámetros de consulta opcionales \texttt{activeOnly} y \texttt{status}.\newline
+\textbf{When} la API valida la titularidad del cuartel y recupera los eventos de anomalía climática asociados al predio.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando una colección de \texttt{AgroclimaticIncidentResponse} con la tipología de riesgo, valores medidos, umbrales y estado de mitigación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cuartel no encontrado en inventario (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/agroclimatic-incidents} con un identificador \texttt{plotId} inexistente.\newline
+\textbf{When} el servicio consulta la existencia de la parcela.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS48} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta detallada de incidente agroclimático con tendencia y pasos de mitigación} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el detalle exhaustivo de una alerta mediante el método GET a \url{/api/v1/agroclimatic-incidents/{incidentId}} con parámetro de ruta \texttt{{incidentId}}, \textbf{para} visualizar la serie temporal de la anomalía, el checklist interactivo de mitigación y el diagnóstico agronómico.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta detallada de incidente con checklist y curva histórica (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/agroclimatic-incidents/{incidentId}} con parámetro de ruta \texttt{incidentId}.\newline
+\textbf{When} la API valida la existencia del incidente y consolida los datos de telemetría que originaron la alarma junto con las recomendaciones agronómicas.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AgroclimaticIncidentDetailResponse} conteniendo: descripción de la anomalía, serie temporal de tendencia climática, indicador de helada o estrés hídrico y la lista ordenada de pasos de mitigación agronómica con sus respectivos estados (\texttt{PENDING}, \texttt{COMPLETED}).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Incidente no encontrado en el sistema (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud GET hacia un \texttt{incidentId} inexistente en el catálogo de alertas.\newline
+\textbf{When} la API busca el incidente en persistencia.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS49} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Baja} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Postergación temporal de notificaciones de incidente agroclimático (Snooze)} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} postergar las notificaciones de un incidente mediante el método POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/snooze} con parámetro de ruta \texttt{{incidentId}} y cuerpo JSON (\texttt{snoozeHours}), \textbf{para} silenciar temporalmente los avisos push durante la ventana horaria definida sin resolver la alerta en el lote.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Postergación exitosa de notificaciones del incidente (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/snooze} con parámetro de ruta \texttt{incidentId} y cuerpo JSON con \texttt{snoozeHours} (entre 1 y 72).\newline
+\textbf{When} la API valida el estado del incidente, calcula la marca temporal de expiración del snooze y suspende el despacho de notificaciones push recurrentes hasta dicho momento.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AgroclimaticIncidentResponse} con el estado actualizado a \texttt{SNOOZED} y la fecha de reactivación programada \texttt{snoozeUntil}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Duración de postergación fuera de rango permitido (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud POST con \texttt{snoozeHours} menor a 1 o mayor a 72 horas.\newline
+\textbf{When} la API valida el valor de las horas solicitadas.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} indicando que el tiempo de postergación debe encontrarse entre 1 y 72 horas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Incidente no encontrado (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/snooze} con un identificador \texttt{incidentId} que no existe.\newline
+\textbf{When} el servicio consulta el repositorio de incidentes.\newline
 \textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
 \end{longtable}
 \endgroup
 
 \vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS50} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado de paso de mitigación agronómica de incidente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} asentar la ejecución de un paso del protocolo de mitigación mediante el método POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}/complete} con parámetros de ruta \texttt{{incidentId}} y \texttt{{stepId}}, \textbf{para} registrar las labores de respuesta en campo y actualizar el estado de resolución del incidente.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Completado exitoso de paso y avance del incidente (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}/complete} con parámetros de ruta \texttt{incidentId} y \texttt{stepId}, y cuerpo JSON opcional con \texttt{notes}.\newline
+\textbf{When} la API valida que el paso pertenezca al incidente, lo marca como \texttt{COMPLETED} con su marca temporal de ejecución y evalúa si todos los pasos han sido concluidos para transicionar el incidente a \texttt{RESOLVED} o mantenerlo en \texttt{IN\_MITIGATION}.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AgroclimaticIncidentDetailResponse} con el paso marcado como completado y el progreso actualizado de la mitigación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Notas de ejecución exceden la longitud permitida (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud POST cuyo campo \texttt{notes} contiene más de 500 caracteres.\newline
+\textbf{When} la capa de validación procesa el cuerpo.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} con el mensaje de violación de longitud.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Incidente o paso no encontrado (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud POST hacia un \texttt{incidentId} o \texttt{stepId} inexistente o cuando el paso no forma parte del incidente referenciado.\newline
+\textbf{When} la API realiza la búsqueda en persistencia.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS51} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de estado global de muestreos de cuarteles (Plot Picker)} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el estado consolidado de muestreos de todos los cuarteles mediante el método GET al endpoint \url{/api/v1/samplings/overview} con parámetros de consulta de campaña y estado, \textbf{para} renderizar el selector de predios (Plot Picker) en la interfaz móvil destacando el avance y suficiencia de cada lote.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de cobertura y estado de muestreo de los cuarteles (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/samplings/overview} con parámetros de consulta opcionales \texttt{campaignYear} y \texttt{status}.\newline
+\textbf{When} la API consolida la totalidad de parcelas activas del productor y computa para cada una el avance muestreal, árboles registrados y si se ha alcanzado la suficiencia estadística (≥ 5 árboles).\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando una lista de \texttt{PlotSamplingOverviewResponse} optimizada para el selector de parcelas (Plot Picker) en la aplicación móvil.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Formato inválido en año de campaña o filtro de estado (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/samplings/overview} con un año de campaña menor a 2000 o un estado no reconocido.\newline
+\textbf{When} el controlador procesa los parámetros de consulta.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS52} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro de fecha de plena floración observada en cuartel} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} registrar la fecha de plena floración del olivar mediante el método PUT a \url{/api/v1/plots/{plotId}/thinning-prescriptions/full-bloom} con parámetro de ruta \texttt{{plotId}} y cuerpo JSON (\texttt{campaignYear}, \texttt{fullBloomDate}), \textbf{para} calibrar la base cronológica y calcular con precisión la ventana fenológica de aclareo antes del endurecimiento del carozo.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro exitoso de plena floración y actualización de ventana de aclareo (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}/thinning-prescriptions/full-bloom} con parámetro de ruta \texttt{plotId} y cuerpo JSON con \texttt{campaignYear} y \texttt{fullBloomDate} válida.\newline
+\textbf{When} la API valida la titularidad, comprueba que la fecha no sea futura y pertenezca al año de la campaña, asienta el hito fenológico y recalcula automáticamente los límites temporales de la ventana de aclareo (\texttt{windowOpensOn} y \texttt{windowClosesOn}) para la prescripción del cuartel.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{ThinningPrescriptionResponse} con las nuevas fechas de apertura y cierre de intervención agronómica.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Fecha de plena floración futura o fuera del año de campaña (HTTP 400 Bad Request)}\newline
+\textbf{Given} una solicitud PUT con una fecha \texttt{fullBloomDate} posterior a la fecha actual o que no corresponde al año agrícola de \texttt{campaignYear}.\newline
+\textbf{When} la API valida las restricciones cronológicas y biológicas.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} indicando la inconsistencia temporal.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Cuartel no encontrado en el sistema (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud PUT con un identificador \texttt{plotId} inexistente en el inventario.\newline
+\textbf{When} el servicio consulta el repositorio parcelario.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS53} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de eventos cronológicos y bitácora agronómica de raleo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar la bitácora histórica de intervenciones de aclareo mediante el método GET a \url{/api/v1/plots/{plotId}/thinning-events} con parámetro de ruta \texttt{{plotId}} y parámetro de consulta de campaña, \textbf{para} visualizar en orden cronológico todos los eventos de muestreo, prescripción y confirmación ejecutados en el predio.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta cronológica exitosa de bitácora de intervenciones (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/thinning-events} con parámetro de ruta \texttt{plotId} y parámetro de consulta opcional \texttt{campaignYear}.\newline
+\textbf{When} la API recupera la secuencia de eventos de muestreo, cálculo de prescripción, registro de floración y confirmaciones de aclareo ordenados cronológicamente.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando una colección de \texttt{ThinningEventResponse} con el tipo de evento, fecha de ocurrencia, actores, datos cuantificados y notas asociadas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cuartel no encontrado (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud GET con un parámetro de ruta \texttt{plotId} inexistente.\newline
+\textbf{When} la API evalúa la existencia de la parcela.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS54} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Listado de liquidaciones oficiales de cosecha por cuartel} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el historial de cierres formales de cosecha mediante el método GET a \url{/api/v1/plots/{plotId}/harvest-settlements} con parámetro de ruta \texttt{{plotId}} y parámetros de consulta de paginación, \textbf{para} desplegar la serie plurianual de pesajes oficiales y balance de entrega en la ficha del cuartel.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado paginado exitoso de liquidaciones de cosecha (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/harvest-settlements} con parámetro de ruta \texttt{plotId} y parámetros de consulta opcionales \texttt{page} y \texttt{size}.\newline
+\textbf{When} la API valida la titularidad del predio y recupera el historial de liquidaciones formales de fin de campaña ordenadas descendentemente por año agrícola.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando una lista paginada de \texttt{HarvestSettlementResource} con el desglose de kilogramos verdes y negros, total cosechado, calibre comercial registrado y estado de auditoría.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cuartel no encontrado en inventario (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud GET con un identificador \texttt{plotId} que no existe en el repositorio parcelario.\newline
+\textbf{When} la API busca el cuartel en la base de datos.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS55} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta detallada de liquidación de cosecha por campaña individual} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el comprobante formal de una liquidación específica mediante el método GET a \url{/api/v1/plots/{plotId}/harvest-settlements/{campaignYear}} con parámetros de ruta \texttt{{plotId}} y \texttt{{campaignYear}}, \textbf{para} visualizar el pesaje certificado, el balance frente a la prescripción y el Índice de Reducción de Alternancia (ARR).} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de liquidación de campaña con balance y métricas (HTTP 200 OK)}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/harvest-settlements/{campaignYear}} con parámetros de ruta \texttt{plotId} y \texttt{campaignYear}.\newline
+\textbf{When} la API valida la existencia de la liquidación formal para el año agrícola indicado en dicho cuartel.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{HarvestSettlementResource} conteniendo: identidad del reporte, kilogramos recolectados (\texttt{greenOlivesKg} y \texttt{blackOlivesKg}), \texttt{totalYieldKg}, \texttt{commercialFruitsPerKg}, fecha de liquidación, balance de aclareo (\texttt{thinningBalance}) y el estado de la curva de estabilización (\texttt{stabilization} con ARR e índice de alternancia).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Liquidación de campaña o cuartel no encontrado (HTTP 404 Not Found)}\newline
+\textbf{Given} una solicitud GET con un \texttt{plotId} inexistente o para un año de campaña agrícola que no ha sido formalmente liquidado.\newline
+\textbf{When} el servicio consulta el almacén de datos de liquidaciones.\newline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+
 
 \begingroup
 \renewcommand{\arraystretch}{1.15}
@@ -2588,6 +2947,8 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \end{longtable}
 \endgroup
 
+
+
 \clearpage
 
 ### Impact Mapping
@@ -2622,7 +2983,7 @@ En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual art
 
 ### Product Backlog
 
-El Product Backlog de Viora consolida y prioriza los 89 ítems de trabajo del sistema (43 Historias de Usuario, 43 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica, la resolución de spikes críticos orientados al productor (modelo dinámico de Erez y persistencia local offline-first), la entrega de las pantallas centrales del productor olivarero (delimitación parcelaria, monitoreo de frío, cálculo del índice BBI y muestreo guiado sin conectividad) y más del 70% de los servicios web del backend fundacional y de gestión agronómica predial del productor. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro), mientras que las historias de gestión de identidad y accesos (IAM) se posponen al Sprint 3; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, la pasarela de pagos y las herramientas territoriales y códigos de cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, los cuadros de mando territoriales de acopio y la exportación de reportes técnicos auditables en formato PDF.
+El Product Backlog de Viora consolida y prioriza los 101 ítems de trabajo del sistema (43 Historias de Usuario, 55 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica (US33 a US41), los spikes críticos de campo (SPK01 sobre el modelo dinámico de Erez y SPK02 sobre persistencia offline-first con SQLite), la arquitectura base del backend bajo RFC 7807 y convenciones JPA (TS31 a TS34), la suite completa de los 33 servicios RESTful del backend (TS11 a TS27, TS39, TS40, TS42, TS43 y TS44 a TS55) que respaldan operativamente todas las funcionalidades del productor y gestor, y las 20 Historias de Usuario móviles clave priorizadas según la asignación de responsabilidades del equipo de desarrollo. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro), mientras que las historias de gestinnn de identidad y accesos (IAM) se posponen al Sprint 3; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, la pasarela de pagos y las herramientas territoriales y códigos de cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, los cuadros de mando territoriales de acopio y la exportación de reportes técnicos auditables en formato PDF.
 
 A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integral del Product Backlog del sistema Viora, detallando el orden de ejecución, identificador, denominación técnica, estimación de esfuerzo en puntos de historia (*Story Points*) y la asignación a su respectivo ciclo de iteración (*Sprint*).
 
@@ -2637,7 +2998,6 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 \textbf{\# Orden} & \textbf{Story ID} & \textbf{Título} & \textbf{Story Points} & \textbf{Sprint} \\ \hline
 \endfirsthead
 \hline
-\multicolumn{5}{l}{\textit{Tabla \ref{tab:product-backlog} (Continuación)}} \\ \hline
 \textbf{\# Orden} & \textbf{Story ID} & \textbf{Título} & \textbf{Story Points} & \textbf{Sprint} \\ \hline
 \endhead
 \hline
@@ -2656,88 +3016,102 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 9 & US41 & Selección de idioma y localización de contenidos en la Landing Page & 2 & Sprint 1 \\ \hline
 10 & SPK01 & Investigación y modelado dinámico de Erez para cálculo de frío en backend & 3 & Sprint 1 \\ \hline
 11 & SPK02 & Investigación de persistencia local SQLite y protocolo offline-first & 3 & Sprint 1 \\ \hline
-12 & US09 & Delimitación georreferenciada de parcela con GPS y caracterización agronómica inicial & 5 & Sprint 1 \\ \hline
-13 & US10 & Consulta y modificación de linderos y datos dendrométricos de parcela & 3 & Sprint 1 \\ \hline
-14 & US17 & Monitoreo agroclimático y consulta de series temporales de suelo y microclima & 5 & Sprint 1 \\ \hline
-15 & US20 & Registro retrospectivo de campañas históricas de cosecha y cálculo del Índice de Vecería (BBI) & 5 & Sprint 1 \\ \hline
-16 & US21 & Modificación y rectificación de registros históricos de cosecha & 2 & Sprint 1 \\ \hline
-17 & US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & 5 & Sprint 1 \\ \hline
-18 & US25 & Consulta de representatividad estadística e historial de árboles muestreados en campo & 3 & Sprint 1 \\ \hline
-19 & US13 & Vinculación y alta de nodo sensor virtual a una parcela & 3 & Sprint 1 \\ \hline
-20 & US14 & Consulta de inventario y estado operativo de nodos sensores virtuales en parcela & 2 & Sprint 1 \\ \hline
-21 & TS31 & Manejo centralizado de excepciones y errores bajo estándar RFC 7807 & 1 & Sprint 1 \\ \hline
-22 & TS32 & Convenciones de persistencia relacional, nomenclatura ORM y tipado espacial & 1 & Sprint 1 \\ \hline
-23 & TS33 & Generación dinámica y documentación interactiva de contratos de API con OpenAPI 3.0 & 1 & Sprint 1 \\ \hline
-24 & TS34 & Resolución de localización y mensajes internacionalizados mediante cabecera Accept-Language & 1 & Sprint 1 \\ \hline
-25 & TS11 & Creación y delimitación poligonal de parcelas georreferenciadas & 5 & Sprint 1 \\ \hline
-26 & TS12 & Listado y sincronización incremental delta de parcelas & 3 & Sprint 1 \\ \hline
-27 & TS13 & Consulta detallada de información agronómica y espacial de parcela & 2 & Sprint 1 \\ \hline
-28 & TS14 & Actualización y rectificación integral de parcela con bloqueo optimista & 3 & Sprint 1 \\ \hline
-29 & TS15 & Eliminación y baja lógica de parcela del inventario & 2 & Sprint 1 \\ \hline
-30 & TS16 & Alta y vinculación de nodo sensor virtual a parcela & 3 & Sprint 1 \\ \hline
-31 & TS17 & Consulta de inventario de nodos virtuales vinculados a parcela & 2 & Sprint 1 \\ \hline
-32 & TS18 & Desvinculación de nodo virtual preservando trazabilidad histórica & 2 & Sprint 1 \\ \hline
-33 & TS19 & Consulta de series temporales de telemetría ambiental y de suelo & 3 & Sprint 1 \\ \hline
-34 & TS20 & Consulta de pronóstico meteorológico geolocalizado a 7 días & 3 & Sprint 1 \\ \hline
-35 & TS21 & Asentamiento de cosecha anual por campaña para auditoría productiva & 3 & Sprint 1 \\ \hline
-36 & TS22 & Consulta del historial plurianual de cosechas de la parcela & 2 & Sprint 1 \\ \hline
-37 & TS23 & Cálculo y entrega de métricas de vecería BBI y frío dinámico de Erez & 5 & Sprint 1 \\ \hline
-38 & TS24 & Registro y sincronización de muestreos guiados de cuajado en campo & 5 & Sprint 1 \\ \hline
-39 & TS25 & Consulta de representatividad estadística y estado de muestreo & 3 & Sprint 1 \\ \hline
-40 & TS26 & Consulta de prescripción técnica de aclareo y ventana fenológica & 3 & Sprint 1 \\ \hline
-41 & TS27 & Confirmación y registro de ejecución de labor de aclareo en campo & 3 & Sprint 1 \\ \hline
-42 & TS39 & Asentamiento formal y balance de liquidación de cosecha de fin de campaña & 3 & Sprint 1 \\ \hline
-43 & TS40 & Certificación criptográfica colegiada del expediente agronómico inmutable & 3 & Sprint 1 \\ \hline
-44 & TS42 & Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela & 2 & Sprint 1 \\ \hline
-45 & TS43 & Rectificación de pesaje y baja de registro erróneo de cosecha en histórico fenológico & 2 & Sprint 1 \\ \hline
-46 & SPK03 & Investigación e integración de Checkout Pro en Mercado Pago Sandbox y webhooks & 3 & Sprint 2 \\ \hline
-47 & TS08 & Generación de lote de códigos de activación para socios cooperativos & 3 & Sprint 2 \\ \hline
-48 & TS09 & Consulta y auditoría de códigos de activación de cooperativa & 2 & Sprint 2 \\ \hline
-49 & TS10 & Canje de código de activación de socio para vinculación cooperativa & 3 & Sprint 2 \\ \hline
-50 & US22 & Monitoreo dinámico de porciones de frío invernal acumuladas mediante el modelo de Erez & 5 & Sprint 2 \\ \hline
-51 & US23 & Detección de anomalías térmicas invernales y advertencia de riesgo floral por efecto ENOS & 3 & Sprint 2 \\ \hline
-52 & US26 & Cálculo de carga frutal objetivo sostenible y rendimiento potencial de campaña & 5 & Sprint 2 \\ \hline
-53 & US27 & Prescripción técnica in-app de porcentaje y ventana fenológica de aclareo & 5 & Sprint 2 \\ \hline
-54 & US28 & Registro y confirmación de ejecución de aclareo en campo & 3 & Sprint 2 \\ \hline
-55 & US06 & Suscripción individual al Plan Productor mediante pasarela de pago digital & 5 & Sprint 2 \\ \hline
-56 & US07 & Activación de cuenta de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
-57 & US08 & Administración de la cartera de socios productores y consulta de cuota corporativa & 3 & Sprint 2 \\ \hline
-58 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con geolocalización GPS & 5 & Sprint 2 \\ \hline
-59 & TS06 & Generación de preferencia de checkout para suscripción de productor independiente & 3 & Sprint 2 \\ \hline
-60 & TS07 & Recepción y procesamiento de webhooks de notificación de pagos & 5 & Sprint 2 \\ \hline
-61 & TS28 & Generación y descarga de reporte agronómico auditable en formato PDF & 5 & Sprint 2 \\ \hline
-62 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico & 3 & Sprint 2 \\ \hline
-63 & TS30 & Proyección agregada temprana de volumen de acopio cooperativo & 5 & Sprint 2 \\ \hline
-64 & US29 & Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva & 3 & Sprint 3 \\ \hline
-65 & US30 & Emisión, certificación criptográfica y exportación del expediente agronómico en PDF & 5 & Sprint 3 \\ \hline
-66 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 3 \\ \hline
-67 & US32 & Proyección agregada temprana de volumen de acopio de aceituna verde y negra para la cooperativa & 5 & Sprint 3 \\ \hline
-68 & US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & 3 & Sprint 3 \\ \hline
-69 & US19 & Consulta de pronóstico meteorológico geolocalizado a 7 días & 3 & Sprint 3 \\ \hline
-70 & US15 & Configuración y calibración de nodo sensor virtual en parcela & 2 & Sprint 3 \\ \hline
-71 & US16 & Desvinculación y baja de nodo sensor virtual de una parcela & 2 & Sprint 3 \\ \hline
-72 & US11 & Baja y remoción de parcela del inventario productivo & 2 & Sprint 3 \\ \hline
-73 & US42 & Configuración y cambio de idioma de la interfaz en la aplicación móvil & 2 & Sprint 3 \\ \hline
-74 & US01 & Registro de cuenta de acceso y credenciales seguras con asignación de rol & 3 & Sprint 3 \\ \hline
-75 & US02 & Inicio de sesión y autenticación persistente mediante tokens & 3 & Sprint 3 \\ \hline
-76 & US03 & Consulta y actualización de datos de perfil y contacto & 2 & Sprint 3 \\ \hline
-77 & US04 & Cambio seguro de contraseña de acceso & 2 & Sprint 3 \\ \hline
-78 & US05 & Recuperación de contraseña olvidada mediante enlace por correo & 3 & Sprint 3 \\ \hline
-79 & TS01 & Registro de credenciales de cuenta de usuario y asignación de rol en IAM & 3 & Sprint 3 \\ \hline
-80 & TS02 & Autenticación de usuarios y emisión de tokens JWT con claims de rol & 3 & Sprint 3 \\ \hline
-81 & TS03 & Renovación periódica de tokens de sesión mediante Refresh Token & 2 & Sprint 3 \\ \hline
-82 & TS04 & Consulta de información de perfil del usuario autenticado & 2 & Sprint 3 \\ \hline
-83 & TS05 & Actualización parcial de datos de perfil con validación telefónica E.164 & 2 & Sprint 3 \\ \hline
-84 & US43 & Completado de perfil de usuario y contacto validado bajo estándar E.164 & 3 & Sprint 3 \\ \hline
-85 & TS35 & Creación y completado inicial de perfil de usuario con validación telefónica E.164 & 3 & Sprint 3 \\ \hline
-86 & TS36 & Actualización de contraseña para sesión de usuario autenticado & 2 & Sprint 3 \\ \hline
-87 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 3 \\ \hline
-88 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 3 \\ \hline
-89 & TS41 & Revocación anticipada y ajuste de vigencia de código de activación cooperativo & 2 & Sprint 3 \\ \hline
+12 & TS31 & Manejo centralizado de excepciones y errores bajo estándar RFC 7807 & 1 & Sprint 1 \\ \hline
+13 & TS32 & Convenciones de persistencia relacional, nomenclatura ORM y tipado espacial & 1 & Sprint 1 \\ \hline
+14 & TS33 & Generación dinámica y documentación interactiva de contratos de API con OpenAPI 3.0 & 1 & Sprint 1 \\ \hline
+15 & TS34 & Resolución de localización y mensajes internacionalizados mediante cabecera Accept-Language & 1 & Sprint 1 \\ \hline
+16 & TS11 & Creación y delimitación poligonal de parcelas georreferenciadas & 5 & Sprint 1 \\ \hline
+17 & TS12 & Listado y sincronización incremental delta de parcelas & 3 & Sprint 1 \\ \hline
+18 & TS13 & Consulta detallada de información agronómica y espacial de parcela & 2 & Sprint 1 \\ \hline
+19 & TS14 & Actualización y rectificación integral de parcela con bloqueo optimista & 3 & Sprint 1 \\ \hline
+20 & TS15 & Eliminación y baja lógica de parcela del inventario & 2 & Sprint 1 \\ \hline
+21 & TS16 & Alta y vinculación de nodo sensor virtual a parcela & 3 & Sprint 1 \\ \hline
+22 & TS17 & Consulta de inventario de nodos virtuales vinculados a parcela & 2 & Sprint 1 \\ \hline
+23 & TS18 & Desvinculación de nodo virtual preservando trazabilidad histórica & 2 & Sprint 1 \\ \hline
+24 & TS19 & Consulta de series temporales de telemetría ambiental y de suelo & 3 & Sprint 1 \\ \hline
+25 & TS20 & Consulta de pronóstico meteorológico geolocalizado a 7 días & 3 & Sprint 1 \\ \hline
+26 & TS21 & Asentamiento de cosecha anual por campaña para auditoría productiva & 3 & Sprint 1 \\ \hline
+27 & TS22 & Consulta del historial plurianual de cosechas de la parcela & 2 & Sprint 1 \\ \hline
+28 & TS23 & Cálculo y entrega de métricas de vecería BBI y frío dinámico de Erez & 5 & Sprint 1 \\ \hline
+29 & TS24 & Registro y sincronización de muestreos guiados de cuajado en campo & 5 & Sprint 1 \\ \hline
+30 & TS25 & Consulta de representatividad estadística y estado de muestreo & 3 & Sprint 1 \\ \hline
+31 & TS26 & Consulta de prescripción técnica de aclareo y ventana fenológica & 3 & Sprint 1 \\ \hline
+32 & TS27 & Confirmación y registro de ejecución de labor de aclareo en campo & 3 & Sprint 1 \\ \hline
+33 & TS39 & Asentamiento formal y balance de liquidación de cosecha de fin de campaña & 3 & Sprint 1 \\ \hline
+34 & TS40 & Certificación criptográfica colegiada del expediente agronómico inmutable & 3 & Sprint 1 \\ \hline
+35 & TS42 & Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela & 2 & Sprint 1 \\ \hline
+36 & TS43 & Rectificación de pesaje de cosecha anual con bloqueo optimista & 2 & Sprint 1 \\ \hline
+37 & TS44 & Restauración de cuartel olivícola archivado & 2 & Sprint 1 \\ \hline
+38 & TS45 & Eliminación de registro erróneo de cosecha en histórico fenológico & 2 & Sprint 1 \\ \hline
+39 & TS46 & Consulta global de incidentes agroclimáticos con contadores y filtrado & 3 & Sprint 1 \\ \hline
+40 & TS47 & Consulta de incidentes agroclimáticos asociados a un cuartel específico & 2 & Sprint 1 \\ \hline
+41 & TS48 & Consulta detallada de incidente agroclimático con tendencia y pasos de mitigación & 3 & Sprint 1 \\ \hline
+42 & TS49 & Postergación temporal de notificaciones de incidente agroclimático (Snooze) & 2 & Sprint 1 \\ \hline
+43 & TS50 & Completado de paso de mitigación agronómica de incidente & 2 & Sprint 1 \\ \hline
+44 & TS51 & Consulta de estado global de muestreos de cuarteles (Plot Picker) & 3 & Sprint 1 \\ \hline
+45 & TS52 & Registro de fecha de plena floración observada en cuartel & 3 & Sprint 1 \\ \hline
+46 & TS53 & Consulta de eventos cronológicos y bitácora agronómica de raleo & 2 & Sprint 1 \\ \hline
+47 & TS54 & Listado de liquidaciones oficiales de cosecha por cuartel & 2 & Sprint 1 \\ \hline
+48 & TS55 & Consulta detallada de liquidación de cosecha por campaña individual & 2 & Sprint 1 \\ \hline
+49 & US09 & Delimitación georreferenciada de parcela con GPS y caracterización agronómica inicial & 5 & Sprint 1 \\ \hline
+50 & US10 & Consulta y modificación de linderos y datos dendrométricos de parcela & 3 & Sprint 1 \\ \hline
+51 & US11 & Baja y remoción de parcela del inventario productivo & 2 & Sprint 1 \\ \hline
+52 & US27 & Prescripción técnica in-app de porcentaje y ventana fenológica de aclareo & 5 & Sprint 1 \\ \hline
+53 & US26 & Cálculo de carga frutal objetivo sostenible y rendimiento potencial de campaña & 5 & Sprint 1 \\ \hline
+54 & US28 & Registro y confirmación de ejecución de aclareo en campo & 3 & Sprint 1 \\ \hline
+55 & US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & 3 & Sprint 1 \\ \hline
+56 & US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & 5 & Sprint 1 \\ \hline
+57 & US25 & Consulta de representatividad estadística e historial de árboles muestreados en campo & 3 & Sprint 1 \\ \hline
+58 & US22 & Monitoreo dinámico de porciones de frío invernal acumuladas mediante el modelo de Erez & 5 & Sprint 1 \\ \hline
+59 & US23 & Detección de anomalías térmicas invernales y advertencia de riesgo floral por efecto ENOS & 3 & Sprint 1 \\ \hline
+60 & US19 & Consulta de pronóstico meteorológico geolocalizado a 7 días & 3 & Sprint 1 \\ \hline
+61 & US13 & Vinculación y alta de nodo sensor virtual a una parcela & 3 & Sprint 1 \\ \hline
+62 & US14 & Consulta de inventario y estado operativo de nodos sensores virtuales en parcela & 2 & Sprint 1 \\ \hline
+63 & US15 & Configuración y calibración de nodo sensor virtual en parcela & 2 & Sprint 1 \\ \hline
+64 & US16 & Desvinculación y baja de nodo sensor virtual de una parcela & 2 & Sprint 1 \\ \hline
+65 & US17 & Monitoreo agroclimático y consulta de series temporales de suelo y microclima & 5 & Sprint 1 \\ \hline
+66 & US20 & Registro retrospectivo de campañas históricas de cosecha y cálculo del Índice de Vecería (BBI) & 5 & Sprint 1 \\ \hline
+67 & US21 & Modificación y rectificación de registros históricos de cosecha & 2 & Sprint 1 \\ \hline
+68 & US29 & Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva & 3 & Sprint 1 \\ \hline
+69 & SPK03 & Investigación e integración de Checkout Pro en Mercado Pago Sandbox y webhooks & 3 & Sprint 2 \\ \hline
+70 & TS06 & Generación de preferencia de checkout para suscripción de productor independiente & 3 & Sprint 2 \\ \hline
+71 & TS07 & Recepción y procesamiento de webhooks de notificación de pagos & 5 & Sprint 2 \\ \hline
+72 & TS08 & Generación de lote de códigos de activación para socios cooperativos & 3 & Sprint 2 \\ \hline
+73 & TS09 & Consulta y auditoría de códigos de activación de cooperativa & 2 & Sprint 2 \\ \hline
+74 & TS10 & Canje de código de activación de socio para vinculación cooperativa & 3 & Sprint 2 \\ \hline
+75 & US06 & Suscripción individual al Plan Productor mediante pasarela de pago digital & 5 & Sprint 2 \\ \hline
+76 & US07 & Activación de cuenta de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
+77 & US08 & Administración de la cartera de socios productores y consulta de cuota corporativa & 3 & Sprint 2 \\ \hline
+78 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con geolocalización GPS & 5 & Sprint 2 \\ \hline
+79 & TS28 & Generación y descarga de reporte agronómico auditable en formato PDF & 5 & Sprint 2 \\ \hline
+80 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico & 3 & Sprint 2 \\ \hline
+81 & TS30 & Proyección agregada temprana de volumen de acopio cooperativo & 5 & Sprint 2 \\ \hline
+82 & US01 & Registro de cuenta de acceso y credenciales seguras con asignación de rol & 3 & Sprint 3 \\ \hline
+83 & US02 & Inicio de sesión y autenticación persistente mediante tokens & 3 & Sprint 3 \\ \hline
+84 & US03 & Consulta y actualización de datos de perfil y contacto & 2 & Sprint 3 \\ \hline
+85 & US04 & Cambio seguro de contraseña de acceso & 2 & Sprint 3 \\ \hline
+86 & US05 & Recuperación de contraseña olvidada mediante enlace por correo & 3 & Sprint 3 \\ \hline
+87 & US43 & Completado de perfil de usuario y contacto validado bajo estándar E.164 & 3 & Sprint 3 \\ \hline
+88 & US42 & Configuración y cambio de idioma de la interfaz en la aplicación móvil & 2 & Sprint 3 \\ \hline
+89 & TS01 & Registro de credenciales de cuenta de usuario y asignación de rol en IAM & 3 & Sprint 3 \\ \hline
+90 & TS02 & Autenticación de usuarios y emisión de tokens JWT con claims de rol & 3 & Sprint 3 \\ \hline
+91 & TS03 & Renovación periódica de tokens de sesión mediante Refresh Token & 2 & Sprint 3 \\ \hline
+92 & TS04 & Consulta de información de perfil del usuario autenticado & 2 & Sprint 3 \\ \hline
+93 & TS05 & Actualización parcial de datos de perfil con validación telefónica E.164 & 2 & Sprint 3 \\ \hline
+94 & TS35 & Creación y completado inicial de perfil de usuario con validación telefónica E.164 & 3 & Sprint 3 \\ \hline
+95 & TS36 & Actualización de contraseña para sesión de usuario autenticado & 2 & Sprint 3 \\ \hline
+96 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 3 \\ \hline
+97 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 3 \\ \hline
+98 & TS41 & Revocación anticipada y ajuste de vigencia de código de activación cooperativo & 2 & Sprint 3 \\ \hline
+99 & US30 & Emisión, certificación criptográfica y exportación del expediente agronómico en PDF & 5 & Sprint 3 \\ \hline
+100 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 3 \\ \hline
+101 & US32 & Proyección agregada temprana de volumen de acopio de aceituna verde y negra para la cooperativa & 5 & Sprint 3 \\ \hline
 \end{longtable}
 \end{center}
 
-Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 89 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
+
+
+Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 101 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
 
 \begin{figure}[H]
 \caption{Product Backlog del proyecto Viora en Trello.} \label{fig:trello-product-backlog}
