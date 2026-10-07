@@ -86,15 +86,15 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#1} \hfill \textbf{Detalles}} \\ 
 \hline 
-\textbf{Nombre} & Alexandra Rosas & \textbf{Edad} & 50 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada-Los Palos, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productora Olivarera y Comercializadora Familiar} \\ 
+\textbf{Nombre} & Cristóbal Benito Barrientos Carpio & \textbf{Edad} & 51 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{Valle de Yauca, Provincia de Caravelí, Arequipa} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor Olivarero y Acopiador Local} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{00:00 - 15:42} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://drive.google.com/file/d/1YdGs-sLZ7yFHdX7-yLVJfA6CAFasJ2jl/view?usp=sharing}} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{00:05 - 05:07} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productora de 50 años con más de 10 años de experiencia agrícola en La Yarada-Los Palos, a cargo de 3 hectáreas tecnificadas con riego por goteo dedicadas a aceituna Criolla de Tacna (80\% aceituna de mesa en salmuera y 20\% para aceite). Al interactuar con el portal, manifestó una comprensión inmediata del producto, identificándolo como un asistente para el cuidado árbol por árbol frente a las pérdidas por vecería. Indicó que la descripción de las oscilaciones productivas refleja con fidelidad su realidad (caídas de 14,000 kg/ha en años favorables a menos de 4,500 kg/ha en campañas afectadas por El Niño). Destacó positivamente la claridad del módulo de aclareo como una "ventana de oportunidad" con límites temporales antes del endurecimiento del hueso, lo cual elimina la incertidumbre en campo. Respecto al Plan Productor, calificó la tarifa de S/ 55 por hectárea al mes como plenamente accesible y transparente, indicando que una mala poda genera pérdidas diez veces mayores que el costo anual de la suscripción. Resaltó de manera sobresaliente la tarjeta de funcionamiento sin conexión, manifestando que poder registrar muestras sin señal en la parcela otorga una enorme tranquilidad. Evaluó la propuesta con una puntuación perfecta de 5/5. Como aspecto a optimizar, sugirió incorporar un enlace de acceso directo a WhatsApp en la página para resolver dudas técnicas y de instalación de manera inmediata.} \\[10pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.78\textwidth,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor con 10 años de dedicación exclusiva al olivar en el Valle de Yauca, administrando 2 hectáreas propias en producción continua y complementando su acopio con compras a vecinos del sector para mantener el suministro comercial anual. Al revisar el portal web, identificó de inmediato que la herramienta busca prevenir el impacto de las alteraciones climáticas y la falta de floración sobre la cosecha, señalando la tensión que vive el productor en los meses previos a la brotación cuando el invierno no es lo suficientemente frío. Validó de forma contundente que la vecería golpea tanto a los olivares de Tacna como a los de Yauca con idéntica severidad (con mermas que alcanzan hasta un 90\% en años anómalos). Consideró que los módulos de frío invernal y balance de carga son fáciles de comprender y transmiten un enfoque constructivo centrado en salvar la producción. En cuanto al aspecto comercial, estimó que el costo del Plan Productor es accesible, aunque consultó si la tarifa incluye IGV y la emisión de factura con RUC para sustentar gastos contables de campaña. Otorgó una calificación de 4/5 a la plataforma, fundamentando que toda tecnología nueva demanda un proceso de verificación en campo. Explicó que su disposición de pago se consolidará conforme compruebe los resultados o reciba recomendaciones de productores colegas de confianza, sugiriendo añadir testimonios reales de agricultores para facilitar la adopción entre los perfiles más tradicionales.} \\[10pt] 
+\multicolumn{4}{c}{\includegraphics[width=0.78\textwidth,keepaspectratio]{report/assets/interviews/validation/interview-val-cristobal.png}} \\ 
 \hline 
 \end{tabular}
 
@@ -104,15 +104,15 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#2} \hfill \textbf{Detalles}} \\ 
 \hline 
-\textbf{Nombre} & Cristóbal Benito Barrientos Carpio & \textbf{Edad} & 51 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{Valle de Yauca, Provincia de Caravelí, Arequipa} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor Olivarero y Acopiador Local} \\ 
+\textbf{Nombre} & Alexandra Rosas & \textbf{Edad} & 50 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada-Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productora Olivarera y Comercializadora Familiar} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{00:00 - 21:56} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://drive.google.com/file/d/1M5mrosRm8S33ltpig7E29coU3aJfMj6b/view?usp=sharing}} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{05:17 - 11:10} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor con 10 años de dedicación exclusiva al olivar en el Valle de Yauca, administrando 2 hectáreas propias en producción continua y complementando su acopio con compras a vecinos del sector para mantener el suministro comercial anual. Al revisar el portal web, identificó de inmediato que la herramienta busca prevenir el impacto de las alteraciones climáticas y la falta de floración sobre la cosecha, señalando la tensión que vive el productor en los meses previos a la brotación cuando el invierno no es lo suficientemente frío. Validó de forma contundente que la vecería golpea tanto a los olivares de Tacna como a los de Yauca con idéntica severidad (con mermas que alcanzan hasta un 90\% en años anómalos). Consideró que los módulos de frío invernal y balance de carga son fáciles de comprender y transmiten un enfoque constructivo centrado en salvar la producción. En cuanto al aspecto comercial, estimó que el costo del Plan Productor es accesible, aunque consultó si la tarifa incluye IGV y la emisión de factura con RUC para sustentar gastos contables de campaña. Otorgó una calificación de 4/5 a la plataforma, fundamentando que toda tecnología nueva demanda un proceso de verificación en campo. Explicó que su disposición de pago se consolidará conforme compruebe los resultados o reciba recomendaciones de productores colegas de confianza, sugiriendo añadir testimonios reales de agricultores para facilitar la adopción entre los perfiles más tradicionales.} \\[10pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.78\textwidth,keepaspectratio]{report/assets/interviews/validation/interview-val-cristobal.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productora de 50 años con más de 10 años de experiencia agrícola en La Yarada-Los Palos, a cargo de 3 hectáreas tecnificadas con riego por goteo dedicadas a aceituna Criolla de Tacna (80\% aceituna de mesa en salmuera y 20\% para aceite). Al interactuar con el portal, manifestó una comprensión inmediata del producto, identificándolo como un asistente para el cuidado árbol por árbol frente a las pérdidas por vecería. Indicó que la descripción de las oscilaciones productivas refleja con fidelidad su realidad (caídas de 14,000 kg/ha en años favorables a menos de 4,500 kg/ha en campañas afectadas por El Niño). Destacó positivamente la claridad del módulo de aclareo como una "ventana de oportunidad" con límites temporales antes del endurecimiento del hueso, lo cual elimina la incertidumbre en campo. Respecto al Plan Productor, calificó la tarifa de S/ 55 por hectárea al mes como plenamente accesible y transparente, indicando que una mala poda genera pérdidas diez veces mayores que el costo anual de la suscripción. Resaltó de manera sobresaliente la tarjeta de funcionamiento sin conexión, manifestando que poder registrar muestras sin señal en la parcela otorga una enorme tranquilidad. Evaluó la propuesta con una puntuación perfecta de 5/5. Como aspecto a optimizar, sugirió incorporar un enlace de acceso directo a WhatsApp en la página para resolver dudas técnicas y de instalación de manera inmediata.} \\[10pt] 
+\multicolumn{4}{c}{\includegraphics[width=0.78\textwidth,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas.png}} \\ 
 \hline 
 \end{tabular}
 
@@ -131,8 +131,8 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
 \textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Ingeniero Agrónomo - Jefe Técnico de Cooperativa Agraria} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{00:00 - 18:24} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://drive.google.com/file/d/1I1he7soNdJCK7qBCZZuk2u2iJhrcPLnP/view?usp=sharing}} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{11:13 - 16:41} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniero Agrónomo con 18 años de trayectoria en el manejo técnico del olivo en el sur del país, responsable de la supervisión técnica de 68 socios agricultores que agrupan 420 hectáreas en los sectores de La Yarada y Magollo. Durante la interacción, valoró positivamente la centralización de datos ante la dispersión geográfica de los predios, enfatizando que un gestor técnico requiere visibilidad agregada para programar el llenado de las pozas de salmuera y evitar la denominada "ceguera logística", donde las proyecciones visuales tradicionales acarrean desviaciones de hasta un 40\%. Calificó el sistema de activación de cuentas del Plan Cooperativa (mediante emisión de códigos institucionales sin cobro directo al socio) como una solución sobresaliente que remueve la principal fricción administrativa. Señaló que el monitoreo de frío entre mayo y agosto refleja rigurosidad agronómica real y que los descargos legales brindan respaldo formal ante un consejo de administración. Calificó la utilidad global con un 5/5, comprometiéndose a presentar la plataforma en la próxima asamblea directiva para una prueba piloto. Como sugerencia de mejora de la interfaz, propuso añadir un botón directo para solicitar demostraciones guiadas a nivel gerencial y una sección de preguntas frecuentes sobre la capacitación a socios con bajo dominio tecnológico.} \\[10pt] 
 \multicolumn{4}{c}{\includegraphics[width=0.78\textwidth,keepaspectratio]{report/assets/interviews/validation/interview-val-daniel-estrada.png}} \\ 
@@ -149,8 +149,8 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos, Tacna} \\ 
 \textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Ingeniera Agrónoma - Responsable Técnica y de Acopio} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{00:00 - 16:15} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://drive.google.com/file/d/1tudQISIpac8UbhCWzg6_PFoG0cL57Pv2/view?usp=sharing}} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{16:44 - 23:02} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniera Agrónoma colegiada con 15 años de ejercicio profesional en sanidad, riego tecnificado y fisiología del olivar en Tacna, a cargo del seguimiento de 35 socios productores que representan 150 hectáreas bajo riego por goteo en La Yarada Los Palos. Evaluó como un acierto prioritario la diferenciación visual entre el entorno operativo del agricultor y el panel analítico de la cooperativa. Resaltó con énfasis pedagógico el valor de la alerta sobre la ventana de aclareo previa al endurecimiento del hueso de la aceituna, señalando que representa una de las mayores dificultades en campo, ya que muchos agricultores retrasan la poda o el raleo por apego al fruto, comprometiendo no solo el calibre comercial de la cosecha actual sino la inducción de yemas florales del año venidero. Confirmó que la plataforma facilitará la articulación técnica al proporcionar un sustento objetivo respaldado en datos. Asignó una calificación de 4.8/5 a la propuesta, indicando que la inversión institucional se justifica al evitar penalidades por incumplimiento en los contratos de acopio. Como oportunidad de mejora, sugirió incorporar la posibilidad de exportar los consolidados de estimación a formatos descargables estándar (hojas de cálculo o reportes imprimibles) para su análisis en comisiones comerciales, así como exhibir capturas directas de la interfaz de muestreo en campo dentro de la web.} \\[10pt] 
 \multicolumn{4}{c}{\includegraphics[width=0.78\textwidth,keepaspectratio]{report/assets/interviews/validation/interview-val-maribel-vargas.png}} \\ 
@@ -178,7 +178,7 @@ Esta sección contiene el proceso de evaluación de las sesiones de validación 
 \textbf{NRC:} & 4951 \\
 \textbf{PROFESORES:} & Todos \\
 \textbf{AUDITOR:} & ArcadiaDevs \\
-\textbf{CLIENTES:} & Alexandra Rosas, Cristóbal Benito Barrientos Carpio, Ing. Daniel Estrada, Ing. Maribel Vargas \\
+\textbf{CLIENTES:} & Cristóbal Benito Barrientos Carpio, Alexandra Rosas, Ing. Daniel Estrada, Ing. Maribel Vargas \\
 \textbf{Site o App a Evaluar:} & Landing page \\
 \end{tabular}
 
