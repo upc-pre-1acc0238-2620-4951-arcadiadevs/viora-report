@@ -1045,6 +1045,16 @@ En la \autoref{fig:wf-gest-17} se estructura el control del padrón cooperativo 
 \caption*{\textit{Nota.} Gestión del cupo institucional de socios, emisión y revocación de códigos con validación de límites. Elaboración propia.}
 \end{figure}
 
+Como se observa en la \autoref{fig:wf-gest-18}, el gestor técnico reutiliza la estructura de cuenta del productor (P95 a P98): el panel agrupa datos personales, seguridad, preferencias y sesión, y desde él se abren la edición de nombre y celular en formato E.164, el cambio de contraseña con verificación de la clave actual y la hoja inferior de idioma, que cambia la interfaz a inglés sin cerrar sesión. La fila inferior reserva los estados de validación: celular inválido, nombre vacío, contraseña actual incorrecta y nueva contraseña que no cumple los criterios.
+
+\begin{figure}[H]
+\caption{Wireframe Gestor: Administración de Cuenta, Seguridad e Idioma.}
+\label{fig:wf-gest-18}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-18-mi-cuenta.png}
+\caption*{\textit{Nota.} Disposición esquelética de la cuenta del gestor, sus formularios de edición y los estados de validación. Elaboración propia.}
+\end{figure}
+
 #### Mobile Applications Wireflow Diagrams
 
 Un wireflow combina las pantallas de la aplicación con el flujo de acciones que lleva de una a otra. Su propósito es mostrar cómo una persona de usuario alcanza una meta concreta, qué información ve y entrega en cada paso y qué hace el sistema con ella. Esta sección presenta un wireflow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance. El alcance es el de los 17 flujos centrales del catálogo del equipo (F01 a F17) para las dos personas de Viora: Teodoro Mamani, productor olivarero que usa la App Productor (Kotlin), y Rubén Ticona, gestor técnico que usa la App Gestor (Flutter). Los flujos F01, F02 y F03 (crear la cuenta, iniciar sesión y mantener la cuenta al día) existen para ambas personas, de modo que el conjunto suma 20 wireflows. Cada uno incluye una meta de usuario redactada en primera persona y una explicación del flujo representado.
@@ -1567,13 +1577,360 @@ Tal como se ilustra en la \autoref{fig:mu-gest-18}, el panel de cuenta del gesto
 
 #### Mobile Applications User Flow Diagrams
 
-> **Sección pendiente de redacción.**
->
-> *Qué exige el enunciado:* presentar los user flows, considerando uno por cada meta de usuario y persona de usuario, consistentes con los wireflows de los que derivan, incluyendo los mock-ups de las pantallas junto con la ruta esperada y las rutas alternativas; cada user flow requiere una meta de usuario redactada y una explicación de los flujos y condiciones representados.
->
-> *Insumos disponibles en el repositorio:* el catálogo de marca de `report/assets/viora-brand/` (paleta, isologotipo, isotipo, icono). El equipo ya emplea Lucidchart y Figma para su material gráfico, de modo que la herramienta de trabajo no requiere decisión nueva.
->
-> *Enlace con la arquitectura de información:* la ruta esperada y las rutas alternativas deben ser consistentes con las rutas de Navigation Systems, y con las facetas de Searching Systems cuando el flujo incluya una búsqueda.
+Un user flow representa el recorrido completo que sigue una persona de usuario para alcanzar una meta, con las pantallas reales de la aplicación, la ruta esperada (*happy path*) y las rutas alternativas (*unhappy paths*) que se activan cuando una condición no se cumple. Esta sección presenta un user flow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance. Cada user flow se deriva del wireflow homónimo de la sección anterior (UF-F01 de WF-F01, y así sucesivamente) y conserva su ruta esperada, de modo que ambos conjuntos son consistentes: los 17 flujos centrales del catálogo (F01 a F17) para Teodoro Mamani, productor olivarero que usa la App Productor (Kotlin), y Rubén Ticona, gestor técnico que usa la App Gestor (Flutter). Como F01, F02 y F03 existen para ambas personas, el conjunto suma 20 user flows.
+
+A diferencia de los wireflows, que se dibujan con wireframes en escala de grises y solo con la ruta esperada, los user flows incorporan los mock-ups de alta fidelidad de Figma y agregan las rutas alternativas. Estas rutas provienen de las variantes y validaciones de cada lámina de mock-ups, y cada una se vincula con el escenario de la User Story que la origina (por ejemplo, «US09 esc. 3»). Por eso este conjunto cubre también las historias que los wireflows dejaron explícitamente para esta sección: la desvinculación de un nodo (US16, en UF-F08) y la corrección o eliminación de una campaña histórica (US21, en UF-F10).
+
+La notación es la misma en todos los diagramas y extiende la de los wireflows. La fila superior es la ruta esperada: cada paso se rotula con «PASO n» seguido del código y el nombre de la pantalla, las cajas verdes describen la acción del usuario que lleva al paso siguiente, las cajas amarillas con borde punteado indican un evento del sistema y la caja con borde amarillo sólido marca la meta cumplida. Debajo de un paso, el rombo amarillo plantea la decisión y de él salen, con línea terracota punteada, las rutas alternativas. Cada ruta alternativa lleva una etiqueta «SI» con su condición, el mock-up del estado que ve el usuario (con borde terracota) y una caja punteada con el resultado: si el usuario corrige y vuelve a la ruta esperada, si se desvía a otro flujo o si el flujo termina. Cuando un flujo no cabe en una fila, continúa en la siguiente mediante un conector con letra (A).
+
+La siguiente tabla resume el conjunto, con el número de rutas alternativas que documenta cada user flow.
+
+| Código | Meta de usuario | Persona y aplicación | User Stories | Rutas alternativas |
+|:-------|:----------------|:---------------------|:-------------|:------------------:|
+| UF-F01 | Crear mi cuenta y entrar por primera vez (productor) | Teodoro, App Productor | US01, US43 | 7 |
+| UF-F01 | Crear mi cuenta y entrar por primera vez (gestor) | Rubén, App Gestor | US01, US43 | 7 |
+| UF-F02 | Iniciar sesión y recuperar mi acceso (productor) | Teodoro, App Productor | US02, US05 | 3 |
+| UF-F02 | Iniciar sesión y recuperar mi acceso (gestor) | Rubén, App Gestor | US02, US05 | 3 |
+| UF-F03 | Mantener mi cuenta al día (productor) | Teodoro, App Productor | US03, US04, US42 | 4 |
+| UF-F03 | Mantener mi cuenta al día (gestor) | Rubén, App Gestor | US03, US04, US42 | 4 |
+| UF-F04 | Activar mi acceso con pago o código | Teodoro, App Productor | US06, US07 | 3 |
+| UF-F05 | Saber qué hacer hoy en mi olivar | Teodoro, App Productor | US18 (resúmenes de US17, US19 y US27) | 3 |
+| UF-F06 | Registrar un lote | Teodoro, App Productor | US09 | 9 |
+| UF-F07 | Mantener mis lotes al día | Teodoro, App Productor | US10, US11 | 4 |
+| UF-F08 | Configurar el monitoreo del lote | Teodoro, App Productor | US13, US14, US15, US16 | 3 |
+| UF-F09 | Vigilar el clima del lote | Teodoro, App Productor | US17, US18, US19 | 3 |
+| UF-F10 | Conocer la vecería de mi lote | Teodoro, App Productor | US20, US21 | 4 |
+| UF-F11 | Seguir el frío invernal | Teodoro, App Productor | US22, US23 | 3 |
+| UF-F12 | Muestrear el cuajado sin conexión | Teodoro, App Productor | US24, US25 | 3 |
+| UF-F13 | Aclarear a tiempo | Teodoro, App Productor | US26, US27, US28 | 6 |
+| UF-F14 | Cerrar la campaña y obtener el expediente | Teodoro, App Productor | US29, US30 | 5 |
+| UF-F15 | Priorizar mis visitas de campo | Rubén, App Gestor | US12, US30, US31 | 4 |
+| UF-F16 | Proyectar el acopio de la campaña | Rubén, App Gestor | US32 | 3 |
+| UF-F17 | Administrar socios y códigos | Rubén, App Gestor | US08 (TS08, TS09, TS41) | 3 |
+
+**UF-F01 · Crear mi cuenta y entrar por primera vez (productor).** Meta de usuario: «Quiero crear mi cuenta con mi rol para entrar a Viora con las herramientas que me corresponden.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US01 y US43. Como se observa en la \autoref{fig:uf-f01-teodoro}, la ruta esperada coincide con la de WF-F01 y recorre T01 → T02 → T02 (Lámina productor) → T02b → T02b2 → T02c → T02d → T02e → T02f → T04 → T04a. El recorrido cierra con la meta cumplida: cuenta creada y verificada como productor; continúa en UF-F04 para activar el acceso. El diagrama documenta 7 rutas alternativas en 6 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F01: crear mi cuenta y entrar por primera vez (productor).} \label{fig:uf-f01-teodoro}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f01-teodoro.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 4 · T02b · ¿Nombre válido?** Nombre vacío o con menos de 2 letras (US43 esc. 3). Pantalla: T02b (Vacío (botón deshabilitado)). Resultado: «Continuar» queda deshabilitado; al escribir el nombre vuelve al PASO 4.
+- **PASO 5 · T02b2 · ¿Celular válido?** Celular sin el formato +51 9XXXXXXXX (US43 esc. 2). Pantalla: T02b2 (Celular inválido). Resultado: no avanza y muestra el formato esperado; al corregirlo continúa.
+- **PASO 6 · T02c · ¿Tiene código de cooperativa?** Escribe el código y toca «Guardar código». Pantalla: T02f (Productor con código). Resultado: salta Hectáreas y llega al resumen con el código; se canjea tras crear la cuenta (UF-F04).
+- **PASO 8 · T02e · ¿Permite notificaciones?** Toca «No permitir» en el diálogo de Android. Pantalla: T02e (Permiso del sistema (Android)). Resultado: continúa igual al resumen, con las alertas desactivadas.
+- **PASO 10 · T04 · ¿Datos de la cuenta válidos?** El correo ya está registrado (US01 esc. 2). Pantalla: T04 (Correo ya registrado). Resultado: «Inicia sesión» lleva a T03 con el correo precargado (UF-F02).
+- **PASO 10 · T04 · ¿Datos de la cuenta válidos?** La contraseña no cumple los criterios (US01 esc. 3). Pantalla: T04 (Contraseña débil). Resultado: los criterios se validan al escribir; el botón se habilita al cumplirlos.
+- **PASO 11 · T04a · ¿Código correcto?** Código incorrecto. Pantalla: T04a (Código incorrecto). Resultado: reintenta; tras 3 intentos fallidos se bloquea 10 min y ofrece reenviar el código.
+
+**UF-F01 · Crear mi cuenta y entrar por primera vez (gestor).** Meta de usuario: «Quiero crear mi cuenta con mi rol para entrar a Viora con las herramientas que me corresponden.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a las historias US01 y US43. Como se observa en la \autoref{fig:uf-f01-ruben}, la ruta esperada coincide con la de WF-F01 y recorre T01 → T02 → T02 (Lámina gestor) → T02b → T02b2 → T02e → T02f → T04 → T04a → G10. El recorrido cierra con la meta cumplida: rubén entra a su Inicio con las herramientas de gestor técnico. El diagrama documenta 7 rutas alternativas en 5 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F01: crear mi cuenta y entrar por primera vez (gestor).} \label{fig:uf-f01-ruben}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f01-ruben.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 4 · T02b · ¿Nombre válido?** Nombre vacío o con menos de 2 letras (US43 esc. 3). Pantalla: T02b (Vacío (botón deshabilitado)). Resultado: «Continuar» deshabilitado hasta escribir el nombre.
+- **PASO 5 · T02b2 · ¿Celular válido?** Celular sin el formato +51 9XXXXXXXX (US43 esc. 2). Pantalla: T02b2 (Celular inválido). Resultado: no avanza y muestra el formato esperado.
+- **PASO 6 · T02e · ¿Permite notificaciones?** Toca «No permitir» en el diálogo de Android. Pantalla: T02e (Permiso del sistema (Android)). Resultado: continúa al resumen con las alertas desactivadas.
+- **PASO 8 · T04 · ¿Datos de la cuenta válidos?** El correo ya está registrado (US01 esc. 2). Pantalla: T04 (Correo ya registrado). Resultado: «Inicia sesión» lleva a T03 con el correo precargado (UF-F02).
+- **PASO 8 · T04 · ¿Datos de la cuenta válidos?** La contraseña no cumple los criterios (US01 esc. 3). Pantalla: T04 (Contraseña débil). Resultado: el botón se habilita al cumplir los criterios.
+- **PASO 9 · T04a · ¿Código correcto y acceso habilitado?** Código incorrecto. Pantalla: T04a (Código incorrecto). Resultado: reintenta; tras 3 intentos se bloquea 10 min y ofrece reenviar.
+- **PASO 9 · T04a · ¿Código correcto y acceso habilitado?** Su organización aún no lo habilita. Pantalla: G01. Resultado: cuando la cooperativa lo habilita, recibe un correo y entra a G10.
+
+**UF-F02 · Iniciar sesión y recuperar mi acceso (productor).** Meta de usuario: «Quiero entrar a mi cuenta sin reingresar mis datos a cada rato, y recuperarla por mi cuenta si olvido la clave.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US02 y US05. Como se observa en la \autoref{fig:uf-f02-teodoro}, la ruta esperada coincide con la de WF-F02 y recorre T03 → T06 → T07 → T08 → T08 (Contraseña actualizada) → P10. El recorrido cierra con la meta cumplida: recupera su acceso por su cuenta y llega a su Inicio. El diagrama documenta 3 rutas alternativas en 3 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F02: iniciar sesión y recuperar mi acceso (productor).} \label{fig:uf-f02-teodoro}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f02-teodoro.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 1 · T03 · ¿Credenciales correctas?** Correo o contraseña incorrectos (US02 esc. 2). Pantalla: T03 (Credenciales inválidas). Resultado: mensaje genérico sin revelar qué dato falló; reintenta o recupera la clave.
+- **PASO 3 · T07 · ¿El correo existe?** El correo no tiene cuenta (US05 esc. 4). Resultado: se muestra el mismo mensaje neutral de T07; no se envía ningún enlace.
+- **PASO 4 · T08 · ¿Enlace vigente?** El enlace ya venció o ya se usó (US05 esc. 3). Pantalla: T09. Resultado: toca «Solicitar nuevo enlace» y vuelve a T06 (PASO 2).
+
+**UF-F02 · Iniciar sesión y recuperar mi acceso (gestor).** Meta de usuario: «Quiero entrar a mi cuenta sin reingresar mis datos a cada rato, y recuperarla por mi cuenta si olvido la clave.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a las historias US02 y US05. Como se observa en la \autoref{fig:uf-f02-ruben}, la ruta esperada coincide con la de WF-F02 y recorre T03 → T06 → T07 → T08 → T08 (Contraseña actualizada) → G10. El recorrido cierra con la meta cumplida: recupera su acceso por su cuenta y llega a su Inicio. El diagrama documenta 3 rutas alternativas en 3 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F02: iniciar sesión y recuperar mi acceso (gestor).} \label{fig:uf-f02-ruben}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f02-ruben.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 1 · T03 · ¿Credenciales correctas?** Correo o contraseña incorrectos (US02 esc. 2). Pantalla: T03 (Credenciales inválidas). Resultado: mensaje genérico sin revelar qué dato falló; reintenta o recupera la clave.
+- **PASO 3 · T07 · ¿El correo existe?** El correo no tiene cuenta (US05 esc. 4). Resultado: se muestra el mismo mensaje neutral de T07; no se envía ningún enlace.
+- **PASO 4 · T08 · ¿Enlace vigente?** El enlace ya venció o ya se usó (US05 esc. 3). Pantalla: T09. Resultado: toca «Solicitar nuevo enlace» y vuelve a T06 (PASO 2).
+
+**UF-F03 · Mantener mi cuenta al día (productor).** Meta de usuario: «Quiero mantener al día mis datos de contacto, mi clave y mi idioma.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US03, US04 y US42. Como se observa en la \autoref{fig:uf-f03-teodoro}, la ruta esperada coincide con la de WF-F03 y recorre P10 → P95 → P96 → P97 → P98 → P95 (English). El recorrido cierra con la meta cumplida: datos, clave e idioma al día sin cerrar sesión. El diagrama documenta 4 rutas alternativas en 2 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F03: mantener mi cuenta al día (productor).} \label{fig:uf-f03-teodoro}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f03-teodoro.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 3 · P96 · ¿Datos válidos?** Celular sin formato E.164 para Perú (US03 esc. 2). Pantalla: P96 (Celular inválido). Resultado: no se guarda y se indica el formato esperado.
+- **PASO 3 · P96 · ¿Datos válidos?** Nombre completo vacío (US03 esc. 3). Pantalla: P96 (Nombre vacío). Resultado: no se guarda; se conserva el nombre anterior.
+- **PASO 4 · P97 · ¿Contraseñas válidas?** La contraseña actual no coincide (US04 esc. 2). Pantalla: P97 (Actual incorrecta). Resultado: no se cambia nada; corrige la contraseña actual.
+- **PASO 4 · P97 · ¿Contraseñas válidas?** La nueva no cumple o es igual a la actual (US04 esc. 3–4). Pantalla: P97 (No cumple). Resultado: el botón queda deshabilitado hasta cumplir los criterios.
+
+**UF-F03 · Mantener mi cuenta al día (gestor).** Meta de usuario: «Quiero mantener al día mis datos de contacto, mi clave y mi idioma.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a las historias US03, US04 y US42. Como se observa en la \autoref{fig:uf-f03-ruben}, la ruta esperada coincide con la de WF-F03 y recorre G10 → P95 → P96 → P97 → P98 → P95 (English). El recorrido cierra con la meta cumplida: datos, clave e idioma al día sin cerrar sesión. El diagrama documenta 4 rutas alternativas en 2 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F03: mantener mi cuenta al día (gestor).} \label{fig:uf-f03-ruben}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f03-ruben.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 3 · P96 · ¿Datos válidos?** Celular sin formato E.164 para Perú (US03 esc. 2). Pantalla: P96 (Celular inválido). Resultado: no se guarda y se indica el formato esperado.
+- **PASO 3 · P96 · ¿Datos válidos?** Nombre completo vacío (US03 esc. 3). Pantalla: P96 (Nombre vacío). Resultado: no se guarda; se conserva el nombre anterior.
+- **PASO 4 · P97 · ¿Contraseñas válidas?** La contraseña actual no coincide (US04 esc. 2). Pantalla: P97 (Actual incorrecta). Resultado: no se cambia nada; corrige la contraseña actual.
+- **PASO 4 · P97 · ¿Contraseñas válidas?** La nueva no cumple o es igual a la actual (US04 esc. 3–4). Pantalla: P97 (No cumple). Resultado: el botón queda deshabilitado hasta cumplir los criterios.
+
+**UF-F04 · Activar mi acceso con pago o código.** Meta de usuario: «Quiero habilitar Viora pagando mi plan o con el código que me dio mi cooperativa.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US06 y US07. Como se observa en la \autoref{fig:uf-f04}, la ruta esperada coincide con la de WF-F04 y recorre P02 → P04 (Verificando) → P04 (Aprobado) → P10 (Sin lotes). El recorrido cierra con la meta cumplida: acceso activo; Teodoro entra a su Inicio para registrar su primer lote. El diagrama documenta 3 rutas alternativas en 2 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F04: activar mi acceso con pago o código.} \label{fig:uf-f04}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f04.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 1 · P02 · ¿Tiene código de cooperativa?** Toca «Tengo un código», lo escribe y lo canjea (US07 esc. 1). Pantallas: P05, P05 (Validando), P06. Resultado: la cooperativa cubre su plan; toca «Ir al inicio» y llega al PASO 4.
+- **PASO 1 · P02 · ¿Tiene código de cooperativa?** El código no existe, venció o ya se canjeó (US07 esc. 2–3). Pantalla: P05 (Código no válido). Resultado: prueba otro código o vuelve a pagar su plan en P02.
+- **PASO 2 · P04 (Verificando) · ¿Pago aprobado?** Mercado Pago rechaza el pago (US06 esc. 2). Pantalla: P04 (Rechazado). Resultado: sin suscripción ni cargos; reintenta el pago o usa un código.
+
+**UF-F05 · Saber qué hacer hoy en mi olivar.** Meta de usuario: «Al abrir la app quiero ver de un vistazo cómo están mis lotes y qué es lo urgente de la temporada.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US18 (resúmenes de US17, US19 y US27). Como se observa en la \autoref{fig:uf-f05}, la ruta esperada coincide con la de WF-F05 y recorre P10 → T14 → T15. El recorrido cierra con la meta cumplida: sabe qué atender hoy y en qué lote. El diagrama documenta 3 rutas alternativas en 1 punto de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F05: saber qué hacer hoy en mi olivar.} \label{fig:uf-f05}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f05.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 1 · P10 · ¿Estado del Inicio?** Sin conexión. Pantalla: P10 (Sin conexión). Resultado: muestra lo último guardado; lo registrado queda «Pendiente de sincronizar».
+- **PASO 1 · P10 · ¿Estado del Inicio?** Primera vez, aún sin lotes. Pantalla: P10 (Sin lotes). Resultado: sin lote no hay fases ni alertas: invita a dibujar el primer lote (UF-F06).
+- **PASO 1 · P10 · ¿Estado del Inicio?** Membresía vencida. Pantalla: P10 (Sin acceso activo). Resultado: solo lectura; la única acción es reactivar el plan (UF-F04).
+
+**UF-F06 · Registrar un lote.** Meta de usuario: «Quiero registrar mi parcela con su contorno, variedad y marco de plantación para que Viora conozca su potencial.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a la historia US09. Como se observa en la \autoref{fig:uf-f06}, la ruta esperada coincide con la de WF-F06 y recorre P20 → P21 → P22 → P24 → P25 → P26. El recorrido cierra con la meta cumplida: lote registrado con contorno, área, variedad y densidad. El diagrama documenta 9 rutas alternativas en 4 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F06: registrar un lote.} \label{fig:uf-f06}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f06.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 2 · P21 · ¿Puede usar el GPS en el lote?** Está sin GPS o desde casa: elige «Trazar en el mapa». Pantalla: P23. Resultado: centra cada esquina bajo la mira y continúa en P24.
+- **PASO 2 · P21 · ¿Puede usar el GPS en el lote?** Negó el permiso de ubicación. Pantalla: P21 (Sin permiso de ubicación). Resultado: la tarjeta GPS se bloquea; puede volver a pedir el permiso o trazar en el mapa.
+- **PASO 3 · P22 · ¿Contorno válido con buena señal?** Error mayor a 15 m. Pantalla: P22 (Señal débil). Resultado: no deja marcar la esquina; pasados 30 m ofrece seguir en el mapa.
+- **PASO 3 · P22 · ¿Contorno válido con buena señal?** Se pierde la señal GPS (US09 esc. 3). Pantalla: P22. Resultado: conserva las esquinas y ofrece seguir en el mapa (P23).
+- **PASO 3 · P22 · ¿Contorno válido con buena señal?** Menos de 3 esquinas (US09 esc. 2). Pantalla: P22. Resultado: «Cerrar contorno» deshabilitado y explica por qué.
+- **PASO 3 · P22 · ¿Contorno válido con buena señal?** Los bordes se cruzan (US09 esc. 2). Pantalla: P22. Resultado: no cierra hasta corregir la esquina indicada.
+- **PASO 4 · P24 · ¿Datos válidos?** Densidad mayor a 500 árboles/ha. Pantalla: P24. Resultado: error en el campo; no calcula ni avanza hasta corregir el marco.
+- **PASO 4 · P24 · ¿Datos válidos?** Sale a mitad con ×. Pantalla: P24. Resultado: confirma antes de perder esquinas y datos; «Seguir editando» vuelve a P24.
+- **PASO 5 · P25 · ¿Cabe en su plan?** El área supera las hectáreas del plan. Pantalla: P25. Resultado: ajusta el contorno (vuelve a P22) o amplía su plan.
+
+**UF-F07 · Mantener mis lotes al día.** Meta de usuario: «Quiero corregir los datos de un lote, o retirarlo de mi inventario sin perder su historial.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US10 y US11. Como se observa en la \autoref{fig:uf-f07}, la ruta esperada coincide con la de WF-F07 y recorre P26 → P27 → P28 → P26. El recorrido cierra con la meta cumplida: lote corregido con densidad y área recalculadas. El diagrama documenta 4 rutas alternativas en 2 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F07: mantener mis lotes al día.} \label{fig:uf-f07}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f07.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 2 · P27 · ¿Qué quiere hacer con el lote?** Corregir el contorno (US10 esc. 1). Pantalla: P29. Resultado: mover una esquina recalcula la superficie y conserva el historial.
+- **PASO 2 · P27 · ¿Qué quiere hacer con el lote?** Retirar un lote con historial (US11 esc. 2). Pantallas: P28, P20 (Archivados). Resultado: se archiva con su trazabilidad y se puede restaurar.
+- **PASO 2 · P27 · ¿Qué quiere hacer con el lote?** Retirar un lote sin cosechas ni lecturas (US11 esc. 1). Pantallas: P28, P20 (Lote eliminado). Resultado: sale del inventario y libera sus hectáreas del plan.
+- **PASO 3 · P28 · ¿Marco válido?** Densidad mayor a 500 árboles/ha (US10 esc. 3). Pantalla: P28 (Marco fuera de rango). Resultado: no se guarda; muestra los rangos admitidos.
+
+**UF-F08 · Configurar el monitoreo del lote.** Meta de usuario: «Quiero vincular nodos virtuales a mi lote para recibir lecturas de clima y suelo.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US13, US14, US15 y US16. Como se observa en la \autoref{fig:uf-f08}, la ruta esperada coincide con la de WF-F08 y recorre P26 → P27 → P85 → P86 → P87. El recorrido cierra con la meta cumplida: nodos vinculados y configurados; el lote recibe lecturas. El diagrama documenta 3 rutas alternativas en 2 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F08: configurar el monitoreo del lote.} \label{fig:uf-f08}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f08.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 3 · P85 · ¿Estado de los sensores?** El lote aún no tiene nodos (US14 esc. 3). Pantalla: P85 (Sin sensores). Resultado: lo informa y ofrece vincular el primero (PASO 4).
+- **PASO 3 · P85 · ¿Estado de los sensores?** Quiere retirar un nodo (US16). Pantallas: P88, P85 (Nodo desvinculado). Resultado: confirma el impacto; las lecturas quedan en el historial del lote.
+- **PASO 4 · P86 · ¿Nombre válido?** Nombre vacío o repetido en el lote (US13 esc. 2–3). Pantalla: P86 (Nombre repetido). Resultado: el botón se deshabilita hasta escribir un nombre único.
+
+**UF-F09 · Vigilar el clima del lote.** Meta de usuario: «Quiero ver la temperatura y la humedad de mi lote, y el pronóstico, para programar riegos y labores.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US17, US18 y US19. Como se observa en la \autoref{fig:uf-f09}, la ruta esperada coincide con la de WF-F09 y recorre P10 → P90 → P91. El recorrido cierra con la meta cumplida: conoce la humedad del suelo y el pronóstico para programar su riego. El diagrama documenta 3 rutas alternativas en 3 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F09: vigilar el clima del lote.} \label{fig:uf-f09}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f09.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 1 · P10 · ¿Entra desde una alerta?** La sonda baja de 18 %: alerta de estrés hídrico (US18 esc. 1). Pantalla: T15. Resultado: toca «Humedad del suelo» y llega a P91; «Registrar riego» abre una nota.
+- **PASO 2 · P90 · ¿Hay conexión?** Sin conexión (US19 esc. 2). Pantalla: P90 (Pronóstico guardado (sin conexión)). Resultado: muestra el último pronóstico con la hora de sincronización.
+- **PASO 3 · P91 · ¿Riega a tiempo?** Tras el riego la humedad vuelve al rango (US18 esc. 3). Pantalla: T15. Resultado: la alerta se normaliza y registra cuánto duró el estrés.
+
+**UF-F10 · Conocer la vecería de mi lote.** Meta de usuario: «Quiero registrar mis cosechas pasadas para saber qué tan fuerte es la alternancia de mi lote.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US20 y US21. Como se observa en la \autoref{fig:uf-f10}, la ruta esperada coincide con la de WF-F10 y recorre P26 → P40 → P41 → P40 (Campaña agregada). El recorrido cierra con la meta cumplida: conoce la vecería de su lote con el índice recalculado. El diagrama documenta 4 rutas alternativas en 2 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F10: conocer la vecería de mi lote.} \label{fig:uf-f10}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f10.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 2 · P40 · ¿Hay índice disponible?** Menos de 3 campañas registradas (US20 esc. 2). Pantalla: P40 (Historial insuficiente). Resultado: muestra el avance; el resto de la app sigue disponible.
+- **PASO 2 · P40 · ¿Hay índice disponible?** Una campaña tiene kilos errados (US21). Pantallas: P41, P41. Resultado: corrige o elimina la campaña y el índice se recalcula.
+- **PASO 2 · P40 · ¿Hay índice disponible?** Sin conexión. Pantalla: P40 (Sin conexión). Resultado: muestra el último índice con su fecha; editar requiere conexión.
+- **PASO 3 · P41 · ¿Valores válidos?** Año futuro o kilos negativos (US20 esc. 3). Pantalla: P41 (Fuera de rango). Resultado: cada campo muestra el rango válido; no se puede guardar.
+
+**UF-F11 · Seguir el frío invernal.** Meta de usuario: «Quiero saber cuánto frío ha acumulado mi olivar este invierno para anticipar cómo será la floración.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US22 y US23. Como se observa en la \autoref{fig:uf-f11}, la ruta esperada coincide con la de WF-F11 y recorre P10 (Fase · Reposo invernal) → P80 → P81. El recorrido cierra con la meta cumplida: sabe cuánto frío acumuló su olivar y qué esperar de la floración. El diagrama documenta 3 rutas alternativas en 2 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F11: seguir el frío invernal.} \label{fig:uf-f11}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f11.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 1 · P10 (Fase · Reposo invernal) · ¿Hubo un pico cálido?** Más de 3 días seguidos sobre 24 °C (US23). Pantallas: T15, P80 (Frío frenado). Resultado: ve las porciones que no se formaron y la nueva proyección.
+- **PASO 2 · P80 · ¿En qué momento del invierno?** Llega a 30 porciones (US22 esc. 2). Pantalla: P80 (Estímulo completado). Resultado: cambia el estado y Viora avisa con una notificación.
+- **PASO 2 · P80 · ¿En qué momento del invierno?** Fuera del invierno (US22 esc. 3). Pantalla: P80 (Fuera de temporada). Resultado: el conteo está en pausa y muestra el cierre del invierno pasado.
+
+**UF-F12 · Muestrear el cuajado sin conexión.** Meta de usuario: «Quiero contar brotes y frutos árbol por árbol en el campo, aunque no tenga señal, y que se envíe solo cuando vuelva la cobertura.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US24 y US25. Como se observa en la \autoref{fig:uf-f12}, la ruta esperada coincide con la de WF-F12 y recorre P50 → P51 → P52 → P53 → P52 (Muestra suficiente) → P54. El recorrido cierra con la meta cumplida: muestra registrada y sincronizada; se habilita el plan del lote (UF-F13). El diagrama documenta 3 rutas alternativas en 3 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F12: muestrear el cuajado sin conexión.} \label{fig:uf-f12}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f12.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 3 · P52 · ¿Hay señal?** Sin conexión en el campo (US24 esc. 1). Pantallas: P52 (Sin conexión), P52 (Conexión recuperada). Resultado: cada árbol queda «Por sincronizar» y se envía solo al volver la señal (US24 esc. 2).
+- **PASO 4 · P53 · ¿Conteo válido?** Frutos por brote fuera del rango (US24 esc. 3). Pantalla: P53 (Conteo fuera de rango). Resultado: error en el campo con el rango admitido; corrige y guarda.
+- **PASO 6 · P54 · ¿Se sincronizó?** Finaliza la ronda sin señal. Pantalla: P54 (Guardada sin señal). Resultado: queda en el teléfono; se completa y habilita el plan al sincronizar.
+
+**UF-F13 · Aclarear a tiempo.** Meta de usuario: «Quiero saber cuánta fruta debo quitar y hasta qué fecha, y dejar registrado lo que hice.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US26, US27 y US28. Como se observa en la \autoref{fig:uf-f13}, la ruta esperada coincide con la de WF-F13 y recorre P60 → P61 → P62 → P63. El recorrido cierra con la meta cumplida: sabe cuánto quitar y hasta cuándo, y su aclareo queda en la Bitácora. El diagrama documenta 6 rutas alternativas en 3 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F13: aclarear a tiempo.} \label{fig:uf-f13}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f13.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 2 · P61 · ¿Hay prescripción vigente?** Faltan árboles en la muestra (US26 esc. 3). Pantalla: P61 (Muestra incompleta). Resultado: no calcula la carga; indica cuántos faltan y lleva al muestreo (UF-F12).
+- **PASO 2 · P61 · ¿Hay prescripción vigente?** La carga ya es óptima (US27 esc. 2). Pantalla: P61 (Carga óptima). Resultado: prescripción de 0 %: no hace falta aclarear.
+- **PASO 2 · P61 · ¿Hay prescripción vigente?** El carozo ya endureció (US27 esc. 3). Pantalla: P61 (Ventana concluida). Resultado: advierte el efecto sobre la floración siguiente.
+- **PASO 2 · P61 · ¿Hay prescripción vigente?** Sin conexión. Pantalla: P61 (Sin conexión). Resultado: muestra la última prescripción con su fecha, nunca como recién calculada.
+- **PASO 3 · P62 · ¿Dentro de la ventana?** Registra el aclareo fuera de la ventana (US28 esc. 2). Pantalla: P62 (Fuera de ventana). Resultado: se guarda igual, con advertencia de eficacia reducida.
+- **PASO 4 · P63 · ¿Se puede estimar el calibre?** La variedad aún no está calibrada. Pantalla: P63 (Calibre aún sin calibrar). Resultado: muestra el avance de la calibración, nunca una cifra.
+
+**UF-F14 · Cerrar la campaña y obtener el expediente.** Meta de usuario: «Quiero registrar los kilos cosechados, cerrar la campaña y descargar el expediente de mi lote.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US29 y US30. Como se observa en la \autoref{fig:uf-f14}, la ruta esperada coincide con la de WF-F14 y recorre P10 (Fase · Cosecha) → P70 → P71 → P72 → P73 → P76 → P77. El recorrido cierra con la meta cumplida: campaña cerrada y expediente sellado disponible en PDF. El diagrama documenta 5 rutas alternativas en 4 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F14: cerrar la campaña y obtener el expediente.} \label{fig:uf-f14}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f14.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 3 · P71 · ¿Kilos válidos?** Kilos negativos o vacíos (US20 esc. 3). Pantalla: P71 (Kilos no válidos). Resultado: el botón se deshabilita hasta corregir.
+- **PASO 4 · P72 · ¿Se puede asentar?** La almazara ya asentó el año (US29 esc. 2, 409). Pantalla: P72. Resultado: muestra su comprobante y no se vuelve a pesar.
+- **PASO 4 · P72 · ¿Se puede asentar?** Asienta sin conexión. Pantalla: P73. Resultado: se guarda en el teléfono y se asienta al reconectar.
+- **PASO 6 · P76 · ¿Hay conexión?** Sin conexión. Pantalla: P76 (Sin conexión). Resultado: solo abre la última versión guardada del PDF.
+- **PASO 7 · P77 · ¿Debe probar su autenticidad?** Un tercero pide verificar el PDF (US30 esc. 2). Pantalla: P78. Resultado: muestra el código SHA-256 que prueba que el PDF no se modificó.
+
+**UF-F15 · Priorizar mis visitas de campo.** Meta de usuario: «Quiero saber qué sectores y parcelas socias están en riesgo, empezando por donde estoy, para decidir a quién visitar.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a las historias US12, US30 y US31. Como se observa en la \autoref{fig:uf-f15}, la ruta esperada coincide con la de WF-F15 y recorre G10 → G20 → G20 → G22 → G23 → T16. El recorrido cierra con la meta cumplida: sabe qué parcelas visitar primero y consulta el expediente del socio. El diagrama documenta 4 rutas alternativas en 4 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F15: priorizar mis visitas de campo.} \label{fig:uf-f15}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f15.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 1 · G10 · ¿Entra desde una alerta?** Un sector pasa a Crítico o recibe aviso de helada (US31). Pantalla: T14. Resultado: la alerta abre directamente ese sector (PASO 4).
+- **PASO 2 · G20 · ¿Hay ubicación?** Toca «Ahora no» o no hay señal GPS (US12 esc. 3). Pantalla: G21. Resultado: vista global y hoja con los sectores en orden alfabético.
+- **PASO 3 · G20 · ¿Datos actuales?** Sin conexión. Pantalla: G20. Resultado: último estado guardado con su fecha, nunca como recién calculado.
+- **PASO 5 · G23 · ¿La parcela tiene muestreo?** Sin muestreo válido. Pantalla: G23. Resultado: sin carga ni prescripción; queda en gris, nunca en verde.
+
+**UF-F16 · Proyectar el acopio de la campaña.** Meta de usuario: «Quiero estimar cuántas toneladas de aceituna verde y negra entregarán los socios para planificar la planta y los contratos.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a la historia US32. Como se observa en la \autoref{fig:uf-f16}, la ruta esperada coincide con la de WF-F16 y recorre G10 → G30 → G30. El recorrido cierra con la meta cumplida: conoce las toneladas proyectadas de verde y negra y la cobertura que las respalda. El diagrama documenta 3 rutas alternativas en 1 punto de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F16: proyectar el acopio de la campaña.} \label{fig:uf-f16}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f16.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 2 · G30 · ¿Hay datos suficientes?** Cobertura menor al 50 % (US32 esc. 2). Pantalla: G30. Resultado: etiqueta «Preliminar», margen elevado y parcelas que faltan.
+- **PASO 2 · G30 · ¿Hay datos suficientes?** Ningún muestreo en la campaña. Pantalla: G30. Resultado: no muestra cifra; lleva a los socios sin muestreo.
+- **PASO 2 · G30 · ¿Hay datos suficientes?** Sin conexión. Pantalla: G30. Resultado: última proyección guardada con su fecha.
+
+**UF-F17 · Administrar socios y códigos.** Meta de usuario: «Quiero ver mi padrón de socios y el cupo de la licencia, y entregar códigos de activación a los socios nuevos.» Corresponde a Rubén Ticona en la App Gestor (Flutter) y a la historia US08 (TS08, TS09, TS41). Como se observa en la \autoref{fig:uf-f17}, la ruta esperada coincide con la de WF-F17 y recorre G10 → G40 → G42 → G43 → G44. El recorrido cierra con la meta cumplida: conoce su padrón y su cupo, y tiene los códigos listos para entregar. El diagrama documenta 3 rutas alternativas en 2 puntos de decisión.
+
+\begin{figure}[H]
+\caption{User flow UF-F17: administrar socios y códigos.} \label{fig:uf-f17}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f17.png}
+\caption*{\textit{Nota.} Elaboración propia con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas y sus condiciones son las siguientes:
+
+- **PASO 3 · G42 · ¿Debe revocar un código?** Revoca un código por canjear (TS41 esc. 1). Pantallas: G42, G42 (Código revocado). Resultado: el código vence hoy y la plaza vuelve al cupo.
+- **PASO 3 · G42 · ¿Debe revocar un código?** El socio ya lo canjeó (TS41 esc. 2, 409). Pantalla: G42. Resultado: no se puede revocar.
+- **PASO 4 · G43 · ¿Hay plazas libres?** Pide más códigos que plazas libres (TS08 esc. 2). Pantalla: G43 (Cupo excedido). Resultado: el botón se deshabilita.
 
 ### Mobile Applications Prototyping
 
@@ -1620,10 +1977,22 @@ A continuación se presenta el registro visual y el acceso al recurso audiovisua
 
 Link del video: [https://tinyurl.com/44hdrd42](https://tinyurl.com/44hdrd42)
 
+Como se observa en la \autoref{fig:mobile-prototyping-home}, el prototipo se reproduce en Figma desde el panel de flujos, que organiza los recorridos de la App Productor y de la App Gestor por meta de usuario (por ejemplo, «Productor · 03 Inicio (F05)») e incluye las variantes de excepción, como el pago rechazado, el inicio sin conexión o el muestreo sin señal. La captura muestra el Inicio del productor en fase de aclareo, con el tapbar flotante y la tarjeta estacional que conduce al plan de aclareo.
+
 \begin{figure}[H]
-\caption{Prototipo Mobile: Captura de Navegación e Interacción en Figma.}
-\label{fig:mobile-prototyping-video}
+\caption{Prototipo Mobile: Reproducción del Flujo de Inicio del Productor en Figma.}
+\label{fig:mobile-prototyping-home}
 \centering
-\includegraphics[width=0.88\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-video-screenshot.png}
-\caption*{\textit{Nota.} Entorno de reproducción del prototipo móvil en Figma mostrando la estructura de flujos de interacción e inicio de sesión. Elaboración propia.}
+\includegraphics[width=0.88\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-home-screenshot.png}
+\caption*{\textit{Nota.} Panel de flujos del prototipo con los recorridos principales y sus variantes, y reproducción del Inicio (P10). Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:mobile-prototyping-panoramic} presenta la vista panorámica del archivo en modo prototipo: a la izquierda, la reproducción iniciada en el splash (T01); a la derecha, las secciones de la App Productor (Kotlin) y de la App Gestor (Flutter) con sus puntos de inicio de flujo, que conectan las láminas de cada meta de usuario con la misma organización empleada en los wireframes, mock-ups y user flows.
+
+\begin{figure}[H]
+\caption{Prototipo Mobile: Vista Panorámica de Flujos y Conexiones en Figma.}
+\label{fig:mobile-prototyping-panoramic}
+\centering
+\includegraphics[width=0.88\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-panoramic-screenshot.png}
+\caption*{\textit{Nota.} Puntos de inicio de flujo de ambas aplicaciones y reproducción del splash del prototipo. Elaboración propia.}
 \end{figure}
