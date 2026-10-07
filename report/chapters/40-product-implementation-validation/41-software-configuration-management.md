@@ -314,13 +314,13 @@ El despliegue hacia la infraestructura de Vercel se encuentra automatizado media
 
 \noindent \textbf{Punto de acceso en producción:}
 
-* Estado de despliegue: En proceso de publicación continua.
-* Enlace oficial: *[Enlace de producción pendiente de publicación oficial / despliegue final]*.
+* Estado de despliegue: Desplegado.
+* Enlace oficial: \url{https://viora-landing-page-sable.vercel.app/}
 
 #### Despliegue de servicios web de backend y base de datos cloud
 &nbsp;
 
-La capa de servicios web de Viora, versionada en el repositorio `viora-platform`, está construida en Java 21 utilizando el framework Spring Boot 4 (v4.1.1) y arquitectura hexagonal organizada por Bounded Contexts. Su despliegue productivo se ejecuta sobre el runtime nativo de Render en estrecha integración con una instancia de PostgreSQL 16 alojada en Filess.io.
+La capa de servicios web de Viora, versionada en el repositorio `viora-platform`, está construida en Java 21 utilizando el framework Spring Boot 4 (v4.1.1) y arquitectura hexagonal organizada por Bounded Contexts. Su despliegue productivo se ejecuta sobre el runtime nativo de Render en estrecha integración con una instancia de PostgreSQL 15.6 alojada en Filess.io.
 
 \noindent \textbf{Configuración del entorno en Render:}
 
@@ -339,7 +339,7 @@ Se aprovecha el entorno de ejecución nativo de Java ofrecido por Render, lo que
 
 \noindent \textbf{Persistencia y sincronización del esquema en Filess.io:}
 
-La persistencia de datos recae en una base de datos relacional PostgreSQL 16 provisionada en la plataforma DBaaS Filess.io. Para asegurar la concordancia estricta entre el modelo de dominio en código y la estructura física de la base de datos sin requerir migraciones manuales complejas durante la fase activa de desarrollo, el sistema utiliza la directiva de configuración de Hibernate:
+La persistencia de datos recae en una base de datos relacional PostgreSQL 15.6 provisionada en la plataforma DBaaS Filess.io. Para asegurar la concordancia estricta entre el modelo de dominio en código y la estructura física de la base de datos sin requerir migraciones manuales complejas durante la fase activa de desarrollo, el sistema utiliza la directiva de configuración de Hibernate:
 
 \begin{verbatim}
 spring.jpa.hibernate.ddl-auto=update
@@ -353,13 +353,13 @@ El componente `viora-telemetry-simulator` se despliega como un servicio en segun
 
 \noindent \textbf{Punto de acceso en producción de la API:}
 
-* Estado de despliegue: En proceso de publicación continua.
-* Enlace oficial: *[Enlace de producción de la API RESTful pendiente de publicación oficial / despliegue final]*.
+* Estado de despliegue: Desplegado.
+* Enlace oficial: \url{https://viora-platform.onrender.com/swagger-ui/index.html}
 
 #### Despliegue y distribución de aplicaciones móviles (Firebase App Distribution)
 &nbsp;
 
-La solución móvil de Viora comprende tanto el cliente móvil nativo custodiado en `viora-mobile-android` (Kotlin, Jetpack Compose y Android SDK 34) como el cliente móvil multiplataforma en `viora-mobile-flutter` (Dart y motor Flutter). Para posibilitar la evaluación del software en dispositivos físicos de prueba conforme a los requisitos del curso y a la topología modelada en la \autoref{fig:c4-deployment-ch4}, el equipo utiliza Firebase App Distribution como canal corporativo centralizado de distribución continua.
+La solución móvil de Viora comprende tanto el cliente móvil nativo custodiado en `viora-mobile-android` (Kotlin, Jetpack Compose y Android SDK 37) como el cliente móvil multiplataforma en `viora-mobile-flutter` (Dart y motor Flutter). Para posibilitar la evaluación del software en dispositivos físicos de prueba conforme a los requisitos del curso y a la topología modelada en la \autoref{fig:c4-deployment-ch4}, el equipo utiliza Firebase App Distribution como canal corporativo centralizado de distribución continua.
 
 \noindent \textbf{Selección técnica de la variante de compilación (*Build Variant*):}
 
