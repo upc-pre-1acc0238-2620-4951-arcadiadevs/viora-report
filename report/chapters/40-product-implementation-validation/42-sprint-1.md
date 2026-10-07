@@ -350,7 +350,7 @@ A continuación, en la \autoref{tab:development-evidence-sprint-1} se expone la 
 \small
 \renewcommand{\arraystretch}{1.15}
 \setlength{\tabcolsep}{3.5pt}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\centering\arraybackslash}p{0.07\textwidth}|>{\raggedright\arraybackslash}p{0.22\textwidth}|p{0.20\textwidth}|>{\centering\arraybackslash}p{0.13\textwidth}|}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.21\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}p{0.12\textwidth}|p{0.20\textwidth}|>{\centering\arraybackslash}p{0.13\textwidth}|}
 \caption{Evidencias de Desarrollo para Sprint Review (Commits por Repositorio)} \label{tab:development-evidence-sprint-1} \\
 \hline
 \textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
