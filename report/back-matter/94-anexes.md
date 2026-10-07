@@ -31,4 +31,31 @@ En esta sección se consolida la evidencia audiovisual de las entrevistas a prof
 
 \vspace{0.5cm}
 
+\noindent \textbf{A.2. Video de Entrevistas de Validación}
+
+\vspace{0.2cm}
+
+En esta sección se presenta la evidencia audiovisual consolidada de las entrevistas de validación realizadas con usuarios de los segmentos objetivo (productores olivareros independientes y gestores técnicos de cooperativas) interactuando con la Landing Page de Viora. El video recopila de forma secuencial las cuatro sesiones de validación efectuadas en campo, integrando en cada una cintillos de identificación del entrevistado, su segmento correspondiente y marcas temporales de inicio.
+
+\vspace{0.3cm}
+
+\noindent \textbf{Información del registro audiovisual:}
+
+* \textbf{Título del video:} Entrevistas de Validación de la Landing Page - Proyecto Viora
+* \textbf{Nomenclatura oficial:} \texttt{upc-pre-202602-1acc0238-4951-arcadiadevs-validation-tb1.mp4}
+* \textbf{Duración total:} 23 minutos y 02 segundos
+* \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/validation-interviews}
+
+\vspace{0.3cm}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/interviews/validation/interview-val-cristobal.png}
+\caption{Captura del video consolidado de entrevistas de validación del proyecto Viora}
+\label{fig:anexo-a2-video-entrevistas-validacion}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/validation-interviews}}
+\end{figure}
+
+\vspace{0.5cm}
+
 \newpage
