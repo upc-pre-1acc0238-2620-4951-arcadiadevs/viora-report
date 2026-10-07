@@ -403,7 +403,7 @@ Como se muestra en la \autoref{fig:wf-desktop-01-1}, la cabecera fija incorpora 
 \caption{Wireframe Desktop: Bloque 1.1 - Hero y Portada Principal.}
 \label{fig:wf-desktop-01-1}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-01-1-hero-portada.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-01-1-hero-portada.png}
 \caption*{\textit{Nota.} Disposición esquelética del encabezado y la portada inicial en baja fidelidad. Elaboración propia.}
 \end{figure}
 
@@ -413,7 +413,7 @@ En la \autoref{fig:wf-desktop-01-2} se despliega la contextualización de la vec
 \caption{Wireframe Desktop: Bloque 1.2 - Problemática de la Vecería y Datos de Campo.}
 \label{fig:wf-desktop-01-2}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-01-2-problema-veceria.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-01-2-problema-veceria.png}
 \caption*{\textit{Nota.} Estructura del planteamiento del problema agronómico. Elaboración propia.}
 \end{figure}
 
@@ -423,7 +423,7 @@ La \autoref{fig:wf-desktop-01-3} consolida la presentación de la solución con 
 \caption{Wireframe Desktop: Bloque 1.3 - Presentación de la Solución Viora.}
 \label{fig:wf-desktop-01-3}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-01-3-solucion-viora.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-01-3-solucion-viora.png}
 \caption*{\textit{Nota.} Estructura de la propuesta de valor, contenedor multimedia y titular de apertura hacia los módulos del producto. Elaboración propia.}
 \end{figure}
 
@@ -433,7 +433,7 @@ En la \autoref{fig:wf-desktop-02} se detalla el núcleo del bloque de producto, 
 \caption{Wireframe Desktop: Bloque 2 - Módulos de Producto y Casos de Uso.}
 \label{fig:wf-desktop-02}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-02-producto-features.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-02-producto-features.png}
 \caption*{\textit{Nota.} Esquema estructural de las funcionalidades principales y casos de uso. Elaboración propia.}
 \end{figure}
 
@@ -443,7 +443,7 @@ Tal como se observa en la \autoref{fig:wf-desktop-03-1}, se introduce el esquema
 \caption{Wireframe Desktop: Bloque 3.1 - Contexto Territorial de Tacna y Fenología.}
 \label{fig:wf-desktop-03-1}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-03-1-contexto-tacna.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-03-1-contexto-tacna.png}
 \caption*{\textit{Nota.} Distribución de métricas agronómicas regionales y ciclo fenológico. Elaboración propia.}
 \end{figure}
 
@@ -453,7 +453,7 @@ En la \autoref{fig:wf-desktop-03-2} se modela la categorización por audiencia c
 \caption{Wireframe Desktop: Bloque 3.2 - Segmento Productor Olivarero.}
 \label{fig:wf-desktop-03-2}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-03-2-segmento-productor.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-03-2-segmento-productor.png}
 \caption*{\textit{Nota.} Estructuración de ventajas competitivas para el productor independiente. Elaboración propia.}
 \end{figure}
 
@@ -463,7 +463,7 @@ La \autoref{fig:wf-desktop-03-3} complementa la segmentación modelando el área
 \caption{Wireframe Desktop: Bloque 3.3 - Segmento Gestor Técnico, Apertura de Planes y Trabajo en Campo.}
 \label{fig:wf-desktop-03-3}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-03-3-segmento-gestor.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-03-3-segmento-gestor.png}
 \caption*{\textit{Nota.} Estructura de beneficios para la administración asociativa y cabecera de planes de acceso. Elaboración propia.}
 \end{figure}
 
@@ -473,7 +473,7 @@ En la \autoref{fig:wf-desktop-04-1} se modela la presentación visual del Plan P
 \caption{Wireframe Desktop: Bloque 4.1 - Planes de Acceso: Plan Productor.}
 \label{fig:wf-desktop-04-1}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-04-1-plan-productor.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-04-1-plan-productor.png}
 \caption*{\textit{Nota.} Estructura visual de la suscripción individual y pasos de contratación. Elaboración propia.}
 \end{figure}
 
@@ -483,7 +483,7 @@ En la \autoref{fig:wf-desktop-04-2} se estructura la modalidad institucional del
 \caption{Wireframe Desktop: Bloque 4.2 - Planes de Acceso: Plan Cooperativa y Activación.}
 \label{fig:wf-desktop-04-2}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-04-2-plan-cooperativa.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-04-2-plan-cooperativa.png}
 \caption*{\textit{Nota.} Esquema de planes institucionales y procedimiento de alta de socios. Elaboración propia.}
 \end{figure}
 
@@ -493,7 +493,7 @@ La \autoref{fig:wf-desktop-05-1} ilustra el espacio institucional reservado para
 \caption{Wireframe Desktop: Bloque 5.1 - Equipo Desarrollador ArcadiaDevs.}
 \label{fig:wf-desktop-05-1}
 \centering
-\includegraphics[width=0.40\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-05-1-equipo-arcadiadevs.png}
+\includegraphics[width=0.40\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-05-1-equipo-arcadiadevs.png}
 \caption*{\textit{Nota.} Presentación estructural del equipo técnico multidisciplinario. Elaboración propia.}
 \end{figure}
 
@@ -503,7 +503,7 @@ En la \autoref{fig:wf-desktop-05-2} se define el bloque de misión y visión de 
 \caption{Wireframe Desktop: Bloque 5.2 - Misión, Visión y Video Institucional.}
 \label{fig:wf-desktop-05-2}
 \centering
-\includegraphics[width=0.40\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-05-2-mision-vision.png}
+\includegraphics[width=0.40\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-05-2-mision-vision.png}
 \caption*{\textit{Nota.} Estructura de postulados de valor, video de equipo y respaldo institucional. Elaboración propia.}
 \end{figure}
 
@@ -513,7 +513,7 @@ Finalmente, la \autoref{fig:wf-desktop-06} exhibe la zona de conversión final (
 \caption{Wireframe Desktop: Bloque 6 - Conversión Final y Pie de Página.}
 \label{fig:wf-desktop-06}
 \centering
-\includegraphics[width=0.40\textwidth]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-06-conversion-footer.png}
+\includegraphics[width=0.40\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-desktop/wf-desktop-06-conversion-footer.png}
 \caption*{\textit{Nota.} Wireframe de la llamada a la acción de cierre y pie de página de escritorio. Elaboración propia.}
 \end{figure}
 
@@ -527,7 +527,7 @@ Como se muestra en la \autoref{fig:wf-mobile-01-1}, la cabecera móvil sintetiza
 \caption{Wireframe Mobile: Bloque 1.1 - Hero y Portada Principal.}
 \label{fig:wf-mobile-01-1}
 \centering
-\includegraphics[width=0.15\textwidth]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-01-1-hero-portada.png}
+\includegraphics[width=0.15\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-01-1-hero-portada.png}
 \caption*{\textit{Nota.} Disposición vertical compacta de la cabecera móvil. Elaboración propia.}
 \end{figure}
 
@@ -537,7 +537,7 @@ En la \autoref{fig:wf-mobile-01-2} se adaptan la problemática de la alternancia
 \caption{Wireframe Mobile: Bloque 1.2 y 1.3 - Problemática de la Vecería y Solución Viora en Móvil.}
 \label{fig:wf-mobile-01-2}
 \centering
-\includegraphics[width=0.32\textwidth]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-01-problema-solucion.png}
+\includegraphics[width=0.32\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-01-problema-solucion.png}
 \caption*{\textit{Nota.} Disposición esquelética móvil de la problemática agronómica y la propuesta tecnológica. Elaboración propia.}
 \end{figure}
 
@@ -547,7 +547,7 @@ En la \autoref{fig:wf-mobile-02} se evidencia la reconfiguración vertical de la
 \caption{Wireframe Mobile: Bloque 2 - Módulos de Producto y Casos de Uso.}
 \label{fig:wf-mobile-02}
 \centering
-\includegraphics[width=0.15\textwidth]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-02-producto-features.png}
+\includegraphics[width=0.15\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-02-producto-features.png}
 \caption*{\textit{Nota.} Adaptación de características a tarjetas en una sola columna táctil. Elaboración propia.}
 \end{figure}
 
@@ -557,7 +557,7 @@ Tal como se observa en la \autoref{fig:wf-mobile-03}, los datos contextuales de 
 \caption{Wireframe Mobile: Bloque 3 - Contexto Regional de Tacna y Segmentación de Usuarios.}
 \label{fig:wf-mobile-03}
 \centering
-\includegraphics[width=0.45\textwidth]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-03-contexto-segmentos.png}
+\includegraphics[width=0.45\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-03-contexto-segmentos.png}
 \caption*{\textit{Nota.} Despliegue estructural móvil de métricas territoriales y fichas de segmentos agronómicos. Elaboración propia.}
 \end{figure}
 
@@ -567,7 +567,7 @@ En la \autoref{fig:wf-mobile-04} se visualiza la presentación de los planes com
 \caption{Wireframe Mobile: Bloque 4 - Planes de Acceso (Plan Productor y Plan Cooperativa).}
 \label{fig:wf-mobile-04}
 \centering
-\includegraphics[width=0.32\textwidth]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-04-planes-acceso.png}
+\includegraphics[width=0.32\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-04-planes-acceso.png}
 \caption*{\textit{Nota.} Esquema móvil informativo del plan individual y guía de activación asociativa. Elaboración propia.}
 \end{figure}
 
@@ -577,7 +577,7 @@ La \autoref{fig:wf-mobile-05} presenta la adaptación móvil del equipo ArcadiaD
 \caption{Wireframe Mobile: Bloques 5 y 6 - Equipo ArcadiaDevs, Misión y Pie de Página.}
 \label{fig:wf-mobile-05}
 \centering
-\includegraphics[width=0.45\textwidth]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-05-06-equipo-footer.png}
+\includegraphics[width=0.45\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/wireframes-mobile/wf-mobile-05-06-equipo-footer.png}
 \caption*{\textit{Nota.} Disposición esquelética móvil del bloque de integrantes, video institucional y pie de página regulatorio. Elaboración propia.}
 \end{figure}
 
@@ -596,7 +596,7 @@ Como se muestra en la \autoref{fig:mk-desktop-01-1}, el bloque inicial cautiva a
 \caption{Mock-up Desktop: Bloque 1.1 - Hero y Portada Principal en Alta Fidelidad.}
 \label{fig:mk-desktop-01-1}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-01-1-hero-portada.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-01-1-hero-portada.png}
 \caption*{\textit{Nota.} Diseño visual terminado del bloque Hero con aplicación del Design System. Elaboración propia.}
 \end{figure}
 
@@ -606,7 +606,7 @@ En la \autoref{fig:mk-desktop-01-2} se aprecia el impacto visual de la problemá
 \caption{Mock-up Desktop: Bloque 1.2 - Problemática de la Vecería en Alta Fidelidad.}
 \label{fig:mk-desktop-01-2}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-01-2-problema-veceria.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-01-2-problema-veceria.png}
 \caption*{\textit{Nota.} Presentación gráfica terminada de la problemática del olivar. Elaboración propia.}
 \end{figure}
 
@@ -616,7 +616,7 @@ La \autoref{fig:mk-desktop-01-3} exhibe la sección de identidad "Somos Viora", 
 \caption{Mock-up Desktop: Bloque 1.3 - Solución Viora en Alta Fidelidad.}
 \label{fig:mk-desktop-01-3}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-01-3-solucion-viora.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-01-3-solucion-viora.png}
 \caption*{\textit{Nota.} Interfaz visual acabada de la solución, componente de video y apertura de la sección de producto. Elaboración propia.}
 \end{figure}
 
@@ -626,7 +626,7 @@ En la \autoref{fig:mk-desktop-02} se aprecia el tratamiento visual de los módul
 \caption{Mock-up Desktop: Bloque 2 - Módulos de Producto y Casos de Uso en Alta Fidelidad.}
 \label{fig:mk-desktop-02}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-02-producto-features.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-02-producto-features.png}
 \caption*{\textit{Nota.} Presentación en alta fidelidad de las capacidades operativas del sistema. Elaboración propia.}
 \end{figure}
 
@@ -636,7 +636,7 @@ Tal como se ilustra en la \autoref{fig:mk-desktop-03-1}, el bloque contextual in
 \caption{Mock-up Desktop: Bloque 3.1 - Contexto de Tacna y Fenología en Alta Fidelidad.}
 \label{fig:mk-desktop-03-1}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-03-1-contexto-tacna.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-03-1-contexto-tacna.png}
 \caption*{\textit{Nota.} Fotografía paisajística y métricas agronómicas de Tacna en alta definición. Elaboración propia.}
 \end{figure}
 
@@ -646,7 +646,7 @@ En la \autoref{fig:mk-desktop-03-2} se observa la caracterización del Productor
 \caption{Mock-up Desktop: Bloque 3.2 - Segmento Productor Olivarero en Alta Fidelidad.}
 \label{fig:mk-desktop-03-2}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-03-2-segmento-productor.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-03-2-segmento-productor.png}
 \caption*{\textit{Nota.} Ilustración de perfil y beneficios para productores. Elaboración propia.}
 \end{figure}
 
@@ -656,7 +656,7 @@ La \autoref{fig:mk-desktop-03-3} presenta la ficha visual acabada del Gestor Té
 \caption{Mock-up Desktop: Bloque 3.3 - Segmento Gestor Técnico y Apertura de Planes en Alta Fidelidad.}
 \label{fig:mk-desktop-03-3}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-03-3-segmento-gestor.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-03-3-segmento-gestor.png}
 \caption*{\textit{Nota.} Ilustración de perfil para gestores técnicos y cabecera de la sección de planes. Elaboración propia.}
 \end{figure}
 
@@ -666,7 +666,7 @@ En la \autoref{fig:mk-desktop-04-1} se evidencia el diseño final de la presenta
 \caption{Mock-up Desktop: Bloque 4.1 - Plan Productor en Alta Fidelidad.}
 \label{fig:mk-desktop-04-1}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-04-1-plan-productor.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-04-1-plan-productor.png}
 \caption*{\textit{Nota.} Diseño visual del plan individual en soles con integración gráfica de pago. Elaboración propia.}
 \end{figure}
 
@@ -676,7 +676,7 @@ En la \autoref{fig:mk-desktop-04-2} se exhibe el diseño del Plan Cooperativa en
 \caption{Mock-up Desktop: Bloque 4.2 - Plan Cooperativa en Alta Fidelidad.}
 \label{fig:mk-desktop-04-2}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-04-2-plan-cooperativa.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-04-2-plan-cooperativa.png}
 \caption*{\textit{Nota.} Presentación gráfica de planes institucionales y pasarela asociativa. Elaboración propia.}
 \end{figure}
 
@@ -686,7 +686,7 @@ La \autoref{fig:mk-desktop-05-1} muestra el bloque de ArcadiaDevs en alta fideli
 \caption{Mock-up Desktop: Bloque 5.1 - Equipo Institucional ArcadiaDevs en Alta Fidelidad.}
 \label{fig:mk-desktop-05-1}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-05-1-equipo-arcadiadevs.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-05-1-equipo-arcadiadevs.png}
 \caption*{\textit{Nota.} Ilustración terminada del equipo desarrollador ArcadiaDevs y sus integrantes. Elaboración propia.}
 \end{figure}
 
@@ -696,7 +696,7 @@ En la \autoref{fig:mk-desktop-05-2} se plasman el reproductor del video *About t
 \caption{Mock-up Desktop: Bloque 5.2 - Misión, Visión y Video Institucional en Alta Fidelidad.}
 \label{fig:mk-desktop-05-2}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-05-2-mision-vision.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-05-2-mision-vision.png}
 \caption*{\textit{Nota.} Declaración institucional, video de equipo y sellos corporativos. Elaboración propia.}
 \end{figure}
 
@@ -706,7 +706,7 @@ La \autoref{fig:mk-desktop-06} exhibe el pie de página integral, garantizando e
 \caption{Mock-up Desktop: Bloque 6 - Conversión Final y Pie de Página en Alta Fidelidad.}
 \label{fig:mk-desktop-06}
 \centering
-\includegraphics[width=0.50\textwidth]{report/assets/landing-page-design/mockups-desktop/mk-desktop-06-conversion-footer.png}
+\includegraphics[width=0.50\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-desktop/mk-desktop-06-conversion-footer.png}
 \caption*{\textit{Nota.} Diseño terminado del footer con estándares de accesibilidad y enlaces legales. Elaboración propia.}
 \end{figure}
 
@@ -720,7 +720,7 @@ Como se evidencia en la \autoref{fig:mk-mobile-01-1}, la composición del Hero m
 \caption{Mock-up Mobile: Bloque 1.1 - Hero y Portada en Alta Fidelidad.}
 \label{fig:mk-mobile-01-1}
 \centering
-\includegraphics[width=0.15\textwidth]{report/assets/landing-page-design/mockups-mobile/mk-mobile-01-1-hero-portada.png}
+\includegraphics[width=0.15\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-mobile/mk-mobile-01-1-hero-portada.png}
 \caption*{\textit{Nota.} Portada de alta fidelidad adaptada al viewport móvil. Elaboración propia.}
 \end{figure}
 
@@ -730,7 +730,7 @@ En la \autoref{fig:mk-mobile-01-2} se despliegan en alta resolución la problem�
 \caption{Mock-up Mobile: Bloques 1.2 y 1.3 - Problemática de la Vecería y Solución Viora en Móvil.}
 \label{fig:mk-mobile-01-2}
 \centering
-\includegraphics[width=0.32\textwidth]{report/assets/landing-page-design/mockups-mobile/mk-mobile-01-problema-solucion.png}
+\includegraphics[width=0.32\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-mobile/mk-mobile-01-problema-solucion.png}
 \caption*{\textit{Nota.} Planteamiento visual del problema en pantalla reducida y ficha visual del reproductor en alta fidelidad. Elaboración propia.}
 \end{figure}
 
@@ -740,7 +740,7 @@ En la \autoref{fig:mk-mobile-02} se observa la presentación de los módulos de 
 \caption{Mock-up Mobile: Bloque 2 - Módulos de Producto y Casos de Uso en Alta Fidelidad.}
 \label{fig:mk-mobile-02}
 \centering
-\includegraphics[width=0.15\textwidth]{report/assets/landing-page-design/mockups-mobile/mk-mobile-02-producto-features.png}
+\includegraphics[width=0.15\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-mobile/mk-mobile-02-producto-features.png}
 \caption*{\textit{Nota.} Tarjetas de producto en alta resolución para dispositivos móviles. Elaboración propia.}
 \end{figure}
 
@@ -750,7 +750,7 @@ Tal como se aprecia en la \autoref{fig:mk-mobile-03}, el bloque contextual y la 
 \caption{Mock-up Mobile: Bloque 3 - Contexto Territorial y Segmentación en Alta Fidelidad.}
 \label{fig:mk-mobile-03}
 \centering
-\includegraphics[width=0.45\textwidth]{report/assets/landing-page-design/mockups-mobile/mk-mobile-03-contexto-segmentos.png}
+\includegraphics[width=0.45\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-mobile/mk-mobile-03-contexto-segmentos.png}
 \caption*{\textit{Nota.} Interfaz móvil terminada de métricas olivícolas y perfiles de productor y gestor técnico. Elaboración propia.}
 \end{figure}
 
@@ -760,7 +760,7 @@ En la \autoref{fig:mk-mobile-04} se detalla la experiencia visual móvil para la
 \caption{Mock-up Mobile: Bloque 4 - Planes de Acceso en Móvil (Plan Productor y Plan Cooperativa).}
 \label{fig:mk-mobile-04}
 \centering
-\includegraphics[width=0.32\textwidth]{report/assets/landing-page-design/mockups-mobile/mk-mobile-04-planes-acceso.png}
+\includegraphics[width=0.32\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-mobile/mk-mobile-04-planes-acceso.png}
 \caption*{\textit{Nota.} Diseño visual del plan individual y guía ilustrada de canje de licencias asociativas en alta fidelidad. Elaboración propia.}
 \end{figure}
 
@@ -770,29 +770,280 @@ Por último, en la \autoref{fig:mk-mobile-05} se concluye con la presentación m
 \caption{Mock-up Mobile: Bloques 5 y 6 - Equipo ArcadiaDevs, Misión y Pie de Página en Alta Fidelidad.}
 \label{fig:mk-mobile-05}
 \centering
-\includegraphics[width=0.45\textwidth]{report/assets/landing-page-design/mockups-mobile/mk-mobile-05-06-equipo-footer.png}
+\includegraphics[width=0.45\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/landing-page-design/mockups-mobile/mk-mobile-05-06-equipo-footer.png}
 \caption*{\textit{Nota.} Bloque institucional móvil de ArcadiaDevs, video corporativo y pie de página en alta fidelidad. Elaboración propia.}
 \end{figure}
 
 ### Mobile Applications UX/UI Design
 
-> **Sección pendiente de redacción.**
->
-> *Qué exige el enunciado:* presentar y explicar la propuesta visual y de interacción de las aplicaciones móviles que constituyen la experiencia de usuario de los productos digitales.
->
-> *Insumos disponibles en el repositorio:* el catálogo de marca de `report/assets/viora-brand/` (paleta, isologotipo, isotipo, icono). El equipo ya emplea Lucidchart y Figma para su material gráfico, de modo que la herramienta de trabajo no requiere decisión nueva.
->
-> *Enlace con la arquitectura de información:* la propuesta debe instanciar los árboles de navegación del productor y del gestor definidos en Organization Systems, respetando la profundidad máxima de tres niveles y el vocabulario de Labeling Systems.
+En esta sección se presenta y explica la propuesta visual y de interacción para las aplicaciones móviles de Viora, las cuales constituyen el núcleo operativo de la solución digital y el punto de contacto primario en campo para los dos segmentos objetivo: los productores olivareros y los gestores técnicos de cooperativas agrarias. La concepción de las interfaces móviles materializa las decisiones de diseño adoptadas en las *Style Guidelines* y en la arquitectura de información, asegurando una experiencia homogénea, accesible, resiliente ante la desconexión y adaptada a las exigencias físicas del trabajo agronómico.
+
+A nivel de lenguaje visual y sistema de diseño, la propuesta se estructura bajo las especificaciones de Material Design 3 para factores de forma compactos (anchos de pantalla de 360 a 412 dp), garantizando compatibilidad nativa tanto en entornos Android como iOS. La distribución cromática implementa con rigor la regla de balance 55-25-7-3-10: el color crema cálido *Cream* (#FDFBF7) domina el 55 % de las superficies para eliminar el deslumbramiento solar en campo; el verde olivo *Forest* (#2D4A3E) abarca el 25 % en barras superiores, tarjetas principales y botones primarios; el dorado *Harvest* (#C99700) interviene en el 7 % como acento de progreso, estados de cosecha y componentes activos; el terracota *Tierra* (#B85D38) se reserva para el 3 % en advertencias de sobrecarga frutal y acciones destructivas; y el neutro oscuro *Shadow* (#1A1A1A) estructura el 10 % en tipografía y sombras suaves con tinte orgánico. Asimismo, la jerarquía tipográfica articula a *Axiforma* para los roles *Display* y *Headline* con un toque distintivo de marca, y a *Roboto* para los roles *Title*, *Body* y *Label*, garantizando una lectura inmediata de métricas agrícolas y cumpliendo con las pautas de accesibilidad WCAG AA. Todas las áreas interactivas respetan una dimensión táctil mínima de 48 por 48 dp, permitiendo una pulsación cómoda con una sola mano o bajo condiciones de movimiento en campo.
+
+En sincronía con la arquitectura de información, la experiencia móvil modela de manera diferenciada las necesidades de cada perfil:
+
+- Flujos transversales compartidos: Abarcan el arranque del aplicativo (*Splash*), la creación de cuentas con verificación por código de un solo uso (OTP) y los mecanismos de inicio de sesión con recuperación de acceso en quince minutos.
+- Productor Olivarero: Centrado en la gestión directa de parcelas georreferenciadas, el protocolo de muestreo de cuajado con almacenamiento local sin conexión celular, la prescripción y registro del aclareo frutal, el análisis de alternancia e índice bienal de vecería (BBI), la acumulación de porciones de frío invernal y el cierre inmutable de campaña con expediente agronómico.
+- Gestor Técnico de Cooperativa: Orientado a la administración territorial del valle olivícola, la priorización de visitas de campo mediante semáforos de riesgo por sector, la estimación del acopio proyectado con discriminación de destino verde (mesa) y negro (aceite), y el control del cupo asociativo con generación y revocación de códigos de activación para los socios.
 
 #### Mobile Applications Wireframes
+&nbsp;
 
-> **Sección pendiente de redacción.**
->
-> *Qué exige el enunciado:* presentar y explicar los wireframes de las aplicaciones móviles, evidenciando principios y elementos de diseño, diseño inclusivo y arquitectura de información, utilizando las herramientas indicadas por la cátedra.
->
-> *Insumos disponibles en el repositorio:* el catálogo de marca de `report/assets/viora-brand/` (paleta, isologotipo, isotipo, icono). El equipo ya emplea Lucidchart y Figma para su material gráfico, de modo que la herramienta de trabajo no requiere decisión nueva.
->
-> *Enlace con la arquitectura de información:* cada wireframe debe corresponder a un nodo real de los árboles de navegación definidos en Organization Systems, sin agregar niveles ni introducir etiquetas fuera del vocabulario controlado de Labeling Systems.
+Los wireframes constituyen la representación esquelética y funcional en baja fidelidad de las aplicaciones móviles de Viora. Su propósito es validar la distribución espacial de los componentes, la jerarquía de los contenidos agronómicos, los recorridos de navegación y las áreas de contacto táctil antes de la integración cromática definitiva, evidenciando los principios de diseño inclusivo, cuadrícula modular de 4 dp y correspondencia estricta con la arquitectura de información.
+
+A nivel de diseño estructural, los wireframes organizan la información mediante contenedores tipo tarjeta con bordes finos y esquinas redondeadas, botones en formato píldora inspirados en Material Design 3 y controles táctiles sobredimensionados para captura rápida de datos en campo. La disposición espacial anticipa la jerarquía tipográfica del sistema, reservando las áreas dominantes para los titulares de marca y estructurando cuadrículas tabulares claras para lecturas métricas y estados de conectividad.
+
+
+##### Wireframes transversales compartidos
+&nbsp;
+
+Como se ilustra en la \autoref{fig:wf-shared-00}, la secuencia de inicio modela la progresión cinemática de arranque en seis estados sobre un eje vertical centrado. La estructura dispone el isotipo en la zona superior de lectura y el bloque de marca en el tercio medio, integrando un indicador de actividad en la base para asegurar retroalimentación continua mientras se verifican las credenciales locales.
+
+\begin{figure}[H]
+\caption{Wireframe Mobile: Secuencia de Inicio y Arranque del Servicio.}
+\label{fig:wf-shared-00}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/shared/wf-shared-00-splash.png}
+\caption*{\textit{Nota.} Progresión esquelética de inicialización de servicios locales y carga del aplicativo. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-shared-03} se expone el flujo de registro y verificación de identidad. La vista inicial organiza un formulario vertical con indicadores de validación de contraseña, mientras que la segunda pantalla estructura el ingreso de código OTP mediante casillas individuales y un teclado numérico táctil integrado para prevenir saltos de pantalla, complementado con tarjetas modulares de control de errores.
+
+\begin{figure}[H]
+\caption{Wireframe Mobile: Registro de Cuenta y Verificación OTP.}
+\label{fig:wf-shared-03}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/shared/wf-shared-03-cuenta-y-verificacion.png}
+\caption*{\textit{Nota.} Disposición esquelética del formulario de alta, teclado numérico in-app y estados de validación. Elaboración propia.}
+\end{figure}
+
+Tal como se detalla en la \autoref{fig:wf-shared-05}, el procedimiento de inicio de sesión y recuperación de credenciales organiza de forma secuencial la solicitud de restablecimiento, el envío de enlace temporal y la definición de una nueva clave con verificación de robustez, disponiendo tarjetas de estado accesibles para notificar la caducidad del enlace.
+
+\begin{figure}[H]
+\caption{Wireframe Mobile: Inicio de Sesión y Recuperación de Credenciales.}
+\label{fig:wf-shared-05}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/shared/wf-shared-05-iniciar-sesion-y-recuperar-acceso.png}
+\caption*{\textit{Nota.} Estructura funcional del inicio de sesión diario y restauración de contraseña olvidada. Elaboración propia.}
+\end{figure}
+
+
+##### Wireframes para el Productor Olivarero
+&nbsp;
+
+En la \autoref{fig:wf-prod-01} se presentan las pantallas de bienvenida e inducción para el productor olivarero. La estructura espacial distribuye en tercios verticales la ilustración lineal del olivar, el bloque explicativo sobre la regulación de la carga y el botón primario de acción junto a los enlaces de acceso directo.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Vistas de Bienvenida e Introducción Agronómica.}
+\label{fig:wf-prod-01}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-01-bienvenida.png}
+\caption*{\textit{Nota.} Estructura esquelética de las vistas introductorias para productores independientes y asociados. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:wf-prod-02} modela el asistente de configuración inicial estructurado en cinco etapas guiadas con cabecera de avance persistente. El recorrido prioriza secuencialmente la captura de identidad, teléfono estandarizado, validación de código cooperativo, dimensionamiento de hectáreas con estimación inmediata de cuota y previsualización de permisos de alerta antes del resumen final.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Asistente Secuencial de Configuración Inicial.}
+\label{fig:wf-prod-02}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-02-preguntas-del-onboarding.png}
+\caption*{\textit{Nota.} Esquema por etapas para la captura de parámetros iniciales del productor y predio. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-prod-04} se representan las dos rutas de activación del servicio: la contratación individual mediante tarjeta comercial articulada con pasarela digital y estado de confirmación, frente a la ruta institucional de canje de código asociativo con acreditación de membresía cubierta por la cooperativa.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Activación del Servicio y Canje de Código.}
+\label{fig:wf-prod-04}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-04-activacion-del-acceso.png}
+\caption*{\textit{Nota.} Rutas de activación de suscripción directa individual y canje asociativo de socio. Elaboración propia.}
+\end{figure}
+
+Tal como se ilustra en la \autoref{fig:wf-prod-06}, el tablero principal del productor organiza bajo una arquitectura modular de tarjetas la sincronización local, el cintillo de labor prioritaria del día, la barra semanal de campaña, el widget agrometeorológico, el gráfico de barras de vecería histórica (años ON y OFF) y las parcelas activas, previendo variantes estacionales y cintillos de operación sin conexión.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Tablero Principal de Inicio y Estados Estacionales.}
+\label{fig:wf-prod-06}
+\centering
+\includegraphics[width=0.40\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-06-inicio-del-productor.png}
+\caption*{\textit{Nota.} Disposición del tablero operativo, variantes por etapa fenológica y estados del sistema. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-prod-07} se estructura el alta técnica de una parcela agrícola en cuatro pasos: selección del método de delimitación, trazado cartográfico con cálculo instantáneo de área y perímetro, captura de variedad y marco de plantación para derivar la densidad de árboles, y validaciones geométricas ante posibles inconsistencias de linderos.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Registro y Georreferenciación Cartográfica de Lotes.}
+\label{fig:wf-prod-07}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-07-registrar-un-lote.png}
+\caption*{\textit{Nota.} Flujo de registro cartográfico, ingreso de marco agronómico y control de geometrías. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:wf-prod-08} exhibe el módulo de muestreo de cuajado fuera de línea conforme al protocolo de cinco árboles en diagonal. La interfaz dispone contadores táctiles amplios de alta sensibilidad para el registro en campo de brotes y frutos cuajados, cálculo instantáneo de la relación agronómica, distintivo de persistencia local y tabla resumen de cierre de ronda.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Protocolo de Muestreo de Cuajado sin Conexión.}
+\label{fig:wf-prod-08}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-08-muestrear-el-cuajado-sin-conexion.png}
+\caption*{\textit{Nota.} Interfaz de captura táctil en campo, cálculo de frutos por brote y persistencia local. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-prod-09} se modela el módulo de prescripción y registro de aclareo frutal. El diseño estructura un termómetro horizontal comparativo de sobrecarga frente al nivel sostenible del lote, delimitación gráfica de la ventana fenológica óptima, selector de porcentaje de remoción y proyección de ganancia de calibre comercial.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Prescripción y Registro de Aclareo Frutal.}
+\label{fig:wf-prod-09}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-09-aclarear-a-tiempo.png}
+\caption*{\textit{Nota.} Estructura de prescripción de raleo, ventana temporal de intervención y recálculo de calibre. Elaboración propia.}
+\end{figure}
+
+Tal como se observa en la \autoref{fig:wf-prod-13}, la herramienta analítica de vecería estructura el cálculo del Índice Bienal de Vecería (BBI) mediante un indicador semicircular graduado con aguja de criticidad, complementado por un gráfico temporal de cosechas pasadas y futuras, y un diálogo modal para registrar campañas anteriores.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Análisis de Vecería e Índice Bienal BBI.}
+\label{fig:wf-prod-13}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-13-conocer-la-veceria-de-mi-lote.png}
+\caption*{\textit{Nota.} Disposición esquelética del indicador de alternancia, curva histórica y registro de cosechas previas. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-prod-14} se organiza la liquidación anual de campaña: registro de pesaje final discriminando aceituna verde de mesa y negra de almazara, diálogo de confirmación inmutable para archivo de ciclo y visor del expediente agronómico oficial con bloque de verificación criptográfica.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Cierre de Campaña y Expediente Agronómico.}
+\label{fig:wf-prod-14}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-14-cerrar-la-campana.png}
+\caption*{\textit{Nota.} Liquidación de pesaje final por destino comercial, bloqueo inmutable y emisión de expediente. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:wf-prod-15} ilustra el seguimiento agrometeorológico de acumulación de porciones de frío bajo el modelo Erez-Fishman, disponiendo un medidor de avance circular, gráfico de dispersión térmica diurna y nocturna, y tarjetas informativas sobre anomalías e inviernos cálidos.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Seguimiento de Frío Invernal y Ruptura de Latencia.}
+\label{fig:wf-prod-15}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-15-seguir-el-frio-invernal.png}
+\caption*{\textit{Nota.} Esquema estructural del monitor de frío acumulado y detección de inviernos cálidos. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-prod-16} se detalla el tablero de condiciones climáticas y telemetría de campo, disponiendo tarjetas horizontales de pronóstico semanal, curvas continuas de oscilación térmica horaria y lecturas gráficas de sensores de humedad de suelo a diferentes profundidades radiculares.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Monitoreo Microclimático y Telemetría de Suelo.}
+\label{fig:wf-prod-16}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-16-vigilar-el-clima-del-lote.png}
+\caption*{\textit{Nota.} Estructura del pronóstico localizado, curvas térmicas y sensores de humedad radicular. Elaboración propia.}
+\end{figure}
+
+Tal como se muestra en la \autoref{fig:wf-prod-18}, el panel de cuenta del productor organiza la edición de perfil personal, los ajustes de seguridad y contraseña con comprobación previa, la información de la membresía activa y una hoja inferior modal para alternar el idioma de la aplicación.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Administración de Perfil de Usuario y Seguridad.}
+\label{fig:wf-prod-18}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-18-mi-cuenta.png}
+\caption*{\textit{Nota.} Disposición esquelética de la cuenta, cambio de contraseña y conmutación idiomática. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-prod-19} se modela la gestión del lote agrícola mediante una hoja inferior de opciones rápidas, una vista cartográfica con vértices interactivos para corregir linderos en tiempo real, y un diálogo modal para archivar predios conservando la trazabilidad de sus datos históricos.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Modificación Cartográfica y Archivado de Lotes.}
+\label{fig:wf-prod-19}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-19-editar-o-archivar-un-lote.png}
+\caption*{\textit{Nota.} Estructura de edición interactiva de polígonos y confirmación de archivado con datos históricos. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:wf-prod-20} presenta la supervisión de nodos de telemetría IoT asociados al lote, organizando tarjetas informativas con nivel de batería, estado de enlace y última transmisión, junto con accesos para vincular sensores por código QR o pausar su transmisión.
+
+\begin{figure}[H]
+\caption{Wireframe Productor: Supervisión de Sensores y Nodos de Telemetría IoT.}
+\label{fig:wf-prod-20}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-20-sensores-del-lote.png}
+\caption*{\textit{Nota.} Disposición estructural de dispositivos físicos asociados, estado de batería y sincronización. Elaboración propia.}
+\end{figure}
+
+
+##### Wireframes para el Gestor Técnico de Cooperativa
+&nbsp;
+
+En la \autoref{fig:wf-gest-01} se modelan las pantallas de bienvenida e inducción para el gestor técnico, articulando una estructura visual formal con ilustración del valle, mensajes orientados a la supervisión coordinada de parcelas socias y botones de acceso en la base con áreas táctiles accesibles.
+
+\begin{figure}[H]
+\caption{Wireframe Gestor: Bienvenida Institucional y Visión Colectiva del Valle.}
+\label{fig:wf-gest-01}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-01-bienvenida.png}
+\caption*{\textit{Nota.} Esquema de las vistas introductorias adaptadas a la supervisión técnica asociativa. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:wf-gest-02} despliega el asistente de configuración técnica en tres pasos con indicador superior de avance, estructurando la captura del perfil profesional, el teléfono institucional de coordinación y la selección de criterios de alerta agronómica y térmica para el valle.
+
+\begin{figure}[H]
+\caption{Wireframe Gestor: Asistente de Configuración de Alertas Territoriales.}
+\label{fig:wf-gest-02}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-02-preguntas-del-onboarding.png}
+\caption*{\textit{Nota.} Captura esquelética del perfil técnico y criterios de priorización agronómica del valle. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-gest-04} se define la vista de espera institucional que informa al gestor sobre la validación y asignación de permisos administrativos por parte de la cooperativa, manteniendo un diseño sobrio y centrado con opciones de consulta de estado.
+
+\begin{figure}[H]
+\caption{Wireframe Gestor: Estado de Validación y Asignación Institucional.}
+\label{fig:wf-gest-04}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-04-activacion-del-acceso.png}
+\caption*{\textit{Nota.} Interfaz de notificación de espera mientras la gerencia cooperativa habilita el rol técnico. Elaboración propia.}
+\end{figure}
+
+Tal como se ilustra en la \autoref{fig:wf-gest-10}, el tablero de mando del gestor organiza la supervisión territorial mediante un cintillo de alerta prioritaria, una matriz semafórica de cuatro cuadrantes de riesgo, una tarjeta de proyección agregada de acopio con avance muestral y una lista clasificada de visitas técnicas urgentes.
+
+\begin{figure}[H]
+\caption{Wireframe Gestor: Tablero Territorial de Mando y Semáforo de Riesgo.}
+\label{fig:wf-gest-10}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-10-inicio-del-gestor.png}
+\caption*{\textit{Nota.} Estructura del tablero territorial, métricas agregadas de acopio y sugerencias de visitas. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-gest-11} se expone el módulo de priorización de visitas de campo, integrando un mapa sectorial zonificado con chinchetas georreferenciadas por nivel de riesgo, un padrón clasificado por magnitud de sobrecarga con enlaces de contacto directo, y una ficha de auditoría técnica de parcela.
+
+\begin{figure}[H]
+\caption{Wireframe Gestor: Zonificación Territorial y Priorización de Visitas de Campo.}
+\label{fig:wf-gest-11}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-11-priorizar-mis-visitas-de-campo.png}
+\caption*{\textit{Nota.} Zonificación cartográfica por riesgo frutal, padrón de socios priorizados y ficha de auditoría. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:wf-gest-12} modela la estimación de acopio territorial estructurando la cifra global de tonelaje, el desglose proporcional entre aceituna verde de mesa y negra de almazara, la tarjeta de cobertura con umbral técnico del 50 %, y el selector modal para contrastar campañas previas.
+
+\begin{figure}[H]
+\caption{Wireframe Gestor: Estimación y Desglose Territorial del Acopio Proyectado.}
+\label{fig:wf-gest-12}
+\centering
+\includegraphics[width=0.60\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-12-proyectar-el-acopio.png}
+\caption*{\textit{Nota.} Desglose de tonelaje por destino comercial, umbrales de cobertura y consulta de campañas previas. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:wf-gest-17} se estructura el control del padrón cooperativo y cupo de membresía: tarjeta con desglose de plazas ocupadas y disponibles, buscador con filtros por estado, panel de auditoría de códigos y hoja inferior con selector de vigencia para emisión masiva y revocación segura.
+
+\begin{figure}[H]
+\caption{Wireframe Gestor: Administración de Padrón, Cupo Colectivo y Códigos.}
+\label{fig:wf-gest-17}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-17-administrar-socios-y-codigos.png}
+\caption*{\textit{Nota.} Gestión del cupo institucional de socios, emisión y revocación de códigos con validación de límites. Elaboración propia.}
+\end{figure}
 
 #### Mobile Applications Wireflow Diagrams
 
@@ -1048,14 +1299,271 @@ Desde Inicio (G10), Rubén toca la tarjeta «Acopio» y abre la pantalla Acopio 
 Desde Inicio (G10), Rubén toca la tarjeta «48 / 60 plazas» y abre Socios (G40), donde ve el cupo de la licencia (48 de 60 plazas, con 12 libres), los códigos por canjear, las hectáreas contratadas y el padrón de socios con su estado. Revisa el padrón y el cupo, y toca «Códigos por canjear» para llegar a Códigos (G42), que agrupa los códigos por estado (por canjear, canjeados y vencidos). Toca «Generar códigos» y en la hoja G43 define la cantidad (5), las hectáreas y el vencimiento (7, 15 o 30 días); la hoja anticipa cómo cambiará el cupo (de 48 a 53 de 60 plazas). Al tocar «Generar 5 códigos», el sistema crea los códigos y G44 los muestra listos para copiar o compartir por WhatsApp. La meta se cumple porque Rubén conoce su padrón y su cupo, y tiene los códigos listos para entregar a los socios nuevos.
 
 #### Mobile Applications Mock-ups
+&nbsp;
 
-> **Sección pendiente de redacción.**
->
-> *Qué exige el enunciado:* presentar y explicar los mock-ups de las aplicaciones móviles, evidenciando principios y elementos de diseño, diseño inclusivo, arquitectura de información y el Design System establecido, utilizando las herramientas indicadas por la cátedra.
->
-> *Insumos disponibles en el repositorio:* el catálogo de marca de `report/assets/viora-brand/` (paleta, isologotipo, isotipo, icono). El equipo ya emplea Lucidchart y Figma para su material gráfico, de modo que la herramienta de trabajo no requiere decisión nueva.
->
-> *Enlace con la arquitectura de información:* los mock-ups deben aplicar el Design System sobre los mismos nodos de navegación y las mismas etiquetas ya definidos en Organization Systems y Labeling Systems, sin modificar la arquitectura de información aprobada.
+Los mock-ups constituyen la expresión visual definitiva en alta fidelidad de las aplicaciones móviles de Viora. En estas pantallas se materializa el Design System institucional, combinando la paleta cromática equilibrada bajo la regla 55-25-7-3-10, la tipografía de marca *Axiforma* en estilo Display y Headline con la precisión técnica de *Roboto* en roles funcionales, micro-ilustraciones temáticas del olivar y controles táctiles que satisfacen el estándar de accesibilidad universal WCAG AA.
+
+
+##### Mock-ups transversales compartidos
+&nbsp;
+
+Como se ilustra en la \autoref{fig:mu-shared-00}, la secuencia de inicio en alta fidelidad viste la pantalla con el verde olivo *Forest* (#2D4A3E), sobre el cual el contorno del isotipo se rellena en dorado *Harvest* (#C99700), dando paso a la hoja central blanca y a la marca denominativa en tipografía *Axiforma*.
+
+\begin{figure}[H]
+\caption{Mock-up Mobile: Secuencia de Inicio y Arranque del Servicio en Alta Fidelidad.}
+\label{fig:mu-shared-00}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/shared/mk-shared-00-splash.png}
+\caption*{\textit{Nota.} Aplicación del Design System y cinemática de marca durante el arranque del servicio móvil. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-shared-03} se aprecia la terminación visual del registro y verificación de identidad. El fondo *Cream* (#FDFBF7) acoge campos con foco en dorado cálido y chips dinámicos de validación sintáctica, mientras la pantalla de código OTP dispone casillas elevadas y un teclado numérico táctil embebido de alto contraste.
+
+\begin{figure}[H]
+\caption{Mock-up Mobile: Registro de Cuenta y Verificación OTP en Alta Fidelidad.}
+\label{fig:mu-shared-03}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/shared/mk-shared-03-cuenta-y-verificacion.png}
+\caption*{\textit{Nota.} Formulario de alta, teclado in-app y componentes de validación en alta fidelidad. Elaboración propia.}
+\end{figure}
+
+Tal como se expone en la \autoref{fig:mu-shared-05}, el acceso diario y la restauración de credenciales presentan una atmósfera sobria: botón primario en verde *Forest* con radio completo de 24 dp, enlaces de soporte accesibles y flujo de recuperación asistido con advertencias claras sobre la vigencia del enlace temporal.
+
+\begin{figure}[H]
+\caption{Mock-up Mobile: Inicio de Sesión y Recuperación de Credenciales en Alta Fidelidad.}
+\label{fig:mu-shared-05}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/shared/mk-shared-05-iniciar-sesion-y-recuperar-acceso.png}
+\caption*{\textit{Nota.} Diseño visual del acceso seguro y secuencia de restauración de clave de usuario. Elaboración propia.}
+\end{figure}
+
+
+##### Mock-ups para el Productor Olivarero
+&nbsp;
+
+En la \autoref{fig:mu-prod-01} se despliegan las pantallas de bienvenida del productor, destacando ilustraciones con técnica de grabado artesanal sobre ramas y frutos de olivo, complementadas por titulares en *Axiforma Headline* con segundo renglón en estilo cursivo orgánico.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Vistas de Bienvenida e Introducción Agronómica en Alta Fidelidad.}
+\label{fig:mu-prod-01}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-01-bienvenida.png}
+\caption*{\textit{Nota.} Integración de grabados ilustrativos y estilo tipográfico editorial para productores. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:mu-prod-02} exhibe el asistente de configuración inicial en alta fidelidad, combinando controles táctiles de incremento y deslizador continuo para dimensionar hectáreas, tarjeta de cotización anual en tiempo real y previsualización gráfica de las notificaciones agronómicas.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Asistente Secuencial de Configuración Inicial en Alta Fidelidad.}
+\label{fig:mu-prod-02}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-02-preguntas-del-onboarding.png}
+\caption*{\textit{Nota.} Asistente por etapas con cotización en tiempo real y previsualización de alertas agronómicas. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-prod-04} se aprecian las interfaces terminadas para la activación del servicio: la tarjeta del Plan Productor con desglose de inversión anual articulada con Mercado Pago, y la confirmación institucional que acredita la membresía cubierta por la cooperativa.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Activación del Servicio y Canje de Código en Alta Fidelidad.}
+\label{fig:mu-prod-04}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-04-activacion-del-acceso.png}
+\caption*{\textit{Nota.} Activación por pasarela digital de pago y confirmación de membresía asociativa cubierta. Elaboración propia.}
+\end{figure}
+
+Tal como se ilustra en la \autoref{fig:mu-prod-06}, el tablero principal del productor exhibe una cuidada jerarquía visual: cintillo de labor prioritaria con acento dorado, tarjeta meteorológica con lecturas de humedad en suelo, gráfico de barras alternadas para la vecería histórica, tarjetas de lotes activos y adaptaciones para cada etapa estacional.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Tablero Principal de Inicio y Estados Estacionales en Alta Fidelidad.}
+\label{fig:mu-prod-06}
+\centering
+\includegraphics[width=0.40\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-06-inicio-del-productor.png}
+\caption*{\textit{Nota.} Tablero operativo integral, transiciones estacionales y manejo de estados fuera de línea. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-prod-07} se presenta la interfaz cartográfica de delimitación de parcelas sobre ortofoto satelital, disponiendo polígonos semitransparentes en verde *Forest*, paneles de cálculo dinámico de superficie y selectores tipo chip para las variedades tradicionales del cultivo.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Registro y Georreferenciación Cartográfica de Lotes en Alta Fidelidad.}
+\label{fig:mu-prod-07}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-07-registrar-un-lote.png}
+\caption*{\textit{Nota.} Trazado cartográfico de predios sobre ortofoto satelital y configuración del marco de siembra. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:mu-prod-08} exhibe el módulo de muestreo de cuajado fuera de línea, implementando contadores táctiles de gran escala y alto contraste para su uso bajo luz solar directa, distintivo de persistencia local en almacenamiento del dispositivo y diagnóstico automático de sobrecarga.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Protocolo de Muestreo de Cuajado sin Conexión en Alta Fidelidad.}
+\label{fig:mu-prod-08}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-08-muestrear-el-cuajado-sin-conexion.png}
+\caption*{\textit{Nota.} Contadores táctiles sobredimensionados para campo y almacenamiento local garantizado. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-prod-09} se modela el módulo de aclareo frutal, integrando el termómetro comparativo con prescripción explícita de porcentaje de remoción en color terracota *Tierra*, cronograma delimitador de la ventana fenológica y simulación de ganancia de calibre comercial.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Prescripción y Registro de Aclareo Frutal en Alta Fidelidad.}
+\label{fig:mu-prod-09}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-09-aclarear-a-tiempo.png}
+\caption*{\textit{Nota.} Prescripción de raleo, cuenta regresiva de ventana óptima y simulación de ganancia de calibre. Elaboración propia.}
+\end{figure}
+
+Tal como se observa en la \autoref{fig:mu-prod-13}, la vista analítica de vecería despliega un indicador semicircular graduado con aguja que posiciona el BBI del predio, acompañado de una curva temporal que proyecta la siguiente cosecha y modales para incorporar campañas históricas.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Análisis de Vecería e Índice Bienal BBI en Alta Fidelidad.}
+\label{fig:mu-prod-13}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-13-conocer-la-veceria-de-mi-lote.png}
+\caption*{\textit{Nota.} Reloj del índice BBI, proyección temporal de alternancia y registro de cosechas anteriores. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-prod-14} se visualiza la liquidación productiva anual con balance de pesaje entre destino mesa y aceite, diálogo de confirmación que bloquea la campaña de forma inmutable y visor del expediente agronómico oficial con firma digital mediante hash criptográfico.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Cierre de Campaña y Expediente Agronómico en Alta Fidelidad.}
+\label{fig:mu-prod-14}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-14-cerrar-la-campana.png}
+\caption*{\textit{Nota.} Liquidación por destino comercial, bloqueo de ciclo y generación de expediente con hash criptográfico. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:mu-prod-15} ilustra el seguimiento agrometeorológico de frío invernal bajo el modelo Erez-Fishman, destacando el contador de porciones acumuladas con copos dorados, gráfico de dispersión térmica diurna y nocturna, y alertas tempranas ante inviernos cálidos.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Seguimiento de Frío Invernal y Ruptura de Latencia en Alta Fidelidad.}
+\label{fig:mu-prod-15}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-15-seguir-el-frio-invernal.png}
+\caption*{\textit{Nota.} Monitor de porciones de frío acumuladas y detección temprana de anomalías térmicas en invierno. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-prod-16} se aprecia el tablero climático con pronóstico extendido a siete días, curvas continuas de variación térmica horaria y lecturas gráficas de sondas de humedad de suelo a diferentes profundidades radiculares.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Monitoreo Microclimático y Telemetría de Suelo en Alta Fidelidad.}
+\label{fig:mu-prod-16}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-16-vigilar-el-clima-del-lote.png}
+\caption*{\textit{Nota.} Pronóstico microclimático localizado y telemetría de humedad de suelo en alta fidelidad. Elaboración propia.}
+\end{figure}
+
+Tal como se exhibe en la \autoref{fig:mu-prod-18}, el panel de cuenta del productor presenta la gestión de perfil con validaciones en formato E.164, cambio de contraseña con comprobación previa, tarjeta de membresía activa y hoja inferior interactiva para selección idiomática.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Administración de Perfil de Usuario y Seguridad en Alta Fidelidad.}
+\label{fig:mu-prod-18}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-18-mi-cuenta.png}
+\caption*{\textit{Nota.} Perfil de usuario, parámetros de seguridad y selector de idioma en alta fidelidad. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-prod-19} se ilustra la edición interactiva de vértices cartográficos sobre plano satelital para actualizar linderos, acompañada del diálogo modal de archivado que preserva la trazabilidad histórica de los datos para la cooperativa.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Modificación Cartográfica y Archivado de Lotes en Alta Fidelidad.}
+\label{fig:mu-prod-19}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-19-editar-o-archivar-un-lote.png}
+\caption*{\textit{Nota.} Ajuste de polígonos perimétricos y archivado con preservación de series estadísticas. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:mu-prod-20} muestra la lista de dispositivos IoT asociados a la parcela con niveles de carga de batería e indicadores de sincronización, complementados con opciones modales para pausar transmisiones o desvincular sensores físicos.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Supervisión de Sensores y Nodos de Telemetría IoT en Alta Fidelidad.}
+\label{fig:mu-prod-20}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-20-sensores-del-lote.png}
+\caption*{\textit{Nota.} Supervisión de sondas y microestaciones IoT con estado de conectividad y batería. Elaboración propia.}
+\end{figure}
+
+
+##### Mock-ups para el Gestor Técnico de Cooperativa
+&nbsp;
+
+En la \autoref{fig:mu-gest-01} se despliegan las pantallas de bienvenida del gestor técnico, articulando grabados del valle y mensajes institucionales orientados a la supervisión coordinada de parcelas socias y a la planificación del acopio.
+
+\begin{figure}[H]
+\caption{Mock-up Gestor: Bienvenida Institucional y Visión Colectiva del Valle en Alta Fidelidad.}
+\label{fig:mu-gest-01}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-01-bienvenida.png}
+\caption*{\textit{Nota.} Portada introductoria orientada a la gestión asociativa y coordinación territorial del valle. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:mu-gest-02} presenta el asistente de alta técnica en tres pasos, capturando el nombre profesional, teléfono institucional de coordinación y criterios de parametrización para alertas de sobrecarga y heladas en zonas bajas.
+
+\begin{figure}[H]
+\caption{Mock-up Gestor: Asistente de Configuración de Alertas Territoriales en Alta Fidelidad.}
+\label{fig:mu-gest-02}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-02-preguntas-del-onboarding.png}
+\caption*{\textit{Nota.} Asistente de configuración técnica y parametrización de alertas colectivas del valle. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-gest-04} se aprecia la pantalla de espera institucional con diseño formal que informa al gestor sobre la habilitación de permisos administrativos por parte de la cooperativa.
+
+\begin{figure}[H]
+\caption{Mock-up Gestor: Estado de Validación y Asignación Institucional en Alta Fidelidad.}
+\label{fig:mu-gest-04}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-04-activacion-del-acceso.png}
+\caption*{\textit{Nota.} Pantalla de espera institucional previa a la asignación de permisos técnicos. Elaboración propia.}
+\end{figure}
+
+Tal como se ilustra en la \autoref{fig:mu-gest-10}, el tablero territorial de mando reúne el semáforo de riesgo del valle con bloques de severidad diferenciados, la tarjeta de acopio con volumen proyectado y la lista jerarquizada de visitas técnicas urgentes.
+
+\begin{figure}[H]
+\caption{Mock-up Gestor: Tablero Territorial de Mando y Semáforo de Riesgo en Alta Fidelidad.}
+\label{fig:mu-gest-10}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-10-inicio-del-gestor.png}
+\caption*{\textit{Nota.} Tablero de mando territorial con semáforo agronómico, acopio agregado y priorización de visitas. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-gest-11} se expone el módulo de visitas de campo con cartografía sectorial, listado ordenado por severidad de sobrecarga con accesos directos de comunicación y ficha de auditoría agronómica de la parcela.
+
+\begin{figure}[H]
+\caption{Mock-up Gestor: Zonificación Territorial y Priorización de Visitas de Campo en Alta Fidelidad.}
+\label{fig:mu-gest-11}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-11-priorizar-mis-visitas-de-campo.png}
+\caption*{\textit{Nota.} Mapa de riesgo sectorial, ranking de atención a productores y ficha técnica de parcela. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:mu-gest-12} despliega el módulo de proyección de acopio territorial, exhibiendo el volumen global con barras proporcionales para aceituna verde y negra, barra de cobertura sobre el umbral técnico del 50 % y estados de consulta fuera de línea.
+
+\begin{figure}[H]
+\caption{Mock-up Gestor: Estimación y Desglose Territorial del Acopio Proyectado en Alta Fidelidad.}
+\label{fig:mu-gest-12}
+\centering
+\includegraphics[width=0.60\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-12-proyectar-el-acopio.png}
+\caption*{\textit{Nota.} Modelo volumétrico de acopio, desglose comercial, umbrales de cobertura y consulta offline. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-gest-17} se presenta el panel de gestión del padrón de socios y cupo colectivo: tarjeta de membresía con barra tricolor, visor de auditoría de códigos por vigencia, hoja inferior para emisión masiva y diálogos para la revocación segura de plazas.
+
+\begin{figure}[H]
+\caption{Mock-up Gestor: Administración de Padrón, Cupo Colectivo y Códigos en Alta Fidelidad.}
+\label{fig:mu-gest-17}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-17-administrar-socios-y-codigos.png}
+\caption*{\textit{Nota.} Control de cupo asociativo, emisión masiva de códigos y auditoría de vinculación de socios. Elaboración propia.}
+\end{figure}
+
+Tal como se ilustra en la \autoref{fig:mu-gest-18}, el panel de cuenta del gestor técnico exhibe la insignia de licencia activa, opciones de seguridad con validación de credenciales y una hoja inferior de cambio de idioma en caliente que adapta de forma instantánea etiquetas y formatos numéricos.
+
+\begin{figure}[H]
+\caption{Mock-up Gestor: Administración de Cuenta Institucional y Bilingüismo en Caliente en Alta Fidelidad.}
+\label{fig:mu-gest-18}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-18-mi-cuenta.png}
+\caption*{\textit{Nota.} Perfil institucional de gestor técnico, auditoría de credenciales y conmutación idiomática en caliente. Elaboración propia.}
+\end{figure}
 
 #### Mobile Applications User Flow Diagrams
 
@@ -1069,10 +1577,53 @@ Desde Inicio (G10), Rubén toca la tarjeta «48 / 60 plazas» y abre Socios (G40
 
 ### Mobile Applications Prototyping
 
-> **Sección pendiente de redacción.**
->
-> *Qué exige el enunciado:* incluir prototipos de UI para navegador de escritorio y navegador móvil con simulación de interacción y navegación, acordes con la propuesta de rutas de los user flow diagrams, iniciando con una introducción sobre los principales criterios de las decisiones de interacción y evidenciando su relación con las decisiones de arquitectura de información, en particular el sistema de navegación y los tipos de interacción seleccionados; para cada aplicación debe incluirse una captura del video y un enlace al video correspondiente.
->
-> *Insumos disponibles en el repositorio:* el catálogo de marca de `report/assets/viora-brand/` (paleta, isologotipo, isotipo, icono). El equipo ya emplea Lucidchart y Figma para su material gráfico, de modo que la herramienta de trabajo no requiere decisión nueva.
->
-> *Enlace con la arquitectura de información:* la simulación de interacción y navegación debe reproducir fielmente el sistema de navegación —pestañas inferiores, menú lateral, migas de pan y enlaces profundos— definido en Navigation Systems.
+En esta sección se presenta y analiza la simulación interactiva y de navegación para las aplicaciones móviles de Viora, desarrollada sobre la plataforma Figma. Dicho prototipo de alta fidelidad operacionaliza las rutas prioritarias definidas en los diagramas de flujos de usuario, permitiendo comprobar el comportamiento dinámico, la coherencia de las transiciones visuales y la usabilidad de las interfaces tanto para el productor olivarero como para el gestor técnico de cooperativa bajo condiciones análogas a las de campo.
+
+#### Criterios de diseño de interacción y articulación arquitectónica
+&nbsp;
+
+Las decisiones de interacción adoptadas en el prototipo móvil responden rigurosamente a las directrices de diseño del producto, las especificaciones ergonómicas de Material Design 3 y los sistemas de organización, navegación y búsqueda formulados en la arquitectura de información:
+
+- Zonas táctiles y ergonomía con una sola mano: Todas las áreas interactivas, botones de acción principal, pestañas de navegación y conmutadores presentan una dimensión mínima de 48 por 48 dp, garantizando pulsaciones precisas y reduciendo errores accidentales en campo, inclusive durante la manipulación de dispositivos bajo vibración o con guantes agrícolas de protección.
+- Sistema de navegación por pestañas inferiores y cabecera de perfil: La navegación estructural materializa fielmente la distribución de cuatro destinos base por rol especificada en los sistemas de navegación. Para el productor olivarero, la barra fija inferior articula Inicio, Lotes, Plan y Bitácora; para el gestor técnico, estructura Inicio, Riesgo territorial, Acopio y Socios. En ambos roles, el acceso a la configuración de cuenta, idioma y preferencias se sitúa de forma no invasiva en el extremo superior izquierdo de la cabecera, preservando el espacio inferior para tareas operativas sin sobrecargar la jerarquía visual con una quinta pestaña.
+- Asistente guiado y retroalimentación táctil: Los flujos de incorporación (*onboarding*) y configuración inicial emplean una navegación secuencial paso a paso con barras de progreso lineales, campos de entrada numérica especializados y selectores interactivos directos, previniendo la fatiga cognitiva del usuario.
+- Patrones de captura rápida y registro flotante: La arquitectura incorpora un botón de acción flotante (FAB) centralizado en la bitácora del productor, facilitando el despliegue de hojas de acción modal (*bottom sheets*) para el muestreo de cuajado, el aclareo ejecutado, el pesaje de cosecha y notas rápidas de campo.
+- Resiliencia y affordance cromático: En concordancia con la paleta Cream, Forest, Harvest y Tierra, los elementos interactivos comunican con claridad su estado (reposo, pulsado y deshabilitado) manteniendo una relación de contraste que cumple con las pautas de accesibilidad WCAG AA bajo irradiación solar intensa.
+
+#### Recorridos de interacción simulados en el prototipo
+&nbsp;
+
+La simulación funcional en video recorre secuencialmente la experiencia de ambos perfiles agronómicos, demostrando la continuidad operativa del sistema:
+
+##### Flujo de interacción del productor olivarero
+&nbsp;
+
+El recorrido inicia con la secuencia de arranque (*splash screen*) y carga cinemática del sistema, dando paso a la pantalla de bienvenida. A continuación, el usuario ejecuta el flujo de registro guiado completando su nombre y número telefónico con prefijo internacional en formato E.164, seleccionando la opción de cuenta individual independiente sin código de cooperativa. Posteriormente, define una extensión territorial de doce hectáreas mediante el control deslizante e interactivo, habilita las alertas del sistema y revisa el resumen preliminar de alta.
+
+Tras confirmar los datos, se formalizan las credenciales de acceso con correo y contraseña, validando la identidad mediante un código OTP ingresado en casillas independientes. En la etapa de suscripción, la interfaz computa automáticamente el plan anual correspondiente a la superficie ingresada (S/ 7,920 anuales), procesa la confirmación simulada del pago y redirige de inmediato a la configuración del primer predio. Mediante la herramienta de cartografía vectorial, el productor traza y cierra el contorno georreferenciado de su parcela, ingresa la denominación del lote, el marco de plantación entre árboles y consolida el registro en la base local.
+
+En la pantalla principal de Inicio, el productor consulta el estado de la campaña en curso, las estadísticas del índice bienal de vecería (BBI) y el acceso al plan de aclareo. Desde allí, navega por el inventario de lotes para revisar parcelas georreferenciadas y accede a la sección de Bitácora, donde examina el historial de rondas de muestreo con mediciones fenológicas, los registros de aclareo y la proyección de cosecha. Mediante el botón de acción flotante, despliega el menú contextual de registro para cuajado, labores ejecutadas y notas de campo. Finalmente, explora el módulo meteorológico con variables climáticas locales y consulta las fases fenológicas de desarrollo del olivar (reposo, floración, cuajado, aclareo y cosecha).
+
+##### Flujo de interacción del gestor técnico
+&nbsp;
+
+El segundo segmento inicia con la selección del perfil técnico y la apertura del formulario de registro corporativo. El gestor ingresa sus datos de contacto, autoriza las notificaciones territoriales del valle y revisa el resumen del perfil técnico antes de autenticarse con sus credenciales institucionales.
+
+Al ingresar al panel de control, la interfaz expone el semáforo territorial de parcelas bajo supervisión correspondiente al sector La Yarada. La vista cartográfica interactiva geolocaliza cinco predios en estado crítico: cuatro afectados por sobrecarga frutal severa y uno por riesgo de helada. Al pasar al módulo de Acopio Proyectado, el gestor evalúa las proyecciones consolidadas de cosecha con un 62 % de cobertura muestral firme y tres predios pendientes de evaluación, analizando la discriminación por sector y tonelaje estimado.
+
+En la pestaña de Socios, el gestor administra el padrón de cooperativistas y genera dinámicamente nuevos códigos alfanuméricos de invitación para vincular productores al entorno institucional. Desde la lista de socios, selecciona el predio de Teodoro Mamani identificado en estado crítico, accediendo al desglose de carga frutal estimada, la prescripción automática de aclareo y las opciones de contacto directo vía llamada celular y mensajería instantánea por WhatsApp. Por último, solicita y descarga el expediente técnico agronómico consolidado en formato PDF para su remisión inmediata al productor.
+
+#### Demostración en video del prototipo interactivo
+&nbsp;
+
+A continuación se presenta el registro visual y el acceso al recurso audiovisual.
+
+Link del video: [https://tinyurl.com/44hdrd42](https://tinyurl.com/44hdrd42)
+
+\begin{figure}[H]
+\caption{Prototipo Mobile: Captura de Navegación e Interacción en Figma.}
+\label{fig:mobile-prototyping-video}
+\centering
+\includegraphics[width=0.88\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-video-screenshot.png}
+\caption*{\textit{Nota.} Entorno de reproducción del prototipo móvil en Figma mostrando la estructura de flujos de interacción e inicio de sesión. Elaboración propia.}
+\end{figure}
