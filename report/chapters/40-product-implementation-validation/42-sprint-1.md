@@ -57,15 +57,7 @@ A continuación, en la \autoref{tab:sprint-planning-1} se presenta el cuadro res
 
 Para maximizar la eficiencia en la ejecución, garantizar la coherencia arquitectural y optimizar la comunicación interna del equipo ArcadiaDevs a lo largo del Sprint 1, se definió la matriz de liderazgo y colaboración o *Leadership-and-Collaboration Matrix* (LACX). Esta matriz asigna con precisión un líder responsable (*Leader - L*) y los correspondientes colaboradores técnicos (*Collaborator - C*) para cada uno de los aspectos funcionales y arquitecturales priorizados en esta primera iteración.
 
-En el presente Sprint 1, los aspectos seleccionados comprenden los dominios de software y Bounded Contexts que concentran los 68 ítems de trabajo comprometidos (183 Story Points). Cabe precisar que, de los nueve Bounded Contexts que integran el diseño estratégico global del sistema Viora, cinco de ellos participan activamente en este primer ciclo iterativo (*Olive Orchard and Plot Management*, *Agroclimatic Telemetry and Sensor Monitoring*, *Phenology and Historical Bearing Analytics*, *Crop Load Regulation and Thinning Advisory* y *Harvest Settlement and Performance Reporting*), articulados junto a la presencia comercial de la *Landing Page* y los fundamentos arquitecturales de la plataforma *Shared*. Los cuatro contextos restantes (*Identity and Access Management*, *User Profiles*, *Subscription and Cooperative Membership* y *Cooperative Operations and Territorial Intelligence*) se encuentran programados para los Sprints 2 y 3, operando durante esta fase mediante perfiles preconfigurados de desarrollo y emuladores de contexto.
-
-* **Communications (Landing Page):** Abarca la maquetación semántica, diseño visual responsivo, localización, presentación de la propuesta de valor y tarifas transparentes en moneda nacional y despliegue continuo en Vercel del sitio web comercial e institucional (`viora-landing-page`), asegurando la captación temprana de productores y organizaciones olivareras.
-* **Orchard (Olive Orchard and Plot Management):** Comprende el catastro y delimitación georreferenciada de predios olivareros mediante coordenadas GPS y polígonos GeoJSON, restauración de cuarteles archivados, tipificación varietal (Criolla y Sevillana), densidad arbórea y rectificación con control de concurrencia optimista, articulando los contratos REST del backend y las vistas cartográficas de la app móvil.
-* **Telemetry (Agroclimatic Telemetry and Sensor Monitoring):** Involucra la administración del ciclo de vida de nodos sensores a nivel de parcela, calibración de offsets y factores de corrección edafoclimática, consulta y agregación temporal de lecturas agroclimáticas de humedad de suelo, temperatura ambiental y radiación, y sincronización de pronósticos meteorológicos geolocalizados a 7 días.
-* **Phenology (Phenology and Historical Bearing Analytics):** Cubre la memoria histórica de cosechas plurianuales y rectificación de pesajes, la formulación matemática del Índice de Vecería ($BBI$), el *spike* de viabilidad técnica sobre acumulación de frío invernal mediante el modelo dinámico de Erez y las vistas móviles de seguimiento fenológico.
-* **Thinning (Crop Load Regulation and Thinning Advisory):** Representa el núcleo de valor primario (*Core Domain*), abarcando la toma de muestras de frutos cuajados a pie de árbol, la evaluación de representatividad estadística, la emisión de prescripciones técnicas de aclareo antes del endurecimiento del carozo, el registro y confirmación de labores en campo y el *spike* de persistencia local *offline-first* con SQLite y Room.
-* **Harvest (Harvest Settlement and Performance Reporting):** Comprende el asentamiento formal de fin de campaña y balances de estabilización productiva, consultas detalladas de liquidación por campaña y la certificación criptográfica SHA-256 del expediente inmutable de parcela para auditar el rendimiento productivo.
-* **Shared (Shared Architecture \& Core Foundations):** Agrupa los fundamentos arquitecturales transversales en Spring Boot / Java 21, incluyendo el controlador global de excepciones bajo RFC 7807, las convenciones de persistencia JPA y tipado espacial, la documentación interactiva OpenAPI 3.0 / Swagger UI y la resolución de internacionalización mediante cabeceras `Accept-Language`.
+En el presente Sprint 1, los aspectos seleccionados comprenden los dominios de software y Bounded Contexts que concentran los 68 ítems de trabajo comprometidos (183 Story Points). Cabe precisar que, de los nueve Bounded Contexts que integran el diseño estratégico global del sistema Viora, cinco de ellos participan activamente en este primer ciclo iterativo (*Olive Orchard and Plot Management*, *Agroclimatic Telemetry and Sensor Monitoring*, *Phenology and Historical Bearing Analytics*, *Crop Load Regulation and Thinning Advisory* y *Harvest Settlement and Performance Reporting*), articulados junto a la presencia comercial de la *Landing Page* y los fundamentos arquitecturales de la plataforma *Shared*. Los cuatro contextos restantes se encuentran programados para los Sprints 2 y 3, operando durante esta fase mediante perfiles preconfigurados de desarrollo y emuladores de contexto.
 
 A continuación, en la \autoref{tab:lacx-sprint-1} se expone la matriz de asignación de liderazgo y colaboración de ArcadiaDevs para el Sprint 1:
 
@@ -85,6 +77,8 @@ Trinidad León, Jahat Jassiel & trinity-bytes & C & C & \textbf{L} & C & C & C &
 \end{tabular}
 \caption*{\textit{Nota.} L = Leader (Líder responsable del aspecto); C = Collaborator (Colaborador técnico). Elaboración propia.}
 \end{table}
+
+\clearpage
 
 #### Sprint Backlog 1
 &nbsp;
@@ -263,6 +257,8 @@ US29 & Asentamiento formal de cosecha de fin de campaña y balance de estabiliza
 \end{longtable}
 \end{center}
 
+\clearpage
+
 #### Development Evidence for Sprint Review
 &nbsp;
 
@@ -383,7 +379,7 @@ La sección inicial presenta la propuesta central del producto, anticipar la pr�
 \caption{Sección inicial de la Landing Page de Viora.} \label{fig:exec-landing-hero-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/01-hero.png}
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/01-hero.png}
 \caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
 \end{figure}
 
@@ -393,7 +389,7 @@ El carrusel de problemas recorre las situaciones que reconoce el productor (año
 \caption{Carrusel de problemas y módulos de la aplicación.} \label{fig:exec-landing-pains-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/02-pain-points-carousel.png}
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/02-pain-points-carousel.png}
 \caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
 \end{figure}
 
@@ -403,7 +399,7 @@ La propuesta de valor se presenta por separado para cada segmento objetivo: los 
 \caption{Propuesta de valor para productores olivareros.} \label{fig:exec-landing-producers-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/03-segment-producers.png}
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/03-segment-producers.png}
 \caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
 \end{figure}
 
@@ -411,7 +407,7 @@ La propuesta de valor se presenta por separado para cada segmento objetivo: los 
 \caption{Propuesta de valor para gestores técnicos.} \label{fig:exec-landing-managers-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/04-segment-technical-managers.png}
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/04-segment-technical-managers.png}
 \caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
 \end{figure}
 
@@ -421,7 +417,7 @@ La sección del Plan Productor muestra la tarifa referencial por hectárea, un s
 \caption{Sección del Plan Productor con simulador de suscripción.} \label{fig:exec-landing-plan-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/05-producer-plan.png}
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/05-producer-plan.png}
 \caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
 \end{figure}
 
@@ -431,7 +427,7 @@ Finalmente, la sección del equipo presenta a ArcadiaDevs y enlaza al video de p
 \caption{Sección del equipo en la Landing Page.} \label{fig:exec-landing-team-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/06-team.png}
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/06-team.png}
 \caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
 \end{figure}
 
@@ -443,9 +439,9 @@ La pantalla de inicio resume el estado del campo para la campaña y el cuartel s
 \caption{Pantalla de inicio de la aplicación del productor.} \label{fig:exec-app-home-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/01-home.png}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/01-home.png}
 \hspace{1cm}
-\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/02-home-indicators.png}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/02-home-indicators.png}
 \caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
 \end{figure}
 
@@ -455,9 +451,9 @@ El listado de parcelas muestra las parcelas activas y archivadas con su variedad
 \caption{Listado y detalle de parcelas.} \label{fig:exec-app-plots-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/03-plots-list.png}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/03-plots-list.png}
 \hspace{1cm}
-\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/04-plot-detail.png}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/04-plot-detail.png}
 \caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
 \end{figure}
 
@@ -467,9 +463,9 @@ La vista de alternancia muestra el índice de vecería (BBI) de la parcela con s
 \caption{Índice de vecería y registro de cosecha.} \label{fig:exec-app-harvest-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/05-plot-alternation.png}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/05-plot-alternation.png}
 \hspace{1cm}
-\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/06-harvest-registration.png}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/06-harvest-registration.png}
 \caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
 \end{figure}
 
@@ -482,7 +478,7 @@ El video muestra la ejecución de las vistas y los flujos de navegación impleme
 * **Formato:** MP4
 * **Enlace de visualización (OneDrive):** \url{https://tinyurl.com/ef66ptm9}
 
-\newpage
+\clearpage
 
 #### Services Documentation Evidence for Sprint Review 
 &nbsp;
@@ -498,7 +494,7 @@ Durante este ciclo de desarrollo \textbf{se implementaron y documentaron un tota
     \item \textbf{Especificación OpenAPI en formato JSON:} \url{https://viora-platform.onrender.com/v3/api-docs}
 \end{itemize}
 
-\newpage
+\clearpage
 
 \begin{center}
 \footnotesize
@@ -536,7 +532,7 @@ Certificar informe agronómico & POST & \url{https://viora-platform.onrender.com
 \end{longtable}
 \end{center}
 
-\newpage
+\clearpage
 
 \noindent \textbf{Especificación detallada de endpoints representativos del Sprint 1:}
 
@@ -637,7 +633,7 @@ Las pruebas de integración y validación cubrieron los siguientes flujos nuclea
 \caption{Ejecución interactiva y respuesta 201 Created para alta de predio en Swagger UI.} \label{fig:exec-swagger-create-plot-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.88\textwidth]{report/assets/execution-evidence/sprint-1/web-services/01-swagger-create-plot.png}
+\includegraphics[width=0.44\textwidth]{report/assets/execution-evidence/sprint-1/web-services/01-swagger-create-plot.png}
 \caption*{\textit{Nota.} Captura de la consola interactiva Swagger UI en entorno de desarrollo local. Elaboración propia.}
 \end{figure}
 
@@ -645,7 +641,7 @@ Las pruebas de integración y validación cubrieron los siguientes flujos nuclea
 \caption{Ingesta de muestreo de cuaje y validación de representatividad en Swagger UI.} \label{fig:exec-swagger-submit-sampling-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.88\textwidth]{report/assets/execution-evidence/sprint-1/web-services/02-swagger-submit-sampling.png}
+\includegraphics[width=0.44\textwidth]{report/assets/execution-evidence/sprint-1/web-services/02-swagger-submit-sampling.png}
 \caption*{\textit{Nota.} Captura de la consola interactiva Swagger UI en entorno de desarrollo local. Elaboración propia.}
 \end{figure}
 
@@ -653,13 +649,13 @@ Las pruebas de integración y validación cubrieron los siguientes flujos nuclea
 \caption{Manejo de concurrencia optimista y respuesta 412 Precondition Failed (RFC 7807) en Swagger UI.} \label{fig:exec-swagger-error-rfc7807-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.88\textwidth]{report/assets/execution-evidence/sprint-1/web-services/03-swagger-error-rfc7807.png}
+\includegraphics[width=0.44\textwidth]{report/assets/execution-evidence/sprint-1/web-services/03-swagger-error-rfc7807.png}
 \caption*{\textit{Nota.} Captura de la consola interactiva Swagger UI en entorno de desarrollo local. Elaboración propia.}
 \end{figure}
 
 Los resultados verificaron la correspondencia unívoca entre las anotaciones OpenAPI del backend y los tipos generados en el contrato JSON (\url{https://viora-platform.onrender.com/v3/api-docs}), asegurando interoperabilidad sin discrepancias de contrato.
 
-\newpage
+\clearpage
 
 \noindent \textbf{Repositorio oficial y trazabilidad de control de versiones:}
 
@@ -704,7 +700,7 @@ viora-platform & feature/virtual-node-hourly-telemetry & 353341e & fix(shared): 
 \end{longtable}
 \end{center}
 
-\newpage
+\clearpage
 
 
 #### Software Deployment Evidence for Sprint Review 
@@ -784,7 +780,7 @@ El resultado es el despliegue de producción de la \autoref{fig:deploy-vercel-pr
 
 La calidad del código se valida antes de integrar mediante el flujo `ci.yml` de GitHub Actions (análisis estático con \textit{lint}, verificación de formato y compilación), que se ejecuta en cada \textit{pull request} hacia `develop` o `main` y en cada \textit{push} a `develop`. En este Sprint se publicaron las versiones 1.0.0 y 1.1.0 (26/09/2026), accesibles en \url{https://viora-landing-page-sable.vercel.app/}.
 
-\newpage
+\clearpage
 
 \noindent \textbf{Servicios web de backend (Render):}
 
@@ -822,7 +818,7 @@ El despliegue es continuo (\autoref{fig:deploy-render-live-s1}): al integrarse e
 
 Al ser un plan gratuito, Render suspende la instancia tras un periodo de inactividad y advierte que reactivarla puede retrasar las peticiones 50 segundos o más; en nuestras pruebas la primera petición posterior llegó a superar el minuto. Es una limitación asumida para el entorno académico. La documentación interactiva de la API (OpenAPI) se publica en \url{https://viora-platform.onrender.com/swagger-ui/index.html}.
 
-\newpage
+\clearpage
 
 \noindent \textbf{Base de datos en la nube (Filess.io):}
 
@@ -846,7 +842,7 @@ La \autoref{fig:deploy-filess-list-s1} confirma la instancia creada el 1 de octu
 \caption*{\textit{Nota.} Captura del listado de bases de datos compartidas de Filess.io. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 \noindent \textbf{Aplicación móvil Android (Firebase App Distribution):}
 
@@ -942,37 +938,43 @@ La \autoref{fig:deploy-device-install-s1} documenta la instalación en un teléf
 \caption*{\textit{Nota.} Captura de la configuración de GitHub Actions del 7/10/2026; GitHub solo muestra los nombres, nunca los valores. Elaboración propia.}
 \end{figure}
 
-\newpage
+\clearpage
 
 #### Team Collaboration Insights during Sprint 
 &nbsp;
 
-En esta sección se detallan las actividades de implementación y despliegue llevadas a cabo durante el Sprint 1, orientadas a la construcción de los entregables clave del ecosistema Viora: el servicio web backend, la aplicación móvil nativa para Android y el sitio web estático.
-El proceso de desarrollo se ejecutó de manera ágil y estructurada bajo el flujo de trabajo GitFlow y la convención de Conventional Commits, garantizando una participación técnica activa de los 5 integrantes del equipo. 
-Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de la organización, a continuación se presentan las evidencias extraídas de los analíticos de GitHub. 
+En esta sección se analizan las métricas de colaboración y la distribución de esfuerzo del equipo ArcadiaDevs a lo largo del Sprint 1, orientadas a la construcción de los entregables clave del ecosistema Viora: el portal web comercial, el servicio web transaccional y la aplicación móvil nativa. El desarrollo se ejecutó bajo la metodología GitFlow con ramas de características, ramas de integración y estabilización, utilizando la convención *Conventional Commits* para asegurar un historial transparente y auditable entre los 5 integrantes.
+
+Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de la organización en GitHub, a continuación se presentan los analíticos de contribución temporal y autoría de código (*Contributors*):
+
+En el repositorio `viora-landing-page`, el flujo de trabajo se concentró de manera intensiva durante la primera semana del ciclo (semana del 21 de septiembre), correspondiente al diseño y maquetación de la propuesta comercial, la tabla de planes en moneda nacional y la optimización SEO (\autoref{fig:contributors-landing-page}).
 
 \begin{figure}[H]
-\caption{Vista de Contributors de Github - Landing Page.} \label{fig:contributors-landing-page}
+\caption{Vista de Contributors de GitHub - Landing Page.} \label{fig:contributors-landing-page}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.30\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-land.png}
-\caption*{\textit{Nota.} Elaboración propia.}
+\includegraphics[width=0.35\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-land.png}
+\caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-landing-page}. Elaboración propia.}
 \end{figure}
 
-\begin{figure}[H]
-\caption{Vista de Contributors de Github - Platform.} \label{fig:contributors-platform}
-\vspace{0.25cm}
-\centering
-\includegraphics[width=0.30\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-plat.png}
-\caption*{\textit{Nota.} Elaboración propia.}
-\end{figure}
+Por su parte, el repositorio `viora-platform` exhibe una actividad técnica constante a lo largo de todo el sprint, alcanzando su punto culminante en la semana del 28 de septiembre, dedicado a la implementación de los 33 endpoints RESTful, el manejo de concurrencia optimista y la persistencia geoespacial (\autoref{fig:contributors-platform}).
 
 \begin{figure}[H]
-\caption{Vista de Contributors de Github - Mobile-Android.} \label{fig:contributors-mobile-android}
+\caption{Vista de Contributors de GitHub - Platform.} \label{fig:contributors-platform}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.30\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-mobile.png}
-\caption*{\textit{Nota.} Elaboración propia.}
+\includegraphics[width=0.35\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-plat.png}
+\caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-platform}. Elaboración propia.}
+\end{figure}
+
+Finalmente, en el repositorio `viora-mobile-android` se observa un patrón de crecimiento continuo y acumulativo, iniciando con la estructura de arquitectura limpia y SQLite en septiembre y alcanzando un marcado pico superior (\autoref{fig:contributors-mobile-android}).
+
+\begin{figure}[H]
+\caption{Vista de Contributors de GitHub - Mobile-Android.} \label{fig:contributors-mobile-android}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.35\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-mobile.png}
+\caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-mobile-android}. Elaboración propia.}
 \end{figure}
 
 \clearpage
