@@ -83,268 +83,195 @@ Trinidad León, Jahat Jassiel & trinity-bytes & C & C & \textbf{L} & C & C & C &
 \end{table}
 
 #### Sprint Backlog 1
+&nbsp;
 
-El objetivo central del Sprint Backlog 1 es descomponer operativamente los 68 ítems de trabajo comprometidos (183 Story Points) en tareas técnicas atómicas y verificables. Dicha descomposición abarca la implementación de la presencia digital comercial de Viora (Landing Page con localización y tarifas en Soles), los spikes exploratorios de formulación biofísica de frío dinámico y persistencia SQLite offline-first, los módulos de captura agronómica móvil para el productor olivarero, y la base arquitectural y la suite completa de 33 servicios web RESTful desacoplados estructurados bajo DDD táctico.
+El objetivo central del Sprint Backlog 1 es descomponer operativamente los 68 ítems de trabajo comprometidos (183 Story Points), conformados por 29 Historias de Usuario (US), 37 Technical Stories (TS) y 2 Spikes de investigación técnica (SPK) en tareas técnicas atómicas, medibles y verificables. Dicha descomposición abarca la implementación de la presencia digital comercial de Viora (Landing Page con localización y tarifas transparentes en moneda nacional), los spikes exploratorios de formulación biofísica de frío dinámico y persistencia SQLite offline-first, los módulos de captura agronómica y muestreo móvil para el productor olivarero, y los fundamentos arquitecturales transversales junto a la suite completa de 33 servicios web RESTful desacoplados estructurados bajo Domain-Driven Design.
+
+Para efectos de diagramación, síntesis documental y legibilidad dentro del presente informe, en la \autoref{tab:sprint-backlog-1} se expone de manera representativa exactamente una tarea técnica principal (\textit{Work-Item / Task}) por cada requerimiento comprometido (US, TS o SPK). El desglose granular del Sprint Backlog en su totalidad, compuesto por 147 tareas técnicas distribuidas a través de las columnas de flujo ágil \textit{Goal}, \textit{Stories}, \textit{To-Do}, \textit{In process}, \textit{To Review} y \textit{Done} se encuentra registrado y disponible en el tablero oficial de gestión ágil de ArcadiaDevs en Trello, accesible mediante el siguiente enlace: \url{https://tinyurl.com/1acc0238-sb1}.
 
 \begin{figure}[H]
 \caption{Vista General del Tablero del Sprint Backlog 1} \label{fig:sprint-backlog-1-trello}
 \centering
 \includegraphics[width=0.85\textwidth]{report/assets/sprint-backlog/sb1.png}
-\caption*{\textit{Nota.} Tablero de gestión ágil de ArcadiaDevs en Trello: \url{https://trello.com/b/sprint-1-viora-arcadiadevs}}
+\caption*{\textit{Nota.} Tablero de gestión ágil de ArcadiaDevs en Trello: \url{https://tinyurl.com/1acc0238-sb1}}
 \end{figure}
 
 \begin{center}
-\small
+\footnotesize
 \renewcommand{\arraystretch}{1.15}
-\begin{longtable}{|p{0.05\textwidth}|p{0.14\textwidth}|p{0.05\textwidth}|p{0.14\textwidth}|p{0.24\textwidth}|p{0.08\textwidth}|p{0.12\textwidth}|p{0.07\textwidth}|}
+\setlength{\tabcolsep}{2.5pt}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.045\textwidth}|>{\raggedright\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.045\textwidth}|>{\raggedright\arraybackslash}p{0.125\textwidth}|>{\raggedright\arraybackslash}p{0.305\textwidth}|>{\centering\arraybackslash}p{0.065\textwidth}|>{\raggedright\arraybackslash}p{0.085\textwidth}|>{\centering\arraybackslash}p{0.03\textwidth}|}
 \caption{Descomposición de Ítems del Sprint Backlog 1 en Tareas de Trabajo (Work-Items)} \label{tab:sprint-backlog-1} \\
 \hline
 \multicolumn{2}{|l|}{\textbf{Sprint \#}} & \multicolumn{6}{l|}{Sprint 1} \\ \hline
 \multicolumn{2}{|l|}{\textbf{User Story}} & \multicolumn{6}{l|}{\textbf{Work-Item / Task}} \\ \hline
-\textbf{Id} & \textbf{Title} & \textbf{Id} & \textbf{Title} & \textbf{Description} & \textbf{Estimation (Hours)} & \textbf{Assigned To} & \textbf{Status} \\ \hline
+\textbf{Id} & \textbf{Title} & \textbf{Id} & \textbf{Title} & \textbf{Description} & \textbf{Est.} \newline \textbf{(Hours)} & \textbf{Assigned To} & \textbf{Status} \\ \hline
 \endfirsthead
 
 \hline
 \multicolumn{2}{|l|}{\textbf{User Story}} & \multicolumn{6}{l|}{\textbf{Work-Item / Task (Continuación)}} \\ \hline
-\textbf{Id} & \textbf{Title} & \textbf{Id} & \textbf{Title} & \textbf{Description} & \textbf{Estimation (Hours)} & \textbf{Assigned To} & \textbf{Status} \\ \hline
+\textbf{Id} & \textbf{Title} & \textbf{Id} & \textbf{Title} & \textbf{Description} & \textbf{Est.} \newline \textbf{(Hours)} & \textbf{Assigned To} & \textbf{Status} \\ \hline
 \endhead
 
 \hline
 \endfoot
 
 \hline
-\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir de la descomposición técnica del Sprint 1.}} \\
+\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Síntesis representativa de una tarea por requerimiento (US, TS y SPK). El Sprint Backlog completo con la totalidad de las 147 tareas técnicas desglosadas se encuentra disponible en el tablero de Trello: \url{https://tinyurl.com/1acc0238-sb1}. Elaboración propia.}} \\
 \endlastfoot
 
 % US33
-US33 & Presentación de la propuesta de valor central para la mitigación de la vecería prolongada en el olivar & TK01 & Maquetación de sección Hero, pilares de valor y CTA principal & Implementar sección Hero con encabezado ''Anticipa la Próxima Cosecha - Equilibra tu Olivar'', badge dinámico de ventana de aclareo, botón CTA ''Descarga la app'' y tarjetas de los tres pilares de valor (Carga frutal, Frío invernal, Plan de aclareo). & 1.0 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Componente de contexto regional de Tacna y métricas de vecería & Maquetar bloque territorial de Tacna destacando el 81\% de concentración olivarera, el 90\% de merma productiva histórica en 2024 y 1 de cada 2 campañas en año OFF junto a la crónica de La Yarada y Los Palos. & 0.8 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK03 & Slider interactivo de contraste de campañas y dolor agronómico & Construir componente interactivo de comparación ''¿Te suena alguno de estos años?'' con pestañas alternables de campaña ON vs campaña OFF y propuesta de anticipación de Viora. & 0.5 & Paredes, Victor & Done \\ \hline
-
+US33 & Presentación de la propuesta de valor central para la mitigación de la vecería prolongada en el olivar & TK01 & Maquetación de sección Hero, pilares de valor y CTA principal & Implementar sección Hero con encabezado 'Anticipa la Próxima Cosecha - Equilibra tu Olivar', badge dinámico de ventana de aclareo, botón CTA 'Descarga la app' y tarjetas de los tres pilares de valor (Carga frutal, Frío invernal, Plan de aclareo). & 1.0 & Paredes, Victor & Done \\ \hline
 % US34
-US34 & Exploración de beneficios y capacidades operativas para el productor olivarero & TK01 & Sección de segmento para Productores Olivareros e ilustración & Diseñar y maquetar módulo editorial para productores ''Un año sobra, el otro falta'', incorporando retrato ilustrado, propuesta de lectura de frío, conteo por árbol y prescripción sin conexión. & 1.0 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Tarjeta interactiva ''Hecha para el campo'' y mockup de muestreo & Implementar tarjeta visual ''Hecha para el campo'' con mockup de la app móvil destacando el registro de muestreos a pie de árbol sin cobertura y sincronización diferida. & 0.8 & Paredes, Victor & Done \\ \hline
-
+US34 & Exploración de beneficios y capacidades operativas para el productor olivarero & TK01 & Sección de segmento para Productores Olivareros e ilustración & Diseñar y maquetar módulo editorial para productores 'Un año sobra, el otro falta', incorporando retrato ilustrado, propuesta de lectura de frío, conteo por árbol y prescripción sin conexión. & 1.0 & Paredes, Victor & Done \\ \hline
 % US35
-US35 & Exploración de beneficios y herramientas de gestión territorial para cooperativas agrarias & TK01 & Sección de segmento para Gestores Técnicos y Cooperativas & Maquetar módulo de gestores técnicos ''No puedes estar en cada parcela'', incorporando ilustración editorial, propuesta de supervisión cartográfica y sustitución de cuadernos y planillas Excel. & 1.0 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Mockup interactivo de Licencia Colectiva y proyección de acopio & Construir mockup visual del panel de licencia colectiva para cooperativas mostrando socios vinculados, hectáreas supervisadas, semáforo del territorio y proyección de acopio verde y negra. & 0.8 & Paredes, Victor & Done \\ \hline
-
+US35 & Exploración de beneficios y herramientas de gestión territorial para cooperativas agrarias & TK01 & Sección de segmento para Gestores Técnicos y Cooperativas & Maquetar módulo de gestores técnicos 'No puedes estar en cada parcela', incorporando ilustración editorial, propuesta de supervisión cartográfica y sustitución de cuadernos y planillas Excel. & 1.0 & Paredes, Victor & Done \\ \hline
 % US36
-US36 & Visualización de planes de suscripción y tarifas transparentes en moneda nacional (PEN) & TK01 & Maquetación de planes comerciales en Soles (PEN) y Código Cooperativa & Implementar sección ''Planes'' con tres modalidades en Soles peruanos: Plan Productor (por ha), Plan Cooperativa (licencia colectiva a medida) y Canje de Código de Cooperativa (S/ 0 para el socio). & 1.0 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Calculadora interactiva de hectáreas y pasarela Mercado Pago & Construir componente interactivo de estimación tarifaria donde el productor ajusta sus hectáreas (+ / -) calculando la cuota en tiempo real con integración simulada de Mercado Pago. & 0.7 & Paredes, Victor & Done \\ \hline
-
+US36 & Visualización de planes de suscripción y tarifas transparentes en moneda nacional (PEN) & TK01 & Maquetación de planes comerciales en Soles (PEN) y Código Cooperativa & Implementar sección 'Planes' con tres modalidades en Soles peruanos: Plan Productor (por ha), Plan Cooperativa (licencia colectiva a medida) y Canje de Código de Cooperativa (S/ 0 para el socio). & 1.0 & Paredes, Victor & Done \\ \hline
 % US37
-US37 & Reproducción del video promocional y demostrativo del producto (''About the Product'') & TK01 & Reproductor modal accesible para video ''About the Product'' & Configurar reproductor modal de video promocional de producto (''Good Move'') con controles de reproducción, cierre intuitivo y adaptación a dispositivos móviles y escritorio. & 0.6 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Miniatura estilizada de video y disparador de reproducción & Diseñar miniatura gráfica del video demostrativo con botón flotante interactivo de reproducción integrado armónicamente en el flujo de la Landing Page. & 0.4 & Paredes, Victor & Done \\ \hline
-
+US37 & Reproducción del video promocional y demostrativo del producto (''About the Product'') & TK01 & Reproductor modal accesible para video 'About the Product' & Configurar reproductor modal de video promocional de producto ('Good Move') con controles de reproducción, cierre intuitivo y adaptación a dispositivos móviles y escritorio. & 0.6 & Paredes, Victor & Done \\ \hline
 % US38
-US38 & Reproducción del video institucional sobre el equipo y proceso de ingeniería (''About the Team'') & TK01 & Sección ''Nuestro equipo'', ilustración de trofeo y fichas de integrantes & Maquetar sección institucional con título ''PERO SI ES SOLO UN PROYECTO'', ilustración del equipo con trofeo, ficha de los 5 integrantes con roles específicos y enlaces a perfiles de LinkedIn. & 0.6 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Modal de video institucional ''About the Team'' y Misión/Visión & Implementar modal de video para la cápsula audiovisual del equipo de desarrollo e integrar el bloque de Misión y Visión institucional de ArcadiaDevs y Viora. & 0.4 & Paredes, Victor & Done \\ \hline
-
+US38 & Reproducción del video institucional sobre el equipo y proceso de ingeniería (''About the Team'') & TK01 & Sección 'Nuestro equipo', ilustración de trofeo y fichas de integrantes & Maquetar sección institucional con título ''PERO SI ES SOLO UN PROYECTO'', ilustración del equipo con trofeo, ficha de los 5 integrantes con roles específicos y enlaces a perfiles de LinkedIn. & 0.6 & Paredes, Victor & Done \\ \hline
 % US39
-US39 & Consulta de términos de servicio y política de privacidad y protección de datos (Ley N° 29733) & TK01 & Maquetación y enlaces a Términos de Servicio en footer legal & Implementar acceso directo y vista de Términos de Servicio en la columna legal del footer, estipulando condiciones de uso, licenciamiento y exención de responsabilidad agronómica. & 0.5 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Vista de Política de Privacidad y Protección de Datos (Ley N° 29733) & Redactar e integrar página formal de Política de Privacidad conforme a la Ley N° 29733 del Perú, accesible desde el menú legal del pie de página. & 0.5 & Paredes, Victor & Done \\ \hline
-
+US39 & Consulta de términos de servicio y política de privacidad y protección de datos (Ley N° 29733) & TK01 & Maquetación y enlaces a Términos de Servicio en footer legal & Implementar acceso directo y vista de Términos de Servicio en la columna legal del footer, estipulando condiciones de uso, licenciamiento y exención de responsabilidad agronómica. & 0.5 & Paredes, Victor & Done \\ \hline
 % US40
-US40 & Redirección y acceso a la descarga oficial de la aplicación móvil & TK01 & Sección de descarga con render 3D móvil e insignias oficiales & Maquetar sección ''Menos vecería, más cosecha cada campaña'' con mockup de teléfono móvil e insignias oficiales de descarga en Google Play Store y Apple App Store. & 0.5 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Banner de conversión pre-footer y código QR de descarga rápida & Implementar banner inferior de llamada a la acción ''Empieza a medir tu próxima campaña'' con botones oficiales y código QR para instalación inmediata en huerto o ferias. & 0.5 & Paredes, Victor & Done \\ \hline
-
+US40 & Redirección y acceso a la descarga oficial de la aplicación móvil & TK01 & Sección de descarga con render 3D móvil e insignias oficiales & Maquetar sección 'Menos vecería, más cosecha cada campaña' con mockup de teléfono móvil e insignias oficiales de descarga en Google Play Store y Apple App Store. & 0.5 & Paredes, Victor & Done \\ \hline
 % US41
-US41 & Selección de idioma y localización de contenidos en la Landing Page & TK01 & Catálogos de traducción bilingüe (ES/EN) y framework i18n & Estructurar diccionarios de internacionalización es.json y en.json con todas las cadenas del portal (hero, contexto de Tacna, segmentos, planes, equipo y footer legal). & 0.8 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Selector interactivo de idioma ES/EN en header y footer & Construir componente selector de idioma (ES / EN) en la barra de navegación y pie de página con cambio reactivo de idioma y persistencia en almacenamiento local. & 0.7 & Paredes, Victor & Done \\ \hline
-
+US41 & Selección de idioma y localización de contenidos en la Landing Page & TK01 & Catálogos de traducción bilingüe (ES/EN) y framework i18n & Estructurar diccionarios de internacionalización es.json y en.json con todas las cadenas del portal (hero, contexto de Tacna, segmentos, planes, equipo y footer legal). & 0.8 & Paredes, Victor & Done \\ \hline
 % SPK01
-SPK01 & Investigación y modelado dinámico de Erez para cálculo de frío en backend & TK01 & Revisión bibliográfica y formalización matemática del modelo de Erez & Documentar las ecuaciones diferenciales de dos etapas de Fishman, Erez y Couvillon (1987) para formación y fijación irreversible de porciones de frío en el olivo. & 1.0 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK02 & Prototipo computacional en Java de simulación de porciones de frío & Implementar un algoritmo de cálculo iterativo en Java alimentado con series térmicas horarias sintéticas y validar los factores de destrucción por calor (>24°C). & 1.2 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK03 & Informe de viabilidad y benchmarking con datos térmicos de Tacna & Elaborar informe técnico comparando tiempos de cómputo sobre datasets meteorológicos locales de La Yarada-Los Palos y documentar recomendaciones para TS23. & 0.8 & Santi, Fabrizio & Done \\ \hline
-
+SPK01 & Investigación y modelado dinámico de Erez para cálculo de frío en backend & TK01 & Revisión bibliográfica y formalización matemática del modelo de Erez & Documentar las ecuaciones diferenciales de dos etapas de Fishman, Erez y Couvillon (1987) para formación y fijación irreversible de porciones de frío en el olivo. & 1.0 & Santi, Fabrizio & Done \\ \hline
 % SPK02
-SPK02 & Investigación de persistencia local SQLite y protocolo offline-first & TK01 & Diseño de esquema relacional SQLite para capturas desconectadas & Definir tablas locales de parcelas, rondas de muestreo y registros de conteo por árbol con banderas de sincronización (SYNC\_PENDING, SYNCED) y marcas temporales UTC. & 1.0 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK02 & Prototipo de inserción local offline con Room DB en Android & Implementar capa de acceso a datos con Room DAOs para registrar observaciones de cuajado sin conexión y comprobar la reactividad con StateFlow. & 1.2 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK03 & Verificación de sincronización idempotente hacia backend REST & Simular recuperación de señal de red móvil y envío por lotes con claves de idempotencia UUID para garantizar ausencia de registros duplicados en el servidor. & 0.8 & Santi, Fabrizio & Done \\ \hline
-
-% US09
-US09 & Delimitación georreferenciada de parcela con GPS y caracterización agronómica inicial & TK01 & Formulario de datos agronómicos iniciales de parcela & Crear pantalla en Jetpack Compose para ingresar nombre del predio, variedad de olivo (Criolla, Sevillana), marco de plantación (calles x plantas) y año de siembra. & 1.2 & Espada, Piero & Done \\ \cline{3-8}
-& & TK02 & Captura de coordenadas GPS de vértices en campo & Integrar Android Location Services (FusedLocationProviderClient) para capturar puntos georreferenciados a pie de lote con verificación de precisión (<5m). & 1.5 & Espada, Piero & Done \\ \cline{3-8}
-& & TK03 & Trazado manual y visualización sobre mapa satelital & Integrar Mapbox SDK en Android para permitir dibujar polígonos perimétricos manualmente tocando la pantalla satelital ante baja señal GPS. & 1.5 & Espada, Piero & Done \\ \cline{3-8}
-& & TK04 & Validación de cierre poligonal y cálculo de densidad arbórea & Implementar validación geométrica local (mínimo 3 vértices cerrados) y computar en pantalla el área en hectáreas y árboles estimados por hectárea. & 0.8 & Espada, Piero & Done \\ \hline
-
-% US10
-US10 & Consulta y modificación de linderos y datos dendrométricos de parcela & TK01 & Pantalla de ficha técnica y resumen dendrométrico de predio & Implementar vista de detalle de parcela en Compose mostrando polígono sobre mapa, área, marco de plantación, variedad y árboles estimados. & 1.0 & Espada, Piero & Done \\ \cline{3-8}
-& & TK02 & Flujo de edición de vértices poligonales y parámetros de lote & Habilitar modo de edición para arrastrar marcadores perimétricos en el mapa o actualizar variedad y marco de espaciamiento dendrométrico. & 1.2 & Espada, Piero & Done \\ \cline{3-8}
-& & TK03 & Sincronización de modificaciones con API y persistencia en Room & Conectar cambios con el endpoint PUT /api/v1/plots/{plotId} y actualizar la base de datos local SQLite manteniendo coherencia offline. & 0.8 & Espada, Piero & Done \\ \hline
-
-% US17
-US17 & Monitoreo agroclimático y consulta de series temporales de suelo y microclima & TK01 & Dashboard de telemetría y estado actual de microclima y suelo & Construir panel con indicadores en tiempo real de temperatura ambiental, humedad relativa y humedad volumétrica de suelo a 30 y 60 cm. & 1.5 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK02 & Gráficas de tendencias históricas de series temporales & Integrar librería de visualización en Jetpack Compose para renderizar curvas de evolución térmica e hídrica en rangos de 24 horas y 7 días. & 1.5 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK03 & Tarjetas de pronóstico meteorológico y alertas de estrés & Implementar vista del pronóstico meteorológico a 7 días y badges de alerta temprana ante olas de calor (>35°C) o heladas (<0°C). & 1.0 & Trinidad, Jahat & Done \\ \hline
-
-% US20
-US20 & Registro retrospectivo de campañas históricas de cosecha y cálculo del Índice de Vecería (BBI) & TK01 & Formulario de ingreso de cosechas plurianuales & Diseñar interfaz para registrar año agrícola, kilogramos cosechados de aceituna, destino (mesa/aceite) y observaciones agronómicas de la campaña. & 1.2 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK02 & Cálculo visual del Índice BBI y categorización de severidad & Implementar componente de indicador gráfico tipo velocímetro que muestre el BBI calculado (0 a 1) y clasifique la alternancia (Baja, Moderada, Severa). & 1.5 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK03 & Historial plurianual de pesajes registrados en la parcela & Crear lista de campañas históricas con tarjeta resumen por año, promedio interanual y variación porcentual entre temporadas sucesivas. & 1.0 & Santi, Fabrizio & Done \\ \hline
-
-% US21
-US21 & Modificación y rectificación de registros históricos de cosecha & TK01 & Cuadro de diálogo de rectificación de pesaje de campaña & Implementar modal de edición para ingresar pesaje rectificado y motivo de corrección según boleta formal de báscula de almazara. & 0.8 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK02 & Acción de eliminación de registro erróneo con confirmación & Añadir botón de eliminación con diálogo de confirmación y recálculo automático de la serie histórica y el índice BBI. & 0.7 & Santi, Fabrizio & Done \\ \hline
-
-% US24
-US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & TK01 & Interfaz de captura rápida de conteo a pie de árbol & Diseñar interfaz ergonómica de conteo en Compose con botones incrementales de un toque para frutos por inflorescencia y brotes de muestra. & 1.5 & Li, Diana & Done \\ \cline{3-8}
-& & TK02 & Almacenamiento local desconectado en base de datos Room SQLite & Persistir conteos de forma inmediata en SQLite local asegurando cero pérdida de datos durante rondas en áreas sin señal de telefonía rural. & 1.2 & Li, Diana & Done \\ \cline{3-8}
-& & TK03 & Gestor de sincronización en segundo plano con WorkManager & Configurar tarea asíncrona de Android WorkManager con restricción Connected para transmitir lotes pendientes hacia la API al recuperar red. & 1.3 & Li, Diana & Done \\ \hline
-
-% US25
-US25 & Consulta de representatividad estadística e historial de árboles muestreados en campo & TK01 & Barra de progreso y verificación de muestra mínima & Implementar barra de progreso visual que indique la cantidad de árboles muestreados y resalte si se alcanzó el umbral mínimo estadístico (n >= 5). & 0.8 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK02 & Listado detallado de árboles evaluados en la ronda actual & Crear vista de listado con el identificador de cada árbol, número de frutos contados, media de cuajado y marca temporal del registro. & 1.0 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK03 & Tarjeta resumen de la prescripción técnica de aclareo generada & Presentar tarjeta con el porcentaje de desfrute recomendado, calibre proyectado a cosecha y fecha límite antes del endurecimiento del carozo. & 1.0 & Santi, Fabrizio & Done \\ \hline
-
-% US13
-US13 & Vinculación y alta de nodo sensor virtual a una parcela & TK01 & Formulario de alta y configuración de nodo sensor virtual & Implementar pantalla en Jetpack Compose para seleccionar tipo de nodo (Estación Microclimática o Sonda de Suelo), nombre y profundidad (30/60 cm). & 1.0 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK02 & Integración con API de creación y manejo de respuestas & Conectar el formulario con POST /api/v1/plots/{plotId}/iot-devices gestionando códigos 201 Created y 409 Conflict por nombres duplicados. & 1.0 & Trinidad, Jahat & Done \\ \hline
-
-% US14
-US14 & Consulta de inventario y estado operativo de nodos sensores virtuales en parcela & TK01 & Listado visual de dispositivos vinculados a la parcela & Diseñar vista en Compose mostrando tarjetas de cada sensor con indicador de estado (Activo/Inactivo), tipo, última lectura y opción de desvincular. & 1.0 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK02 & Confirmación y ejecución de desvinculación de sensor & Integrar diálogo de confirmación para desvincular nodos invocando DELETE /api/v1/plots/{plotId}/iot-devices/{deviceId} y actualizando la lista. & 0.6 & Trinidad, Jahat & Done \\ \hline
-
+SPK02 & Investigación de persistencia local SQLite y protocolo offline-first & TK01 & Diseño de esquema relacional SQLite para capturas desconectadas & Definir tablas locales de parcelas, rondas de muestreo y registros de conteo por árbol con banderas de sincronización (SYNC\_PENDING, SYNCED) y marcas temporales UTC. & 1.0 & Santi, Fabrizio & Done \\ \hline
 % TS31
-TS31 & Manejo centralizado de excepciones y errores bajo estándar RFC 7807 & TK01 & Implementar GlobalExceptionHandler con @RestControllerAdvice & Crear GlobalExceptionHandler en la capa de interfaces para interceptar MethodArgumentNotValidException, ResourceNotFoundException y BusinessRuleException. & 0.4 & Espada, Piero & Done \\ \cline{3-8}
-& & TK02 & Estructurar ProblemDetail estándar según RFC 7807 & Asegurar que todas las respuestas de error incluyan type, title, status, detail, instance y timestamp, sanitizando cualquier traza interna de servidor. & 0.3 & Espada, Piero & Done \\ \cline{3-8}
-& & TK03 & Pruebas de integración de captura global de excepciones & Construir pruebas MockMvc que verifiquen respuestas 400 Bad Request, 404 Not Found y 500 Internal Server Error formateadas bajo Problem Details. & 0.3 & Espada, Piero & Done \\ \hline
-
+TS31 & Manejo centralizado de excepciones y errores bajo estándar RFC 7807 & TK01 & Interceptor GlobalExceptionHandler en capa interfaces & Implementar RestControllerAdvice capturando excepciones y mapeando ProblemDetail RFC7807. & 0.5 & Espada, Piero & Done \\ \hline
 % TS32
-TS32 & Convenciones de persistencia relacional, nomenclatura ORM y tipado espacial & TK01 & Configurar SnakeCasePhysicalNamingStrategy en JPA / Hibernate & Establecer la estrategia física de nomenclatura en Spring Data JPA para mapear automáticamente entidades a nombres de tablas y columnas snake\_case en PostgreSQL. & 0.3 & Espada, Piero & Done \\ \cline{3-8}
-& & TK02 & Configurar conversores JPA para tipos poligonales GeoJSON WGS84 & Implementar AttributeConverter para transformar objetos de dominio PolygonCoordinates a tipos espaciales o representaciones JSONB consistentes. & 0.4 & Espada, Piero & Done \\ \cline{3-8}
-& & TK03 & Verificación de esquemas generados y tipos de datos & Ejecutar pruebas unitarias de persistencia comprobando precisión decimal (BigDecimal) e índices en claves foráneas. & 0.3 & Espada, Piero & Done \\ \hline
-
+TS32 & Convenciones de persistencia relacional, nomenclatura ORM y tipado espacial & TK01 & Estrategia física snake\_case en infraestructura & Configurar PhysicalNamingStrategy de Hibernate para tablas y columnas relacionales. & 0.5 & Espada, Piero & Done \\ \hline
 % TS33
-TS33 & Generación dinámica y documentación interactiva de contratos de API con OpenAPI 3.0 & TK01 & Configuración de dependencia springdoc-openapi-starter-webmvc-ui & Incorporar la librería SpringDoc OpenAPI en pom.xml y configurar rutas de Swagger UI (/swagger-ui.html) y especificación OpenAPI (/v3/api-docs). & 0.3 & Espada, Piero & Done \\ \cline{3-8}
-& & TK02 & Definición de metadatos de API, licencias y servidores & Configurar bean OpenAPI con título, versión 1.0.0, descripción de la plataforma agronómica Viora, contacto de ingeniería y servidores locales y de producción. & 0.3 & Espada, Piero & Done \\ \cline{3-8}
-& & TK03 & Verificación de esquemas de Resources y DTOs & Validar que los endpoints expuestos muestren esquemas de entrada y salida completos con tipos, descripciones y ejemplos en Swagger UI. & 0.4 & Espada, Piero & Done \\ \hline
-
+TS33 & Generación dinámica y documentación interactiva de contratos de API con OpenAPI 3.0 & TK01 & Configurar OpenApiConfig en capa infraestructura & Definir bean OpenAPI 3.0 con metadatos y servidores. & 0.5 & Espada, Piero & Done \\ \hline
 % TS34
-TS34 & Resolución de localización y mensajes internacionalizados mediante cabecera Accept-Language & TK01 & Configuración de AcceptHeaderLocaleResolver en Spring WebMvc & Registrar AcceptHeaderLocaleResolver con idioma por defecto español (Locale.forLanguageTag('es')) y soporte para inglés ('en'). & 0.3 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Creación de archivos messages.properties y messages\_en.properties & Definir catálogos de mensajes en resources para errores de dominio, validaciones de argumentos y descripciones de estado. & 0.4 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK03 & Integración con MessageSource en GlobalExceptionHandler & Conectar la resolución de mensajes en ProblemDetail usando MessageSource.getMessage con LocaleContextHolder. & 0.3 & Paredes, Victor & Done \\ \hline
-
+TS34 & Resolución de localización y mensajes internacionalizados mediante cabecera Accept-Language & TK01 & Configurar AcceptHeaderLocaleResolver en capa infraestructura & Registrar resolvedor de locale por encabezado HTTP Accept-Language. & 0.5 & Paredes, Victor & Done \\ \hline
 % TS11
-TS11 & Creación y delimitación poligonal de parcelas georreferenciadas & TK01 & Definir Value Objects espaciales GeoPoint y PolygonCoordinates & Definir GeoPoint (-90 a 90 latitud, -180 a 180 longitud) y PolygonCoordinates en la capa de dominio, validando lista no vacía, mínimo 3 puntos y cierre perimétrico. & 0.6 & Espada, Piero & Done \\ \cline{3-8}
-& & TK02 & Definir Plot Aggregate Root con invariantes agronómicas & Definir Plot con PlotId, UserId, PlotName, PolygonCoordinates, Variety, TreeSpacing, PlantingYear y Status, calculando superficie en hectáreas y árboles estimados. & 0.8 & Espada, Piero & Done \\ \cline{3-8}
-& & TK03 & Definir interfaz PlotRepository e implementación JPA & Crear PlotRepository en el dominio y JpaPlotRepositoryAdapter en infraestructura con consultas findById, save, existsByNameAndUserId y findAllByUserId. & 0.9 & Espada, Piero & Done \\ \cline{3-8}
-& & TK04 & Crear CreatePlotCommand y PlotCommandService & Implementar caso de uso de creación en la capa de aplicación con validación de polígono, unicidad de nombre por usuario y persistencia transaccional. & 0.7 & Espada, Piero & Done \\ \cline{3-8}
-& & TK05 & Exponer endpoint REST POST /api/v1/plots & Crear PlotsController con POST /api/v1/plots retornando 201 Created con PlotResource o 400 Bad Request ante polígonos no cerrados. & 0.6 & Espada, Piero & Done \\ \hline
-
+TS11 & Creación y delimitación poligonal de parcelas georreferenciadas & TK01 & Agregado Plot en capa dominio & Modelar agregado Plot con PolygonCoordinates, variedad y marco plantación. & 0.9 & Espada, Piero & Done \\ \hline
 % TS12
-TS12 & Listado y sincronización incremental delta de parcelas & TK01 & Crear GetPlotsByUserIdQuery con soporte de filtro updatedSince & Definir Query en la capa de aplicación recibiendo userId y parámetro opcional updatedSince de tipo Instant para sincronizaciones delta. & 0.5 & Espada, Piero & Done \\ \cline{3-8}
-& & TK02 & Implementar consulta optimizada en PlotQueryService & Implementar método en PlotQueryService que filtre parcelas activas modificadas después de la marca temporal provista o retorne el listado íntegro. & 0.6 & Espada, Piero & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST GET /api/v1/plots & Añadir endpoint GET /api/v1/plots en PlotsController retornando 200 OK con colección de PlotResource y cabecera de timestamp del servidor. & 0.5 & Espada, Piero & Done \\ \hline
-
+TS12 & Listado y sincronización incremental delta de parcelas & TK01 & Query GetPlotsDeltaSync en capa aplicación & Implementar consulta delta en PlotQueryService filtrando por updatedSince. & 0.8 & Espada, Piero & Done \\ \hline
 % TS13
-TS13 & Consulta detallada de información agronómica y espacial de parcela & TK01 & Crear GetPlotByIdQuery en la capa de aplicación & Definir Query con plotId y userId autenticado asegurando validación de titularidad en el acceso a datos. & 0.4 & Li, Diana & Done \\ \cline{3-8}
-& & TK02 & Implementar consulta de detalle en PlotQueryService & Recuperar el agregado Plot verificando pertenencia al usuario y mapear a PlotDetailResource con linderos, superficie y conteos consolidados. & 0.5 & Li, Diana & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST GET /api/v1/plots/{plotId} & Configurar endpoint en PlotsController retornando 200 OK con PlotDetailResource o 404 Not Found si no existe el identificador. & 0.4 & Li, Diana & Done \\ \hline
-
+TS13 & Consulta detallada de información agronómica y espacial de parcela & TK01 & Query GetPlotByIdQuery en capa aplicación & Recuperar agregado Plot validando titularidad en PlotQueryServiceImpl. & 0.6 & Li, Diana & Done \\ \hline
 % TS14
-TS14 & Actualización y rectificación integral de parcela con bloqueo optimista & TK01 & Crear UpdatePlotCommand con control de versión optimista & Definir Command con plotId, name, polygonCoordinates, variety, treeSpacing y version para prevenir sobreescrituras concurrentes. & 0.5 & Li, Diana & Done \\ \cline{3-8}
-& & TK02 & Implementar actualización de lote en PlotCommandService & Recuperar agregado, invocar método de mutación del dominio con recálculo de área, verificar @Version y persistir en base de datos. & 0.6 & Li, Diana & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST PUT /api/v1/plots/{plotId} & Añadir endpoint en PlotsController retornando 200 OK con PlotResource actualizado o 409 Conflict ante colisiones de versión concurrente. & 0.5 & Li, Diana & Done \\ \hline
-
+TS14 & Actualización y rectificación integral de parcela con bloqueo optimista & TK01 & Comando UpdatePlotCommand en capa aplicación & Ejecutar UpdatePlotCommand en PlotCommandService validando concurrencia If-Match. & 0.8 & Li, Diana & Done \\ \hline
 % TS15
-TS15 & Eliminación y baja lógica de parcela del inventario & TK01 & Crear DeletePlotCommand y política de baja lógica & Definir DeletePlotCommand y aplicar regla de desactivación lógica (status=INACTIVE) para preservar trazabilidad de mediciones históricas. & 0.4 & Li, Diana & Done \\ \cline{3-8}
-& & TK02 & Implementar baja lógica en PlotCommandService & Validar titularidad, marcar predio como inactivo en el agregado Plot y persistir estado actualizado mediante PlotRepository. & 0.5 & Li, Diana & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST DELETE /api/v1/plots/{plotId} & Configurar endpoint DELETE en PlotsController retornando 204 No Content o 404 Not Found si el predio no existe. & 0.4 & Li, Diana & Done \\ \hline
-
+TS15 & Eliminación y baja lógica de parcela del inventario & TK01 & Comando RemovePlotCommand en capa aplicación & Procesar baja lógica en PlotCommandService mutando estado agregado. & 0.6 & Li, Diana & Done \\ \hline
 % TS16
-TS16 & Alta y vinculación de nodo sensor virtual a parcela & TK01 & Definir VirtualSensorNode Aggregate Root e invariantes de sonda & Definir agregado VirtualSensorNode con NodeId, PlotId, Name, SensorType (MICROCLIMATE, SOIL\_PROBE), DepthCm (30, 60) y NodeStatus. & 0.6 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK02 & Definir SensorNodeRepository e implementación JPA & Crear repositorio en el dominio con findById, save, existsByNameAndPlotId y findAllByPlotId, mapeando a virtual\_sensor\_nodes. & 0.6 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK03 & Crear CreateSensorNodeCommand y SensorNodeCommandService & Implementar servicio de comando para validar existencia de parcela, unicidad del nombre en el lote y creación del nodo en estado ACTIVE. & 0.5 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK04 & Exponer endpoint REST POST /api/v1/plots/{plotId}/iot-devices & Crear endpoint en SensorNodesController retornando 201 Created con IotDeviceResource o 409 Conflict si el nombre ya está en uso. & 0.5 & Trinidad, Jahat & Done \\ \hline
-
+TS16 & Alta y vinculación de nodo sensor virtual a parcela & TK01 & Agregado IoTDevice y RegisterIoTDeviceCommand aplicación & Modelar IoTDevice en dominio y procesar comando vinculación. & 0.8 & Trinidad, Jahat & Done \\ \hline
 % TS17
-TS17 & Consulta de inventario de nodos virtuales vinculados a parcela & TK01 & Crear GetSensorNodesByPlotIdQuery en capa de aplicación & Definir Query con plotId validando titularidad y estado activo de la parcela antes de consultar el inventario sensorial. & 0.4 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK02 & Implementar consulta en SensorNodeQueryService con última lectura & Recuperar nodos de la parcela asociando a cada uno la última lectura registrada de temperatura o humedad disponible. & 0.5 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST GET /api/v1/plots/{plotId}/iot-devices & Configurar endpoint en SensorNodesController retornando 200 OK con colección de IotDeviceResource y estado de transmisión. & 0.4 & Trinidad, Jahat & Done \\ \hline
-
+TS17 & Consulta de inventario de nodos virtuales vinculados a parcela & TK01 & Query GetIoTDevicesByPlotId en capa aplicación & Recuperar lista de agregados IoTDevice vinculados al PlotId. & 0.6 & Trinidad, Jahat & Done \\ \hline
 % TS18
-TS18 & Desvinculación de nodo virtual preservando trazabilidad histórica & TK01 & Crear DeactivateSensorNodeCommand & Definir Command con plotId y deviceId para aplicar la transición de estado a DECOMMISSIONED en el agregado VirtualSensorNode. & 0.4 & Espada, Piero & Done \\ \cline{3-8}
-& & TK02 & Implementar desvinculación lógica en SensorNodeCommandService & Validar relación entre nodo y parcela, marcar sensor como retirado conservando las tablas de series temporales intactas. & 0.5 & Espada, Piero & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST DELETE /api/v1/plots/{plotId}/iot-devices/{deviceId} & Añadir endpoint DELETE en SensorNodesController retornando 204 No Content tras la desvinculación exitosa del sensor. & 0.4 & Espada, Piero & Done \\ \hline
-
+TS18 & Desvinculación de nodo virtual preservando trazabilidad histórica & TK01 & Comando DeactivateIoTDeviceCommand en capa aplicación & Desactivar agregado IoTDevice preservando series históricas en base. & 0.6 & Espada, Piero & Done \\ \hline
 % TS19
-TS19 & Consulta de series temporales de telemetría ambiental y de suelo & TK01 & Definir TelemetrySeries Aggregate Root y HourlyTelemetryReading Entity & Definir agregado TelemetrySeries con lecturas horarias de temperatura ambiente, humedad relativa, radiación solar y humedad de suelo. & 0.6 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK02 & Crear GetTelemetrySeriesQuery y TelemetryQueryService & Implementar consulta filtrada por plotId, rango temporal (startDate, endDate) y resolución horaria optimizada con índices PostgreSQL. & 0.6 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST GET /api/v1/plots/{plotId}/telemetry & Crear endpoint en TelemetryController retornando 200 OK con TelemetrySeriesResource conteniendo arreglos de lecturas ordenadas cronológicamente. & 0.5 & Trinidad, Jahat & Done \\ \hline
-
+TS19 & Consulta de series temporales de telemetría ambiental y de suelo & TK01 & Query GetTelemetrySeriesByPlotId en capa aplicación & Consultar serie temporal filtrando por fechas en TelemetryQueryService. & 0.8 & Trinidad, Jahat & Done \\ \hline
 % TS20
-TS20 & Consulta de pronóstico meteorológico geolocalizado a 7 días & TK01 & Implementar cliente de pronóstico meteorológico externo & Crear WeatherForecastClient con RestClient de Spring para consultar pronósticos meteorológicos basados en latitud/longitud centroide de la parcela. & 0.7 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK02 & Implementar caché en WeatherQueryService y mapeo de riesgos & Almacenar en caché el pronóstico diario a 7 días y evaluar condiciones de riesgo agronómico (temperaturas extremas o ráfagas). & 0.6 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST GET /api/v1/plots/{plotId}/weather-forecast & Crear endpoint en WeatherController retornando 200 OK con WeatherForecastResource estructurado por días con temperatura máxima, mínima y lluvia. & 0.5 & Trinidad, Jahat & Done \\ \hline
-
+TS20 & Consulta de pronóstico meteorológico geolocalizado a 7 días & TK01 & Query GetWeatherForecast en capa aplicación & Obtener pronóstico meteorológico semanal en WeatherForecastQueryService mediante cliente. & 0.8 & Trinidad, Jahat & Done \\ \hline
 % TS21
-TS21 & Asentamiento de cosecha anual por campaña para auditoría productiva & TK01 & Definir entidad HistoricalHarvestEntry en ChillAccumulationTracker & Definir HistoricalHarvestEntry con RecordId, CampaignYear, YieldKg, OliveType y DateRecorded, aplicando invariante de pesaje estrictamente positivo. & 0.6 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Crear RecordHarvestCommand y HarvestCommandService & Implementar registro de cosecha con validación de año no duplicado por predio y persistencia mediante HarvestRecordRepository. & 0.6 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST POST /api/v1/plots/{plotId}/harvest-records & Añadir endpoint en HarvestRecordsController retornando 201 Created con HarvestRecordResource o 409 Conflict si la campaña ya fue asentada. & 0.5 & Paredes, Victor & Done \\ \hline
-
+TS21 & Asentamiento de cosecha anual por campaña para auditoría productiva & TK01 & Agregado HarvestRecord y RecordHarvestYieldCommand aplicación & Modelar HarvestRecord en dominio y procesar comando pesaje. & 0.8 & Paredes, Victor & Done \\ \hline
 % TS22
-TS22 & Consulta del historial plurianual de cosechas de la parcela & TK01 & Crear GetHarvestHistoryByPlotIdQuery en capa de aplicación & Definir Query recibiendo plotId y ordenando registros cronológicamente de forma ascendente para análisis plurianual. & 0.4 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK02 & Implementar consulta en HarvestQueryService con métricas agregadas & Recuperar serie histórica calculando rendimiento promedio interanual por hectárea y desviación respecto a la media zonal. & 0.5 & Paredes, Victor & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST GET /api/v1/plots/{plotId}/harvest-records & Configurar endpoint GET en HarvestRecordsController retornando 200 OK con colección ordenada de HarvestRecordResource. & 0.4 & Paredes, Victor & Done \\ \hline
-
+TS22 & Consulta del historial plurianual de cosechas de la parcela & TK01 & Query GetHarvestRecordsByPlotId en capa aplicación & Recuperar colección de HarvestRecords ordenadas cronológicamente por campaña. & 0.6 & Paredes, Victor & Done \\ \hline
 % TS23
-TS23 & Cálculo y entrega de métricas de vecería BBI y frío dinámico de Erez & TK01 & Implementar servicio de dominio BiennialBearingIndexCalculator & Programar la fórmula de Hoblyn: BBI = sum(|Y\_t - Y\_{t-1}| / (Y\_t + Y\_{t-1})) / (n - 1), validando un mínimo de n >= 2 campañas históricas. & 0.8 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK02 & Implementar cálculo del modelo dinámico de Erez en ChillService & Integrar el motor validado en SPK01 en ChillAccumulationTracker para computar porciones de frío a partir de telemetría horaria real del lote. & 1.0 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK03 & Crear PhenologicalMetricsResource y assemblers correspondientes & Estructurar DTO de respuesta con bbiScore, bearingSeverity, accumulatedChillPortions, chillSatisfactionPercentage y riskAlert. & 0.5 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK04 & Exponer endpoint REST GET /api/v1/plots/{plotId}/phenological-metrics & Añadir endpoint en PhenologyController retornando 200 OK con PhenologicalMetricsResource calculado dinámicamente. & 0.5 & Santi, Fabrizio & Done \\ \hline
-
+TS23 & Cálculo y entrega de métricas de vecería BBI y frío dinámico de Erez & TK01 & Servicio BiennialBearingIndexCalculator en capa dominio & Programar cálculo matemático BBI Hoblyn sobre campañas históricas. & 1.0 & Santi, Fabrizio & Done \\ \hline
 % TS24
-TS24 & Registro y sincronización de muestreos guiados de cuajado en campo & TK01 & Definir SamplingRound y TreeSamplingRecord en dominio & Modelar entidades SamplingRound y TreeSamplingRecord con treeTag, fruitCount, shootCount, sampleTimestamp y syncId para idempotencia. & 0.8 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK02 & Implementar SyncSamplingRoundCommand e ingestor transaccional & Crear servicio de comando para procesar el lote de árboles muestreados verificando unicidad de syncId y calculando medias de frutos por brote. & 0.8 & Santi, Fabrizio & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST POST /api/v1/plots/{plotId}/samplings & Crear endpoint en SamplingsController retornando 201 Created con SamplingRoundResource y resumen de árboles procesados. & 0.6 & Santi, Fabrizio & Done \\ \hline
-
+TS24 & Registro y sincronización de muestreos guiados de cuajado en campo & TK01 & Agregado FieldSampling en capa dominio & Modelar FieldSampling con árboles evaluados e invariantes muestrales. & 0.9 & Santi, Fabrizio & Done \\ \hline
 % TS25
-TS25 & Consulta de representatividad estadística y estado de muestreo & TK01 & Implementar evaluador de representatividad muestral (n >= 5) & Programar lógica de validación estadística que verifique número de árboles evaluados (mínimo 5) y coeficiente de variación de cuajado. & 0.6 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK02 & Crear SamplingStatusResource con detalles de avance & Definir DTO con treesSampledCount, minimumRequired, isRepresentative, meanFruitSet y pendingTreesSuggestion. & 0.5 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST GET /api/v1/plots/{plotId}/sampling-status & Añadir endpoint GET en SamplingsController retornando 200 OK con SamplingStatusResource para alimentar la barra de progreso cliente. & 0.5 & Trinidad, Jahat & Done \\ \hline
-
+TS25 & Consulta de representatividad estadística y estado de muestreo & TK01 & Query GetSamplingSummary en capa aplicación & Calcular representatividad muestral mínima n$\ge$5 en capa aplicación. & 0.8 & Trinidad, Jahat & Done \\ \hline
 % TS26
-TS26 & Consulta de prescripción técnica de aclareo y ventana fenológica & TK01 & Definir FruitThinningPrescription Aggregate Root en dominio & Definir agregado con PrescriptionId, PlotId, RecommendedRemovalPercentage, TargetFruitPerShoot, DeadlineDate y Status (ISSUED, EXECUTED). & 0.6 & Li, Diana & Done \\ \cline{3-8}
-& & TK02 & Implementar ThinningAdvisorService con cálculo de ventana fenológica & Calcular porcentaje de raleo según variedad (Criolla/Sevillana) y establecer fecha límite antes de la esclerificación del endocarpo. & 0.7 & Li, Diana & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST GET /api/v1/plots/{plotId}/thinning-prescriptions/current & Configurar endpoint en ThinningPrescriptionsController retornando 200 OK con ThinningPrescriptionResource o 404 si aún no se ha emitido. & 0.5 & Li, Diana & Done \\ \hline
-
+TS26 & Consulta de prescripción técnica de aclareo y ventana fenológica & TK01 & Query GetActiveThinningPrescription en capa aplicación & Calcular recomendación de remoción frutal en ThinningAdvisorService. & 0.8 & Li, Diana & Done \\ \hline
 % TS27
-TS27 & Confirmación y registro de ejecución de labor de aclareo en campo & TK01 & Crear ConfirmThinningExecutionCommand en capa de aplicación & Definir Command con prescriptionId, executionDate, actualRemovalPercentage y notes validando que la fecha no sea posterior a la actual. & 0.5 & Li, Diana & Done \\ \cline{3-8}
-& & TK02 & Implementar transición de estado en FruitThinningPrescription & Actualizar el agregado a estado EXECUTED registrando la confirmación y emitiendo evento de dominio ThinningExecutedEvent. & 0.6 & Li, Diana & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST POST /api/v1/thinning-prescriptions/{id}/confirmations & Crear endpoint en ThinningPrescriptionsController retornando 200 OK con recurso actualizado o 400 ante confirmaciones fuera de plazo. & 0.5 & Li, Diana & Done \\ \hline
-
+TS27 & Confirmación y registro de ejecución de labor de aclareo en campo & TK01 & Comando ConfirmThinningExecutionCommand en capa aplicación & Registrar ejecución real de raleo actualizando estado agregado. & 0.8 & Li, Diana & Done \\ \hline
 % TS39
-TS39 & Asentamiento formal y balance de liquidación de cosecha de fin de campaña & TK01 & Definir HarvestSettlement Entity y AgronomicReport Aggregate Root & Modelar HarvestSettlement con settlementId, plotId, greenOliveKg, blackOliveKg, totalYieldKg y settlementDate asegurando consistencia de cierre. & 0.7 & Li, Diana & Done \\ \cline{3-8}
-& & TK02 & Implementar CreateHarvestSettlementCommand y servicio de balance & Calcular desviación respecto al objetivo proyectado por el raleo y congelar las métricas de la campaña anual en el informe agronómico. & 0.8 & Li, Diana & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST POST /api/v1/plots/{plotId}/harvest-settlements & Crear endpoint en HarvestSettlementsController retornando 201 Created con HarvestSettlementResource o 400 Bad Request ante pesajes inconsistentes. & 0.5 & Li, Diana & Done \\ \hline
-
+TS39 & Asentamiento formal y balance de liquidación de cosecha de fin de campaña & TK01 & Agregado HarvestSettlement y SettleCampaignHarvestCommand aplicación & Modelar liquidación en dominio y procesar pesaje oficial. & 0.9 & Li, Diana & Done \\ \hline
 % TS40
-TS40 & Certificación criptográfica colegiada del expediente agronómico inmutable & TK01 & Implementar generador de hash criptográfico SHA-256 inmutable & Construir servicio criptográfico en infraestructura para concatenar y firmar digitalmente con SHA-256 el expediente completo de liquidación y muestreo. & 0.7 & Li, Diana & Done \\ \cline{3-8}
-& & TK02 & Crear CertifyAgronomicReportCommand con número de colegiatura CIP & Validar rúbrica profesional del ingeniero agrónomo, asociar número de colegiatura válido y sellar el estado del reporte como CERTIFIED. & 0.8 & Li, Diana & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST POST /api/v1/plots/{plotId}/certification & Configurar endpoint en CertificationController retornando 200 OK con AuditCertificateResource conteniendo el hash SHA-256 inmutable. & 0.5 & Li, Diana & Done \\ \hline
-
+TS40 & Certificación criptográfica colegiada del expediente agronómico inmutable & TK01 & Comando CertifyAgronomicDossierCommand en capa aplicación & Generar hash SHA-256 inmutable validando colegiatura CIP agrónomo. & 0.9 & Li, Diana & Done \\ \hline
 % TS42
-TS42 & Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela & TK01 & Definir Value Object CalibrationFactors e invariantes físicas & Crear CalibrationFactors con temperatureOffset (-10 a 10 °C), humidityOffset y soilCorrectionFactor (0.5 a 2.0) en la capa de dominio. & 0.5 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK02 & Crear CalibrateSensorNodeCommand y método de ajuste en agregado & Implementar comando de calibración en SensorNodeCommandService aplicando los factores de ajuste al nodo activo y persistiendo notas técnicas. & 0.5 & Trinidad, Jahat & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoint REST PUT /api/v1/plots/{plotId}/iot-devices/{deviceId} & Añadir endpoint de calibración en SensorNodesController retornando 200 OK con DeviceResource calibrado o 400 ante offsets fuera de rango. & 0.5 & Trinidad, Jahat & Done \\ \hline
-
+TS42 & Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela & TK01 & Comando CalibrateIoTDeviceCommand en capa aplicación & Aplicar factores de calibración en agregado IoTDevice verificando concurrencia. & 0.6 & Trinidad, Jahat & Done \\ \hline
 % TS43
-TS43 & Rectificación de pesaje y baja de registro erróneo de cosecha en histórico fenológico & TK01 & Crear RectifyHarvestRecordCommand y recálculo reactivo & Definir Command con plotId, recordId, rectifiedYieldKg y reason, validando titularidad y disparando el recálculo automático del índice BBI. & 0.5 & Li, Diana & Done \\ \cline{3-8}
-& & TK02 & Implementar eliminación física de registro erróneo de campaña & Implementar DeleteHarvestRecordCommand eliminando el registro erróneo y recalculando la serie histórica de cosechas de la parcela. & 0.5 & Li, Diana & Done \\ \cline{3-8}
-& & TK03 & Exponer endpoints REST PUT y DELETE en HarvestRecordsController & Configurar PUT /api/v1/plots/{plotId}/harvest-records/{recordId} (200 OK) y DELETE (204 No Content) con control de errores 404. & 0.5 & Li, Diana & Done \\ \hline
+TS43 & Rectificación de pesaje de cosecha anual con bloqueo optimista & TK01 & Comando RectifyHarvestYieldCommand en capa aplicación & Ejecutar rectificación en HarvestRecord verificando versión concurrente If-Match. & 0.6 & Li, Diana & Done \\ \hline
+% TS44
+TS44 & Restauración de cuartel olivícola archivado & TK01 & Comando RestorePlotCommand en capa aplicación & Ejecutar RestorePlotCommand en PlotCommandService reactivando agregado Plot. & 0.6 & Espada, Piero & Done \\ \hline
+% TS45
+TS45 & Eliminación de registro erróneo de cosecha en histórico fenológico & TK01 & Comando RemoveHarvestRecordCommand en capa aplicación & Remover registro erróneo en repositorio HarvestRecordRepository verificando titularidad. & 0.6 & Santi, Fabrizio & Done \\ \hline
+% TS46
+TS46 & Consulta global de incidentes agroclimáticos con contadores y filtrado & TK01 & Query GetAgroclimaticIncidents en capa aplicación & Filtrar incidentes por severidad consolidando contadores en servicio. & 0.8 & Trinidad, Jahat & Done \\ \hline
+% TS47
+TS47 & Consulta de incidentes agroclimáticos asociados a un cuartel específico & TK01 & Filtrado por PlotId en IncidentQueryService & Recuperar incidentes agroclimáticos vinculados a una parcela específica. & 0.6 & Trinidad, Jahat & Done \\ \hline
+% TS48
+TS48 & Consulta detallada de incidente agroclimático con tendencia y pasos de mitigación & TK01 & Query GetAgroclimaticIncidentById en capa aplicación & Recuperar agregado AgroclimaticIncident con pasos de mitigación asociados. & 0.8 & Trinidad, Jahat & Done \\ \hline
+% TS49
+TS49 & Postergación temporal de notificaciones de incidente agroclimático (Snooze) & TK01 & Comando PostponeIncident en capa aplicación & Procesar PostponeAgroclimaticIncidentCommand mutando fecha postergación en agregado. & 0.6 & Trinidad, Jahat & Done \\ \hline
+% TS50
+TS50 & Completado de paso de mitigación agronómica de incidente & TK01 & Comando CompleteMitigationStep en capa aplicación & Procesar CompleteMitigationStepCommand en dominio evaluando resolución del incidente. & 0.6 & Trinidad, Jahat & Done \\ \hline
+% TS51
+TS51 & Consulta de estado global de muestreos de cuarteles (Plot Picker) & TK01 & Query GetPlotSamplingStates en capa aplicación & Consolidar suficiencia muestral de predios en SamplingQueryServiceImpl. & 0.8 & Santi, Fabrizio & Done \\ \hline
+% TS52
+TS52 & Registro de fecha de plena floración observada en cuartel & TK01 & Comando RecordFullBloomCommand en capa aplicación & Procesar RecordFullBloomCommand calibrando ventana fenológica de raleo. & 0.8 & Santi, Fabrizio & Done \\ \hline
+% TS53
+TS53 & Consulta de eventos cronológicos y bitácora agronómica de raleo & TK01 & Query GetThinningEventsQuery en capa aplicación & Recuperar bitácora cronológica de raleo en ThinningQueryService. & 0.6 & Li, Diana & Done \\ \hline
+% TS54
+TS54 & Listado de liquidaciones oficiales de cosecha por cuartel & TK01 & Query GetHarvestSettlementsByPlotId en capa aplicación & Recuperar historial de liquidaciones de parcela en servicio. & 0.6 & Li, Diana & Done \\ \hline
+% TS55
+TS55 & Consulta detallada de liquidación de cosecha por campaña individual & TK01 & Query GetHarvestSettlementByCampaignYear en capa aplicación & Consultar liquidación anual calculando balance ARR en servicio. & 0.6 & Li, Diana & Done \\ \hline
+% US09
+US09 & Delimitación georreferenciada de parcela con GPS y caracterización agronómica inicial & TK01 & Pantallas P20 a P26 en presentación & Construir RegisterPlotScreen y componentes de pasos en Jetpack Compose. & 1.8 & Paredes, Victor & Done \\ \hline
+% US10
+US10 & Consulta y modificación de linderos y datos dendrométricos de parcela & TK01 & Pantallas P27 a P29 en presentación & Construir EditPlotScreen y AdjustOutlineScreen en Jetpack Compose. & 1.5 & Paredes, Victor & Done \\ \hline
+% US11
+US11 & Baja y remoción de parcela del inventario productivo & TK01 & Diálogos de baja P28 en presentación & Implementar confirmación de eliminación y archivado en PlotsScreen. & 1.0 & Paredes, Victor & Done \\ \hline
+% US27
+US27 & Prescripción técnica in-app de porcentaje y ventana fenológica de aclareo & TK01 & Pantallas P60 y P61 en presentación & Construir semáforo de aclareo y cuenta regresiva en Compose. & 1.3 & Paredes, Victor & Done \\ \hline
+% US26
+US26 & Cálculo de carga frutal objetivo sostenible y rendimiento potencial de campaña & TK01 & Tarjetas de carga P61 en presentación & Visualizar balance de carga frutal sostenible vs conteo real. & 1.2 & Paredes, Victor & Done \\ \hline
+% US28
+US28 & Registro y confirmación de ejecución de aclareo en campo & TK01 & Pantallas P62 y P63 en presentación & Construir formulario de labor ejecutada y confirmación en Compose. & 1.3 & Paredes, Victor & Done \\ \hline
+% US18
+US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & TK01 & Pantallas T14 y T15 en presentación & Construir AlertsCenterScreen y MitigationChecklistCard con filtros en Compose. & 1.3 & Santi, Fabrizio & Done \\ \hline
+% US24
+US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & TK01 & Pantallas P52 y P53 en presentación & Construir SamplingRoundScreen y RegisterTreeSampleScreen con teclado táctil. & 1.5 & Santi, Fabrizio & Done \\ \hline
+% US25
+US25 & Consulta de representatividad estadística e historial de árboles muestreados en campo & TK01 & Pantallas P50 y P54 en presentación & Diseñar SelectPlotSamplingScreen y SamplingCompleteScreen con barras de avance. & 1.4 & Santi, Fabrizio & Done \\ \hline
+% US22
+US22 & Monitoreo dinámico de porciones de frío invernal acumuladas mediante el modelo de Erez & TK01 & Pantallas P80 y P81 en presentación & Construir indicador dinámico de porciones Erez en Jetpack Compose. & 1.1 & Espada, Piero & Done \\ \hline
+% US23
+US23 & Detección de anomalías térmicas invernales y advertencia de riesgo floral por efecto ENOS & TK01 & Alerta térmica P80 en presentación & Diseñar banner de riesgo floral por invierno cálido ENOS. & 1.1 & Espada, Piero & Done \\ \hline
+% US19
+US19 & Consulta de pronóstico meteorológico geolocalizado a 7 días & TK01 & Pantalla Clima P90 en presentación & Construir PlotClimateScreen y tira semanal de 7 días. & 1.3 & Espada, Piero & Done \\ \hline
+% US13
+US13 & Vinculación y alta de nodo sensor virtual a una parcela & TK01 & Hoja vinculación P86 en presentación & Diseñar formulario modal de alta de nodo sensor virtual. & 1.0 & Li, Diana & Done \\ \hline
+% US14
+US14 & Consulta de inventario y estado operativo de nodos sensores virtuales en parcela & TK01 & Pantalla Sensores P85 en presentación & Construir SensorsScreen con tarjetas de estado activo y pausa. & 0.8 & Li, Diana & Done \\ \hline
+% US15
+US15 & Configuración y calibración de nodo sensor virtual en parcela & TK01 & Pantalla ConfigureNodeScreen en presentación & Construir interfaz de ajuste de profundidad de sonda edáfica. & 1.0 & Li, Diana & Done \\ \hline
+% US16
+US16 & Desvinculación y baja de nodo sensor virtual de una parcela & TK01 & Diálogo desvinculación P88 en presentación & Implementar confirmación de desvinculación con aviso de retención histórica. & 0.8 & Li, Diana & Done \\ \hline
+% US17
+US17 & Monitoreo agroclimático y consulta de series temporales de suelo y microclima & TK01 & Pantallas P90 y P91 en presentación & Construir TelemetryDetailScreen y gráficas de humedad de suelo. & 1.5 & Li, Diana & Done \\ \hline
+% US20
+US20 & Registro retrospectivo de campañas históricas de cosecha y cálculo del Índice de Vecería (BBI) & TK01 & Pantallas P40 y P41 en presentación & Construir HarvestHistoryScreen con medidor BBI y CampaignSheet emergente. & 1.3 & Trinidad, Jahat & Done \\ \hline
+% US21
+US21 & Modificación y rectificación de registros históricos de cosecha & TK01 & Diálogos de rectificación en presentación & Construir DeleteCampaignDialog y edición de kilos en CampaignSheet. & 0.8 & Trinidad, Jahat & Done \\ \hline
+% US29
+US29 & Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva & TK01 & Pantallas P71 y P73 en presentación & Construir SettleHarvestScreen y comprobante formal CampaignClosedScreen en Compose. & 1.3 & Trinidad, Jahat & Done \\ \hline
 \end{longtable}
 \end{center}
 
 #### Development Evidence for Sprint Review
 &nbsp;
 
-En esta sección se documentan y sustentan los avances técnicos alcanzados en la implementación de los productos de software que integran el ecosistema Viora durante el Sprint 1: el portal institucional y comercial (\textit{Landing Page}), los servicios web y la base arquitectural del backend (\textit{Platform}) y la aplicación móvil nativa (\textit{Mobile Android}). Cada uno de estos productos se gestiona mediante su respectivo repositorio de código fuente bajo la organización oficial de desarrollo en GitHub, compartiendo todos la raíz común \texttt{upc-pre-1acc0238-2620-4951-arcadiadevs/}. Con el objetivo de optimizar la diagramación, evitar desbordamientos y favorecer la legibilidad de la matriz, dicho prefijo organizacional es omitido en la columna de repositorio, identificándose directamente como \texttt{viora-landing-page}, \texttt{viora-platform} y \texttt{viora-mobile-android}.
+En esta sección se explican y presentan los avances técnicos alcanzados en la implementación con relación a los productos que integran la solución del ecosistema Viora según el alcance comprometido para el Sprint 1: el portal institucional y comercial (\textit{Landing Page}), los servicios web y la base arquitectural del backend (\textit{Web Services}) y la aplicación móvil nativa (\textit{Mobile Applications}).
 
-Asimismo, como evidencia representativa de la actividad de ingeniería, control de versiones y flujo de trabajo colaborativo durante el ciclo, se ha decidido presentar 6 commits relevantes registrados en cada repositorio. Para cada registro se especifica la rama de origen donde fue creado o integrado el cambio, el identificador abreviado del commit (SHA-1), el mensaje principal (\textit{Commit Message}), la descripción técnica de los cambios implementados (\textit{Commit Message Body}) y la fecha formal de asentamiento (\textit{Committed on Date}).
+A continuación, se resumen los principales avances consolidados en la implementación de cada producto durante este primer ciclo de desarrollo:
 
-A continuación, en la \autoref{tab:development-evidence-sprint-1} se expone la matriz detallada de evidencias de desarrollo para el Sprint Review:
+* **Landing Page (\texttt{viora-landing-page}):** Se culminó la implementación integral y el despliegue continuo en producción a través de Vercel del sitio web comercial e institucional. Los avances comprenden la maquetación semántica y responsiva de la sección Hero con la propuesta de valor orientada a mitigar la vecería en el olivar tacneño, el bloque territorial contextual de La Yarada-Los Palos sustentado en datos de merma histórica, la exposición de los tres pilares agronómicos (regulación de carga frutal, cómputo de frío invernal y prescripción de aclareo), los módulos diferenciados de captación para productores y cooperativas agrarias, la calculadora interactiva de hectáreas con tarifas transparentes en moneda nacional (PEN), los reproductores modales accesibles para los videos demostrativo e institucional (''About the Product'' y ''About the Team''), el marco legal y de privacidad conforme a la Ley N° 29733 de Protección de Datos Personales, y el soporte bilingüe (español/inglés) con persistencia de selección.
+* **Web Services (\texttt{viora-platform}):** Se estableció la arquitectura base orientada al dominio bajo Domain-Driven Design (DDD) táctico en Spring Boot y Java 21, incorporando el manejador global de excepciones bajo el estándar RFC 7807 (Problem Details), persistencia relacional JPA con mapeo espacial WGS84 para polígonos GeoJSON y documentación interactiva mediante OpenAPI 3.0 y Swagger UI. Sobre esta infraestructura se implementó la suite completa de 33 servicios web RESTful desacoplados, cubriendo la creación y sincronización incremental delta de parcelas olivareras, el inventario, estado operativo y calibración de offsets para nodos sensores IoT, la agregación temporal de telemetría agroclimática y pronósticos meteorológicos geolocalizados a 7 días, el registro retrospectivo de cosechas y el cálculo dinámico del Índice de Vecería ($BBI$) articulado al modelo biofísico de porciones de frío de Erez, la generación algorítmica de prescripciones técnicas de aclareo previa al endurecimiento del carozo, el registro de confirmaciones en campo y el balance formal de liquidación de campaña.
+
+* **Mobile Applications (\texttt{viora-mobile-android}):** Se construyó la primera versión operativa de la aplicación móvil nativa para dispositivos Android utilizando Kotlin y Jetpack Compose. Los avances abarcan la digitalización y catastro interactivo de parcelas sobre cartografía satelital integrando Mapbox Maps SDK y servicios de ubicación GPS, la captura guiada de rondas de muestreo de frutos cuajados a pie de árbol con almacenamiento local en SQLite mediante Room DB bajo enfoque *offline-first* para zonas rurales sin conectividad, la verificación reactiva de representatividad estadística muestral ($n \ge 5$), la consulta de prescripciones y registro de labores de aclareo, el monitoreo telemétrico en tiempo real de humedad edáfica a 30 y 60 cm junto a curvas térmicas, y el registro histórico de pesajes con medidor visual de alternancia fenológica.
+
+Para sustentar de manera verificable la actividad de ingeniería de software y el flujo de trabajo colaborativo del equipo ArcadiaDevs, se elaboró una tabla que incluye para cada repositorio los commits representativos vinculados directamente con la implementación. Cada producto se administra bajo su respectivo repositorio de código fuente en GitHub compartiendo la raíz organizacional común \texttt{upc-pre-1acc0238-2620-4951-arcadiadevs/}, la cual ha sido omitida en la primera columna para favorecer la diagramación y legibilidad. Para cada repositorio se detallan la rama de origen, el identificador abreviado (Commit Id), el mensaje principal (\textit{Commit Message}), la descripción técnica de los cambios (\textit{Commit Message Body}) y la fecha de asentamiento (\textit{Committed on Date}). La estructura requerida se presenta a continuación en la \autoref{tab:development-evidence-sprint-1}:
 
 \begin{center}
 \small
@@ -442,11 +369,346 @@ viora-acceptance-tests & feature/at34 & 4d93e85 & feat: add at34 acceptance test
 #### Execution Evidence for Sprint Review 
 &nbsp;
 
+En esta sección se presenta la evidencia de ejecución de los productos digitales implementados durante el Sprint 1. En la \textit{Landing Page} se implementaron las secciones de presentación del producto, los problemas que Viora resuelve, la propuesta de valor por segmento objetivo, el Plan Productor con su simulador de suscripción y la presentación del equipo. En la aplicación móvil del productor se implementaron la pantalla de inicio con los indicadores del día, la gestión de parcelas con su delimitación sobre el mapa, la consulta del índice de vecería por parcela y el registro de la cosecha de la campaña. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
+
+\noindent \textbf{Landing Page:}
+
+La sección inicial presenta la propuesta central del producto, anticipar la próxima cosecha frente a la vecería, junto con la llamada a la acción para descargar la aplicación (\autoref{fig:exec-landing-hero-s1}).
+
+\begin{figure}[H]
+\caption{Sección inicial de la Landing Page de Viora.} \label{fig:exec-landing-hero-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/01-hero.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+El carrusel de problemas recorre las situaciones que reconoce el productor (año \textit{off}, frío escaso, aclareo tardío y acopio incierto) y asocia cada una con el módulo de la aplicación que la atiende (\autoref{fig:exec-landing-pains-s1}).
+
+\begin{figure}[H]
+\caption{Carrusel de problemas y módulos de la aplicación.} \label{fig:exec-landing-pains-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/02-pain-points-carousel.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+La propuesta de valor se presenta por separado para cada segmento objetivo: los productores olivareros (\autoref{fig:exec-landing-producers-s1}) y los gestores técnicos (\autoref{fig:exec-landing-managers-s1}).
+
+\begin{figure}[H]
+\caption{Propuesta de valor para productores olivareros.} \label{fig:exec-landing-producers-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/03-segment-producers.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Propuesta de valor para gestores técnicos.} \label{fig:exec-landing-managers-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/04-segment-technical-managers.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+La sección del Plan Productor muestra la tarifa referencial por hectárea, un simulador que calcula el total mensual según las hectáreas elegidas y los pasos para suscribirse (\autoref{fig:exec-landing-plan-s1}).
+
+\begin{figure}[H]
+\caption{Sección del Plan Productor con simulador de suscripción.} \label{fig:exec-landing-plan-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/05-producer-plan.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+Finalmente, la sección del equipo presenta a ArcadiaDevs y enlaza al video de presentación del equipo (\autoref{fig:exec-landing-team-s1}).
+
+\begin{figure}[H]
+\caption{Sección del equipo en la Landing Page.} \label{fig:exec-landing-team-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/06-team.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Aplicación móvil del productor:}
+
+La pantalla de inicio resume el estado del campo para la campaña y el cuartel seleccionados: las parcelas pendientes de registrar su cosecha, el clima, las alertas activas, la humedad del suelo y la alternancia de producción de las últimas campañas (\autoref{fig:exec-app-home-s1}).
+
+\begin{figure}[H]
+\caption{Pantalla de inicio de la aplicación del productor.} \label{fig:exec-app-home-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/01-home.png}
+\hspace{1cm}
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/02-home-indicators.png}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+El listado de parcelas muestra las parcelas activas y archivadas con su variedad, superficie y número de árboles. El detalle de cada parcela muestra su delimitación sobre el mapa, su densidad de plantación y el acceso a su alternancia (\autoref{fig:exec-app-plots-s1}).
+
+\begin{figure}[H]
+\caption{Listado y detalle de parcelas.} \label{fig:exec-app-plots-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/03-plots-list.png}
+\hspace{1cm}
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/04-plot-detail.png}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+La vista de alternancia muestra el índice de vecería (BBI) de la parcela con su clasificación de severidad. El registro de cosecha permite ingresar los kilogramos de aceituna verde y negra de la campaña para cerrarla (\autoref{fig:exec-app-harvest-s1}).
+
+\begin{figure}[H]
+\caption{Índice de vecería y registro de cosecha.} \label{fig:exec-app-harvest-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/05-plot-alternation.png}
+\hspace{1cm}
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/06-harvest-registration.png}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Video de navegación del producto:}
+
+El video muestra la ejecución de las vistas y los flujos de navegación implementados durante el Sprint 1.
+
+* **Título:** Product Navigation - Sprint 1
+* **Entrega:** TB1 / Sprint 1
+* **Formato:** MP4
+* **Enlace de visualización (OneDrive):** \url{https://tinyurl.com/ef66ptm9}
+
 #### Services Documentation Evidence for Sprint Review 
 &nbsp;
 
 #### Software Deployment Evidence for Sprint Review 
 &nbsp;
+
+En esta sección se resumen los procesos de despliegue (\textit{deployment}) realizados durante el Sprint 1 para los productos digitales de Viora: el portal comercial (\textit{Landing Page}), los servicios web con su base de datos en la nube y la aplicación móvil nativa para Android. Las actividades comprendieron la creación de cuentas y proyectos en los proveedores cloud, la configuración de los recursos de cada plataforma, la preparación del proyecto móvil para firmar y distribuir sus versiones y la automatización de ese despliegue mediante GitHub Actions. En la \autoref{tab:deployment-summary-sprint-1} se resume qué se desplegó, dónde y cómo; a continuación se detalla cada producto con sus evidencias.
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}p{0.19\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|}
+\caption{Resumen de los Despliegues del Sprint 1 por Producto Digital} \label{tab:deployment-summary-sprint-1} \\
+\hline
+\textbf{Producto} & \textbf{Repositorio} & \textbf{Plataforma} & \textbf{Mecanismo de despliegue} & \textbf{Estado} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Producto} & \textbf{Repositorio} & \textbf{Plataforma} & \textbf{Mecanismo de despliegue} & \textbf{Estado} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{5}{l}{\parbox{15.5cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir de las consolas de Vercel, Render, Filess.io, Firebase y GitHub.}} \\
+\endlastfoot
+
+Landing Page & \texttt{viora-landing-page} & Vercel & Integración con Git: cada \textit{push} a \texttt{main} publica producción & Publicado (versión 1.1.0) \\ \hline
+Servicios web (API RESTful) & \texttt{viora-platform} & Render (\textit{Web Service} con Docker) & Despliegue automático desde la rama \texttt{main} & Publicado \\ \hline
+Base de datos & No aplica & Filess.io (PostgreSQL 15.6) & Provisión desde el panel del proveedor; conexión mediante variables de entorno en Render & Disponible \\ \hline
+Aplicación móvil Android & \texttt{viora-mobile-android} & Firebase App Distribution & APK \textit{release} firmado; distribución manual de la 1.0.0 y flujo de GitHub Actions disponible desde la \textit{release} 1.0.1 & Versión 1.0.0 (10) distribuida a 6 verificadores \\ \hline
+\end{longtable}
+\end{center}
+
+\noindent \textbf{Landing Page (Vercel):}
+
+El repositorio `viora-landing-page` se conectó a Vercel importándolo desde GitHub en el espacio del líder del equipo (plan \textit{Hobby}), con el \textit{preset} de aplicación Vite y la raíz del repositorio como directorio de trabajo (\autoref{fig:deploy-vercel-new-s1}). Además, el archivo `vercel.json` declara el \textit{framework} (Vite).
+
+\begin{figure}[H]
+\caption{Creación del proyecto viora-landing-page en Vercel.} \label{fig:deploy-vercel-new-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.55\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/01-vercel-new-project.jpeg}
+\caption*{\textit{Nota.} Captura del asistente de importación de Vercel. Elaboración propia.}
+\end{figure}
+
+En la configuración del entorno de producción se definió `main` como rama de producción: cada \textit{commit} publicado en esa rama genera un despliegue de producción y Vercel asigna automáticamente el dominio público (\autoref{fig:deploy-vercel-branch-s1}). Las demás ramas generan vistas previas (\textit{previews}), sin requerir credenciales adicionales en GitHub.
+
+\begin{figure}[H]
+\caption{Rama de producción del proyecto en Vercel.} \label{fig:deploy-vercel-branch-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/02-vercel-production-branch.jpeg}
+\caption*{\textit{Nota.} Captura de la configuración de entornos de Vercel (\textit{Branch Tracking}). Elaboración propia.}
+\end{figure}
+
+Vercel permite además crear un despliegue de producción de forma manual a partir de una rama o de un \textit{commit}, como el `5540e99` (\textit{Merge branch 'release/1.0.0' into main}) de la \autoref{fig:deploy-vercel-manual-s1}.
+
+\begin{figure}[H]
+\caption{Creación manual de un despliegue de producción en Vercel.} \label{fig:deploy-vercel-manual-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.55\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/03-vercel-create-deployment.jpeg}
+\caption*{\textit{Nota.} Captura del cuadro \textit{Create Deployment} de Vercel. Elaboración propia.}
+\end{figure}
+
+El resultado es el despliegue de producción de la \autoref{fig:deploy-vercel-prod-s1}: estado \textit{Ready}, rama `main`, \textit{commit} `ba66bb6` (\textit{Merge branch 'release/1.1.0' into main}) y dominio `viora-landing-page-sable.vercel.app`.
+
+\begin{figure}[H]
+\caption{Despliegue de producción del Landing Page en Vercel.} \label{fig:deploy-vercel-prod-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/04-vercel-production-deployment.jpeg}
+\caption*{\textit{Nota.} Captura del resumen del proyecto en Vercel. Elaboración propia.}
+\end{figure}
+
+La calidad del código se valida antes de integrar mediante el flujo `ci.yml` de GitHub Actions (análisis estático con \textit{lint}, verificación de formato y compilación), que se ejecuta en cada \textit{pull request} hacia `develop` o `main` y en cada \textit{push} a `develop`. En este Sprint se publicaron las versiones 1.0.0 y 1.1.0 (26/09/2026), accesibles en \url{https://viora-landing-page-sable.vercel.app/}.
+
+\noindent \textbf{Servicios web de backend (Render):}
+
+La API RESTful `viora-platform` se despliega en Render como un servicio web (\textit{Web Service}) creado directamente desde el repositorio de GitHub de la organización. Render detectó el `Dockerfile` del proyecto y autocompletó la configuración con el entorno Docker. Dicho archivo es de dos etapas: la primera compila el proyecto con Maven y JDK 21 y la segunda ejecuta el `.jar` resultante sobre la imagen ligera `eclipse-temurin:21-jre-alpine`, con un usuario sin privilegios y el puerto tomado de la variable `PORT` que asigna Render.
+
+En la \autoref{fig:deploy-render-config-s1} se muestran los parámetros del servicio: repositorio de origen `viora-platform`, nombre `viora-platform`, lenguaje Docker, rama `main`, región Ohio (US East) y una instancia gratuita de 0,1 CPU y 512 MB de RAM.
+
+\begin{figure}[H]
+\caption{Configuración del Web Service viora-platform en Render.} \label{fig:deploy-render-config-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/backend/01-render-web-service-configuration.jpeg}
+\caption*{\textit{Nota.} Captura del panel de Render durante la creación del servicio. Elaboración propia.}
+\end{figure}
+
+La configuración sensible no se versiona: se carga como variables de entorno en el panel de Render (\autoref{fig:deploy-render-env-s1}), a saber `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_DRIVER_CLASS_NAME`, `SPRING_DATASOURCE_USERNAME` y `SPRING_DATASOURCE_PASSWORD` para la conexión a la base de datos, `SPRING_JPA_HIBERNATE_DDL_AUTO` y `SPRING_JPA_SHOW_SQL` para el comportamiento de Hibernate, además de `CORS_ALLOWED_ORIGINS` y `PORT`. El panel oculta los valores, por lo que las credenciales no quedan expuestas en la evidencia.
+
+\begin{figure}[H]
+\caption{Variables de entorno del servicio en Render.} \label{fig:deploy-render-env-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/backend/02-render-environment-variables.jpeg}
+\caption*{\textit{Nota.} Captura del panel de Render; los valores permanecen ocultos. Elaboración propia.}
+\end{figure}
+
+El despliegue es continuo (\autoref{fig:deploy-render-live-s1}): al integrarse en `main` el *pull request* #22 de la rama `hotfix/deploy`, Render lo activó automáticamente (*Auto-Deploy*) a partir del *commit* `9590e85`, construyó la imagen en 3 min 34 s y publicó el servicio con el estado *Deploy succeeded* y el mensaje *Your service is live*, el 1 de octubre de 2026 a las 18:17 (GMT-5).
+
+\begin{figure}[H]
+\caption{Despliegue exitoso de viora-platform en Render.} \label{fig:deploy-render-live-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/backend/03-render-deploy-live.jpeg}
+\caption*{\textit{Nota.} Captura del historial de despliegues de Render. Elaboración propia.}
+\end{figure}
+
+Al ser un plan gratuito, Render suspende la instancia tras un periodo de inactividad y advierte que reactivarla puede retrasar las peticiones 50 segundos o más; en nuestras pruebas la primera petición posterior llegó a superar el minuto. Es una limitación asumida para el entorno académico. La documentación interactiva de la API (OpenAPI) se publica en \url{https://viora-platform.onrender.com/swagger-ui/index.html}.
+
+\noindent \textbf{Base de datos en la nube (Filess.io):}
+
+La base de datos relacional se aprovisionó en Filess.io como base de datos compartida (\textit{Shared Database}). En la \autoref{fig:deploy-filess-create-s1} se muestra la selección del motor PostgreSQL 15.6.0 entre las opciones del proveedor (PostgreSQL, MySQL, MariaDB y MongoDB), el nombre `viora` y la región automática.
+
+\begin{figure}[H]
+\caption{Creación de la base de datos PostgreSQL en Filess.io.} \label{fig:deploy-filess-create-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/database/01-filess-new-postgresql-database.jpeg}
+\caption*{\textit{Nota.} Captura del asistente de Filess.io. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:deploy-filess-list-s1} confirma la instancia creada el 1 de octubre de 2026: `viora_thoughage` (nombre completo asignado por el proveedor), motor PostgreSQL, región Nürnberg (Alemania) y estado *Available*. Las credenciales de conexión se inyectan en Render mediante las variables `SPRING_DATASOURCE_*` y no forman parte del repositorio.
+
+\begin{figure}[H]
+\caption{Base de datos disponible en Filess.io.} \label{fig:deploy-filess-list-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/database/02-filess-database-available.jpeg}
+\caption*{\textit{Nota.} Captura del listado de bases de datos compartidas de Filess.io. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Aplicación móvil Android (Firebase App Distribution):}
+
+El despliegue de la aplicación móvil se realiza con Firebase App Distribution, que permite instalar las versiones en dispositivos físicos de prueba, tal como exige el curso. Los pasos realizados durante el Sprint fueron los siguientes.
+
+\noindent \textit{1. Proyecto en Firebase.} Se creó el proyecto `viora-app-kotlin` con la cuenta del líder del equipo, en el plan Spark (sin costo) (\autoref{fig:deploy-firebase-project-s1}).
+
+\begin{figure}[H]
+\caption{Proyecto viora-app-kotlin en la consola de Firebase.} \label{fig:deploy-firebase-project-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/01-firebase-project-overview.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{2. Registro de la aplicación.} Se registró la aplicación Android con el nombre de paquete `pe.edu.upc.viora` (el `applicationId` del proyecto) y el alias *Viora Android*, lo que generó el identificador de aplicación `1:1085458528165:android:956ca686ddeaa2f2b95a4c` (\autoref{fig:deploy-firebase-app-s1}). Como App Distribution solo recibe el binario compilado, no fue necesario incorporar el SDK de Firebase ni el archivo `google-services.json` a la aplicación.
+
+\begin{figure}[H]
+\caption{Aplicación Android registrada en Firebase.} \label{fig:deploy-firebase-app-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/02-firebase-android-app-registered.png}
+\caption*{\textit{Nota.} Captura de la configuración del proyecto en Firebase del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{3. Grupos de verificadores.} En App Distribution se crearon los grupos `arcadiadevs-internal`, con las cuentas institucionales del equipo (cinco al crearlo), y `viora-client-testers`, aún sin integrantes y destinado a los productores y gestores que participarán en la validación (\autoref{fig:deploy-firebase-groups-s1}).
+
+\begin{figure}[H]
+\caption{Grupos de verificadores en Firebase App Distribution.} \label{fig:deploy-firebase-groups-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/03-app-distribution-tester-groups.png}
+\caption*{\textit{Nota.} Captura de la pestaña «Verificadores y grupos» del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{4. Compilación y firma de la versión release.} Se generó con `keytool` un almacén de claves PKCS12 (RSA de 4096 bits, alias `viora`), que se conserva fuera del repositorio, y se configuró Gradle para firmar con él la variante `release` (el detalle se documenta en la sección \textit{Software Deployment Configuration}). La compilación `assembleRelease` produjo el archivo `app-release.apk` de la versión 1.0.0 (código de versión 10), de unos 115 MB, cuya firma se verificó con `apksigner` antes de distribuirlo (\autoref{fig:deploy-release-apk-s1}).
+
+\begin{figure}[H]
+\caption{APK de la variante release generado por Gradle.} \label{fig:deploy-release-apk-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.80\textwidth]{report/assets/sprint-deployment/sprint-1/application/04-signed-release-apk.png}
+\caption*{\textit{Nota.} Captura de la carpeta de salida de la compilación (\texttt{app/build/outputs/apk/release}) del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{5. Carga y distribución.} El APK se subió a App Distribution y se distribuyó al grupo `arcadiadevs-internal` (seis verificadores: cinco cuentas institucionales y una cuenta personal del líder del equipo) con las notas de versión «Viora 1.0.0 — versión estable del Sprint 1» (\autoref{fig:deploy-release-upload-s1}). Firebase registra la versión `1.0.0 (10)` el 7 de octubre de 2026 a las 16:54 (UTC-5).
+
+\begin{figure}[H]
+\caption{Carga de la versión 1.0.0 (10) y distribución a seis verificadores.} \label{fig:deploy-release-upload-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/05-release-upload-notes.png}
+\caption*{\textit{Nota.} Captura del paso final de la distribución en Firebase App Distribution. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{6. Invitación a los verificadores.} Cada verificador recibe un correo de Firebase App Distribution con las instrucciones para empezar a probar: abrir el mensaje en el celular, aceptar la invitación con su cuenta de Google, habilitar la instalación desde orígenes desconocidos y descargar la aplicación (\autoref{fig:deploy-tester-email-s1}). La invitación tiene una vigencia de 30 días.
+
+\begin{figure}[H]
+\caption{Correo de invitación a probar la aplicación.} \label{fig:deploy-tester-email-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.45\textwidth]{report/assets/sprint-deployment/sprint-1/application/06-tester-invitation-email.png}
+\caption*{\textit{Nota.} Correo enviado por Firebase App Distribution. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{7. Seguimiento y validación en dispositivo físico.} La consola registra el estado de cada invitación (\autoref{fig:deploy-distribution-status-s1}): al momento de la captura, de 6 invitados, 3 habían aceptado la invitación y 2 habían descargado la aplicación, sin comentarios.
+
+\begin{figure}[H]
+\caption{Estado de la distribución de la versión 1.0.0 (10).} \label{fig:deploy-distribution-status-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/07-distribution-status.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:deploy-device-install-s1} documenta la instalación en un teléfono Xiaomi a través del enlace del correo. Como la aplicación no se distribuye por Google Play, Play Protect advierte que no conoce al desarrollador y ofrece continuar con «Instalar de todas formas», un comportamiento esperado en las distribuciones de prueba; después, el análisis de seguridad del teléfono no detecta riesgos en la versión 1.0.0 (114,9 MB) y la aplicación abre y muestra el Inicio sincronizado con el backend.
+
+\begin{figure}[H]
+\caption{Instalación y ejecución de la versión 1.0.0 en un teléfono Android físico.} \label{fig:deploy-device-install-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.30\textwidth]{report/assets/sprint-deployment/sprint-1/application/09-device-play-protect.jpeg}\hspace{0.02\textwidth}\includegraphics[width=0.30\textwidth]{report/assets/sprint-deployment/sprint-1/application/10-device-security-check.jpeg}\hspace{0.02\textwidth}\includegraphics[width=0.30\textwidth]{report/assets/sprint-deployment/sprint-1/application/11-device-app-running.jpeg}
+\caption*{\textit{Nota.} De izquierda a derecha: aviso de Google Play Protect, verificación de seguridad del teléfono y la aplicación en ejecución. Capturas de un teléfono Xiaomi del 7/10/2026. Elaboración propia.}
+\end{figure}
+
+\noindent \textit{8. Automatización con GitHub Actions.} Para no repetir estos pasos a mano, se creó el flujo `.github/workflows/deploy-android.yml` (\textit{commits} `a9e824b` y `b084879` de la rama `feature/android-deploy-pipeline`, integrada en `develop` en `321ed92` y publicada en `main` con la \textit{release} 1.0.1 en `c862b3b`). El flujo se activa al publicar una etiqueta de versión `X.Y.Z` o de forma manual; verifica que la etiqueta coincida con la versión de la aplicación, ejecuta las pruebas unitarias, reconstruye el almacén de claves desde un secreto, compila y firma el APK, comprueba la firma y lo distribuye al grupo `arcadiadevs-internal`. Para ello se configuraron en el repositorio los secretos que muestra la \autoref{fig:deploy-github-secrets-s1} (almacén de claves en Base64, alias y contraseñas, cuenta de servicio de Firebase y token público de Mapbox) y la variable `FIREBASE_APP_ID`. El detalle de cada paso se describe en la sección \textit{Software Deployment Configuration}.
+
+\begin{figure}[H]
+\caption{Secretos del repositorio viora-mobile-android para el pipeline de despliegue.} \label{fig:deploy-github-secrets-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/08-github-actions-secrets.png}
+\caption*{\textit{Nota.} Captura de la configuración de GitHub Actions del 7/10/2026; GitHub solo muestra los nombres, nunca los valores. Elaboración propia.}
+\end{figure}
 
 #### Team Collaboration Insights during Sprint 
 &nbsp;
