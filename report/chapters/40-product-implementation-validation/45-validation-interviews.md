@@ -127,7 +127,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#3} \hfill \textbf{Detalles}} \\ 
 \hline 
-\textbf{Nombre} & Ing. Daniel Estrada & \textbf{Edad} & 44 \\ 
+\textbf{Nombre} & Daniel Estrada & \textbf{Edad} & 44 \\ 
 \textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
 \textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Ingeniero Agrónomo - Jefe Técnico de Cooperativa Agraria} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
@@ -145,7 +145,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#4} \hfill \textbf{Detalles}} \\ 
 \hline 
-\textbf{Nombre} & Ing. Maribel Vargas & \textbf{Edad} & 40 \\ 
+\textbf{Nombre} & Maribel Vargas & \textbf{Edad} & 40 \\ 
 \textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos, Tacna} \\ 
 \textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Ingeniera Agrónoma - Responsable Técnica y de Acopio} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
