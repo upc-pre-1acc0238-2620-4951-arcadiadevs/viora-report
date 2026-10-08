@@ -435,8 +435,208 @@ El video muestra la ejecución de las vistas y los flujos de navegación impleme
 * **Formato:** MP4
 * **Enlace de visualización (OneDrive):** \url{https://tinyurl.com/ef66ptm9}
 
+\newpage
+
 #### Services Documentation Evidence for Sprint Review 
 &nbsp;
+
+En esta sección se presenta la relación de servicios web RESTful implementados y formalmente documentados bajo el estándar OpenAPI 3.0 para la plataforma agronómica \textbf{Viora} (\texttt{viora-platform}) durante el Sprint 1. El equipo de backend consolidó una arquitectura hexagonal desacoplada guiada por el dominio (Domain-Driven Design - DDD) sobre Java 21 LTS y Spring Boot 3, implementando contratos inmutables tipados estrictamente mediante Java 21 Records y Jakarta Validation (\texttt{@NotNull}, \texttt{@NotBlank}, \texttt{@Size}, \texttt{@PositiveOrZero}), estandarización centralizada de errores semánticos bajo la especificación RFC 7807 (\textit{Problem Details}) sin exponer trazas de infraestructura, control de concurrencia optimista con cabeceras HTTP \texttt{If-Match} / \texttt{ETag} (código \texttt{412 Precondition Failed}) para proteger entidades agronómicas críticas, y autodocumentación viva en Swagger UI con soporte para pruebas interactivas (\textit{Try it out}).
+
+Durante este ciclo de desarrollo \textbf{se implementaron y documentaron un total de 33 endpoints RESTful} distribuidos en 5 Bounded Contexts y 11 controladores web. Con el propósito de brindar una visión rigurosa, en la \autoref{tab:services-documentation-endpoints-sprint-1} se presenta la matriz de los 12 endpoints más representativos del sistema cubriendo la totalidad de módulos operativos, encontrándose los 33 endpoints plenamente accesibles y operativos en la consola interactiva de Swagger UI.
+
+\noindent \textbf{Puntos de Acceso a la Documentación Interactiva (Swagger UI / OpenAPI):}
+\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+    \item \textbf{Entorno Desplegado en Producción (Render Cloud):} \url{https://viora-platform.onrender.com/swagger-ui/index.html}
+    \item \textbf{Entorno de Desarrollo Local:} \url{http://localhost:8080/swagger-ui/index.html}
+    \item \textbf{Especificación OpenAPI JSON:} \url{https://viora-platform.onrender.com/v3/api-docs}
+\end{itemize}
+
+\newpage
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.12}
+\setlength{\tabcolsep}{3pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.23\textwidth}|>{\centering\arraybackslash}p{0.07\textwidth}|>{\raggedright\arraybackslash}p{0.36\textwidth}|>{\raggedright\arraybackslash}p{0.21\textwidth}|>{\centering\arraybackslash}p{0.08\textwidth}|}
+\caption{Matriz Representativa de Endpoints Documentados con OpenAPI 3.0} \label{tab:services-documentation-endpoints-sprint-1} \\
+\hline
+\textbf{Acción / Caso de Uso} & \textbf{Método} & \textbf{Endpoint (URL Desplegada en Producción)} & \textbf{Parámetros Clave} & \textbf{Códigos HTTP} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Acción / Caso de Uso} & \textbf{Método} & \textbf{Endpoint (URL Desplegada en Producción)} & \textbf{Parámetros Clave} & \textbf{Códigos HTTP} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{5}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Selección representativa de endpoints sobre un total de 33 servicios desplegados en Render (\url{https://viora-platform.onrender.com/swagger-ui/index.html}) y localmente (\url{http://localhost:8080/swagger-ui/index.html}).}} \\
+\endlastfoot
+
+Delimitar y registrar cuartel & POST & \url{https://viora-platform.onrender.com/api/v1/plots} & Body: \texttt{CreatePlotResource} & 201, 400, 409 \\ \hline
+Listar cuarteles o sync delta & GET & \url{https://viora-platform.onrender.com/api/v1/plots} & Query: \texttt{updatedSince}, \texttt{status} & 200, 400 \\ \hline
+Actualizar cuartel con bloqueo & PUT & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}} & Path: \texttt{plotId}, Header: \texttt{If-Match} & 200, 400, 412 \\ \hline
+Consultar métricas (BBI/Erez) & GET & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/metrics} & Path: \texttt{plotId}, Query: \texttt{metricName} & 200, 400 \\ \hline
+Registrar pesaje de cosecha anual & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/harvest-records} & Path: \texttt{plotId}, Body: \texttt{RecordHarvestYield} & 201, 400 \\ \hline
+Listar incidentes agroclimáticos & GET & \url{https://viora-platform.onrender.com/api/v1/agroclimatic-incidents} & Query: \texttt{plotId}, \texttt{status}, \texttt{severity} & 200 \\ \hline
+Registrar y enlazar nodo sensor IoT & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/iot-devices} & Path: \texttt{plotId}, Body: \texttt{RegisterIoTDevice} & 201, 409 \\ \hline
+Consultar telemetría ambiental & GET & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/telemetries} & Path: \texttt{plotId}, Query: \texttt{startDate}, \texttt{endDate} & 200, 400 \\ \hline
+Ingerir lote de muestreo de frutos & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/samplings} & Path: \texttt{plotId}, Body: \texttt{SubmitSamplingResource} & 201, 400 \\ \hline
+Registrar plena floración (raleo) & PUT & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/thinning-prescriptions/full-bloom} & Path: \texttt{plotId}, Body: \texttt{RecordFullBloom} & 200, 400 \\ \hline
+Liquidar cosecha con balanza & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/harvest-settlements} & Path: \texttt{plotId}, Body: \texttt{SettleHarvestResource} & 201, 400 \\ \hline
+Certificar informe agronómico & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/certifications} & Path: \texttt{plotId}, Body: \texttt{CertifyDossier} & 201, 422 \\ \hline
+\end{longtable}
+\end{center}
+
+\newpage
+
+\noindent \textbf{Especificación Detallada de Endpoints Representativos del Sprint 1:}
+
+A continuación se detallan los 4 endpoints que encapsulan las reglas biofísicas y los patrones arquitectónicos nucleares del backend:
+
+\vspace{0.25cm}
+\noindent \textbf{1. Delimitar y Registrar Cuartel Olivícola (\texttt{POST /api/v1/plots}):}
+
+* **Propósito y Reglas de Negocio:** Recibe la cartografía del cuartel en GeoJSON sobre proyección WGS84, valida el polígono cerrado, calcula el área superficial en hectáreas y deriva la densidad dendrométrica mediante el marco de plantación $\frac{10000}{\text{rowSpacing} \times \text{treeSpacing}}$.
+* **Parámetros de Entrada:** Body `CreatePlotResource` (`name`: 3--100 caracteres, `variety`: variedad permitida, `polygonGeoJson`: GeoJSON válido, `rowSpacingM` y `treeSpacingM` $> 0$).
+* **Ejemplo de Solicitud y Respuesta (`201 Created`):**
+
+```json
+// Petición (Request Body):
+{
+  "name": "Cuartel San Jeronimo - Tacna", "variety": "CRIOLLA",
+  "polygonGeoJson": "{\"type\":\"Polygon\",\"coordinates\":[[[-70.25,-18.05],...]]}",
+  "rowSpacingM": 7.0, "treeSpacingM": 5.0
+}
+
+// Respuesta (201 Created):
+{
+  "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6", "name": "Cuartel San Jeronimo - Tacna",
+  "variety": "CRIOLLA", "areaHa": 1.25, "treeDensity": 286,
+  "rowSpacingM": 7.0, "treeSpacingM": 5.0, "status": "ACTIVE", "revision": 0
+}
+```
+
+* **Explicación del Response:** El servicio asigna un UUID universal, confirma el área calculada de 1.25 ha, deriva una densidad de 286 árboles/ha e inicializa el control de concurrencia optimista en `revision: 0`.
+
+\vspace{0.35cm}
+\noindent \textbf{2. Ingesta de Lote de Muestreo de Frutos Cuajados (\texttt{POST /api/v1/plots/\{plotId\}/samplings}):}
+
+* **Propósito y Reglas de Negocio:** Sincroniza observaciones de campo capturadas en modo desconectado (*offline-first*). Evalúa en el servidor si el lote cumple con el umbral de representatividad estadística ($n \ge 5$ árboles muestreados) para habilitar el algoritmo de raleo.
+* **Parámetros de Entrada:** Path `plotId` (UUID), Body `SubmitSamplingResource` (`clientBatchId`, `campaignYear: 2026`, arreglo `samples` con conteo de brotes y frutos cuajados).
+* **Ejemplo de Respuesta (`201 Created`):**
+
+```json
+// Respuesta (201 Created):
+{
+  "clientBatchId": "c9e8a7b6-1234-4567-89ab-cdef01234567", "campaignYear": 2026,
+  "isRepresentative": true, "treesNeeded": 0, "sampledTreesCount": 5,
+  "meanFruitsPerShoot": 8.76, "submittedAt": "2026-10-06T14:30:00Z"
+}
+```
+
+* **Explicación del Response:** Al consolidar 5 árboles muestreados, activa `isRepresentative: true`, reduce `treesNeeded` a 0 y computa una carga media observada de 8.76 frutos por brote.
+
+\newpage
+
+\noindent \textbf{3. Registro de Plena Floración y Prescripción de Raleo (\texttt{PUT .../thinning-prescriptions/full-bloom}):}
+
+* **Propósito y Reglas de Negocio:** Asienta la fecha fenológica en que se observó el 80\% de flores abiertas en el cuartel. Dispara de forma síncrona el cálculo del Índice de Vecería ($BBI$), las porciones de frío acumuladas según el modelo dinámico de Erez y deriva el porcentaje de frutos a aclarear junto con la ventana óptima de labor.
+* **Parámetros de Entrada:** Path `plotId` (UUID), Body `RecordFullBloomResource` (`campaignYear: 2026`, `observedOn: "2026-10-01"`).
+* **Ejemplo de Respuesta (`200 OK`):**
+
+```json
+// Respuesta (200 OK):
+{
+  "campaignYear": 2026, "status": "PRESCRIBED", "targetLoadFruitsPerTree": 12500,
+  "percentageToRemove": 28.5, "windowOpensOn": "2026-10-15",
+  "windowClosesOn": "2026-11-20", "blockers": []
+}
+```
+
+* **Explicación del Response:** El sistema prescribe remover el 28.5\% del cuaje excesivo dentro de una ventana de 36 días naturales previa al endurecimiento del carozo, mitigando la inhibición floral del año subsiguiente.
+
+\vspace{0.35cm}
+\noindent \textbf{4. Concurrencia Optimista y Manejo de Errores RFC 7807 (\texttt{PUT /api/v1/plots/\{plotId\}}):}
+
+* **Propósito y Reglas de Negocio:** Actualiza el marco o variedad validando la cabecera HTTP `If-Match` contra la versión persistida. Ante versiones desfasadas, rechaza la mutación sin sobrescribir datos.
+* **Parámetros de Entrada:** Path `plotId` (UUID), Header `If-Match: "999"` (versión desfasada deliberada), Body `UpdatePlotResource`.
+* **Ejemplo de Respuesta (`412 Precondition Failed`):**
+
+```json
+// Respuesta (412 Precondition Failed - RFC 7807 Problem Details):
+{
+  "type": "about:blank", "title": "Precondition Failed", "status": 412,
+  "detail": "The plot revision has changed. Please reload.",
+  "instance": "/api/v1/plots/3fa85f64-5717-4562-b3fc-2c963f66afa6"
+}
+```
+
+* **Explicación del Response:** El `GlobalExceptionHandler` intercepta la colisión emitiendo un objeto RFC 7807 (`ProblemDetail`), instruyendo al cliente móvil la necesidad de reconciliar su copia local sin corromper el estado persistido.
+
+\vspace{0.35cm}
+\noindent \textbf{Evidencias de Interacción con la Documentación Interactiva (Swagger UI):}
+
+Para comprobar la operatividad de los contratos y la consistencia de los esquemas OpenAPI 3.0, se ejecutaron pruebas de interacción en vivo sobre la consola interactiva Swagger UI desplegada en Render (\url{https://viora-platform.onrender.com/swagger-ui/index.html}) y en entorno local (\url{http://localhost:8080/swagger-ui/index.html}), empleando datos agronómicos de muestra situados en La Yarada-Los Palos (Tacna).
+
+Las pruebas de integración y validación cubrieron los siguientes flujos nucleares:
+
+\begin{itemize}\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
+    \item \textbf{Catastro y Alta de Predio (\texttt{POST /api/v1/plots}):} Ejecución de solicitud con geometría poligonal cerrada WGS84 sobre La Yarada-Los Palos. La consola Swagger UI confirmó la respuesta \texttt{201 Created}, serializando el objeto \texttt{PlotResource} con el cálculo de 1.25 ha de superficie y densidad de 286 árboles/ha.
+    \item \textbf{Ingesta y Representatividad Muestral (\texttt{POST /api/v1/plots/\{plotId\}/samplings}):} Envío de un lote de 5 muestras georreferenciadas desde el cliente móvil. Swagger UI retornó \texttt{201 Created} validando la transición de \texttt{isRepresentative} a \texttt{true} y fijando el conteo de árboles faltantes en cero (\texttt{treesNeeded: 0}).
+    \item \textbf{Protección de Concurrencia Optimista (\texttt{PUT /api/v1/plots/\{plotId\}}):} Simulación de colisión concurrente inyectando deliberadamente el valor desfasado \texttt{"999"} en la cabecera HTTP \texttt{If-Match}. El motor interceptó la operación y respondió con el código estandarizado \texttt{412 Precondition Failed} bajo el esquema RFC 7807 (\textit{Problem Details}), garantizando que ningún registro sea sobrescrito por modificaciones desactualizadas.
+\end{itemize}
+
+Los resultados verificaron la correspondencia unívoca entre las anotaciones OpenAPI del backend y los tipos generados en el contrato JSON (\url{https://viora-platform.onrender.com/v3/api-docs}), asegurando interoperabilidad sin discrepancias de contrato.
+
+\newpage
+
+\noindent \textbf{Repositorio Oficial y Trazabilidad de Control de Versiones:}
+
+La suite completa de Web Services y su infraestructura de documentación OpenAPI residen en el repositorio oficial de GitHub:
+\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+    \item \textbf{URL del Repositorio:} \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform}
+\end{itemize}
+
+En la \autoref{tab:services-documentation-commits-sprint-1} se listan los commits verificados en el historial de control de versiones del repositorio \texttt{viora-platform}, asociados directamente con contratos, documentación OpenAPI y controladores REST del Sprint 1:
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.06}
+\setlength{\tabcolsep}{2.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.21\textwidth}|>{\centering\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}p{0.26\textwidth}|>{\raggedright\arraybackslash}p{0.10\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|}
+\caption{Evidencias de Documentación de Web Services para Sprint Review (Commits de viora-platform)} \label{tab:services-documentation-commits-sprint-1} \\
+\hline
+\textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{6}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir del historial de control de versiones Git del repositorio \texttt{viora-platform} en GitHub.}} \\
+\endlastfoot
+
+viora-platform & hotfix/open-api & 22ad2d4 & fix(swagger): add relative server url for render deployment &  & 01/10/2026 \\ \hline
+viora-platform & hotfix/open-api & 001179d & Merge pull request \#23 from hotfix/open-api & fix(swagger): add relative server url for render deployment & 01/10/2026 \\ \hline
+viora-platform & feature/orchard-plot-controller & 138bff8 & feat(orchard): add documentation for plot controller and resources &  & 25/09/2026 \\ \hline
+viora-platform & feature/plot-restore & 23814aa & docs(api): document the plot restore endpoint &  & 03/10/2026 \\ \hline
+viora-platform & feature/phenology-chill-metric-extras & 9afdbb7 & fix(phenology): align openapi schema example and mock test key to thresholdTarget &  & 03/10/2026 \\ \hline
+viora-platform & feature/thinning-window-opens-on & 932dc56 & docs(thinning): record the prescription inputs and contract &  & 04/10/2026 \\ \hline
+viora-platform & feature/telemitry-agroclimatic-incidents & da10a40 & feat(controllers): add agroclimatic indicent controller, resources and assemblers &  & 04/10/2026 \\ \hline
+viora-platform & feature/thining-logbook & 20aaaad & feat(controllers): add controller, sampling covereage evaluator, sampling resources and their assemblers &  & 05/10/2026 \\ \hline
+viora-platform & feature/settlement-settle-campaign-harvest & 88a9bf2 & feat(settlement): expose harvest settlement endpoint with localized messages &  & 02/10/2026 \\ \hline
+viora-platform & feature/virtual-node-hourly-telemetry & 353341e & fix(shared): answer 404 for paths that no endpoint serves &  & 07/10/2026 \\ \hline
+\end{longtable}
+\end{center}
+
+\newpage
+
 
 #### Software Deployment Evidence for Sprint Review 
 &nbsp;
