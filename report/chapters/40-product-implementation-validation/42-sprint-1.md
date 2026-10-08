@@ -690,4 +690,12 @@ Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de l
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
+\begin{figure}[H]
+\caption{Vista de Contributors de Github - Mobile-Android.} \label{fig:contributors-landing-page}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.55\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-mobile.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
 \clearpage
