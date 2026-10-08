@@ -883,7 +883,7 @@ Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de l
 \end{figure}
 
 \begin{figure}[H]
-\caption{Vista de Contributors de Github - Platform.} \label{fig:contributors-landing-page}
+\caption{Vista de Contributors de Github - Platform.} \label{fig:contributors-platform}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.55\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-plat.png}
@@ -891,7 +891,7 @@ Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de l
 \end{figure}
 
 \begin{figure}[H]
-\caption{Vista de Contributors de Github - Mobile-Android.} \label{fig:contributors-landing-page}
+\caption{Vista de Contributors de Github - Mobile-Android.} \label{fig:contributors-mobile-android}
 \vspace{0.25cm}
 \centering
 \includegraphics[width=0.55\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-mobile.png}
