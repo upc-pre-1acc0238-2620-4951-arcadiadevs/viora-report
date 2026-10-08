@@ -1,6 +1,10 @@
 ## Landing Page & Mobile Application Implementation 
 
+En esta sección se consolida y evidencia el proceso sistemático de desarrollo, verificación, documentación y despliegue de los productos digitales que conforman la solución Viora: el portal web institucional (*Landing Page*), los servicios web transaccionales de backend (*viora-platform*) y la aplicación móvil nativa para Android (*viora-mobile-android*). A través de ciclos iterativos estructurados en Sprints, se documenta la evolución incremental del software desde su planificación ágil y codificación en control de versiones hasta su publicación en entornos de producción y validación funcional.
+
 ### Sprint 1
+
+En este primer ciclo de desarrollo se registra y sustenta el avance integral de producto y el trabajo colaborativo del equipo ArcadiaDevs orientado al cumplimiento del primer incremento de software funcional. A continuación, se detallan los acuerdos del *Sprint Planning 1*, la asignación de responsabilidades y el *Sprint Backlog*, acompañados por las evidencias verificables de desarrollo en GitHub, la suite de pruebas de aceptación, la ejecución de flujos móviles clave, la documentación interactiva OpenAPI/Swagger de los servicios web, el despliegue en infraestructura cloud y las analíticas de colaboración del equipo.
 
 #### Sprint Planning 1
 &nbsp;
@@ -828,7 +832,7 @@ La base de datos relacional se aprovisionó en Filess.io como base de datos comp
 \caption{Creación de la base de datos PostgreSQL en Filess.io.} \label{fig:deploy-filess-create-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.5-\textwidth]{report/assets/sprint-deployment/sprint-1/database/01-filess-new-postgresql-database.jpeg}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/database/01-filess-new-postgresql-database.jpeg}
 \caption*{\textit{Nota.} Captura del asistente de Filess.io. Elaboración propia.}
 \end{figure}
 
@@ -943,15 +947,15 @@ La \autoref{fig:deploy-device-install-s1} documenta la instalación en un teléf
 #### Team Collaboration Insights during Sprint 
 &nbsp;
 
-En esta sección se detallan las actividades de implementación y despliegue llevadas a cabo durante el Sprint 1, orientadas a la construcción de los entregables clave del ecosistema Viora: el servicio web backend (viora-platform en Java/Spring Boot), la aplicación móvil nativa para Android (viora-mobile-android en Kotlin) y el sitio web estático (Landing Page en HTML5/CSS3/JS).
+En esta sección se detallan las actividades de implementación y despliegue llevadas a cabo durante el Sprint 1, orientadas a la construcción de los entregables clave del ecosistema Viora: el servicio web backend, la aplicación móvil nativa para Android y el sitio web estático.
 El proceso de desarrollo se ejecutó de manera ágil y estructurada bajo el flujo de trabajo GitFlow y la convención de Conventional Commits, garantizando una participación técnica activa de los 5 integrantes del equipo. 
-Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de la organización (viora-platform, viora-mobile-android y viora-landing-page), a continuación se presentan las evidencias extraídas de los analíticos de GitHub (Contributors). Estas métricas ilustran el flujo continuo de integración, el registro estructurado de commits y la revisión y validación de múltiples Pull Requests orientadas al cumplimiento de los primeros componentes y servicios de la solución. 
+Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de la organización, a continuación se presentan las evidencias extraídas de los analíticos de GitHub. 
 
 \begin{figure}[H]
 \caption{Vista de Contributors de Github - Landing Page.} \label{fig:contributors-landing-page}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.55\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-land.png}
+\includegraphics[width=0.30\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-land.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -959,7 +963,7 @@ Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de l
 \caption{Vista de Contributors de Github - Platform.} \label{fig:contributors-platform}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.55\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-plat.png}
+\includegraphics[width=0.30\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-plat.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -967,7 +971,7 @@ Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de l
 \caption{Vista de Contributors de Github - Mobile-Android.} \label{fig:contributors-mobile-android}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.55\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-mobile.png}
+\includegraphics[width=0.30\textwidth]{report/assets/sprint-team-collaboration/sprint-1/viora-mobile.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
