@@ -325,6 +325,115 @@ viora-mobile-android & feature/alerts-by-plot & 91956e2 & fix(home): count and o
 #### Execution Evidence for Sprint Review 
 &nbsp;
 
+En esta sección se presenta la evidencia de ejecución de los productos digitales implementados durante el Sprint 1. En la \textit{Landing Page} se implementaron las secciones de presentación del producto, los problemas que Viora resuelve, la propuesta de valor por segmento objetivo, el Plan Productor con su simulador de suscripción y la presentación del equipo. En la aplicación móvil del productor se implementaron la pantalla de inicio con los indicadores del día, la gestión de parcelas con su delimitación sobre el mapa, la consulta del índice de vecería por parcela y el registro de la cosecha de la campaña. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
+
+\noindent \textbf{Landing Page:}
+
+La sección inicial presenta la propuesta central del producto, anticipar la próxima cosecha frente a la vecería, junto con la llamada a la acción para descargar la aplicación (\autoref{fig:exec-landing-hero-s1}).
+
+\begin{figure}[H]
+\caption{Sección inicial de la Landing Page de Viora.} \label{fig:exec-landing-hero-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/01-hero.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+El carrusel de problemas recorre las situaciones que reconoce el productor (año \textit{off}, frío escaso, aclareo tardío y acopio incierto) y asocia cada una con el módulo de la aplicación que la atiende (\autoref{fig:exec-landing-pains-s1}).
+
+\begin{figure}[H]
+\caption{Carrusel de problemas y módulos de la aplicación.} \label{fig:exec-landing-pains-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/02-pain-points-carousel.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+La propuesta de valor se presenta por separado para cada segmento objetivo: los productores olivareros (\autoref{fig:exec-landing-producers-s1}) y los gestores técnicos (\autoref{fig:exec-landing-managers-s1}).
+
+\begin{figure}[H]
+\caption{Propuesta de valor para productores olivareros.} \label{fig:exec-landing-producers-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/03-segment-producers.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Propuesta de valor para gestores técnicos.} \label{fig:exec-landing-managers-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/04-segment-technical-managers.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+La sección del Plan Productor muestra la tarifa referencial por hectárea, un simulador que calcula el total mensual según las hectáreas elegidas y los pasos para suscribirse (\autoref{fig:exec-landing-plan-s1}).
+
+\begin{figure}[H]
+\caption{Sección del Plan Productor con simulador de suscripción.} \label{fig:exec-landing-plan-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/05-producer-plan.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+Finalmente, la sección del equipo presenta a ArcadiaDevs y enlaza al video de presentación del equipo (\autoref{fig:exec-landing-team-s1}).
+
+\begin{figure}[H]
+\caption{Sección del equipo en la Landing Page.} \label{fig:exec-landing-team-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-1/landing-page/06-team.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Aplicación móvil del productor:}
+
+La pantalla de inicio resume el estado del campo para la campaña y el cuartel seleccionados: las parcelas pendientes de registrar su cosecha, el clima, las alertas activas, la humedad del suelo y la alternancia de producción de las últimas campañas (\autoref{fig:exec-app-home-s1}).
+
+\begin{figure}[H]
+\caption{Pantalla de inicio de la aplicación del productor.} \label{fig:exec-app-home-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/01-home.png}
+\hspace{1cm}
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/02-home-indicators.png}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+El listado de parcelas muestra las parcelas activas y archivadas con su variedad, superficie y número de árboles. El detalle de cada parcela muestra su delimitación sobre el mapa, su densidad de plantación y el acceso a su alternancia (\autoref{fig:exec-app-plots-s1}).
+
+\begin{figure}[H]
+\caption{Listado y detalle de parcelas.} \label{fig:exec-app-plots-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/03-plots-list.png}
+\hspace{1cm}
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/04-plot-detail.png}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+La vista de alternancia muestra el índice de vecería (BBI) de la parcela con su clasificación de severidad. El registro de cosecha permite ingresar los kilogramos de aceituna verde y negra de la campaña para cerrarla (\autoref{fig:exec-app-harvest-s1}).
+
+\begin{figure}[H]
+\caption{Índice de vecería y registro de cosecha.} \label{fig:exec-app-harvest-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/05-plot-alternation.png}
+\hspace{1cm}
+\includegraphics[width=0.30\textwidth]{report/assets/execution-evidence/sprint-1/mobile-app/06-harvest-registration.png}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Video de navegación del producto:}
+
+El video muestra la ejecución de las vistas y los flujos de navegación implementados durante el Sprint 1.
+
+* **Título:** Product Navigation - Sprint 1
+* **Entrega:** TB1 / Sprint 1
+* **Formato:** MP4
+* **Enlace de visualización (OneDrive):** \url{https://tinyurl.com/ef66ptm9}
+
 #### Services Documentation Evidence for Sprint Review 
 &nbsp;
 
