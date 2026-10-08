@@ -290,4 +290,4 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
   \item \textbf{Recomendación:} Añadir en la tarjeta del Plan Cooperativa o en la sección de módulos una viñeta informativa que aclare la disponibilidad de "Exportación de informes a Excel y PDF", e incluir una imagen ilustrativa de la pantalla de muestreo móvil para brindar certeza visual sobre el uso de la herramienta en campo.
 \end{itemize}
 
-
+\clearpage
