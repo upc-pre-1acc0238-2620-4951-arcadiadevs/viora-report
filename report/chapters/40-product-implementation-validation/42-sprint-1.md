@@ -581,8 +581,6 @@ A continuación se detallan los 4 endpoints que encapsulan las reglas biofísica
 
 * **Explicación del Response:** Al consolidar 5 árboles muestreados, activa `isRepresentative: true`, reduce `treesNeeded` a 0 y computa una carga media observada de 8.76 frutos por brote.
 
-\newpage
-
 \noindent \textbf{3. Registro de Plena Floración y Prescripción de Raleo (\texttt{PUT .../thinning-prescriptions/full-bloom}):}
 
 * **Propósito y Reglas de Negocio:** Asienta la fecha fenológica en que se observó el 80\% de flores abiertas en el cuartel. Dispara de forma síncrona el cálculo del Índice de Vecería ($BBI$), las porciones de frío acumuladas según el modelo dinámico de Erez y deriva el porcentaje de frutos a aclarear junto con la ventana óptima de labor.
@@ -626,10 +624,34 @@ Para comprobar la operatividad de los contratos y la consistencia de los esquema
 Las pruebas de integración y validación cubrieron los siguientes flujos nucleares:
 
 \begin{itemize}\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
-    \item \textbf{Catastro y Alta de Predio (\texttt{POST /api/v1/plots}):} Ejecución de solicitud con geometría poligonal cerrada WGS84 sobre La Yarada-Los Palos. La consola Swagger UI confirmó la respuesta \texttt{201 Created}, serializando el objeto \texttt{PlotResource} con el cálculo de 1.25 ha de superficie y densidad de 286 árboles/ha.
-    \item \textbf{Ingesta y Representatividad Muestral (\texttt{POST /api/v1/plots/\{plotId\}/samplings}):} Envío de un lote de 5 muestras georreferenciadas desde el cliente móvil. Swagger UI retornó \texttt{201 Created} validando la transición de \texttt{isRepresentative} a \texttt{true} y fijando el conteo de árboles faltantes en cero (\texttt{treesNeeded: 0}).
-    \item \textbf{Protección de Concurrencia Optimista (\texttt{PUT /api/v1/plots/\{plotId\}}):} Simulación de colisión concurrente inyectando deliberadamente el valor desfasado \texttt{"999"} en la cabecera HTTP \texttt{If-Match}. El motor interceptó la operación y respondió con el código estandarizado \texttt{412 Precondition Failed} bajo el esquema RFC 7807 (\textit{Problem Details}), garantizando que ningún registro sea sobrescrito por modificaciones desactualizadas.
+    \item \textbf{Catastro y Alta de Predio (\texttt{POST /api/v1/plots}):} Ejecución de solicitud con geometría poligonal cerrada WGS84 sobre La Yarada-Los Palos (\autoref{fig:exec-swagger-create-plot-s1}). La consola Swagger UI confirmó la respuesta \texttt{201 Created}, serializando el objeto \texttt{PlotResource} con el cálculo de 1.25 ha de superficie y densidad de 286 árboles/ha.
+    \item \textbf{Ingesta y Representatividad Muestral (\texttt{POST /api/v1/plots/\{plotId\}/samplings}):} Envío de un lote de 5 muestras georreferenciadas desde el cliente móvil (\autoref{fig:exec-swagger-submit-sampling-s1}). Swagger UI retornó \texttt{201 Created} validando la transición de \texttt{isRepresentative} a \texttt{true} y fijando el conteo de árboles faltantes en cero (\texttt{treesNeeded: 0}).
+    \item \textbf{Protección de Concurrencia Optimista (\texttt{PUT /api/v1/plots/\{plotId\}}):} Simulación de colisión concurrente inyectando deliberadamente el valor desfasado \texttt{"999"} en la cabecera HTTP \texttt{If-Match} (\autoref{fig:exec-swagger-error-rfc7807-s1}). El motor interceptó la operación y respondió con el código estandarizado \texttt{412 Precondition Failed} bajo el esquema RFC 7807 (\textit{Problem Details}), garantizando que ningún registro sea sobrescrito por modificaciones desactualizadas.
 \end{itemize}
+
+\begin{figure}[H]
+\caption{Ejecución interactiva y respuesta 201 Created para alta de predio en Swagger UI.} \label{fig:exec-swagger-create-plot-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.88\textwidth]{report/assets/execution-evidence/sprint-1/web-services/01-swagger-create-plot.png}
+\caption*{\textit{Nota.} Captura de la consola interactiva Swagger UI en entorno de desarrollo local. Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Ingesta de muestreo de cuaje y validación de representatividad en Swagger UI.} \label{fig:exec-swagger-submit-sampling-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.88\textwidth]{report/assets/execution-evidence/sprint-1/web-services/02-swagger-submit-sampling.png}
+\caption*{\textit{Nota.} Captura de la consola interactiva Swagger UI en entorno de desarrollo local. Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Manejo de concurrencia optimista y respuesta 412 Precondition Failed (RFC 7807) en Swagger UI.} \label{fig:exec-swagger-error-rfc7807-s1}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.88\textwidth]{report/assets/execution-evidence/sprint-1/web-services/03-swagger-error-rfc7807.png}
+\caption*{\textit{Nota.} Captura de la consola interactiva Swagger UI en entorno de desarrollo local. Elaboración propia.}
+\end{figure}
 
 Los resultados verificaron la correspondencia unívoca entre las anotaciones OpenAPI del backend y los tipos generados en el contrato JSON (\url{https://viora-platform.onrender.com/v3/api-docs}), asegurando interoperabilidad sin discrepancias de contrato.
 
@@ -915,7 +937,7 @@ La \autoref{fig:deploy-device-install-s1} documenta la instalación en un teléf
 
 En esta sección se detallan las actividades de implementación y despliegue llevadas a cabo durante el Sprint 1, orientadas a la construcción de los entregables clave del ecosistema Viora: el servicio web backend (viora-platform en Java/Spring Boot), la aplicación móvil nativa para Android (viora-mobile-android en Kotlin) y el sitio web estático (Landing Page en HTML5/CSS3/JS).
 El proceso de desarrollo se ejecutó de manera ágil y estructurada bajo el flujo de trabajo GitFlow y la convención de Conventional Commits, garantizando una participación técnica activa de los 5 integrantes del equipo. 
-Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de la organización (viora-platform, viora-mobile-android y viora-landing-page), a continuación se presentan las evidencias extraídas de los analíticos de GitHub (Pulse y Contributors). Estas métricas ilustran el flujo continuo de integración, el registro estructurado de commits y la revisión y validación de múltiples Pull Requests orientadas al cumplimiento de los primeros componentes y servicios de la solución. 
+Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de la organización (viora-platform, viora-mobile-android y viora-landing-page), a continuación se presentan las evidencias extraídas de los analíticos de GitHub (Contributors). Estas métricas ilustran el flujo continuo de integración, el registro estructurado de commits y la revisión y validación de múltiples Pull Requests orientadas al cumplimiento de los primeros componentes y servicios de la solución. 
 
 \begin{figure}[H]
 \caption{Vista de Contributors de Github - Landing Page.} \label{fig:contributors-landing-page}
