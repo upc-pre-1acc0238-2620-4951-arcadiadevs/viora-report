@@ -50,7 +50,7 @@ Diseño UX/UI de producto & Figma & Diseño del sistema de componentes atómicos
 
 Desarrollo de software \newline (Runtime Java) & OpenJDK 21 \newline LTS (Temurin) & Kit de desarrollo Java universal corporativo. Provee el compilador, máquina virtual (JVM) y runtime para el Backend y Gradle. & Local (Eclipse Open Source) \newline \url{https://adoptium.net} \\[0.15cm]
 
-Desarrollo de software \newline (Backend API) & IntelliJ IDEA & Entorno de desarrollo integrado (IDE) principal para la construcción del Backend RESTful con Spring Boot 3 y Java 21. & Local (JetBrains / Apache 2.0) \newline \url{https://www.jetbrains.com/idea} \\[0.15cm]
+Desarrollo de software \newline (Backend API) & IntelliJ IDEA & Entorno de desarrollo integrado (IDE) principal para la construcción del Backend RESTful con Spring Boot 4 (v4.1.1) y Java 21. & Local (JetBrains / Apache 2.0) \newline \url{https://www.jetbrains.com/idea} \\[0.15cm]
 
 Desarrollo de software \newline (Mobile Android) & Android Studio & IDE oficial para el desarrollo del cliente móvil nativo Android con Kotlin, Jetpack Compose, Room SQLite y Android SDK 34. & Local (Google Freeware / Apache) \newline \url{https://developer.android.com/studio} \\[0.15cm]
 
@@ -89,7 +89,7 @@ A continuación, se sintetizan las consideraciones técnicas y de runtime adopta
 * **Gestión de proyectos (*Project Management*):** Uso de Trello para la administración del Product Backlog (89 ítems) y tableros Kanban por Sprint; Arcadia To-Do como plataforma in-house para la asignación de tareas operativas internas, control de fechas límite y repositorio de enlaces documentales; complementado con Discord para la comunicación técnica sincrónica de ArcadiaDevs.
 * **Gestión de requisitos (*Requirements Management*):** Miro para la facilitación colaborativa del Big Picture EventStorming y definición de eventos de dominio; UXPressia para el modelado de artefactos de diseño centrado en el usuario (Personas, Journey Maps e Impact Maps); y Lucidchart para los Bounded Context Canvases y flujos de navegación (User Flows y Wireflows).
 * **Diseño UX/UI de producto (*Product UX/UI Design*):** Figma como estándar de diseño atómico basado en Material Design 3, definiendo componentes modulares, paleta cromática contextual (tonos tierra y verde olivo) y prototipos interactivos de alta fidelidad para Android y web.
-* **Desarrollo de software (Backend y base de datos):** Estandarización corporativa en OpenJDK 21 LTS (Eclipse Temurin) enlazado a la variable de entorno `JAVA_HOME`. Desarrollo sobre IntelliJ IDEA con Spring Boot 3 y Spring Data JPA, utilizando PostgreSQL 16 como motor relacional transaccional en entorno local.
+* **Desarrollo de software (Backend y base de datos):** Estandarización corporativa en OpenJDK 21 LTS (Eclipse Temurin) enlazado a la variable de entorno `JAVA_HOME`. Desarrollo sobre IntelliJ IDEA con Spring Boot 4 (v4.1.1) y Spring Data JPA, utilizando PostgreSQL 16 como motor relacional transaccional en entorno local.
 * **Desarrollo de software (Mobile y Web):** Para el cliente nativo `viora-mobile-android`, Android Studio con Android SDK Platform 34 (Android 14, `minSdk` 26) y Jetpack Compose. Para el cliente cross-platform `viora-mobile-flutter`, Flutter SDK v3.24.x y Dart 3.5.x. Maquetación de `viora-landing-page` en Visual Studio Code bajo HTML5 semántico, CSS3 y JavaScript.
 * **Pruebas de software (*Software Testing*):** Inspección y prueba interactiva de contratos de endpoints RESTful mediante Swagger UI, y pruebas automatizadas de aceptación BDD con Cucumber JVM en el repositorio `viora-acceptance-tests`.
 * **Despliegue de software (*Software Deployment*):** Despliegue continuo de la Landing Page en Vercel; contenedorización del backend Java 21 en Docker desplegado como servicio web en Render; persistencia administrada en Filess.io (PostgreSQL 16); y distribución controlada de paquetes APK para Android y Flutter mediante Firebase App Distribution.
@@ -118,7 +118,7 @@ Se utiliza GitHub bajo la organización institucional `upc-pre-1acc0238-2620-495
   \par \vspace{0.08cm}
   \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-mobile-flutter}
 
-* **Web Services & Platform Backend (`viora-platform`):** Centraliza la lógica de negocio y arquitectura modular construida en Java 21 con Spring Boot 3 y Spring Data JPA. Comprende los doce componentes de backend, la persistencia relacional sobre PostgreSQL 16 y la documentación interactiva OpenAPI/Swagger.
+* **Web Services & Platform Backend (`viora-platform`):** Centraliza la lógica de negocio y arquitectura modular construida en Java 21 con Spring Boot 4 (v4.1.1) y Spring Data JPA. Comprende los doce componentes de backend, la persistencia relacional sobre PostgreSQL 16 y la documentación interactiva OpenAPI/Swagger.
   \par \vspace{0.08cm}
   \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform}
 
@@ -236,7 +236,7 @@ El desarrollo del Backend API en el repositorio `viora-platform` y del simulador
 * **Convenciones de nomenclatura:** Los nombres de clases, interfaces y tipos enumerados se escriben en *UpperCamelCase* (ej. `CropLoadAssessmentService`, `TelemetryRecord`). Los métodos y variables locales adoptan *lowerCamelCase* (ej. `calculateBearingIndex`, `plotId`). Las constantes inmutables y valores de enumeración se definen en mayúsculas sostenidas con guion bajo (*CONSTANT\_CASE*, ej. `MAX_SAMPLE_INTERVAL_HOURS`).
 * **Bloques y control de flujo:** Es obligatorio el uso de llaves delimitadoras `{}` en todas las estructuras de control (`if`, `else`, `for`, `while`), incluso en sentencias que contengan una única instrucción.
 * **Documentación Javadoc:** Toda clase de dominio, servicio de aplicación y controlador REST público debe contar con bloques de documentación Javadoc (`/** ... */`), especificando las etiquetas `@param`, `@return` y `@throws` cuando corresponda.
-* **Estructura modular en Spring Boot:** Se ubica la clase anotada con `@SpringBootApplication` en el paquete raíz (`pe.edu.upc.viora.platform`) para habilitar el escaneo automático de componentes. Se aplica inyección de dependencias mediante constructores y se estructuran los paquetes respetando la separación en capas de la arquitectura limpia y DDD táctico.
+* **Estructura modular en Spring Boot:** Se ubica la clase anotada con `@SpringBootApplication` en el paquete raíz (`com.arcadiadevs.viora.platform`) para habilitar el escaneo automático de componentes. Se aplica inyección de dependencias mediante constructores y se estructuran los paquetes respetando la separación en capas de la arquitectura limpia y DDD táctico.
 
 \newpage
 
@@ -314,13 +314,13 @@ El despliegue hacia la infraestructura de Vercel se encuentra automatizado media
 
 \noindent \textbf{Punto de acceso en producción:}
 
-* Estado de despliegue: En proceso de publicación continua.
-* Enlace oficial: *[Enlace de producción pendiente de publicación oficial / despliegue final]*.
+* Estado de despliegue: Desplegado.
+* Enlace oficial: \url{https://viora-landing-page-sable.vercel.app/}
 
 #### Despliegue de servicios web de backend y base de datos cloud
 &nbsp;
 
-La capa de servicios web de Viora, versionada en el repositorio `viora-platform`, está construida en Java 21 utilizando el framework Spring Boot 3 y arquitectura hexagonal organizada por Bounded Contexts. Su despliegue productivo se ejecuta sobre el runtime nativo de Render en estrecha integración con una instancia de PostgreSQL 16 alojada en Filess.io.
+La capa de servicios web de Viora, versionada en el repositorio `viora-platform`, está construida en Java 21 utilizando el framework Spring Boot 4 (v4.1.1) y arquitectura hexagonal organizada por Bounded Contexts. Su despliegue productivo se ejecuta sobre el runtime nativo de Render en estrecha integración con una instancia de PostgreSQL 15.6 alojada en Filess.io.
 
 \noindent \textbf{Configuración del entorno en Render:}
 
@@ -339,7 +339,7 @@ Se aprovecha el entorno de ejecución nativo de Java ofrecido por Render, lo que
 
 \noindent \textbf{Persistencia y sincronización del esquema en Filess.io:}
 
-La persistencia de datos recae en una base de datos relacional PostgreSQL 16 provisionada en la plataforma DBaaS Filess.io. Para asegurar la concordancia estricta entre el modelo de dominio en código y la estructura física de la base de datos sin requerir migraciones manuales complejas durante la fase activa de desarrollo, el sistema utiliza la directiva de configuración de Hibernate:
+La persistencia de datos recae en una base de datos relacional PostgreSQL 15.6 provisionada en la plataforma DBaaS Filess.io. Para asegurar la concordancia estricta entre el modelo de dominio en código y la estructura física de la base de datos sin requerir migraciones manuales complejas durante la fase activa de desarrollo, el sistema utiliza la directiva de configuración de Hibernate:
 
 \begin{verbatim}
 spring.jpa.hibernate.ddl-auto=update
@@ -353,40 +353,55 @@ El componente `viora-telemetry-simulator` se despliega como un servicio en segun
 
 \noindent \textbf{Punto de acceso en producción de la API:}
 
-* Estado de despliegue: En proceso de publicación continua.
-* Enlace oficial: *[Enlace de producción de la API RESTful pendiente de publicación oficial / despliegue final]*.
+* Estado de despliegue: Desplegado.
+* Enlace oficial: \url{https://viora-platform.onrender.com/swagger-ui/index.html}
 
 #### Despliegue y distribución de aplicaciones móviles (Firebase App Distribution)
 &nbsp;
 
-La solución móvil de Viora comprende tanto el cliente móvil nativo custodiado en `viora-mobile-android` (Kotlin, Jetpack Compose y Android SDK 34) como el cliente móvil multiplataforma en `viora-mobile-flutter` (Dart y motor Flutter). Para posibilitar la evaluación del software en dispositivos físicos de prueba conforme a los requisitos del curso y a la topología modelada en la \autoref{fig:c4-deployment-ch4}, el equipo utiliza Firebase App Distribution como canal corporativo centralizado de distribución continua.
+La solución móvil de Viora comprende tanto el cliente móvil nativo custodiado en `viora-mobile-android` (Kotlin, Jetpack Compose y Android SDK 37) como el cliente móvil multiplataforma en `viora-mobile-flutter` (Dart y motor Flutter). Para posibilitar la evaluación del software en dispositivos físicos de prueba conforme a los requisitos del curso y a la topología modelada en la \autoref{fig:c4-deployment-ch4}, el equipo utiliza Firebase App Distribution como canal corporativo centralizado de distribución continua.
 
 \noindent \textbf{Selección técnica de la variante de compilación (*Build Variant*):}
 
-Para la distribución a través de Firebase se selecciona la variante `release` (`app-release.apk`). A diferencia de la variante `debug` (la cual mantiene habilitada la bandera `android:debuggable=true`, incluye librerías de tracing y carece de optimizaciones), la variante `release` incorpora:
+Para la distribución a través de Firebase se selecciona la variante `release` (`app-release.apk`). A diferencia de la variante `debug` (que se compila con la depuración activa, apunta por defecto al backend local del emulador y admite tráfico en texto plano solo hacia `10.0.2.2` y `localhost`), la variante `release`:
 
-* Optimización y ofuscación R8: ejecuta minificación de código, remoción de clases no utilizadas y ofuscación de nombres de métodos y variables, reduciendo el tamaño del binario y protegiendo el código contra técnicas de descompilación.
-* Seguridad de red estricta: aplica políticas obligatorias de *Network Security Config*, forzando el cifrado en tránsito HTTPS y denegando tráfico en texto plano.
+* Apunta a la API desplegada: por defecto, la constante de compilación `API_BASE_URL` toma el valor `https://viora-platform.onrender.com/api/v1/`, sin necesidad de configuración local.
+* Aplica una política de seguridad de red estricta: su *Network Security Config* establece `cleartextTrafficPermitted="false"`, de modo que toda comunicación viaja cifrada mediante HTTPS.
+* Se firma con la clave de Viora (ver el apartado siguiente), requisito indispensable para que Android la instale y la actualice.
+* Mantiene desactivada la optimización con R8 (`optimization { enable = false }` en `app/build.gradle.kts`): la minificación y la ofuscación quedan diferidas hasta validar, con pruebas completas, las reglas de conservación de las bibliotecas que dependen de reflexión (inyección de dependencias, persistencia local y serialización).
 * Fidelidad de ejecución: permite evaluar el comportamiento de la aplicación en el dispositivo físico bajo condiciones de memoria, consumo de batería y fluidez de interfaz idénticas a las que experimentará el usuario final.
+
+\noindent \textbf{Versionamiento de las compilaciones:}
+
+El `versionName` de la aplicación sigue el versionamiento semántico y coincide con la etiqueta de la *release* de GitFlow (`1.0.0`, `1.0.1`, etc., sin el prefijo «v»), mientras que el `versionCode` aumenta en uno con cada versión distribuida (10 para la 1.0.0 y 11 para la 1.0.1), porque Android solo acepta como actualización un paquete con un código mayor al instalado.
 
 \noindent \textbf{Gestión de firma criptográfica (*Signing Config*):}
 
-La compilación `release` se firma digitalmente utilizando un almacén de claves criptográficas (*Keystore* JKS). Para proteger la clave privada sin comprometerla en el control de versiones, el archivo keystore se codifica en formato Base64 y se inyecta dinámicamente en el entorno de ejecución mediante secretos de repositorio en GitHub Actions:
+La compilación `release` se firma digitalmente con un almacén de claves PKCS12 (`viora-release.jks`) generado con `keytool` (RSA de 4096 bits, validez de 10 000 días, alias `viora`). El almacén se conserva fuera del repositorio, y el archivo `keystore.properties`, que guarda su ruta y credenciales en cada estación de trabajo, está excluido del control de versiones mediante `.gitignore`. El script `app/build.gradle.kts` toma la configuración de firma de `keystore.properties` o, en el pipeline, de variables de entorno; si no encuentra ninguna, la compilación `release` queda sin firmar en lugar de fallar, de modo que el resto del equipo puede compilar sin la clave. Conservar siempre la misma clave es indispensable: Android solo instala una versión nueva sobre la anterior si ambas llevan la misma firma.
+
+Para el pipeline, el almacén de claves se codifica en Base64 y se guarda, junto con sus credenciales y los datos de Firebase, como secretos y variables del repositorio en GitHub, de modo que la clave privada nunca se compromete en el control de versiones:
 
 * `ANDROID_KEYSTORE_BASE64`: cadena codificada que reconstruye el archivo `.jks` en el ejecutor.
 * `ANDROID_KEY_ALIAS`: identificador del alias de la clave criptográfica.
 * `ANDROID_KEY_PASSWORD`: contraseña de la clave privada de firma.
 * `ANDROID_STORE_PASSWORD`: contraseña del almacén de claves.
+* `FIREBASE_SERVICE_ACCOUNT_KEY`: clave JSON de la cuenta de servicio de Google Cloud con el rol *Firebase App Distribution Admin*.
+* `VIORA_MAPBOX_PUBLIC_TOKEN`: token público de Mapbox, que el mapa necesita en tiempo de compilación.
+* Variable `FIREBASE_APP_ID`: identificador de la aplicación en Firebase (`1:1085458528165:android:956ca686ddeaa2f2b95a4c`); al no ser un dato sensible se guarda como variable y no como secreto.
 
 \noindent \textbf{Pipeline automatizado de distribución en GitHub Actions:}
 
-El despliegue hacia Firebase App Distribution se ejecuta automáticamente mediante el flujo `.github/workflows/deploy-android.yml` activado ante la creación de etiquetas de versión (*tags* de Git tipo `v*.*.*`) o integraciones en ramas de estabilización `release/*`:
+El despliegue hacia Firebase App Distribution se ejecuta mediante el flujo `.github/workflows/deploy-android.yml`, que se activa al publicar una etiqueta de versión semántica sin prefijo (`X.Y.Z`, como `1.0.1`) o de forma manual desde la pestaña *Actions* de GitHub. Sus pasos son:
 
-1. **Configuración del entorno:** Aprovisiona una máquina virtual Ubuntu con OpenJDK 21 LTS y las herramientas de línea de comandos de Android SDK Platform 34.
-2. **Reconstrucción del Keystore:** Decodifica la variable `ANDROID_KEYSTORE_BASE64` en un archivo de claves seguro dentro del entorno temporal de ejecución.
-3. **Compilación y empaquetado:** Ejecuta `./gradlew assembleRelease`, produciendo el binario optimizado `app-release.apk`.
-4. **Firma y alineación:** Aplica las utilidades `zipalign` y `apksigner` para asegurar el cumplimiento de las restricciones de empaquetado de Android.
-5. **Carga y publicación en Firebase:** Utiliza la acción oficial de distribución (`wzieba/Firebase-Distribution-Github-Action`) autenticada mediante una cuenta de servicio de Google Cloud (`FIREBASE_SERVICE_ACCOUNT_KEY`), publicando el APK y despachando las notas de versión (*release notes*) correspondientes.
+1. **Configuración del entorno:** aprovisiona una máquina virtual Ubuntu (`ubuntu-latest`) con JDK 21 (Temurin) y Gradle con caché de dependencias.
+2. **Verificación de la versión:** comprueba que la etiqueta publicada coincida con el `versionName` de `app/build.gradle.kts`; si difieren, el flujo se detiene.
+3. **Pruebas unitarias:** ejecuta `./gradlew :app:testDebugUnitTest` y no continúa si alguna prueba falla.
+4. **Reconstrucción del keystore:** decodifica `ANDROID_KEYSTORE_BASE64` en un archivo temporal del ejecutor.
+5. **Compilación y firma:** ejecuta `./gradlew :app:assembleRelease`; Gradle alinea y firma el APK con la configuración alimentada por los secretos y le inyecta el token público de Mapbox, por lo que no se requieren pasos manuales de `zipalign` ni `apksigner`.
+6. **Verificación de la firma:** valida el APK con `apksigner verify --print-certs`.
+7. **Conservación del artefacto:** guarda el `app-release.apk` como artefacto de la ejecución durante 30 días.
+8. **Carga y publicación en Firebase:** utiliza la herramienta oficial `firebase-tools` (`appdistribution:distribute`), autenticada con la cuenta de servicio (`FIREBASE_SERVICE_ACCOUNT_KEY`), para publicar el APK en el grupo `arcadiadevs-internal` con las notas de versión (las indicadas manualmente o el mensaje del último *commit*).
+9. **Limpieza:** elimina del ejecutor el keystore y la clave de la cuenta de servicio, incluso si algún paso anterior falla.
 
 \noindent \textbf{Distribución del cliente multiplataforma Flutter:}
 
@@ -394,23 +409,23 @@ De manera homóloga al cliente nativo, la aplicación móvil multiplataforma ver
 
 \noindent \textbf{Procedimiento de contingencia local:}
 
-En caso de requerir compilar y distribuir una versión de prueba manualmente fuera del pipeline de integración continua, el equipo de ingeniería puede ejecutar los siguientes comandos desde la consola local:
+En caso de requerir compilar y distribuir una versión de prueba manualmente fuera del pipeline de integración continua, el equipo de ingeniería puede ejecutar los siguientes comandos desde la consola local, tras iniciar sesión con `firebase login` y con `keystore.properties` configurado:
 
 ```bash
 ./gradlew assembleRelease
 
 firebase appdistribution:distribute \
   app/build/outputs/apk/release/app-release.apk \
-  --app 1:1029384756:android:abcd1234ef5678 \
-  --groups arcadiadevs-internal,viora-client-testers \
-  --release-notes "Validación con clientes"
+  --app 1:1085458528165:android:956ca686ddeaa2f2b95a4c \
+  --groups arcadiadevs-internal \
+  --release-notes "Viora 1.0.1"
 ```
 
 \noindent \textbf{Organización de grupos de evaluadores:}
 
 Firebase App Distribution gestiona las autorizaciones y la entrega de binarios mediante dos grupos temáticos:
 
-* `arcadiadevs-internal` (Equipo interno de ingeniería): comprende las cuentas de los desarrolladores y líderes técnicos de ArcadiaDevs. Este grupo recibe compilaciones preliminares inmediatas tras cada integración para la ejecución de pruebas de humo, verificación de endpoints y aseguramiento de calidad interno antes de cualquier exposición a usuarios finales.
-* `viora-client-testers` (Clientes y usuarios de validación): agrupa a los representantes reales de los dos segmentos objetivo del proyecto (productores olivareros independientes y gestores técnicos de cooperativas). Los integrantes de este grupo reciben acceso a las versiones estables de las aplicaciones móviles (Android nativo y Flutter) instaladas directamente sobre sus terminales físicos, permitiéndoles interactuar con los flujos de usuario y evaluar las tareas clave durante las sesiones de entrevistas de validación.
+* `arcadiadevs-internal` (Equipo interno de ingeniería): comprende las cuentas de los desarrolladores y líderes técnicos de ArcadiaDevs. Este grupo recibe compilaciones preliminares inmediatas tras cada integración para la ejecución de pruebas de humo, verificación de endpoints y aseguramiento de calidad interno antes de cualquier exposición a usuarios finales. Actualmente reúne seis cuentas: cinco institucionales del equipo y una personal del líder del equipo.
+* `viora-client-testers` (Clientes y usuarios de validación): agrupa a los representantes reales de los dos segmentos objetivo del proyecto (productores olivareros independientes y gestores técnicos de cooperativas). Los integrantes de este grupo reciben acceso a las versiones estables de las aplicaciones móviles (Android nativo y Flutter) instaladas directamente sobre sus terminales físicos, permitiéndoles interactuar con los flujos de usuario y evaluar las tareas clave durante las sesiones de entrevistas de validación. Se encuentra vacío hasta la fase de validación con usuarios y podrá poblarse con las cuentas de los evaluadores o mediante un vínculo de invitación asociado al grupo.
 
 \newpage
