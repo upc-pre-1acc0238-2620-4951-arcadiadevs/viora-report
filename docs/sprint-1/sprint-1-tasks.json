@@ -1,0 +1,2886 @@
+{
+  "sprint": 1,
+  "sprintTitle": "Sprint 1",
+  "sprintGoal": "Nuestro enfoque se orienta a presentar de manera comercial y diferenciada la propuesta de valor y tarifas de Viora a visitantes y organizaciones olivareras, habilitar la digitalización parcelaria, consulta telemétrica y captura de datos agronómicos en campo sin conexión para el segmento de productores olivareros, e incrementar las capacidades de integración y desarrollo mediante la arquitectura base y la suite completa de 33 servicios web RESTful desacoplados para el equipo de aplicaciones cliente. Creemos que esto entrega mayor aceleración en la captación y conversión de clientes calificados interesados en los planes de suscripción, reducción del costo operativo de levantamiento de datos en predio y validación temprana de decisiones de aclareo frutal para los productores agrícolas, y celeridad de construcción técnica con contratos estables e inmutables para los desarrolladores de software cliente. Esto se confirmará cuando los visitantes del sitio web consulten las tarifas en moneda nacional (PEN) en no más de tres interacciones y accedan a los enlaces oficiales de descarga directa; los productores olivareros registren exitosamente una parcela georreferenciada con polígono válido, consulten series telemétricas con el estado operativo de nodos sensores, visualicen el Índice de Vecería (BBI) histórico con frío dinámico, y almacenen muestreos de cuajado locales desconectados en la aplicación móvil nativa registrando la confirmación de la labor de aclareo; y los desarrolladores cliente consuman y validen en Swagger UI la suite completa de 33 endpoints documentados con OpenAPI del backend desplegado en producción bajo códigos HTTP semánticos sin requerir intervención del equipo de backend.",
+  "targetVelocityStoryPoints": 190,
+  "committedStoryPoints": 183,
+  "totalItems": 68,
+  "totalTasks": 147,
+  "totalEstimatedHours": 126.3,
+  "items": [
+    {
+      "id": "US33",
+      "trello_formatted_id": "US033",
+      "type": "User Story",
+      "title": "Presentación de la propuesta de valor central para la mitigación de la vecería prolongada en el olivar",
+      "user_story_format": "Como Visitante, quiero que el sistema exponga con claridad cómo la integración de datos de microclima, frío invernal y regulación de carga frutal atenúa la severidad de la alternancia productiva y mitiga la vecería prolongada, para comprender de inmediato la solución tecnológica que ofrece Viora frente a la incertidumbre agronómica del cultivo.",
+      "story_points": 2,
+      "application": "Website",
+      "aspect": "Communications",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US033TASK001",
+          "trello_card_title": "US033TASK001 | Maquetación de sección Hero, pilares de valor y CTA principal",
+          "title": "Maquetación de sección Hero, pilares de valor y CTA principal",
+          "description": "Implementar sección Hero con encabezado 'Anticipa la Próxima Cosecha - Equilibra tu Olivar', badge dinámico de ventana de aclareo, botón CTA 'Descarga la app' y tarjetas de los tres pilares de valor (Carga frutal, Frío invernal, Plan de aclareo).",
+          "estimation_hours": 1.0,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US033TASK002",
+          "trello_card_title": "US033TASK002 | Componente de contexto regional de Tacna y métricas de vecería",
+          "title": "Componente de contexto regional de Tacna y métricas de vecería",
+          "description": "Maquetar bloque territorial de Tacna destacando el 81% de concentración olivarera, el 90% de merma productiva histórica en 2024 y 1 de cada 2 campañas en año OFF junto a la crónica de La Yarada y Los Palos.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US033TASK003",
+          "trello_card_title": "US033TASK003 | Slider interactivo de contraste de campañas y dolor agronómico",
+          "title": "Slider interactivo de contraste de campañas y dolor agronómico",
+          "description": "Construir componente interactivo de comparación '¿Te suena alguno de estos años?' con pestañas alternables de campaña ON vs campaña OFF y propuesta de anticipación de Viora.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US34",
+      "trello_formatted_id": "US034",
+      "type": "User Story",
+      "title": "Exploración de beneficios y capacidades operativas para el productor olivarero",
+      "user_story_format": "Como Visitante Productor, quiero consultar las herramientas tecnológicas orientadas al monitoreo y manejo agronómico de parcelas, para evaluar cómo la plataforma me ayuda a registrar conteos sin conexión a internet, anticipar estrés hídrico y recibir prescripciones precisas de aclareo.",
+      "story_points": 2,
+      "application": "Website",
+      "aspect": "Communications",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US034TASK001",
+          "trello_card_title": "US034TASK001 | Sección de segmento para Productores Olivareros e ilustración",
+          "title": "Sección de segmento para Productores Olivareros e ilustración",
+          "description": "Diseñar y maquetar módulo editorial para productores 'Un año sobra, el otro falta', incorporando retrato ilustrado, propuesta de lectura de frío, conteo por árbol y prescripción sin conexión.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US034TASK002",
+          "trello_card_title": "US034TASK002 | Tarjeta interactiva 'Hecha para el campo' y mockup de muestreo",
+          "title": "Tarjeta interactiva 'Hecha para el campo' y mockup de muestreo",
+          "description": "Implementar tarjeta visual 'Hecha para el campo' con mockup de la app móvil destacando el registro de muestreos a pie de árbol sin cobertura y sincronización diferida.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US35",
+      "trello_formatted_id": "US035",
+      "type": "User Story",
+      "title": "Exploración de beneficios y herramientas de gestión territorial para cooperativas agrarias",
+      "user_story_format": "Como Visitante Gestor de Cooperativa, quiero consultar las capacidades de supervisión cartográfica y proyección agregada de cosecha, para determinar si la plataforma facilita la asistencia técnica a los socios agremiados y mejora la planificación logística del acopio en almazara.",
+      "story_points": 2,
+      "application": "Website",
+      "aspect": "Communications",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US035TASK001",
+          "trello_card_title": "US035TASK001 | Sección de segmento para Gestores Técnicos y Cooperativas",
+          "title": "Sección de segmento para Gestores Técnicos y Cooperativas",
+          "description": "Maquetar módulo de gestores técnicos 'No puedes estar en cada parcela', incorporando ilustración editorial, propuesta de supervisión cartográfica y sustitución de cuadernos y planillas Excel.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US035TASK002",
+          "trello_card_title": "US035TASK002 | Mockup interactivo de Licencia Colectiva y proyección de acopio",
+          "title": "Mockup interactivo de Licencia Colectiva y proyección de acopio",
+          "description": "Construir mockup visual del panel de licencia colectiva para cooperativas mostrando socios vinculados, hectáreas supervisadas, semáforo del territorio y proyección de acopio verde y negra.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US36",
+      "trello_formatted_id": "US036",
+      "type": "User Story",
+      "title": "Visualización de planes de suscripción y tarifas transparentes en moneda nacional (PEN)",
+      "user_story_format": "Como Visitante, quiero consultar las tarifas de suscripción en Soles (PEN) por superficie o membresía institucional junto con el detalle de servicios incluidos, para evaluar la opción comercial más conveniente y transparente para mi escala productiva antes de contratar.",
+      "story_points": 2,
+      "application": "Website",
+      "aspect": "Communications",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US036TASK001",
+          "trello_card_title": "US036TASK001 | Maquetación de planes comerciales en Soles (PEN) y Código Cooperativa",
+          "title": "Maquetación de planes comerciales en Soles (PEN) y Código Cooperativa",
+          "description": "Implementar sección 'Planes' con tres modalidades en Soles peruanos: Plan Productor (por ha), Plan Cooperativa (licencia colectiva a medida) y Canje de Código de Cooperativa (S/ 0 para el socio).",
+          "estimation_hours": 1.0,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US036TASK002",
+          "trello_card_title": "US036TASK002 | Calculadora interactiva de hectáreas y pasarela Mercado Pago",
+          "title": "Calculadora interactiva de hectáreas y pasarela Mercado Pago",
+          "description": "Construir componente interactivo de estimación tarifaria donde el productor ajusta sus hectáreas (+ / -) calculando la cuota en tiempo real con integración simulada de Mercado Pago.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US37",
+      "trello_formatted_id": "US037",
+      "type": "User Story",
+      "title": "Reproducción del video promocional y demostrativo del producto (\"About the Product\")",
+      "user_story_format": "Como Visitante Interesado, quiero reproducir un video demostrativo breve sobre el funcionamiento de Viora, para apreciar la aplicación práctica de los modelos agronómicos en campo y validar su eficacia en la mitigación de la vecería prolongada antes de adoptar la plataforma.",
+      "story_points": 1,
+      "application": "Website",
+      "aspect": "Communications",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US037TASK001",
+          "trello_card_title": "US037TASK001 | Reproductor modal accesible para video 'About the Product'",
+          "title": "Reproductor modal accesible para video 'About the Product'",
+          "description": "Configurar reproductor modal de video promocional de producto ('Good Move') con controles de reproducción, cierre intuitivo y adaptación a dispositivos móviles y escritorio.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US037TASK002",
+          "trello_card_title": "US037TASK002 | Miniatura estilizada de video y disparador de reproducción",
+          "title": "Miniatura estilizada de video y disparador de reproducción",
+          "description": "Diseñar miniatura gráfica del video demostrativo con botón flotante interactivo de reproducción integrado armónicamente en el flujo de la Landing Page.",
+          "estimation_hours": 0.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US38",
+      "trello_formatted_id": "US038",
+      "type": "User Story",
+      "title": "Reproducción del video institucional sobre el equipo y proceso de ingeniería (\"About the Team\")",
+      "user_story_format": "Como Visitante Cauteloso, quiero reproducir un video sobre el equipo y el proceso de trabajo detrás del desarrollo de Viora, para corroborar el respaldo profesional, rigor agronómico e institucional del software antes de incorporarlo en mi actividad agrícola.",
+      "story_points": 1,
+      "application": "Website",
+      "aspect": "Communications",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US038TASK001",
+          "trello_card_title": "US038TASK001 | Sección 'Nuestro equipo', ilustración de trofeo y fichas de integrantes",
+          "title": "Sección 'Nuestro equipo', ilustración de trofeo y fichas de integrantes",
+          "description": "Maquetar sección institucional con título ''PERO SI ES SOLO UN PROYECTO'', ilustración del equipo con trofeo, ficha de los 5 integrantes con roles específicos y enlaces a perfiles de LinkedIn.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US038TASK002",
+          "trello_card_title": "US038TASK002 | Modal de video institucional 'About the Team' y Misión/Visión",
+          "title": "Modal de video institucional 'About the Team' y Misión/Visión",
+          "description": "Implementar modal de video para la cápsula audiovisual del equipo de desarrollo e integrar el bloque de Misión y Visión institucional de ArcadiaDevs y Viora.",
+          "estimation_hours": 0.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US39",
+      "trello_formatted_id": "US039",
+      "type": "User Story",
+      "title": "Consulta de términos de servicio y política de privacidad y protección de datos (Ley N° 29733)",
+      "user_story_format": "Como Visitante, quiero consultar los Términos y Condiciones y la Política de Privacidad formulada conforme a la Ley N° 29733 (Ley de Protección de Datos Personales del Perú), para tener plena certidumbre legal sobre la confidencialidad de mis registros de cultivo y los derechos sobre mis datos agronómicos.",
+      "story_points": 1,
+      "application": "Website",
+      "aspect": "Communications",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US039TASK001",
+          "trello_card_title": "US039TASK001 | Maquetación y enlaces a Términos de Servicio en footer legal",
+          "title": "Maquetación y enlaces a Términos de Servicio en footer legal",
+          "description": "Implementar acceso directo y vista de Términos de Servicio en la columna legal del footer, estipulando condiciones de uso, licenciamiento y exención de responsabilidad agronómica.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US039TASK002",
+          "trello_card_title": "US039TASK002 | Vista de Política de Privacidad y Protección de Datos (Ley N° 29733)",
+          "title": "Vista de Política de Privacidad y Protección de Datos (Ley N° 29733)",
+          "description": "Redactar e integrar página formal de Política de Privacidad conforme a la Ley N° 29733 del Perú, accesible desde el menú legal del pie de página.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US40",
+      "trello_formatted_id": "US040",
+      "type": "User Story",
+      "title": "Redirección y acceso a la descarga oficial de la aplicación móvil",
+      "user_story_format": "Como Visitante, quiero distinguir accesos directos hacia las aplicaciones móviles oficiales según mi segmento (App Productor Olivarero en Android/Kotlin o App Gestor Técnico en Flutter), para descargar e instalar la aplicación correspondiente a mi actividad e iniciar mi experiencia en la plataforma.",
+      "story_points": 1,
+      "application": "Website",
+      "aspect": "Communications",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US040TASK001",
+          "trello_card_title": "US040TASK001 | Sección de descarga con render 3D móvil e insignias oficiales",
+          "title": "Sección de descarga con render 3D móvil e insignias oficiales",
+          "description": "Maquetar sección 'Menos vecería, más cosecha cada campaña' con mockup de teléfono móvil e insignias oficiales de descarga en Google Play Store y Apple App Store.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US040TASK002",
+          "trello_card_title": "US040TASK002 | Banner de conversión pre-footer y código QR de descarga rápida",
+          "title": "Banner de conversión pre-footer y código QR de descarga rápida",
+          "description": "Implementar banner inferior de llamada a la acción 'Empieza a medir tu próxima campaña' con botones oficiales y código QR para instalación inmediata en huerto o ferias.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US41",
+      "trello_formatted_id": "US041",
+      "type": "User Story",
+      "title": "Selección de idioma y localización de contenidos en la Landing Page",
+      "user_story_format": "Como Visitante, quiero alternar el idioma de los contenidos entre Español e Inglés mediante un selector visible en la cabecera, para consultar la propuesta de valor, los beneficios agronómicos y las tarifas en mi idioma preferido.",
+      "story_points": 2,
+      "application": "Website",
+      "aspect": "Communications",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US041TASK001",
+          "trello_card_title": "US041TASK001 | Catálogos de traducción bilingüe (ES/EN) y framework i18n",
+          "title": "Catálogos de traducción bilingüe (ES/EN) y framework i18n",
+          "description": "Estructurar diccionarios de internacionalización es.json y en.json con todas las cadenas del portal (hero, contexto de Tacna, segmentos, planes, equipo y footer legal).",
+          "estimation_hours": 0.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US041TASK002",
+          "trello_card_title": "US041TASK002 | Selector interactivo de idioma ES/EN en header y footer",
+          "title": "Selector interactivo de idioma ES/EN en header y footer",
+          "description": "Construir componente selector de idioma (ES / EN) en la barra de navegación y pie de página con cambio reactivo de idioma y persistencia en almacenamiento local.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Website",
+            "Communications"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SPK01",
+      "trello_formatted_id": "SPK001",
+      "type": "Spike Story",
+      "title": "Investigación y modelado dinámico de Erez para cálculo de frío en backend",
+      "user_story_format": "Como equipo de desarrollo de backend, queremos implementar un prototipo computacional del modelo dinámico de Erez en nuestro backend Spring Boot Java para la Plataforma Viora, para validar la viabilidad matemática de procesar series horarias de temperatura y calibrar el umbral invernal del olivo antes de su integración definitiva en los servicios RESTful.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "SPK001TASK001",
+          "trello_card_title": "SPK001TASK001 | Revisión bibliográfica y formalización matemática del modelo de Erez",
+          "title": "Revisión bibliográfica y formalización matemática del modelo de Erez",
+          "description": "Documentar las ecuaciones diferenciales de dos etapas de Fishman, Erez y Couvillon (1987) para formación y fijación irreversible de porciones de frío en el olivo.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "SPK001TASK002",
+          "trello_card_title": "SPK001TASK002 | Prototipo computacional en Java de simulación de porciones de frío",
+          "title": "Prototipo computacional en Java de simulación de porciones de frío",
+          "description": "Implementar un algoritmo de cálculo iterativo en Java alimentado con series térmicas horarias sintéticas y validar los factores de destrucción por calor (>24°C).",
+          "estimation_hours": 1.2,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SPK02",
+      "trello_formatted_id": "SPK002",
+      "type": "Spike Story",
+      "title": "Investigación de persistencia local SQLite y protocolo offline-first",
+      "user_story_format": "Como equipo de desarrollo móvil, queremos construir un prototipo de persistencia local en SQLite (Room / sqflite) para nuestras aplicaciones móviles Android (Kotlin) y Cross-Platform (Flutter) de la Plataforma Viora, para verificar la operatividad offline del muestreo a pie de árbol y comprobar la sincronización bidireccional idempotente con el backend.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "SPK002TASK001",
+          "trello_card_title": "SPK002TASK001 | Diseño de esquema relacional SQLite para capturas desconectadas",
+          "title": "Diseño de esquema relacional SQLite para capturas desconectadas",
+          "description": "Definir tablas locales de parcelas, rondas de muestreo y registros de conteo por árbol con banderas de sincronización (SYNC_PENDING, SYNCED) y marcas temporales UTC.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "SPK002TASK002",
+          "trello_card_title": "SPK002TASK002 | Verificación de sincronización idempotente hacia backend REST",
+          "title": "Verificación de sincronización idempotente hacia backend REST",
+          "description": "Simular recuperación de señal de red móvil y envío por lotes con claves de idempotencia UUID para garantizar ausencia de registros duplicados en el servidor.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS31",
+      "trello_formatted_id": "TS031",
+      "type": "Technical Story",
+      "title": "Manejo centralizado de excepciones y errores bajo estándar RFC 7807",
+      "user_story_format": "Como ingeniero de plataforma core, quiero implementar un interceptor global de excepciones en el backend, para garantizar que todas las respuestas de error sigan el estándar RFC 7807 (Problem Details) con códigos HTTP semánticos y sin exponer trazas internas.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Shared",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS031TASK001",
+          "trello_card_title": "TS031TASK001 | Interceptor GlobalExceptionHandler en capa interfaces",
+          "title": "Interceptor GlobalExceptionHandler en capa interfaces",
+          "description": "Implementar RestControllerAdvice capturando excepciones y mapeando ProblemDetail RFC7807.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Shared"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS031TASK002",
+          "trello_card_title": "TS031TASK002 | Serialización ProblemDetail y códigos HTTP",
+          "title": "Serialización ProblemDetail y códigos HTTP",
+          "description": "Formatear respuestas ErrorResponseResource en capa infraestructura REST.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Shared"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS32",
+      "trello_formatted_id": "TS032",
+      "type": "Technical Story",
+      "title": "Convenciones de persistencia relacional, nomenclatura ORM y tipado espacial",
+      "user_story_format": "Como ingeniero de plataforma core, quiero configurar la estrategia de mapeo objeto-relacional en el ORM, para normalizar la conversión automática de propiedades camelCase a snake_case y persistir tipos geométricos espaciales WGS84 de forma consistente.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Shared",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS032TASK001",
+          "trello_card_title": "TS032TASK001 | Estrategia física snake_case en infraestructura",
+          "title": "Estrategia física snake_case en infraestructura",
+          "description": "Configurar PhysicalNamingStrategy de Hibernate para tablas y columnas relacionales.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Shared"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS032TASK002",
+          "trello_card_title": "TS032TASK002 | Persistencia espacial WGS84 en entidades",
+          "title": "Persistencia espacial WGS84 en entidades",
+          "description": "Mapear tipos GeoJSON y campos auditables en entidades JPA.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Shared"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS33",
+      "trello_formatted_id": "TS033",
+      "type": "Technical Story",
+      "title": "Generación dinámica y documentación interactiva de contratos de API con OpenAPI 3.0",
+      "user_story_format": "Como ingeniero de plataforma core, quiero integrar el generador de contratos OpenAPI 3.0 en el backend, para exponer una interfaz Swagger UI interactiva y esquemas JSON que documenten exhaustivamente todos los endpoints del sistema.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Shared",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS033TASK001",
+          "trello_card_title": "TS033TASK001 | Configurar OpenApiConfig en capa infraestructura",
+          "title": "Configurar OpenApiConfig en capa infraestructura",
+          "description": "Definir bean OpenAPI 3.0 con metadatos y servidores.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Shared"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS033TASK002",
+          "trello_card_title": "TS033TASK002 | Documentar interfaces REST en Swagger",
+          "title": "Documentar interfaces REST en Swagger",
+          "description": "Exponer swagger-ui y esquemas de resources en capa interfaces.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Shared"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS34",
+      "trello_formatted_id": "TS034",
+      "type": "Technical Story",
+      "title": "Resolución de localización y mensajes internacionalizados mediante cabecera Accept-Language",
+      "user_story_format": "Como ingeniero de plataforma core, quiero configurar el resolvedor de localización y los catálogos de recursos MessageSource en el backend, para interceptar el encabezado HTTP Accept-Language y entregar mensajes de validación y errores RFC 7807 traducidos en Español o Inglés.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Shared",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS034TASK001",
+          "trello_card_title": "TS034TASK001 | Configurar AcceptHeaderLocaleResolver en capa infraestructura",
+          "title": "Configurar AcceptHeaderLocaleResolver en capa infraestructura",
+          "description": "Registrar resolvedor de locale por encabezado HTTP Accept-Language.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Shared"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS034TASK002",
+          "trello_card_title": "TS034TASK002 | Catálogos MessageSource en capa presentación",
+          "title": "Catálogos MessageSource en capa presentación",
+          "description": "Definir mensajes bilingües properties para validaciones y errores RFC7807.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Shared"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS11",
+      "trello_formatted_id": "TS011",
+      "type": "Technical Story",
+      "title": "Creación y delimitación poligonal de parcelas georreferenciadas",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar los vértices poligonales en formato WGS84 a la API, para registrar una nueva parcela y persistir sus propiedades agronómicas.",
+      "story_points": 5,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS011TASK001",
+          "trello_card_title": "TS011TASK001 | Agregado Plot en capa dominio",
+          "title": "Agregado Plot en capa dominio",
+          "description": "Modelar agregado Plot con PolygonCoordinates, variedad y marco plantación.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS011TASK002",
+          "trello_card_title": "TS011TASK002 | Comando DelimitPlotCommand en capa aplicación",
+          "title": "Comando DelimitPlotCommand en capa aplicación",
+          "description": "Procesar DelimitPlotCommand en PlotCommandService persistiendo en PlotRepository.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "TS011TASK003",
+          "trello_card_title": "TS011TASK003 | Controlador PlotController en capa interfaces",
+          "title": "Controlador PlotController en capa interfaces",
+          "description": "Exponer POST /plots transformando CreatePlotResource a PlotResource.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS12",
+      "trello_formatted_id": "TS012",
+      "type": "Technical Story",
+      "title": "Listado y sincronización incremental delta de parcelas",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar el inventario de parcelas con soporte de marcas temporales, para actualizar la base de datos local SQLite mediante sincronización delta eficiente.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS012TASK001",
+          "trello_card_title": "TS012TASK001 | Query GetPlotsDeltaSync en capa aplicación",
+          "title": "Query GetPlotsDeltaSync en capa aplicación",
+          "description": "Implementar consulta delta en PlotQueryService filtrando por updatedSince.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS012TASK002",
+          "trello_card_title": "TS012TASK002 | Endpoint listPlots en controlador PlotController",
+          "title": "Endpoint listPlots en controlador PlotController",
+          "description": "Exponer GET /plots retornando colección PlotResource con 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS13",
+      "trello_formatted_id": "TS013",
+      "type": "Technical Story",
+      "title": "Consulta detallada de información agronómica y espacial de parcela",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el detalle de una parcela mediante su ID, para visualizar la ficha agronómica completa del predio en la interfaz de usuario.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS013TASK001",
+          "trello_card_title": "TS013TASK001 | Query GetPlotByIdQuery en capa aplicación",
+          "title": "Query GetPlotByIdQuery en capa aplicación",
+          "description": "Recuperar agregado Plot validando titularidad en PlotQueryServiceImpl.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS013TASK002",
+          "trello_card_title": "TS013TASK002 | Endpoint getPlotById en PlotController",
+          "title": "Endpoint getPlotById en PlotController",
+          "description": "Exponer GET /plots/{plotId} retornando PlotResource vía assembler.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS14",
+      "trello_formatted_id": "TS014",
+      "type": "Technical Story",
+      "title": "Actualización y rectificación integral de parcela con bloqueo optimista",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar los datos actualizados de la parcela mediante el método PUT junto con el parámetro de ruta `{plotId}`, la cabecera `If-Match` y los datos en el cuerpo JSON, para rectificar linderos poligonales, marco de plantación o atributos agronómicos previniendo colisiones de concurrencia.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS014TASK001",
+          "trello_card_title": "TS014TASK001 | Comando UpdatePlotCommand en capa aplicación",
+          "title": "Comando UpdatePlotCommand en capa aplicación",
+          "description": "Ejecutar UpdatePlotCommand en PlotCommandService validando concurrencia If-Match.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS014TASK002",
+          "trello_card_title": "TS014TASK002 | Endpoint updatePlot en controlador PlotController",
+          "title": "Endpoint updatePlot en controlador PlotController",
+          "description": "Recibir UpdatePlotResource retornando PlotResource con cabecera ETag.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS15",
+      "trello_formatted_id": "TS015",
+      "type": "Technical Story",
+      "title": "Eliminación y baja lógica de parcela del inventario",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar a la API la remoción de una parcela, para dar de baja predios registrados por error o desafectados de la producción.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS015TASK001",
+          "trello_card_title": "TS015TASK001 | Comando RemovePlotCommand en capa aplicación",
+          "title": "Comando RemovePlotCommand en capa aplicación",
+          "description": "Procesar baja lógica en PlotCommandService mutando estado agregado.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS015TASK002",
+          "trello_card_title": "TS015TASK002 | Endpoint deletePlot en controlador PlotController",
+          "title": "Endpoint deletePlot en controlador PlotController",
+          "description": "Exponer DELETE /plots/{plotId} retornando 200 OK y PlotResource.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS16",
+      "trello_formatted_id": "TS016",
+      "type": "Technical Story",
+      "title": "Alta y vinculación de nodo sensor virtual a parcela",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero registrar un nodo sensor virtual (microclima o sonda de suelo a 30/60 cm) en la API, para activar la simulación de telemetría agroclimática en la parcela.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS016TASK001",
+          "trello_card_title": "TS016TASK001 | Agregado IoTDevice y RegisterIoTDeviceCommand aplicación",
+          "title": "Agregado IoTDevice y RegisterIoTDeviceCommand aplicación",
+          "description": "Modelar IoTDevice en dominio y procesar comando vinculación.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS016TASK002",
+          "trello_card_title": "TS016TASK002 | Controlador IoTDeviceController en capa interfaces",
+          "title": "Controlador IoTDeviceController en capa interfaces",
+          "description": "Exponer POST /plots/{plotId}/iot-devices transformando RegisterIoTDeviceResource vía assembler.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS17",
+      "trello_formatted_id": "TS017",
+      "type": "Technical Story",
+      "title": "Consulta de inventario de nodos virtuales vinculados a parcela",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el listado de nodos virtuales de una parcela a la API, para desplegar su estado operativo y última lectura simulada en la interfaz.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS017TASK001",
+          "trello_card_title": "TS017TASK001 | Query GetIoTDevicesByPlotId en capa aplicación",
+          "title": "Query GetIoTDevicesByPlotId en capa aplicación",
+          "description": "Recuperar lista de agregados IoTDevice vinculados al PlotId.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS017TASK002",
+          "trello_card_title": "TS017TASK002 | Endpoint listIoTDevices en controlador IoTDeviceController",
+          "title": "Endpoint listIoTDevices en controlador IoTDeviceController",
+          "description": "Exponer GET /plots/{plotId}/iot-devices retornando colección IoTDeviceResource.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS18",
+      "trello_formatted_id": "TS018",
+      "type": "Technical Story",
+      "title": "Desvinculación de nodo virtual preservando trazabilidad histórica",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar la desvinculación de un nodo virtual a la API, para retirar sensores obsoletos preservando las lecturas históricas asociadas al lote.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS018TASK001",
+          "trello_card_title": "TS018TASK001 | Comando DeactivateIoTDeviceCommand en capa aplicación",
+          "title": "Comando DeactivateIoTDeviceCommand en capa aplicación",
+          "description": "Desactivar agregado IoTDevice preservando series históricas en base.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS018TASK002",
+          "trello_card_title": "TS018TASK002 | Endpoint deactivateIoTDevice en controlador IoTDeviceController",
+          "title": "Endpoint deactivateIoTDevice en controlador IoTDeviceController",
+          "description": "Exponer DELETE con cabecera If-Match retornando 200 OK.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS19",
+      "trello_formatted_id": "TS019",
+      "type": "Technical Story",
+      "title": "Consulta de series temporales de telemetría ambiental y de suelo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar las lecturas horarias de microclima y humedad de suelo a la API, para graficar las curvas térmicas e hídricas en los paneles de control de la parcela.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS019TASK001",
+          "trello_card_title": "TS019TASK001 | Query GetTelemetrySeriesByPlotId en capa aplicación",
+          "title": "Query GetTelemetrySeriesByPlotId en capa aplicación",
+          "description": "Consultar serie temporal filtrando por fechas en TelemetryQueryService.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS019TASK002",
+          "trello_card_title": "TS019TASK002 | Controlador TelemetryController en capa interfaces",
+          "title": "Controlador TelemetryController en capa interfaces",
+          "description": "Exponer GET /plots/{plotId}/telemetries retornando TelemetrySeriesResource con 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS20",
+      "trello_formatted_id": "TS020",
+      "type": "Technical Story",
+      "title": "Consulta de pronóstico meteorológico geolocalizado a 7 días",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el pronóstico meteorológico para la coordenada centroide de la parcela, para advertir al productor sobre olas de calor, heladas o vientos desecantes.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS020TASK001",
+          "trello_card_title": "TS020TASK001 | Query GetWeatherForecast en capa aplicación",
+          "title": "Query GetWeatherForecast en capa aplicación",
+          "description": "Obtener pronóstico meteorológico semanal en WeatherForecastQueryService mediante cliente.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS020TASK002",
+          "trello_card_title": "TS020TASK002 | Controlador WeatherForecastController en capa interfaces",
+          "title": "Controlador WeatherForecastController en capa interfaces",
+          "description": "Exponer GET /plots/{plotId}/forecasts retornando WeatherForecastResource con 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS21",
+      "trello_formatted_id": "TS021",
+      "type": "Technical Story",
+      "title": "Asentamiento de cosecha anual por campaña para auditoría productiva",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar los kilogramos cosechados al cierre de la temporada a la API, para registrar la producción anual del lote y alimentar el cálculo del índice BBI.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS021TASK001",
+          "trello_card_title": "TS021TASK001 | Agregado HarvestRecord y RecordHarvestYieldCommand aplicación",
+          "title": "Agregado HarvestRecord y RecordHarvestYieldCommand aplicación",
+          "description": "Modelar HarvestRecord en dominio y procesar comando pesaje.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS021TASK002",
+          "trello_card_title": "TS021TASK002 | Controlador HarvestRecordController en capa interfaces",
+          "title": "Controlador HarvestRecordController en capa interfaces",
+          "description": "Exponer POST harvest-records transformando RecordHarvestYieldResource con assembler.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS22",
+      "trello_formatted_id": "TS022",
+      "type": "Technical Story",
+      "title": "Consulta del historial plurianual de cosechas de la parcela",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el historial de cosechas de una parcela a la API, para renderizar la curva interanual de rendimiento productivo en la interfaz.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS022TASK001",
+          "trello_card_title": "TS022TASK001 | Query GetHarvestRecordsByPlotId en capa aplicación",
+          "title": "Query GetHarvestRecordsByPlotId en capa aplicación",
+          "description": "Recuperar colección de HarvestRecords ordenadas cronológicamente por campaña.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS022TASK002",
+          "trello_card_title": "TS022TASK002 | Endpoint listHarvestRecords en HarvestRecordController",
+          "title": "Endpoint listHarvestRecords en HarvestRecordController",
+          "description": "Exponer GET harvest-records retornando lista HarvestRecordResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS23",
+      "trello_formatted_id": "TS023",
+      "type": "Technical Story",
+      "title": "Cálculo y entrega de métricas de vecería BBI y frío dinámico de Erez",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar los indicadores matemáticos de vecería y frío invernal a la API, para desplegar el índice BBI y las porciones de frío acumuladas con alertas térmicas ENOS.",
+      "story_points": 5,
+      "application": "Web Service Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS023TASK001",
+          "trello_card_title": "TS023TASK001 | Servicio BiennialBearingIndexCalculator en capa dominio",
+          "title": "Servicio BiennialBearingIndexCalculator en capa dominio",
+          "description": "Programar cálculo matemático BBI Hoblyn sobre campañas históricas.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS023TASK002",
+          "trello_card_title": "TS023TASK002 | Query GetPlotMetricsQuery en capa aplicación",
+          "title": "Query GetPlotMetricsQuery en capa aplicación",
+          "description": "Computar porciones frío Erez y consolidar métricas fenológicas.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "TS023TASK003",
+          "trello_card_title": "TS023TASK003 | Controlador PhenologyMetricController en capa interfaces",
+          "title": "Controlador PhenologyMetricController en capa interfaces",
+          "description": "Exponer GET /plots/{plotId}/metrics retornando PhenologyMetricResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS24",
+      "trello_formatted_id": "TS024",
+      "type": "Technical Story",
+      "title": "Registro y sincronización de muestreos guiados de cuajado en campo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar los registros de conteo de frutos y brotes tomados a pie de árbol mediante el método POST con parámetro de ruta `{plotId}` y cuerpo JSON con árboles evaluados (incluyendo el diámetro de tronco como atributo opcional nullable), para sincronizar los muestreos offline y calcular la carga frutal del predio sin bloquear el proceso si no se midió el tronco.",
+      "story_points": 5,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS024TASK001",
+          "trello_card_title": "TS024TASK001 | Agregado FieldSampling en capa dominio",
+          "title": "Agregado FieldSampling en capa dominio",
+          "description": "Modelar FieldSampling con árboles evaluados e invariantes muestrales.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS024TASK002",
+          "trello_card_title": "TS024TASK002 | Comando IngestFieldSamplingsBatchCommand en aplicación",
+          "title": "Comando IngestFieldSamplingsBatchCommand en aplicación",
+          "description": "Ingerir lote de muestreos calculando media cuajado transaccionalmente.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "TS024TASK003",
+          "trello_card_title": "TS024TASK003 | Controlador FieldSamplingController en capa interfaces",
+          "title": "Controlador FieldSamplingController en capa interfaces",
+          "description": "Exponer POST samplings procesando SubmitSamplingResource retornando 201.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS25",
+      "trello_formatted_id": "TS025",
+      "type": "Technical Story",
+      "title": "Consulta de representatividad estadística y estado de muestreo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el estado de representatividad de muestreos a la API, para notificar al usuario si ha evaluado suficientes árboles para generar prescripciones confiables.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS025TASK001",
+          "trello_card_title": "TS025TASK001 | Query GetSamplingSummary en capa aplicación",
+          "title": "Query GetSamplingSummary en capa aplicación",
+          "description": "Calcular representatividad muestral mínima n>=5 en capa aplicación.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS025TASK002",
+          "trello_card_title": "TS025TASK002 | Endpoint getSamplingSummary en FieldSamplingController",
+          "title": "Endpoint getSamplingSummary en FieldSamplingController",
+          "description": "Exponer GET /samplings retornando SamplingSummaryResource según vista view.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS26",
+      "trello_formatted_id": "TS026",
+      "type": "Technical Story",
+      "title": "Consulta de prescripción técnica de aclareo y ventana fenológica",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar la prescripción agronómica activa mediante el método GET al endpoint `/api/v1/plots/{plotId}/thinning-prescriptions` con parámetro de ruta `{plotId}` y filtro de estado `ACTIVE`, para desplegar el porcentaje de remoción recomendado, la ventana fenológica de intervención y la lista explícita de bloqueadores en caso de información faltante.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS026TASK001",
+          "trello_card_title": "TS026TASK001 | Query GetActiveThinningPrescription en capa aplicación",
+          "title": "Query GetActiveThinningPrescription en capa aplicación",
+          "description": "Calcular recomendación de remoción frutal en ThinningAdvisorService.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS026TASK002",
+          "trello_card_title": "TS026TASK002 | Controlador ThinningPrescriptionController en capa interfaces",
+          "title": "Controlador ThinningPrescriptionController en capa interfaces",
+          "description": "Exponer GET thinning-prescriptions retornando ThinningPrescriptionResource con 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS27",
+      "trello_formatted_id": "TS027",
+      "type": "Technical Story",
+      "title": "Confirmación y registro de ejecución de labor de aclareo en campo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar la confirmación de ejecución de aclareo mediante el método POST a `/api/v1/thinning-prescriptions/{id}/execution-confirmations` con parámetro de ruta `{id}` y cuerpo JSON (`executedDate`, `actualRemovalPercentage`, `removedKg`, `laborCrewSize`, `notes`), para asentar la práctica en la bitácora, actualizar el balance de carga residual y proyectar el calibre comercial COI.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS027TASK001",
+          "trello_card_title": "TS027TASK001 | Comando ConfirmThinningExecutionCommand en capa aplicación",
+          "title": "Comando ConfirmThinningExecutionCommand en capa aplicación",
+          "description": "Registrar ejecución real de raleo actualizando estado agregado.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS027TASK002",
+          "trello_card_title": "TS027TASK002 | Controlador ThinningExecutionController en capa interfaces",
+          "title": "Controlador ThinningExecutionController en capa interfaces",
+          "description": "Exponer POST execution-confirmations procesando ConfirmExecutionResource retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS39",
+      "trello_formatted_id": "TS039",
+      "type": "Technical Story",
+      "title": "Asentamiento formal y balance de liquidación de cosecha de fin de campaña",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar la liquidación formal de cosecha mediante el método POST a `/api/v1/plots/{plotId}/harvest-settlements` con parámetro de ruta `{plotId}` y cuerpo JSON (`campaignYear`, `greenOlivesKg`, `blackOlivesKg`, `commercialFruitsPerKg`, `notes`), para asentar la balanza oficial de fin de campaña, computar el balance frente a la prescripción y congelar la curva de estabilización interanual.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS039TASK001",
+          "trello_card_title": "TS039TASK001 | Agregado HarvestSettlement y SettleCampaignHarvestCommand aplicación",
+          "title": "Agregado HarvestSettlement y SettleCampaignHarvestCommand aplicación",
+          "description": "Modelar liquidación en dominio y procesar pesaje oficial.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS039TASK002",
+          "trello_card_title": "TS039TASK002 | Controlador HarvestSettlementController en capa interfaces",
+          "title": "Controlador HarvestSettlementController en capa interfaces",
+          "description": "Exponer POST harvest-settlements transformando SettleHarvestResource retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS40",
+      "trello_formatted_id": "TS040",
+      "type": "Technical Story",
+      "title": "Certificación criptográfica colegiada del expediente agronómico inmutable",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero registrar la certificación colegiada del expediente mediante el método POST a `/api/v1/plots/{plotId}/certifications` con parámetro de ruta `{plotId}` y cuerpo JSON (`campaignYear`, `auditorSignature`, `certifiedBy`, `cipNumber`, `notes`), para sellar el dossier técnico de la campaña y generar la huella criptográfica SHA-256 inmutable de no repudiación.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS040TASK001",
+          "trello_card_title": "TS040TASK001 | Comando CertifyAgronomicDossierCommand en capa aplicación",
+          "title": "Comando CertifyAgronomicDossierCommand en capa aplicación",
+          "description": "Generar hash SHA-256 inmutable validando colegiatura CIP agrónomo.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS040TASK002",
+          "trello_card_title": "TS040TASK002 | Controlador AgronomicReportCertificationController en interfaces",
+          "title": "Controlador AgronomicReportCertificationController en interfaces",
+          "description": "Exponer POST certifications procesando CertifyDossierResource retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS42",
+      "trello_formatted_id": "TS042",
+      "type": "Technical Story",
+      "title": "Calibración y ajuste de offset edafoclimático para nodo sensor IoT en parcela",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar los parámetros de calibración mediante el método PUT al endpoint `/api/v1/plots/{plotId}/iot-devices/{deviceId}` con parámetros de ruta `{plotId}`, `{deviceId}` y cabecera `If-Match`, para ajustar las lecturas telemétricas según las condiciones edafoclimáticas del predio previniendo inconsistencias de concurrencia.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS042TASK001",
+          "trello_card_title": "TS042TASK001 | Comando CalibrateIoTDeviceCommand en capa aplicación",
+          "title": "Comando CalibrateIoTDeviceCommand en capa aplicación",
+          "description": "Aplicar factores de calibración en agregado IoTDevice verificando concurrencia.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS042TASK002",
+          "trello_card_title": "TS042TASK002 | Endpoint calibrateIoTDevice en IoTDeviceController",
+          "title": "Endpoint calibrateIoTDevice en IoTDeviceController",
+          "description": "Procesar CalibrateIoTDeviceResource retornando IoTDeviceResource con 200 OK.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS43",
+      "trello_formatted_id": "TS043",
+      "type": "Technical Story",
+      "title": "Rectificación de pesaje de cosecha anual con bloqueo optimista",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar una solicitud de rectificación de pesaje mediante el método PUT a `/api/v1/plots/{plotId}/harvest-records/{recordId}` con parámetros de ruta `{plotId}`, `{recordId}`, cabecera `If-Match` y cuerpo JSON (`rectifiedYieldKg`, `rectificationReason`), para corregir inconsistencias en pesajes históricos y recomputar reactivamente el Índice de Vecería (BBI).",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS043TASK001",
+          "trello_card_title": "TS043TASK001 | Comando RectifyHarvestYieldCommand en capa aplicación",
+          "title": "Comando RectifyHarvestYieldCommand en capa aplicación",
+          "description": "Ejecutar rectificación en HarvestRecord verificando versión concurrente If-Match.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS043TASK002",
+          "trello_card_title": "TS043TASK002 | Endpoint rectifyHarvestRecord en HarvestRecordController",
+          "title": "Endpoint rectifyHarvestRecord en HarvestRecordController",
+          "description": "Exponer PUT con If-Match retornando HarvestRecordResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS44",
+      "trello_formatted_id": "TS044",
+      "type": "Technical Story",
+      "title": "Restauración de cuartel olivícola archivado",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar la restauración de una parcela dada de baja mediante el método POST a `/api/v1/plots/{plotId}/restore` con parámetro de ruta `{plotId}`, para reintegrar el cuartel al inventario productivo activo sin pérdida de historial ni geometrías.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS044TASK001",
+          "trello_card_title": "TS044TASK001 | Comando RestorePlotCommand en capa aplicación",
+          "title": "Comando RestorePlotCommand en capa aplicación",
+          "description": "Ejecutar RestorePlotCommand en PlotCommandService reactivando agregado Plot.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS044TASK002",
+          "trello_card_title": "TS044TASK002 | Endpoint restorePlot en controlador PlotController",
+          "title": "Endpoint restorePlot en controlador PlotController",
+          "description": "Exponer POST /plots/{plotId}/restore retornando PlotResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS45",
+      "trello_formatted_id": "TS045",
+      "type": "Technical Story",
+      "title": "Eliminación de registro erróneo de cosecha en histórico fenológico",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero eliminar un pesaje de cosecha asentado por error mediante el método DELETE a `/api/v1/plots/{plotId}/harvest-records/{recordId}` con parámetros de ruta `{plotId}` y `{recordId}`, para purgar datos anómalos del historial y recalcular el Índice de Vecería (BBI) del cuartel.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS045TASK001",
+          "trello_card_title": "TS045TASK001 | Comando RemoveHarvestRecordCommand en capa aplicación",
+          "title": "Comando RemoveHarvestRecordCommand en capa aplicación",
+          "description": "Remover registro erróneo en repositorio HarvestRecordRepository verificando titularidad.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS045TASK002",
+          "trello_card_title": "TS045TASK002 | Endpoint removeHarvestRecord en HarvestRecordController",
+          "title": "Endpoint removeHarvestRecord en HarvestRecordController",
+          "description": "Exponer DELETE con If-Match retornando HarvestRecordResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS46",
+      "trello_formatted_id": "TS046",
+      "type": "Technical Story",
+      "title": "Consulta global de incidentes agroclimáticos con contadores y filtrado",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar la lista general de incidentes mediante el método GET al endpoint `/api/v1/agroclimatic-incidents` con parámetros de consulta de estado y paginación, para poblar el centro de alertas de la aplicación móvil y desplegar los contadores de severidad territorial.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS046TASK001",
+          "trello_card_title": "TS046TASK001 | Query GetAgroclimaticIncidents en capa aplicación",
+          "title": "Query GetAgroclimaticIncidents en capa aplicación",
+          "description": "Filtrar incidentes por severidad consolidando contadores en servicio.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS046TASK002",
+          "trello_card_title": "TS046TASK002 | Endpoint listIncidents en AgroclimaticIncidentController",
+          "title": "Endpoint listIncidents en AgroclimaticIncidentController",
+          "description": "Exponer GET /agroclimatic-incidents retornando IncidentListResponseResource con 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS47",
+      "trello_formatted_id": "TS047",
+      "type": "Technical Story",
+      "title": "Consulta de incidentes agroclimáticos asociados a un cuartel específico",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar los incidentes agroclimáticos de una parcela mediante el método GET a `/api/v1/plots/{plotId}/agroclimatic-incidents` con parámetro de ruta `{plotId}` y filtros de consulta, para desplegar los riesgos agroclimáticos y recomendaciones en la ficha individual del cuartel.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS047TASK001",
+          "trello_card_title": "TS047TASK001 | Filtrado por PlotId en IncidentQueryService",
+          "title": "Filtrado por PlotId en IncidentQueryService",
+          "description": "Recuperar incidentes agroclimáticos vinculados a una parcela específica.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS047TASK002",
+          "trello_card_title": "TS047TASK002 | Endpoint listPlotIncidents en AgroclimaticIncidentController",
+          "title": "Endpoint listPlotIncidents en AgroclimaticIncidentController",
+          "description": "Exponer GET /plots/{plotId}/agroclimatic-incidents retornando IncidentListResponseResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS48",
+      "trello_formatted_id": "TS048",
+      "type": "Technical Story",
+      "title": "Consulta detallada de incidente agroclimático con tendencia y pasos de mitigación",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar el detalle exhaustivo de una alerta mediante el método GET a `/api/v1/agroclimatic-incidents/{incidentId}` con parámetro de ruta `{incidentId}`, para visualizar la serie temporal de la anomalía, el checklist interactivo de mitigación y el diagnóstico agronómico.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS048TASK001",
+          "trello_card_title": "TS048TASK001 | Query GetAgroclimaticIncidentById en capa aplicación",
+          "title": "Query GetAgroclimaticIncidentById en capa aplicación",
+          "description": "Recuperar agregado AgroclimaticIncident con pasos de mitigación asociados.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS048TASK002",
+          "trello_card_title": "TS048TASK002 | Endpoint getIncidentDetail en AgroclimaticIncidentController",
+          "title": "Endpoint getIncidentDetail en AgroclimaticIncidentController",
+          "description": "Exponer GET /agroclimatic-incidents/{incidentId} retornando IncidentDetailResource con 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS49",
+      "trello_formatted_id": "TS049",
+      "type": "Technical Story",
+      "title": "Postergación temporal de notificaciones de incidente agroclimático (Snooze)",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero postergar las notificaciones de un incidente mediante el método POST a `/api/v1/agroclimatic-incidents/{incidentId}/postponements` con parámetro de ruta `{incidentId}` y cuerpo JSON (`postponeHours`), para silenciar temporalmente los avisos push durante la ventana horaria definida sin resolver la alerta en el lote.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS049TASK001",
+          "trello_card_title": "TS049TASK001 | Comando PostponeIncident en capa aplicación",
+          "title": "Comando PostponeIncident en capa aplicación",
+          "description": "Procesar PostponeAgroclimaticIncidentCommand mutando fecha postergación en agregado.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS049TASK002",
+          "trello_card_title": "TS049TASK002 | Endpoint postponeIncident en AgroclimaticIncidentController",
+          "title": "Endpoint postponeIncident en AgroclimaticIncidentController",
+          "description": "Exponer POST postponements retornando IncidentDetailResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS50",
+      "trello_formatted_id": "TS050",
+      "type": "Technical Story",
+      "title": "Completado de paso de mitigación agronómica de incidente",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero asentar la ejecución de un paso del protocolo de mitigación mediante el método PUT a `/api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}` con parámetros de ruta `{incidentId}` y `{stepId}` y cuerpo JSON, para registrar las labores de respuesta en campo y actualizar el estado de resolución del incidente.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS050TASK001",
+          "trello_card_title": "TS050TASK001 | Comando CompleteMitigationStep en capa aplicación",
+          "title": "Comando CompleteMitigationStep en capa aplicación",
+          "description": "Procesar CompleteMitigationStepCommand en dominio evaluando resolución del incidente.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS050TASK002",
+          "trello_card_title": "TS050TASK002 | Endpoint completeMitigationStep en AgroclimaticIncidentController",
+          "title": "Endpoint completeMitigationStep en AgroclimaticIncidentController",
+          "description": "Exponer PUT mitigation-steps/{stepId} retornando IncidentDetailResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS51",
+      "trello_formatted_id": "TS051",
+      "type": "Technical Story",
+      "title": "Consulta de estado global de muestreos de cuarteles (Plot Picker)",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar el estado consolidado de muestreos de todos los cuarteles mediante el método GET al endpoint `/api/v1/samplings` con parámetro de consulta de campaña, para renderizar el selector de predios (Plot Picker) en la interfaz móvil destacando el avance y suficiencia de cada lote.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS051TASK001",
+          "trello_card_title": "TS051TASK001 | Query GetPlotSamplingStates en capa aplicación",
+          "title": "Query GetPlotSamplingStates en capa aplicación",
+          "description": "Consolidar suficiencia muestral de predios en SamplingQueryServiceImpl.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS051TASK002",
+          "trello_card_title": "TS051TASK002 | Controlador PlotSamplingCollectionController en interfaces",
+          "title": "Controlador PlotSamplingCollectionController en interfaces",
+          "description": "Exponer GET /samplings retornando PlotSamplingCollectionSummaryResource con 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS52",
+      "trello_formatted_id": "TS052",
+      "type": "Technical Story",
+      "title": "Registro de fecha de plena floración observada en cuartel",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero registrar la fecha de plena floración del olivar mediante el método PUT a `/api/v1/plots/{plotId}/thinning-prescriptions/full-bloom` con parámetro de ruta `{plotId}` y cuerpo JSON (`campaignYear`, `observedOn`), para calibrar la base cronológica y calcular con precisión la ventana fenológica de aclareo antes del endurecimiento del carozo.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS052TASK001",
+          "trello_card_title": "TS052TASK001 | Comando RecordFullBloomCommand en capa aplicación",
+          "title": "Comando RecordFullBloomCommand en capa aplicación",
+          "description": "Procesar RecordFullBloomCommand calibrando ventana fenológica de raleo.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS052TASK002",
+          "trello_card_title": "TS052TASK002 | Endpoint recordFullBloom en ThinningPrescriptionController",
+          "title": "Endpoint recordFullBloom en ThinningPrescriptionController",
+          "description": "Exponer PUT full-bloom procesando RecordFullBloomResource retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS53",
+      "trello_formatted_id": "TS053",
+      "type": "Technical Story",
+      "title": "Consulta de eventos cronológicos y bitácora agronómica de raleo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar la bitácora histórica de intervenciones de aclareo mediante el método GET a `/api/v1/thinning-events` con parámetros opcionales de consulta (`campaignYear`, `plotId`), para visualizar en orden cronológico todos los eventos de muestreo, prescripción y confirmación ejecutados en el predio.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS053TASK001",
+          "trello_card_title": "TS053TASK001 | Query GetThinningEventsQuery en capa aplicación",
+          "title": "Query GetThinningEventsQuery en capa aplicación",
+          "description": "Recuperar bitácora cronológica de raleo en ThinningQueryService.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS053TASK002",
+          "trello_card_title": "TS053TASK002 | Controlador ThinningEventController en capa interfaces",
+          "title": "Controlador ThinningEventController en capa interfaces",
+          "description": "Exponer GET /thinning-events retornando lista ThinningEventResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS54",
+      "trello_formatted_id": "TS054",
+      "type": "Technical Story",
+      "title": "Listado de liquidaciones oficiales de cosecha por cuartel",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar el historial de cierres formales de cosecha mediante el método GET a `/api/v1/plots/{plotId}/harvest-settlements` con parámetro de ruta `{plotId}` y parámetros de consulta de paginación, para desplegar la serie plurianual de pesajes oficiales y balance de entrega en la ficha del cuartel.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS054TASK001",
+          "trello_card_title": "TS054TASK001 | Query GetHarvestSettlementsByPlotId en capa aplicación",
+          "title": "Query GetHarvestSettlementsByPlotId en capa aplicación",
+          "description": "Recuperar historial de liquidaciones de parcela en servicio.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS054TASK002",
+          "trello_card_title": "TS054TASK002 | Endpoint list en HarvestSettlementController",
+          "title": "Endpoint list en HarvestSettlementController",
+          "description": "Exponer GET harvest-settlements retornando colección HarvestSettlementResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS55",
+      "trello_formatted_id": "TS055",
+      "type": "Technical Story",
+      "title": "Consulta detallada de liquidación de cosecha por campaña individual",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar el comprobante formal de una liquidación específica mediante el método GET a `/api/v1/plots/{plotId}/harvest-settlements/{campaignYear}` con parámetros de ruta `{plotId}` y `{campaignYear}`, para visualizar el pesaje certificado, el balance frente a la prescripción y el Índice de Reducción de Alternancia (ARR).",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS055TASK001",
+          "trello_card_title": "TS055TASK001 | Query GetHarvestSettlementByCampaignYear en capa aplicación",
+          "title": "Query GetHarvestSettlementByCampaignYear en capa aplicación",
+          "description": "Consultar liquidación anual calculando balance ARR en servicio.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS055TASK002",
+          "trello_card_title": "TS055TASK002 | Endpoint detail en HarvestSettlementController",
+          "title": "Endpoint detail en HarvestSettlementController",
+          "description": "Exponer GET harvest-settlements/{campaignYear} retornando HarvestSettlementResource con 200.",
+          "estimation_hours": 0.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US09",
+      "trello_formatted_id": "US009",
+      "type": "User Story",
+      "title": "Delimitación georreferenciada de parcela con GPS y caracterización agronómica inicial",
+      "user_story_format": "Como Productor Olivarero, quiero delimitar el contorno de mi parcela capturando los vértices mediante el sensor GPS del dispositivo móvil o fijándolos sobre la cartografía satelital, registrando la variedad de olivo cultivada y el marco de plantación, para establecer la base territorial y dendrométrica de mi lote necesaria para dimensionar el potencial productivo y regular la carga frutal.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US009TASK001",
+          "trello_card_title": "US009TASK001 | Pantallas P20 a P26 en presentación",
+          "title": "Pantallas P20 a P26 en presentación",
+          "description": "Construir RegisterPlotScreen y componentes de pasos en Jetpack Compose.",
+          "estimation_hours": 1.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US009TASK002",
+          "trello_card_title": "US009TASK002 | Caso RegisterPlotUseCase en capa aplicación",
+          "title": "Caso RegisterPlotUseCase en capa aplicación",
+          "description": "Validar PlotOutline y calcular área mediante NewPlot en dominio.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US009TASK003",
+          "trello_card_title": "US009TASK003 | Rastreo FusedLocationTracker en capa infraestructura",
+          "title": "Rastreo FusedLocationTracker en capa infraestructura",
+          "description": "Integrar GPS y cliente PlotService para persistir PlotEntity local.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US10",
+      "trello_formatted_id": "US010",
+      "type": "User Story",
+      "title": "Consulta y modificación de linderos y datos dendrométricos de parcela",
+      "user_story_format": "Como Productor Olivarero, quiero consultar y actualizar los linderos perimétricos, el nombre o el marco de plantación de una parcela existente, para corregir mediciones topográficas tras labores de replante y mantener al día la caracterización dendrométrica del olivar.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US010TASK001",
+          "trello_card_title": "US010TASK001 | Pantallas P27 a P29 en presentación",
+          "title": "Pantallas P27 a P29 en presentación",
+          "description": "Construir EditPlotScreen y AdjustOutlineScreen en Jetpack Compose.",
+          "estimation_hours": 1.5,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US010TASK002",
+          "trello_card_title": "US010TASK002 | Caso UpdatePlotUseCase en capa aplicación",
+          "title": "Caso UpdatePlotUseCase en capa aplicación",
+          "description": "Procesar PlotChanges actualizando PlotEntity mediante PlotService en infraestructura.",
+          "estimation_hours": 1.5,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US11",
+      "trello_formatted_id": "US011",
+      "type": "User Story",
+      "title": "Baja y remoción de parcela del inventario productivo",
+      "user_story_format": "Como Productor Olivarero, quiero dar de baja o eliminar una parcela registrada por error o que ya no forma parte de mi explotación agrícola, para mantener ordenado mi inventario de unidades productivas y evitar asignación innecesaria de recursos o cobros.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US011TASK001",
+          "trello_card_title": "US011TASK001 | Diálogos de baja P28 en presentación",
+          "title": "Diálogos de baja P28 en presentación",
+          "description": "Implementar confirmación de eliminación y archivado en PlotsScreen.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US011TASK002",
+          "trello_card_title": "US011TASK002 | Caso ArchivePlotUseCase en capa aplicacinnn",
+          "title": "Caso ArchivePlotUseCase en capa aplicacinnn",
+          "description": "Ejecutar baja lógica de parcela actualizando estado en PlotDao.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US27",
+      "trello_formatted_id": "US027",
+      "type": "User Story",
+      "title": "Prescripción técnica in-app de porcentaje y ventana fenológica de aclareo",
+      "user_story_format": "Como Productor Olivarero, quiero recibir una prescripción agronómica con el porcentaje exacto de frutos a remover y la ventana de fechas límite de ejecución, para remover el exceso de fruta a tiempo antes del endurecimiento del carozo y asegurar un buen calibre comercial sin inducir vecería en el siguiente año.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US027TASK001",
+          "trello_card_title": "US027TASK001 | Pantallas P60 y P61 en presentación",
+          "title": "Pantallas P60 y P61 en presentación",
+          "description": "Construir semáforo de aclareo y cuenta regresiva en Compose.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US027TASK002",
+          "trello_card_title": "US027TASK002 | Modelo de prescripción en capa dominio",
+          "title": "Modelo de prescripción en capa dominio",
+          "description": "Evaluar ventana fenológica y factor de intensidad en aplicación.",
+          "estimation_hours": 1.2,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US027TASK003",
+          "trello_card_title": "US027TASK003 | Consulta ThinningService en capa infraestructura",
+          "title": "Consulta ThinningService en capa infraestructura",
+          "description": "Consumir prescripciones activas almacenando respuestas en Room local.",
+          "estimation_hours": 1.1,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US26",
+      "trello_formatted_id": "US026",
+      "type": "User Story",
+      "title": "Cálculo de carga frutal objetivo sostenible y rendimiento potencial de campaña",
+      "user_story_format": "Como Productor Olivarero, quiero que el sistema procese los muestreos de cuajado, la densidad de plantación y el área de mi predio para calcular la carga frutal máxima sostenible en frutos por árbol y kilogramos por hectárea, para conocer el límite productivo que el olivo puede soportar sin agotar sus reservas y evitar el colapso vegetativo de la siguiente campaña.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US026TASK001",
+          "trello_card_title": "US026TASK001 | Tarjetas de carga P61 en presentación",
+          "title": "Tarjetas de carga P61 en presentación",
+          "description": "Visualizar balance de carga frutal sostenible vs conteo real.",
+          "estimation_hours": 1.2,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US026TASK002",
+          "trello_card_title": "US026TASK002 | Cálculo de carga en capa dominio",
+          "title": "Cálculo de carga en capa dominio",
+          "description": "Calcular rendimiento potencial y frutos por árbol en aplicación.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US026TASK003",
+          "trello_card_title": "US026TASK003 | Persistencia de proyecciones en capa infraestructura",
+          "title": "Persistencia de proyecciones en capa infraestructura",
+          "description": "Almacenar estimaciones dendrométricas en base de datos SQLite Room.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US28",
+      "trello_formatted_id": "US028",
+      "type": "User Story",
+      "title": "Registro y confirmación de ejecución de aclareo en campo",
+      "user_story_format": "Como Productor Olivarero, quiero registrar la fecha y el porcentaje real de frutos removidos durante las labores de aclareo en mi parcela, para asentar la ejecución de la práctica de manejo en la bitácora del lote, estimar el estado de carga residual y, cuando exista calibración de la variedad, proyectar el rango de calibre comercial esperado.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US028TASK001",
+          "trello_card_title": "US028TASK001 | Pantallas P62 y P63 en presentación",
+          "title": "Pantallas P62 y P63 en presentación",
+          "description": "Construir formulario de labor ejecutada y confirmación en Compose.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US028TASK002",
+          "trello_card_title": "US028TASK002 | Servicio ThinningService en capa infraestructura",
+          "title": "Servicio ThinningService en capa infraestructura",
+          "description": "Despachar confirmación de aclareo actualizando hito en bitácora local.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US18",
+      "trello_formatted_id": "US018",
+      "type": "User Story",
+      "title": "Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela",
+      "user_story_format": "Como Productor Olivarero, quiero recibir alertas automáticas en el sistema cuando la humedad del suelo caiga a niveles de estrés o la temperatura ambiental supere umbrales fisiológicos críticos, para adelantar turnos de riego y proteger la viabilidad del polen durante la etapa crítica de floración.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US018TASK001",
+          "trello_card_title": "US018TASK001 | Pantallas T14 y T15 en presentación",
+          "title": "Pantallas T14 y T15 en presentación",
+          "description": "Construir AlertsCenterScreen y MitigationChecklistCard con filtros en Compose.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US018TASK002",
+          "trello_card_title": "US018TASK002 | Casos de mitigación en capa aplicacinnn",
+          "title": "Casos de mitigación en capa aplicacinnn",
+          "description": "Procesar CompleteMitigationStepUseCase consumiendo IncidentService en infraestructura REST.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US24",
+      "trello_formatted_id": "US024",
+      "type": "User Story",
+      "title": "Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline",
+      "user_story_format": "Como Productor Olivarero, quiero registrar los conteos de brotes y frutos de muestra a pie de árbol (con el diámetro de tronco como dato dendrométrico opcional) sin requerir conexión a internet, para asentar la densidad real de cuajado directamente en el olivar y sincronizar automáticamente las observaciones al restablecer la conectividad celular o de red.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US024TASK001",
+          "trello_card_title": "US024TASK001 | Pantallas P52 y P53 en presentación",
+          "title": "Pantallas P52 y P53 en presentación",
+          "description": "Construir SamplingRoundScreen y RegisterTreeSampleScreen con teclado táctil.",
+          "estimation_hours": 1.5,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US024TASK002",
+          "trello_card_title": "US024TASK002 | Agregado TreeSample en capa dominio",
+          "title": "Agregado TreeSample en capa dominio",
+          "description": "Validar conteo de brotes y frutos en SamplingSessionViewModel.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US024TASK003",
+          "trello_card_title": "US024TASK003 | Dao DraftTreeSampleDao en capa infraestructura",
+          "title": "Dao DraftTreeSampleDao en capa infraestructura",
+          "description": "Persistir muestras offline en SQLite sincronizando con ThinningService.",
+          "estimation_hours": 1.2,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US25",
+      "trello_formatted_id": "US025",
+      "type": "User Story",
+      "title": "Consulta de representatividad estadística e historial de árboles muestreados en campo",
+      "user_story_format": "Como Productor Olivarero, quiero consultar el avance de la ronda de muestreo y revisar la lista de árboles evaluados en mi predio, para saber si alcancé la representatividad mínima requerida (≥ 5 árboles) e identificar qué árboles ya fueron evaluados a pie de campo.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US025TASK001",
+          "trello_card_title": "US025TASK001 | Pantallas P50 y P54 en presentación",
+          "title": "Pantallas P50 y P54 en presentación",
+          "description": "Diseñar SelectPlotSamplingScreen y SamplingCompleteScreen con barras de avance.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US025TASK002",
+          "trello_card_title": "US025TASK002 | Caso GetPlotSamplingOverviewUseCase en aplicación",
+          "title": "Caso GetPlotSamplingOverviewUseCase en aplicación",
+          "description": "Obtener representatividad estadística y árbol evaluado mediante ThinningRepository.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US22",
+      "trello_formatted_id": "US022",
+      "type": "User Story",
+      "title": "Monitoreo dinámico de porciones de frío invernal acumuladas mediante el modelo de Erez",
+      "user_story_format": "Como Productor Olivarero, quiero consultar el avance de acumulación de porciones de frío calculadas mediante el modelo dinámico de Erez durante el reposo invernal en mi parcela, para conocer si el olivo alcanzará el estímulo fisiológico indispensable para inducir una floración uniforme en el olivar.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US022TASK001",
+          "trello_card_title": "US022TASK001 | Pantallas P80 y P81 en presentación",
+          "title": "Pantallas P80 y P81 en presentación",
+          "description": "Construir indicador dinámico de porciones Erez en Jetpack Compose.",
+          "estimation_hours": 1.1,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US022TASK002",
+          "trello_card_title": "US022TASK002 | Modelo de Erez en capa dominio",
+          "title": "Modelo de Erez en capa dominio",
+          "description": "Calcular porcentaje de satisfacción varietal en reposo invernal aplicación.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US022TASK003",
+          "trello_card_title": "US022TASK003 | Persistencia de porciones en infraestructura",
+          "title": "Persistencia de porciones en infraestructura",
+          "description": "Consultar telemetría y almacenar acumuladores de frío en Room.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US23",
+      "trello_formatted_id": "US023",
+      "type": "User Story",
+      "title": "Detección de anomalías térmicas invernales y advertencia de riesgo floral por efecto ENOS",
+      "user_story_format": "Como Productor Olivarero, quiero recibir advertencias tempranas en el sistema cuando se registren picos de calor anómalos durante el invierno asociados al fenómeno de El Niño, para anticipar una baja inducción floral y reajustar oportunamente las proyecciones de rendimiento y las metas de aclareo de la campaña.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US023TASK001",
+          "trello_card_title": "US023TASK001 | Alerta térmica P80 en presentación",
+          "title": "Alerta térmica P80 en presentación",
+          "description": "Diseñar banner de riesgo floral por invierno cálido ENOS.",
+          "estimation_hours": 1.1,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US023TASK002",
+          "trello_card_title": "US023TASK002 | Detección de anomalías en capa aplicación",
+          "title": "Detección de anomalías en capa aplicación",
+          "description": "Evaluar umbral crítico térmico actualizando estado en IncidentRepository.",
+          "estimation_hours": 1.1,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US19",
+      "trello_formatted_id": "US019",
+      "type": "User Story",
+      "title": "Consulta de pronóstico meteorológico geolocalizado a 7 días",
+      "user_story_format": "Como Productor Olivarero, quiero consultar el pronóstico del tiempo a 7 días geolocalizado para las coordenadas de mi predio, para anticipar condiciones climáticas desfavorables (vientos desecantes o bajadas térmicas) y programar con antelación los riegos y labores de aclareo.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US019TASK001",
+          "trello_card_title": "US019TASK001 | Pantalla Clima P90 en presentación",
+          "title": "Pantalla Clima P90 en presentación",
+          "description": "Construir PlotClimateScreen y tira semanal de 7 días.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US019TASK002",
+          "trello_card_title": "US019TASK002 | Servicio ForecastService en capa infraestructura",
+          "title": "Servicio ForecastService en capa infraestructura",
+          "description": "Consumir pronóstico geolocalizado persistiendo ForecastDayEntity en Room SQLite.",
+          "estimation_hours": 1.2,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US13",
+      "trello_formatted_id": "US013",
+      "type": "User Story",
+      "title": "Vinculación y alta de nodo sensor virtual a una parcela",
+      "user_story_format": "Como Productor Olivarero, quiero dar de alta un nodo sensor virtual (estación microclimática o sonda de humedad de suelo) en una de mis parcelas asignándole una denominación y tipo, para habilitar la ingesta y recepción de series telemétricas en el lote sin requerir el despliegue de hardware físico en campo.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US013TASK001",
+          "trello_card_title": "US013TASK001 | Hoja vinculación P86 en presentación",
+          "title": "Hoja vinculación P86 en presentación",
+          "description": "Diseñar formulario modal de alta de nodo sensor virtual.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US013TASK002",
+          "trello_card_title": "US013TASK002 | Caso LinkSensorNodeUseCase en aplicacinnn",
+          "title": "Caso LinkSensorNodeUseCase en aplicacinnn",
+          "description": "Registrar dispositivo virtual persistiendo SensorNodeEntity mediante SensorService infraestructura.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US14",
+      "trello_formatted_id": "US014",
+      "type": "User Story",
+      "title": "Consulta de inventario y estado operativo de nodos sensores virtuales en parcela",
+      "user_story_format": "Como Productor Olivarero, quiero consultar el inventario de nodos sensores virtuales vinculados a mi parcela y su estado de transmisión simulada, para comprobar qué puntos de monitoreo se encuentran activos alimentando los modelos agroclimáticos del olivar.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US014TASK001",
+          "trello_card_title": "US014TASK001 | Pantalla Sensores P85 en presentación",
+          "title": "Pantalla Sensores P85 en presentación",
+          "description": "Construir SensorsScreen con tarjetas de estado activo y pausa.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US014TASK002",
+          "trello_card_title": "US014TASK002 | Dao SensorNodeDao en capa infraestructura",
+          "title": "Dao SensorNodeDao en capa infraestructura",
+          "description": "Observar inventario de sensores vinculados emitiendo Flow reactivo.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US15",
+      "trello_formatted_id": "US015",
+      "type": "User Story",
+      "title": "Configuración y calibración de nodo sensor virtual en parcela",
+      "user_story_format": "Como Productor Olivarero, quiero personalizar la denominación del nodo sensor virtual y definir la profundidad de monitoreo de la sonda de suelo (30 cm o 60 cm), para asegurar que las lecturas telemétricas se computen en el estrato radicular correspondiente a las raíces absorbentes del olivo.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US015TASK001",
+          "trello_card_title": "US015TASK001 | Pantalla ConfigureNodeScreen en presentación",
+          "title": "Pantalla ConfigureNodeScreen en presentación",
+          "description": "Construir interfaz de ajuste de profundidad de sonda edáfica.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US015TASK002",
+          "trello_card_title": "US015TASK002 | Caso UpdateSensorNodeUseCase en aplicación",
+          "title": "Caso UpdateSensorNodeUseCase en aplicación",
+          "description": "Actualizar offset de calibración enviando PUT mediante SensorService.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US16",
+      "trello_formatted_id": "US016",
+      "type": "User Story",
+      "title": "Desvinculación y baja de nodo sensor virtual de una parcela",
+      "user_story_format": "Como Productor Olivarero, quiero dar de baja o desvincular un nodo sensor virtual de mi parcela cuando ya no requiera monitorear ese punto, para mantener limpio el inventario del lote preservando intacto el historial previo de telemetría registrada.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US016TASK001",
+          "trello_card_title": "US016TASK001 | Diálogo desvinculación P88 en presentación",
+          "title": "Diálogo desvinculación P88 en presentación",
+          "description": "Implementar confirmación de desvinculación con aviso de retención histórica.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US016TASK002",
+          "trello_card_title": "US016TASK002 | Caso UnlinkSensorNodeUseCase en aplicación",
+          "title": "Caso UnlinkSensorNodeUseCase en aplicación",
+          "description": "Remover sensor en backend preservando lecturas históricas en Room.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US17",
+      "trello_formatted_id": "US017",
+      "type": "User Story",
+      "title": "Monitoreo agroclimático y consulta de series temporales de suelo y microclima",
+      "user_story_format": "Como Productor Olivarero, quiero consultar las lecturas periódicas de temperatura ambiental, humedad relativa y humedad del suelo registradas en mi parcela, para supervisar el confort hídrico del olivar y detectar oportunamente riesgos de estrés térmico en floración o déficit de humedad en cuajado.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Telemetry",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US017TASK001",
+          "trello_card_title": "US017TASK001 | Pantallas P90 y P91 en presentación",
+          "title": "Pantallas P90 y P91 en presentación",
+          "description": "Construir TelemetryDetailScreen y gráficas de humedad de suelo.",
+          "estimation_hours": 1.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US017TASK002",
+          "trello_card_title": "US017TASK002 | Agregado TelemetrySeries en capa dominio",
+          "title": "Agregado TelemetrySeries en capa dominio",
+          "description": "Calcular promedios diurnos y nocturnos en TelemetryDetailViewModel aplicacinnn.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US017TASK003",
+          "trello_card_title": "US017TASK003 | Servicio TelemetryService en capa infraestructura",
+          "title": "Servicio TelemetryService en capa infraestructura",
+          "description": "Consumir series temporales horarias persistiendo TelemetryReadingEntity en SQLite.",
+          "estimation_hours": 1.2,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Telemetry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US20",
+      "trello_formatted_id": "US020",
+      "type": "User Story",
+      "title": "Registro retrospectivo de campañas históricas de cosecha y cálculo del Índice de Vecería (BBI)",
+      "user_story_format": "Como Productor Olivarero, quiero registrar los volúmenes totales cosechados en campañas agrícolas de años anteriores en mi parcela, para que el sistema calcule el Índice de Vecería de Hoblyn (BBI) y determine la intensidad histórica de alternancia de mi cuartel.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US020TASK001",
+          "trello_card_title": "US020TASK001 | Pantallas P40 y P41 en presentación",
+          "title": "Pantallas P40 y P41 en presentación",
+          "description": "Construir HarvestHistoryScreen con medidor BBI y CampaignSheet emergente.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US020TASK002",
+          "trello_card_title": "US020TASK002 | Dominio HoblynBbi en capa fenología",
+          "title": "Dominio HoblynBbi en capa fenología",
+          "description": "Calcular índice de alternancia bienal BBI para cosechas plurianuales.",
+          "estimation_hours": 1.2,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US020TASK003",
+          "trello_card_title": "US020TASK003 | Servicio PhenologyService en capa infraestructura",
+          "title": "Servicio PhenologyService en capa infraestructura",
+          "description": "Consumir histórico de pesajes persistiendo HarvestRecordEntity en Room.",
+          "estimation_hours": 1.2,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US21",
+      "trello_formatted_id": "US021",
+      "type": "User Story",
+      "title": "Modificación y rectificación de registros históricos de cosecha",
+      "user_story_format": "Como Productor Olivarero, quiero corregir o actualizar las cifras de kilogramos cosechados en una campaña anterior, para subsanar errores de digitación de boletas de pesaje en almazara y recalcular con precisión el índice BBI histórico de la parcela.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "Phenology",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US021TASK001",
+          "trello_card_title": "US021TASK001 | Diálogos de rectificación en presentación",
+          "title": "Diálogos de rectificación en presentación",
+          "description": "Construir DeleteCampaignDialog y edición de kilos en CampaignSheet.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US021TASK002",
+          "trello_card_title": "US021TASK002 | Casos Rectify y Remove en aplicación",
+          "title": "Casos Rectify y Remove en aplicación",
+          "description": "Rectificar pesaje de cosecha recalculando índice BBI en Room.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Phenology"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US29",
+      "trello_formatted_id": "US029",
+      "type": "User Story",
+      "title": "Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva",
+      "user_story_format": "Como Productor Olivarero, quiero asentar formalmente el pesaje real de cosecha al término de la temporada discriminando kilos de aceituna verde y negra e indicando opcionalmente el calibre comercial de venta (`commercialFruitsPerKg`), para formalizar la liquidación de entrega, alimentar la calibración empírica del modelo varietal y auditar la curva interanual de atenuación de vecería.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US029TASK001",
+          "trello_card_title": "US029TASK001 | Pantallas P71 y P73 en presentación",
+          "title": "Pantallas P71 y P73 en presentación",
+          "description": "Construir SettleHarvestScreen y comprobante formal CampaignClosedScreen en Compose.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US029TASK002",
+          "trello_card_title": "US029TASK002 | Servicio HarvestSettlementService en infraestructura",
+          "title": "Servicio HarvestSettlementService en infraestructura",
+          "description": "Asentar liquidación de cosecha persistiendo comprobante inmutable en Room.",
+          "estimation_hours": 1.3,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Harvest"
+          ]
+        }
+      ]
+    }
+  ]
+}
