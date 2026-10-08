@@ -99,14 +99,14 @@ El objetivo central del Sprint Backlog 1 es descomponer operativamente los 68 í
 \begin{longtable}{|p{0.05\textwidth}|p{0.14\textwidth}|p{0.05\textwidth}|p{0.14\textwidth}|p{0.24\textwidth}|p{0.08\textwidth}|p{0.12\textwidth}|p{0.07\textwidth}|}
 \caption{Descomposición de Ítems del Sprint Backlog 1 en Tareas de Trabajo (Work-Items)} \label{tab:sprint-backlog-1} \\
 \hline
-\multicolumn{2}{|l|}{	extbf{Sprint \#}} & \multicolumn{6}{l|}{Sprint 1} \\ \hline
-\multicolumn{2}{|l|}{	extbf{User Story}} & \multicolumn{6}{l|}{	extbf{Work-Item / Task}} \\ \hline
-	extbf{Id} & 	extbf{Title} & 	extbf{Id} & 	extbf{Title} & 	extbf{Description} & 	extbf{Estimation (Hours)} & 	extbf{Assigned To} & 	extbf{Status} \\ \hline
+\multicolumn{2}{|l|}{\textbf{Sprint \#}} & \multicolumn{6}{l|}{Sprint 1} \\ \hline
+\multicolumn{2}{|l|}{\textbf{User Story}} & \multicolumn{6}{l|}{\textbf{Work-Item / Task}} \\ \hline
+\textbf{Id} & \textbf{Title} & \textbf{Id} & \textbf{Title} & \textbf{Description} & \textbf{Estimation (Hours)} & \textbf{Assigned To} & \textbf{Status} \\ \hline
 \endfirsthead
 
 \hline
-\multicolumn{2}{|l|}{	extbf{User Story}} & \multicolumn{6}{l|}{	extbf{Work-Item / Task (Continuación)}} \\ \hline
-	extbf{Id} & 	extbf{Title} & 	extbf{Id} & 	extbf{Title} & 	extbf{Description} & 	extbf{Estimation (Hours)} & 	extbf{Assigned To} & 	extbf{Status} \\ \hline
+\multicolumn{2}{|l|}{\textbf{User Story}} & \multicolumn{6}{l|}{\textbf{Work-Item / Task (Continuación)}} \\ \hline
+\textbf{Id} & \textbf{Title} & \textbf{Id} & \textbf{Title} & \textbf{Description} & \textbf{Estimation (Hours)} & \textbf{Assigned To} & \textbf{Status} \\ \hline
 \endhead
 
 \hline
@@ -350,7 +350,7 @@ A continuación, en la \autoref{tab:development-evidence-sprint-1} se expone la 
 \small
 \renewcommand{\arraystretch}{1.15}
 \setlength{\tabcolsep}{3.5pt}
-\begin{longtable}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.21\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}p{0.12\textwidth}|p{0.20\textwidth}|>{\centering\arraybackslash}p{0.13\textwidth}|}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}p{0.28\textwidth}|p{0.10\textwidth}|>{\centering\arraybackslash}p{0.13\textwidth}|}
 \caption{Evidencias de Desarrollo para Sprint Review (Commits por Repositorio)} \label{tab:development-evidence-sprint-1} \\
 \hline
 \textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
@@ -395,6 +395,49 @@ viora-mobile-android & feature/alerts-by-plot & 91956e2 & fix(home): count and o
 
 #### Testing Suite Evidence for Sprint Review 
 &nbsp;
+
+En esta sección se documentan y sustentan las evidencias del aseguramiento de la calidad de software y las pruebas de aceptación automatizadas desarrolladas para el ecosistema Viora a lo largo del Sprint 1. Dichas pruebas se construyen bajo el enfoque de desarrollo guiado por comportamiento (\textit{Behavior-Driven Development} - BDD) empleando la sintaxis formal de Gherkin, y se gestionan a través del repositorio oficial de pruebas de aceptación bajo la organización en GitHub: \texttt{upc-pre-1acc0238-2620-4951-arcadiadevs}. De forma análoga a la sección previa de evidencias de desarrollo, y a fin de asegurar la homogeneidad visual y legibilidad de la matriz tabular, el prefijo de la organización es omitido, identificándose el componente directamente como \texttt{viora-acceptance-tests}.
+
+Cabe resaltar que la suite completa comprende un total de 37 especificaciones de prueba de aceptación (\textit{feature files} de extensión \texttt{.feature}), las cuales modelan los criterios de aceptación de las historias de usuario e historias técnicas abordadas durante la iteración.
+
+Con el propósito de exhibir la actividad continua de ingeniería de pruebas y el flujo de integración durante el sprint, a continuación se presentan 10 commits representativos registrados en la rama \texttt{develop} del repositorio \texttt{viora-acceptance-tests}. Para cada registro se especifica la rama de origen o integración, el identificador abreviado del commit (SHA-1), el mensaje principal (\textit{Commit Message}), la descripción técnica de los cambios (\textit{Commit Message Body}) y la fecha formal de asentamiento (\textit{Committed on Date}).
+
+A continuación, en la \autoref{tab:testing-suite-evidence-sprint-1} se expone la matriz detallada de evidencias de la suite de pruebas para el Sprint Review:
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}p{0.28\textwidth}|p{0.10\textwidth}|>{\centering\arraybackslash}p{0.13\textwidth}|}
+\caption{Evidencias de la Suite de Pruebas para Sprint Review (Commits por Repositorio)} \label{tab:testing-suite-evidence-sprint-1} \\
+\hline
+\textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{6}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir del historial de control de versiones Git de ArcadiaDevs en GitHub.}} \\
+\endlastfoot
+
+% viora-acceptance-tests
+viora-acceptance-tests & develop & ac0b834 & chore:merge feature/at45 into develop &  & 07/10/2026 \\ \hline
+viora-acceptance-tests & feature/at45 & 6d8d4c0 & feat: add at45 acceptance test &  & 07/10/2026 \\ \hline
+viora-acceptance-tests & develop & 89f9a82 & chore: merge at44 into develop &  & 07/10/2026 \\ \hline
+viora-acceptance-tests & feature/at44 & 0da2b72 & feat: add at44 acceptance test &  & 07/10/2026 \\ \hline
+viora-acceptance-tests & develop & 6482e24 & chore: merge at43 into develop &  & 07/10/2026 \\ \hline
+viora-acceptance-tests & feature/at43 & f3307ef & feat: add at43 acceptance test &  & 07/10/2026 \\ \hline
+viora-acceptance-tests & feature/at42 & d9c1740 & feat: add at42 acceptance test &  & 07/10/2026 \\ \hline
+viora-acceptance-tests & feature/at40 & 404bcea & feat: add at40 acceptance test &  & 07/10/2026 \\ \hline
+viora-acceptance-tests & feature/at39 & be225a1 & feat: add at39 acceptance test &  & 07/10/2026 \\ \hline
+viora-acceptance-tests & feature/at34 & 4d93e85 & feat: add at34 acceptance test &  & 07/10/2026 \\ \hline
+\end{longtable}
+\end{center}
 
 #### Execution Evidence for Sprint Review 
 &nbsp;
