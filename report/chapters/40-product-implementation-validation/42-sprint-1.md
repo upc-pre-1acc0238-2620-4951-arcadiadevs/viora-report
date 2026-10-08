@@ -487,11 +487,11 @@ En esta sección se presenta la relación de servicios web RESTful implementados
 
 Durante este ciclo de desarrollo \textbf{se implementaron y documentaron un total de 33 endpoints RESTful} distribuidos en 5 Bounded Contexts y 11 controladores web. Con el propósito de brindar una visión rigurosa, en la \autoref{tab:services-documentation-endpoints-sprint-1} se presenta la matriz de los 12 endpoints más representativos del sistema cubriendo la totalidad de módulos operativos, encontrándose los 33 endpoints plenamente accesibles y operativos en la consola interactiva de Swagger UI.
 
-\noindent \textbf{Puntos de Acceso a la Documentación Interactiva (Swagger UI / OpenAPI):}
+\noindent \textbf{Puntos de acceso a la documentación interactiva (Swagger UI / OpenAPI):}
 \begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-    \item \textbf{Entorno Desplegado en Producción (Render Cloud):} \url{https://viora-platform.onrender.com/swagger-ui/index.html}
-    \item \textbf{Entorno de Desarrollo Local:} \url{http://localhost:8080/swagger-ui/index.html}
-    \item \textbf{Especificación OpenAPI JSON:} \url{https://viora-platform.onrender.com/v3/api-docs}
+    \item \textbf{Entorno desplegado en producción (Render Cloud):} \url{https://viora-platform.onrender.com/swagger-ui/index.html}
+    \item \textbf{Entorno de desarrollo local:} \url{http://localhost:8080/swagger-ui/index.html}
+    \item \textbf{Especificación OpenAPI en formato JSON:} \url{https://viora-platform.onrender.com/v3/api-docs}
 \end{itemize}
 
 \newpage
@@ -501,13 +501,13 @@ Durante este ciclo de desarrollo \textbf{se implementaron y documentaron un tota
 \renewcommand{\arraystretch}{1.12}
 \setlength{\tabcolsep}{3pt}
 \begin{longtable}{|>{\raggedright\arraybackslash}p{0.23\textwidth}|>{\centering\arraybackslash}p{0.07\textwidth}|>{\raggedright\arraybackslash}p{0.36\textwidth}|>{\raggedright\arraybackslash}p{0.21\textwidth}|>{\centering\arraybackslash}p{0.08\textwidth}|}
-\caption{Matriz Representativa de Endpoints Documentados con OpenAPI 3.0} \label{tab:services-documentation-endpoints-sprint-1} \\
+\caption{Matriz representativa de endpoints documentados con OpenAPI 3.0} \label{tab:services-documentation-endpoints-sprint-1} \\
 \hline
-\textbf{Acción / Caso de Uso} & \textbf{Método} & \textbf{Endpoint (URL Desplegada en Producción)} & \textbf{Parámetros Clave} & \textbf{Códigos HTTP} \\ \hline
+\textbf{Acción / caso de uso} & \textbf{Método} & \textbf{Endpoint (URL desplegada en producción)} & \textbf{Parámetros clave} & \textbf{Códigos HTTP} \\ \hline
 \endfirsthead
 
 \hline
-\textbf{Acción / Caso de Uso} & \textbf{Método} & \textbf{Endpoint (URL Desplegada en Producción)} & \textbf{Parámetros Clave} & \textbf{Códigos HTTP} \\ \hline
+\textbf{Acción / caso de uso} & \textbf{Método} & \textbf{Endpoint (URL desplegada en producción)} & \textbf{Parámetros clave} & \textbf{Códigos HTTP} \\ \hline
 \endhead
 
 \hline
@@ -534,16 +534,16 @@ Certificar informe agronómico & POST & \url{https://viora-platform.onrender.com
 
 \newpage
 
-\noindent \textbf{Especificación Detallada de Endpoints Representativos del Sprint 1:}
+\noindent \textbf{Especificación detallada de endpoints representativos del Sprint 1:}
 
 A continuación se detallan los 4 endpoints que encapsulan las reglas biofísicas y los patrones arquitectónicos nucleares del backend:
 
 \vspace{0.25cm}
-\noindent \textbf{1. Delimitar y Registrar Cuartel Olivícola (\texttt{POST /api/v1/plots}):}
+\noindent \textbf{1. Delimitar y registrar cuartel olivícola (\texttt{POST /api/v1/plots}):}
 
-* **Propósito y Reglas de Negocio:** Recibe la cartografía del cuartel en GeoJSON sobre proyección WGS84, valida el polígono cerrado, calcula el área superficial en hectáreas y deriva la densidad dendrométrica mediante el marco de plantación $\frac{10000}{\text{rowSpacing} \times \text{treeSpacing}}$.
-* **Parámetros de Entrada:** Body `CreatePlotResource` (`name`: 3--100 caracteres, `variety`: variedad permitida, `polygonGeoJson`: GeoJSON válido, `rowSpacingM` y `treeSpacingM` $> 0$).
-* **Ejemplo de Solicitud y Respuesta (`201 Created`):**
+* **Propósito y reglas de negocio:** Recibe la cartografía del cuartel en GeoJSON sobre proyección WGS84, valida el polígono cerrado, calcula el área superficial en hectáreas y deriva la densidad dendrométrica mediante el marco de plantación $\frac{10000}{\text{rowSpacing} \times \text{treeSpacing}}$.
+* **Parámetros de entrada:** Body `CreatePlotResource` (`name`: 3--100 caracteres, `variety`: variedad permitida, `polygonGeoJson`: GeoJSON válido, `rowSpacingM` y `treeSpacingM` $> 0$).
+* **Ejemplo de solicitud y respuesta (\texttt{201 Created}):**
 
 ```json
 // Petición (Request Body):
@@ -561,14 +561,14 @@ A continuación se detallan los 4 endpoints que encapsulan las reglas biofísica
 }
 ```
 
-* **Explicación del Response:** El servicio asigna un UUID universal, confirma el área calculada de 1.25 ha, deriva una densidad de 286 árboles/ha e inicializa el control de concurrencia optimista en `revision: 0`.
+* **Explicación de la respuesta:** El servicio asigna un UUID universal, confirma el área calculada de 1.25 ha, deriva una densidad de 286 árboles/ha e inicializa el control de concurrencia optimista en `revision: 0`.
 
 \vspace{0.35cm}
-\noindent \textbf{2. Ingesta de Lote de Muestreo de Frutos Cuajados (\texttt{POST /api/v1/plots/\{plotId\}/samplings}):}
+\noindent \textbf{2. Ingesta de lote de muestreo de frutos cuajados (\texttt{POST /api/v1/plots/\{plotId\}/samplings}):}
 
-* **Propósito y Reglas de Negocio:** Sincroniza observaciones de campo capturadas en modo desconectado (*offline-first*). Evalúa en el servidor si el lote cumple con el umbral de representatividad estadística ($n \ge 5$ árboles muestreados) para habilitar el algoritmo de raleo.
-* **Parámetros de Entrada:** Path `plotId` (UUID), Body `SubmitSamplingResource` (`clientBatchId`, `campaignYear: 2026`, arreglo `samples` con conteo de brotes y frutos cuajados).
-* **Ejemplo de Respuesta (`201 Created`):**
+* **Propósito y reglas de negocio:** Sincroniza observaciones de campo capturadas en modo desconectado (*offline-first*). Evalúa en el servidor si el lote cumple con el umbral de representatividad estadística ($n \ge 5$ árboles muestreados) para habilitar el algoritmo de raleo.
+* **Parámetros de entrada:** Path `plotId` (UUID), Body `SubmitSamplingResource` (`clientBatchId`, `campaignYear: 2026`, arreglo `samples` con conteo de brotes y frutos cuajados).
+* **Ejemplo de respuesta (\texttt{201 Created}):**
 
 ```json
 // Respuesta (201 Created):
@@ -579,13 +579,13 @@ A continuación se detallan los 4 endpoints que encapsulan las reglas biofísica
 }
 ```
 
-* **Explicación del Response:** Al consolidar 5 árboles muestreados, activa `isRepresentative: true`, reduce `treesNeeded` a 0 y computa una carga media observada de 8.76 frutos por brote.
+* **Explicación de la respuesta:** Al consolidar 5 árboles muestreados, activa `isRepresentative: true`, reduce `treesNeeded` a 0 y computa una carga media observada de 8.76 frutos por brote.
 
-\noindent \textbf{3. Registro de Plena Floración y Prescripción de Raleo (\texttt{PUT .../thinning-prescriptions/full-bloom}):}
+\noindent \textbf{3. Registro de plena floración y prescripción de raleo (\texttt{PUT .../thinning-prescriptions/full-bloom}):}
 
-* **Propósito y Reglas de Negocio:** Asienta la fecha fenológica en que se observó el 80\% de flores abiertas en el cuartel. Dispara de forma síncrona el cálculo del Índice de Vecería ($BBI$), las porciones de frío acumuladas según el modelo dinámico de Erez y deriva el porcentaje de frutos a aclarear junto con la ventana óptima de labor.
-* **Parámetros de Entrada:** Path `plotId` (UUID), Body `RecordFullBloomResource` (`campaignYear: 2026`, `observedOn: "2026-10-01"`).
-* **Ejemplo de Respuesta (`200 OK`):**
+* **Propósito y reglas de negocio:** Asienta la fecha fenológica en que se observó el 80\% de flores abiertas en el cuartel. Dispara de forma síncrona el cálculo del Índice de Vecería ($BBI$), las porciones de frío acumuladas según el modelo dinámico de Erez y deriva el porcentaje de frutos a aclarear junto con la ventana óptima de labor.
+* **Parámetros de entrada:** Path `plotId` (UUID), Body `RecordFullBloomResource` (`campaignYear: 2026`, `observedOn: "2026-10-01"`).
+* **Ejemplo de respuesta (\texttt{200 OK}):**
 
 ```json
 // Respuesta (200 OK):
@@ -596,14 +596,14 @@ A continuación se detallan los 4 endpoints que encapsulan las reglas biofísica
 }
 ```
 
-* **Explicación del Response:** El sistema prescribe remover el 28.5\% del cuaje excesivo dentro de una ventana de 36 días naturales previa al endurecimiento del carozo, mitigando la inhibición floral del año subsiguiente.
+* **Explicación de la respuesta:** El sistema prescribe remover el 28.5\% del cuaje excesivo dentro de una ventana de 36 días naturales previa al endurecimiento del carozo, mitigando la inhibición floral del año subsiguiente.
 
 \vspace{0.35cm}
-\noindent \textbf{4. Concurrencia Optimista y Manejo de Errores RFC 7807 (\texttt{PUT /api/v1/plots/\{plotId\}}):}
+\noindent \textbf{4. Concurrencia optimista y manejo de errores RFC 7807 (\texttt{PUT /api/v1/plots/\{plotId\}}):}
 
-* **Propósito y Reglas de Negocio:** Actualiza el marco o variedad validando la cabecera HTTP `If-Match` contra la versión persistida. Ante versiones desfasadas, rechaza la mutación sin sobrescribir datos.
-* **Parámetros de Entrada:** Path `plotId` (UUID), Header `If-Match: "999"` (versión desfasada deliberada), Body `UpdatePlotResource`.
-* **Ejemplo de Respuesta (`412 Precondition Failed`):**
+* **Propósito y reglas de negocio:** Actualiza el marco o variedad validando la cabecera HTTP `If-Match` contra la versión persistida. Ante versiones desfasadas, rechaza la mutación sin sobrescribir datos.
+* **Parámetros de entrada:** Path `plotId` (UUID), Header `If-Match: "999"` (versión desfasada deliberada), Body `UpdatePlotResource`.
+* **Ejemplo de respuesta (\texttt{412 Precondition Failed}):**
 
 ```json
 // Respuesta (412 Precondition Failed - RFC 7807 Problem Details):
@@ -614,19 +614,19 @@ A continuación se detallan los 4 endpoints que encapsulan las reglas biofísica
 }
 ```
 
-* **Explicación del Response:** El `GlobalExceptionHandler` intercepta la colisión emitiendo un objeto RFC 7807 (`ProblemDetail`), instruyendo al cliente móvil la necesidad de reconciliar su copia local sin corromper el estado persistido.
+* **Explicación de la respuesta:** El `GlobalExceptionHandler` intercepta la colisión emitiendo un objeto RFC 7807 (`ProblemDetail`), instruyendo al cliente móvil la necesidad de reconciliar su copia local sin corromper el estado persistido.
 
 \vspace{0.35cm}
-\noindent \textbf{Evidencias de Interacción con la Documentación Interactiva (Swagger UI):}
+\noindent \textbf{Evidencias de interacción con la documentación interactiva (Swagger UI):}
 
 Para comprobar la operatividad de los contratos y la consistencia de los esquemas OpenAPI 3.0, se ejecutaron pruebas de interacción en vivo sobre la consola interactiva Swagger UI desplegada en Render (\url{https://viora-platform.onrender.com/swagger-ui/index.html}) y en entorno local (\url{http://localhost:8080/swagger-ui/index.html}), empleando datos agronómicos de muestra situados en La Yarada-Los Palos (Tacna).
 
 Las pruebas de integración y validación cubrieron los siguientes flujos nucleares:
 
 \begin{itemize}\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
-    \item \textbf{Catastro y Alta de Predio (\texttt{POST /api/v1/plots}):} Ejecución de solicitud con geometría poligonal cerrada WGS84 sobre La Yarada-Los Palos (\autoref{fig:exec-swagger-create-plot-s1}). La consola Swagger UI confirmó la respuesta \texttt{201 Created}, serializando el objeto \texttt{PlotResource} con el cálculo de 1.25 ha de superficie y densidad de 286 árboles/ha.
-    \item \textbf{Ingesta y Representatividad Muestral (\texttt{POST /api/v1/plots/\{plotId\}/samplings}):} Envío de un lote de 5 muestras georreferenciadas desde el cliente móvil (\autoref{fig:exec-swagger-submit-sampling-s1}). Swagger UI retornó \texttt{201 Created} validando la transición de \texttt{isRepresentative} a \texttt{true} y fijando el conteo de árboles faltantes en cero (\texttt{treesNeeded: 0}).
-    \item \textbf{Protección de Concurrencia Optimista (\texttt{PUT /api/v1/plots/\{plotId\}}):} Simulación de colisión concurrente inyectando deliberadamente el valor desfasado \texttt{"999"} en la cabecera HTTP \texttt{If-Match} (\autoref{fig:exec-swagger-error-rfc7807-s1}). El motor interceptó la operación y respondió con el código estandarizado \texttt{412 Precondition Failed} bajo el esquema RFC 7807 (\textit{Problem Details}), garantizando que ningún registro sea sobrescrito por modificaciones desactualizadas.
+    \item \textbf{Catastro y alta de predio (\texttt{POST /api/v1/plots}):} Ejecución de solicitud con geometría poligonal cerrada WGS84 sobre La Yarada-Los Palos (\autoref{fig:exec-swagger-create-plot-s1}). La consola Swagger UI confirmó la respuesta \texttt{201 Created}, serializando el objeto \texttt{PlotResource} con el cálculo de 1.25 ha de superficie y densidad de 286 árboles/ha.
+    \item \textbf{Ingesta y representatividad muestral (\texttt{POST /api/v1/plots/\{plotId\}/samplings}):} Envío de un lote de 5 muestras georreferenciadas desde el cliente móvil (\autoref{fig:exec-swagger-submit-sampling-s1}). Swagger UI retornó \texttt{201 Created} validando la transición de \texttt{isRepresentative} a \texttt{true} y fijando el conteo de árboles faltantes en cero (\texttt{treesNeeded: 0}).
+    \item \textbf{Protección de concurrencia optimista (\texttt{PUT /api/v1/plots/\{plotId\}}):} Simulación de colisión concurrente inyectando deliberadamente el valor desfasado \texttt{"999"} en la cabecera HTTP \texttt{If-Match} (\autoref{fig:exec-swagger-error-rfc7807-s1}). El motor interceptó la operación y respondió con el código estandarizado \texttt{412 Precondition Failed} bajo el esquema RFC 7807 (\textit{Problem Details}), garantizando que ningún registro sea sobrescrito por modificaciones desactualizadas.
 \end{itemize}
 
 \begin{figure}[H]
@@ -657,11 +657,11 @@ Los resultados verificaron la correspondencia unívoca entre las anotaciones Ope
 
 \newpage
 
-\noindent \textbf{Repositorio Oficial y Trazabilidad de Control de Versiones:}
+\noindent \textbf{Repositorio oficial y trazabilidad de control de versiones:}
 
 La suite completa de Web Services y su infraestructura de documentación OpenAPI residen en el repositorio oficial de GitHub:
 \begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
-    \item \textbf{URL del Repositorio:} \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform}
+    \item \textbf{URL del repositorio:} \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform}
 \end{itemize}
 
 En la \autoref{tab:services-documentation-commits-sprint-1} se listan los commits verificados en el historial de control de versiones del repositorio \texttt{viora-platform}, asociados directamente con contratos, documentación OpenAPI y controladores REST del Sprint 1:
@@ -671,7 +671,7 @@ En la \autoref{tab:services-documentation-commits-sprint-1} se listan los commit
 \renewcommand{\arraystretch}{1.06}
 \setlength{\tabcolsep}{2.5pt}
 \begin{longtable}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.21\textwidth}|>{\centering\arraybackslash}p{0.09\textwidth}|>{\raggedright\arraybackslash}p{0.26\textwidth}|>{\raggedright\arraybackslash}p{0.10\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|}
-\caption{Evidencias de Documentación de Web Services para Sprint Review (Commits de viora-platform)} \label{tab:services-documentation-commits-sprint-1} \\
+\caption{Evidencias de documentación de Web Services para Sprint Review (commits de viora-platform)} \label{tab:services-documentation-commits-sprint-1} \\
 \hline
 \textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
 \endfirsthead
@@ -687,15 +687,15 @@ En la \autoref{tab:services-documentation-commits-sprint-1} se listan los commit
 \multicolumn{6}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir del historial de control de versiones Git del repositorio \texttt{viora-platform} en GitHub.}} \\
 \endlastfoot
 
+viora-platform & feature/orchard-plot-controller & 138bff8 & feat(orchard): add documentation for plot controller and resources &  & 24/09/2026 \\ \hline
 viora-platform & hotfix/open-api & 22ad2d4 & fix(swagger): add relative server url for render deployment &  & 01/10/2026 \\ \hline
 viora-platform & hotfix/open-api & 001179d & Merge pull request \#23 from hotfix/open-api & fix(swagger): add relative server url for render deployment & 01/10/2026 \\ \hline
-viora-platform & feature/orchard-plot-controller & 138bff8 & feat(orchard): add documentation for plot controller and resources &  & 25/09/2026 \\ \hline
+viora-platform & feature/settlement-settle-campaign-harvest & 88a9bf2 & feat(settlement): expose harvest settlement endpoint with localized messages &  & 02/10/2026 \\ \hline
 viora-platform & feature/plot-restore & 23814aa & docs(api): document the plot restore endpoint &  & 03/10/2026 \\ \hline
 viora-platform & feature/phenology-chill-metric-extras & 9afdbb7 & fix(phenology): align openapi schema example and mock test key to thresholdTarget &  & 03/10/2026 \\ \hline
+viora-platform & feature/telemitry-agroclimatic-incidents & da10a40 & feat(controllers): add agroclimatic indicent controller, resources and assemblers &  & 03/10/2026 \\ \hline
 viora-platform & feature/thinning-window-opens-on & 932dc56 & docs(thinning): record the prescription inputs and contract &  & 04/10/2026 \\ \hline
-viora-platform & feature/telemitry-agroclimatic-incidents & da10a40 & feat(controllers): add agroclimatic indicent controller, resources and assemblers &  & 04/10/2026 \\ \hline
 viora-platform & feature/thining-logbook & 20aaaad & feat(controllers): add controller, sampling covereage evaluator, sampling resources and their assemblers &  & 05/10/2026 \\ \hline
-viora-platform & feature/settlement-settle-campaign-harvest & 88a9bf2 & feat(settlement): expose harvest settlement endpoint with localized messages &  & 02/10/2026 \\ \hline
 viora-platform & feature/virtual-node-hourly-telemetry & 353341e & fix(shared): answer 404 for paths that no endpoint serves &  & 07/10/2026 \\ \hline
 \end{longtable}
 \end{center}
@@ -744,7 +744,7 @@ El repositorio `viora-landing-page` se conectó a Vercel importándolo desde Git
 \caption{Creación del proyecto viora-landing-page en Vercel.} \label{fig:deploy-vercel-new-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.55\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/01-vercel-new-project.jpeg}
+\includegraphics[width=0.40\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/01-vercel-new-project.jpeg}
 \caption*{\textit{Nota.} Captura del asistente de importación de Vercel. Elaboración propia.}
 \end{figure}
 
@@ -774,11 +774,13 @@ El resultado es el despliegue de producción de la \autoref{fig:deploy-vercel-pr
 \caption{Despliegue de producción del Landing Page en Vercel.} \label{fig:deploy-vercel-prod-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/04-vercel-production-deployment.jpeg}
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/landing-page/04-vercel-production-deployment.jpeg}
 \caption*{\textit{Nota.} Captura del resumen del proyecto en Vercel. Elaboración propia.}
 \end{figure}
 
 La calidad del código se valida antes de integrar mediante el flujo `ci.yml` de GitHub Actions (análisis estático con \textit{lint}, verificación de formato y compilación), que se ejecuta en cada \textit{pull request} hacia `develop` o `main` y en cada \textit{push} a `develop`. En este Sprint se publicaron las versiones 1.0.0 y 1.1.0 (26/09/2026), accesibles en \url{https://viora-landing-page-sable.vercel.app/}.
+
+\newpage
 
 \noindent \textbf{Servicios web de backend (Render):}
 
@@ -790,7 +792,7 @@ En la \autoref{fig:deploy-render-config-s1} se muestran los parámetros del serv
 \caption{Configuración del Web Service viora-platform en Render.} \label{fig:deploy-render-config-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/backend/01-render-web-service-configuration.jpeg}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/backend/01-render-web-service-configuration.jpeg}
 \caption*{\textit{Nota.} Captura del panel de Render durante la creación del servicio. Elaboración propia.}
 \end{figure}
 
@@ -800,7 +802,7 @@ La configuración sensible no se versiona: se carga como variables de entorno en
 \caption{Variables de entorno del servicio en Render.} \label{fig:deploy-render-env-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/backend/02-render-environment-variables.jpeg}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/backend/02-render-environment-variables.jpeg}
 \caption*{\textit{Nota.} Captura del panel de Render; los valores permanecen ocultos. Elaboración propia.}
 \end{figure}
 
@@ -810,11 +812,13 @@ El despliegue es continuo (\autoref{fig:deploy-render-live-s1}): al integrarse e
 \caption{Despliegue exitoso de viora-platform en Render.} \label{fig:deploy-render-live-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/backend/03-render-deploy-live.jpeg}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/backend/03-render-deploy-live.jpeg}
 \caption*{\textit{Nota.} Captura del historial de despliegues de Render. Elaboración propia.}
 \end{figure}
 
 Al ser un plan gratuito, Render suspende la instancia tras un periodo de inactividad y advierte que reactivarla puede retrasar las peticiones 50 segundos o más; en nuestras pruebas la primera petición posterior llegó a superar el minuto. Es una limitación asumida para el entorno académico. La documentación interactiva de la API (OpenAPI) se publica en \url{https://viora-platform.onrender.com/swagger-ui/index.html}.
+
+\newpage
 
 \noindent \textbf{Base de datos en la nube (Filess.io):}
 
@@ -824,7 +828,7 @@ La base de datos relacional se aprovisionó en Filess.io como base de datos comp
 \caption{Creación de la base de datos PostgreSQL en Filess.io.} \label{fig:deploy-filess-create-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/database/01-filess-new-postgresql-database.jpeg}
+\includegraphics[width=0.5-\textwidth]{report/assets/sprint-deployment/sprint-1/database/01-filess-new-postgresql-database.jpeg}
 \caption*{\textit{Nota.} Captura del asistente de Filess.io. Elaboración propia.}
 \end{figure}
 
@@ -834,9 +838,11 @@ La \autoref{fig:deploy-filess-list-s1} confirma la instancia creada el 1 de octu
 \caption{Base de datos disponible en Filess.io.} \label{fig:deploy-filess-list-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.90\textwidth]{report/assets/sprint-deployment/sprint-1/database/02-filess-database-available.jpeg}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/database/02-filess-database-available.jpeg}
 \caption*{\textit{Nota.} Captura del listado de bases de datos compartidas de Filess.io. Elaboración propia.}
 \end{figure}
+
+\newpage
 
 \noindent \textbf{Aplicación móvil Android (Firebase App Distribution):}
 
@@ -848,7 +854,7 @@ El despliegue de la aplicación móvil se realiza con Firebase App Distribution,
 \caption{Proyecto viora-app-kotlin en la consola de Firebase.} \label{fig:deploy-firebase-project-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/01-firebase-project-overview.png}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/application/01-firebase-project-overview.png}
 \caption*{\textit{Nota.} Captura de la consola de Firebase del 7/10/2026. Elaboración propia.}
 \end{figure}
 
@@ -858,7 +864,7 @@ El despliegue de la aplicación móvil se realiza con Firebase App Distribution,
 \caption{Aplicación Android registrada en Firebase.} \label{fig:deploy-firebase-app-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/02-firebase-android-app-registered.png}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/application/02-firebase-android-app-registered.png}
 \caption*{\textit{Nota.} Captura de la configuración del proyecto en Firebase del 7/10/2026. Elaboración propia.}
 \end{figure}
 
@@ -888,7 +894,7 @@ El despliegue de la aplicación móvil se realiza con Firebase App Distribution,
 \caption{Carga de la versión 1.0.0 (10) y distribución a seis verificadores.} \label{fig:deploy-release-upload-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/05-release-upload-notes.png}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/application/05-release-upload-notes.png}
 \caption*{\textit{Nota.} Captura del paso final de la distribución en Firebase App Distribution. Elaboración propia.}
 \end{figure}
 
@@ -898,7 +904,7 @@ El despliegue de la aplicación móvil se realiza con Firebase App Distribution,
 \caption{Correo de invitación a probar la aplicación.} \label{fig:deploy-tester-email-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.45\textwidth]{report/assets/sprint-deployment/sprint-1/application/06-tester-invitation-email.png}
+\includegraphics[width=0.30\textwidth]{report/assets/sprint-deployment/sprint-1/application/06-tester-invitation-email.png}
 \caption*{\textit{Nota.} Correo enviado por Firebase App Distribution. Elaboración propia.}
 \end{figure}
 
@@ -908,7 +914,7 @@ El despliegue de la aplicación móvil se realiza con Firebase App Distribution,
 \caption{Estado de la distribución de la versión 1.0.0 (10).} \label{fig:deploy-distribution-status-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/07-distribution-status.png}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/application/07-distribution-status.png}
 \caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution del 7/10/2026. Elaboración propia.}
 \end{figure}
 
@@ -928,9 +934,11 @@ La \autoref{fig:deploy-device-install-s1} documenta la instalación en un teléf
 \caption{Secretos del repositorio viora-mobile-android para el pipeline de despliegue.} \label{fig:deploy-github-secrets-s1}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-1/application/08-github-actions-secrets.png}
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-1/application/08-github-actions-secrets.png}
 \caption*{\textit{Nota.} Captura de la configuración de GitHub Actions del 7/10/2026; GitHub solo muestra los nombres, nunca los valores. Elaboración propia.}
 \end{figure}
+
+\newpage
 
 #### Team Collaboration Insights during Sprint 
 &nbsp;
