@@ -37,6 +37,7 @@ v1.1.0 & 19/09/26 & Espada Lazo, Piero Anthony & Redacción de Software Configur
 v1.2.0 & 22/09/26 & Paredes Maza, Victor Juan de Dios & Redacción de Style Guidelines \tabularnewline \hline
 v1.3.0 & 07/10/26 & Paredes Maza, Victor Juan de Dios & Redacción de Information Architecture, Landing Page UI Design y diseño UX/UI de las aplicaciones móviles (wireframes, wireflows, mock-ups, user flows y prototipado) \tabularnewline \hline
 v1.4.0 & 07/10/26 & Espada Lazo, Piero Anthony & Redacción de entrevistas de validación de la landing page, registro audiovisual y evaluación heurística \tabularnewline \hline
+v1.5.0 & 08/10/26 & Santi Guerrero, Fabrizio Alonso & Creación de Sprint 1 \tabularnewline \hline
 \end{longtable}
 
 \newpage

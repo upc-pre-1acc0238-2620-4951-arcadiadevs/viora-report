@@ -57,7 +57,7 @@ U202412248 & Trinidad León, Jahat Jassiel \tabularnewline
 
 \vspace{1.0cm}
 
-{\large \textbf{Periodo 202620}\par} \vspace{0.1cm} {\normalsize \textbf{Setiembre, 2026}\par}
+{\large \textbf{Periodo 202620}\par} \vspace{0.1cm} {\normalsize \textbf{Octubre, 2026}\par}
 
 \end{titlepage}
 \restoregeometry
