@@ -1,7 +1,5 @@
 # Anexos {-}
 
-\clearpage
-
 \noindent \textbf{Anexo A. Video de Exposición}
 
 \vspace{0.3cm}
@@ -24,7 +22,7 @@ En esta sección se presenta la evidencia audiovisual de la exposición y susten
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/expo/tb1.png}
+\includegraphics[height=0.27\textheight,keepaspectratio]{report/assets/expo/tb1.png}
 \caption{Captura del video de exposición del hito TB1 del proyecto Viora}
 \label{fig:anexo-a1-video-exposicion-tb1}
 \caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/viora-expo-tb1}}
@@ -57,13 +55,15 @@ En esta sección se consolida la evidencia audiovisual de las entrevistas a prof
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/interviews/requirements/interviews.png}
+\includegraphics[width=0.78\textwidth]{report/assets/interviews/requirements/interviews.png}
 \caption{Captura del video consolidado de entrevistas de Needfinding del proyecto Viora}
 \label{fig:anexo-b1-video-entrevistas-needfinding}
 \caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/needfinding-interviews}}
 \end{figure}
 
 \vspace{0.5cm}
+
+\clearpage
 
 \noindent \textbf{B.2. Video de Entrevistas de Validación}
 
