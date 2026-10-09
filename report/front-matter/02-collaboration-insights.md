@@ -49,7 +49,7 @@ A continuación, se presentan las métricas de contribución y actividad del equ
 \caption{Contributors del repositorio de informe - Parte 1}
 \label{fig:contributors-part1}
 \centering
-\includegraphics[width=0.96\textwidth]{report/assets/collaboration-stats/contributors1.png}
+\includegraphics[width=0.6\textwidth]{report/assets/collaboration-stats/contributors1.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -57,7 +57,7 @@ A continuación, se presentan las métricas de contribución y actividad del equ
 \caption{Contributors del repositorio de informe - Parte 2}
 \label{fig:contributors-part2}
 \centering
-\includegraphics[width=0.96\textwidth]{report/assets/collaboration-stats/contributors2.png}
+\includegraphics[width=0.6\textwidth]{report/assets/collaboration-stats/contributors2.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
