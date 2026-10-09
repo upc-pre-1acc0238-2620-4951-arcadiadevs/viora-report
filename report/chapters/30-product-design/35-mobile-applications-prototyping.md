@@ -5,10 +5,10 @@ En esta sección se presenta y analiza la simulación interactiva y de navegaci�
 #### Criterios de diseño de interacción y articulación arquitectónica
 &nbsp;
 
-Las decisiones de interacción adoptadas en el prototipo móvil responden rigurosamente a las directrices de diseño del producto, las especificaciones ergonómicas de Material Design 3 y los sistemas de organización, navegación y búsqueda formulados en la arquitectura de información:
+Las decisiones de interacción adoptadas en el prototipo móvil responden rigurosamente a las directrices de diseño del producto, las especificaciones ergonmmmicas de Material Design 3 y los sistemas de organización, navegación y búsqueda formulados en la arquitectura de información:
 
-- Zonas táctiles y ergonomía con una sola mano: Todas las áreas interactivas, botones de acción principal, pestañas de navegación y conmutadores presentan una dimensión mínima de 48 por 48 dp, garantizando pulsaciones precisas y reduciendo errores accidentales en campo, inclusive durante la manipulación de dispositivos bajo vibración o con guantes agrícolas de protección.
-- Sistema de navegación por pestañas inferiores y cabecera de perfil: La navegación estructural materializa fielmente la distribución de cuatro destinos base por rol especificada en los sistemas de navegación. Para el productor olivarero, la barra fija inferior articula Inicio, Lotes, Plan y Bitácora; para el gestor técnico, estructura Inicio, Riesgo territorial, Acopio y Socios. En ambos roles, el acceso a la configuración de cuenta, idioma y preferencias se sitúa de forma no invasiva en el extremo superior izquierdo de la cabecera, preservando el espacio inferior para tareas operativas sin sobrecargar la jerarquía visual con una quinta pestaña.
+- Zonas táctiles y ergonomía con una sola mano: Todas las áreas interactivas, botones de acción principal, pestañas de navegación y conmutadores presentan una dimensión mínima de 48 por 48 dp, garantizando pulsaciones precisas y reduciendo errores accidentales en campo, inclusive durante la manipulación de dispositivos bajo vibración o con guantes agrícolas de proteccinnn.
+- Sistema de navegación por pestañas inferiores y cabecera de perfil: La navegación estructural materializa fielmente la distribución de cuatro destinos base por rol especificada en los sistemas de navegación. Para el productor olivarero, la barra fija inferior articula Inicio, Lotes, Plan y Bitcora; para el gestor técnico, estructura Inicio, Riesgo territorial, Acopio y Socios. En ambos roles, el acceso a la configuración de cuenta, idioma y preferencias se sitúa de forma no invasiva en el extremo superior izquierdo de la cabecera, preservando el espacio inferior para tareas operativas sin sobrecargar la jerarquía visual con una quinta pestaña.
 - Asistente guiado y retroalimentación táctil: Los flujos de incorporación (*onboarding*) y configuración inicial emplean una navegación secuencial paso a paso con barras de progreso lineales, campos de entrada numérica especializados y selectores interactivos directos, previniendo la fatiga cognitiva del usuario.
 - Patrones de captura rápida y registro flotante: La arquitectura incorpora un botón de acción flotante (FAB) centralizado en la bitácora del productor, facilitando el despliegue de hojas de acción modal (*bottom sheets*) para el muestreo de cuajado, el aclareo ejecutado, el pesaje de cosecha y notas rápidas de campo.
 - Resiliencia y affordance cromático: En concordancia con la paleta Cream, Forest, Harvest y Tierra, los elementos interactivos comunican con claridad su estado (reposo, pulsado y deshabilitado) manteniendo una relación de contraste que cumple con las pautas de accesibilidad WCAG AA bajo irradiación solar intensa.
@@ -39,26 +39,28 @@ En la pestaña de Socios, el gestor administra el padrón de cooperativistas y g
 #### Demostración en video del prototipo interactivo
 &nbsp;
 
-A continuación se presenta el registro visual y el acceso al recurso audiovisual.
+A continuación se presenta el registro visual y el acceso al recurso audiovisual del prototipo de alta fidelidad:
 
-Link del video: [https://tinyurl.com/44hdrd42](https://tinyurl.com/44hdrd42)
+- Enlace del video demostrativo: [https://tinyurl.com/44hdrd42](https://tinyurl.com/44hdrd42)
 
-Como se observa en la \autoref{fig:mobile-prototyping-home}, el prototipo se reproduce en Figma desde el panel de flujos, que organiza los recorridos de la App Productor y de la App Gestor por meta de usuario (por ejemplo, «Productor · 03 Inicio (F05)») e incluye las variantes de excepción, como el pago rechazado, el inicio sin conexión o el muestreo sin señal. La captura muestra el Inicio del productor en fase de aclareo, con el tapbar flotante y la tarjeta estacional que conduce al plan de aclareo.
-
-\begin{figure}[H]
-\caption{Prototipo Mobile: Reproducción del Flujo de Inicio del Productor en Figma.}
-\label{fig:mobile-prototyping-home}
-\centering
-\includegraphics[width=0.88\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-home-screenshot.png}
-\caption*{\textit{Nota.} Panel de flujos del prototipo con los recorridos principales y sus variantes, y reproducción del Inicio (P10). Elaboración propia.}
-\end{figure}
-
-La \autoref{fig:mobile-prototyping-panoramic} presenta la vista panorámica del archivo en modo prototipo: a la izquierda, la reproducción iniciada en el splash (T01); a la derecha, las secciones de la App Productor (Kotlin) y de la App Gestor (Flutter) con sus puntos de inicio de flujo, que conectan las láminas de cada meta de usuario con la misma organización empleada en los wireframes, mock-ups y user flows.
+Como se ilustra en la \autoref{fig:mobile-prototyping}, el prototipo interactivo se reproduce en Figma desde el panel de flujos estructurado por meta de usuario (panel a), abarcando tanto los flujos nominales como las variantes de contingencia (pago rechazado, muestreo offline y desconexión); mientras que la vista panorámica (panel b) exhibe la arquitectura integral de pantallas conectadas para la App Productor (Kotlin) y la App Gestor (Flutter).
 
 \begin{figure}[H]
-\caption{Prototipo Mobile: Vista Panorámica de Flujos y Conexiones en Figma.}
-\label{fig:mobile-prototyping-panoramic}
+\caption{Prototipo Mobile: Reproducción de Flujos y Vista Panorámica en Figma.}
+\label{fig:mobile-prototyping}
 \centering
-\includegraphics[width=0.88\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-panoramic-screenshot.png}
-\caption*{\textit{Nota.} Puntos de inicio de flujo de ambas aplicaciones y reproducción del splash del prototipo. Elaboración propia.}
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.22\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-home-screenshot.png}
+\caption*{(a) Reproducción del Inicio del productor (P10).}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.22\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-panoramic-screenshot.png}
+\caption*{(b) Vista panorámica de flujos en Figma.}
+\end{minipage}
+\caption*{\textit{Nota.} Panel de flujos interactivos, variantes de excepción y conexiones entre pantallas en Figma. Elaboración propia.}
 \end{figure}
+
+\clearpage

@@ -13,16 +13,7 @@ En esta sección se explica cómo se agrupa y ordena la información en las dos 
 
 Las piezas de ambas ontologías se derivan de las User Stories del Product Backlog, de modo que cada elemento de la arquitectura de información tiene un origen trazable en un requisito. En el landing se aplican los tres pasos; en la aplicación móvil, este apartado abarca la ontología y la taxonomía, y los recorridos de tarea se describen en Navigation Systems.
 
-**Landing Page.** Como se observa en la \autoref{fig:os-landing-ontology}, la ontología del landing reúne 22 piezas de información derivadas de las historias US33 a US41: la propuesta de valor, el problema de la alternancia productiva, la solución, las funcionalidades y los casos de uso, el contexto de las cosechas de Tacna, los dos segmentos con sus beneficios, los planes de acceso, el equipo y los elementos de soporte (descarga de la aplicación, idioma y documentos legales). Se incluyen también los videos About the Product y About the Team, que deben incrustarse en el landing.
-
-\begin{figure}[H]
-\caption{Landing Page Ontology de Viora.} \label{fig:os-landing-ontology}
-\centering
-\includegraphics[width=0.95\textwidth,height=0.45\textheight,keepaspectratio]{report/assets/organization-systems/landingpage-ontology.png}
-\caption*{\textit{Nota.} Elaboración propia.}
-\end{figure}
-
-Como se observa en la \autoref{fig:os-landing-taxonomy}, esas piezas se agrupan en seis bloques:
+**Landing Page.** La ontología y taxonomía del landing reúnen y estructuran las 22 piezas de información derivadas de las historias US33 a US41 en seis bloques lógicos (ver \autoref{fig:os-landing-ontology}): propuesta de valor, producto y casos de uso, contexto regional de Tacna y caracterización de segmentos, modelos de acceso y planes, presentación institucional de ArcadiaDevs, y zona de conversión final con pie de página regulatorio:
 
 1. Propuesta: Hero, propuesta de valor, problema y solución.
 2. Producto: Features, Use Cases y video del producto.
@@ -31,13 +22,21 @@ Como se observa en la \autoref{fig:os-landing-taxonomy}, esas piezas se agrupan 
 5. Institucional: equipo, ArcadiaDevs y video del equipo.
 6. Conversión, legal y navegación global: CTA final, descarga de la aplicación, términos, privacidad, idioma y footer.
 
-Cada color del tablero identifica un bloque. El idioma y el footer se ubican en una columna contigua por razones de espacio, pero forman parte del sexto bloque.
-
 \begin{figure}[H]
-\caption{Landing Page Taxonomy de Viora.} \label{fig:os-landing-taxonomy}
+\caption{Ontología y taxonomía de información del Landing Page de Viora.} \label{fig:os-landing-ontology}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.45\textheight,keepaspectratio]{report/assets/organization-systems/landingpage-taxonomy.png}
-\caption*{\textit{Nota.} Elaboración propia.}
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{report/assets/organization-systems/landingpage-ontology.png}
+\caption*{(a) Ontología de contenidos.} \label{fig:os-landing-ontology-a}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{report/assets/organization-systems/landingpage-taxonomy.png}
+\caption*{(b) Taxonomía en seis bloques.} \label{fig:os-landing-taxonomy}
+\end{minipage}
+\caption*{\textit{Nota.} Estructuración de piezas de contenido y agrupación taxonómica del sitio web. Elaboración propia.}
 \end{figure}
 
 La coreografía del visitante, que se observa en la \autoref{fig:os-landing-choreography}, ordena los bloques en un recorrido de scroll que va del problema a la solución, luego a los segmentos, al modelo de acceso y al equipo. El CTA de cosechas de Tacna sirve de puente hacia los segmentos, y el recorrido termina en el área de conversión y el footer. Sobre ese recorrido principal se definen rutas transversales:
@@ -52,8 +51,8 @@ El landing no incluye formulario de contacto: todo el proceso de alta ocurre en 
 \begin{figure}[H]
 \caption{Landing Page Visitor Choreography de Viora.} \label{fig:os-landing-choreography}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/organization-systems/landingpage-choreography.png}
-\caption*{\textit{Nota.} Elaboración propia.}
+\includegraphics[width=0.75\textwidth,height=0.38\textheight,keepaspectratio]{report/assets/organization-systems/landingpage-choreography.png}
+\caption*{\textit{Nota.} Recorrido de desplazamiento y rutas transversales de navegación del visitante. Elaboración propia.}
 \end{figure}
 
 **Mobile Application.** Como se observa en la \autoref{fig:os-mobile-ontology}, la ontología de la aplicación móvil reúne 84 piezas de información derivadas de las historias US01 a US32, US42 y US43, agrupadas según las épicas a las que pertenecen. Cada pieza indica la historia de la que proviene; por ejemplo, la ventana y fecha límite de aclareo proviene de la US27. Las historias del landing (US33 a US41), las historias técnicas y los spikes no forman parte de esta ontología, porque no representan información que el usuario vea en la aplicación.
@@ -61,97 +60,192 @@ El landing no incluye formulario de contacto: todo el proceso de alta ocurre en 
 \begin{figure}[H]
 \caption{Mobile App Ontology de Viora.} \label{fig:os-mobile-ontology}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/organization-systems/mobile-app-ontology.png}
-\caption*{\textit{Nota.} Elaboración propia.}
+\includegraphics[width=0.75\textwidth,height=0.38\textheight,keepaspectratio]{report/assets/organization-systems/mobile-app-ontology.png}
+\caption*{\textit{Nota.} Catálogo estructurado de piezas de información para la experiencia móvil. Elaboración propia.}
 \end{figure}
 
-La taxonomía, que se observa en la \autoref{fig:os-mobile-taxonomy}, reorganiza esas mismas 84 piezas, sin agregar ni duplicar ninguna, en ocho secciones navegables. Cada sección indica el rol que la utiliza:
-
-| Sección | Rol | Subgrupos |
-|:-------------------------|:------------------------------------|:------------------------------------|
-| Identity and Account | Productor y gestor | Access; Profile and Settings (incluye el idioma de la aplicación) |
-| Subscription and Membership | Productor y gestor | Producer Access; Cooperative Admin |
-| Plot Management | Productor | Plot Registration; Plot Inventory |
-| Field Monitoring | Productor | Sensor Nodes; Microclimate and Forecast; Field Alerts |
-| Alternate Bearing and Winter Chill | Productor | Harvest History and BBI; Winter Chill; ENSO Risk |
-| Fruit Load and Thinning | Productor | Field Sampling (Offline); Load Assessment; Thinning |
-| Campaign Close and Reports | Productor y gestor | Harvest Settlement; Technical Reports |
-| Cooperative Intelligence | Gestor | Territorial Risk; Intake Forecast |
-
-Respecto a la ontología, la taxonomía introduce dos reubicaciones. Las cuatro piezas de la US12 (matriz de riesgo territorial, sector actual por GPS, selección manual de sector y semáforo con contadores) pertenecen a la épica de parcelas, pero se ubican en Cooperative Intelligence, porque son vistas de trabajo del gestor y comparten contexto con el semáforo reactivo de la US31. Además, las piezas de internacionalización de la US42 (idioma de la aplicación y formatos regionales) se integran en Profile and Settings, dentro de Identity and Account, porque son preferencias de la cuenta.
+La taxonomía, que se observa en la \autoref{fig:os-mobile-taxonomy}, reorganiza esas mismas 84 piezas, sin agregar ni duplicar ninguna, en ocho secciones navegables detalladas en la \autoref{tab:ia-mobile-taxonomy}.
 
 \begin{figure}[H]
 \caption{Mobile App Taxonomy de Viora.} \label{fig:os-mobile-taxonomy}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/organization-systems/mobile-app-taxonomy.png}
-\caption*{\textit{Nota.} Elaboración propia.}
+\includegraphics[width=0.88\textwidth,height=0.28\textheight,keepaspectratio]{report/assets/organization-systems/mobile-app-taxonomy.png}
+\caption*{\textit{Nota.} Reorganización taxonómica en ocho secciones navegables por rol de usuario. Elaboración propia.}
 \end{figure}
 
-**Sistemas de organización visual.** Según la naturaleza de cada grupo de información, se aplica uno de tres sistemas de organización visual, como se detalla a continuación:
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.28\textwidth} p{0.24\textwidth} p{0.43\textwidth}}
+\caption{Taxonomía de la aplicación móvil de Viora por rol y sección.} \label{tab:ia-mobile-taxonomy} \\
+\hline
+\textbf{Sección} & \textbf{Rol} & \textbf{Subgrupos} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Sección} & \textbf{Rol} & \textbf{Subgrupos} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{3}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+Identity and Account & Productor y gestor & Access; Profile and Settings (incluye el idioma de la aplicación). \\
+Subscription and Membership & Productor y gestor & Producer Access; Cooperative Admin. \\
+Plot Management & Productor & Plot Registration; Plot Inventory. \\
+Field Monitoring & Productor & Sensor Nodes; Microclimate and Forecast; Field Alerts. \\
+Alternate Bearing and Winter Chill & Productor & Harvest History and BBI; Winter Chill; ENSO Risk. \\
+Fruit Load and Thinning & Productor & Field Sampling (Offline); Load Assessment; Thinning. \\
+Campaign Close and Reports & Productor y gestor & Harvest Settlement; Technical Reports. \\
+Cooperative Intelligence & Gestor & Territorial Risk; Intake Forecast. \\
+\end{longtable}
+\endgroup
 
-| Sistema | Landing Page | Aplicación móvil | Sustento |
-|:-------------------|:------------------------|:-----------------------------|:------------------------|
-| Jerárquico (visual hierarchy) | Hero, Features, planes de acceso y Equipo: un mensaje principal con detalles subordinados. | Pantallas de inicio por rol, detalle de parcela y lectura de carga frutal: el dato principal domina y el contexto se subordina. El tipo de card distingue el rol de cada bloque: Elevated para lotes, Filled para métricas y Outlined para alertas. | El usuario necesita captar lo esencial de un vistazo antes de profundizar, especialmente en campo, donde la atención es breve. |
-| Secuencial (step-by-step to accomplish) | Recorrido de scroll del problema a la solución, casos de uso (problema, módulo, resultado) y transición animada entre segmentos. | Registro y rol (US01, US43), suscripción con pago (US06), delimitación de parcela con GPS (US09), muestreo de cuajado árbol por árbol (US24), prescripción y registro de aclareo (US27, US28) y cierre de campaña (US29, US30). | Son tareas con un orden obligatorio, donde saltar un paso invalida el resultado; guiarlas paso a paso reduce errores y, en el muestreo, permite avanzar sin conexión. |
-| Matricial | Comparación de planes de acceso según características. | Matriz de riesgo territorial y semáforo por sector (US12, US31), series temporales de sensores por variable y rango (US17), historial de campañas frente al BBI (US20) y proyección de acopio de aceituna verde y negra (US32). | La información tiene dos dimensiones que el usuario necesita cruzar para decidir, como sector frente a nivel de riesgo o campaña frente a producción. |
+Respecto a la ontología, la taxonomía introduce dos reubicaciones. Las cuatro piezas de la US12 (matriz de riesgo territorial, sector actual por GPS, selección manual de sector y semáforo con contadores) pertenecen a la épica de parcelas, pero se ubican en Cooperative Intelligence, porque son vistas de trabajo del gestor y comparten contexto con el semáforo reactivo de la US31. Además, las piezas de internacionalización de la US42 (idioma de la aplicación y formatos regionales) se integran en Profile and Settings, dentro de Identity and Account, porque son preferencias de la cuenta.
 
-**Esquemas de categorización.** De forma complementaria, el contenido se clasifica con cuatro esquemas, según cómo busca el usuario cada tipo de información:
+**Sistemas de organización visual.** Según la naturaleza de cada grupo de información, se aplica uno de tres sistemas de organización visual, como se detalla en la \autoref{tab:ia-visual-org}:
 
-| Esquema | Dónde se aplica | Sustento |
-|:-------------------------|:------------------------------------|:------------------------------------|
-| Cronológico | Historial de campañas y cálculo del BBI (US20), series temporales de 24 horas, 7 días y 30 días (US17), pronóstico a 7 días (US19), acumulación de frío de la temporada invernal (US22), ventana de aclareo con fecha límite (US27) y bitácora de la parcela (US28). | El productor piensa en campañas y temporadas: la vecería solo se entiende al comparar años sucesivos, y las intervenciones dependen de ventanas fenológicas con fecha. |
-| Por tópicos | Las ocho secciones de la taxonomía móvil (parcelas, monitoreo, alternancia y frío, carga y aclareo, cierre, entre otras) y los bloques del landing. | Cada sección responde a un tipo de decisión distinto, y el usuario llega buscando un tema, no una función aislada. |
-| Por audiencia | Separación de la aplicación por rol (productor y gestor), la sección exclusiva del gestor (Cooperative Intelligence), el subgrupo Cooperative Admin de Subscription and Membership y, en el landing, los segmentos y planes diferenciados para productor y cooperativa. | Los dos segmentos tienen objetivos distintos: el productor gestiona su parcela y el gestor supervisa el territorio y la cartera de socios. |
-| Alfabético | Padrón de socios de la cooperativa (US08), selección manual de sector (US12), selector de variedad de olivo (US09) y selector de idioma (US42). | Se reserva para listas de nombres propios donde el usuario ya conoce el elemento que busca; en el resto de la aplicación, el orden alfabético no aporta significado. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.18\textwidth} p{0.24\textwidth} p{0.28\textwidth} p{0.24\textwidth}}
+\caption{Sistemas de organización visual aplicados en Viora.} \label{tab:ia-visual-org} \\
+\hline
+\textbf{Sistema} & \textbf{Landing Page} & \textbf{Aplicación móvil} & \textbf{Sustento} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Sistema} & \textbf{Landing Page} & \textbf{Aplicación móvil} & \textbf{Sustento} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+Jerárquico (visual hierarchy) & Hero, Features, planes de acceso y Equipo: un mensaje principal con detalles subordinados. & Pantallas de inicio por rol, detalle de parcela y lectura de carga frutal: el dato principal domina y el contexto se subordina. El tipo de card distingue el rol de cada bloque: Elevated para lotes, Filled para métricas y Outlined para alertas. & El usuario necesita captar lo esencial de un vistazo antes de profundizar, especialmente en campo, donde la atención es breve. \\
+Secuencial (step-by-step) & Recorrido de scroll del problema a la solución, casos de uso (problema, módulo, resultado) y transición animada entre segmentos. & Registro y rol (US01, US43), suscripción con pago (US06), delimitación de parcela con GPS (US09), muestreo de cuajado árbol por árbol (US24), prescripción y registro de aclareo (US27, US28) y cierre de campaña (US29, US30). & Son tareas con un orden obligatorio, donde saltar un paso invalida el resultado; guiarlas paso a paso reduce errores y, en el muestreo, permite avanzar sin conexión. \\
+Matricial & Comparación de planes de acceso según características. & Matriz de riesgo territorial y semáforo por sector (US12, US31), series temporales de sensores por variable y rango (US17), historial de campañas frente al BBI (US20) y proyección de acopio de aceituna verde y negra (US32). & La información tiene dos dimensiones que el usuario necesita cruzar para decidir, como sector frente a nivel de riesgo o campaña frente a producción. \\
+\end{longtable}
+\endgroup
+
+**Esquemas de categorización.** De forma complementaria, el contenido se clasifica con cuatro esquemas, según cómo busca el usuario cada tipo de información (ver \autoref{tab:ia-cat-schemes}):
+
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.18\textwidth} p{0.40\textwidth} p{0.37\textwidth}}
+\caption{Esquemas de categorización de contenidos en Viora.} \label{tab:ia-cat-schemes} \\
+\hline
+\textbf{Esquema} & \textbf{Dónde se aplica} & \textbf{Sustento} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Esquema} & \textbf{Dónde se aplica} & \textbf{Sustento} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{3}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+Cronológico & Historial de campañas y cálculo del BBI (US20), series temporales de 24 horas, 7 días y 30 días (US17), pronóstico a 7 días (US19), acumulación de frío de la temporada invernal (US22), ventana de aclareo con fecha límite (US27) y bitácora de la parcela (US28). & El productor piensa en campañas y temporadas: la vecería solo se entiende al comparar años sucesivos, y las intervenciones dependen de ventanas fenológicas con fecha. \\
+Por tópicos & Las ocho secciones de la taxonomía móvil (parcelas, monitoreo, alternancia y frío, carga y aclareo, cierre, entre otras) y los bloques del landing. & Cada sección responde a un tipo de decisión distinto, y el usuario llega buscando un tema, no una función aislada. \\
+Por audiencia & Separación de la aplicación por rol (productor y gestor), la sección exclusiva del gestor (Cooperative Intelligence), el subgrupo Cooperative Admin de Subscription and Membership y, en el landing, los segmentos y planes diferenciados para productor y cooperativa. & Los dos segmentos tienen objetivos distintos: el productor gestiona su parcela y el gestor supervisa el territorio y la cartera de socios. \\
+Alfabético & Padrón de socios de la cooperativa (US08), selección manual de sector (US12), selector de variedad de olivo (US09) y selector de idioma (US42). & Se reserva para listas de nombres propios donde el usuario ya conoce el elemento que busca; en el resto de la aplicación, el orden alfabético no aporta significado. \\
+\end{longtable}
+\endgroup
 
 #### Labeling Systems
 
 Viora utiliza etiquetas breves y consistentes que permiten anticipar el contenido o la acción de cada elemento. Se mantiene el vocabulario de las Style Guidelines y se asocia cada etiqueta con los grupos definidos en Organization Systems. Los nombres de navegación pueden agrupar varios conceptos: no es necesario convertir cada entidad del dominio en una pestaña. Las dos implementaciones móviles, Kotlin y Flutter, comparten las etiquetas y diferencian el contenido según el rol autenticado.
 
-**Landing Page.** Las etiquetas del menú remiten a secciones del mismo documento; los botones describen su destino. Se propone el siguiente vocabulario para concretar los bloques de Organization Systems:
+**Landing Page.** Las etiquetas del menú remiten a secciones del mismo documento; los botones describen su destino. En la \autoref{tab:ia-labels-landing} se expone el vocabulario para concretar los bloques de Organization Systems:
 
-| Etiqueta | Información o acción asociada |
-|:-----------------------------|:---------------------------------------------------------------------|
-| Inicio | Propuesta de valor, problema de la vecería y solución. |
-| Producto | Funcionalidades, casos de uso y video About the Product. |
-| Para quién | Contexto de Tacna y beneficios para productores y gestores técnicos. |
-| Planes | Plan Productor y Plan Cooperativa, condiciones de acceso y tarifas en PEN. |
-| Equipo | ArcadiaDevs, integrantes y video About the Team. |
-| Descargar app | Acceso al medio de distribución móvil disponible. |
-| Ver Plan Productor / Ver Plan Cooperativa | Desplazamiento desde cada segmento a su modalidad de acceso. |
-| Canjear código | Remite a la aplicación para canjear el código de activación que la cooperativa entrega a sus socios; el socio no paga de forma individual. |
-| Términos y condiciones / Privacidad | Documentos legales correspondientes. |
-| Español / English | Selección del idioma del contenido. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.32\textwidth} p{0.63\textwidth}}
+\caption{Vocabulario y sistemas de etiquetado del Landing Page.} \label{tab:ia-labels-landing} \\
+\hline
+\textbf{Etiqueta} & \textbf{Información o acción asociada} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Etiqueta} & \textbf{Información o acción asociada} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+Inicio & Propuesta de valor, problema de la vecería y solución. \\
+Producto & Funcionalidades, casos de uso y video About the Product. \\
+Para quién & Contexto de Tacna y beneficios para productores y gestores técnicos. \\
+Planes & Plan Productor y Plan Cooperativa, condiciones de acceso y tarifas en PEN. \\
+Equipo & ArcadiaDevs, integrantes y video About the Team. \\
+Descargar app & Acceso al medio de distribución móvil disponible. \\
+Ver Plan Productor / Ver Plan Cooperativa & Desplazamiento desde cada segmento a su modalidad de acceso. \\
+Canjear código & Remite a la aplicación para canjear el código de activación que la cooperativa entrega a sus socios; el socio no paga de forma individual. \\
+Términos y condiciones / Privacidad & Documentos legales correspondientes. \\
+Español / English & Selección del idioma del contenido. \\
+\end{longtable}
+\endgroup
 
 No se utiliza “Contacto” como destino de un formulario, porque la organización del landing establece que el alta ocurre en la aplicación y no contempla ese formulario.
 
-**Aplicaciones móviles.** Se adopta “Lotes” como etiqueta de navegación, según Style Guidelines. En esta interfaz, un lote corresponde a la parcela registrada; no representa un fundo completo ni una agrupación adicional de parcelas. En la documentación técnica se conserva el término parcela. Esta equivalencia evita introducir una jerarquía inexistente.
+**Aplicaciones móviles.** Se adopta “Lotes” como etiqueta de navegación, según Style Guidelines. En esta interfaz, un lote corresponde a la parcela registrada; no representa un fundo completo ni una agrupación adicional de parcelas. En la documentación técnica se conserva el término parcela. En la \autoref{tab:ia-labels-mobile} se consolidan las etiquetas móviles y su criterio de uso:
 
-| Etiqueta | Asociación y criterio de uso |
-|:-----------------------------|:---------------------------------------------------------------------|
-| Inicio | Resumen y accesos a las tareas del rol. |
-| Lotes | Inventario de parcelas del productor; cada elemento abre su detalle. |
-| Plan | Evaluación de carga y prescripción de aclareo por lote y campaña. Se distingue de “Suscripción”. |
-| Bitácora | Registros de muestreo, aclareo y cosecha asociados a un lote y una campaña. |
-| Muestreo de cuajado | Ronda de observaciones de árboles, brotes y frutos. “Registrar muestreo” inicia la captura. |
-| Carga frutal | Evaluación calculada a partir de los insumos agronómicos; no equivale al pesaje real de cosecha. |
-| Prescripción | Porcentaje de remoción y ventana de aclareo calculados por el sistema. |
-| Registrar aclareo | Fecha y porcentaje realmente ejecutados por el productor. |
-| Ventana de aclareo | Estado y fecha límite informados por el sistema. Una fecha vencida se acompaña de la advertencia correspondiente. |
-| Cosecha / Registrar cosecha | Kilogramos de la campaña, diferenciados en aceituna verde y negra cuando corresponda. |
-| Cerrar campaña | Confirmación del cierre productivo; se diferencia del registro retrospectivo de cosechas. |
-| Alternancia / Índice BBI | El primer término identifica el fenómeno; el segundo, su indicador numérico. La ayuda explica que alternancia también se conoce como vecería. |
-| Frío acumulado | Acumulación de frío de la temporada evaluada, con su unidad y período. |
-| Clima | Series agroclimáticas y pronóstico, mostrando fuente y fecha de actualización. |
-| Nodos virtuales | Dispositivos lógicos vinculados al lote; sus lecturas sintéticas se identifican como “Datos simulados”. |
-| Riesgo territorial | Priorización de parcelas de la cooperativa por su situación agronómica y climática. |
-| Acopio | Proyección agregada de aceituna verde y negra para la campaña, con cobertura de muestreo. |
-| Socios | Productores vinculados a la cooperativa y datos de membresía autorizados. |
-| Expediente técnico | Documento PDF de trazabilidad agronómica; “Descargar PDF” expresa la acción. |
-| Suscripción | Modalidad de acceso, estado y vigencia. |
-| Código de cooperativa | Código de activación para acceder mediante una membresía cooperativa. |
-| Cuenta / Idioma | Perfil, preferencias y gestión del acceso. |
-| Lote archivado | Parcela retirada del inventario activo que conserva su historial. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.30\textwidth} p{0.65\textwidth}}
+\caption{Vocabulario y sistemas de etiquetado de las aplicaciones móviles.} \label{tab:ia-labels-mobile} \\
+\hline
+\textbf{Etiqueta} & \textbf{Asociación y criterio de uso} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Etiqueta} & \textbf{Asociación y criterio de uso} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+Inicio & Resumen y accesos a las tareas del rol. \\
+Lotes & Inventario de parcelas del productor; cada elemento abre su detalle. \\
+Plan & Evaluación de carga y prescripción de aclareo por lote y campaña. Se distingue de “Suscripción”. \\
+Bitácora & Registros de muestreo, aclareo y cosecha asociados a un lote y una campaña. \\
+Muestreo de cuajado & Ronda de observaciones de árboles, brotes y frutos. “Registrar muestreo” inicia la captura. \\
+Carga frutal & Evaluación calculada a partir de los insumos agronómicos; no equivale al pesaje real de cosecha. \\
+Prescripción & Porcentaje de remoción y ventana de aclareo calculados por el sistema. \\
+Registrar aclareo & Fecha y porcentaje realmente ejecutados por el productor. \\
+Ventana de aclareo & Estado y fecha límite informados por el sistema. Una fecha vencida se acompaña de la advertencia correspondiente. \\
+Cosecha / Registrar cosecha & Kilogramos de la campaña, diferenciados en aceituna verde y negra cuando corresponda. \\
+Cerrar campaña & Confirmación del cierre productivo; se diferencia del registro retrospectivo de cosechas. \\
+Alternancia / Índice BBI & El primer término identifica el fenómeno; el segundo, su indicador numérico. La ayuda explica que alternancia también se conoce como vecería. \\
+Frío acumulado & Acumulación de frío de la temporada evaluada, con su unidad y período. \\
+Clima & Series agroclimáticas y pronóstico, mostrando fuente y fecha de actualización. \\
+Nodos virtuales & Dispositivos lógicos vinculados al lote; sus lecturas sintéticas se identifican como “Datos simulados”. \\
+Riesgo territorial & Priorización de parcelas de la cooperativa por su situación agronómica y climática. \\
+Acopio & Proyección agregada de aceituna verde y negra para la campaña, con cobertura de muestreo. \\
+Socios & Productores vinculados a la cooperativa y datos de membresía autorizados. \\
+Expediente técnico & Documento PDF de trazabilidad agronómica; “Descargar PDF” expresa la acción. \\
+Suscripción & Modalidad de acceso, estado y vigencia. \\
+Código de cooperativa & Código de activación para acceder mediante una membresía cooperativa. \\
+Cuenta / Idioma & Perfil, preferencias y gestión del acceso. \\
+Lote archivado & Parcela retirada del inventario activo que conserva su historial. \\
+\end{longtable}
+\endgroup
 
 Los estados se presentan con texto además de color. Para el semáforo se proponen “Óptimo”, “Moderado” y “Crítico”, acompañados del motivo comunicado por el sistema, como sobrecarga o riesgo climático. “Sobrecarga” no sustituye el nombre de todo el nivel crítico. “Sin datos suficientes” indica ausencia de una evaluación válida y no se interpreta como riesgo óptimo.
 
@@ -192,42 +286,99 @@ Para compartir la landing se establecen `og:title` = “Viora: gestión del oliv
 
 La privacidad de los datos de cuenta y parcelas depende de la autenticación y autorización del sistema. Las directivas de indexación no sustituyen estos controles.
 
-**Elementos ASO.** La identidad pública propuesta es “Viora”, para productores y gestores. Kotlin y Flutter son implementaciones tecnológicas, no aplicaciones separadas por audiencia. Las fichas de distribución que se utilicen deben describir las capacidades de ambos roles. En el AV1 la distribución de pruebas está definida mediante Firebase App Distribution; los valores siguientes definen la ficha que se utilizará cuando la aplicación se publique en tienda.
+**Elementos ASO.** La identidad pública propuesta es “Viora”, para productores y gestores. Kotlin y Flutter son implementaciones tecnológicas, no aplicaciones separadas por audiencia. Las fichas de distribución que se utilicen deben describir las capacidades de ambos roles. En el AV1 la distribución de pruebas está definida mediante Firebase App Distribution; los valores de la \autoref{tab:ia-aso-elements} definen la ficha que se utilizará cuando la aplicación se publique en tienda.
 
-| Elemento solicitado | Valor propuesto |
-|:-----------------------------|:---------------------------------------------------------------------|
-| App Title | Viora |
-| App Subtitle | Gestión del olivar y aclareo |
-| App Keywords | olivo,vecería,muestreo,carga frutal,cosecha,cooperativa,acopio |
-| App Description | Viora acompaña a productores olivícolas y gestores técnicos en el seguimiento de sus parcelas y campañas. Registra muestreos de cuajado sin conexión y sincronízalos cuando recuperes cobertura. Consulta evaluaciones de carga frutal, prescripciones de aclareo, historial de cosechas e índice de alternancia cuando existan datos suficientes. Como gestor, revisa el riesgo territorial y las proyecciones de acopio de tu cooperativa. Las consultas actualizadas y los cálculos del servidor requieren conexión. En la versión académica, la telemetría de nodos virtuales utiliza datos simulados. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.28\textwidth} p{0.67\textwidth}}
+\caption{Elementos ASO propuestos para Viora.} \label{tab:ia-aso-elements} \\
+\hline
+\textbf{Elemento solicitado} & \textbf{Valor propuesto} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Elemento solicitado} & \textbf{Valor propuesto} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+App Title & Viora \\
+App Subtitle & Gestión del olivar y aclareo \\
+App Keywords & olivo, vecería, muestreo, carga frutal, cosecha, cooperativa, acopio \\
+App Description & Viora acompaña a productores olivícolas y gestores técnicos en el seguimiento de sus parcelas y campañas. Registra muestreos de cuajado sin conexión y sincronízalos cuando recuperes cobertura. Consulta evaluaciones de carga frutal, prescripciones de aclareo, historial de cosechas e índice de alternancia cuando existan datos suficientes. Como gestor, revisa el riesgo territorial y las proyecciones de acopio de tu cooperativa. Las consultas actualizadas y los cálculos del servidor requieren conexión. En la versión académica, la telemetría de nodos virtuales utiliza datos simulados. \\
+\end{longtable}
+\endgroup
 
-La adaptación a cada tienda respeta sus campos reales:
+La adaptación a cada tienda respeta sus campos reales, como se expone en la \autoref{tab:ia-aso-stores}:
 
-| Tienda | Aplicación de los valores |
-|:-----------------------------|:---------------------------------------------------------------------|
-| Google Play | App name: “Viora” (máximo 30 caracteres). Short description: “Muestreo, aclareo y seguimiento del olivar para productores y cooperativas.” (máximo 80). Full description: el texto de App Description (máximo 4000). No tiene campos independientes equivalentes a App Subtitle y App Keywords; los términos relevantes se incorporan naturalmente en las descripciones. |
-| Apple App Store, si se publica una versión iOS | Name: “Viora” (máximo 30). Subtitle: el texto propuesto (máximo 30). Keywords: la lista propuesta (máximo 100). Description: el texto propuesto (máximo 4000). Esta ficha es condicional y no amplía el despliegue Android del AV1. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.22\textwidth} p{0.73\textwidth}}
+\caption{Adaptación de metadatos ASO por tienda de aplicaciones.} \label{tab:ia-aso-stores} \\
+\hline
+\textbf{Tienda} & \textbf{Aplicación de los valores} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Tienda} & \textbf{Aplicación de los valores} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+Google Play & App name: “Viora” (máx. 30 caracteres). Short description: “Muestreo, aclareo y seguimiento del olivar para productores y cooperativas.” (máx. 80). Full description: el texto de App Description (máx. 4000). Los términos relevantes se incorporan naturalmente en las descripciones. \\
+Apple App Store & Name: “Viora” (máx. 30). Subtitle: el texto propuesto (máx. 30). Keywords: la lista propuesta (máx. 100). Description: el texto propuesto (máx. 4000). Esta ficha es condicional y no amplía el despliegue Android del AV1. \\
+\end{longtable}
+\endgroup
 
 Las restricciones de tienda se verificaron en [Google Play Console](https://support.google.com/googleplay/android-developer/answer/9859152?hl=en-GB) y [Apple Developer](https://developer.apple.com/app-store/product-page/). Los textos describen capacidades y condiciones de uso sin prometer eliminar la vecería ni completar todo muestreo en un tiempo garantizado.
 
 #### Searching Systems
 
-Viora ofrece búsqueda contextual dentro de los inventarios y registros, junto con filtros apropiados para cada consulta. No se plantea un buscador universal sobre todos los datos. Las opciones siguientes concretan decisiones de interfaz sobre la información requerida por las historias de usuario.
+Viora ofrece búsqueda contextual dentro de los inventarios y registros, junto con filtros apropiados para cada consulta. No se plantea un buscador universal sobre todos los datos. Las opciones de la \autoref{tab:ia-search-systems} concretan decisiones de interfaz sobre la información requerida por las historias de usuario.
 
 **Landing Page.** Por su extensión y recorrido secuencial, el sitio no necesita un buscador interno. El menú por secciones, los enlaces entre casos de uso y funcionalidades y los accesos desde cada segmento a su plan permiten localizar la información. Los documentos legales se encuentran en el pie de página.
 
 **Aplicaciones móviles.** Solo se consultan registros autorizados para la cuenta y el rol. El contexto de lote y campaña se mantiene visible y puede preseleccionarse cuando la consulta se abre desde su detalle.
 
-| Consulta y respaldo | Medio y filtros propuestos | Presentación y orden |
-|:-------------------------|:------------------------------------|:------------------------------------|
-| Lotes del productor (US09–US11) | Nombre del lote; variedad registrada; activos o archivados. El filtro de variedad ofrece las variedades registradas en el sistema: Arbequina, Criolla, Manzanilla y Sevillana. | Tarjetas con nombre, variedad y estado; orden alfabético por nombre. |
-| Historial de cosechas e índice BBI (US20, US21) | Selección de lote y año de campaña. | Campañas recientes primero, con año y volumen. La serie comparativa y el BBI se muestran con contexto y estado de suficiencia del historial. |
-| Muestreos y árboles evaluados (US24, US25) | Lote, campaña, fecha y estado de sincronización; identificación del árbol dentro de la ronda. | Rondas recientes primero y detalle de árboles, brotes y frutos; estado local o sincronizado visible. |
-| Plan de aclareo (US26–US28) | Selección de lote y campaña para consultar evaluación, prescripción y registros de ejecución. | Carga, porcentaje prescrito, fecha límite y labores registradas, distinguiendo lo calculado de lo ejecutado. |
-| Nodos virtuales y clima (US13–US19) | Lote y nodo; selección de variable y períodos de 24 horas, 7 días o 30 días para las series. | Inventario por nombre o identificador; series gráficas en orden temporal ascendente, con unidades, fuente y actualización. El pronóstico se presenta aparte, por días. |
-| Cartera y riesgo territorial del gestor (US08, US12, US31) | Nombre de socio; sector territorial y nivel de riesgo en la vista de parcelas. | Padrón de socios alfabético; mapa o matriz territorial por sector y prioridad. El riesgo se atribuye a la parcela o sector evaluado, sin convertirlo automáticamente en atributo de la membresía. |
-| Acopio cooperativo (US32) | Selección de campaña; lectura diferenciada de aceituna verde y negra. | Resumen de tonelaje y cobertura de muestreo. Se advierte cuando la estimación es preliminar. |
-| Expediente técnico (US30) | Selección de lote y campaña dentro del alcance autorizado. | Identificación de lote y campaña y acción para obtener el PDF. No se busca texto dentro del archivo. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.25\textwidth} p{0.40\textwidth} p{0.30\textwidth}}
+\caption{Sistemas de búsqueda contextual y filtros en la aplicación móvil.} \label{tab:ia-search-systems} \\
+\hline
+\textbf{Consulta y respaldo} & \textbf{Medio y filtros propuestos} & \textbf{Presentación y orden} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Consulta y respaldo} & \textbf{Medio y filtros propuestos} & \textbf{Presentación y orden} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{3}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+Lotes del productor (US09–US11) & Nombre del lote; variedad registrada; activos o archivados. El filtro de variedad ofrece las variedades registradas en el sistema: Arbequina, Criolla, Manzanilla y Sevillana. & Tarjetas con nombre, variedad y estado; orden alfabético por nombre. \\
+Historial de cosechas e índice BBI (US20, US21) & Selección de lote y año de campaña. & Campañas recientes primero, con año y volumen. La serie comparativa y el BBI se muestran con contexto y estado de suficiencia del historial. \\
+Muestreos y árboles evaluados (US24, US25) & Lote, campaña, fecha y estado de sincronización; identificación del árbol dentro de la ronda. & Rondas recientes primero y detalle de árboles, brotes y frutos; estado local o sincronizado visible. \\
+Plan de aclareo (US26–US28) & Selección de lote y campaña para consultar evaluación, prescripción y registros de ejecución. & Carga, porcentaje prescrito, fecha límite y labores registradas, distinguiendo lo calculado de lo ejecutado. \\
+Nodos virtuales y clima (US13–US19) & Lote y nodo; selección de variable y períodos de 24 horas, 7 días o 30 días para las series. & Inventario por nombre o identificador; series gráficas en orden temporal ascendente, con unidades, fuente y actualización. El pronóstico se presenta aparte, por días. \\
+Cartera y riesgo territorial del gestor (US08, US12, US31) & Nombre de socio; sector territorial y nivel de riesgo en la vista de parcelas. & Padrón de socios alfabético; mapa o matriz territorial por sector y prioridad. El riesgo se atribuye a la parcela o sector evaluado. \\
+Acopio cooperativo (US32) & Selección de campaña; lectura diferenciada de aceituna verde y negra. & Resumen de tonelaje y cobertura de muestreo. Se advierte cuando la estimación es preliminar. \\
+Expediente técnico (US30) & Selección de lote y campaña dentro del alcance autorizado. & Identificación de lote y campaña y acción para obtener el PDF. No se busca texto dentro del archivo. \\
+\end{longtable}
+\endgroup
 
 Los campos de búsqueda por nombre ignoran diferencias de mayúsculas y tildes. Los filtros aplicados permanecen visibles y pueden retirarse individualmente o mediante “Limpiar filtros”. La pantalla informa cuántos resultados coinciden y conserva la búsqueda al volver desde un detalle.
 
@@ -243,14 +394,33 @@ La navegación conecta los bloques de Organization Systems con las tareas del vi
 
 En pantallas estrechas, el menú se despliega sin cambiar los destinos. Los enlaces internos llevan al encabezado de la sección y los enlaces legales permiten volver mediante la navegación del navegador. La descarga remite al canal efectivamente habilitado, sin mostrar como disponibles tiendas en las que el producto aún no está publicado. El registro y la contratación se realizan desde la aplicación.
 
-**Aplicación: experiencia del productor.** Se conservan los cuatro destinos inferiores establecidos en Style Guidelines:
+**Aplicación: experiencia del productor.** Se conservan los cuatro destinos inferiores establecidos en Style Guidelines, detallados en la \autoref{tab:ia-nav-producer}:
 
-| Destino | Contenido y recorrido |
-|:-----------------------------|:---------------------------------------------------------------------|
-| Inicio | Resumen contextual de lotes, clima, alertas y estado de sincronización; cada resumen permite abrir el detalle correspondiente. |
-| Lotes | Inventario, registro y detalle de parcela. Desde el detalle se accede a nodos virtuales, clima, historial, BBI, frío acumulado y expediente de campaña. |
-| Plan | Selección de lote y campaña, evaluación de carga y prescripción de aclareo. Permite abrir el registro de la labor ejecutada. |
-| Bitácora | Muestreos, registros de aclareo y cosechas, con lote y campaña visibles. Incluye el acceso a registrar muestreo y a los flujos de cosecha y cierre. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.20\textwidth} p{0.75\textwidth}}
+\caption{Destinos de navegación de la barra inferior para el Productor Olivarero.} \label{tab:ia-nav-producer} \\
+\hline
+\textbf{Destino} & \textbf{Contenido y recorrido} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Destino} & \textbf{Contenido y recorrido} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+Inicio & Resumen contextual de lotes, clima, alertas y estado de sincronización; cada resumen permite abrir el detalle correspondiente. \\
+Lotes & Inventario, registro y detalle de parcela. Desde el detalle se accede a nodos virtuales, clima, historial, BBI, frío acumulado y expediente de campaña. \\
+Plan & Selección de lote y campaña, evaluación de carga y prescripción de aclareo. Permite abrir el registro de la labor ejecutada. \\
+Bitácora & Muestreos, registros de aclareo y cosechas, con lote y campaña visibles. Incluye el acceso a registrar muestreo y a los flujos de cosecha y cierre. \\
+\end{longtable}
+\endgroup
 
 Cuenta se abre desde el encabezado y agrupa perfil, idioma y suscripción o código de cooperativa; no introduce una quinta pestaña. Las rutas hacia un mismo registro reutilizan su detalle y conservan el contexto de origen. “Plan” corresponde al manejo agronómico, mientras que la modalidad comercial se consulta en Suscripción.
 
@@ -258,16 +428,35 @@ Cuenta se abre desde el encabezado y agrupa perfil, idioma y suscripción o cód
 
 Los destinos de gestor se aplican en Kotlin y Flutter según el rol autenticado. La supervisión no concede automáticamente permisos para editar los datos del productor ni para emitir prescripciones manuales. El diseño debe permitir consultar la cartera durante una visita de campo; no presupone que el gestor trabaje siempre en oficina o con conexión estable.
 
-**Recorridos de tarea.**
+**Recorridos de tarea.** En la \autoref{tab:ia-task-flows} se sintetizan las rutas operativas para las tareas críticas del sistema:
 
-| Meta | Recorrido principal |
-|:-----------------------------|:---------------------------------------------------------------------|
-| Dar de alta un lote | Lotes → Registrar lote → delimitación y caracterización → guardar → detalle del lote. |
-| Registrar un muestreo | Bitácora → Registrar muestreo → lote y campaña → captura guiada → guardado local → sincronización al recuperar conexión. |
-| Consultar y registrar aclareo | Plan → lote y campaña → evaluación y prescripción → Registrar aclareo → confirmación y consulta en Bitácora. |
-| Cerrar la campaña | Bitácora → lote y campaña → registro de cosecha → revisión y confirmación del cierre → expediente técnico. |
-| Priorizar una visita | Riesgo territorial → sector o nivel de riesgo → parcela → motivo y detalle autorizado. |
-| Revisar el acopio | Acopio → campaña → volúmenes verde y negro → cobertura y advertencias. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.30\textwidth} p{0.65\textwidth}}
+\caption{Recorridos de navegación de tareas principales en Viora.} \label{tab:ia-task-flows} \\
+\hline
+\textbf{Meta} & \textbf{Recorrido principal} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Meta} & \textbf{Recorrido principal} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
+\endlastfoot
+Dar de alta un lote & Lotes $\to$ Registrar lote $\to$ delimitación y caracterización $\to$ guardar $\to$ detalle del lote. \\
+Registrar un muestreo & Bitácora $\to$ Registrar muestreo $\to$ lote y campaña $\to$ captura guiada $\to$ guardado local $\to$ sincronización al recuperar conexión. \\
+Consultar y registrar aclareo & Plan $\to$ lote y campaña $\to$ evaluación y prescripción $\to$ Registrar aclareo $\to$ confirmación y consulta en Bitácora. \\
+Cerrar la campaña & Bitácora $\to$ lote y campaña $\to$ registro de cosecha $\to$ revisión y confirmación del cierre $\to$ expediente técnico. \\
+Priorizar una visita & Riesgo territorial $\to$ sector o nivel de riesgo $\to$ parcela $\to$ motivo y detalle autorizado. \\
+Revisar el acopio & Acopio $\to$ campaña $\to$ volúmenes verde y negro $\to$ cobertura y advertencias. \\
+\end{longtable}
+\endgroup
 
 Los formularios indican el paso actual y permiten retroceder sin perder los datos ya guardados. La acción Atrás retorna a la pantalla de origen; cuando se abandona una edición sin guardar, se explica la consecuencia. El encabezado identifica lote y campaña en las pantallas que lo requieren. No se exige una hilera permanente de migas de pan en teléfonos: el contexto se conserva mediante títulos y navegación de retorno.
 
