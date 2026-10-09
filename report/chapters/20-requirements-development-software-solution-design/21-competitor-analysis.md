@@ -64,5 +64,3 @@ En la \autoref{tab:matriz-foda-cruzada} se sintetizan las estrategias cruzadas p
 \end{tabular}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{table}
-
-\clearpage
