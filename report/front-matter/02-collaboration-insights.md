@@ -41,7 +41,7 @@
 
 \vspace{0.15cm}
 
-A continuación, se presentan las métricas de contribución y actividad del equipo de desarrollo en el repositorio del presente informe. Como se detalla en la \autoref{fig:contributors-part1}, se exhibe el volumen histórico de confirmaciones (\textit{commits}) y la participación de los primeros integrantes. Complementariamente, en la \autoref{fig:contributors-part2} se consolida el aporte del resto de miembros del equipo. Es importante mencionar que el compañero Piero Espada utilizo dos cuentas (espadita2510 y pierodeveloper25).
+A continuación, se presentan las métricas de contribución y actividad del equipo de desarrollo en el repositorio del presente informe. Como se detalla en la \autoref{fig:contributors-part1}, se exhibe el volumen histórico de confirmaciones (\textit{commits}) y la participación de los primeros integrantes. Complementariamente, en la \autoref{fig:contributors-part2} se consolida el aporte del resto de miembros del equipo. Es importante mencionar que el compañero Piero Espada utilizó dos cuentas (espadita2510 y pierodeveloper25).
 
 \vspace{0.25cm}
 
@@ -49,7 +49,7 @@ A continuación, se presentan las métricas de contribución y actividad del equ
 \caption{Contributors del repositorio de informe - Parte 1}
 \label{fig:contributors-part1}
 \centering
-\includegraphics[width=0.96\textwidth]{report/assets/collaboration-stats/contributors1.png}
+\includegraphics[width=0.6\textwidth]{report/assets/collaboration-stats/contributors1.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -57,7 +57,7 @@ A continuación, se presentan las métricas de contribución y actividad del equ
 \caption{Contributors del repositorio de informe - Parte 2}
 \label{fig:contributors-part2}
 \centering
-\includegraphics[width=0.96\textwidth]{report/assets/collaboration-stats/contributors2.png}
+\includegraphics[width=0.6\textwidth]{report/assets/collaboration-stats/contributors2.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
