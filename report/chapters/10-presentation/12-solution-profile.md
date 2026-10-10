@@ -16,7 +16,7 @@ Esta distinción es determinante para el diseño de la solución. La variabilida
 \caption{Rendimiento de aceite según tipo de poda y estado de carga, y reducción del rendimiento en períodos bianuales 2020-2022 y 2022-2024 (\%)}
 \label{fig:calidad-aceite}
 \centering
-\includegraphics[width=0.55\textwidth]{report/assets/graphics/calidad_aceite.png}
+\includegraphics[width=0.42\textwidth]{report/assets/graphics/calidad_aceite.png}
 \caption*{\textit{Nota.} Recuperado de Calvo et al., 2024.}
 \end{figure}
 
@@ -26,108 +26,73 @@ La investigación aplicada confirma el mecanismo. Un evento ENOS fuerte se asoci
 
 **Brecha tecnológica actual.** Las herramientas disponibles no resuelven la vecería porque monitorean variables que resultan ser "ruido" o llegan fuera de la ventana fisiológica útil:
 
-1. **Métricas satelitales de alta frecuencia.** El monitoreo continuo del Índice de Área Foliar (LAI) no aporta valor predictivo, ya que la canopia del olivo es perenne y no varía drásticamente entre años salvo por poda, y la vegetación entre hileras distorsiona la señal. Lo que sí aporta es el seguimiento espectral focalizado en fases críticas (NDRE/NDVI) para detectar caída prematura de masa foliar bajo alta carga frutal.
-2. **Humedad de suelo sin calibración con la planta.** Las sondas tradicionales no reflejan el estrés real del árbol: en años ON la demanda del fruto es tan alta que el olivo sufre estrés severo aunque el suelo conserve agua disponible. Como se observa en la \autoref{fig:umbrales-swp}, el potencial hídrico del tallo al mediodía permite diagnosticar el estrés hídrico real del cultivo con independencia de la demanda atmosférica, superando las deficiencias del monitoreo de humedad de suelo durante años de alta carga frutal.
+1. **Métricas satelitales de alta frecuencia.** El índice LAI no predice la alternancia por la perennidad foliar. Solo el seguimiento espectral focalizado (NDRE/NDVI) detecta oportunamente la caída de masa foliar bajo sobrecarga frutal.
+2. **Humedad de suelo sin calibración con la planta.** Sondas tradicionales no reflejan el estrés del árbol en años ON. El potencial hídrico del tallo al mediodía (\autoref{fig:umbrales-decision}a) diagnostica el estrés hídrico real independientemente de la atmósfera.
+3. **Fertilización nitrogenada por calendario.** Nitrógeno en fechas fijas no frena la vecería y enmascara el déficit crítico de potasio. El diagnóstico debe sustentarse en análisis foliar de julio (\autoref{fig:umbrales-decision}b) para asegurar reservas florales.
+4. **Ausencia de gestión integrada de la decisión de carga.** Sin cruzar balance fuente-sumidero con clima y nutrición, el productor actúa tarde. La visión artificial (\autoref{fig:deteccion-frutos}) permite cuantificar la densidad de carga temprana para regular aclareos oportunamente.
 
 \begin{figure}[H]
-\caption{Relación entre el potencial hídrico del tallo al mediodía y el déficit de presión de vapor en olivo}
-\label{fig:umbrales-swp}
+\caption{Umbrales fisiológicos y nutricionales para la toma de decisiones en el olivo}
+\label{fig:umbrales-decision}
 \centering
-\includegraphics[width=0.55\textwidth]{report/assets/graphics/umbrales_swp.png}
-\caption*{\textit{Nota.} Recuperado de Shackel et al., 2021.}
+\begin{minipage}[b]{0.38\textwidth}
+\centering
+\includegraphics[width=\linewidth]{report/assets/graphics/umbrales_swp.png}
+\caption*{(a) Potencial hídrico ($\Psi_{tallo}$) vs. DPV (Shackel et al., 2021).}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.38\textwidth}
+\centering
+\includegraphics[width=\linewidth]{report/assets/graphics/umbrales_foliares.png}
+\caption*{(b) Niveles críticos de N y K en julio (UC ANR, 2010).}
+\end{minipage}
+\caption*{\textit{Nota.} Criterios fisiológicos y nutricionales que sustituyen el manejo por calendario fijo en años de alta carga. Adaptado de Shackel et al. (2021) y UC ANR (2010).}
 \end{figure}
-
-3. **Fertilización nitrogenada por calendario.** Aplicar nitrógeno en fechas fijas no frena la vecería, puede deteriorar la calidad del aceite y enmascara la deficiencia real de potasio, que es el nutriente drenado críticamente por la carga frutal. Como se observa en la \autoref{tab:umbrales-foliares}, el diagnóstico nutricional debe basarse en umbrales analíticos específicos de nitrógeno y potasio tomados en julio para evitar excesos vegetativos y asegurar reservas para la floración.
-
-\setcounter{table}{0}
-
-\begin{table}[H]
-\caption{Niveles críticos de nutrientes en hoja de olivo según análisis foliar de muestras tomadas en julio}
-\label{tab:umbrales-foliares}
-\centering
-\includegraphics[width=0.55\textwidth]{report/assets/graphics/umbrales_foliares.png}
-\caption*{\textit{Nota.} Recuperado de University of California Agriculture and Natural Resources, 2010.}
-\end{table}
-
-4. **Ausencia de gestión integrada de la decisión de carga.** El aclareo de frutos, la poda de despunte inmediatamente posterior a la cosecha y la cosecha temprana rara vez se notifican dentro de su ventana útil. Sin un seguimiento que cruce la relación fuente-sumidero con datos climáticos y nutricionales, el productor actúa cuando el bloqueo hormonal sobre las yemas ya se ejecutó y la campaña siguiente ya está perdida. Como se observa en la \autoref{fig:deteccion-frutos}, la visión computacional aplicada al conteo automatizado de frutos permite cuantificar de manera temprana la densidad de carga frutal en campo para gatillar oportunamente las intervenciones de regulación.
 
 \begin{figure}[H]
 \caption{Inferencia del modelo YOLOv8m para la detección y conteo de frutos en olivo}
 \label{fig:deteccion-frutos}
 \centering
-\includegraphics[width=0.55\textwidth]{report/assets/graphics/uso_deep_learning.png}
+\includegraphics[width=0.40\textwidth]{report/assets/graphics/uso_deep_learning.png}
 \caption*{\textit{Nota.} Recuperado de Osco-Mamani et al., 2025.}
 \end{figure}
 
-\noindent \textbf{Problemática (5W + 2H)}
+\vspace{0.2cm}
 
-\vspace{0.15cm}
-\noindent \textbf{What (Qué)}
+\subsubsection{Problemática (5W + 2H)}
 
-\vspace{0.15cm}
+Para estructurar de manera exhaustiva el contexto, los actores, las causas fisiológicas y el impacto económico del fenómeno de la alternancia productiva en el ecosistema olivarero, a continuación se presenta la matriz de caracterización formal del problema bajo la técnica 5W+2H:
 
-\noindent ¿Cuál es el problema?
+\begin{table}[H]
+\caption{Matriz de Caracterización de la Problemática bajo el Enfoque 5W+2H}
+\label{tab:5w2h-problematica}
+\centering
+\small
+\renewcommand{\arraystretch}{1.12}
+\linespread{1.0}\selectfont
+\begin{tabular}{p{0.08\textwidth} p{0.14\textwidth} p{0.70\textwidth}}
+\hline
+\textbf{Elemento} & \textbf{Pregunta Guía} & \textbf{Diagnóstico y Sustento en Viora} \\ \hline
+\textbf{What (Qué)} & ¿Cuál es el problema central? & El olivar del sur del Perú opera atrapado en un ciclo de alternancia productiva (vecería) que nadie gestiona de forma deliberada. La carga frutal excesiva del año ON agota reservas de carbohidratos, drena nitrógeno y potasio foliar e inhibe hormonalmente la diferenciación floral, induciendo un año OFF de cosecha marginal (Lavee, 2007). El productor carece de criterio cuantitativo sobre la carga a sostener y de alertas tempranas dentro de la ventana de intervención. \\
+\textbf{Who (Quién)} & ¿Quiénes son los usuarios afectados? & \textbf{1. Productores olivareros:} Gestores de parcelas (agricultura familiar hasta fundos tecnificados) que sufren mermas de hasta 90\,\% en años OFF (Andina, 2024) y castigo de precio por menor calibre en años ON. \newline \textbf{2. Gestores técnicos:} Responsables de acopio en cooperativas y agroindustrias que no pueden proyectar volúmenes agregados ni planificar capacidad de proceso. \\
+\textbf{When (Cuándo)} & ¿Cuándo sucede el problema? & La decisión se define en ventanas fenológicas estrechas (aclareo post-floración, acumulación de frío invernal de mayo a septiembre y poda post-cosecha), pero el daño se hace visible recién en la floración del año siguiente, cuando ya no existe acción correctiva posible. \\
+\textbf{Where (Dónde)} & ¿Dónde ocurre? & En la macro-región sur del Perú, con epicentro en Tacna (concentra el 81\,\% del área olivarera nacional; Agraria.pe, 2021) y particularmente en La Yarada Los Palos, caracterizada por clima desértico y presión crítica sobre acuíferos subterráneos (Contraloría, 2023). \\
+\textbf{Why (Por qué)} & ¿Por qué ocurre? & Porque la regulación de carga en el árbol se realiza sin medición. Se carece de registros históricos de rendimiento, protocolos de muestreo de carga frutal y umbrales fisiológicos de riego y nutrición, perpetuando prácticas basadas en calendarios empíricos heredados. \\
+\textbf{How (Cómo)} & ¿Cómo surge y bajo qué condiciones? & Surge por el drenaje energético del fruto sumidero, bloqueo hormonal de yemas y déficit de potasio foliar. Se agrava críticamente bajo eventos ENOS que elevan temperaturas invernales y reducen entre 15\,\% y 23\,\% el frío estacional (Calvo et al., 2024), y en contextos de estrés hídrico. \\
+\textbf{How Much (Cuánto)} & ¿Cuál es la magnitud del problema? & Volatilidad extrema: mermas de hasta 90\,\% en años adversos (Andina, 2024) frente a incrementos puntuales de 18\,615\,\% en años ON (MIDAGRI, 2025); pérdidas de rendimiento de aceite mayores al 85\,\% bajo ENOS fuerte (Calvo et al., 2024) y devaluación comercial por fruto pequeño. \\ \hline
+\end{tabular}
+\caption*{\textit{Nota.} Elaboración propia a partir de fuentes estadísticas y agronómicas citadas.}
+\end{table}
 
-El olivar del sur del Perú opera atrapado en un ciclo de alternancia productiva (vecería) que nadie gestiona de forma deliberada. La carga frutal excesiva de un año ON agota reservas de carbohidratos, drena nitrógeno y potasio foliar e inhibe hormonalmente la diferenciación floral del año siguiente, produciendo un año OFF de cosecha marginal (Lavee, 2007). El productor no dispone de un criterio cuantitativo sobre cuánta carga debe llevar su parcela, ni de una señal oportuna sobre cuándo intervenir (aclareo, poda de despunte, cosecha temprana, riego y nutrición correctivos), por lo que la alternancia se perpetúa campaña tras campaña y se agrava con cada anomalía térmica.
-
-\noindent \textbf{Who (Quién)}
-
-\vspace{0.15cm}
-
-\noindent ¿Quiénes son los usuarios?
-
-- **Productores olivareros de la macro-región sur.** Gestores de parcelas (desde agricultura familiar asociada en cooperativas hasta fundos agroindustriales tecnificados) que sufren directamente la oscilación de ingresos. Su dolor es la imposibilidad de predecir y de estabilizar la cosecha: en años OFF pierden hasta el 90 % del volumen (Andina, 2024) y en años ON obtienen fruta pequeña, de menor calibre y menor valor comercial que además condena la campaña siguiente.
-- **Gestores técnicos de organizaciones olivareras** (cooperativas, asociaciones de productores y acopiadores/agroindustrias procesadoras). Responsables de planificar acopio, capacidad de proceso, calibres y compromisos comerciales sobre un volumen agregado que hoy no pueden proyectar. Requieren visibilidad anticipada del estado ON/OFF de su cartera de proveedores y capacidad de impulsar un protocolo homogéneo de manejo de carga entre sus socios.
-
-\noindent \textbf{When (Cuándo)}
-
-\vspace{0.15cm}
-
-\noindent ¿Cuándo sucede el problema?
-
-El problema se decide en ventanas fenológicas estrechas y se manifiesta un año después. La ventana de aclareo se abre en las semanas posteriores a la plena floración de un año ON y se cierra antes del crecimiento vegetativo principal; la de acumulación de frío transcurre en el invierno (aproximadamente mayo a septiembre en el hemisferio sur) y determina la ruptura de latencia de yemas; la de poda de despunte se abre inmediatamente después de la cosecha. El daño, en cambio, se hace visible recién en la floración de la campaña siguiente, cuando ya no existe acción correctiva posible. Esta asincronía entre la decisión y su consecuencia es la razón de fondo por la que el manejo empírico fracasa.
-
-\noindent \textbf{Where (Dónde)}
-
-\vspace{0.15cm}
-
-\noindent ¿Dónde ocurre?
-
-En la macro-región sur del Perú, con epicentro en Tacna, departamento que concentra cerca del 81 % del área olivarera nacional (Agraria.pe, 2021), y particularmente en el distrito de La Yarada Los Palos, donde la agricultura se desarrolla en condiciones desérticas costeras bajo riego presurizado y con presión creciente sobre los acuíferos subterráneos (Contraloría, 2023), lo que amplifica el estrés hídrico durante los años de alta carga.
-
-\noindent \textbf{Why (Por qué)}
-
-\vspace{0.15cm}
-
-\noindent ¿Por qué ocurre?
-
-Porque la decisión más determinante del ciclo, consistente en regular cuánta fruta dejar en el árbol, se toma sin medición y sin referencia. No existe un registro sistemático del rendimiento histórico por parcela que permita cuantificar la severidad de la alternancia, ni un protocolo de muestreo que estime la carga frutal real, ni umbrales de riego y nutrición vinculados al estado fisiológico de la planta. En ausencia de estos elementos, el productor aplica calendarios fijos heredados y reacciona al daño visible, mientras que la organización acopiadora descubre el año OFF cuando la fruta no llega a planta.
-
-\noindent \textbf{How (Cómo)}
-
-\vspace{0.15cm}
-
-\noindent ¿Cómo surge el problema?
-
-Surge por un encadenamiento fisiológico: (1) la carga frutal excesiva convierte al fruto en sumidero dominante; (2) las semillas en desarrollo emiten señales hormonales que bloquean la diferenciación floral de las yemas; (3) el almidón y los azúcares de reserva se consumen en la acumulación de aceite, dejando a las yemas sin energía para diferenciarse en invierno; (4) el nitrógeno y el potasio foliares caen por debajo de los niveles de suficiencia; (5) la demanda hídrica se incrementa cerca de un 30 % en el año ON, elevando la tensión en el xilema y frenando el crecimiento de los brotes de reemplazo que sostendrían la cosecha siguiente. El resultado es un año OFF estructural. Si además el invierno no acumula el frío necesario, la floración se vuelve escasa y desuniforme, y la amplitud del ciclo se profundiza (Calvo et al., 2024).
-
-\noindent ¿En qué condición?
-
-Bajo eventos ENOS o El Niño costero, cuando el aumento de temperaturas invernales reduce entre 15 % y 23 % la acumulación de frío (Calvo et al., 2024), y en contextos de restricción hídrica donde el productor no puede compensar la mayor demanda del año ON.
-
-\noindent \textbf{How much (Cuánto)}
-
-\vspace{0.15cm}
-
-\noindent ¿Cuál es la magnitud del problema?
-
-La oscilación documentada en Tacna es de una magnitud difícil de sostener financieramente: mermas de hasta 90 % con proyecciones de cosecha de apenas 10 % a 20 % del año previo en campañas adversas (Andina, 2024), frente a un incremento reportado de 18 615 % en septiembre de 2025 respecto al mismo mes del año anterior (MIDAGRI, 2025). Bajo escenarios ENOS fuertes se advierten reducciones de rendimiento de aceite superiores al 85 % (Calvo et al., 2024). A esto se suma la pérdida de valor comercial dentro del propio año ON, donde el exceso de carga produce fruta de menor calibre, maduración más tardía y menor precio por kilo.
+\vspace{0.2cm}
 
 \noindent \textbf{Enunciado del problema (Problem Statement)}
 
 \vspace{0.15cm}
 
 Los productores olivareros de la macro-región sur y las organizaciones que acopian y transforman su producción enfrentan un problema de negocio: la cosecha alterna entre años de sobreproducción de baja calidad y años de cosecha marginal, y ni el productor ni la organización disponen de un criterio cuantitativo para gestionar la carga frutal ni de una señal oportuna dentro de las ventanas fenológicas donde la intervención todavía es posible. Aunque existe evidencia agronómica consolidada sobre cómo mitigar la alternancia (regulación de carga, poda de renovación, cosecha temprana, riego por potencial hídrico y nutrición por análisis foliar), esa evidencia no llega traducida en decisiones fechadas y dimensionadas para una parcela concreta. Como consecuencia, los ingresos del productor oscilan de forma insostenible y la organización no puede planificar capacidad ni comprometer volúmenes de venta.
+
+\vspace{0.3cm}
 
 \noindent \textbf{Objetivos del proyecto}
 
@@ -152,24 +117,24 @@ Los productores olivareros de la macro-región sur y las organizaciones que acop
 - Lograr que al menos el 40 % de las decisiones de riego y fertilización registradas se sustenten en una medición (potencial hídrico o análisis foliar) y no en calendario.
 - Firmar al menos 2 convenios con cooperativas, asociaciones o agroindustrias de la macro-región sur en un plazo de 6 meses tras el lanzamiento.
 
+\vspace{0.3cm}
+
 \noindent \textbf{Restricciones}
 
 \vspace{0.15cm}
 
-- **Delimitación de dominio agronómico.** El motor analítico y los modelos de balance de carga, potencial hídrico del tallo ($\Psi_{tallo}$), suficiencia foliar y acumulación de frío invernal están parametrizados exclusivamente para el cultivo del olivo (*Olea europaea* L.) bajo regímenes de riego localizado y clima árido o semiárido. El sistema restringe su catálogo biológico a las variedades tipificadas en el dominio (*Criolla*, *Sevillana*, *Manzanilla* y *Arbequina*), no siendo aplicable a otras especies frutales sin una previa recalibración biofísica de sus umbrales fenológicos.
-- **Instrumentación y telemetría de campo.** La solución es estrictamente de base software; no abarca el diseño, manufactura ni distribución de hardware o sensores físicos en parcela. La capa de datos meteorológicos opera mediante el consumo de servicios web de terceros (APIs agrometeorológicas) complementada con un simulador de telemetría en backend para pruebas de integración. Las variables fisiológicas directas (potencial hídrico con cámara de Scholander, análisis foliar de laboratorio y conteo muestral de frutos) se incorporan mediante el registro digital asistido en la aplicación móvil por parte del productor o asistente técnico.
-- **Operatividad en campo sin conectividad (Offline-First).** Debido a la nula o intermitente cobertura de red celular en las zonas olivareras de campo, los flujos críticos de la aplicación móvil (delimitación perimetral por GPS, registro de lotes de muestreo de carga frutal y consulta de ventanas biológicas activas) deben operar de manera autónoma mediante almacenamiento local transaccional (SQLite), postergando la sincronización bidireccional con el servicio RESTful hasta el restablecimiento de la conexión.
-- **Ecosistema y stack tecnológico.** El alcance de desarrollo de software se delimita a cuatro componentes: una aplicación móvil nativa en Kotlin para Android, una aplicación móvil multiplataforma construida con Flutter y Dart, un servicio web de desarrollo interno bajo arquitectura RESTful con Spring Boot y Java 21 respaldado por base de datos relacional PostgreSQL, y un sitio web estático para el Landing Page (HTML5, CSS3, JavaScript). No se desarrollan clientes de escritorio nativos.
-- **Interoperabilidad y dependencias externas.** La precisión temporal y espacial del cálculo de porciones de frío (Dynamic Model) y evapotranspiración está sujeta a la disponibilidad, resolución y cuotas de consumo de las fuentes de datos agrometeorológicos externas enlazadas.
-- **Internacionalización y accesibilidad.** La plataforma se diseña con soporte de internacionalización (i18n) bajo dos idiomas base: inglés (`en_US`) como idioma estándar del sistema y español latinoamericano (`es_419`) para la operación en campo. Asimismo, las interfaces móviles incorporan pautas de accesibilidad visual y contraste cromático para su correcta legibilidad en entornos diurnos de alta radiación solar directa.
+- **Delimitación de dominio agronómico.** Modelos parametrizados exclusivamente para olivo (*Olea europaea* L.) bajo riego localizado y clima árido (variedades *Criolla*, *Sevillana*, *Manzanilla* y *Arbequina*). No aplica a otros frutales sin recalibración biofísica previa.
+- **Instrumentación y telemetría de campo.** Solución estrictamente de base software sin provisión de hardware. Meteorología consumida vía APIs externas y simulador backend; variables fisiológicas directas ingresadas manualmente en la aplicación móvil.
+- **Operatividad offline en campo.** Los flujos críticos móviles (delimitación GPS, muestreo de carga y ventanas fenológicas) operan autónomamente mediante persistencia local transaccional SQLite, sincronizándose al recuperar cobertura de red.
+- **Ecosistema y stack tecnológico.** Comprende app nativa Android (Kotlin), app multiplataforma (Flutter/Dart), API RESTful (Spring Boot, Java 21, PostgreSQL) y sitio web estático (HTML5/CSS3/JavaScript). No contempla clientes de escritorio.
+- **Interoperabilidad y dependencias externas.** El cómputo de porciones de frío y evapotranspiración está condicionado a la disponibilidad, resolución y cuotas de consumo de los servicios agrometeorológicos externos integrados.
+- **Internacionalización y accesibilidad.** Soporta inglés (`en_US`) y español (`es_419`), incorporando accesibilidad visual y contraste cromático optimizado para lectura en pantallas móviles bajo alta radiación solar diurna.
 
-\clearpage
+\vspace{0.3cm}
 
 ### Lean UX Process
 
 #### Lean UX Problem Statements
-
-- **Problem Statement: Gestión de la carga frutal para quebrar la alternancia productiva**
 
 El estado actual de la gestión del cultivo del olivo en la macro-región sur del Perú se ha enfocado principalmente en productores olivareros y en las organizaciones que acopian y transforman su producción, quienes sufren la oscilación extrema de la cosecha entre años de sobreproducción de baja calidad y años de cosecha marginal, la imposibilidad de anticipar el volumen de campaña y la falta de un criterio para decidir cuánta carga debe sostener cada parcela; y se ha apoyado en flujos de trabajo basados en calendarios fijos heredados, observación visual directa y reacción posterior al daño ya visible.
 
@@ -183,15 +148,13 @@ Sabremos que estamos teniendo éxito cuando observemos que el índice de alterna
 
 #### Lean UX Assumptions
 
-&nbsp;
-
 A continuación se enumeran las creencias resultantes de la sesión de discusión del equipo, organizadas según los cinco tipos de assumptions establecidos en Lean UX.
 
 \noindent \textbf{Business Assumptions}
 
 \vspace{0.15cm}
 
-1. Creemos que el olivar de la macro-región sur opera bajo un ciclo de alternancia productiva que nadie gestiona de forma deliberada, y que esa omisión —y no únicamente la variabilidad climática— es la causa de la oscilación extrema de los ingresos del productor (Calvo et al., 2024; MIDAGRI, 2025).
+1. Creemos que el olivar de la macro-región sur opera bajo un ciclo de alternancia productiva que nadie gestiona de forma deliberada, y que esa omisión, y no únicamente la variabilidad climática, es la causa de la oscilación extrema de los ingresos del productor (Calvo et al., 2024; MIDAGRI, 2025).
 2. Creemos que la carga frutal es la única variable de este sistema que el productor controla efectivamente, por lo que un producto que la gestione tiene una ventaja competitiva sostenible frente a las plataformas que se limitan a monitorear el clima.
 3. Creemos que existe un mercado suficiente en la macro-región sur, dado que Tacna concentra cerca del 81 % de la superficie olivarera nacional y agrupa a más de tres mil olivareros bajo una denominación de origen reconocida (Agraria.pe, 2021; Casanova, 2022).
 4. Creemos que la monetización puede sostenerse con una suscripción del productor por parcela o hectárea y un plan organizacional por cartera de socios, siempre que el servicio demuestre utilidad recurrente dentro de la campaña.
@@ -220,7 +183,7 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 1. Creemos que nuestro usuario principal es el productor olivarero de la macro-región sur, que administra entre 3 y 30 hectáreas y decide poda, riego, nutrición y fecha de cosecha sobre la base de la costumbre heredada y con poco tiempo disponible.
 2. Creemos que este productor reconoce el patrón de "un año carga y otro no", pero lo asume como una fatalidad del cultivo y no como una variable sobre la que pueda intervenir.
 3. Creemos que su nivel de digitalización es heterogéneo y que su punto de contacto habitual es el teléfono móvil, frecuentemente sin conectividad estable durante el trabajo en parcela.
-4. Creemos que nuestro segundo usuario es el gestor técnico de organizaciones olivareras —cooperativas, asociaciones y agroindustrias procesadoras—, responsable de coordinar el acopio y la asistencia técnica de decenas de socios o proveedores.
+4. Creemos que nuestro segundo usuario es el gestor técnico de organizaciones olivareras (cooperativas, asociaciones y agroindustrias procesadoras), responsable de coordinar el acopio y la asistencia técnica de decenas de socios o proveedores.
 5. Creemos que este gestor descubre la magnitud real de la campaña cuando la fruta llega, o no llega, a planta, y que esa falta de anticipación le impide comprometer volúmenes con seguridad.
 6. Creemos que el gestor tiene incentivo económico directo en que sus socios estabilicen la producción, por lo que actuará como promotor de la adopción dentro de su cartera.
 
@@ -250,8 +213,6 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 
 #### Lean UX Hypothesis Statements
 
-&nbsp;
-
 - **H1. Creemos que lograremos** que el 60 % de las parcelas registradas cuente con línea base calculada en 60 días. **Si** los productores olivareros **logran** dimensionar por primera vez la severidad real de su alternancia productiva **con** el registro del historial de rendimiento y el cálculo automático del índice de alternancia.
 - **H2. Creemos que lograremos** que el 45 % de los productores ajuste su plan de campaña antes de la floración. **Si** los productores olivareros **logran** anticipar una floración escasa o desuniforme **con** el seguimiento de acumulación de frío y la simulación de escenario ENOS.
 - **H3. Creemos que lograremos** que el 55 % de las parcelas en año ON cuente con una estimación de carga registrada. **Si** los productores olivareros **logran** saber cuánto se desvían de la carga que su parcela puede sostener **con** el muestreo guiado de carga frutal contrastado contra la carga objetivo.
@@ -259,8 +220,6 @@ A continuación se enumeran las creencias resultantes de la sesión de discusió
 - **H5. Creemos que lograremos** que el 40 % de las decisiones de riego y nutrición se sustente en una medición. **Si** los productores olivareros **logran** interpretar sus propias lecturas de campo y laboratorio **con** el registro de potencial hídrico del tallo y de análisis foliar contrastado contra umbrales de suficiencia.
 - **H6. Creemos que lograremos** reducir el índice de alternancia promedio de la cartera en 0,10 puntos tras dos campañas. **Si** los productores olivareros **logran** sostener el protocolo de regulación campaña tras campaña **con** la bitácora de trazabilidad que realimenta el índice de alternancia.
 - **H7. Creemos que lograremos** la firma de al menos 2 convenios institucionales. **Si** los gestores técnicos de organizaciones olivareras **logran** anticipar el volumen de acopio de su campaña **con** el portafolio de parcelas y la proyección agregada de cosecha.
-
-\newpage
 
 #### Lean UX Canvas
 &nbsp;
@@ -271,8 +230,6 @@ Como se observa en la \autoref{fig:lean-ux-canvas}, el Lean UX Canvas sintetiza 
 \caption{Lean UX Canvas de la solución Viora}
 \label{fig:lean-ux-canvas}
 \centering
-\includegraphics[width=0.9\textwidth]{report/assets/lean-ux-canvas/lean-ux-canvas-viora.png}
+\includegraphics[width=0.72\textwidth]{report/assets/lean-ux-canvas/lean-ux-canvas-viora.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
-
-\clearpage

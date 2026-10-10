@@ -6,6 +6,8 @@ Esta sección aborda la investigación cualitativa de validación en campo a tra
 
 Para la validación de la propuesta de Viora se estructuran sesiones de evaluación adaptadas al productor olivarero y al gestor técnico de cooperativas. Durante cada sesión, los participantes interactúan con la Landing Page de Viora para evaluar la claridad de la propuesta de valor, la comprensión del problema agronómico abordado, la estructura de la información y la disposición de las opciones de acceso al servicio, permitiendo validar los arquetipos de usuario y fundamentar los flujos de las aplicaciones móviles.
 
+\clearpage
+
 #### **Segmento 1: Productores olivareros de la región sur**
 &nbsp;
 
@@ -38,7 +40,7 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 *   Frente a la posibilidad de reducir las pérdidas de una campaña baja, ¿considera razonable el modelo de acceso propuesto?
 *   ¿Tiene algún comentario o sugerencia para mejorar la información presentada en el sitio web?
 
-\newpage
+\clearpage
 
 #### **Segmento 2: Gestores técnicos de organizaciones olivareras**
 &nbsp;
@@ -64,8 +66,6 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 *   ¿Identificó algún aspecto de la información que considere ambiguo o que requiera mayor detalle técnico?
 *   ¿Considera que la plataforma facilitaría la articulación entre el equipo técnico y los productores asociados? ¿Por qué?
 
-\newpage
-
 \noindent \textbf{3. Preguntas de cierre y evaluación institucional}
 
 *   En una escala del 1 al 5, ¿qué tan pertinente considera la solución de Viora para la coordinación técnica y comercial en cooperativas?
@@ -80,106 +80,122 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 #### Segmento 1: Productores olivareros de la región sur
 &nbsp;
 
-\newpage
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#1} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Cristóbal Benito Barrientos Carpio & \textbf{Edad} & 51 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{Valle de Yauca, Provincia de Caravelí, Arequipa} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor Olivarero y Acopiador Local} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{00:05 - 05:07} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{Valle de Yauca, Provincia de Caravelí, Arequipa} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productor Olivarero y Acopiador Local} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Landing page} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{00:05 - 05:07} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor con 10 años en el olivar de Yauca, a cargo de 2 hectáreas propias y acopio local. Al revisar el portal web, comprendió de inmediato que la herramienta previene las pérdidas por falta de floración y frío invernal insuficiente. Validó que la vecería afecta con igual severidad a Tacna y Yauca, con mermas de hasta 90\% en campañas anómalas. Calificó los módulos de frío y balance de carga como claros y orientados a proteger la cosecha. Respecto al Plan Productor, consideró accesible la tarifa, aunque consultó si el costo incluye IGV y facturación con RUC para gastos contables. Otorgó una calificación de 4/5 a la plataforma, señalando que la adopción tecnológica requiere comprobación en campo. Afirmó que su disposición de pago se afianzará al observar resultados o recibir recomendaciones de colegas, sugiriendo incorporar testimonios reales de agricultores para generar mayor confianza.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-cristobal.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor con 10 años en el olivar de Yauca, a cargo de 2 hectáreas propias y acopio local. Al revisar el portal web, comprendió de inmediato que la herramienta previene las pérdidas por falta de floración y frío invernal insuficiente. Validó que la vecería afecta con igual severidad a Tacna y Yauca, con mermas de hasta 90\% en campañas anómalas. Calificó los módulos de frío y balance de carga como claros y orientados a proteger la cosecha. Respecto al Plan Productor, consideró accesible la tarifa, aunque consultó si el costo incluye IGV y facturación con RUC para gastos contables. Otorgó una calificación de 4/5 a la plataforma, señalando que la adopción tecnológica requiere comprobación en campo. Afirmó que su disposición de pago se afianzará al observar resultados o recibir recomendaciones de colegas, sugiriendo incorporar testimonios reales de agricultores para generar mayor confianza.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/validation/interview-val-cristobal.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\newpage
+\vspace{0.35cm}
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#2} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Alexandra Rosas & \textbf{Edad} & 50 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada-Los Palos, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productora Olivarera y Comercializadora Familiar} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{05:17 - 11:10} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada-Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productora Olivarera y Comercializadora Familiar} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Landing page} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{05:17 - 11:10} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productora con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas tecnificadas de aceituna Criolla. Comprendió con inmediatez que el producto es un asistente predial frente a la vecería. Ratificó que las oscilaciones productivas descritas reflejan su realidad, con caídas drásticas de cosecha en años impactados por El Niño. Resaltó el módulo de aclareo como una valiosa ventana de oportunidad antes del endurecimiento del hueso, eliminando dudas operativas. Calificó la tarifa de S/ 55 por hectárea/mes del Plan Productor como transparente y accesible, pues un mal manejo genera pérdidas muy superiores a la suscripción anual. Destacó especialmente el soporte sin conexión para registrar muestras sin señal en campo. Asignó una calificación de 5/5 a la propuesta y recomendó integrar un enlace directo a WhatsApp en la página para brindar asistencia técnica rápida.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productora con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas tecnificadas de aceituna Criolla. Comprendió con inmediatez que el producto es un asistente predial frente a la vecería. Ratificó que las oscilaciones productivas descritas reflejan su realidad, con caídas drásticas de cosecha en años impactados por El Niño. Resaltó el módulo de aclareo como una valiosa ventana de oportunidad antes del endurecimiento del hueso, eliminando dudas operativas. Calificó la tarifa de S/ 55 por hectárea/mes del Plan Productor como transparente y accesible, pues un mal manejo genera pérdidas muy superiores a la suscripción anual. Destacó especialmente el soporte sin conexión para registrar muestras sin señal en campo. Asignó una calificación de 5/5 a la propuesta y recomendó integrar un enlace directo a WhatsApp en la página para brindar asistencia técnica rápida.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/validation/interview-val-alexandra-rosas.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\newpage
+\endgroup
 
 #### Segmento 2: Gestores técnicos de organizaciones olivareras
+&nbsp;
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#3} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Daniel Estrada & \textbf{Edad} & 44 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Ingeniero Agrónomo - Jefe Técnico de Cooperativa Agraria} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{11:13 - 16:41} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Ingeniero Agrónomo - Jefe Técnico de Cooperativa Agraria} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Landing page} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{11:13 - 16:41} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniero Agrónomo con 18 años de experiencia, a cargo de supervisar 68 socios y 420 hectáreas en La Yarada y Magollo. Valoró la centralización de datos para mitigar la dispersión territorial y superar la «ceguera logística» en planta, donde estimaciones tradicionales provocan desviaciones de hasta 40\% en acopio. Destacó el esquema del Plan Cooperativa basado en códigos institucionales de activación, eliminando trabas administrativas con los productores. Confirmó que el seguimiento de frío entre mayo y agosto posee pleno rigor agronómico y que los descargos legales aportan solidez formal ante directivos. Calificó la utilidad de la plataforma con 5/5 y acordó presentarla en asamblea directiva para una prueba piloto. Como recomendaciones de diseño, sugirió habilitar un botón directo para coordinar demostraciones a nivel gerencial y una sección de preguntas frecuentes sobre el soporte a socios con menor destreza digital.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-daniel-estrada.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniero Agrónomo con 18 años de experiencia, a cargo de supervisar 68 socios y 420 hectáreas en La Yarada y Magollo. Valoró la centralización de datos para mitigar la dispersión territorial y superar la «ceguera logística» en planta, donde estimaciones tradicionales provocan desviaciones de hasta 40\% en acopio. Destacó el esquema del Plan Cooperativa basado en códigos institucionales de activación, eliminando trabas administrativas con los productores. Confirmó que el seguimiento de frío entre mayo y agosto posee pleno rigor agronómico y que los descargos legales aportan solidez formal ante directivos. Calificó la utilidad de la plataforma con 5/5 y acordó presentarla en asamblea directiva para una prueba piloto. Como recomendaciones de diseño, sugirió habilitar un botón directo para coordinar demostraciones a nivel gerencial y una sección de preguntas frecuentes sobre el soporte a socios con menor destreza digital.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/validation/interview-val-daniel-estrada.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\newpage
+\vspace{0.35cm}
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#4} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Maribel Vargas & \textbf{Edad} & 40 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Ingeniera Agrónoma - Responsable Técnica y de Acopio} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{16:44 - 23:02} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Ingeniera Agrónoma - Responsable Técnica y de Acopio} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Landing page} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{16:44 - 23:02} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniera Agrónoma con 15 años de trayectoria en Tacna, a cargo de 35 socios y 150 hectáreas con riego tecnificado. Valoró positivamente la distinción entre el panel operativo del productor y el módulo analítico institucional. Resaltó la pertinencia técnica de alertar la ventana de aclareo previa al endurecimiento del hueso, señalando que retrasar el raleo deteriora el calibre del fruto y la floración de la siguiente campaña. Confirmó que la plataforma optimiza la coordinación técnica al suministrar datos objetivos de campo. Calificó la propuesta con 4.8/5, fundamentando que la inversión institucional se amortiza al prevenir penalizaciones comerciales en contratos de acopio. Como mejoras puntuales, propuso permitir la exportación de estimaciones a hojas de cálculo para comisiones directivas e incorporar en el sitio web vistas previas directas de la interfaz móvil de muestreo.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-maribel-vargas.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniera Agrónoma con 15 años de trayectoria en Tacna, a cargo de 35 socios y 150 hectáreas con riego tecnificado. Valoró positivamente la distinción entre el panel operativo del productor y el módulo analítico institucional. Resaltó la pertinencia técnica de alertar la ventana de aclareo previa al endurecimiento del hueso, señalando que retrasar el raleo deteriora el calibre del fruto y la floración de la siguiente campaña. Confirmó que la plataforma optimiza la coordinación técnica al suministrar datos objetivos de campo. Calificó la propuesta con 4.8/5, fundamentando que la inversión institucional se amortiza al prevenir penalizaciones comerciales en contratos de acopio. Como mejoras puntuales, propuso permitir la exportación de estimaciones a hojas de cálculo para comisiones directivas e incorporar en el sitio web vistas previas directas de la interfaz móvil de muestreo.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/validation/interview-val-maribel-vargas.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\newpage
+\endgroup
+
+\clearpage
 
 ### Evaluaciones según heurísticas
 
 Esta sección contiene el proceso de evaluación de las sesiones de validación basado en heurísticas, considerando heurísticas de usabilidad, arquitectura de información e inclusive design de la experiencia propuesta.
 
-\vspace{0.3cm}
+\vspace{0.2cm}
 
 \begin{center}
 \textbf{--- UX Heuristics \& Principles Evaluation ---} \\
 \textbf{-- Usability - Inclusive Design - Information Architecture --}
 \end{center}
 
-\vspace{0.2cm}
+\vspace{0.15cm}
 
-\noindent \begin{tabular}{p{4.2cm} p{11cm}}
-\textbf{CARRERA:} & Ingeniería de Software \\
-\textbf{CURSO:} & 1ACC0238 - Aplicaciones para Dispositivos Móviles \\
-\textbf{NRC:} & 4951 \\
-\textbf{PROFESORES:} & Todos \\
-\textbf{AUDITOR:} & ArcadiaDevs \\
-\textbf{CLIENTES:} & Cristóbal Benito Barrientos Carpio, Alexandra Rosas, Ing. Daniel Estrada, Ing. Maribel Vargas \\
-\textbf{Site o App a Evaluar:} & Landing page \\
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.06}
+\noindent \begin{tabular}{|p{4.2cm}|p{11.2cm}|}
+\hline
+\textbf{CARRERA:} & Ingeniería de Software \\ \hline
+\textbf{CURSO:} & 1ACC0238 - Aplicaciones para Dispositivos Móviles \\ \hline
+\textbf{NRC:} & 4951 \\ \hline
+\textbf{PROFESORES:} & Todos \\ \hline
+\textbf{AUDITOR:} & ArcadiaDevs \\ \hline
+\textbf{CLIENTES:} & Cristóbal Benito Barrientos Carpio, Alexandra Rosas, Ing. Daniel Estrada, Ing. Maribel Vargas \\ \hline
+\textbf{Site o App a Evaluar:} & Landing page \\ \hline
 \end{tabular}
+\endgroup
 
-\vspace{0.35cm}
+\vspace{0.25cm}
 
 \noindent \textbf{TAREAS A EVALUAR:}
 
@@ -196,12 +212,16 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 2. Muestreo de campo de racimos y brotes sin conexión (reservado para la aplicación móvil).
 3. Exportación automatizada de consolidados de cosecha a formatos descargables (Excel/PDF).
 
-\newpage
+\vspace{0.25cm}
 
 \noindent \textbf{ESCALA DE SEVERIDAD:} Los errores identificados han sido puntuados tomando en cuenta la siguiente escala:
 
-\renewcommand{\arraystretch}{0.98}
-\begin{longtable}{p{1.2cm} p{13.2cm}}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.06}
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{|c|p{14.2cm}|}
+\caption{Escala de severidad para evaluación heurística de UX.} \label{tab:severity-scale} \\
 \hline
 \textbf{Nivel} & \textbf{Descripción} \\ \hline
 \endfirsthead
@@ -210,16 +230,25 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \endhead
 \hline
 \endfoot
+\hline
+\multicolumn{2}{l}{\parbox{15cm}{\vspace{0.1cm} \textit{Nota.} Escala adaptada de evaluación heurística de Nielsen Norman Group. Elaboración propia.}} \\
+\endlastfoot
 1 & Problema superficial: Puede ser fácilmente superado por el usuario y ocurre con muy poca frecuencia. No necesita ser corregido a no ser que exista disponibilidad de tiempo. \\ \hline
 2 & Problema menor: Puede ocurrir un poco más frecuentemente o es un poco más difícil de superar para el usuario. Se le debe asignar una prioridad baja de cara al siguiente ciclo de desarrollo. \\ \hline
 3 & Problema mayor: Ocurre frecuentemente o los usuarios no son capaces de resolverlo. Es importante que sea corregido y se le debe asignar una prioridad alta. \\ \hline
 4 & Problema muy grave: Error de gran impacto que impide al usuario continuar con el uso de la herramienta. Es imperativo que sea corregido antes del lanzamiento oficial. \\ \hline
 \end{longtable}
+\end{center}
+
+\vspace{0.2cm}
 
 \noindent \textbf{TABLA RESUMEN:}
 
-\renewcommand{\arraystretch}{0.95}
-\begin{longtable}{p{0.6cm} p{6.2cm} p{2.2cm} p{5.2cm}}
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.06}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{|c|>{\raggedright\arraybackslash}p{6.2cm}|c|>{\raggedright\arraybackslash}p{5.5cm}|}
 \caption{Matriz resumen de hallazgos en la evaluación heurística de UX de la Landing Page.} \label{tab:heuristic-summary} \\
 \hline
 \textbf{\#} & \textbf{Problema} & \textbf{Severidad} & \textbf{Heurística / Principio violado} \\ \hline
@@ -229,13 +258,17 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \endhead
 \hline
 \endfoot
+\hline
+\multicolumn{4}{l}{\parbox{15cm}{\vspace{0.1cm} \textit{Nota.} Resumen de problemas detectados durante las sesiones de evaluación de UX. Elaboración propia.}} \\
+\endlastfoot
 1 & Carencia de especificación sobre inclusión de IGV y emisión de factura con RUC en las tarifas mostradas. & 1 & Arquitectura de Información: Claridad / Usabilidad: Coincidencia entre el sistema y el mundo real. \\ \hline
 2 & Ausencia de un canal de comunicación directa inmediata (enlace a WhatsApp o soporte rápido) en la navegación o pie de página. & 2 & Usabilidad: Reconocimiento antes que recuerdo / Arquitectura de Información: Localizable. \\ \hline
 3 & El botón de acción del Plan Cooperativa remite a la descarga de la aplicación móvil individual en lugar de un canal de cotización institucional. & 2 & Arquitectura de Información: Claridad / Usabilidad: Coincidencia entre el sistema y el mundo real. \\ \hline
 4 & Ausencia de una opción visible para previsualizar capturas del módulo móvil o exportar consolidados de acopio a formatos descargables (Excel / PDF). & 1 & Diseño Inclusivo: Brindar elección / Usabilidad: Flexibilidad y control del usuario. \\ \hline
 \end{longtable}
+\end{center}
 
-\newpage
+\vspace{0.25cm}
 
 \noindent \textbf{DESCRIPCIÓN DE PROBLEMAS:}
 
@@ -263,7 +296,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
   \item \textbf{Recomendación:} Añadir un enlace directo de contacto con el ícono reconocido de WhatsApp en la barra de navegación o en el pie de página que redirija a una línea de atención técnica (\url{https://wa.me/...}), facilitando una vía de comunicación inmediata sin necesidad de navegar formularios externos.
 \end{itemize}
 
-\newpage
+\vspace{0.25cm}
 
 \noindent \textbf{PROBLEMA \#3: Carencia de flujo diferenciado para cotizaciones institucionales en el Plan Cooperativa}
 \begin{itemize}

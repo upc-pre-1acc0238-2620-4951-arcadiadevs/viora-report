@@ -6,29 +6,25 @@ En esta sección se sintetizan los hallazgos de campo y el análisis competitivo
 
 En la presente sección se elaboran dos fichas de User Persona, una por cada segmento objetivo definido en el capítulo anterior: productores olivareros de la macro-región sur y gestores técnicos de organizaciones olivareras. Estos arquetipos surgen de la síntesis entre las entrevistas a profundidad y el análisis competitivo, y condensan los rasgos que realmente hacen diferencia para el diseño: el criterio con el que hoy se decide la carga frutal, el nivel de alfabetización digital, la forma actual de registrar y proyectar información de campaña, la dependencia de la observación directa y las condiciones de conectividad bajo las que se trabaja en parcela. Cada ficha reúne los elementos básicos del arquetipo -perfil, contexto, objetivos, habilidades, frustraciones y comportamientos- para asegurar que Viora responda a necesidades reales y no a supuestos genéricos.
 
-\newpage
-
-El User Persona de Teodoro Mamani sintetiza el perfil del productor olivarero tradicional, detallando sus metas de estabilidad productiva, barreras tecnológicas y necesidades frente a la alternancia (ver \autoref{fig:user-persona-teodoro}).
+En las \autoref{fig:user-personas-consolidado}(a) y \autoref{fig:user-personas-consolidado}(b) se presentan las fichas de User Persona elaboradas para Teodoro Mamani (productor olivarero tradicional) y Rubén Ticona (gestor técnico de organización olivarera).
 
 \begin{figure}[H]
-\caption{User Persona del segmento Productor Olivarero.} \label{fig:user-persona-teodoro}
+\caption{Fichas de User Persona de los segmentos objetivos de Viora}
+\label{fig:user-personas-consolidado}
 \centering
-\includegraphics[width=0.4\textwidth]{report/assets/needfinding/teodoro-mamani.png}
-\caption*{\textit{Nota.} La ficha de Teodoro Mamani detalla el arquetipo del productor olivarero, integrando sus objetivos, habilidades, frustraciones y necesidades tecnológicas clave para el diseño de la plataforma Viora. Elaboración propia.}
-\end{figure}
-
-\clearpage
-
-El User Persona de Rubén Ticona representa al gestor técnico, consolidando sus responsabilidades de acopio, supervisión agronómica y desafíos de coordinación entre parcelas dispersas (ver \autoref{fig:user-persona-ruben}).
-
-\begin{figure}[H]
-\caption{User Persona del segmento Gestor Técnico de Organización Olivarera.} \label{fig:user-persona-ruben}
+\begin{minipage}[b]{0.44\textwidth}
 \centering
-\includegraphics[width=0.4\textwidth]{report/assets/needfinding/ruben-ticona.png}
-\caption*{\textit{Nota.} La ficha de Rubén Ticona detalla el arquetipo del gestor técnico de organizaciones olivareras, integrando sus objetivos, habilidades, frustraciones y necesidades tecnológicas clave para el diseño de la plataforma Viora. Elaboración propia.}
+\includegraphics[height=0.58\textheight,keepaspectratio]{report/assets/needfinding/teodoro-mamani.png}
+\caption*{(a) Productor Olivarero (Teodoro Mamani).}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.44\textwidth}
+\centering
+\includegraphics[height=0.58\textheight,keepaspectratio]{report/assets/needfinding/ruben-ticona.png}
+\caption*{(b) Gestor Técnico (Rubén Ticona).}
+\end{minipage}
+\caption*{\textit{Nota.} Fichas de arquetipos de usuario: (a) Teodoro Mamani, enfocado en estabilidad productiva y regulación de carga, y (b) Rubén Ticona, orientado a la supervisión agronómica y planificación de acopio. Elaboración propia.}
 \end{figure}
-
-\clearpage
 
 ### User Task Matrix
 
@@ -39,22 +35,26 @@ En la \autoref{tab:user-task-matrix} se esquematizan las labores agrícolas y co
 \begin{table}[H]
 \caption{User Task Matrix de los segmentos considerados.} \label{tab:user-task-matrix}
 \centering
+\begingroup
 \small
-\begin{tabular}{|p{5.6cm}|c|c|c|c|}
+\renewcommand{\arraystretch}{1.10}
+\linespread{1.0}\selectfont
+\begin{tabular}{p{6.0cm} c c c c}
 \hline
-\multirow{2}{*}{\textbf{Tarea (Task)}} & \multicolumn{2}{c|}{\textbf{Teodoro Mamani}} & \multicolumn{2}{c|}{\textbf{Rubén Ticona}} \\ \cline{2-5}
+\multirow{2}{*}{\textbf{Tarea (Task)}} & \multicolumn{2}{c}{\textbf{Teodoro Mamani}} & \multicolumn{2}{c}{\textbf{Rubén Ticona}} \\ \cline{2-5}
 & \textbf{Frecuencia} & \textbf{Importancia} & \textbf{Frecuencia} & \textbf{Importancia} \\ \hline
-Monitoreo de variables climáticas y frío invernal & Alta & \textbf{Crítica} & Alta & \textbf{Crítica} \\ \hline
-Inspección física de parcelas (plagas y nutrición) & Alta & \textbf{Alta} & Media & \textbf{Alta} \\ \hline
-Planificación y aplicación de fertirriego & Media & \textbf{Alta} & Media & \textbf{Alta} \\ \hline
-Programación y ejecución de poda y aclareo & Media & \textbf{Crítica} & Media & \textbf{Crítica} \\ \hline
-Evaluación fenológica y proyección de cosecha & Media & \textbf{Crítica} & Alta & \textbf{Crítica} \\ \hline
-Registro y análisis de trazabilidad agronómica & Baja & \textbf{Baja} & Alta & \textbf{Crítica} \\ \hline
-Coordinación y homologación con socios & Baja & \textbf{Baja} & Alta & \textbf{Crítica} \\ \hline
-Logística de cosecha escalonada & Media & \textbf{Alta} & Media & \textbf{Alta} \\ \hline
+Monitoreo de variables climáticas y frío invernal & Alta & \textbf{Crítica} & Alta & \textbf{Crítica} \\
+Inspección física de parcelas (plagas y nutrición) & Alta & \textbf{Alta} & Media & \textbf{Alta} \\
+Planificación y aplicación de fertirriego & Media & \textbf{Alta} & Media & \textbf{Alta} \\
+Programación y ejecución de poda y aclareo & Media & \textbf{Crítica} & Media & \textbf{Crítica} \\
+Evaluación fenológica y proyección de cosecha & Media & \textbf{Crítica} & Alta & \textbf{Crítica} \\
+Registro y análisis de trazabilidad agronómica & Baja & \textbf{Baja} & Alta & \textbf{Crítica} \\
+Coordinación y homologación con socios & Baja & \textbf{Baja} & Alta & \textbf{Crítica} \\
+Logística de cosecha escalonada & Media & \textbf{Alta} & Media & \textbf{Alta} \\
 Comercialización, acopio y colocación en mercado & Alta & \textbf{Crítica} & Media & \textbf{Crítica} \\ \hline
 \end{tabular}
 \caption*{\textit{Nota.} Elaboración propia.}
+\endgroup
 \end{table}
 
 La matriz muestra una coincidencia clara entre ambos perfiles en tareas determinantes del estado actual: el monitoreo de variables climáticas y acumulación de frío invernal, la programación de podas y regulación de carga, y la estimación de volumen de cosecha frente a la vecería, las cuales concentran una importancia crítica para la sostenibilidad del cultivo y la toma de decisiones. Asimismo, comparten la ejecución de inspecciones en campo y la logística de cosecha, indispensables para asegurar la calidad de la fruta tanto verde como negra.
@@ -67,53 +67,49 @@ Las diferencias más marcadas aparecen en el foco de trabajo. Teodoro Mamani con
 
 En esta sección se presentan los User Journey Maps en su versión actual (*As-Is*) para los dos segmentos del proyecto: Teodoro Mamani (productor olivarero) y Rubén Ticona (gestor técnico de organizaciones olivareras). Estos mapas ilustran el recorrido integral de una campaña olivarera tradicional de principio a fin, abarcando desde las primeras evaluaciones climáticas en invierno y la preparación de insumos, hasta las labores de campo, la recolección escalonada y la comercialización final. Este análisis permite comprender cómo los usuarios interactúan hoy en día con su entorno mediante métodos empíricos, identificando las dificultades operativas y emocionales que experimentan antes de contar con una solución tecnológica especializada.
 
-\clearpage
-
-El recorrido de Teodoro Mamani detalla las fases críticas del ciclo agrícola tradicional, evidenciando las fricciones operativas y la incertidumbre ante la vecería (ver \autoref{fig:ujm-teodoro}).
+En las \autoref{fig:ujm-consolidado}(a) y \autoref{fig:ujm-consolidado}(b) se detallan los mapas de viaje de Teodoro Mamani y Rubén Ticona a lo largo de la campaña olivarera tradicional.
 
 \begin{figure}[H]
-\caption{User Journey Map del segmento Productor Olivarero (Teodoro Mamani).} \label{fig:ujm-teodoro}
+\caption{User Journey Maps (As-Is) de los segmentos objetivos de Viora}
+\label{fig:ujm-consolidado}
 \centering
-\includegraphics[width=0.9\textwidth]{report/assets/needfinding/ujm-teodoro.png}
-\caption*{\textit{Nota.} Diagrama del User Journey Map (As-Is) para Teodoro Mamani, que describe las etapas de la campaña olivarera tradicional, sus dificultades cotidianas y las oportunidades de mejora identificadas en campo. Elaboración propia.}
-\end{figure}
-
-\clearpage
-
-El mapa de viaje de Rubén Ticona refleja los cuellos de botella en la planificación del acopio y la coordinación técnica de campo (ver \autoref{fig:ujm-ruben}).
-
-\begin{figure}[H]
-\caption{User Journey Map del segmento Gestor Técnico de Organización Olivarera (Rubén Ticona).} \label{fig:ujm-ruben}
+\begin{minipage}[b]{0.48\textwidth}
 \centering
-\includegraphics[width=0.9\textwidth]{report/assets/needfinding/ujm-ruben.png}
-\caption*{\textit{Nota.} Diagrama del User Journey Map (As-Is) para Rubén Ticona, que describe las actividades de coordinación técnica, las fricciones en la estimación de acopio y las oportunidades de optimización en la gestión de socios. Elaboración propia.}
+\includegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{report/assets/needfinding/ujm-teodoro.png}
+\caption*{(a) Productor Olivarero (Teodoro Mamani).}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{report/assets/needfinding/ujm-ruben.png}
+\caption*{(b) Gestor Técnico (Rubén Ticona).}
+\end{minipage}
+\caption*{\textit{Nota.} Diagramas del User Journey Map (As-Is): (a) etapas de la campaña tradicional y dificultades en campo de Teodoro Mamani, y (b) fricciones en la estimación de acopio y coordinación de socios de Rubén Ticona. Elaboración propia.}
 \end{figure}
-
-\clearpage
 
 ### Empathy Mapping
 
 En esta sección se presenta el espectro emocional, cognitivo y vivencial que define la realidad de los dos segmentos objetivo del proyecto: Teodoro Mamani, en representación del productor olivarero familiar, y Rubén Ticona, como gestor técnico de organizaciones olivareras. A través de esta caracterización, se exponen las percepciones cotidianas que tienen sobre su entorno productivo, sus círculos de influencia y los dilemas que enfrentan durante la campaña agrícola. Asimismo, se condensan sus puntos de dolor (Pains), marcados por la incertidumbre ante la vecería y las dificultades de planificación, y sus ganancias esperadas (Gains), enfocadas en la previsibilidad de cosecha, la estabilidad económica y la sostenibilidad del cultivo.
 
-El mapa de empatía de Teodoro Mamani resume sus vivencias, preocupaciones por el clima y aspiraciones de rentabilidad frente al desgaste del olivar (ver \autoref{fig:em-teodoro}).
+En las \autoref{fig:empathy-maps-consolidado}(a) y \autoref{fig:empathy-maps-consolidado}(b) se resumen los mapas de empatía correspondientes a ambos perfiles de usuario.
 
 \begin{figure}[H]
-\caption{Empathy Map del segmento Productor Olivarero - Teodoro Mamani.} \label{fig:em-teodoro}
+\caption{Mapas de empatía consolidados de los segmentos objetivos de Viora}
+\label{fig:empathy-maps-consolidado}
 \centering
-\includegraphics[width=0.3\textwidth]{report/assets/needfinding/em-teodoro.png}
-\caption*{\textit{Nota.} Síntesis del entorno, percepciones, conducta y aspiraciones de Teodoro Mamani en la gestión de su parcela familiar frente a la alternancia productiva. Elaboración propia.}
-\end{figure}
-
-El mapa de empatía de Rubén Ticona compendia la presión operativa, los riesgos de abastecimiento agroindustrial y sus metas de estandarización técnica (ver \autoref{fig:em-ruben}).
-
-\begin{figure}[H]
-\caption{Empathy Map del segmento Gestor Técnico de Organización Olivarera - Rubén Ticona.} \label{fig:em-ruben}
+\begin{minipage}[b]{0.44\textwidth}
 \centering
-\includegraphics[width=0.3\textwidth]{report/assets/needfinding/em-ruben.png}
-\caption*{\textit{Nota.} Síntesis de las responsabilidades técnicas, preocupaciones de acopio, barreras organizativas y metas de competitividad de Rubén Ticona en la articulación de la cartera olivarera. Elaboración propia.}
+\includegraphics[height=0.58\textheight,keepaspectratio]{report/assets/needfinding/em-teodoro.png}
+\caption*{(a) Productor Olivarero (Teodoro Mamani).}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.44\textwidth}
+\centering
+\includegraphics[height=0.58\textheight,keepaspectratio]{report/assets/needfinding/em-ruben.png}
+\caption*{(b) Gestor Técnico (Rubén Ticona).}
+\end{minipage}
+\caption*{\textit{Nota.} Síntesis del entorno, percepciones, conducta, dolores (Pains) y ganancias esperadas (Gains) de: (a) Teodoro Mamani en su parcela familiar y (b) Rubén Ticona en la gestión de la cartera cooperativa. Elaboración propia.}
 \end{figure}
-
-\clearpage
 
 ### Big Picture Event Storming
 
@@ -133,7 +129,7 @@ En la \autoref{fig:bpes-fase-1} se muestran los eventos de dominio iniciales ide
 \begin{figure}[H]
 \caption{Fase 1: Exploración no estructurada de eventos de dominio actuales.} \label{fig:bpes-fase-1}
 \centering
-\includegraphics[width=0.65\textwidth]{report/assets/needfinding/fase-1.png}
+\includegraphics[width=0.48\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/needfinding/fase-1.png}
 \caption*{\textit{Nota.} Captura de la lluvia de ideas inicial sobre los eventos significativos del ciclo productivo del olivo. Elaboración propia.}
 \end{figure}
 
@@ -151,7 +147,7 @@ En la \autoref{fig:bpes-fase-2} se presenta la organización temporal de los eve
 \begin{figure}[H]
 \caption{Fase 2: Línea de tiempo estructurada mediante hitos temporales.} \label{fig:bpes-fase-2}
 \centering
-\includegraphics[width=0.65\textwidth]{report/assets/needfinding/fase-2-vista-general.png}
+\includegraphics[width=0.48\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/needfinding/fase-2-vista-general.png}
 \caption*{\textit{Nota.} Organización cronológica de los eventos reales mediante anclas temporales y cierre del ciclo bianual. Elaboración propia.}
 \end{figure}
 
@@ -181,18 +177,26 @@ En la \autoref{fig:bpes-fase-3-general} se vinculan los actores de campo y los s
 \begin{figure}[H]
 \caption{Fase 3: Línea de tiempo validada con external systems y personas (Vista general).} \label{fig:bpes-fase-3-general}
 \centering
-\includegraphics[width=0.65\textwidth]{report/assets/needfinding/fase-3-vista-general.png}
+\includegraphics[width=0.48\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/needfinding/fase-3-vista-general.png}
 \caption*{\textit{Nota.} Mapeo general que vincula a productores y asesores técnicos con sus flujos de trabajo físico. Elaboración propia.}
 \end{figure}
 
 La \autoref{fig:bpes-fase-3-detalle} especifica la posición de productores, asesores y herramientas de soporte a lo largo de la línea de tiempo.
 
 \begin{figure}[H]
-\caption{Fase 3: Detalle de integración de actores y sistemas externos.} \label{fig:bpes-fase-3-detalle}
+\caption{Fase 3: Detalle de integración de actores y sistemas externos} \label{fig:bpes-fase-3-detalle}
 \centering
-\includegraphics[width=0.45\textwidth]{report/assets/needfinding/fase-3-1.png}
-\vspace{0.3cm}
-\includegraphics[width=0.45\textwidth]{report/assets/needfinding/fase-3-2.png}
+\begin{minipage}[b]{0.46\textwidth}
+\centering
+\includegraphics[width=\linewidth]{report/assets/needfinding/fase-3-1.png}
+\caption*{(a) Sector inicial de campo.}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.46\textwidth}
+\centering
+\includegraphics[width=\linewidth]{report/assets/needfinding/fase-3-2.png}
+\caption*{(b) Sector de asistencia y acopio.}
+\end{minipage}
 \caption*{\textit{Nota.} Acercamiento a la ubicación de actores (amarillo) y sistemas externos (azul) dentro del flujo. Elaboración propia.}
 \end{figure}
 
@@ -215,7 +219,7 @@ A través de la narrativa reversa se validó la consistencia del flujo e incorpo
 \begin{figure}[H]
 \caption{Fase 4: Narrativa reversa y descubrimiento de eventos perdidos.} \label{fig:bpes-fase-4}
 \centering
-\includegraphics[width=0.65\textwidth]{report/assets/needfinding/fase-4-vista-general.png}
+\includegraphics[width=0.48\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/needfinding/fase-4-vista-general.png}
 \caption*{\textit{Nota.} Tablero tras la aplicación de ambos recorridos narrativos para descubrir flujos ocultos. Elaboración propia.}
 \end{figure}
 
@@ -250,18 +254,26 @@ En la \autoref{fig:bpes-fase-5-general} se categorizan visualmente los puntos ca
 \begin{figure}[H]
 \caption{Fase 5: Mapeo de puntos calientes, oportunidades y políticas (Vista general).} \label{fig:bpes-fase-5-general}
 \centering
-\includegraphics[width=0.65\textwidth]{report/assets/needfinding/fase-5-vista-general.png}
+\includegraphics[width=0.48\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/needfinding/fase-5-vista-general.png}
 \caption*{\textit{Nota.} Categorización visual de los riesgos (morado), oportunidades (verde) y políticas (lila). Elaboración propia.}
 \end{figure}
 
 La \autoref{fig:bpes-fase-5-detalle} expone las fricciones agronómicas y comerciales donde se manifiesta el mayor estrés en la toma de decisiones.
 
 \begin{figure}[H]
-\caption{Fase 5: Detalle de fricciones agronómicas y comerciales.} \label{fig:bpes-fase-5-detalle}
+\caption{Fase 5: Detalle de fricciones agronómicas y comerciales} \label{fig:bpes-fase-5-detalle}
 \centering
-\includegraphics[width=0.45\textwidth]{report/assets/needfinding/fase-5-1.png}
-\vspace{0.3cm}
-\includegraphics[width=0.45\textwidth]{report/assets/needfinding/fase-5-2.png}
+\begin{minipage}[b]{0.46\textwidth}
+\centering
+\includegraphics[width=\linewidth]{report/assets/needfinding/fase-5-1.png}
+\caption*{(a) Sector de regulación de carga.}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.46\textwidth}
+\centering
+\includegraphics[width=\linewidth]{report/assets/needfinding/fase-5-2.png}
+\caption*{(b) Sector comercial y de acopio.}
+\end{minipage}
 \caption*{\textit{Nota.} Acercamiento a los Hotspots identificados en las islas temporales críticas. Elaboración propia.}
 \end{figure}
 
@@ -279,13 +291,11 @@ La priorización estratégica de hipótesis de riesgo orientó la selección del
 \begin{figure}[H]
 \caption{Fase 6: Votación de riesgos e hipótesis del MVP.} \label{fig:bpes-fase-6}
 \centering
-\includegraphics[width=0.65\textwidth]{report/assets/needfinding/fase-6-vista-general.png}
+\includegraphics[width=0.48\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/needfinding/fase-6-vista-general.png}
 \caption*{\textit{Nota.} Distribución final de los votos del equipo sobre las áreas de mayor fricción. Elaboración propia.}
 \end{figure}
 
 Como resultado de este taller de visualización del "As-Is", el equipo logró transformar suposiciones vagas en un mapa de fricciones reales y estructuradas. El tablero final consolida 37 Domain Events distribuidos en seis hitos temporales, tres actores, seis sistemas externos, cinco Hotspots, cuatro oportunidades y una política empírica, con el ciclo bianual explícitamente cerrado. De esta manera se delimitan los focos de acción primarios que Viora buscará resolver: la cuantificación de la carga frutal y la construcción de un histórico productivo por parcela.
-
-\clearpage
 
 ### Ubiquitous Language
 
@@ -319,5 +329,3 @@ Como resultado de este taller de visualización del "As-Is", el equipo logró tr
 - **Volume commitment (compromiso de volumen)**: Cantidad de producto que un productor u organización se compromete a entregar en una campaña. Su incumplimiento traslada el efecto de la alternancia desde la parcela hacia la cadena comercial.
 - **Regional oversupply (sobreoferta regional)**: Situación en la que la mayoría de los fundos de una zona coinciden en año ON, elevando la oferta simultáneamente y deprimiendo el precio justo cuando el volumen disponible es mayor.
 - **Viora Ecosystem (Ecosistema Viora)**: Entorno digital donde productores olivícolas y asesores técnicos de una misma organización registran, consultan y comparan información de carga y rendimiento por parcela, con el fin de anticipar y atenuar la alternancia productiva.
-
-\clearpage
