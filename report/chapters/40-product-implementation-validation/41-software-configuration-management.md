@@ -16,8 +16,10 @@ En la \autoref{tab:dev-environment-tools} se detalla la matriz integral de herra
 
 \vspace{0.3cm}
 
-\renewcommand{\arraystretch}{1.25}
-\begin{longtable}{p{2.5cm} p{2.1cm} p{6.7cm} p{4.2cm}}
+\renewcommand{\arraystretch}{1.08}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{} p{2.5cm} p{2.2cm} p{6.8cm} p{4.0cm} @{}}
 \caption{Matriz de configuración del entorno de desarrollo de software de Viora.} \label{tab:dev-environment-tools} \\
 \hline
 \textbf{Categoría / Actividad} & \textbf{Herramienta} & \textbf{Propósito en el ecosistema Viora} & \textbf{Entorno y enlace oficial} \\ \hline
@@ -34,49 +36,49 @@ En la \autoref{tab:dev-environment-tools} se detalla la matriz integral de herra
 \multicolumn{4}{l}{\parbox{15.5cm}{\vspace{0.15cm} \textit{Nota.} Especificación técnica de herramientas locales y SaaS aprobadas para el equipo de desarrollo de ArcadiaDevs. Elaboración propia.}} \\
 \endlastfoot
 
-Gestión de proyectos & Trello & Gestión ágil del ciclo de vida, administración del Product Backlog priorizado (89 ítems) y tableros Kanban por Sprint. & SaaS Cloud (Freemium) \newline \url{https://trello.com} \\[0.15cm]
+Gestión de proyectos & Trello & Gestión ágil del ciclo de vida, administración del Product Backlog priorizado (89 ítems) y tableros Kanban por Sprint. & SaaS Cloud (Freemium) \newline \url{https://trello.com} \\
 
-Gestión de proyectos & Discord & Comunicación sincrónica del equipo, coordinación técnica diaria y sesiones de pair programming. & SaaS Cloud (Freemium) \newline \url{https://discord.com} \\[0.15cm]
+Gestión de proyectos & Discord & Comunicación sincrónica del equipo, coordinación técnica diaria y sesiones de pair programming. & SaaS Cloud (Freemium) \newline \url{https://discord.com} \\
 
-Gestión de proyectos & Arcadia To-Do & Asignación de tareas operativas internas, seguimiento de fechas de entrega y repositorio centralizado de enlaces y documentación clave para el equipo. & SaaS Cloud (In-house) \newline \url{https://arcadia-to-do-application.vercel.app} \\[0.15cm]
+Gestión de proyectos & Arcadia To-Do & Asignación de tareas operativas internas, seguimiento de fechas de entrega y repositorio centralizado de enlaces y documentación clave para el equipo. & SaaS Cloud (In-house) \newline \url{https://arcadia-to-do-application.vercel.app} \\
 
-Gestión de requisitos & Miro & Elaboración colaborativa del Big Picture EventStorming y profundización en comandos, eventos y agregados. & SaaS Cloud (Educativo) \newline \url{https://miro.com} \\[0.15cm]
+Gestión de requisitos & Miro & Elaboración colaborativa del Big Picture EventStorming y profundización en comandos, eventos y agregados. & SaaS Cloud (Educativo) \newline \url{https://miro.com} \\
 
-Gestión de requisitos & UXPressia & Modelado de artefactos de diseño centrado en el usuario: User Personas, Empathy Maps, Journey Maps e Impact Maps. & SaaS Cloud (Educativo) \newline \url{https://uxpressia.com} \\[0.15cm]
+Gestión de requisitos & UXPressia & Modelado de artefactos de diseño centrado en el usuario: User Personas, Empathy Maps, Journey Maps e Impact Maps. & SaaS Cloud (Educativo) \newline \url{https://uxpressia.com} \\
 
-Gestión de requisitos & Lucidchart & Elaboración de Bounded Context Canvases, flujos de interacción (User Flows) y esquemas de navegación (Wireflows). & SaaS Cloud (Educativo) \newline \url{https://www.lucidchart.com} \\[0.15cm]
+Gestión de requisitos & Lucidchart & Elaboración de Bounded Context Canvases, flujos de interacción (User Flows) y esquemas de navegación (Wireflows). & SaaS Cloud (Educativo) \newline \url{https://www.lucidchart.com} \\
 
-Diseño UX/UI de producto & Figma & Diseño del sistema de componentes atómicos UI bajo Material Design 3 y prototipado interactivo de alta fidelidad. & SaaS Cloud / Desktop \newline \url{https://www.figma.com} \\[0.15cm]
+Diseño UX/UI de producto & Figma & Diseño del sistema de componentes atómicos UI bajo Material Design 3 y prototipado interactivo de alta fidelidad. & SaaS Cloud / Desktop \newline \url{https://www.figma.com} \\
 
-Desarrollo de software \newline (Runtime Java) & OpenJDK 21 \newline LTS (Temurin) & Kit de desarrollo Java universal corporativo. Provee el compilador, máquina virtual (JVM) y runtime para el Backend y Gradle. & Local (Eclipse Open Source) \newline \url{https://adoptium.net} \\[0.15cm]
+Desarrollo de software \newline (Runtime Java) & OpenJDK 21 \newline LTS (Temurin) & Kit de desarrollo Java universal corporativo. Provee el compilador, máquina virtual (JVM) y runtime para el Backend y Gradle. & Local (Eclipse Open Source) \newline \url{https://adoptium.net} \\
 
-Desarrollo de software \newline (Backend API) & IntelliJ IDEA & Entorno de desarrollo integrado (IDE) principal para la construcción del Backend RESTful con Spring Boot 4 (v4.1.1) y Java 21. & Local (JetBrains / Apache 2.0) \newline \url{https://www.jetbrains.com/idea} \\[0.15cm]
+Desarrollo de software \newline (Backend API) & IntelliJ IDEA & Entorno de desarrollo integrado (IDE) principal para la construcción del Backend RESTful con Spring Boot 4 (v4.1.1) y Java 21. & Local (JetBrains / Apache 2.0) \newline \url{https://www.jetbrains.com/idea} \\
 
-Desarrollo de software \newline (Mobile Android) & Android Studio & IDE oficial para el desarrollo del cliente móvil nativo Android con Kotlin, Jetpack Compose, Room SQLite y Android SDK 34. & Local (Google Freeware / Apache) \newline \url{https://developer.android.com/studio} \\[0.15cm]
+Desarrollo de software \newline (Mobile Android) & Android Studio & IDE oficial para el desarrollo del cliente móvil nativo Android con Kotlin, Jetpack Compose, Room SQLite y Android SDK 34. & Local (Google Freeware / Apache) \newline \url{https://developer.android.com/studio} \\
 
-Desarrollo de software \newline (Mobile Flutter) & Flutter SDK \newline v3.24.x (Stable) & Framework de desarrollo multiplataforma con lenguaje Dart 3.5.x para la compilación del cliente móvil cross-platform de Viora. & Local (BSD 3-Clause) \newline \url{https://flutter.dev} \\[0.15cm]
+Desarrollo de software \newline (Mobile Flutter) & Flutter SDK \newline v3.24.x (Stable) & Framework de desarrollo multiplataforma con lenguaje Dart 3.5.x para la compilación del cliente móvil cross-platform de Viora. & Local (BSD 3-Clause) \newline \url{https://flutter.dev} \\
 
-Desarrollo de software \newline (Landing Page) & Visual Studio \newline Code & Editor de código fuente para la maquetación semántica y estilizado del sitio estático Landing Page (HTML5, CSS3, JavaScript). & Local (MIT License) \newline \url{https://code.visualstudio.com} \\[0.15cm]
+Desarrollo de software \newline (Landing Page) & Visual Studio \newline Code & Editor de código fuente para la maquetación semántica y estilizado del sitio estático Landing Page (HTML5, CSS3, JavaScript). & Local (MIT License) \newline \url{https://code.visualstudio.com} \\
 
-Desarrollo de software \newline (Motor de base de datos) & PostgreSQL 16 & Sistema gestor de base de datos relacional para la persistencia transaccional y espacial de parcelas, telemetría y suscripciones. & Local \newline \url{https://www.postgresql.org} \\[0.15cm]
+Desarrollo de software \newline (Motor de base de datos) & PostgreSQL 15.6 & Sistema gestor de base de datos relacional para la persistencia transaccional y espacial de parcelas, telemetría y suscripciones. & Local \newline \url{https://www.postgresql.org} \\
 
-Pruebas de software \newline (Pruebas de API) & Swagger UI & Inspección, validación y ejecución interactiva de contratos de endpoints RESTful bajo especificación OpenAPI. & Local / Web (Apache 2.0) \newline \url{https://swagger.io} \\[0.15cm]
+Pruebas de software \newline (Pruebas de API) & Swagger UI & Inspección, validación y ejecución interactiva de contratos de endpoints RESTful bajo especificación OpenAPI. & Local / Web (Apache 2.0) \newline \url{https://swagger.io} \\
 
-Pruebas de software \newline (Pruebas BDD) & Cucumber JVM & Framework de pruebas automatizadas de aceptación basadas en comportamiento (BDD) mediante especificaciones en sintaxis Gherkin. & Local (MIT License / Apache 2.0) \newline \url{https://cucumber.io} \\[0.15cm]
+Pruebas de software \newline (Pruebas BDD) & Cucumber JVM & Framework de pruebas automatizadas de aceptación basadas en comportamiento (BDD) mediante especificaciones en sintaxis Gherkin. & Local (MIT License / Apache 2.0) \newline \url{https://cucumber.io} \\
 
-Despliegue de software \newline (Alojamiento web) & Vercel & Plataforma de alojamiento en la nube con integración continua (CI/CD) para el despliegue automático del sitio web Landing Page. & PaaS Cloud (Free Tier) \newline \url{https://vercel.com} \\[0.15cm]
+Despliegue de software \newline (Alojamiento web) & Vercel & Plataforma de alojamiento en la nube con integración continua (CI/CD) para el despliegue automático del sitio web Landing Page. & PaaS Cloud (Free Tier) \newline \url{https://vercel.com} \\
 
-Despliegue de software \newline (Alojamiento de contenedores) & Render & Plataforma PaaS de despliegue para la ejecución del contenedor Dockerizado de la API RESTful de Spring Boot y el Telemetry Simulator. & PaaS Cloud (Free Tier) \newline \url{https://render.com} \\[0.15cm]
+Despliegue de software \newline (Alojamiento de contenedores) & Render & Plataforma PaaS de despliegue para la ejecución del contenedor Dockerizado de la API RESTful de Spring Boot y el Telemetry Simulator. & PaaS Cloud (Free Tier) \newline \url{https://render.com} \\
 
-Despliegue de software \newline (Base de datos en la nube) & Filess.io & Servicio DBaaS para el alojamiento administrado de la base de datos PostgreSQL 16 con soporte SSL. & DBaaS Cloud (Free Tier) \newline \url{https://filess.io} \\[0.15cm]
+Despliegue de software \newline (Base de datos en la nube) & Filess.io & Servicio DBaaS para el alojamiento administrado de la base de datos PostgreSQL 15.6 con soporte SSL. & DBaaS Cloud (Free Tier) \newline \url{https://filess.io} \\
 
-Despliegue de software \newline (Distribución móvil) & Firebase App \newline Distribution & Servicio de distribución continua de paquetes binarios compilados (APK) de Android nativo y Flutter para pruebas de QA. & SaaS Cloud (Google Free Tier) \newline \url{https://firebase.google.com} \\[0.15cm]
+Despliegue de software \newline (Distribución móvil) & Firebase App \newline Distribution & Servicio de distribución continua de paquetes binarios compilados (APK) de Android nativo y Flutter para pruebas de QA. & SaaS Cloud (Google Free Tier) \newline \url{https://firebase.google.com} \\
 
-Documentación de software & OpenAPI \newline Specification & Estándar de especificación para la descripción técnica e interactiva de los servicios web RESTful del backend. & Web (Apache 2.0) \newline \url{https://swagger.io/specification} \\[0.15cm]
+Documentación de software & OpenAPI \newline Specification & Estándar de especificación para la descripción técnica e interactiva de los servicios web RESTful del backend. & Web (Apache 2.0) \newline \url{https://swagger.io/specification} \\
 
-Documentación de software & Structurizr & Modelado formal y estructuración de la Arquitectura de Software del sistema Viora mediante C4 Model (niveles 1, 2 y 3). & SaaS Cloud / Local \newline \url{https://structurizr.com} \\[0.15cm]
+Documentación de software & Structurizr & Modelado formal y estructuración de la Arquitectura de Software del sistema Viora mediante C4 Model (niveles 1, 2 y 3). & SaaS Cloud / Local \newline \url{https://structurizr.com} \\
 
-Documentación de software & PlantUML & Herramienta de modelado basada en código (Diagram-as-Code) para la generación determinista de diagramas de clases y base de datos. & Local (GPL / Apache) \newline \url{https://plantuml.com} \\[0.15cm]
+Documentación de software & PlantUML & Herramienta de modelado basada en código (Diagram-as-Code) para la generación determinista de diagramas de clases y base de datos. & Local (GPL / Apache) \newline \url{https://plantuml.com} \\
 
 Documentación de software & Pandoc + \newline XeLaTeX & Motor de procesamiento documental y tipográfico para la compilación automatizada del informe técnico en formato PDF. & Local (GPL / LPPL) \newline \url{https://pandoc.org} \\
 
@@ -89,13 +91,11 @@ A continuación, se sintetizan las consideraciones técnicas y de runtime adopta
 * **Gestión de proyectos (*Project Management*):** Uso de Trello para la administración del Product Backlog (89 ítems) y tableros Kanban por Sprint; Arcadia To-Do como plataforma in-house para la asignación de tareas operativas internas, control de fechas límite y repositorio de enlaces documentales; complementado con Discord para la comunicación técnica sincrónica de ArcadiaDevs.
 * **Gestión de requisitos (*Requirements Management*):** Miro para la facilitación colaborativa del Big Picture EventStorming y definición de eventos de dominio; UXPressia para el modelado de artefactos de diseño centrado en el usuario (Personas, Journey Maps e Impact Maps); y Lucidchart para los Bounded Context Canvases y flujos de navegación (User Flows y Wireflows).
 * **Diseño UX/UI de producto (*Product UX/UI Design*):** Figma como estándar de diseño atómico basado en Material Design 3, definiendo componentes modulares, paleta cromática contextual (tonos tierra y verde olivo) y prototipos interactivos de alta fidelidad para Android y web.
-* **Desarrollo de software (Backend y base de datos):** Estandarización corporativa en OpenJDK 21 LTS (Eclipse Temurin) enlazado a la variable de entorno `JAVA_HOME`. Desarrollo sobre IntelliJ IDEA con Spring Boot 4 (v4.1.1) y Spring Data JPA, utilizando PostgreSQL 16 como motor relacional transaccional en entorno local.
+* **Desarrollo de software (Backend y base de datos):** Estandarización corporativa en OpenJDK 21 LTS (Eclipse Temurin) enlazado a la variable de entorno `JAVA_HOME`. Desarrollo sobre IntelliJ IDEA con Spring Boot 4 (v4.1.1) y Spring Data JPA, utilizando PostgreSQL 15.6 como motor relacional transaccional en entorno local.
 * **Desarrollo de software (Mobile y Web):** Para el cliente nativo `viora-mobile-android`, Android Studio con Android SDK Platform 34 (Android 14, `minSdk` 26) y Jetpack Compose. Para el cliente cross-platform `viora-mobile-flutter`, Flutter SDK v3.24.x y Dart 3.5.x. Maquetación de `viora-landing-page` en Visual Studio Code bajo HTML5 semántico, CSS3 y JavaScript.
 * **Pruebas de software (*Software Testing*):** Inspección y prueba interactiva de contratos de endpoints RESTful mediante Swagger UI, y pruebas automatizadas de aceptación BDD con Cucumber JVM en el repositorio `viora-acceptance-tests`.
-* **Despliegue de software (*Software Deployment*):** Despliegue continuo de la Landing Page en Vercel; contenedorización del backend Java 21 en Docker desplegado como servicio web en Render; persistencia administrada en Filess.io (PostgreSQL 16); y distribución controlada de paquetes APK para Android y Flutter mediante Firebase App Distribution.
+* **Despliegue de software (*Software Deployment*):** Despliegue continuo de la Landing Page en Vercel; contenedorización del backend Java 21 en Docker desplegado como servicio web en Render; persistencia administrada en Filess.io (PostgreSQL 15.6); y distribución controlada de paquetes APK para Android y Flutter mediante Firebase App Distribution.
 * **Documentación de software (*Software Documentation*):** Documentación formal de contratos REST mediante OpenAPI Specification; estructuración de diagramas de arquitectura C4 Model con Structurizr; generación automatizada de diagramas UML mediante PlantUML; y compilación tipográfica del informe técnico mediante Pandoc + XeLaTeX bajo arquitectura *Documentation-as-Code*.
-
-\newpage
 
 ### Source Code Management
 
@@ -118,7 +118,7 @@ Se utiliza GitHub bajo la organización institucional `upc-pre-1acc0238-2620-495
   \par \vspace{0.08cm}
   \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-mobile-flutter}
 
-* **Web Services & Platform Backend (`viora-platform`):** Centraliza la lógica de negocio y arquitectura modular construida en Java 21 con Spring Boot 4 (v4.1.1) y Spring Data JPA. Comprende los doce componentes de backend, la persistencia relacional sobre PostgreSQL 16 y la documentación interactiva OpenAPI/Swagger.
+* **Web Services & Platform Backend (`viora-platform`):** Centraliza la lógica de negocio y arquitectura modular construida en Java 21 con Spring Boot 4 (v4.1.1) y Spring Data JPA. Comprende los doce componentes de backend, la persistencia relacional sobre PostgreSQL 15.6 y la documentación interactiva OpenAPI/Swagger.
   \par \vspace{0.08cm}
   \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform}
 
@@ -238,8 +238,6 @@ El desarrollo del Backend API en el repositorio `viora-platform` y del simulador
 * **Documentación Javadoc:** Toda clase de dominio, servicio de aplicación y controlador REST público debe contar con bloques de documentación Javadoc (`/** ... */`), especificando las etiquetas `@param`, `@return` y `@throws` cuando corresponda.
 * **Estructura modular en Spring Boot:** Se ubica la clase anotada con `@SpringBootApplication` en el paquete raíz (`com.arcadiadevs.viora.platform`) para habilitar el escaneo automático de componentes. Se aplica inyección de dependencias mediante constructores y se estructuran los paquetes respetando la separación en capas de la arquitectura limpia y DDD táctico.
 
-\newpage
-
 #### Cliente móvil nativo: Kotlin y Android
 &nbsp;
 
@@ -260,8 +258,6 @@ Para la aplicación multiplataforma en `viora-mobile-flutter`, el equipo aplica 
 * **Seguridad nula estricta (*Sound Null Safety*):** Todo el código se compila bajo modo estricto de seguridad nula, evitando el operador de aserción no nula (`!`) sin validación previa.
 * **Documentación con dartdoc:** Se emplea la convención de barras triples (`///`) para la documentación de cabecera de Widgets, modelos de datos y servicios Dio.
 
-\newpage
-
 ### Software Deployment Configuration
 
 Para garantizar que los productos digitales que integran el ecosistema Viora se publiquen y operen de forma reproducible, resiliente y continua, ArcadiaDevs ha diseñado una infraestructura de despliegue moderna basada en el paradigma de Entrega Continua y en los principios de paridad entre desarrollo y producción. 
@@ -273,28 +269,30 @@ La estrategia de despliegue desacopla la arquitectura en cuatro componentes de a
 
 La topología de infraestructura física y lógica de Viora se modela mediante el diagrama de despliegue de C4 Model (Nivel 4), detallando la distribución de los componentes de software en los diferentes nodos de ejecución, plataformas en la nube y dispositivos físicos de usuario final.
 
-En la \autoref{fig:c4-deployment-ch4} se expone la arquitectura global de despliegue del sistema Viora, complementada por la clave técnica de notación presentada en la \autoref{fig:c4-deployment-key-ch4}.
+En la \autoref{fig:c4-deployment-ch4} se expone la arquitectura global de despliegue del sistema Viora (panel a), complementada por la clave técnica de notación de C4 Model (panel b).
 
 \begin{figure}[H]
-\caption{C4 Model - Nivel 4: Diagrama de Despliegue de la solución Viora.} \label{fig:c4-deployment-ch4}
-\vspace{0.25cm}
+\caption{C4 Model - Nivel 4: Topología de Despliegue y Leyenda de Notación.} \label{fig:c4-deployment-ch4}
 \centering
-\includegraphics[width=0.60\textwidth]{report/assets/c4-model/viora-deployment.png}
-\caption*{\textit{Nota.} Topología física de despliegue de Viora en Vercel, Render, Filess.io, Firebase App Distribution, dispositivos Android de prueba y nodos SaaS externos. Elaboración propia.}
-\end{figure}
-
-\begin{figure}[H]
-\caption{C4 Model - Leyenda de notación del Diagrama de Despliegue.} \label{fig:c4-deployment-key-ch4}
+\begin{minipage}[b]{0.64\textwidth}
 \centering
-\includegraphics[width=0.6\textwidth]{report/assets/c4-model/viora-deployment-key.png}
-\caption*{\textit{Nota.} Clave de notación de nodos de infraestructura, contenedores desplegados y servicios externos. Elaboración propia.}
+\includegraphics[width=\linewidth,height=0.36\textheight,keepaspectratio]{report/assets/c4-model/viora-deployment.png}
+\caption*{(a) Topología física y lógica de despliegue.}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.33\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.36\textheight,keepaspectratio]{report/assets/c4-model/viora-deployment-key.png}
+\caption*{(b) Leyenda de notación C4.}
+\end{minipage}
+\caption*{\textit{Nota.} Distribución de componentes en Vercel, Render, Filess.io, Firebase App Distribution, terminales móviles y servicios SaaS externos. Elaboración propia.}
 \end{figure}
 
 A partir de la arquitectura ilustrada en la \autoref{fig:c4-deployment-ch4}, se identifican los siguientes nodos de ejecución y roles operativos:
 
 * **Nodo Vercel Edge Network:** Infraestructura distribuida globalmente que aloja la Landing Page como un sitio web estático optimizado. Gestiona la entrega de contenidos a través de servidores de borde (*Edge servers*) con terminación TLS automática, enrutamiento seguro y compresión de recursos estáticos.
 * **Nodo Render Cloud Platform:** Entorno PaaS administrado que aloja la API RESTful de backend en su runtime nativo de Java 21, así como el servicio complementario Telemetry Simulator ejecutándose como proceso en segundo plano (*Background Worker*) independiente.
-* **Nodo Filess.io Managed Cloud:** Servicio DBaaS de base de datos relacional PostgreSQL 16 de alta disponibilidad, accesible exclusivamente mediante conexiones cifradas SSL/TLS para salvaguardar la persistencia de datos del negocio.
+* **Nodo Filess.io Managed Cloud:** Servicio DBaaS de base de datos relacional PostgreSQL 15.6 de alta disponibilidad, accesible exclusivamente mediante conexiones cifradas SSL/TLS para salvaguardar la persistencia de datos del negocio.
 * **Nodo Google Firebase App Distribution:** Plataforma de distribución continua que gestiona el versionamiento, control de acceso y entrega inalámbrica (*Over-the-Air*) de los paquetes de aplicación compilados (APK) para Android.
 * **Nodo Dispositivo Móvil Android de Prueba:** Hardware físico de prueba en el que se ejecuta la aplicación móvil nativa dentro del sandbox de Android OS, integrando persistencia local desconectada mediante Room SQLite.
 * **Servicios SaaS Externos:** Nodos de terceros integrados a través de contratos seguros HTTPS: Mapbox (servicios de cartografía satelital y delimitación geoespacial de parcelas), Open-Meteo (suministro de datos agroclimáticos y pronóstico en tiempo real), Brevo (envío de notificaciones transaccionales y correos electrónicos), y Mercado Pago Sandbox (procesamiento transaccional de pagos mediante webhooks firmados).
@@ -427,5 +425,3 @@ Firebase App Distribution gestiona las autorizaciones y la entrega de binarios m
 
 * `arcadiadevs-internal` (Equipo interno de ingeniería): comprende las cuentas de los desarrolladores y líderes técnicos de ArcadiaDevs. Este grupo recibe compilaciones preliminares inmediatas tras cada integración para la ejecución de pruebas de humo, verificación de endpoints y aseguramiento de calidad interno antes de cualquier exposición a usuarios finales. Actualmente reúne seis cuentas: cinco institucionales del equipo y una personal del líder del equipo.
 * `viora-client-testers` (Clientes y usuarios de validación): agrupa a los representantes reales de los dos segmentos objetivo del proyecto (productores olivareros independientes y gestores técnicos de cooperativas). Los integrantes de este grupo reciben acceso a las versiones estables de las aplicaciones móviles (Android nativo y Flutter) instaladas directamente sobre sus terminales físicos, permitiéndoles interactuar con los flujos de usuario y evaluar las tareas clave durante las sesiones de entrevistas de validación. Se encuentra vacío hasta la fase de validación con usuarios y podrá poblarse con las cuentas de los evaluadores o mediante un vínculo de invitación asociado al grupo.
-
-\newpage

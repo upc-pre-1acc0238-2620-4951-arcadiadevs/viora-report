@@ -105,8 +105,6 @@ Para diseñar una solución que responda a la realidad del sector, se estructura
 *   ¿Cuál es su estado civil y composición de su familia? (Familia)
 *   ¿Cuántos años de experiencia tiene trabajando en el sector agropecuario y cuál es su grado de estudios o especialización técnica? (Ocupación y educación)
 
-\newpage
-
 ### Registro de entrevistas
 
 En esta sección se presentan las fichas individuales de las seis entrevistas realizadas (tres por segmento), documentando datos sociodemográficos, marcas, canales, citas textuales y capturas de video con su enlace y minutaje de inicio.
@@ -114,118 +112,114 @@ En esta sección se presentan las fichas individuales de las seis entrevistas re
 #### Segmento 1: Productores olivareros de la macro-región sur
 &nbsp;
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista \#1} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Gustavo Calizaga Limache & \textbf{Edad} & 30 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor Olivarero} \\ 
-\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{00:04 - 05:59} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productor Olivarero} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.78\textwidth}}{00:04 - 05:59} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 30 años, soltero con pareja y una hija. Gestiona hace 5 años un fundo de 4 ha. Cultiva Sevillana, con rendimientos de 15,000 kg/ha en años ON y 5,000 kg/ha en años OFF (caída del 66\%). Su rutina diaria en La Yarada (Tacna) es física bajo el sol intenso. Utiliza un celular Samsung Android, Google Chrome como navegador y WhatsApp para comunicarse con su ingeniero asesor, quien influye en su dosificación química y abonos. Desconoce la tecnología IoT, pero considera "muy útil" una app con alertas que contabilice las horas de frío acumuladas para mitigar el impacto de El Niño. Su personalidad es precavida, enfocada en la prevención de plagas para mantener bien nutridos los árboles. Su meta es lanzar su propia marca de aceitunas de mesa. La vecería no le genera frustración económica porque la escasez eleva los precios locales (hasta 13 soles/kg). Realiza la poda en junio/julio, retrasándose en años de sobrecarga. Confía en el sistema en un 40\%-50\%, priorizando la observación directa en campo.} \\ 
-[10pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview1.png}} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/requirements/interview1.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\vspace{1.5cm}
+\vspace{0.35cm}
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista \#2} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Cristóbal Barrientos Carrillo & \textbf{Edad} & 51 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{Valle de Yauca, Arequipa / Chorrillos, Lima} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor Olivarero} \\ 
-\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{06:00 - 11:17} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{Valle de Yauca, Arequipa / Chorrillos, Lima} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productor Olivarero} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.78\textwidth}}{06:00 - 11:17} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 51 años, casado con dos hijos. Produce en el Valle de Yauca y comercializa en Lima (Chorrillos). Gestiona 1 ha propia y compra a terceros. Destina el 80\% a aceitunas de mesa y el 20\% a aceite. Su testimonio valida las estadísticas de la sección 1.3: la vecería reduce su producción al 50\% en año regular (frente al 80\% de año ON), y el ENOS severo causó caídas extremas al 20\% hace dos campañas y al 10\% en la actual (mermas del 80\%-90\%). Ante la inestabilidad, economiza insumos en años OFF (usa urea, guano de isla y de corral) para no sobreexigir los árboles y compra stock a familiares. Poda 15 días después de la cosecha, variando la fecha según la carga. Regula el riego por observación y carece de experiencia en sensores IoT. Usa un celular Samsung Android, Google Chrome como navegador y WhatsApp como canal exclusivo. Su personalidad es arriesgada en años favorables para invertir en nutrición profunda. Valora positivamente una app móvil sin conexión para mitigar variaciones térmicas bruscas, aunque exige un proceso de adopción progresivo para confiar.} \\ 
-[10pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview2.png}} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/requirements/interview2.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\vspace{1.5cm}
+\vspace{0.35cm}
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista \#3} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Alexandra Rosas & \textbf{Edad} & 50 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productora Olivarera y Comercializadora} \\ 
-\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{11:18 - 16:40} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productora Olivarera y Comercializadora} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.78\textwidth}}{11:18 - 16:40} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Mujer de 50 años, casada con tres hijos. Administra una parcela familiar de 3 ha en La Yarada Los Palos (Tacna) cultivando variedad Criolla/Sevillana (80\% a aceituna de mesa y 20\% a aceite). Reporta rendimientos de 14,000 kg/ha en años de alta carga (ON) y 4,500 kg/ha en años de descanso (OFF), con mermas críticas de hasta 1,500 kg/ha durante inviernos cálidos por El Niño (2 campañas consecutivas con caídas $>70\%$). Ante la inestabilidad económica, economiza fertilizantes en años malos (usa urea y guano de corral) y compensa ingresos por la subida de precios en chacra (S/. 10--12/kg) y la compra de fruta a terceros para venta en salmuera. Poda a término de cosecha en julio y regula el riego tecnificado por observación diaria. Utiliza un celular Samsung Galaxy Android y WhatsApp como canal exclusivo, sin experiencia en sensores IoT. Su personalidad es conservadora y precavida. Valora como indispensable el soporte sin conexión (offline) y las alertas de acumulación de horas de frío para no abonar a ciegas. Su confianza inicial en la plataforma es del 40\%--50\%, exigiendo validación práctica y testimonios de otros agricultores de la zona.} \\ 
-[10pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview3.png}} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/requirements/interview3.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
-
-\vspace{1.5cm}
 
 \clearpage
 
 #### Segmento 2: Gestores técnicos de organizaciones olivareras
 &nbsp;
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista \#4} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Juan Maquera & \textbf{Edad} & 55 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Técnico Agrónomo e Ingeniero Civil} \\ 
-\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{16:40 - 21:20} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Técnico Agrónomo e Ingeniero Civil} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.78\textwidth}}{16:40 - 21:20} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 55 años, casado con un hijo. Ingeniero Civil con más de 30 años en el sector, labora en La Yarada Los Palos (Tacna). Monitorea desarrollo, plagas y nutrición en 20 ha de olivo. Usa celular Android, Google Chrome y WhatsApp (grupos y llamadas) para asistencia técnica. En oficina solo usa Excel y terceriza análisis por falta de laboratorios. Su personalidad destaca por serenidad y organización. Sus metas son lograr calibres comerciales idóneos para exportación ante bajos precios locales. Su dolor es la inestabilidad por el ENOS que tira la flor, y la falta de alertas climáticas tempranas. Proyecta de forma simple ("un año sí, otro no"), aunque el uso de hormonas mitiga la vecería. Valora un panel digital predictivo basado en estadísticas para control fenológico y de plagas, pero ve barreras en los costos de laboratorios.} \\ 
-[10pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview4.png}} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/requirements/interview4.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\vspace{1.5cm}
+\vspace{0.35cm}
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista \#5} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Daniel Estrada & \textbf{Edad} & 44 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Jefe Técnico de Cooperativa (Ing. Agrónomo)} \\ 
-\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{21:20 - 26:47} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Jefe Técnico de Cooperativa (Ing. Agrónomo)} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.78\textwidth}}{21:20 - 26:47} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Varón de 44 años, casado con tres hijos. Ingeniero Agrónomo con 18 años de experiencia, jefe técnico en cooperativa con 68 socios y 420 ha (90\% Criolla) en Tacna. Su rutina varía: 75\% en campo monitoreando frío y poda en pre-cosecha; y en cosecha coordina acopio, salmueras y oficina. Usa Windows 11, Google Chrome, Excel y Google Earth. En campo usa celular y WhatsApp. Monitorea frío con estación climática y tensiómetros en pilotos, pero la salinidad del agua, mala cobertura y robos limitan expandir sensores. Su personalidad es analítica y paciente. Su meta es estabilizar el acopio (1800-2200 t) reduciendo la alternancia. Sufre de "ceguera logística" (error del 35\%-55\% por aforos visuales) que subutiliza salmueras (70\% vacías) y genera penalidades de exportación. Confiaría en la app si cruza conteo, frío y visión artificial con 60-75 días de anticipación. Sugiere incentivar el registro con sobreprecios y descarga prioritaria.} \\ 
-[10pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview5.png}} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/requirements/interview5.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\vspace{1.5cm}
+\vspace{0.35cm}
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista \#6} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Maribel Vargas & \textbf{Edad} & 40 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos / Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Responsable Técnica y de Acopio (Ing. Agrónoma)} \\ 
-\textbf{Inicio} & \multicolumn{3}{p{0.75\textwidth}}{26:48 - 32:17} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos / Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Responsable Técnica y de Acopio (Ing. Agrónoma)} \\ 
+\textbf{Inicio} & \multicolumn{3}{p{0.78\textwidth}}{26:48 - 32:17} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/needfinding-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen:} Mujer de 40 años, casada con tres hijos. Ingeniera Agrónoma con 15 años de experiencia, jefa técnica en asociación con 35 socios y 150 ha (85\% Criolla de Tacna). Durante la campaña activa divide su tiempo: 65\%--70\% en campo (inspección fitosanitaria y corte de riego) y 30\%--35\% en oficina/acopio. Usa Windows 11, Chrome, Excel y Google Earth en oficina, y celular Samsung Android con WhatsApp en campo. Probó tensiómetros y mini-estación climática en pilotos, pero la salinidad del agua deteriora las cápsulas y la conectividad limita su escalado. Su personalidad es analítica, metódica y pedagógica ante la desconfianza del agricultor. Su meta es estabilizar el acopio (700--900 t). Experimenta desviaciones del 35\%--45\% en acopio por falta de frío invernal no monitoreado, provocando subutilización de salmueras y penalidades comerciales. Advierte que los socios no aclarean en tamaño perdigón (noviembre-diciembre) antes de la lignificación del endocarpio ni podan antes de agosto, dañando la siguiente floración. Confiaría en la proyección agregada si ofrece un margen de error $\le 10\%-15\%$ con 60-75 días de anticipación (enero-febrero). Recomienda incentivar el uso de la app mediante prioridad en balanza y sobreprecio por kilo entregado con trazabilidad.} \\ 
-[10pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.4\textwidth]{report/assets/interviews/requirements/interview6.png}} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth]{report/assets/interviews/requirements/interview6.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
-
-\clearpage
+\endgroup
 
 ### Análisis de entrevistas
 
@@ -236,7 +230,11 @@ Los porcentajes y descriptores de esta sección provienen de las fichas registra
 
 Se analizaron 3 entrevistas a productores representativos de la agricultura familiar y comercial de los valles de La Yarada Los Palos (Tacna) y Yauca (Arequipa). Como se detalla en la \autoref{tab:caracteristicas-productores}, la información recopilada permitió cuantificar las principales regularidades operativas, agronómicas y tecnológicas del segmento.
 
-\begin{longtable}{p{0.32\textwidth} p{0.10\textwidth} p{0.08\textwidth} p{0.44\textwidth}}
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.30\textwidth} p{0.09\textwidth} p{0.07\textwidth} p{0.48\textwidth}}
 \caption{Características empíricas consolidadas del segmento de productores olivareros} \label{tab:caracteristicas-productores} \\
 \hline
 \textbf{Característica} & \textbf{Mención} & \textbf{\%} & \textbf{Evidencia} \\ \hline
@@ -249,7 +247,7 @@ Se analizaron 3 entrevistas a productores representativos de la agricultura fami
 \hline
 \endfoot
 \hline
-\multicolumn{4}{l}{\parbox{14.0cm}{\vspace{0.15cm} \textit{Nota.} Elaboración propia basada en las entrevistas E\#1 a E\#3.}} \\
+\multicolumn{4}{l}{\parbox{14.0cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia basada en las entrevistas E\#1 a E\#3.}} \\
 \endlastfoot
 Experiencia agrícola y gestión directa ($\ge 5$ años) & 3/3 & 100\% & Todos gestionan sus parcelas: E\#1 (5 años), E\#2 (>15 años) y E\#3 (>10 años). \\
 Escala de tenencia reducida (1 a 4 hectáreas) & 3/3 & 100\% & Fundo de 4 ha en La Yarada (E\#1), 1 ha propia en Yauca (E\#2) y parcela familiar de 3 ha (E\#3). \\
@@ -265,31 +263,34 @@ Disposición moderada con desconfianza inicial (Confianza del $40\%-50\%$) & 3/3
 Personalidad precavida/conservadora centrada en prevención sanitaria & 3/3 & 100\% & Enfoque fitosanitario preventivo y austeridad de insumos en años de descanso en E\#1, E\#2 y E\#3. \\
 Meta de diferenciación comercial (marca propia o fidelización) & 3/3 & 100\% & Aspiración de lanzar marca propia de aceituna de mesa (E\#1), mantener clientela en Lima (E\#2) o vender en salmuera con valor (E\#3). \\
 \end{longtable}
-
-\newpage
+\endgroup
 
 \noindent \textbf{Insights}
 
 \vspace{0.15cm}
 
 **1. Asincronía fisiológica en la toma de decisiones:**
-El manejo agronómico del productor familiar opera bajo un desfase temporal constante. Al basar el aclareo y la poda en la observación visual tardía (cuando la fruta ya superó el tamaño perdigón o la cosecha se extendió hasta agosto), el árbol agota sus reservas de carbohidratos, bloqueando hormonalmente la inducción floral de la siguiente campaña. Esto evidencia que el software debe actuar como un sistema de alerta temprana que adelante las decisiones a su ventana biológica útil.
+El productor familiar opera bajo desfase temporal constante. Al basar poda y aclareo en observación visual tardía (tras superar tamaño perdigón o cosechar en agosto), el árbol agota reservas de carbohidratos y bloquea la inducción floral siguiente. Por ello, el software debe funcionar como alerta temprana que adelante las decisiones a su ventana biológica útil.
 
 **2. La paradoja económica del precio en chacra:**
-La reducción de volumen en los años de descanso (*OFF*) es percibida con menor gravedad financiera inmediata debido a que la escasez eleva el precio del kilo de aceituna en campo (hasta S/. 12–13/kg). Sin embargo, este mecanismo informal no previene la descapitalización acumulada ni resuelve la falta de presupuesto para el fertirriego de salida de invierno, perpetuando el ciclo de alternancia en el tiempo.
+La caída de volumen en años *OFF* se percibe con menor gravedad inmediata porque la escasez eleva el precio en campo (S/. 12–13/kg). Sin embargo, esta compensación informal no evita la descapitalización acumulada ni financia el fertirriego de salida de invierno, perpetuando el ciclo de alternancia productiva.
 
 **3. Usabilidad condicionada al funcionamiento sin conexión:**
-El trabajo cotidiano en el desierto costero expone al agricultor a condiciones de radiación intensa y conectividad celular deficiente o nula. La viabilidad de la aplicación móvil depende de que el 100% de las funciones de registro de campo, consulta de calendarios y recomendaciones dinámicas operen de forma local (*offline-first*), sincronizando datos automáticamente al detectar red.
+El trabajo en el desierto costero expone al agricultor a radiación intensa y conectividad deficiente o nula. La app móvil exige operatividad local (*offline-first*) para el registro de campo, consulta de calendarios y recomendaciones dinámicas, sincronizando los datos automáticamente al detectar cobertura de red.
 
 **4. Adopción basada en validación comunitaria y valor agronómico tangible:**
-La desconfianza inicial ante algoritmos dinámicos (40%–50%) solo se reduce cuando la herramienta entrega datos que el productor reconoce como críticos pero que hoy no puede medir por su cuenta (especialmente la acumulación de horas de frío para anticipar anomalías de El Niño) y cuando percibe el respaldo de ingenieros referentes de la zona.
+La desconfianza inicial ante algoritmos dinámicos (40%–50%) se supera entregando métricas que el productor no puede calcular manualmente (como la acumulación de frío invernal ante anomalías de El Niño) y validando las recomendaciones junto a ingenieros agrónomos referentes de la zona.
 
 #### Segmento 2: Gestores técnicos de organizaciones olivareras
 &nbsp;
 
 Se analizaron 3 entrevistas a ingenieros agrónomos y responsables técnicos a cargo de la asistencia técnica y acopio en cooperativas y asociaciones olivareras de Tacna, consolidando una muestra con cobertura sobre más de 100 socios y 590 hectáreas. Como se expone en la \autoref{tab:caracteristicas-gestores}, se sintetizan los hallazgos empíricos cuantitativos y cualitativos para este segmento.
 
-\begin{longtable}{p{0.32\textwidth} p{0.10\textwidth} p{0.08\textwidth} p{0.44\textwidth}}
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{p{0.30\textwidth} p{0.09\textwidth} p{0.07\textwidth} p{0.48\textwidth}}
 \caption{Características empíricas consolidadas del segmento de gestores técnicos} \label{tab:caracteristicas-gestores} \\
 \hline
 \textbf{Característica} & \textbf{Mención} & \textbf{\%} & \textbf{Evidencia} \\ \hline
@@ -302,7 +303,7 @@ Se analizaron 3 entrevistas a ingenieros agrónomos y responsables técnicos a c
 \hline
 \endfoot
 \hline
-\multicolumn{4}{l}{\parbox{14.0cm}{\vspace{0.15cm} \textit{Nota.} Elaboración propia basada en las entrevistas E\#4 a E\#6.}} \\
+\multicolumn{4}{l}{\parbox{14.0cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia basada en las entrevistas E\#4 a E\#6.}} \\
 \endlastfoot
 Formación superior y especialización en gestión agrícola ($\ge 15$ años exp.) & 3/3 & 100\% & E\#4 (Ing. Civil con especialización de campo, >30 años), E\#5 (Ing. Agrónomo colegiado, 18 años) y E\#6 (Ing. Agrónoma colegiada, 15 años). \\
 Supervisión de carteras extensas (35 a 68 socios / 20 a 420 ha) & 3/3 & 100\% & E\#4 (20 ha), E\#5 (68 socios, 420 ha) y E\#6 (35 socios, 150 ha bajo riego por goteo). \\
@@ -317,21 +318,20 @@ Propuesta de incentivos comerciales en planta para impulsar la adopción & 2/3 &
 Personalidad analítica, metódica y pedagógica ante la resistencia al cambio & 3/3 & 100\% & E\#4 (serenidad y organización), E\#5 (analítico y paciente) y E\#6 (metódica, analítica y pedagógica con los agricultores). \\
 Meta estratégica: estabilización de volumen de acopio y eficiencia industrial & 3/3 & 100\% & E\#4 (calibres exportables), E\#5 (estabilizar 1800–2200 t) y E\#6 (estabilizar 700–900 t reduciendo alternancia). \\
 \end{longtable}
+\endgroup
 
 \noindent \textbf{Insights}
 
 \vspace{0.15cm}
 
 **1. El elevado costo industrial de la ceguera logística:**
-La incapacidad de proyectar el volumen de recepción con métodos tradicionales (declaración subjetiva de socios y aforos visuales) genera graves pérdidas económicas en la agroindustria: sobrecosto por capacidad ociosa en pozas de salmuera (hasta 70% vacías en años OFF), sobredimensionamiento de cuadrillas de transporte y riesgo de penalidades financieras por incumplimiento de contratos de exportación.
+Proyectar acopio con métodos tradicionales genera graves pérdidas agroindustriales: capacidad ociosa en pozas de salmuera (70% vacías en años OFF), sobredimensionamiento en transporte y riesgo de penalidades financieras por incumplir contratos de exportación ante variaciones imprevistas del volumen entregado por los socios.
 
 **2. La brecha física de supervisión agronómica:**
-Un gestor técnico no puede auditar físicamente cientos de hectáreas dispersas durante las semanas clave del ciclo. Para que el aclareo de frutos sea efectivo, debe ejecutarse entre noviembre y diciembre antes de que el endocarpio lignifique (fruto en tamaño perdigón <12 mm). El software resuelve este cuello de botella al proveer un panel de semáforos que prioriza automáticamente los predios con mayor riesgo de sobrecarga.
+El gestor no puede auditar cientos de hectáreas dispersas durante etapas críticas. Para lograr aclareos efectivos antes de lignificar el endocarpio (noviembre-diciembre, fruto <12 mm), el software resuelve este cuello de botella mediante un panel de semáforos que prioriza automáticamente los predios con mayor riesgo de sobrecarga en la cartera.
 
 **3. Viabilidad de una arquitectura IoT híbrida y realista:**
-Las condiciones ambientales de La Yarada (alta salinidad del agua subterránea que daña los sensores y áreas sin cobertura celular) hacen inviable exigir sensores IoT en cada una de las parcelas socias. La solución debe articular un modelo híbrido: telemetría automática en estaciones meteorológicas zonales y parcelas demostrativas, combinada con estimaciones fenológicas guiadas desde la app móvil del agricultor.
+El agua salina y la baja conectividad en La Yarada imposibilitan instalar sensores IoT en cada predio socio. La solución articula un modelo híbrido: telemetría automática en estaciones zonales y parcelas piloto, combinada con estimaciones fenológicas guiadas desde la app móvil offline del agricultor.
 
 **4. El gestor técnico como articulador de la adopción digital:**
-Dado que el gestor técnico concentra la confianza del agricultor y la administración de la planta de acopio, la estrategia de adopción no depende únicamente de la interfaz del software, sino de incentivos operativos: vincular el uso de la aplicación a beneficios tangibles en planta, tales como turnos prioritarios de recepción en balanza y sobreprecios por calidad y cumplimiento de trazabilidad.
-
-\clearpage
+Al concentrar la confianza técnica y administrar la recepción, el gestor viabiliza la adopción mediante incentivos operativos: vincular el registro en la app a beneficios tangibles en planta, tales como turnos prioritarios en tolva y sobreprecios por calidad y trazabilidad agronómica cumplida.
