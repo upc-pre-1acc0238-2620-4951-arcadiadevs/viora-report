@@ -403,25 +403,25 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US07} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP02} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Activación de cuenta de socio mediante canje de código de cooperativa} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Activación de membresía corporativa de socio mediante canje de código de cooperativa} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero socio de una cooperativa agraria, \textbf{quiero} canjear un código de activación proporcionado por mi organización, \textbf{para} habilitar el acceso completo a los servicios de Viora bajo la membresía corporativa de la cooperativa sin asumir costos individuales de suscripción.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero agremiado a una cooperativa agrícola, \textbf{quiero} canjear un código de activación institucional proporcionado por mi organización con validación de cuota y consentimiento explícito, \textbf{para} acceder a las prestaciones de la plataforma bajo patrocinio corporativo sin costo individual de suscripción compartiendo mi información técnica con el gestor de la entidad.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso de código de activación de cooperativa}\newline
-\textbf{Given} un productor olivarero autenticado que no cuenta con una membresía activa.\newline
-\textbf{When} ingresa un código de invitación válido emitido por su cooperativa agraria.\newline
-\textbf{Then} el sistema vincula al productor con la cooperativa correspondiente y marca el código como utilizado.\newline
-\textbf{And} el usuario accede a las herramientas del sistema con estado de membresía corporativa activa.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por código de invitación inexistente o inválido}\newline
-\textbf{Given} un productor ingresando un código de activación.\newline
-\textbf{When} proporciona un código que no existe en el registro de invitaciones del sistema.\newline
-\textbf{Then} el sistema deniega la vinculación sin alterar el estado de la cuenta.\newline
-\textbf{And} notifica que el código ingresado no es válido.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por código de invitación expirado o ya canjeado}\newline
-\textbf{Given} un productor intentando vincularse a una cooperativa.\newline
-\textbf{When} ingresa un código cuya fecha de vigencia caducó o que ya fue consumido por otro usuario.\newline
-\textbf{Then} el sistema rechaza el canje impidiendo la activación de la membresía.\newline
-\textbf{And} notifica que el código ha expirado o ya no cuenta con cupos disponibles.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso con validación de cuota de hectáreas y consentimiento}\newline
+\textbf{Given} un productor olivarero autenticado en la plataforma que no cuenta con un plan de membresía corporativa activo.\newline
+\textbf{When} ingresa un código de activación válido con formato institucional \texttt{COOP-XXXX} y confirma de forma explícita el consentimiento para compartir sus datos agronómicos con la cooperativa emisora.\newline
+\textbf{Then} el sistema valida la disponibilidad de cupo en plazas y saldo de hectáreas contratadas de la licencia institucional, vincula la cuenta del productor con la entidad y marca el código como canjeado.\newline
+\textbf{And} actualiza el estado de la suscripción a membresía patrocinada activa, mostrando la denominación de la cooperativa en la interfaz de usuario.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por código inexistente o formato malformado}\newline
+\textbf{Given} un productor olivarero en la pantalla de canje de patrocinio institucional.\newline
+\textbf{When} introduce un código que no sigue el patrón alfanumérico esperado o que no figura en los registros de códigos emitidos por ninguna organización.\newline
+\textbf{Then} el sistema bloquea la operación de canje sin modificar el estado ni los privilegios de la cuenta.\newline
+\textbf{And} notifica que el código ingresado no existe o no corresponde a una invitación institucional válida.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por código caducado, previamente utilizado o cuota agotada}\newline
+\textbf{Given} un productor olivarero intentando registrar un código emitido legítimamente por su cooperativa.\newline
+\textbf{When} el código proporcionado ya fue consumido por otro socio, ha superado su fecha límite de vigencia o la cooperativa no dispone de balance suficiente de plazas o hectáreas disponibles.\newline
+\textbf{Then} el sistema deniega la vinculación y preserva inalterado el estado del usuario.\newline
+\textbf{And} presenta un mensaje informativo especificando la causa del rechazo, ya sea por código utilizado, invitación caducada o capacidad institucional completada.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -436,20 +436,23 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US08} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP02} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Administración de la cartera de socios productores y consulta de cuota corporativa} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar la nómina de socios productores agremiados con su superficie declarada y verificar el cupo contratado de la membresía colectiva, \textbf{para} supervisar la base territorial de la cooperativa y coordinar la entrega de códigos de activación a los agricultores elegibles.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa con rol \texttt{ROLE\_TECHNICAL\_MANAGER}, \textbf{quiero} consultar el padrón de socios productores agremiados con su superficie declarada, el balance de cuota corporativa y el estado de los códigos innominados emitidos, \textbf{para} supervisar la base productiva de la organización, gestionar la entrega de invitaciones y controlar la ocupación de plazas contratadas.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta de padrón gremial}\newline
-\textbf{Given} un gestor técnico autenticado con rol \texttt{GESTOR}.\newline
-\textbf{When} accede al directorio de miembros de su cooperativa.\newline
-\textbf{Then} el sistema retorna la lista consolidada de socios agremiados detallando nombre completo, teléfono E.164, correo, hectáreas declaradas y estado de vinculación.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta de estado de licencias y códigos}\newline
-\textbf{Given} un gestor técnico consultando la capacidad contratada.\newline
-\textbf{When} solicita el balance de la licencia institucional.\newline
-\textbf{Then} el sistema presenta las plazas y hectáreas totales contratadas frente a las comprometidas y disponibles, junto con el estado de los lotes de códigos emitidos.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Restricción de acceso}\newline
-\textbf{Given} una solicitud emitida por un usuario sin rol de gestor técnico en la organización.\newline
-\textbf{When} el sistema evalúa los privilegios institucionales.\newline
-\textbf{Then} deniega el acceso con código \texttt{403 Forbidden}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta del padrón consolidado de socios vinculados y balance de cuota}\newline
+\textbf{Given} un gestor técnico autenticado con privilegios institucionales de \texttt{ROLE\_TECHNICAL\_MANAGER}.\newline
+\textbf{When} accede al directorio de miembros y licencias corporativas de su cooperativa.\newline
+\textbf{Then} el sistema retorna el listado de socios vinculados bajo la relación autorizada de supervisión, exponiendo nombre, teléfono bajo norma E.164, correo, número de parcelas activas y hectáreas totales registradas.\newline
+\textbf{And} presenta el balance contractual desagregando plazas y hectáreas contratadas, comprometidas y disponibles en la licencia colectiva.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Inspección y consulta de inventario de códigos innominados}\newline
+\textbf{Given} un gestor técnico supervisando las invitaciones generadas para la incorporación de productores.\newline
+\textbf{When} solicita el reporte de códigos de activación institucionales de su entidad.\newline
+\textbf{Then} el sistema presenta la relación de códigos innominados detallando identificador enmascarado o utilizable, fecha de expedición, fecha límite de vigencia y estado actual (disponible, canjeado o revocado).\newline
+\textbf{And} permite copiar y compartir aquellos códigos que se encuentren vigentes y no hayan sido redimidos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Denegación de acceso por rol no autorizado}\newline
+\textbf{Given} una petición de acceso a la cartera gremial emitida por una cuenta que no posee el rol \texttt{ROLE\_TECHNICAL\_MANAGER} o pertenece a otra organización.\newline
+\textbf{When} el servicio evalúa las credenciales y el ámbito institucional del solicitante.\newline
+\textbf{Then} deniega el acceso retornando código de estado HTTP \texttt{403 Forbidden}.\newline
+\textbf{And} resguarda la privacidad del padrón impidiendo la exposición de datos de productores o cupos contractuales a usuarios no facultados.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -550,23 +553,25 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US12} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP03} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la matriz de riesgo territorial y semáforo sectorial con geolocalización GPS} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar un tablero con la matriz de riesgo territorial del valle olivarero detectando mi posición GPS en tiempo real, \textbf{para} identificar en qué sector me encuentro y priorizar visitas de asistencia agronómica en las parcelas que presentan sobrecarga crítica o alerta de helada en dicha zona.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar un tablero territorial que agrupe las parcelas socias por etiquetas sectoriales y visualice mi posición actual mediante GPS, \textbf{para} identificar sectores con mayor vulnerabilidad agronómica y priorizar visitas técnicas presenciales en parcelas con sobrecarga crítica o riesgo meteorológico activo.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Detección de sector mediante GPS interno}\newline
-\textbf{Given} un gestor técnico en campo con el sensor GPS activado en su dispositivo móvil.\newline
-\textbf{When} abre la matriz de riesgo territorial de la cooperativa.\newline
-\textbf{Then} el sistema captura las coordenadas de latitud y longitud del asesor.\newline
-\textbf{And} sitúa automáticamente su posición dentro del sector geográfico correspondiente (e.g., Sector La Yarada Baja), destacando visualmente el semáforo y las alertas activas de esa zona.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Visualización consolidada de sectores del valle}\newline
-\textbf{Given} un gestor técnico consultando el estado general de su organización.\newline
-\textbf{When} examina el tablero macro territorial.\newline
-\textbf{Then} el sistema despliega el semáforo consolidado de todos los sectores agrupando el número de predios en sobrecarga crítica (> 30\%) y el conteo de alertas climáticas activas.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: GPS fuera de cobertura o sin señal}\newline
-\textbf{Given} el gestor en una zona sin fijación satelital GPS o con permisos denegados.\newline
-\textbf{When} accede a la matriz territorial.\newline
-\textbf{Then} el sistema presenta la vista global por defecto y permite seleccionar manualmente el sector de interés.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Visualización cartográfica de parcelas socias y posición del gestor mediante GPS}\newline
+\textbf{Given} un gestor técnico en campo con permisos de geolocalización concedidos en su dispositivo móvil.\newline
+\textbf{When} accede al visor territorial y matriz de riesgo de su cooperativa.\newline
+\textbf{Then} el sistema proyecta en el mapa las geometrías de las parcelas correspondientes a los productores vinculados a su cartera de supervisión.\newline
+\textbf{And} posiciona el marcador de ubicación actual del gestor mediante el sensor GPS del dispositivo para orientar su desplazamiento físico sin requerir polígonos de fronteras geográficas administrativas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Agrupación por etiquetas sectoriales y cálculo del semáforo por mayor gravedad}\newline
+\textbf{Given} un gestor técnico consultando la situación agronómica consolidada de la cooperativa.\newline
+\textbf{When} filtra por una etiqueta sectorial (e.g., Magollo, Sama o La Yarada Los Palos) o visualiza el resumen general de sectores.\newline
+\textbf{Then} el sistema calcula el estado del semáforo asignando la mayor gravedad observada entre las parcelas del sector (crítico si existe al menos una parcela con alerta crítica, moderado si no hay críticas pero sí moderadas, u óptimo si todas las evaluadas cumplen parámetros normales).\newline
+\textbf{And} reporta de forma independiente el conteo de parcelas en riesgo crítico, moderado, óptimo y sin datos suficientes, sin promediar colores ni ocultar casos urgentes.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Operación ante ausencia de señal GPS o permisos de ubicación denegados}\newline
+\textbf{Given} el gestor operando en una zona sin cobertura satelital GPS o habiendo revocado los permisos de localización en el terminal.\newline
+\textbf{When} abre la matriz territorial y tablero de sectores.\newline
+\textbf{Then} el sistema presenta la vista cartográfica centrada en la extensión envolvente de las parcelas socias registradas.\newline
+\textbf{And} mantiene plenamente funcionales la exploración interactiva del mapa, el filtrado por sectores nominales y la consulta del semáforo de riesgo.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1067,18 +1072,25 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US30} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP07} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Emisión, certificación criptográfica y exportación del expediente agronómico en PDF} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Generación y exportación del expediente agronómico de parcela en formato PDF} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} generar el expediente agronómico oficial de mi parcela con certificación criptográfica, \textbf{para} descargar un documento PDF auditable con el historial técnico, telemetría y labores de aclareo para trámites bancarios o cooperativos.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero o Gestor Técnico autorizado, \textbf{quiero} generar y descargar el expediente agronómico en formato PDF correspondiente a una parcela para una campaña determinada, \textbf{para} disponer de un documento técnico descargable que respalde el historial productivo, floración, cuajado, aclareo y telemetría de cara a gestiones financieras, comerciales o de supervisión cooperativa.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Descarga del expediente binario en formato PDF}\newline
-\textbf{Given} una solicitud con cabecera \texttt{Accept: application/pdf}.\newline
-\textbf{When} el motor compila el historial productivo, clima y regulaciones de carga.\newline
-\textbf{Then} responde con \texttt{Content-Type: application/pdf}, cabecera \texttt{Content-Disposition} para descarga y el sello criptográfico en el pie de página.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta de metadatos y verificación de integridad}\newline
-\textbf{Given} una solicitud con cabecera \texttt{Accept: application/json}.\newline
-\textbf{When} se consulta el expediente técnico.\newline
-\textbf{Then} responde con los datos resumidos del predio y el hash SHA-256 de autenticidad documental.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación y descarga de expediente provisional en campaña activa}\newline
+\textbf{Given} un productor o gestor técnico autorizado consultando una parcela cuya campaña agronómica se encuentra en curso.\newline
+\textbf{When} solicita la exportación del documento mediante una petición con cabecera \texttt{Accept: application/pdf}.\newline
+\textbf{Then} el sistema compila una instantánea técnica con los datos registrados y cálculos demostrables (muestreos, labores de aclareo, telemetría y proyecciones), rotulando de forma visible en el encabezado «Expediente Agronómico Provisional» e indicando la fecha y hora de corte de la emisión.\newline
+\textbf{And} responde con \texttt{Content-Type: application/pdf} y cabecera \texttt{Content-Disposition} para su descarga, declarando explícitamente los campos sin registros como no disponibles sin inventar cifras ni requerir sellos criptográficos en datos en evolución.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Emisión y verificación de integridad de expediente definitivo en campaña cerrada}\newline
+\textbf{Given} una solicitud de expediente sobre una campaña agrícola concluida y liquidada con registros definitivos de cosecha.\newline
+\textbf{When} el usuario solicita el expediente cerrado en formato binario PDF o sus metadatos mediante cabecera \texttt{Accept: application/json}.\newline
+\textbf{Then} el sistema emite el dossier consolidado inmutable incorporando el balance productivo final y adjuntando una huella digital calculada mediante algoritmo SHA-256 para verificar la integridad del archivo generado.\newline
+\textbf{And} expone en el JSON de metadatos el identificador documental, la fecha de cierre y el hash de comprobación de integridad.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Control de acceso y confidencialidad}\newline
+\textbf{Given} una solicitud de descarga de expediente emitida por un usuario no autenticado o que no posee relación de propiedad ni de supervisión técnica autorizada sobre la parcela.\newline
+\textbf{When} el servicio evalúa la autorización del solicitante sobre el predio.\newline
+\textbf{Then} el sistema deniega la descarga retornando código de estado HTTP \texttt{403 Forbidden}.\newline
+\textbf{And} bloquea la exportación de documentos técnicos protegiendo la reserva de la información productiva.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1093,16 +1105,23 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US31} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP08} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} que el semáforo territorial se actualice reactivamente cuando se detecte sobrecarga frutal (> 30\%) o riesgo de helada en las parcelas socias, \textbf{para} focalizar de inmediato la emisión de alertas agronómicas en los sectores más vulnerables.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} que el semáforo territorial refleje de forma reactiva la mayor gravedad sustentada por sobrecarga frutal (> 30\%) o riesgo de helada en las parcelas socias, \textbf{para} focalizar de inmediato la asistencia técnica en los sectores críticos sin que las alertas de supervisión se oculten si el productor pospone sus avisos locales.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Activación reactiva de semáforo rojo por sobrecarga frutal}\newline
-\textbf{Given} un socio cuya prescripción técnica arroja una sobrecarga superior al 30\%.\newline
-\textbf{When} el evento de dominio impacta en el contexto de territorio.\newline
-\textbf{Then} el semáforo del sector correspondiente transiciona automáticamente a nivel crítico (Rojo) e incrementa el contador de parcelas en riesgo.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Alerta meteorológica preventiva}\newline
-\textbf{Given} una predicción de temperatura crítica ($\le 1.5^\circ\text{C}$) a 48 horas en un sector.\newline
-\textbf{When} el evento climático es recibido desde telemetría.\newline
-\textbf{Then} el sector activa la advertencia de helada radiativa en el semáforo gremial.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Activación reactiva de semáforo rojo por sobrecarga frutal crítica}\newline
+\textbf{Given} una parcela socia cuya prescripción agronómica arroja una sobrecarga frutal superior al 30\% respecto al objetivo productivo.\newline
+\textbf{When} se registra el muestreo de cuajado o impacta el evento de dominio en el contexto de supervisión territorial.\newline
+\textbf{Then} el semáforo del sector asociado transiciona de inmediato al estado de mayor gravedad (Rojo / Crítico) e incrementa el contador de unidades productivas en riesgo urgente.\newline
+\textbf{And} el sistema mantiene la alerta visible en el panel del gestor con independencia de que el productor haya silenciado o pospuesto la notificación en su aplicación móvil.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Alerta agroclimática preventiva por riesgo de helada}\newline
+\textbf{Given} un pronóstico validado de temperatura crítica ($\le 1.5\,^\circ\text{C}$) o helada radiativa para un sector en un horizonte de 48 horas.\newline
+\textbf{When} se actualizan las series de telemetría meteorológica del valle.\newline
+\textbf{Then} el sector activa la advertencia de helada en el semáforo gremial e identifica las parcelas en estadios fenológicos vulnerables (floración o cuajado sensible).\newline
+\textbf{And} destaca el estado de alerta en el visor territorial para priorizar recomendaciones de riego defensivo o medidas de mitigación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Presentación informativa del índice de vecería histórica (BBI)}\newline
+\textbf{Given} una parcela supervisada que cuenta con un historial validado de rendimientos de tres o más campañas consecutivas.\newline
+\textbf{When} el gestor técnico examina la ficha de detalle de riesgo fenológico del predio.\newline
+\textbf{Then} el sistema presenta el Índice Bienal de Carga (BBI) como indicador contextual de alternancia productiva histórica.\newline
+\textbf{And} preserva el estado fenológico actual sin forzar colores de alerta roja exclusivamente por alternancia pasada si la campaña presente no evidencia sobrecarga ni estrés climático.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1115,20 +1134,25 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US32} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP08} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Proyección agregada temprana de volumen de acopio de aceituna verde y negra para la cooperativa} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar la estimación agregada del tonelaje total de aceituna verde y negra que entregarán los socios en la campaña, \textbf{para} planificar con meses de anticipación la logística de salmueras en almazara, gestionar turnos de recepción y asegurar contratos comerciales de exportación sin riesgo de penalidades.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar la estimación agregada del tonelaje de cosecha sumando estrictamente las parcelas con evaluaciones validadas y desglosando por aptitud comercial (verde para mesa y negra para almazara), \textbf{para} dimensionar con sustento real el acopio cooperativo, organizar la logística de salmueras y patios de recepción, y comercializar volúmenes seguros sin incurrir en penalidades contractuales.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Proyección consolidada de cosecha cooperativa por aptitud comercial}\newline
-\textbf{Given} una cooperativa agraria con predios socios que han registrado sus muestreos de cuajado y regulación de carga.\newline
-\textbf{When} el gestor técnico solicita la proyección agregada de cosecha para la campaña en curso.\newline
-\textbf{Then} el sistema consolida los modelos productivos individuales y calcula el tonelaje total proyectado para la cooperativa.\newline
-\textbf{And} discrimina el volumen estimado por aptitud comercial en aceituna verde para mesa y aceituna negra para aceite y maduración.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Advertencia por baja cobertura de muestreos en la cartera de socios}\newline
-\textbf{Given} una cartera cooperativa donde menos del 50\% de las parcelas socias ha completado el protocolo de muestreo de cuajado.\newline
-\textbf{When} el gestor técnico consulta la estimación de acopio.\newline
-\textbf{Then} el sistema presenta la proyección preliminar indicando el porcentaje de predios contabilizados.\newline
-\textbf{And} notifica que la estimación posee un margen de incertidumbre elevado hasta incrementar la cobertura de fundos evaluados.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consolidación de volumen de acopio basada exclusivamente en parcelas estimables}\newline
+\textbf{Given} una cartera cooperativa con parcelas socias que cuentan con registros válidos de cuajado y modelos de carga frutal en la campaña activa.\newline
+\textbf{When} el gestor técnico consulta el módulo de proyección agregada de acopio (pantalla G30).\newline
+\textbf{Then} el sistema calcula el tonelaje total proyectado consolidando únicamente la producción de las parcelas estimables respaldadas por datos de campo, sin aplicar factores arbitrarios de reducción ni extrapolar rendimientos a predios no evaluados.\newline
+\textbf{And} reporta la cobertura muestral expresando explícitamente la cantidad de parcelas computadas respecto al universo de la cartera (e.g., «$Y$ de $N$ parcelas evaluadas»).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Desagregación por aptitud comercial en aceituna verde, negra y volumen por clasificar}\newline
+\textbf{Given} un tonelaje total consolidado sobre las parcelas socias evaluadas.\newline
+\textbf{When} se genera la distribución por aptitud comercial de cosecha.\newline
+\textbf{Then} el sistema discrimina el volumen en aceituna verde de mesa y aceituna negra para aceite según la aptitud varietal y los ratios históricos registrados.\newline
+\textbf{And} cataloga cualquier fracción de producción que carezca de tipificación de destino en el rubro explícito «Sin clasificar / Por definir», evitando asignaciones forzadas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Declaración explícita de cobertura muestral insuficiente}\newline
+\textbf{Given} una cartera cooperativa donde las parcelas con muestreo agronómico válido representan una proporción menor al 60\% del total de parcelas socias registradas.\newline
+\textbf{When} el gestor técnico accede al reporte de proyección de acopio.\newline
+\textbf{Then} el sistema presenta las toneladas estimadas identificando el resultado bajo la etiqueta «Cobertura preliminar / Muestra parcial».\newline
+\textbf{And} muestra un aviso visible indicando que la cobertura es insuficiente para el cierre definitivo de contratos comerciales, exhortando a completar los muestreos de cuajado pendientes.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -3216,9 +3240,9 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 73 & TS09 & Consulta y auditoría de códigos de activación de cooperativa & 2 & Sprint 2 \\ \hline
 74 & TS10 & Canje de código de activación de socio para vinculación cooperativa & 3 & Sprint 2 \\ \hline
 75 & US06 & Suscripción individual al Plan Productor mediante pasarela de pago digital & 5 & Sprint 2 \\ \hline
-76 & US07 & Activación de cuenta de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
+76 & US07 & Activación de membresía corporativa de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
 77 & US08 & Administración de la cartera de socios productores y consulta de cuota corporativa & 3 & Sprint 2 \\ \hline
-78 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con geolocalización GPS & 5 & Sprint 2 \\ \hline
+78 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & 5 & Sprint 2 \\ \hline
 79 & TS28 & Generación y descarga de reporte agronómico auditable en formato PDF & 5 & Sprint 2 \\ \hline
 80 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico & 3 & Sprint 2 \\ \hline
 81 & TS30 & Proyección agregada temprana de volumen de acopio cooperativo & 5 & Sprint 2 \\ \hline
@@ -3239,9 +3263,9 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 96 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 3 \\ \hline
 97 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 3 \\ \hline
 98 & TS41 & Revocación anticipada y ajuste de vigencia de código de activación cooperativo & 2 & Sprint 3 \\ \hline
-99 & US30 & Emisión, certificación criptográfica y exportación del expediente agronómico en PDF & 5 & Sprint 3 \\ \hline
+99 & US30 & Generación y exportación del expediente agronómico de parcela en formato PDF & 5 & Sprint 3 \\ \hline
 100 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 3 \\ \hline
-101 & US32 & Proyección agregada temprana de volumen de acopio de aceituna verde y negra para la cooperativa & 5 & Sprint 3 \\ \hline
+101 & US32 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa & 5 & Sprint 3 \\ \hline
 \end{longtable}
 \end{center}
 
