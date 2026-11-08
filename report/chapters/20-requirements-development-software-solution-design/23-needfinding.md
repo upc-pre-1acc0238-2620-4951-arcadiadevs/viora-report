@@ -317,7 +317,6 @@ Como resultado de este taller de visualización del "As-Is", el equipo logró tr
 - **Source-sink relationship (relación fuente-sumidero)**: Dinámica de competencia por los fotoasimilados entre la hoja, que los produce, y el fruto y el brote, que los consumen. Cuando la carga es excesiva, el fruto prevalece sobre el crecimiento vegetativo y compromete la estructura productiva del año siguiente.
 - **Tipping pruning (poda de despunte)**: Intervención sobre el extremo de las ramas destinada a renovar la madera productiva y equilibrar la relación entre estructura vegetativa y carga frutal.
 - **Water stress (estrés hídrico)**: Condición fisiológica adversa provocada por deficiencia de agua, que reduce la capacidad del árbol para sostener su carga y acelera el agotamiento de reservas.
-
 - **Campaign (campaña)**: Ciclo productivo anual completo del olivar, comprendido desde el letargo invernal hasta la cosecha y la comercialización. Constituye la unidad temporal sobre la que se comparan rendimientos y se calcula la alternancia.
 - **Olive producer (productor olivícola)**: Persona a cargo del manejo agronómico de uno o más fundos, perteneciente a una cooperativa o asociación. Toma las decisiones de aclareo, poda y riego que determinan la carga frutal.
 - **Technical advisor (asesor técnico)**: Profesional o gestor vinculado a una organización olivícola, sea cooperativa, asociación o agroindustria, responsable de acompañar técnicamente a varios productores y de consolidar la proyección productiva de la organización.
