@@ -3437,7 +3437,7 @@ En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual art
 
 ### Product Backlog
 
-El Product Backlog de Viora consolida y prioriza los 101 ítems de trabajo del sistema (43 Historias de Usuario, 55 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica (US33 a US41), los spikes críticos de campo (SPK01 sobre el modelo dinámico de Erez y SPK02 sobre persistencia offline-first con SQLite), la arquitectura base del backend bajo RFC 7807 y convenciones JPA (TS31 a TS34), la suite completa de los 33 servicios RESTful del backend (TS11 a TS27, TS39, TS40, TS42, TS43 y TS44 a TS55) que respaldan operativamente todas las funcionalidades del productor y gestor, y las 20 Historias de Usuario móviles clave priorizadas según la asignación de responsabilidades del equipo de desarrollo. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro), mientras que las historias de gestinnn de identidad y accesos (IAM) se posponen al Sprint 3; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, la pasarela de pagos y las herramientas territoriales y códigos de cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, los cuadros de mando territoriales de acopio y la exportación de reportes técnicos auditables en formato PDF.
+El Product Backlog de Viora consolida y prioriza los 117 ítems de trabajo del sistema (49 Historias de Usuario, 65 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica (US33 a US41), los spikes críticos de campo (SPK01 sobre el modelo dinámico de Erez y SPK02 sobre persistencia offline-first con SQLite), la arquitectura base del backend bajo RFC 7807 y convenciones JPA (TS31 a TS34), la suite completa de servicios RESTful iniciales del backend (TS11 a TS27, TS39, TS40, TS42, TS43 y TS44 a TS55) que respaldan operativamente las funcionalidades nucleares del productor, y las Historias de Usuario móviles clave priorizadas según la asignación de responsabilidades del equipo de desarrollo. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro con SPK03, TS06 a TS10 y US06 a US08). Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM (US01 a US05, US43, TS01 a TS05 y TS35 a TS38), la internacionalización (US42), los cuadros de mando avanzados de supervisión agronómica y patrocinio corporativo para el gestor técnico (US44 a US49, TS41 y TS56 a TS65), el semáforo reactivo (US31), la proyección agregada sustentada de acopio (US32) y la exportación documental de expedientes técnicos provisionales y definitivos en formato PDF (TS63, US30).
 
 A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integral del Product Backlog del sistema Viora, detallando el orden de ejecución, identificador, denominación técnica, estimación de esfuerzo en puntos de historia (*Story Points*) y la asignación a su respectivo ciclo de iteración (*Sprint*).
 
@@ -3530,16 +3530,16 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 69 & SPK03 & Investigación e integración de Checkout Pro en Mercado Pago Sandbox y webhooks & 3 & Sprint 2 \\ \hline
 70 & TS06 & Generación de preferencia de checkout para suscripción de productor independiente & 3 & Sprint 2 \\ \hline
 71 & TS07 & Recepción y procesamiento de webhooks de notificación de pagos & 5 & Sprint 2 \\ \hline
-72 & TS08 & Generación de lote de códigos de activación para socios cooperativos & 3 & Sprint 2 \\ \hline
-73 & TS09 & Consulta y auditoría de códigos de activación de cooperativa & 2 & Sprint 2 \\ \hline
-74 & TS10 & Canje de código de activación de socio para vinculación cooperativa & 3 & Sprint 2 \\ \hline
+72 & TS08 & Generación de lote de códigos de activación para socios cooperativos con reserva de cuota & 3 & Sprint 2 \\ \hline
+73 & TS09 & Consulta y auditoría de inventario de lotes y códigos de activación de cooperativa & 2 & Sprint 2 \\ \hline
+74 & TS10 & Canje atómico de código de activación institucional con validación de cuota y consentimiento & 3 & Sprint 2 \\ \hline
 75 & US06 & Suscripción individual al Plan Productor mediante pasarela de pago digital & 5 & Sprint 2 \\ \hline
 76 & US07 & Activación de membresía corporativa de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
 77 & US08 & Administración de la cartera de socios productores y consulta de cuota corporativa & 3 & Sprint 2 \\ \hline
 78 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & 5 & Sprint 2 \\ \hline
-79 & TS28 & Generación y descarga de reporte agronómico auditable en formato PDF & 5 & Sprint 2 \\ \hline
-80 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico & 3 & Sprint 2 \\ \hline
-81 & TS30 & Proyección agregada temprana de volumen de acopio cooperativo & 5 & Sprint 2 \\ \hline
+79 & TS28 & Generación y exportación de expediente agronómico provisional y definitivo en formato PDF y JSON & 5 & Sprint 2 \\ \hline
+80 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & 3 & Sprint 2 \\ \hline
+81 & TS30 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra & 5 & Sprint 2 \\ \hline
 82 & US01 & Registro de cuenta de acceso y credenciales seguras con asignación de rol & 3 & Sprint 3 \\ \hline
 83 & US02 & Inicio de sesión y autenticación persistente mediante tokens & 3 & Sprint 3 \\ \hline
 84 & US03 & Consulta y actualización de datos de perfil y contacto & 2 & Sprint 3 \\ \hline
@@ -3556,16 +3556,32 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 95 & TS36 & Actualización de contraseña para sesión de usuario autenticado & 2 & Sprint 3 \\ \hline
 96 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 3 \\ \hline
 97 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 3 \\ \hline
-98 & TS41 & Revocación anticipada y ajuste de vigencia de código de activación cooperativo & 2 & Sprint 3 \\ \hline
-99 & US30 & Generación y exportación del expediente agronómico de parcela en formato PDF & 5 & Sprint 3 \\ \hline
-100 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 3 \\ \hline
-101 & US32 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa & 5 & Sprint 3 \\ \hline
+98 & US44 & Habilitación institucional del gestor técnico y espera de confirmación corporativa & 3 & Sprint 3 \\ \hline
+99 & TS56 & Consulta de contexto y pertenencia institucional del gestor técnico & 2 & Sprint 3 \\ \hline
+100 & TS57 & Consulta de balance de licencia institucional y cuota corporativa & 3 & Sprint 3 \\ \hline
+101 & TS58 & Consulta de padrón de socios productores agremiados y detalle del socio & 3 & Sprint 3 \\ \hline
+102 & US45 & Generación y asignación de códigos de activación para socios productores & 3 & Sprint 3 \\ \hline
+103 & US46 & Consentimiento explícito de compartición de datos agronómicos con la cooperativa & 2 & Sprint 3 \\ \hline
+104 & US47 & Compartición y distribución multicanal de invitaciones corporativas & 2 & Sprint 3 \\ \hline
+105 & TS41 & Revocación anticipada de código de activación cooperativo y restitución de cuota & 2 & Sprint 3 \\ \hline
+106 & TS64 & Registro y trazabilidad de entrega o compartición de códigos de invitación corporativos & 2 & Sprint 3 \\ \hline
+107 & TS59 & Consulta de parcelas por sector territorial y lista priorizada de visitas & 3 & Sprint 3 \\ \hline
+108 & US49 & Supervisión de parcela socia en modo de solo lectura con ficha técnica y prescripción & 3 & Sprint 3 \\ \hline
+109 & TS60 & Consulta de resumen agronómico y ficha técnica de parcela en modo supervisión de solo lectura & 3 & Sprint 3 \\ \hline
+110 & US48 & Desvinculación institucional y cambio de cooperativa preservando datos del productor & 3 & Sprint 3 \\ \hline
+111 & TS61 & Consulta y suscripción a alertas agroclimáticas y fitosanitarias territoriales internas & 3 & Sprint 3 \\ \hline
+112 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 3 \\ \hline
+113 & TS62 & Consulta de histórico de campañas cooperativas y consolidado de producción anual & 2 & Sprint 3 \\ \hline
+114 & TS65 & Consulta agregada de distribución varietal y aptitud comercial de cosecha proyectada por sector & 3 & Sprint 3 \\ \hline
+115 & US32 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa & 5 & Sprint 3 \\ \hline
+116 & TS63 & Generación de instantánea documental y metadatos de expediente agronómico provisional en campaña activa & 3 & Sprint 3 \\ \hline
+117 & US30 & Generación y exportación del expediente agronómico de parcela en formato PDF & 5 & Sprint 3 \\ \hline
 \end{longtable}
 \end{center}
 
 
 
-Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 101 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
+Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 117 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
 
 \begin{figure}[H]
 \caption{Product Backlog del proyecto Viora en Trello.} \label{fig:trello-product-backlog}
