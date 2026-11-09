@@ -192,7 +192,7 @@ Durante este ciclo de desarrollo \textbf{se implementaron y documentaron un tota
 \endfoot
 
 \hline
-\multicolumn{5}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Selección representativa de endpoints sobre un total de 33 servicios desplegados en Render (\url{https://viora-platform.onrender.com/swagger-ui/index.html}) y localmente (\url{http://localhost:8080/swagger-ui/index.html}).}} \\
+\multicolumn{5}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Selección representativa de endpoints sobre un total de 33 endpoints desplegados en Render (\url{https://viora-platform.onrender.com/swagger-ui/index.html}) y localmente (\url{http://localhost:8080/swagger-ui/index.html}).}} \\
 \endlastfoot
 
 Delimitar y registrar cuartel & POST & \url{https://viora-platform.onrender.com/api/v1/plots} & Body: \texttt{CreatePlotResource} & 201, 400, 409 \\ \hline
