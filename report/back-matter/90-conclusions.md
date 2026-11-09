@@ -18,7 +18,7 @@ A nivel de resultados, arquitectura y aprendizajes del proyecto (Hito TB1):
 
 5. **Interoperabilidad abierta y geolocalización predial:** La integración exitosa de la API meteorológica pública de Open-Meteo, combinada con la administración rigurosa de permisos de geolocalización en tiempo de ejecución en Android (*Location Permissions*), validó que es factible alimentar modelos bioclimáticos avanzados (acumulación de frío invernal bajo el modelo dinámico de Erez y alertas de estrés térmico/heladas) sin incurrir en costos prohibitivos de infraestructura telemétrica propietaria en etapas tempranas.
 
-En cuanto a las recomendaciones orientadas al roadmap y evolución de producto (Sprints 2 y 3):
+En cuanto al roadmap y evolución de producto, el Sprint 3 estará dedicado a incorporar las mejoras señaladas por los usuarios y a la entrega final del video *About the Product* y su publicación en la Landing Page, mediante el reproductor implementado en el Sprint 1 (US37). Adicionalmente, se plantean las siguientes recomendaciones para los Sprints 2 y 3:
 
 1. **Implementación de un motor determinista de sincronización bidireccional:** Con la persistencia local *offline-first* operando en la aplicación cliente, se recomienda para el Sprint 2 desarrollar un protocolo de sincronización en segundo plano con políticas explícitas de resolución de conflictos de concurrencia (como *last-write-wins* contextual o marcas de tiempo distribuidas), asegurando consistencia transaccional absoluta entre el almacenamiento móvil local y la base de datos relacional PostgreSQL en la nube.
 
