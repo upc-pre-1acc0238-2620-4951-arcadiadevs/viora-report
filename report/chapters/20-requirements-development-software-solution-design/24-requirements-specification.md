@@ -8,7 +8,7 @@ En esta sección se definen los requisitos del ecosistema mediante Épicas e His
 
 Todos los criterios de aceptación son comprobables y siguen estrictamente la estructura BDD (*Behavior-Driven Development*) con sintaxis Gherkin (*Given-When-Then*) en tiempo presente y tercera persona, sin hacer referencia a detalles efímeros de interfaz gráfica y modelando escenarios representativos de éxito, validación y control de excepciones.
 
-A continuación, se presentan las 15 Épicas definidas para el ecosistema Viora, estructuradas bajo el formato estándar establecido:
+A continuación, se presentan las 16 Épicas definidas para el ecosistema Viora, estructuradas bajo el formato estándar establecido:
 
 \begin{table}[H]
 \centering
@@ -187,6 +187,18 @@ A continuación, se presentan las 15 Épicas definidas para el ecosistema Viora,
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Internacionalización y Localización del Ecosistema (i18n / l10n)} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario del ecosistema digital de Viora (Visitante, Productor Olivarero o Gestor Técnico), \textbf{quiero} acceder a la plataforma web y móvil en mi idioma de preferencia (Español o Inglés) con adaptación de contenidos y formatos regionales, \textbf{para} interactuar con las herramientas agronómicas y comerciales en un entorno comprensible que facilite la adopción y la expansión internacional de la plataforma.} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{EP16} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Asistencia Agronómica Basada en Datos del Productor} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} productor olivarero, \textbf{quiero} obtener explicaciones comprensibles sobre la situación de mis parcelas a partir de mis propios datos, \textbf{para} entender las recomendaciones agronómicas y decidir sin depender de asistencia técnica presencial.} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -1578,11 +1590,171 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \end{longtable}
 \endgroup
 
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US50} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de preguntas disponibles según el contexto agronómico} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} conocer las preguntas que puedo realizar sobre la situación que estoy revisando, \textbf{para} resolver mis dudas sin tener que formularlas.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Preguntas con datos de la parcela}\newline
+\textbf{Given} un productor con plan activo que revisa una parcela de su propiedad.\newline
+\textbf{When} solicita las preguntas disponibles.\newline
+\textbf{Then} el sistema presenta las preguntas de ese contexto en orden, con las cifras reales de la parcela.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Preguntas sobre todo el campo}\newline
+\textbf{Given} un productor con plan activo que no ha seleccionado una parcela en su resumen general.\newline
+\textbf{When} solicita las preguntas disponibles.\newline
+\textbf{Then} el sistema presenta preguntas referidas al conjunto de sus parcelas activas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Pregunta no disponible por falta de datos}\newline
+\textbf{Given} una parcela que no cuenta con los datos necesarios para responder una pregunta.\newline
+\textbf{When} el productor consulta las preguntas disponibles.\newline
+\textbf{Then} el sistema indica que esa pregunta no está disponible y explica el motivo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Acceso sin plan activo}\newline
+\textbf{Given} un productor cuyo plan no se encuentra activo.\newline
+\textbf{When} intenta consultar las preguntas disponibles.\newline
+\textbf{Then} el sistema deniega el acceso a la funcionalidad.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US51} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Obtención de respuesta sustentada en datos reales} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} recibir una respuesta breve a la pregunta elegida con las cifras y la fuente que la respaldan, \textbf{para} comprender la razón de cada recomendación.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Respuesta exitosa con datos de la parcela}\newline
+\textbf{Given} una pregunta disponible sobre una parcela del productor.\newline
+\textbf{When} el productor la realiza.\newline
+\textbf{Then} el sistema entrega una explicación breve en su idioma, dos indicadores y la fuente de los datos utilizados.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Acceso a la labor relacionada}\newline
+\textbf{Given} una respuesta asociada a una labor agronómica vigente.\newline
+\textbf{When} el sistema entrega la respuesta.\newline
+\textbf{Then} ofrece acceder a la funcionalidad correspondiente sin modificar los datos del productor.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Datos insuficientes para responder}\newline
+\textbf{Given} una pregunta cuyas cifras necesarias no están registradas.\newline
+\textbf{When} el productor la realiza.\newline
+\textbf{Then} el sistema informa que faltan datos y no estima valores.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Respuesta generada no verificable}\newline
+\textbf{Given} un texto generado que contiene cifras ajenas a los datos del productor o que no puede obtenerse.\newline
+\textbf{When} el sistema valida la respuesta.\newline
+\textbf{Then} entrega una respuesta predefinida construida con los datos reales.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Límite de uso alcanzado}\newline
+\textbf{Given} un productor que alcanzó 20 respuestas nuevas en una hora.\newline
+\textbf{When} realiza otra pregunta.\newline
+\textbf{Then} el sistema rechaza la consulta e informa cuándo puede volver a intentarlo.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US52} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del historial de respuestas recientes} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} revisar mis últimas respuestas, incluso sin conexión, \textbf{para} recuperar una orientación recibida mientras estoy en campo.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Historial de respuestas disponible}\newline
+\textbf{Given} un productor con respuestas emitidas en los últimos 10 días.\newline
+\textbf{When} consulta su historial.\newline
+\textbf{Then} el sistema presenta hasta 10 respuestas, de la más reciente a la más antigua, indicando su vigencia.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta sin conexión}\newline
+\textbf{Given} un productor sin conexión que tiene respuestas guardadas en su dispositivo.\newline
+\textbf{When} consulta su historial.\newline
+\textbf{Then} el sistema presenta las respuestas guardadas e indica que realizar nuevas preguntas requiere conexión.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Historial sin respuestas}\newline
+\textbf{Given} un productor sin respuestas vigentes.\newline
+\textbf{When} consulta su historial.\newline
+\textbf{Then} el sistema informa que aún no existen consultas registradas.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US53} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización de respuestas ante cambios en los datos} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} saber si una respuesta quedó desactualizada y poder solicitarla de nuevo, \textbf{para} no tomar decisiones con información anterior.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Recuperación de la última respuesta}\newline
+\textbf{Given} un productor con una respuesta previa en un contexto de consulta.\newline
+\textbf{When} regresa a ese contexto.\newline
+\textbf{Then} el sistema presenta esa respuesta hasta que el productor decida realizar otra pregunta.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Identificación de datos modificados}\newline
+\textbf{Given} una respuesta cuyos datos de origen cambiaron después de emitirse.\newline
+\textbf{When} el productor la consulta.\newline
+\textbf{Then} el sistema la identifica como desactualizada y permite solicitarla nuevamente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Nueva respuesta con datos vigentes}\newline
+\textbf{Given} una respuesta desactualizada.\newline
+\textbf{When} el productor la solicita nuevamente.\newline
+\textbf{Then} el sistema genera una respuesta con los datos vigentes.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Límite de actualizaciones alcanzado}\newline
+\textbf{Given} un productor que alcanzó 5 actualizaciones de respuesta en una hora.\newline
+\textbf{When} solicita otra actualización.\newline
+\textbf{Then} el sistema la rechaza e informa cuándo puede volver a intentarlo.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US54} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Resumen diario de prioridades del campo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} recibir cada día un resumen de mi campo, \textbf{para} identificar rápidamente la ventana de aclareo, las temperaturas y las alertas relevantes.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Resumen del día disponible}\newline
+\textbf{Given} un productor con plan activo y parcelas activas.\newline
+\textbf{When} consulta su resumen del día.\newline
+\textbf{Then} el sistema presenta una explicación con tres indicadores: ventana de aclareo, temperatura máxima de la semana y alertas abiertas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Recordatorio matutino}\newline
+\textbf{Given} un productor que utiliza la aplicación móvil.\newline
+\textbf{When} llega la mañana.\newline
+\textbf{Then} el sistema le recuerda que su resumen del día está disponible.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Consulta sin conexión}\newline
+\textbf{Given} un productor sin conexión que tiene guardado el resumen del día.\newline
+\textbf{When} lo consulta.\newline
+\textbf{Then} el sistema presenta el resumen guardado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Productor sin parcelas activas}\newline
+\textbf{Given} un productor sin parcelas activas.\newline
+\textbf{When} solicita su resumen del día.\newline
+\textbf{Then} el sistema informa que no existe información por resumir.} \\ \hline
+\end{longtable}
+\endgroup
+
 
 
 \clearpage
 
-A continuación, se presentan las Historias Técnicas (\textit{Technical Stories}) orientadas al equipo de desarrollo de backend, correspondientes a los servicios de integración RESTful y arquitectura de soporte (\textbf{EP10}, \textbf{EP11}, \textbf{EP12}, \textbf{EP13} y \textbf{EP15}), así como los Spikes técnicos de investigación (\textbf{EP14}). Conforme a las buenas prácticas de diseño de software y directrices de desarrollo, cada historia técnica comprende exactamente un único endpoint HTTP con sus respectivos escenarios BDD basados en los códigos de respuesta RESTful:
+A continuación, se presentan las Historias Técnicas (\textit{Technical Stories}) orientadas al equipo de desarrollo de backend, correspondientes a los servicios de integración RESTful y arquitectura de soporte (\textbf{EP10}, \textbf{EP11}, \textbf{EP12}, \textbf{EP13}, \textbf{EP15} y \textbf{EP16}), así como los Spikes técnicos de investigación (\textbf{EP14}). Conforme a las buenas prácticas de diseño de software y directrices de desarrollo, cada historia técnica comprende exactamente un único endpoint HTTP con sus respectivos escenarios BDD basados en los códigos de respuesta RESTful:
 
 \begingroup
 \renewcommand{\arraystretch}{1.15}
@@ -3321,6 +3493,190 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 
 \vspace{1em}
 
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS66} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del catálogo de preguntas por contexto de consulta} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar las preguntas del asistente mediante GET a \url{/api/v1/assistant/questions} con los parámetros \texttt{screen} y \texttt{plotId}, \textbf{para} presentar al productor las preguntas cerradas disponibles con sus cifras reales.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Catálogo de preguntas de una parcela}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/questions} con token válido de productor con plan activo, con \texttt{screen=ALTERNATION} y el \texttt{plotId} de una parcela propia.\newline
+\textbf{When} la API evalúa los datos de la parcela.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{QuestionCatalogResource} con \texttt{screen}, \texttt{plotId} y \texttt{questions} en orden de presentación, cada una con \texttt{questionId}, \texttt{label} localizado según \texttt{Accept-Language}, \texttt{icon}, \texttt{enabled} y \texttt{disabledReason}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Catálogo sobre todo el campo}\newline
+\textbf{Given} una solicitud GET con \texttt{screen=HOME} sin \texttt{plotId}.\newline
+\textbf{When} la API procesa la solicitud.\newline
+\textbf{Then} la API responde \texttt{200 OK} con \texttt{plotId} nulo y las preguntas referidas a todas las parcelas activas del productor.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parámetros inválidos}\newline
+\textbf{Given} una solicitud con \texttt{screen} desconocido o ausente, un \texttt{plotId} con formato inválido, o sin \texttt{plotId} en un contexto de parcela.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Acceso denegado o parcela inexistente}\newline
+\textbf{Given} una solicitud sobre una parcela ajena, de un productor sin plan activo o sobre una parcela inexistente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} ante parcela ajena o plan inactivo, y \texttt{404 Not Found} cuando la parcela no existe o está inactiva.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS67} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Solicitud idempotente de respuesta del asistente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar una pregunta del catálogo mediante POST a \url{/api/v1/assistant/answers}, \textbf{para} obtener una respuesta validada contra los datos reales del productor sin duplicarla ante reintentos.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación exitosa de respuesta}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/assistant/answers} con token válido de productor con plan activo, con \texttt{questionId}, \texttt{plotId}, \texttt{clientRequestId} y \texttt{forceRefresh}.\newline
+\textbf{When} la API obtiene los datos de la parcela y redacta la respuesta.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AssistantAnswerResource} con \texttt{answerId}, \texttt{questionId}, \texttt{question}, \texttt{plotId}, \texttt{createdAt}, \texttt{dataVersion}, \texttt{freshness}, \texttt{text}, exactamente dos \texttt{facts}, \texttt{sources}, \texttt{actions} y \texttt{model}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Reintento con la misma clave de idempotencia}\newline
+\textbf{Given} una solicitud que repite un \texttt{clientRequestId} ya procesado.\newline
+\textbf{When} la API identifica la clave.\newline
+\textbf{Then} la API responde \texttt{200 OK} con la misma respuesta guardada, sin generar una nueva.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Pregunta sin datos suficientes}\newline
+\textbf{Given} una pregunta del catálogo que no puede responderse con los datos registrados.\newline
+\textbf{When} la API evalúa su disponibilidad.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} indicando el motivo y no estima valores.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Texto generado rechazado o no disponible}\newline
+\textbf{Given} un texto generado con cifras ausentes en los datos de origen o un servicio de redacción no disponible.\newline
+\textbf{When} la API valida el resultado.\newline
+\textbf{Then} la API responde \texttt{200 OK} con el texto predefinido e indica \texttt{model.fallback} en \texttt{true}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Límite de uso excedido}\newline
+\textbf{Given} un productor que superó 20 respuestas nuevas o 5 solicitudes con \texttt{forceRefresh} en 60 minutos.\newline
+\textbf{When} envía una nueva solicitud.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS68} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del historial de respuestas del asistente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el historial mediante GET a \url{/api/v1/assistant/answers} con el parámetro \texttt{limit}, \textbf{para} presentar al productor sus respuestas recientes e indicar su vigencia.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de respuestas vigentes}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/answers} con token válido de productor con plan activo y \texttt{limit=10}.\newline
+\textbf{When} la API consulta las respuestas de los últimos 10 días.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AnswerHistoryResource} con \texttt{answers}, de la más reciente a la más antigua, cada una con \texttt{freshness} en \texttt{UP\_TO\_DATE} o \texttt{STALE}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Límite fuera de rango}\newline
+\textbf{Given} una solicitud con \texttt{limit} fuera del rango de 1 a 10.\newline
+\textbf{When} la API valida el parámetro.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Productor sin plan activo}\newline
+\textbf{Given} una solicitud de un productor sin plan activo.\newline
+\textbf{When} la API verifica su suscripción.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS69} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la última respuesta de un contexto de consulta} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la última respuesta mediante GET a \url{/api/v1/assistant/answers/latest} con los parámetros \texttt{screen} y \texttt{plotId}, \textbf{para} retomar la respuesta anterior del productor en ese contexto.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Recuperación de la última respuesta}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/answers/latest} con token válido de productor con plan activo, sobre un contexto con una respuesta de los últimos 10 días.\newline
+\textbf{When} la API localiza la respuesta.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AssistantAnswerResource}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Contexto sin respuesta previa}\newline
+\textbf{Given} un contexto sin respuestas vigentes para el productor.\newline
+\textbf{When} la API realiza la búsqueda.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parámetros inválidos o acceso denegado}\newline
+\textbf{Given} una solicitud con \texttt{screen} o \texttt{plotId} inválidos, sobre una parcela ajena o de un productor sin plan activo.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} ante parámetros inválidos y \texttt{403 Forbidden} ante parcela ajena o plan inactivo.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS70} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de una respuesta guardada del asistente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar una respuesta mediante GET a \url{/api/v1/assistant/answers/{answerId}}, \textbf{para} abrirla desde el historial con su vigencia actual.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de la respuesta}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/answers/{answerId}} con token válido de productor con plan activo, sobre una respuesta propia de los últimos 10 días.\newline
+\textbf{When} la API localiza la respuesta y compara sus datos de origen.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AssistantAnswerResource} con su \texttt{freshness} actualizado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Respuesta inexistente o vencida}\newline
+\textbf{Given} un identificador sin respuesta vigente para el productor autenticado.\newline
+\textbf{When} la API realiza la búsqueda.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Identificador inválido o plan inactivo}\newline
+\textbf{Given} un \texttt{answerId} con formato inválido o un productor sin plan activo.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} ante el formato inválido y \texttt{403 Forbidden} ante el plan inactivo.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS71} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del resumen diario del asistente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el resumen mediante GET a \url{/api/v1/assistant/daily-summary} con el parámetro opcional \texttt{plotId}, \textbf{para} presentar al productor las prioridades del día de su campo o de una parcela.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Resumen diario del campo}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/daily-summary} con token válido de productor con plan activo, sin \texttt{plotId}.\newline
+\textbf{When} la API recupera o redacta el resumen del día.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AssistantDailySummaryResource} con \texttt{summaryId}, \texttt{questionId}, \texttt{plotId}, \texttt{createdAt}, \texttt{dataVersion}, \texttt{freshness} en \texttt{UP\_TO\_DATE}, \texttt{text}, exactamente tres \texttt{facts}, \texttt{sources} y \texttt{model}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Reutilización del resumen en el mismo día}\newline
+\textbf{Given} un resumen escrito en el día, según la hora de Lima, con las mismas cifras e idioma.\newline
+\textbf{When} el productor lo solicita nuevamente.\newline
+\textbf{Then} la API responde \texttt{200 OK} con el resumen existente, sin consumir el cupo de respuestas nuevas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Productor sin parcelas activas}\newline
+\textbf{Given} un productor sin parcelas activas.\newline
+\textbf{When} solicita el resumen.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Límite de uso excedido}\newline
+\textbf{Given} un resumen que debe redactarse bajo demanda para un productor que agotó su cupo de respuestas nuevas.\newline
+\textbf{When} envía la solicitud.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
 
 
 \begingroup
@@ -3401,6 +3757,42 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \end{longtable}
 \endgroup
 
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{SPK04} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Equipo de Desarrollo (Móvil y Backend)} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP14} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Investigación de Spring AI para respuestas validadas y de persistencia y tareas en segundo plano en Android} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} equipo de desarrollo (móvil y backend),\newline \textbf{queremos} investigar y prototipar la redacción de respuestas con Spring AI en el backend Spring Boot y el uso de Room 3 y WorkManager en la aplicación móvil Android (Kotlin),\newline \textbf{para} que podamos entender las implicaciones técnicas, los riesgos de generar texto con un modelo de lenguaje y el esfuerzo requerido para implementar el asistente agronómico en los componentes móvil y backend.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Integración de Spring AI con un proveedor compatible}\newline
+\textbf{Given} el backend Spring Boot configurado con Spring AI 2.0.2 y su starter compatible con OpenAI apuntando a la URL de Groq.\newline
+\textbf{When} envía datos agronómicos de prueba en español e inglés.\newline
+\textbf{Then} obtiene un texto estructurado y el equipo registra la compatibilidad de versiones, la latencia y los tokens consumidos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Validación de cifras del texto generado}\newline
+\textbf{Given} un texto generado que incluye un número ausente en los datos de origen.\newline
+\textbf{When} el backend aplica la validación del texto.\newline
+\textbf{Then} rechaza el texto y utiliza una respuesta predefinida construida con los datos reales.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Tolerancia a fallas del proveedor}\newline
+\textbf{Given} un proveedor del modelo que acumula 5 fallas consecutivas.\newline
+\textbf{When} el backend recibe una nueva solicitud.\newline
+\textbf{Then} abre el circuito durante 2 minutos, evita nuevas llamadas al proveedor y mantiene la respuesta mediante plantillas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Historial local de respuestas con Room 3}\newline
+\textbf{Given} la aplicación Android con respuestas del asistente persistidas mediante Room 3.\newline
+\textbf{When} el dispositivo se encuentra sin conexión.\newline
+\textbf{Then} la aplicación recupera hasta 10 respuestas de los últimos 10 días sin solicitarlas al backend.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Programación del recordatorio con WorkManager}\newline
+\textbf{Given} la aplicación Android con WorkManager 2.12 y una tarea periódica única para el recordatorio diario.\newline
+\textbf{When} la aplicación solicita programar nuevamente el recordatorio.\newline
+\textbf{Then} WorkManager conserva la tarea existente y evita recordatorios duplicados, incluso tras cerrar la aplicación.} \\ \hline
+\end{longtable}
+\endgroup
+
 
 
 \clearpage
@@ -3437,7 +3829,7 @@ En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual art
 
 ### Product Backlog
 
-El Product Backlog de Viora consolida y prioriza los 117 ítems de trabajo del sistema (49 Historias de Usuario, 65 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica (US33 a US41), los spikes críticos de campo (SPK01 sobre el modelo dinámico de Erez y SPK02 sobre persistencia offline-first con SQLite), la arquitectura base del backend bajo RFC 7807 y convenciones JPA (TS31 a TS34), la suite completa de servicios RESTful iniciales del backend (TS11 a TS27, TS39, TS40, TS42, TS43 y TS44 a TS55) que respaldan operativamente las funcionalidades nucleares del productor, y las Historias de Usuario móviles clave priorizadas según la asignación de responsabilidades del equipo de desarrollo. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro con SPK03, TS06 a TS10 y US06 a US08). Asimismo, el Sprint 2 culmina con la implementación integral de la seguridad e IAM (US01 a US05, US43, TS01 a TS05 y TS35 a TS38), la internacionalización (US42), los cuadros de mando avanzados de supervisión agronómica y patrocinio corporativo para el gestor técnico (US44 a US49, TS41 y TS56 a TS65), el semáforo reactivo (US31), la proyección agregada sustentada de acopio (US32) y la exportación documental de expedientes técnicos provisionales y definitivos en formato PDF (TS63, US30). Finalmente, el Sprint 3 se reserva para la incorporación de las mejoras señaladas por los usuarios y para la entrega final del video *About the Product* y su publicación en la Landing Page, reutilizando el reproductor implementado en el Sprint 1 (US37), que ya cubre la funcionalidad de reproducción, por lo que no se le asignan ítems adicionales en la matriz.
+El Product Backlog de Viora consolida y prioriza los 129 ítems de trabajo del sistema (54 Historias de Usuario, 71 Technical Stories y 4 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica (US33 a US41), los spikes críticos de campo (SPK01 sobre el modelo dinámico de Erez y SPK02 sobre persistencia offline-first con SQLite), la arquitectura base del backend bajo RFC 7807 y convenciones JPA (TS31 a TS34), la suite completa de servicios RESTful iniciales del backend (TS11 a TS27, TS39, TS40, TS42, TS43 y TS44 a TS55) que respaldan operativamente las funcionalidades nucleares del productor, y las Historias de Usuario móviles clave priorizadas según la asignación de responsabilidades del equipo de desarrollo. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro con SPK03, TS06 a TS10 y US06 a US08). Asimismo, el Sprint 2 culmina con la implementación integral de la seguridad e IAM (US01 a US05, US43, TS01 a TS05 y TS35 a TS38), la internacionalización (US42), los cuadros de mando avanzados de supervisión agronómica y patrocinio corporativo para el gestor técnico (US44 a US49, TS41 y TS56 a TS65), el semáforo reactivo (US31), la proyección agregada sustentada de acopio (US32) y la exportación documental de expedientes técnicos provisionales y definitivos en formato PDF (TS63, US30), junto con la asistencia agronómica basada en los datos del productor (SPK04, US50 a US54 y TS66 a TS71). Finalmente, el Sprint 3 se reserva para la incorporación de las mejoras señaladas por los usuarios y para la entrega final del video *About the Product* y su publicación en la Landing Page, reutilizando el reproductor implementado en el Sprint 1 (US37), que ya cubre la funcionalidad de reproducción, por lo que no se le asignan ítems adicionales en la matriz.
 
 A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integral del Product Backlog del sistema Viora, detallando el orden de ejecución, identificador, denominación técnica, estimación de esfuerzo en puntos de historia (*Story Points*) y la asignación a su respectivo ciclo de iteración (*Sprint*).
 
@@ -3576,12 +3968,24 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 115 & US32 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa & 5 & Sprint 2 \\ \hline
 116 & TS63 & Generación de instantánea documental y metadatos de expediente agronómico provisional en campaña activa & 3 & Sprint 2 \\ \hline
 117 & US30 & Generación y exportación del expediente agronómico de parcela en formato PDF & 5 & Sprint 2 \\ \hline
+118 & SPK04 & Investigación de Spring AI para respuestas validadas y de persistencia y tareas en segundo plano en Android & 3 & Sprint 2 \\ \hline
+119 & TS66 & Consulta del catálogo de preguntas por contexto de consulta & 3 & Sprint 2 \\ \hline
+120 & US50 & Consulta de preguntas disponibles según el contexto agronómico & 3 & Sprint 2 \\ \hline
+121 & TS67 & Solicitud idempotente de respuesta del asistente & 5 & Sprint 2 \\ \hline
+122 & US51 & Obtención de respuesta sustentada en datos reales & 5 & Sprint 2 \\ \hline
+123 & TS68 & Consulta del historial de respuestas del asistente & 2 & Sprint 2 \\ \hline
+124 & TS69 & Consulta de la última respuesta de un contexto de consulta & 2 & Sprint 2 \\ \hline
+125 & TS70 & Consulta de una respuesta guardada del asistente & 2 & Sprint 2 \\ \hline
+126 & US52 & Consulta del historial de respuestas recientes & 3 & Sprint 2 \\ \hline
+127 & US53 & Actualización de respuestas ante cambios en los datos & 3 & Sprint 2 \\ \hline
+128 & TS71 & Consulta del resumen diario del asistente & 3 & Sprint 2 \\ \hline
+129 & US54 & Resumen diario de prioridades del campo & 3 & Sprint 2 \\ \hline
 \end{longtable}
 \end{center}
 
 
 
-Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 117 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
+Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 129 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
 
 \begin{figure}[H]
 \caption{Product Backlog del proyecto Viora en Trello.} \label{fig:trello-product-backlog}
