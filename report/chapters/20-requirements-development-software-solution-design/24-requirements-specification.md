@@ -5092,19 +5092,19 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 95 & TS36 & Actualización de contraseña para sesión de usuario autenticado & 2 & Sprint 2 \\ \hline
 96 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 2 \\ \hline
 97 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 2 \\ \hline
-98 & US44 & Habilitación institucional del gestor técnico y espera de confirmación corporativa & 3 & Sprint 2 \\ \hline
+98 & US44 & Activación de licencia corporativa de supervisión mediante código maestro de un solo uso & 3 & Sprint 2 \\ \hline
 99 & TS56 & Consulta de la licencia institucional a cargo del gestor técnico & 2 & Sprint 2 \\ \hline
 100 & TS57 & Consulta de balance de licencia institucional y cuota corporativa & 3 & Sprint 2 \\ \hline
 101 & TS58 & Consulta de padrón de socios productores agremiados & 3 & Sprint 2 \\ \hline
-102 & US45 & Generación y asignación de códigos de activación para socios productores & 3 & Sprint 2 \\ \hline
-103 & US46 & Consentimiento explícito de compartición de datos agronómicos con la cooperativa & 2 & Sprint 2 \\ \hline
-104 & US47 & Compartición y distribución multicanal de invitaciones corporativas & 2 & Sprint 2 \\ \hline
+102 & US45 & Emisión de códigos de patrocinio para socios con asignación de cupo de hectáreas y control de saldo & 3 & Sprint 2 \\ \hline
+103 & US46 & Canje de código de membresía patrocinada con consentimiento informado de compartición de datos & 2 & Sprint 2 \\ \hline
+104 & US47 & Revocación de códigos de patrocinio no canjeados y restitución de saldo de licencia & 2 & Sprint 2 \\ \hline
 105 & TS41 & Revocación anticipada de código de activación cooperativo y restitución de cuota & 2 & Sprint 2 \\ \hline
 106 & TS64 & Canje de código maestro para activación del gestor técnico & 2 & Sprint 2 \\ \hline
 107 & TS59 & Consulta de sectores asignados a las parcelas socias & 3 & Sprint 2 \\ \hline
-108 & US49 & Supervisión de parcela socia en modo de solo lectura con ficha técnica y prescripción & 3 & Sprint 2 \\ \hline
+108 & US49 & Gestión y asignación de sectores territoriales editables para agrupación y filtrado de lotes & 3 & Sprint 2 \\ \hline
 109 & TS60 & Consulta de resumen agronómico y ficha técnica de parcela en modo supervisión de solo lectura & 3 & Sprint 2 \\ \hline
-110 & US48 & Desvinculación institucional y cambio de cooperativa preservando datos del productor & 3 & Sprint 2 \\ \hline
+110 & US48 & Desvinculación de supervisión agronómica y cese de compartición de datos de parcelas & 3 & Sprint 2 \\ \hline
 111 & TS61 & Consulta y suscripción a alertas agroclimáticas y fitosanitarias territoriales internas & 3 & Sprint 2 \\ \hline
 112 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 2 \\ \hline
 113 & TS62 & Consulta del histórico de acopio por campaña & 2 & Sprint 2 \\ \hline
