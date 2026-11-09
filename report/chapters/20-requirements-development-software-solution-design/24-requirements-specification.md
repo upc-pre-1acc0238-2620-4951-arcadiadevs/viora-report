@@ -2008,16 +2008,24 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso, validación de cuota y vinculación 1:N}\newline
 \textbf{Given} una solicitud POST a \url{/api/v1/cooperative-code-redemptions} con cuerpo JSON conteniendo \texttt{invitationCode} (formato \texttt{COOP-XXXX}) y \texttt{shareDataConsent: true} emitida por un productor olivarero autenticado.\newline
 \textbf{When} la API valida que el código existe, se encuentra en estado \texttt{AVAILABLE}, no ha expirado y la cooperativa dispone de cuota de hectáreas para la superficie del socio.\newline
-\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{CooperativeCodeRedemptionResource} con la confirmación de afiliación, nombre de la cooperativa y estado de membresía patrocinada activa.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando \texttt{CooperativeCodeRedemptionResource} con la confirmación de afiliación, nombre de la cooperativa y estado de membresía patrocinada activa.\newline
 \textbf{And} transiciona el código a \texttt{REDEEMED}, emite \texttt{CooperativeCodeRedeemedEvent} y vincula al productor al padrón del gestor técnico.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código inválido, expirado o revocado}\newline
 \textbf{Given} una solicitud POST con un código que no existe en el sistema o cuyo estado es \texttt{REDEEMED}, \texttt{EXPIRED} o \texttt{REVOKED}.\newline
 \textbf{When} el servicio procesa la transacción de canje.\newline
-\textbf{Then} la API responde \texttt{409 Conflict} bajo el estándar RFC 7807 indicando el motivo del rechazo sin alterar el estado del usuario.} \\
+\textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando el motivo del rechazo sin alterar el estado del usuario.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Productor ya vinculado a una cooperativa activa}\newline
 \textbf{Given} un usuario que ya cuenta con una afiliación corporativa activa intentando redimir otro código de activación.\newline
 \textbf{When} el agregador de suscripciones verifica la política de vinculación única por campaña.\newline
-\textbf{Then} la API responde \texttt{409 Conflict} señalando que la cuenta ya posee patrocinio cooperativo vigente.} \\ \hline
+\textbf{Then} la API responde \texttt{409 Conflict} señalando que la cuenta ya posee patrocinio cooperativo vigente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Usuario sin rol de productor}\newline
+\textbf{Given} una solicitud POST emitida por un usuario que no tiene rol de productor.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Exceso de intentos fallidos}\newline
+\textbf{Given} un usuario que acumuló demasiados intentos fallidos de canje.\newline
+\textbf{When} envía una nueva solicitud.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2121,7 +2129,11 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Cuartel no encontrado en el inventario (HTTP 404 Not Found)}\newline
 \textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} con un identificador \texttt{plotId} inexistente o archivado.\newline
 \textbf{When} el servicio de dominio consulta el repositorio parcelario.\newline
-\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Nombre duplicado (HTTP 409 Conflict)}\newline
+\textbf{Given} una solicitud PUT con un nombre ya utilizado por otra parcela del productor.\newline
+\textbf{When} la API valida la unicidad del nombre.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2141,7 +2153,7 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Eliminación exitosa}\newline
 \textbf{Given} una solicitud DELETE a \url{/api/v1/plots/{plotId}} emitida por el propietario del lote.\newline
 \textbf{When} la API valida la propiedad y ejecuta la baja lógica del predio.\newline
-\textbf{Then} la API responde \texttt{204 No Content}.} \\
+\textbf{Then} la API responde \texttt{200 OK}.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela ajena}\newline
 \textbf{Given} una solicitud DELETE a un lote perteneciente a otro usuario.\newline
 \textbf{When} la API verifica permisos.\newline
@@ -2217,11 +2229,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Desvinculación exitosa}\newline
 \textbf{Given} una solicitud DELETE a \url{/api/v1/plots/{plotId}/iot-devices/{deviceId}} emitida por el titular de la parcela.\newline
 \textbf{When} la API verifica la pertenencia y ejecuta la baja lógica del nodo.\newline
-\textbf{Then} la API responde \texttt{204 No Content} manteniendo la integridad de las series cronológicas previas.} \\
+\textbf{Then} la API responde \texttt{200 OK} manteniendo la integridad de las series cronológicas previas.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Dispositivo no encontrado}\newline
 \textbf{Given} una solicitud DELETE con identificador de dispositivo inexistente.\newline
 \textbf{When} la API busca el registro.\newline
-\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Revisión desactualizada del dispositivo}\newline
+\textbf{Given} una solicitud DELETE con cabecera \texttt{If-Match} que no coincide con la versión actual del dispositivo.\newline
+\textbf{When} la API compara la revisión.\newline
+\textbf{Then} la API responde \texttt{412 Precondition Failed}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2373,7 +2389,11 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela no encontrada en el repositorio (HTTP 404 Not Found)}\newline
 \textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} con un parámetro de ruta \texttt{plotId} inexistente en el sistema.\newline
 \textbf{When} la API intenta asociar el lote de muestreo al predio.\newline
-\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Árboles duplicados o lote en conflicto (HTTP 409 Conflict)}\newline
+\textbf{Given} una solicitud POST con identificadores de árbol duplicados dentro de la ronda o un lote en conflicto.\newline
+\textbf{When} la API valida la ronda de muestreo.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2779,7 +2799,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Conflicto por campaña ya liquidada previamente (HTTP 409 Conflict)}\newline
 \textbf{Given} una solicitud POST dirigida a un año de campaña agrícola que ya cuenta con una liquidación formal registrada e inmutable para dicha parcela.\newline
 \textbf{When} el servicio de aplicación valida la regla de unicidad anual de cierre de campaña.\newline
-\textbf{Then} la API responde \texttt{409 Conflict} impidiendo la sobreescritura de los pesajes oficiales.} \\ \hline
+\textbf{Then} la API responde \texttt{409 Conflict} impidiendo la sobreescritura de los pesajes oficiales.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Parcela de otro productor (HTTP 403 Forbidden)}\newline
+\textbf{Given} una solicitud POST sobre una parcela que no pertenece al solicitante.\newline
+\textbf{When} la API verifica la titularidad.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Clave de idempotencia reutilizada (HTTP 422 Unprocessable Entity)}\newline
+\textbf{Given} una solicitud POST con una cabecera \texttt{Idempotency-Key} ya utilizada para otra parcela o campaña.\newline
+\textbf{When} la API evalúa la clave.\newline
+\textbf{Then} la API responde \texttt{422 Unprocessable Entity}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2952,14 +2980,18 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} eliminar un pesaje de cosecha asentado por error mediante el método DELETE a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con parámetros de ruta \texttt{{plotId}} y \texttt{{recordId}}, \textbf{para} purgar datos anómalos del historial y recalcular el Índice de Vecería (BBI) del cuartel.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Eliminación exitosa de registro de cosecha (HTTP 204 No Content)}\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Eliminación exitosa de registro de cosecha (HTTP 200 OK)}\newline
 \textbf{Given} una solicitud DELETE a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con parámetros de ruta \texttt{plotId} y \texttt{recordId}.\newline
 \textbf{When} la API valida la titularidad del predio, elimina el registro erróneo del histórico plurianual y recomputa reactivamente el balance y el índice BBI del cuartel.\newline
-\textbf{Then} la API responde \texttt{204 No Content} con cuerpo vacío confirmando la remoción definitiva del registro.} \\
+\textbf{Then} la API responde \texttt{200 OK} confirmando la remoción definitiva del registro.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Registro de cosecha o cuartel no encontrado (HTTP 404 Not Found)}\newline
 \textbf{Given} una solicitud DELETE con un identificador \texttt{plotId} o \texttt{recordId} inexistente en el repositorio fenológico.\newline
 \textbf{When} la API verifica la existencia del registro en la base de datos.\newline
-\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Revisión desactualizada del registro (HTTP 412 Precondition Failed)}\newline
+\textbf{Given} una solicitud DELETE con cabecera \texttt{If-Match} que no coincide con la versión actual del registro.\newline
+\textbf{When} la API compara la revisión.\newline
+\textbf{Then} la API responde \texttt{412 Precondition Failed}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -3559,7 +3591,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Límite de uso excedido}\newline
 \textbf{Given} un productor que superó 20 respuestas nuevas o 5 solicitudes con \texttt{forceRefresh} en 60 minutos.\newline
 \textbf{When} envía una nueva solicitud.\newline
-\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Solicitud inválida}\newline
+\textbf{Given} una solicitud POST con una pregunta desconocida o un identificador con formato inválido.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 7: Acceso denegado o parcela inexistente}\newline
+\textbf{Given} una solicitud sobre una parcela ajena, de un productor sin plan activo o sobre una parcela inexistente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} ante parcela ajena o plan inactivo, y \texttt{404 Not Found} cuando la parcela no existe o está inactiva.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -3675,7 +3715,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Límite de uso excedido}\newline
 \textbf{Given} un resumen que debe redactarse bajo demanda para un productor que agotó su cupo de respuestas nuevas.\newline
 \textbf{When} envía la solicitud.\newline
-\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Identificador inválido}\newline
+\textbf{Given} una solicitud GET con un \texttt{plotId} de formato inválido.\newline
+\textbf{When} la API valida el parámetro.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Acceso denegado o parcela inexistente}\newline
+\textbf{Given} una solicitud sobre una parcela ajena, de un productor sin plan activo o sobre una parcela inexistente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} ante parcela ajena o plan inactivo, y \texttt{404 Not Found} cuando la parcela no existe o está inactiva.} \\ \hline
 \end{longtable}
 \endgroup
 
