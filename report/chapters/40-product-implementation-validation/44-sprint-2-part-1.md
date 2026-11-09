@@ -47,6 +47,48 @@ A continuación, en la \autoref{tab:sprint-planning-2} se presenta el cuadro res
 #### Aspect Leaders and Collaborators
 &nbsp;
 
+Para mantener la coherencia arquitectural y optimizar la comunicación interna del equipo ArcadiaDevs a lo largo del Sprint 2, se actualizó la matriz de liderazgo y colaboración o *Leadership-and-Collaboration Matrix* (LACX). Esta matriz asigna un líder responsable (*Leader - L*) y los correspondientes colaboradores técnicos (*Collaborator - C*) para cada uno de los aspectos del proyecto.
+
+Los aspectos considerados comprenden los nueve Bounded Contexts del diseño estratégico de Viora, junto con la presencia comercial de la *Landing Page* (*Comm.*), el módulo *Assistant* y los fundamentos arquitecturales de la plataforma (*Shared*). Por razones de espacio, la matriz se presenta dividida en dos partes, en la \autoref{tab:lacx-sprint-2-a} y la \autoref{tab:lacx-sprint-2-b}.
+
+\begin{table}[H]
+\caption{Matriz de Liderazgo y Colaboración (LACX) para el Sprint 2 (parte 1 de 2)} \label{tab:lacx-sprint-2-a}
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{|p{2.5cm}|p{2.62cm}|c|c|c|c|c|c|}
+\hline
+\textbf{Team Member} & \textbf{GitHub User} & \textbf{Comm.} & \textbf{IAM} & \textbf{Profiles} & \textbf{Subscription} & \textbf{Orchard} & \textbf{Telemetry} \\ \hline
+Espada Lazo, Piero Anthony & espadita2510 \newline pierodeveloper25 & C & C & C & \textbf{L} & C & C \\ \hline
+Li Gayoso, Diana Carolina & peruvianMiau & C & C & C & C & C & \textbf{L} \\ \hline
+Paredes Maza, Victor Juan de Dios & DaronCameloft & \textbf{L} & C & C & C & \textbf{L} & C \\ \hline
+Santi Guerrero, Fabrizio Alonso & Santi2007939 & C & \textbf{L} & C & C & C & C \\ \hline
+Trinidad León, Jahat Jassiel & trinity-bytes & C & C & \textbf{L} & C & C & C \\ \hline
+\end{tabular}
+\caption*{\textit{Nota.} L = Leader (Líder responsable del aspecto); C = Collaborator (Colaborador técnico). Elaboración propia.}
+\end{table}
+
+\begin{table}[H]
+\caption{Matriz de Liderazgo y Colaboración (LACX) para el Sprint 2 (parte 2 de 2)} \label{tab:lacx-sprint-2-b}
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{|p{2.5cm}|p{2.62cm}|c|c|c|c|c|c|}
+\hline
+\textbf{Team Member} & \textbf{GitHub User} & \textbf{Phenology} & \textbf{Thinning} & \textbf{Harvest} & \textbf{Territory} & \textbf{Assistant} & \textbf{Shared} \\ \hline
+Espada Lazo, Piero Anthony & espadita2510 \newline pierodeveloper25 & C & C & C & C & C & \textbf{L} \\ \hline
+Li Gayoso, Diana Carolina & peruvianMiau & C & \textbf{L} & \textbf{L} & C & C & C \\ \hline
+Paredes Maza, Victor Juan de Dios & DaronCameloft & \textbf{L} & C & C & C & \textbf{L} & C \\ \hline
+Santi Guerrero, Fabrizio Alonso & Santi2007939 & C & C & C & \textbf{L} & C & C \\ \hline
+Trinidad León, Jahat Jassiel & trinity-bytes & C & C & C & C & C & C \\ \hline
+\end{tabular}
+\caption*{\textit{Nota.} L = Leader (Líder responsable del aspecto); C = Collaborator (Colaborador técnico). Elaboración propia.}
+\end{table}
+
+\clearpage
+
 #### Sprint Backlog 2
 &nbsp;
 
