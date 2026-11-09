@@ -92,6 +92,235 @@ Trinidad León, Jahat Jassiel & trinity-bytes & C & C & C & C & C & C \\ \hline
 #### Sprint Backlog 2
 &nbsp;
 
+El objetivo central del Sprint Backlog 2 es descomponer operativamente los 97 ítems de trabajo comprometidos (241 Story Points), conformados por 25 Historias de Usuario (US), 70 Technical Stories (TS) y 2 Spikes de investigación técnica (SPK), en tareas técnicas atómicas, medibles y verificables. Dicha descomposición abarca la gestión de identidad y perfiles, la suscripción y los códigos de cooperativa, la supervisión territorial del gestor técnico, la asistencia agronómica y los servicios web complementarios del ecosistema, estructurados bajo Domain-Driven Design.
+
+Para efectos de diagramación, síntesis documental y legibilidad dentro del presente informe, en la \autoref{tab:sprint-backlog-2} se expone de manera representativa exactamente una tarea técnica principal (\textit{Work-Item / Task}) por cada requerimiento comprometido (US, TS o SPK). El desglose granular del Sprint Backlog en su totalidad, compuesto por 204 tareas técnicas distribuidas a través de las columnas de flujo ágil \textit{Goal}, \textit{Stories}, \textit{To-Do}, \textit{In process}, \textit{To Review} y \textit{Done}, se encuentra registrado en el tablero oficial de gestión ágil de ArcadiaDevs en Trello.
+
+<!-- PENDIENTE: agregar el enlace público del tablero y la figura con su captura, como en el Sprint 1. -->
+
+\begin{center}
+\footnotesize
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{2.5pt}
+\begin{longtable}{|>{\centering\arraybackslash}p{0.05\textwidth}|>{\raggedright\arraybackslash}p{0.18\textwidth}|>{\centering\arraybackslash}p{0.045\textwidth}|>{\raggedright\arraybackslash}p{0.125\textwidth}|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\centering\arraybackslash}p{0.065\textwidth}|>{\raggedright\arraybackslash}p{0.085\textwidth}|>{\scriptsize\centering\arraybackslash}p{0.035\textwidth}|}
+\caption{Descomposición de Ítems del Sprint Backlog 2 en Tareas de Trabajo (Work-Items)} \label{tab:sprint-backlog-2} \\
+\hline
+\multicolumn{2}{|l|}{\textbf{Sprint \#}} & \multicolumn{6}{l|}{Sprint 2} \\ \hline
+\multicolumn{2}{|l|}{\textbf{User Story}} & \multicolumn{6}{l|}{\textbf{Work-Item / Task}} \\ \hline
+\textbf{Id} & \textbf{Title} & \textbf{Id} & \textbf{Title} & \textbf{Description} & \textbf{Est.} \newline \textbf{(Hours)} & \textbf{Assigned To} & \textbf{Status} \\ \hline
+\endfirsthead
+
+\hline
+\multicolumn{2}{|l|}{\textbf{User Story}} & \multicolumn{6}{l|}{\textbf{Work-Item / Task (Continuación)}} \\ \hline
+\textbf{Id} & \textbf{Title} & \textbf{Id} & \textbf{Title} & \textbf{Description} & \textbf{Est.} \newline \textbf{(Hours)} & \textbf{Assigned To} & \textbf{Status} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Síntesis representativa de una tarea por requerimiento (US, TS y SPK). El Sprint Backlog completo con la totalidad de las 204 tareas técnicas desglosadas se encuentra disponible en el tablero de Trello. Elaboración propia.}} \\
+\endlastfoot
+
+% SPK03
+SPK03 & Investigación e integración de Checkout Pro en Mercado Pago Sandbox y webhooks & TK01 & Prototipo Checkout Pro en Sandbox & Validar preferencia y Checkout\allowbreak{}Service con credenciales de prueba. & 1.0 & Espada, Piero & Done \\ \hline
+% TS06
+TS06 & Generación de preferencia de checkout para suscripción de productor independiente & TK01 & Comando Create\allowbreak{}Subscription\allowbreak{}Command en aplicación & Ejecutar Create\allowbreak{}Subscription\allowbreak{}Command en Subscription\allowbreak{}Command\allowbreak{}Service creando suscripción pendiente de pago. & 0.9 & Espada, Piero & Done \\ \hline
+% TS07
+TS07 & Recepción y procesamiento de webhooks de notificación de pagos & TK01 & Autenticación Payment\allowbreak{}Notification\allowbreak{}Authenticator en infraestructura & Validar firma de la notificación de Mercado Pago. & 0.9 & Espada, Piero & Done \\ \hline
+% TS08
+TS08 & Generación de lote de códigos de activación para socios cooperativos con reserva de cuota & TK01 & Comando Issue\allowbreak{}Invitation\allowbreak{}Codes\allowbreak{}Command en aplicación & Ejecutar Issue\allowbreak{}Invitation\allowbreak{}Codes\allowbreak{}Command en Invitation\allowbreak{}Code\allowbreak{}Command\allowbreak{}Service reservando plazas y hectáreas. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% TS09
+TS09 & Consulta y auditoría de inventario de lotes y códigos de activación de cooperativa & TK01 & Consulta Get\allowbreak{}Invitation\allowbreak{}Codes\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Invitation\allowbreak{}Codes\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Invitation\allowbreak{}Code\allowbreak{}Query\allowbreak{}Service filtrando códigos por estado. & 0.7 & Trinidad, Jahat & Done \\ \hline
+% TS10
+TS10 & Canje atómico de código de activación institucional con validación de cuota y consentimiento & TK01 & Comando Redeem\allowbreak{}Cooperative\allowbreak{}Code\allowbreak{}Command en aplicación & Ejecutar Redeem\allowbreak{}Cooperative\allowbreak{}Code\allowbreak{}Command en Cooperative\allowbreak{}Code\allowbreak{}Redemption\allowbreak{}Command\allowbreak{}Service validando cuota y consentimiento. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% US06
+US06 & Suscripción individual al Plan Productor mediante pasarela de pago digital & TK01 & Pantalla Producer\allowbreak{}Plan\allowbreak{}Screen en presentación & Integrar Producer\allowbreak{}Plan\allowbreak{}View\allowbreak{}Model e Individual\allowbreak{}Checkout\allowbreak{}View\allowbreak{}Model con planes. & 1.8 & Espada, Piero & Done \\ \hline
+% US07
+US07 & Activación de membresía corporativa de socio mediante canje de código de cooperativa & TK01 & Pantalla Redeem\allowbreak{}Code\allowbreak{}Screen en presentación & Capturar código y estados mediante Redeem\allowbreak{}Code\allowbreak{}View\allowbreak{}Model. & 1.4 & Trinidad, Jahat & Done \\ \hline
+% US08
+US08 & Administración de la cartera de socios productores y consulta de cuota corporativa & TK01 & Padrón Flutter en MembersPage & Integrar Members\allowbreak{}View\allowbreak{}Model con Get\allowbreak{}Members\allowbreak{}Use\allowbreak{}Case. & 1.4 & Paredes, Victor & Done \\ \hline
+% US12
+US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & TK01 & Mapa RiskPage en presentación & Integrar Risk\allowbreak{}Map\allowbreak{}View\allowbreak{}Model con parcelas y posición del gestor. & 1.8 & Paredes, Victor & Done \\ \hline
+% TS28
+TS28 & Consulta y exportación del expediente agronómico definitivo & TK01 & Agregado SealedDossier en dominio & Modelar expediente sellado con huella y documento almacenado. & 0.9 & Li, Diana & Done \\ \hline
+% TS29
+TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & TK01 & Consulta Get\allowbreak{}Member\allowbreak{}Plots\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Member\allowbreak{}Plots\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Member\allowbreak{}Plot\allowbreak{}Query\allowbreak{}Service agregando riesgo de parcelas socias. & 0.9 & Santi, Fabrizio & Done \\ \hline
+% TS30
+TS30 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra & TK01 & Servicio Yield\allowbreak{}Aggregation\allowbreak{}Domain\allowbreak{}Service en dominio & Consolidar toneladas de parcelas estimables por aptitud comercial. & 0.9 & Santi, Fabrizio & Done \\ \hline
+% US01
+US01 & Registro de cuenta de acceso y credenciales seguras con asignación de rol & TK01 & Registro Android con SignUpUseCase & Integrar IamScreen e IamViewModel con SignUpUseCase. & 1.4 & Li, Diana & Done \\ \hline
+% US02
+US02 & Inicio de sesión y autenticación persistente mediante tokens & TK01 & Sesión Android con SignInUseCase & Autenticar mediante SignInUseCase y persistir sesión en AuthRepository. & 1.4 & Li, Diana & Done \\ \hline
+% US03
+US03 & Consulta y actualización de datos de perfil y contacto & TK01 & Perfil Android en Edit\allowbreak{}Profile\allowbreak{}Screen & Consultar Observe\allowbreak{}Profile\allowbreak{}Use\allowbreak{}Case y actualizar mediante Update\allowbreak{}Profile\allowbreak{}Use\allowbreak{}Case. & 1.0 & Trinidad, Jahat & Done \\ \hline
+% US04
+US04 & Cambio seguro de contraseña de acceso & TK01 & Contraseña Android en Change\allowbreak{}Password\allowbreak{}Screen & Integrar Change\allowbreak{}Password\allowbreak{}View\allowbreak{}Model con Change\allowbreak{}Password\allowbreak{}Use\allowbreak{}Case. & 1.0 & Li, Diana & Done \\ \hline
+% US05
+US05 & Recuperación de contraseña olvidada mediante enlace por correo & TK01 & Recuperación Android de contraseña & Orquestar Request\allowbreak{}Password\allowbreak{}Reset\allowbreak{}Use\allowbreak{}Case, Check\allowbreak{}Password\allowbreak{}Reset\allowbreak{}Link\allowbreak{}Use\allowbreak{}Case y Reset\allowbreak{}Password\allowbreak{}Use\allowbreak{}Case. & 1.4 & Li, Diana & Done \\ \hline
+% US43
+US43 & Completado de perfil de usuario y contacto validado & TK01 & Perfil Android con Update\allowbreak{}Profile\allowbreak{}Use\allowbreak{}Case & Validar contacto desde Edit\allowbreak{}Profile\allowbreak{}View\allowbreak{}Model. & 1.4 & Trinidad, Jahat & Done \\ \hline
+% US42
+US42 & Configuración y cambio de idioma de la interfaz en la aplicación móvil & TK01 & Idioma Android en Language\allowbreak{}Bottom\allowbreak{}Sheet & Persistir AppLanguage y aplicar Accept\allowbreak{}Language\allowbreak{}Interceptor. & 1.0 & Li, Diana & Done \\ \hline
+% TS01
+TS01 & Registro de credenciales de cuenta de usuario y asignación de rol en IAM & TK01 & Comando Register\allowbreak{}User\allowbreak{}Account\allowbreak{}Command en aplicación & Ejecutar Register\allowbreak{}User\allowbreak{}Account\allowbreak{}Command en User\allowbreak{}Account\allowbreak{}Command\allowbreak{}Service creando cuenta con rol. & 0.9 & Li, Diana & Done \\ \hline
+% TS02
+TS02 & Autenticación de usuarios y emisión de tokens de acceso con rol & TK01 & Comando Authenticate\allowbreak{}User\allowbreak{}Command en aplicación & Ejecutar Authenticate\allowbreak{}User\allowbreak{}Command en User\allowbreak{}Session\allowbreak{}Command\allowbreak{}Service validando credenciales y emitiendo tokens. & 0.9 & Li, Diana & Done \\ \hline
+% TS03
+TS03 & Renovación periódica de tokens de sesión mediante Refresh Token & TK01 & Comando Refresh\allowbreak{}User\allowbreak{}Session\allowbreak{}Command en aplicación & Ejecutar Refresh\allowbreak{}User\allowbreak{}Session\allowbreak{}Command en User\allowbreak{}Session\allowbreak{}Command\allowbreak{}Service renovando sesión con token. & 0.7 & Li, Diana & Done \\ \hline
+% TS04
+TS04 & Consulta de información de perfil del usuario autenticado & TK01 & Consulta Get\allowbreak{}Profile\allowbreak{}By\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Profile\allowbreak{}By\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en Profile\allowbreak{}Query\allowbreak{}Service leyendo perfil del usuario. & 0.7 & Trinidad, Jahat & Done \\ \hline
+% TS05
+TS05 & Actualización parcial de datos de perfil con validación telefónica & TK01 & Comando Update\allowbreak{}Contact\allowbreak{}Profile\allowbreak{}Command en aplicación & Ejecutar Update\allowbreak{}Contact\allowbreak{}Profile\allowbreak{}Command en Profile\allowbreak{}Command\allowbreak{}Service validando cambios parciales de teléfono. & 0.7 & Trinidad, Jahat & Done \\ \hline
+% TS35
+TS35 & Completado inicial de perfil de usuario con validación telefónica & TK01 & Comando Update\allowbreak{}Contact\allowbreak{}Profile\allowbreak{}Command en aplicación & Ejecutar Update\allowbreak{}Contact\allowbreak{}Profile\allowbreak{}Command en Profile\allowbreak{}Command\allowbreak{}Service normalizando teléfono por país. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% TS36
+TS36 & Actualización de contraseña para sesión de usuario autenticado & TK01 & Comando Change\allowbreak{}User\allowbreak{}Password\allowbreak{}Command en aplicación & Ejecutar Change\allowbreak{}User\allowbreak{}Password\allowbreak{}Command en User\allowbreak{}Account\allowbreak{}Command\allowbreak{}Service verificando contraseña actual. & 0.7 & Li, Diana & Done \\ \hline
+% TS37
+TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & TK01 & Comando Request\allowbreak{}Password\allowbreak{}Reset\allowbreak{}Command en aplicación & Ejecutar Request\allowbreak{}Password\allowbreak{}Reset\allowbreak{}Command en User\allowbreak{}Account\allowbreak{}Command\allowbreak{}Service emitiendo token temporal. & 0.9 & Li, Diana & Done \\ \hline
+% TS38
+TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & TK01 & Comando Reset\allowbreak{}User\allowbreak{}Password\allowbreak{}Command en aplicación & Ejecutar Reset\allowbreak{}User\allowbreak{}Password\allowbreak{}Command en User\allowbreak{}Account\allowbreak{}Command\allowbreak{}Service consumiendo token y actualizando contraseña. & 0.7 & Li, Diana & Done \\ \hline
+% US44
+US44 & Activación de licencia corporativa de supervisión mediante código maestro de un solo uso & TK01 & Pantalla License\allowbreak{}Activation\allowbreak{}Page en presentación & Capturar código maestro mediante License\allowbreak{}Activation\allowbreak{}View\allowbreak{}Model. & 1.4 & Paredes, Victor & Done \\ \hline
+% TS56
+TS56 & Consulta de la licencia institucional a cargo del gestor técnico & TK01 & Consulta Get\allowbreak{}All\allowbreak{}Cooperative\allowbreak{}Licenses\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}All\allowbreak{}Cooperative\allowbreak{}Licenses\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Cooperative\allowbreak{}License\allowbreak{}Query\allowbreak{}Service listando licencias del gestor. & 0.7 & Espada, Piero & Done \\ \hline
+% TS57
+TS57 & Consulta de balance de licencia institucional y cuota corporativa & TK01 & Consulta Get\allowbreak{}Cooperative\allowbreak{}License\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Cooperative\allowbreak{}License\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Cooperative\allowbreak{}License\allowbreak{}Query\allowbreak{}Service calculando balance de plazas. & 0.9 & Espada, Piero & Done \\ \hline
+% TS58
+TS58 & Consulta de padrón de socios productores agremiados & TK01 & Consulta Get\allowbreak{}Cooperative\allowbreak{}Members\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Cooperative\allowbreak{}Members\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Cooperative\allowbreak{}Member\allowbreak{}Query\allowbreak{}Service listando socios de licencia. & 0.9 & Santi, Fabrizio & Done \\ \hline
+% US45
+US45 & Emisión de códigos de patrocinio para socios con asignación de cupo de hectáreas y control de saldo & TK01 & Pantalla CodesPage en presentación & Configurar lote mediante Issue\allowbreak{}Codes\allowbreak{}View\allowbreak{}Model. & 1.4 & Trinidad, Jahat & Done \\ \hline
+% US46
+US46 & Canje de código de membresía patrocinada con consentimiento informado de compartición de datos & TK01 & Vista previa con Preview\allowbreak{}Cooperative\allowbreak{}Code\allowbreak{}Use\allowbreak{}Case & Mostrar organización, cuota y consentimiento antes del canje. & 1.0 & Trinidad, Jahat & Done \\ \hline
+% US47
+US47 & Revocación de códigos de patrocinio no canjeados y restitución de saldo de licencia & TK01 & Pantalla Issued\allowbreak{}Codes\allowbreak{}Page en presentación & Listar códigos y acciones mediante CodesViewModel. & 1.0 & Trinidad, Jahat & Done \\ \hline
+% TS41
+TS41 & Revocación anticipada de código de activación cooperativo y restitución de cuota & TK01 & Comando Revoke\allowbreak{}Invitation\allowbreak{}Code\allowbreak{}Command en aplicación & Ejecutar Revoke\allowbreak{}Invitation\allowbreak{}Code\allowbreak{}Command en Invitation\allowbreak{}Code\allowbreak{}Command\allowbreak{}Service restituyendo plaza y hectáreas. & 0.7 & Trinidad, Jahat & Done \\ \hline
+% TS64
+TS64 & Canje de código maestro para activación del gestor técnico & TK01 & Comando Redeem\allowbreak{}Manager\allowbreak{}Code\allowbreak{}Command en aplicación & Ejecutar Redeem\allowbreak{}Manager\allowbreak{}Code\allowbreak{}Command en Manager\allowbreak{}Code\allowbreak{}Redemption\allowbreak{}Command\allowbreak{}Service asignando licencia al gestor. & 0.7 & Espada, Piero & Done \\ \hline
+% TS59
+TS59 & Consulta de sectores asignados a las parcelas socias & TK01 & Consulta Get\allowbreak{}Plot\allowbreak{}Sector\allowbreak{}Assignments\allowbreak{}By\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Plot\allowbreak{}Sector\allowbreak{}Assignments\allowbreak{}By\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en Plot\allowbreak{}Sector\allowbreak{}Assignment\allowbreak{}Query\allowbreak{}Service aplicando alcance gestor o socio. & 0.9 & Santi, Fabrizio & Done \\ \hline
+% US49
+US49 & Gestión y asignación de sectores territoriales editables para agrupación y filtrado de lotes & TK01 & Gestión de sectores en Flutter & Consumir sector-zones para crear, renombrar y listar sectores. & 1.4 & Espada, Piero & Done \\ \hline
+% TS60
+TS60 & Consulta de resumen agronómico y ficha técnica de parcela en modo supervisión de solo lectura & TK01 & Consulta Get\allowbreak{}Member\allowbreak{}Plot\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Member\allowbreak{}Plot\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Member\allowbreak{}Plot\allowbreak{}Query\allowbreak{}Service verificando socio que comparte. & 0.9 & Santi, Fabrizio & Done \\ \hline
+% US48
+US48 & Desvinculación de supervisión agronómica y cese de compartición de datos de parcelas & TK01 & Retiro con Withdraw\allowbreak{}Data\allowbreak{}Sharing\allowbreak{}Consent\allowbreak{}Use\allowbreak{}Case & Dejar de compartir datos desde Cooperative\allowbreak{}Membership\allowbreak{}Screen. & 1.4 & Espada, Piero & Done \\ \hline
+% TS61
+TS61 & Consulta y suscripción a alertas agroclimáticas y fitosanitarias territoriales internas & TK01 & Consulta Get\allowbreak{}Sector\allowbreak{}Alerts\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Sector\allowbreak{}Alerts\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Sector\allowbreak{}Alert\allowbreak{}Query\allowbreak{}Service leyendo alertas de sectores. & 0.9 & Santi, Fabrizio & Done \\ \hline
+% US31
+US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & TK01 & Detalle Sector\allowbreak{}Detail\allowbreak{}Page en presentación & Integrar Sector\allowbreak{}Detail\allowbreak{}View\allowbreak{}Model con semáforo por mayor gravedad. & 1.8 & Paredes, Victor & Done \\ \hline
+% TS62
+TS62 & Consulta del histórico de acopio por campaña & TK01 & Consulta Get\allowbreak{}Intake\allowbreak{}Forecasts\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Intake\allowbreak{}Forecasts\allowbreak{}By\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Intake\allowbreak{}Forecast\allowbreak{}Query\allowbreak{}Service sumando acopio por campaña. & 0.7 & Santi, Fabrizio & Done \\ \hline
+% TS65
+TS65 & Vista previa de código de invitación cooperativa & TK01 & Consulta Get\allowbreak{}Cooperative\allowbreak{}Code\allowbreak{}Preview\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Cooperative\allowbreak{}Code\allowbreak{}Preview\allowbreak{}Query en Cooperative\allowbreak{}Code\allowbreak{}Query\allowbreak{}Service evaluando código sin consumirlo. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% US32
+US32 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa & TK01 & Pantalla de acopio en Flutter & Presentar proyección agregada y cobertura muestral. & 1.8 & Paredes, Victor & Done \\ \hline
+% TS63
+TS63 & Generación de instantánea documental y metadatos de expediente agronómico provisional en campaña activa & TK01 & Consulta Get\allowbreak{}Provisional\allowbreak{}Dossier\allowbreak{}By\allowbreak{}Plot\allowbreak{}Id\allowbreak{}And\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Provisional\allowbreak{}Dossier\allowbreak{}By\allowbreak{}Plot\allowbreak{}Id\allowbreak{}And\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Member\allowbreak{}Plot\allowbreak{}Query\allowbreak{}Service compilando expediente provisional. & 0.9 & Santi, Fabrizio & Done \\ \hline
+% US30
+US30 & Generación y exportación del expediente agronómico de parcela & TK01 & Pantalla Agronomic\allowbreak{}Dossier\allowbreak{}Screen en presentación & Integrar Agronomic\allowbreak{}Dossier\allowbreak{}View\allowbreak{}Model con estados del expediente. & 1.8 & Li, Diana & Done \\ \hline
+% SPK04
+SPK04 & Investigación de Spring AI para respuestas validadas y de persistencia y tareas en segundo plano en Android & TK01 & Prototipo Spring AI con validación & Evaluar Spring\allowbreak{}Ai\allowbreak{}Answer\allowbreak{}Text\allowbreak{}Writer, Answer\allowbreak{}Text\allowbreak{}Validator y Model\allowbreak{}Circuit\allowbreak{}Breaker con Groq. & 1.0 & Trinidad, Jahat & Done \\ \hline
+% TS66
+TS66 & Consulta del catálogo de preguntas por contexto de consulta & TK01 & Consulta Get\allowbreak{}Question\allowbreak{}Catalog\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Question\allowbreak{}Catalog\allowbreak{}Query en Question\allowbreak{}Catalog\allowbreak{}Query\allowbreak{}Service filtrando preguntas por contexto. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% US50
+US50 & Consulta de preguntas disponibles según el contexto agronómico & TK01 & Hoja AssistantSheet en presentación & Mostrar preguntas por contexto mediante Assistant\allowbreak{}Sheet\allowbreak{}View\allowbreak{}Model. & 1.4 & Paredes, Victor & Done \\ \hline
+% TS67
+TS67 & Solicitud idempotente de respuesta del asistente & TK01 & Validador Answer\allowbreak{}Text\allowbreak{}Validator en dominio & Rechazar textos con cifras ausentes en los hechos. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% US51
+US51 & Obtención de respuesta sustentada en datos reales & TK01 & Respuesta Assistant\allowbreak{}Answer\allowbreak{}Views en presentación & Renderizar texto, indicadores, fuente y acciones de respuesta. & 1.8 & Paredes, Victor & Done \\ \hline
+% TS68
+TS68 & Consulta del historial de respuestas del asistente & TK01 & Consulta Get\allowbreak{}Answer\allowbreak{}History\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Answer\allowbreak{}History\allowbreak{}Query en Assistant\allowbreak{}Answer\allowbreak{}Query\allowbreak{}Service limitando historial a diez días. & 0.7 & Trinidad, Jahat & Done \\ \hline
+% TS69
+TS69 & Consulta de la última respuesta de un contexto de consulta & TK01 & Consulta Get\allowbreak{}Latest\allowbreak{}Answer\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Latest\allowbreak{}Answer\allowbreak{}Query en Assistant\allowbreak{}Answer\allowbreak{}Query\allowbreak{}Service recuperando última respuesta. & 0.7 & Trinidad, Jahat & Done \\ \hline
+% TS70
+TS70 & Consulta de una respuesta guardada del asistente & TK01 & Consulta Get\allowbreak{}Answer\allowbreak{}By\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Answer\allowbreak{}By\allowbreak{}Id\allowbreak{}Query en Assistant\allowbreak{}Answer\allowbreak{}Query\allowbreak{}Service calculando vigencia de respuesta. & 0.7 & Trinidad, Jahat & Done \\ \hline
+% US52
+US52 & Consulta del historial de respuestas recientes & TK01 & Historial Assistant\allowbreak{}Recent en presentación & Mostrar recientes mediante Observe\allowbreak{}Recent\allowbreak{}Answers\allowbreak{}Use\allowbreak{}Case. & 1.4 & Paredes, Victor & Done \\ \hline
+% US53
+US53 & Actualización de respuestas ante cambios en los datos & TK01 & Reapertura con Find\allowbreak{}Answer\allowbreak{}To\allowbreak{}Reopen\allowbreak{}Use\allowbreak{}Case & Recuperar última respuesta y aplicar Move\allowbreak{}On\allowbreak{}From\allowbreak{}Answer\allowbreak{}Use\allowbreak{}Case. & 1.4 & Paredes, Victor & Done \\ \hline
+% TS71
+TS71 & Consulta del resumen diario del asistente & TK01 & Comando Prepare\allowbreak{}Daily\allowbreak{}Summary\allowbreak{}Command en aplicación & Ejecutar Prepare\allowbreak{}Daily\allowbreak{}Summary\allowbreak{}Command en Daily\allowbreak{}Summary\allowbreak{}Command\allowbreak{}Service reutilizando resumen del día. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% US54
+US54 & Resumen diario de prioridades del campo & TK01 & Tarjeta Home\allowbreak{}Assistant\allowbreak{}Card en presentación & Mostrar resumen mediante Daily\allowbreak{}Summary\allowbreak{}View\allowbreak{}Model y Load\allowbreak{}Daily\allowbreak{}Summary\allowbreak{}Use\allowbreak{}Case. & 1.4 & Paredes, Victor & Done \\ \hline
+% TS72
+TS72 & Cierre de sesión del usuario & TK01 & Comando Sign\allowbreak{}Out\allowbreak{}User\allowbreak{}Session\allowbreak{}Command en aplicación & Ejecutar Sign\allowbreak{}Out\allowbreak{}User\allowbreak{}Session\allowbreak{}Command en User\allowbreak{}Session\allowbreak{}Command\allowbreak{}Service cerrando sesión del token. & 0.5 & Li, Diana & Done \\ \hline
+% TS73
+TS73 & Eliminación definitiva de la cuenta & TK01 & Comando Delete\allowbreak{}User\allowbreak{}Account\allowbreak{}Command en aplicación & Ejecutar Delete\allowbreak{}User\allowbreak{}Account\allowbreak{}Command en User\allowbreak{}Account\allowbreak{}Command\allowbreak{}Service verificando contraseña antes de eliminar. & 0.7 & Li, Diana & Done \\ \hline
+% TS74
+TS74 & Verificación del correo de la cuenta & TK01 & Comando Open\allowbreak{}User\allowbreak{}Session\allowbreak{}Command en aplicación & Ejecutar Open\allowbreak{}User\allowbreak{}Session\allowbreak{}Command en User\allowbreak{}Account\allowbreak{}Command\allowbreak{}Service validando código y activando cuenta. & 0.7 & Li, Diana & Done \\ \hline
+% TS75
+TS75 & Reenvío del código de verificación de correo & TK01 & Comando Resend\allowbreak{}Email\allowbreak{}Verification\allowbreak{}Command en aplicación & Ejecutar Resend\allowbreak{}Email\allowbreak{}Verification\allowbreak{}Command en User\allowbreak{}Account\allowbreak{}Command\allowbreak{}Service aplicando intervalo de reenvío. & 0.5 & Li, Diana & Done \\ \hline
+% TS76
+TS76 & Verificación de vigencia del enlace de restablecimiento de contraseña & TK01 & Consulta Check\allowbreak{}Password\allowbreak{}Reset\allowbreak{}Token\allowbreak{}Query en aplicación & Ejecutar Check\allowbreak{}Password\allowbreak{}Reset\allowbreak{}Token\allowbreak{}Query en User\allowbreak{}Account\allowbreak{}Query\allowbreak{}Service validando enlace sin consumirlo. & 0.5 & Li, Diana & Done \\ \hline
+% TS77
+TS77 & Consulta de planes de suscripción individual & TK01 & Servicio Subscription\allowbreak{}Query\allowbreak{}Service en aplicación & Implementar Subscription\allowbreak{}Query\allowbreak{}Service listando planes individuales. & 0.5 & Espada, Piero & Done \\ \hline
+% TS78
+TS78 & Consulta de la suscripción actual del productor & TK01 & Servicio Subscription\allowbreak{}Query\allowbreak{}Service en aplicación & Implementar Subscription\allowbreak{}Query\allowbreak{}Service recuperando suscripción actual. & 0.5 & Espada, Piero & Done \\ \hline
+% TS79
+TS79 & Consulta de una suscripción del productor & TK01 & Servicio Subscription\allowbreak{}Query\allowbreak{}Service en aplicación & Implementar Subscription\allowbreak{}Query\allowbreak{}Service validando titularidad de suscripción. & 0.5 & Espada, Piero & Done \\ \hline
+% TS80
+TS80 & Preparación del pago de una suscripción & TK01 & Servicio Checkout\allowbreak{}Service en aplicación & Implementar Checkout\allowbreak{}Service preparando pago idempotente. & 0.9 & Espada, Piero & Done \\ \hline
+% TS81
+TS81 & Consulta de condiciones de ampliación del plan & TK01 & Servicio Quota\allowbreak{}Extension\allowbreak{}Query\allowbreak{}Service en aplicación & Implementar Quota\allowbreak{}Extension\allowbreak{}Query\allowbreak{}Service evaluando ampliación del plan. & 0.5 & Espada, Piero & Done \\ \hline
+% TS82
+TS82 & Solicitud de ampliación pagada del plan individual & TK01 & Comando Request\allowbreak{}Quota\allowbreak{}Extension\allowbreak{}Command en aplicación & Ejecutar Request\allowbreak{}Quota\allowbreak{}Extension\allowbreak{}Command en Quota\allowbreak{}Extension\allowbreak{}Command\allowbreak{}Service registrando ampliación pendiente de pago. & 0.9 & Espada, Piero & Done \\ \hline
+% TS83
+TS83 & Consulta de una ampliación del plan & TK01 & Servicio Quota\allowbreak{}Extension\allowbreak{}Query\allowbreak{}Service en aplicación & Implementar Quota\allowbreak{}Extension\allowbreak{}Query\allowbreak{}Service validando titularidad de ampliación. & 0.5 & Espada, Piero & Done \\ \hline
+% TS84
+TS84 & Preparación del pago de una ampliación & TK01 & Servicio Checkout\allowbreak{}Service en aplicación & Implementar Checkout\allowbreak{}Service preparando pago de ampliación. & 0.9 & Espada, Piero & Done \\ \hline
+% TS85
+TS85 & Canje de código de ampliación de hectáreas & TK01 & Comando Redeem\allowbreak{}Extension\allowbreak{}Code\allowbreak{}Command en aplicación & Ejecutar Redeem\allowbreak{}Extension\allowbreak{}Code\allowbreak{}Command en Quota\allowbreak{}Extension\allowbreak{}Command\allowbreak{}Service agregando hectáreas al plan. & 0.7 & Espada, Piero & Done \\ \hline
+% TS86
+TS86 & Desvinculación de socio de la licencia institucional & TK01 & Comando Release\allowbreak{}Cooperative\allowbreak{}Member\allowbreak{}Command en aplicación & Ejecutar Release\allowbreak{}Cooperative\allowbreak{}Member\allowbreak{}Command en Cooperative\allowbreak{}License\allowbreak{}Command\allowbreak{}Service aplicando periodo de gracia. & 0.7 & Espada, Piero & Done \\ \hline
+% TS87
+TS87 & Consulta de consentimientos de compartición de datos & TK01 & Consulta Get\allowbreak{}Data\allowbreak{}Sharing\allowbreak{}Consents\allowbreak{}By\allowbreak{}Producer\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Data\allowbreak{}Sharing\allowbreak{}Consents\allowbreak{}By\allowbreak{}Producer\allowbreak{}Id\allowbreak{}Query en Data\allowbreak{}Sharing\allowbreak{}Consent\allowbreak{}Query\allowbreak{}Service listando consentimientos del productor. & 0.5 & Espada, Piero & Done \\ \hline
+% TS88
+TS88 & Consulta de un consentimiento de compartición de datos & TK01 & Consulta Get\allowbreak{}Data\allowbreak{}Sharing\allowbreak{}Consent\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}Producer\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Data\allowbreak{}Sharing\allowbreak{}Consent\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}Producer\allowbreak{}Id\allowbreak{}Query en Data\allowbreak{}Sharing\allowbreak{}Consent\allowbreak{}Query\allowbreak{}Service validando titularidad del consentimiento. & 0.5 & Espada, Piero & Done \\ \hline
+% TS89
+TS89 & Retiro del consentimiento de compartición de datos & TK01 & Comando Withdraw\allowbreak{}Data\allowbreak{}Sharing\allowbreak{}Consent\allowbreak{}Command en aplicación & Ejecutar Withdraw\allowbreak{}Data\allowbreak{}Sharing\allowbreak{}Consent\allowbreak{}Command en Data\allowbreak{}Sharing\allowbreak{}Consent\allowbreak{}Command\allowbreak{}Service retirando acceso del gestor. & 0.7 & Espada, Piero & Done \\ \hline
+% TS90
+TS90 & Registro de nota de campo de una parcela & TK01 & Comando Record\allowbreak{}Field\allowbreak{}Note\allowbreak{}Command en aplicación & Ejecutar Record\allowbreak{}Field\allowbreak{}Note\allowbreak{}Command en Field\allowbreak{}Note\allowbreak{}Command\allowbreak{}Service evitando duplicados por identificador. & 0.7 & Li, Diana & Done \\ \hline
+% TS91
+TS91 & Consulta de notas de campo de una parcela & TK01 & Servicio Field\allowbreak{}Note\allowbreak{}Query\allowbreak{}Service en aplicación & Implementar Field\allowbreak{}Note\allowbreak{}Query\allowbreak{}Service ordenando notas por fecha. & 0.7 & Li, Diana & Done \\ \hline
+% TS92
+TS92 & Adjunto de fotografía a una nota de campo & TK01 & Comando Attach\allowbreak{}Field\allowbreak{}Note\allowbreak{}Photo\allowbreak{}Command en aplicación & Ejecutar Attach\allowbreak{}Field\allowbreak{}Note\allowbreak{}Photo\allowbreak{}Command en Field\allowbreak{}Note\allowbreak{}Command\allowbreak{}Service validando formato y tamaño. & 0.7 & Li, Diana & Done \\ \hline
+% TS93
+TS93 & Descarga de la fotografía de una nota de campo & TK01 & Servicio Field\allowbreak{}Note\allowbreak{}Query\allowbreak{}Service en aplicación & Implementar Field\allowbreak{}Note\allowbreak{}Query\allowbreak{}Service recuperando bytes de fotografía. & 0.5 & Espada, Piero & Done \\ \hline
+% TS94
+TS94 & Consulta de sectores territoriales de la licencia & TK01 & Consulta Get\allowbreak{}Sector\allowbreak{}Zones\allowbreak{}By\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Sector\allowbreak{}Zones\allowbreak{}By\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en Sector\allowbreak{}Zone\allowbreak{}Query\allowbreak{}Service contando parcelas por sector. & 0.5 & Santi, Fabrizio & Done \\ \hline
+% TS95
+TS95 & Registro de sector territorial & TK01 & Comando Create\allowbreak{}Sector\allowbreak{}Zone\allowbreak{}Command en aplicación & Ejecutar Create\allowbreak{}Sector\allowbreak{}Zone\allowbreak{}Command en Sector\allowbreak{}Zone\allowbreak{}Command\allowbreak{}Service validando unicidad del nombre. & 0.7 & Santi, Fabrizio & Done \\ \hline
+% TS96
+TS96 & Consulta de un sector territorial & TK01 & Consulta Get\allowbreak{}Sector\allowbreak{}Zone\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Sector\allowbreak{}Zone\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en Sector\allowbreak{}Zone\allowbreak{}Query\allowbreak{}Service recuperando sector de licencia. & 0.5 & Santi, Fabrizio & Done \\ \hline
+% TS97
+TS97 & Renombrado de sector territorial & TK01 & Comando Rename\allowbreak{}Sector\allowbreak{}Zone\allowbreak{}Command en aplicación & Ejecutar Rename\allowbreak{}Sector\allowbreak{}Zone\allowbreak{}Command en Sector\allowbreak{}Zone\allowbreak{}Command\allowbreak{}Service validando nombre único. & 0.7 & Santi, Fabrizio & Done \\ \hline
+% TS98
+TS98 & Consulta del sector de una parcela socia & TK01 & Consulta Get\allowbreak{}Plot\allowbreak{}Sector\allowbreak{}Assignment\allowbreak{}By\allowbreak{}Plot\allowbreak{}Id\allowbreak{}And\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Plot\allowbreak{}Sector\allowbreak{}Assignment\allowbreak{}By\allowbreak{}Plot\allowbreak{}Id\allowbreak{}And\allowbreak{}User\allowbreak{}Id\allowbreak{}Query en Plot\allowbreak{}Sector\allowbreak{}Assignment\allowbreak{}Query\allowbreak{}Service verificando alcance del usuario. & 0.5 & Santi, Fabrizio & Done \\ \hline
+% TS99
+TS99 & Asignación de sector a una parcela & TK01 & Comando Assign\allowbreak{}Plot\allowbreak{}Sector\allowbreak{}Command en aplicación & Ejecutar Assign\allowbreak{}Plot\allowbreak{}Sector\allowbreak{}Command en Plot\allowbreak{}Sector\allowbreak{}Assignment\allowbreak{}Command\allowbreak{}Service resolviendo sector por nombre. & 0.7 & Santi, Fabrizio & Done \\ \hline
+% TS100
+TS100 & Revisión de sector pendiente de confirmación & TK01 & Comando Resolve\allowbreak{}Plot\allowbreak{}Sector\allowbreak{}Command en aplicación & Ejecutar Resolve\allowbreak{}Plot\allowbreak{}Sector\allowbreak{}Command en Plot\allowbreak{}Sector\allowbreak{}Assignment\allowbreak{}Command\allowbreak{}Service aplicando decisión a parcelas coincidentes. & 0.7 & Santi, Fabrizio & Done \\ \hline
+% TS101
+TS101 & Sellado del expediente agronómico de una campaña liquidada & TK01 & Comando Seal\allowbreak{}Agronomic\allowbreak{}Dossier\allowbreak{}Command en aplicación & Ejecutar Seal\allowbreak{}Agronomic\allowbreak{}Dossier\allowbreak{}Command en Seal\allowbreak{}Agronomic\allowbreak{}Dossier\allowbreak{}Command\allowbreak{}Service almacenando documento con huella. & 0.9 & Li, Diana & Done \\ \hline
+% TS102
+TS102 & Consulta de expedientes sellados de una parcela & TK01 & Servicio Sealed\allowbreak{}Dossier\allowbreak{}Query\allowbreak{}Service en aplicación & Implementar Sealed\allowbreak{}Dossier\allowbreak{}Query\allowbreak{}Service ordenando expedientes por campaña. & 0.5 & Li, Diana & Done \\ \hline
+% TS103
+TS103 & Verificación de autenticidad de un expediente & TK01 & Servicio Sealed\allowbreak{}Dossier\allowbreak{}Query\allowbreak{}Service en aplicación & Implementar Sealed\allowbreak{}Dossier\allowbreak{}Query\allowbreak{}Service buscando expediente por huella. & 0.5 & Li, Diana & Done \\ \hline
+% TS104
+TS104 & Consulta de prescripciones de aclareo del productor & TK01 & Consulta Get\allowbreak{}Thinning\allowbreak{}Prescriptions\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Thinning\allowbreak{}Prescriptions\allowbreak{}Query en Get\allowbreak{}Thinning\allowbreak{}Prescription\allowbreak{}Query\allowbreak{}Service leyendo prescripciones de parcelas activas. & 0.5 & Espada, Piero & Done \\ \hline
+% TS105
+TS105 & Consulta de una prescripción de aclareo & TK01 & Comando Evaluate\allowbreak{}Thinning\allowbreak{}Prescription\allowbreak{}Command en aplicación & Ejecutar Evaluate\allowbreak{}Thinning\allowbreak{}Prescription\allowbreak{}Command en Fruit\allowbreak{}Thinning\allowbreak{}Prescription\allowbreak{}Command\allowbreak{}Service verificando titularidad de prescripción. & 0.5 & Espada, Piero & Done \\ \hline
+% TS106
+TS106 & Consulta de la ejecución registrada de un aclareo & TK01 & Consulta Get\allowbreak{}Thinning\allowbreak{}Prescription\allowbreak{}By\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Thinning\allowbreak{}Prescription\allowbreak{}By\allowbreak{}Id\allowbreak{}Query en Get\allowbreak{}Thinning\allowbreak{}Prescription\allowbreak{}Query\allowbreak{}Service leyendo balance de ejecución. & 0.5 & Espada, Piero & Done \\ \hline
+% TS107
+TS107 & Consulta del detalle de socio productor agremiado & TK01 & Consulta Get\allowbreak{}Cooperative\allowbreak{}Member\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en aplicación & Ejecutar Get\allowbreak{}Cooperative\allowbreak{}Member\allowbreak{}By\allowbreak{}Id\allowbreak{}And\allowbreak{}Manager\allowbreak{}Id\allowbreak{}Query en Cooperative\allowbreak{}Member\allowbreak{}Query\allowbreak{}Service verificando socio de licencia. & 0.5 & Santi, Fabrizio & Done \\ \hline
+\end{longtable}
+\end{center}
+
+\clearpage
+
 #### Development Evidence for Sprint Review
 &nbsp;
 
