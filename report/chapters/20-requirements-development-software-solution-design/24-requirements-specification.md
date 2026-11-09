@@ -1084,7 +1084,7 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US30} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP07} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Generación y exportación del expediente agronómico de parcela en formato PDF} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Generación y exportación del expediente agronómico de parcela} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero o Gestor Técnico autorizado, \textbf{quiero} generar y descargar el expediente agronómico en formato PDF correspondiente a una parcela para una campaña determinada, \textbf{para} disponer de un documento técnico descargable que respalde el historial productivo, floración, cuajado, aclareo y telemetría de cara a gestiones financieras, comerciales o de supervisión cooperativa.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
@@ -1432,7 +1432,7 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US43} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP01} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado de perfil de usuario y contacto validado bajo estándar E.164} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado de perfil de usuario y contacto validado} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario nuevo autenticado en Viora (Productor Olivarero o Gestor Técnico), \textbf{quiero} completar mi perfil de usuario ingresando mi nombre completo, país de residencia y número celular de contacto, \textbf{para} personalizar mi cuenta y habilitar los canales de notificación agronómica y operativa del sistema.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
@@ -1792,7 +1792,7 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS02} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Autenticación de usuarios y emisión de tokens JWT con claims de rol} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Autenticación de usuarios y emisión de tokens de acceso con rol} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar las credenciales de acceso a la API, \textbf{para} autenticar al usuario y recibir un token de acceso JWT con sus respectivos claims de autorización.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
@@ -1868,16 +1868,16 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS05} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización parcial de datos de perfil con validación telefónica E.164} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización parcial de datos de perfil con validación telefónica} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar actualizaciones parciales del perfil a la API, \textbf{para} modificar el nombre de contacto o el número de teléfono operativo validado bajo el estándar E.164.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Actualización exitosa}\newline
 \textbf{Given} una solicitud PATCH a \url{/api/v1/profiles/{userId}} con cuerpo JSON que incluye fullName y/o phoneNumber y país.\newline
-\textbf{When} la API valida la propiedad de la cuenta y verifica el nuevo teléfono mediante la biblioteca \texttt{libphonenumber}.\newline
+\textbf{When} la API valida la propiedad de la cuenta y verifica el nuevo teléfono.\newline
 \textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{ProfileResource} con los datos actualizados y persistidos.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Teléfono inválido en actualización}\newline
-\textbf{Given} una solicitud PATCH a \url{/api/v1/profiles/{userId}} con un teléfono que no cumple la norma E.164 según \texttt{libphonenumber}.\newline
+\textbf{Given} una solicitud PATCH a \url{/api/v1/profiles/{userId}} con un teléfono que no cumple la norma E.164.\newline
 \textbf{When} la API valida los campos provistos.\newline
 \textbf{Then} la API responde \texttt{400 Bad Request} sin alterar la información previa.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Permiso denegado sobre cuenta ajena}\newline
@@ -2487,7 +2487,7 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS28} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta y exportación de expediente agronómico definitivo en formato PDF y JSON} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta y exportación del expediente agronómico definitivo} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el expediente agronómico sellado de una parcela mediante GET a \url{/api/v1/plots/{plotId}/agronomic-dossiers/{campaignYear}} con negociación de contenidos (\texttt{Accept: application/pdf} o \texttt{application/json}), \textbf{para} descargar el dossier sellado con hash SHA-256 de una campaña cerrada.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
@@ -2671,17 +2671,17 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS35} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado inicial de perfil de usuario con validación telefónica E.164} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado inicial de perfil de usuario con validación telefónica} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los datos de perfil y contacto (nombre completo, país y número celular) a la API de perfiles junto con el token JWT de autenticación, \textbf{para} completar el registro de perfil vinculado al usuario y validar el teléfono con la biblioteca especializada.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los datos de perfil y contacto (nombre completo, país y número celular) a la API de perfiles junto con el token JWT de autenticación, \textbf{para} completar el registro de perfil vinculado al usuario y validar el teléfono.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Completado exitoso de perfil de usuario}\newline
 \textbf{Given} una solicitud PUT a \url{/api/v1/profiles/{userId}} es recibida con el encabezado \texttt{Authorization: Bearer <JWT>} y un cuerpo JSON que contiene: \texttt{fullName}, \texttt{country} y \texttt{phoneNumber}.\newline
-\textbf{When} la API extrae el identificador del usuario autenticado (\texttt{userId}), procesa el número telefónico mediante la biblioteca \texttt{libphonenumber} verificando su validez para el país provisto y normalizándolo al formato E.164.\newline
+\textbf{When} la API extrae el identificador del usuario autenticado (\texttt{userId}), procesa el número telefónico verificando su validez para el país provisto y normalizándolo al formato E.164.\newline
 \textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{ProfileResource} con id, userId, fullName, country, phoneNumber normalizado y createdAt.\newline
 \textbf{And} persiste el registro de perfil en la base de datos vinculado al usuario.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Número telefónico inválido según la biblioteca de validación}\newline
-\textbf{Given} una solicitud PUT a \url{/api/v1/profiles/{userId}} con un número telefónico que no cumple con el formato o longitud requerida según \texttt{libphonenumber} para el país seleccionado.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Número telefónico inválido}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/profiles/{userId}} con un número telefónico que no cumple con el formato o longitud requerida para el país seleccionado.\newline
 \textbf{When} la API somete el teléfono a validación internacional.\newline
 \textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando la invalidez del número telefónico.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud no autenticada o token inválido}\newline
@@ -3981,7 +3981,7 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 76 & US07 & Activación de membresía corporativa de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
 77 & US08 & Administración de la cartera de socios productores y consulta de cuota corporativa & 3 & Sprint 2 \\ \hline
 78 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & 5 & Sprint 2 \\ \hline
-79 & TS28 & Consulta y exportación de expediente agronómico definitivo en formato PDF y JSON & 5 & Sprint 2 \\ \hline
+79 & TS28 & Consulta y exportación del expediente agronómico definitivo & 5 & Sprint 2 \\ \hline
 80 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & 3 & Sprint 2 \\ \hline
 81 & TS30 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra & 5 & Sprint 2 \\ \hline
 82 & US01 & Registro de cuenta de acceso y credenciales seguras con asignación de rol & 3 & Sprint 2 \\ \hline
@@ -3989,14 +3989,14 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 84 & US03 & Consulta y actualización de datos de perfil y contacto & 2 & Sprint 2 \\ \hline
 85 & US04 & Cambio seguro de contraseña de acceso & 2 & Sprint 2 \\ \hline
 86 & US05 & Recuperación de contraseña olvidada mediante enlace por correo & 3 & Sprint 2 \\ \hline
-87 & US43 & Completado de perfil de usuario y contacto validado bajo estándar E.164 & 3 & Sprint 2 \\ \hline
+87 & US43 & Completado de perfil de usuario y contacto validado & 3 & Sprint 2 \\ \hline
 88 & US42 & Configuración y cambio de idioma de la interfaz en la aplicación móvil & 2 & Sprint 2 \\ \hline
 89 & TS01 & Registro de credenciales de cuenta de usuario y asignación de rol en IAM & 3 & Sprint 2 \\ \hline
-90 & TS02 & Autenticación de usuarios y emisión de tokens JWT con claims de rol & 3 & Sprint 2 \\ \hline
+90 & TS02 & Autenticación de usuarios y emisión de tokens de acceso con rol & 3 & Sprint 2 \\ \hline
 91 & TS03 & Renovación periódica de tokens de sesión mediante Refresh Token & 2 & Sprint 2 \\ \hline
 92 & TS04 & Consulta de información de perfil del usuario autenticado & 2 & Sprint 2 \\ \hline
-93 & TS05 & Actualización parcial de datos de perfil con validación telefónica E.164 & 2 & Sprint 2 \\ \hline
-94 & TS35 & Completado inicial de perfil de usuario con validación telefónica E.164 & 3 & Sprint 2 \\ \hline
+93 & TS05 & Actualización parcial de datos de perfil con validación telefónica & 2 & Sprint 2 \\ \hline
+94 & TS35 & Completado inicial de perfil de usuario con validación telefónica & 3 & Sprint 2 \\ \hline
 95 & TS36 & Actualización de contraseña para sesión de usuario autenticado & 2 & Sprint 2 \\ \hline
 96 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 2 \\ \hline
 97 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 2 \\ \hline
@@ -4019,7 +4019,7 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 114 & TS65 & Consulta agregada de distribución varietal y aptitud comercial de cosecha proyectada por sector & 3 & Sprint 2 \\ \hline
 115 & US32 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa & 5 & Sprint 2 \\ \hline
 116 & TS63 & Generación de instantánea documental y metadatos de expediente agronómico provisional en campaña activa & 3 & Sprint 2 \\ \hline
-117 & US30 & Generación y exportación del expediente agronómico de parcela en formato PDF & 5 & Sprint 2 \\ \hline
+117 & US30 & Generación y exportación del expediente agronómico de parcela & 5 & Sprint 2 \\ \hline
 118 & SPK04 & Investigación de Spring AI para respuestas validadas y de persistencia y tareas en segundo plano en Android & 3 & Sprint 2 \\ \hline
 119 & TS66 & Consulta del catálogo de preguntas por contexto de consulta & 3 & Sprint 2 \\ \hline
 120 & US50 & Consulta de preguntas disponibles según el contexto agronómico & 3 & Sprint 2 \\ \hline
