@@ -2100,3 +2100,27 @@ La \autoref{fig:mobile-prototyping-panoramic} presenta la vista panorámica del 
 \includegraphics[width=0.88\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-panoramic-screenshot.png}
 \caption*{\textit{Nota.} Puntos de inicio de flujo de ambas aplicaciones y reproducción del splash del prototipo. Elaboración propia.}
 \end{figure}
+
+A continuación se presenta el registro visual y el acceso al recurso audiovisual del prototipo de alta fidelidad:
+
+- Enlace del video demostrativo: [https://tinyurl.com/f5k5mzyw](https://tinyurl.com/f5k5mzyw)
+
+Como se ilustra en la \autoref{fig:mobile-prototyping}, la pantalla de Inicio del productor (panel a) se ejecuta en un dispositivo móvil y muestra el calendario semanal de la Campaña 2026, la tarjeta de cuenta regresiva hacia el aclareo del cuartel seleccionado, el resumen del día y el acceso al asistente Viora; mientras que la vista panorámica (panel b) exhibe la reproducción del video demostrativo sobre Figma, junto con el conjunto de pantallas conectadas de la App Productor (Kotlin) y la App Gestor (Flutter), organizadas por flujos.
+
+\begin{figure}[H]
+\caption{Prototipo Mobile: Pantalla de Inicio en Dispositivo y Vista Panorámica de Flujos en Figma.}
+\label{fig:mobile-prototyping}
+\centering
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-home-screenshot2.jpg}
+\caption*{(a) Pantalla de Inicio del productor ejecutada en dispositivo móvil.}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-panoramic-screenshot2.png}
+\caption*{(b) Reproducción del prototipo y vista panorámica de flujos en Figma.}
+\end{minipage}
+\caption*{\textit{Nota.} Prototipo interactivo en ejecución y panel de flujos de las aplicaciones Productor y Gestor en Figma. Elaboración propia.}
+\end{figure}
