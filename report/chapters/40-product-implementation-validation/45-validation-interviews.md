@@ -12,10 +12,12 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 **Objetivo:** Determinar si el productor comprende que Viora es un asistente digital agronómico especializado en mitigar la vecería del olivo, evaluar su experiencia interactuando con la aplicación móvil Android en sus principales flujos operativos (creación de cuenta y registro, dashboard de inicio, gestión de lotes, diagnóstico de vecería y frío invernal, prescripción de aclareo y registro de muestreo de campo en bitácora), y ponderar la percepción de valor frente al modelo de suscripción mensual por hectárea.
 
 \noindent \textbf{Artefactos evaluados:}
+
 *   **Landing Page Web:** Escaparate informativo, propuesta de valor, explicación del ciclo de alternancia y tarifas del Plan Productor.
 *   **Aplicación Móvil Android (Experiencia del Productor):** Aplicación nativa desarrollada en Kotlin y Jetpack Compose (Material 3), evaluada en dispositivos móviles de los participantes y distribuida vía Firebase App Distribution.
 
 \noindent \textbf{User Flows de la Aplicación Móvil Android incluidos en la sesión:}
+
 *   **UF-F01 (Crear mi cuenta y entrar por primera vez):** Registro guiado inicial, captura de datos de contacto (nombre y celular), validación de código de cooperativa o ingreso de superficie (ha), creación de credenciales y confirmación de cuenta.
 *   **UF-F05 (Saber qué hacer hoy en mi olivar):** Pantalla de Inicio / Dashboard, resumen contextual del lote, monitoreo meteorológico y alertas fenológicas del cultivo.
 *   **UF-F06 / UF-F07 (Registrar un lote y mantener mis lotes al día):** Registro y delimitación de parcela, caracterización agronómica por variedad (Criolla, Sevillana, etc.), marco de plantación y consulta del inventario de predios.
@@ -48,35 +50,42 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 \vspace{0.15cm}
 
 *Interacción general y navegación:*
+
 *   Al abrir la aplicación en el teléfono, ¿la barra de navegación inferior de 4 destinos (Inicio, Lotes, Plan, Bitácora) le resulta intuitiva para desplazarse entre secciones?
 *   ¿Los iconos, colores y tamaños de letra le resultan legibles bajo condiciones de iluminación habituales de campo o al aire libre?
 *   ¿Identifica con facilidad en qué pantalla o sección de la aplicación se encuentra en cada momento?
 
 *UF-F01: Registro y bienvenida (Crear mi cuenta y entrar por primera vez):*
+
 *   Al realizar el proceso de bienvenida y registro inicial, ¿el paso a paso guiado (ingreso de nombre, celular y código de cooperativa o hectáreas) le resultó claro y fluido?
 *   En caso de ingresar sin código de cooperativa, ¿la estimación automática de la cuota según las hectáreas de su predio le pareció comprensible y transparente?
 *   Al crear su contraseña y verificar su cuenta, ¿los mensajes de ayuda y validación le permitieron acceder sin generar dudas o fricciones?
 
 *UF-F05: Dashboard y alertas agronómicas (Saber qué hacer hoy en mi olivar):*
+
 *   Al ingresar a la pantalla de Inicio, ¿el resumen de sus parcelas y el estado del tiempo le transmiten una visión clara del estado diario de su cultivo?
 *   ¿La alerta visual de acumulación de frío y estado fenológico le ayuda a identificar rápidamente si el olivar requiere una intervención urgente?
 *   ¿La organización de las tarjetas de información le permite identificar de un vistazo las prioridades y tareas del día en su olivar?
 
 *UF-F06 / UF-F07: Inventario y registro de parcelas (Registrar un lote y mantener mis lotes al día):*
+
 *   Al acceder a la sección de Lotes, ¿le resulta fácil encontrar y diferenciar sus parcelas según la denominación y la variedad de olivo (Criolla, Sevillana u otras)?
 *   Al registrar o revisar los datos de una parcela, ¿los campos de delimitación territorial y marco de plantación le parecen adecuados a la realidad de su predio?
 *   ¿Considera que tener organizadas las parcelas en esta lista facilita el seguimiento agronómico individualizado por sector?
 
 *UF-F10 / UF-F11: Diagnóstico de vecería y frío invernal (Conocer la vecería y seguir el frío invernal):*
+
 *   Al abrir el detalle agronómico de una parcela, ¿la gráfica o métrica del índice de alternancia (BBI) y las horas de frío acumuladas se entienden sin requerir asistencia técnica?
 *   ¿Considera que la información del expediente del lote le ayuda a llevar un historial más ordenado de sus campañas pasadas?
 
 *UF-F13: Prescripción de aclareo y ventana fenológica (Aclarear a tiempo):*
+
 *   En la sección de Plan, ¿la recomendación de aclareo (porcentaje de fruta a retirar) le parece comprensible y orientada a su labor práctica?
 *   ¿La visualización de la fecha límite o ventana de intervención fenológica le resulta clara para planificar la labor antes del endurecimiento del hueso de la aceituna?
 *   Al consultar el plan, ¿siente que la aplicación fundamenta adecuadamente por qué se sugiere dicha intensidad de aclareo para evitar el año en blanco (*off*)?
 
 *UF-F12: Registro de muestreo en campo (Muestreo de cuajado a pie de árbol):*
+
 *   Al iniciar una toma de datos desde el botón flotante (FAB) en la Bitácora, ¿el formulario guiado para registrar el conteo de brotes y frutos a pie de árbol le pareció ágil y fácil de completar?
 *   ¿Considera que el ingreso numérico de frutos y racimos en pantalla es cómodo para registrar mediciones directamente en el predio?
 *   Al finalizar el conteo, ¿el resumen de la muestra registrada le resulta claro y suficiente para verificar que no hubo errores en la toma de datos?
@@ -84,12 +93,14 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 \noindent \textbf{4. Preguntas de cierre y evaluación de valor}
 
 *Cierre y evaluación de la Landing Page:*
+
 *   En una escala del 1 al 5, ¿qué tan útil considera la propuesta de Viora presentada en el sitio web para la gestión del olivo?
 *   ¿Considera que contar con estimaciones de carga y recomendaciones de intervención le permitiría tomar decisiones con mayor anticipación?
 *   Frente a la posibilidad de reducir las pérdidas de una campaña baja, ¿considera razonable el modelo de acceso propuesto en el portal?
 *   ¿Tiene algún comentario o sugerencia para mejorar la información o presentación del sitio web?
 
 *Cierre y evaluación de la Aplicación Móvil Android:*
+
 *   En una escala del 1 al 5, ¿qué tan útil considera la aplicación móvil Android para la gestión cotidiana de su olivar y la toma de decisiones agronómicas?
 *   ¿Considera que la aplicación móvil le permitiría tomar decisiones de aclareo y manejo con mayor rapidez y precisión que su método tradicional de cálculo?
 *   Considerando que la aplicación le brinda asistencia técnica personalizada y directa en la palma de su mano, ¿considera justificada la suscripción mensual de S/ 55 por hectárea?
