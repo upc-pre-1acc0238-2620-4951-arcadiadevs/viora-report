@@ -1057,9 +1057,9 @@ Como se observa en la \autoref{fig:wf-gest-18}, el gestor técnico reutiliza la 
 
 #### Mobile Applications Wireflow Diagrams
 
-Un wireflow combina las pantallas de la aplicación con el flujo de acciones que lleva de una a otra. Su propósito es mostrar cómo una persona de usuario alcanza una meta concreta, qué información ve y entrega en cada paso y qué hace el sistema con ella. Esta sección presenta un wireflow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance. El alcance es el de los 17 flujos centrales del catálogo del equipo (F01 a F17) para las dos personas de Viora: Teodoro Mamani, productor olivarero que usa la App Productor (Kotlin), y Rubén Ticona, gestor técnico que usa la App Gestor (Flutter). Los flujos F01, F02 y F03 (crear la cuenta, iniciar sesión y mantener la cuenta al día) existen para ambas personas, de modo que el conjunto suma 20 wireflows. Cada uno incluye una meta de usuario redactada en primera persona y una explicación del flujo representado.
+Un wireflow combina las pantallas de la aplicación con el flujo de acciones que lleva de una a otra. Su propósito es mostrar cómo una persona de usuario alcanza una meta concreta, qué información ve y entrega en cada paso y qué hace el sistema con ella. Esta sección presenta un wireflow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance. El alcance es el de los 19 flujos centrales del catálogo del equipo (F01 a F19) para las dos personas de Viora: Teodoro Mamani, productor olivarero que usa la App Productor (Kotlin), y Rubén Ticona, gestor técnico que usa la App Gestor (Flutter). Los flujos F01, F02 y F03 (crear la cuenta, iniciar sesión y mantener la cuenta al día) existen para ambas personas, de modo que el conjunto suma 22 wireflows. Cada uno incluye una meta de usuario redactada en primera persona y una explicación del flujo representado.
 
-Las pantallas provienen del prototipo de alta fidelidad en Figma y se organizaron y anotaron en Lucidchart. Cada wireflow representa únicamente la ruta esperada (*happy path*): las rutas alternativas y los casos de error se tratan en la sección Mobile Applications User Flow Diagrams. Según el enunciado, todo cambio de estado de una pantalla se dibuja como un paso adicional con su nuevo estado. Por ello un mismo código de pantalla puede aparecer más de una vez en un wireflow; por ejemplo, la ronda de muestreo P52 se muestra primero "Sin conexión" y después con "Muestra suficiente". Los 20 wireflows pueden consultarse en su versión editable en la carpeta «Viora · Mobile Wireflows» de Lucidchart (<https://lucid.app/folder/invitations/accept?invitationId=inv_fdf3ec56-200e-409b-b85f-5223df6799c2>), con un documento por wireflow.
+Las pantallas provienen del prototipo de alta fidelidad en Figma y se organizaron y anotaron en Lucidchart. Cada wireflow representa únicamente la ruta esperada (*happy path*): las rutas alternativas y los casos de error se tratan en la sección Mobile Applications User Flow Diagrams. Según el enunciado, todo cambio de estado de una pantalla se dibuja como un paso adicional con su nuevo estado. Por ello un mismo código de pantalla puede aparecer más de una vez en un wireflow; por ejemplo, la ronda de muestreo P52 se muestra primero "Sin conexión" y después con "Muestra suficiente". Los 22 wireflows pueden consultarse en su versión editable en la carpeta «Viora · Mobile Wireflows» de Lucidchart (<https://lucid.app/folder/invitations/accept?invitationId=inv_fdf3ec56-200e-409b-b85f-5223df6799c2>), con un documento por wireflow.
 
 La notación es la misma en todos los diagramas. Cada paso se rotula con "PASO n" seguido del código y el nombre de la pantalla. Las cajas verdes describen la acción del usuario que lleva al paso siguiente. El rombo amarillo marca un punto de decisión, y la caja amarilla con borde punteado indica un evento del sistema o una nota pendiente. La caja con borde amarillo sólido al final del recorrido señala la meta cumplida. Las pantallas en gris desaturado son pantallas reutilizadas de otra aplicación o persona. Cuando un wireflow tiene más de una ruta válida, los pasos de cada ruta llevan un sufijo de letra (1B, 2A, 3B) y los rótulos de la rama indican la condición que los separa.
 
@@ -1073,7 +1073,7 @@ Los wireflows recorren únicamente destinos declarados en Navigation Systems: lo
 | WF-F02 | Iniciar sesión y recuperar mi acceso (gestor) | Rubén, App Gestor | US02, US05 |
 | WF-F03 | Mantener mi cuenta al día (productor) | Teodoro, App Productor | US03, US04, US42 |
 | WF-F03 | Mantener mi cuenta al día (gestor) | Rubén, App Gestor | US03, US04, US42 |
-| WF-F04 | Activar mi acceso con pago o código | Teodoro, App Productor | US06, US07 |
+| WF-F04 | Activar mi acceso con pago o código | Teodoro, App Productor | US06, US07, US45 |
 | WF-F05 | Saber qué hacer hoy en mi olivar | Teodoro, App Productor | US18 |
 | WF-F06 | Registrar un lote | Teodoro, App Productor | US09 |
 | WF-F07 | Mantener mis lotes al día | Teodoro, App Productor | US10, US11 |
@@ -1087,6 +1087,8 @@ Los wireflows recorren únicamente destinos declarados en Navigation Systems: lo
 | WF-F15 | Priorizar mis visitas de campo | Rubén, App Gestor | US12, US30, US31 |
 | WF-F16 | Proyectar el acopio de la campaña | Rubén, App Gestor | US32 |
 | WF-F17 | Administrar socios y códigos | Rubén, App Gestor | US08 |
+| WF-F18 | Dejar de compartir con mi cooperativa | Teodoro, App Productor | US46 |
+| WF-F19 | Indicar el sector de mi lote | Teodoro, App Productor | US47 |
 
 **WF-F01 · Crear mi cuenta y entrar por primera vez (productor).** Meta de usuario: «Quiero crear mi cuenta con mi rol para entrar a Viora con las herramientas que me corresponden.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US01 y US43. Como se observa en la \autoref{fig:wf-f01-teodoro}, el recorrido va de la pantalla inicial a la verificación del correo, con una decisión sobre el código de cooperativa.
 
@@ -1154,7 +1156,7 @@ Desde Inicio (P10), Teodoro toca su avatar y abre Mi cuenta (P95), que agrupa da
 
 El recorrido comienza en Inicio (G10). Rubén toca su avatar, abre Mi cuenta (P95), actualiza su celular en Datos personales (P96), cambia su contraseña (P97) y cambia el idioma a English mediante la hoja P98. En cada cambio, el sistema valida los datos escritos y los guarda; tras el cambio de idioma, P95 se muestra en inglés con el mismo contenido. Las pantallas P95 a P98 se reutilizan del productor y por eso aparecen desaturadas. La meta se cumple porque sus datos, su clave y su idioma quedan actualizados sin cerrar sesión.
 
-**WF-F04 · Activar mi acceso con pago o código.** Meta de usuario: «Quiero habilitar Viora pagando mi plan o con el código que me dio mi cooperativa.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US06 y US07. En la \autoref{fig:wf-f04}, el rombo de decisión separa las dos rutas de activación: el pago con Mercado Pago (pasos 2A y 3A) y el canje de código de cooperativa (pasos 2B a 4B). Ambas llegan al mismo Inicio.
+**WF-F04 · Activar mi acceso con pago o código.** Meta de usuario: «Quiero habilitar Viora pagando mi plan o con el código que me dio mi cooperativa.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a las historias US06, US07 y US45. En la \autoref{fig:wf-f04}, el rombo de decisión separa las dos rutas de activación: el pago con Mercado Pago (pasos 2A y 3A) y el canje de código de cooperativa con aceptación (pasos 2B a 5B). Ambas llegan al mismo Inicio.
 
 \begin{figure}[H]
 \caption{Wireflow WF-F04: activar mi acceso con pago o código.} \label{fig:wf-f04}
@@ -1163,7 +1165,7 @@ El recorrido comienza en Inicio (G10). Rubén toca su avatar, abre Mi cuenta (P9
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
-Teodoro parte de Plan Productor (P02), donde ve sus hectáreas (12 ha), el total anual (S/ 7,920) y su equivalente mensual. El diagrama pregunta si tiene código de cooperativa. Si no lo tiene, toca «Pagar con Mercado Pago» y paga en Checkout Pro. La pantalla P04 muestra primero «Confirmando tu pago…»; cuando Mercado Pago confirma el pago al servidor, cambia a «Bienvenido a Viora», con el plan, la vigencia y el envío del comprobante a su correo. Esto concuerda con Navigation Systems: la aplicación no muestra la suscripción como activada hasta que el servidor valida el pago. Si tiene código, toca «Tengo un código de cooperativa», escribe el código en P05 y toca «Canjear código». La pantalla pasa al estado «Validando tu código…» y, cuando la cooperativa confirma que el código está vigente, P06 informa «Tu cooperativa cubre tu plan», con la cooperativa, el cupo cubierto y la vigencia. En ambas rutas, Teodoro toca «Ir al inicio» y llega a Inicio sin lotes (P10), que lo invita a dibujar su primer lote en el mapa. La meta se cumple porque el acceso queda activo, ya sea por pago o por código, y Teodoro puede registrar su primer lote.
+Teodoro parte de Plan Productor (P02), donde ve sus hectáreas (12 ha), el total anual (S/ 7,920) y su equivalente mensual. El diagrama pregunta si tiene código de cooperativa. Si no lo tiene, toca «Pagar con Mercado Pago» y paga en Checkout Pro. La pantalla P04 muestra primero «Confirmando tu pago…»; cuando Mercado Pago confirma el pago al servidor, cambia a «Bienvenido a Viora», con el plan, la vigencia y el envío del comprobante a su correo. Esto concuerda con Navigation Systems: la aplicación no muestra la suscripción como activada hasta que el servidor valida el pago. Si tiene código, toca «Tengo un código de cooperativa», escribe el código en P05 y toca «Canjear código». La pantalla pasa al estado «Validando tu código…» y, cuando la cooperativa confirma que el código está vigente, el flujo no activa el plan de inmediato: abre P07 · Compartir con tu cooperativa, que explica qué verá la cooperativa (sus lotes, el sector de cada lote y las alertas de riesgo) y qué no (pagos y datos de cuenta). Solo cuando Teodoro toca «Aceptar y activar», el sistema registra su aceptación y P06 informa «Tu cooperativa cubre tu plan», con la cooperativa, el cupo cubierto y la vigencia. En ambas rutas, Teodoro toca «Ir al inicio» y llega a Inicio sin lotes (P10), que lo invita a dibujar su primer lote en el mapa. La meta se cumple porque el acceso queda activo, ya sea por pago o por código con aceptación, y Teodoro puede registrar su primer lote.
 
 **WF-F05 · Saber qué hacer hoy en mi olivar.** Meta de usuario: «Al abrir la app quiero ver de un vistazo cómo están mis lotes y qué es lo urgente de la temporada.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a la historia US18, cuyos resúmenes provienen de US17, US19 y US27. La \autoref{fig:wf-f05} muestra un recorrido lineal de tres pantallas, que va del resumen de Inicio al detalle de una alerta crítica.
 
@@ -1307,6 +1309,28 @@ Desde Inicio (G10), Rubén toca la tarjeta «Acopio» y abre la pantalla Acopio 
 \end{figure}
 
 Desde Inicio (G10), Rubén toca la tarjeta «48 / 60 plazas» y abre Socios (G40), donde ve el cupo de la licencia (48 de 60 plazas, con 12 libres), los códigos por canjear, las hectáreas contratadas y el padrón de socios con su estado. Revisa el padrón y el cupo, y toca «Códigos por canjear» para llegar a Códigos (G42), que agrupa los códigos por estado (por canjear, canjeados y vencidos). Toca «Generar códigos» y en la hoja G43 define la cantidad (5) y la vigencia (7, 15 o 30 días); la hoja anticipa cómo cambiará el cupo (de 48 a 53 de 60 plazas). Al tocar «Generar 5 códigos», el sistema crea los códigos y G44 los muestra listos para copiar o compartir por WhatsApp. La meta se cumple porque Rubén conoce su padrón y su cupo, y tiene los códigos listos para entregar a los socios nuevos.
+
+**WF-F18 · Dejar de compartir con mi cooperativa.** Meta de usuario: «Quiero dejar de compartir mis lotes con mi cooperativa cuando ya no quiero que los vea.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a la historia US46. Como se observa en la \autoref{fig:wf-f18}, el recorrido va del destino Plan a la confirmación de que ya no comparte.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F18: dejar de compartir con mi cooperativa.} \label{fig:wf-f18}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f18.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Teodoro entra al destino Plan (P02, con la membresía activa), que muestra «Tu cooperativa cubre tu plan» y el estado «Compartiendo con Coop. Olivarera La Yarada». Esto es coherente con Navigation Systems: la acción vive en Plan y no abre una quinta pestaña. Toca «Dejar de compartir» y se abre la hoja P08, que le explica las consecuencias: la cooperativa dejará de ver sus lotes y alertas, y los datos que ya registró siguen siendo suyos. Toca «Dejar de compartir» para confirmar; el sistema retira el acceso de la cooperativa y P09 muestra «Ya no compartes con tu cooperativa», con la fecha del cambio. La meta se cumple porque la cooperativa deja de ver los lotes de Teodoro y él conserva su información.
+
+**WF-F19 · Indicar el sector de mi lote.** Meta de usuario: «Quiero indicar en qué sector está mi lote para que mi cooperativa lo ubique en su mapa de riesgo.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y a la historia US47. Como se observa en la \autoref{fig:wf-f19}, el recorrido va del detalle del lote a la confirmación del sector.
+
+\begin{figure}[H]
+\caption{Wireflow WF-F19: indicar el sector de mi lote.} \label{fig:wf-f19}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f19.png}
+\caption*{\textit{Nota.} Elaboración propia.}
+\end{figure}
+
+Desde Lotes, Teodoro abre el detalle de su lote y ve que el campo «Sector» dice «Sin sector». Toca «Elegir sector» y se abre la hoja P11, donde el sistema propone el sector que corresponde al contorno del lote (La Yarada) y lista los demás sectores del valle en orden alfabético, según Organization Systems. Teodoro toca «Guardar sector»; el sistema lo guarda y el detalle del lote se muestra de nuevo con el sector «La Yarada». La meta se cumple porque el lote queda asignado a un sector y la cooperativa, si Teodoro comparte con ella, lo ubica en su riesgo territorial (WF-F15).
 
 #### Mobile Applications Mock-ups
 &nbsp;
@@ -1577,7 +1601,7 @@ Tal como se ilustra en la \autoref{fig:mu-gest-18}, el panel de cuenta del gesto
 
 #### Mobile Applications User Flow Diagrams
 
-Un user flow representa el recorrido completo que sigue una persona de usuario para alcanzar una meta, con las pantallas reales de la aplicación, la ruta esperada (*happy path*) y las rutas alternativas (*unhappy paths*) que se activan cuando una condición no se cumple. Esta sección presenta un user flow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance. Cada user flow se deriva del wireflow homónimo de la sección anterior (UF-F01 de WF-F01, y así sucesivamente) y conserva su ruta esperada, de modo que ambos conjuntos son consistentes: los 17 flujos centrales del catálogo (F01 a F17) para Teodoro Mamani, productor olivarero que usa la App Productor (Kotlin), y Rubén Ticona, gestor técnico que usa la App Gestor (Flutter). Como F01, F02 y F03 existen para ambas personas, el conjunto suma 20 user flows.
+Un user flow representa el recorrido completo que sigue una persona de usuario para alcanzar una meta, con las pantallas reales de la aplicación, la ruta esperada (*happy path*) y las rutas alternativas (*unhappy paths*) que se activan cuando una condición no se cumple. Esta sección presenta un user flow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance. Cada user flow se deriva del wireflow homónimo de la sección anterior (UF-F01 de WF-F01, y así sucesivamente) y conserva su ruta esperada, de modo que ambos conjuntos son consistentes: los 19 flujos centrales del catálogo (F01 a F19) para Teodoro Mamani, productor olivarero que usa la App Productor (Kotlin), y Rubén Ticona, gestor técnico que usa la App Gestor (Flutter). Como F01, F02 y F03 existen para ambas personas, el conjunto suma 20 user flows.
 
 A diferencia de los wireflows, que se dibujan con wireframes en escala de grises y solo con la ruta esperada, los user flows incorporan los mock-ups de alta fidelidad de Figma y agregan las rutas alternativas. Estas rutas provienen de las variantes y validaciones de cada lámina de mock-ups. Por eso este conjunto cubre también las historias que los wireflows dejaron explícitamente para esta sección: la desvinculación de un nodo (US16, en UF-F08) y la corrección o eliminación de una campaña histórica (US21, en UF-F10).
 
@@ -1593,7 +1617,7 @@ La siguiente tabla resume el conjunto, con el número de rutas alternativas que 
 | UF-F02 | Iniciar sesión y recuperar mi acceso (gestor) | Rubén, App Gestor | US02, US05 | 3 |
 | UF-F03 | Mantener mi cuenta al día (productor) | Teodoro, App Productor | US03, US04, US42 | 4 |
 | UF-F03 | Mantener mi cuenta al día (gestor) | Rubén, App Gestor | US03, US04, US42 | 4 |
-| UF-F04 | Activar mi acceso con pago o código | Teodoro, App Productor | US06, US07 | 2 |
+| UF-F04 | Activar mi acceso con pago o código | Teodoro, App Productor | US06, US07, US45 | 3 |
 | UF-F05 | Saber qué hacer hoy en mi olivar | Teodoro, App Productor | US18 (resúmenes de US17, US19, US27) | 8 |
 | UF-F06 | Registrar un lote | Teodoro, App Productor | US09 | 5 |
 | UF-F07 | Mantener mis lotes al día | Teodoro, App Productor | US10, US11 | 1 |
@@ -1607,6 +1631,8 @@ La siguiente tabla resume el conjunto, con el número de rutas alternativas que 
 | UF-F15 | Priorizar mis visitas de campo | Rubén, App Gestor | US12, US30, US31 | 4 |
 | UF-F16 | Proyectar el acopio de la campaña | Rubén, App Gestor | US32 | 3 |
 | UF-F17 | Administrar socios y códigos | Rubén, App Gestor | US08 | 4 |
+| UF-F18 | Dejar de compartir con mi cooperativa | Teodoro, App Productor | US46 | 2 |
+| UF-F19 | Indicar el sector de mi lote | Teodoro, App Productor | US47 | 2 |
 | **Total** | | | | **69** |
 
 **UF-F01 · Crear mi cuenta y entrar por primera vez (productor).** Meta de usuario: «Quiero crear mi cuenta con mi rol para entrar a Viora con las herramientas que me corresponden.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y cubre las historias US01 y US43. Como se observa en la \autoref{fig:uf-f01-teodoro}, la ruta esperada coincide con la de WF-F01 y recorre las pantallas T01 Splash, T02 Bienvenida, T02b Tu nombre, T02b2 Tu celular, T02c Código de cooperativa, T02d Hectáreas (solo si no tiene código), T02e Alertas, T02f Resumen, T04 Crear cuenta y T04a Verifica tu correo. Cierra con la meta cumplida: cuenta creada y verificada; el flujo continúa en UF-F04 para activar su acceso. El diagrama dibuja 4 rutas alternativas. Además, la decisión «¿Tiene código de cooperativa?» bifurca la ruta esperada: con código el usuario salta el PASO 7 (hectáreas) y sin código lo recorre.
@@ -1704,7 +1730,7 @@ Las rutas alternativas del diagrama son las siguientes:
 - **P97 · Cambiar contraseña / Actual incorrecta.** Se activa cuando la contraseña actual no es correcta. Resultado: corrige la contraseña actual y retoma el PASO 5.
 - **P97 · Cambiar contraseña / No cumple.** Se activa cuando la nueva contraseña es igual a la actual o no cumple las reglas. Resultado: escribe una contraseña válida y retoma el PASO 5.
 
-**UF-F04 · Activar mi acceso con pago o código.** Meta de usuario: «Quiero habilitar Viora pagando mi plan o con el código que me dio mi cooperativa.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y cubre las historias US06 y US07. Como se observa en la \autoref{fig:uf-f04}, la ruta esperada coincide con la de WF-F04 y recorre las pantallas P02 Plan Productor y, según la decisión «¿Tiene código de cooperativa?», la rama de pago (PASO 2A P04 Verificando, PASO 3A P04 Aprobado) o la rama de código (PASO 2B P05 Canjear código, PASO 3B P05 Validando, PASO 4B P06 Membresía activada), que confluyen en el PASO FINAL P10 Inicio sin lotes. Cierra con la meta cumplida: el acceso quedó activo y Teodoro entra a su Inicio para registrar su primer lote. El diagrama dibuja 2 rutas alternativas. Este flujo es el único del catálogo con dos ramas esperadas, una por cada forma de activar el acceso, y por eso usa la numeración 2A/3A y 2B/3B/4B.
+**UF-F04 · Activar mi acceso con pago o código.** Meta de usuario: «Quiero habilitar Viora pagando mi plan o con el código que me dio mi cooperativa.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y cubre las historias US06, US07 y US45. Como se observa en la \autoref{fig:uf-f04}, la ruta esperada coincide con la de WF-F04 y recorre las pantallas P02 Plan Productor y, según la decisión «¿Tiene código de cooperativa?», la rama de pago (PASO 2A P04 Verificando, PASO 3A P04 Aprobado) o la rama de código con aceptación (PASO 2B P05 Canjear código, PASO 3B P05 Validando, PASO 4B P07 Compartir con tu cooperativa, PASO 5B P06 Membresía activada), que confluyen en el PASO FINAL P10 Inicio sin lotes. Cierra con la meta cumplida: el acceso quedó activo y Teodoro entra a su Inicio para registrar su primer lote. El diagrama dibuja 3 rutas alternativas. Este flujo es el único del catálogo con dos ramas esperadas, una por cada forma de activar el acceso, y por eso usa la numeración 2A/3A y 2B/3B/4B/5B.
 
 \begin{figure}[H]
 \caption{User flow UF-F04: activar mi acceso con pago o código.} \label{fig:uf-f04}
@@ -1717,6 +1743,7 @@ Las rutas alternativas del diagrama son las siguientes:
 
 - **P04 · Resultado del pago / Rechazado.** Se activa cuando Mercado Pago no confirma el pago. Resultado: toca «Intentar con otro medio» y retoma el pago en el PASO 2A.
 - **P05 · Canjear código / Código no válido.** Se activa cuando el código está vencido o ya fue canjeado. Resultado: toca «Probar otro código» y retoma el PASO 3B.
+- **P07 · Compartir con tu cooperativa / No acepta.** Se activa cuando Teodoro toca «No aceptar». Resultado: el código no se canjea y no queda ningún dato compartido; vuelve a Plan Productor (PASO 1), donde puede pagar su plan o intentar de nuevo con el código.
 
 **UF-F05 · Saber qué hacer hoy en mi olivar.** Meta de usuario: «Al abrir la app quiero ver de un vistazo cómo están mis lotes y qué es lo urgente de la temporada.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y cubre las historias US18, con resúmenes de US17, US19 y US27. Como se observa en la \autoref{fig:uf-f05}, la ruta esperada coincide con la de WF-F05 y recorre las pantallas P10 Inicio, T14 Centro de alertas y T15 Detalle de alerta. Cierra con la meta cumplida: sabe qué atender hoy y en qué lote. El diagrama dibuja 8 rutas alternativas. El diagrama incluye una nota que aclara que las cuatro pantallas P61 pertenecen al carril de F13 · Aclarear a tiempo (respaldo en US27 esc. 2 y 3 y US26 esc. 3) y se muestran aquí porque P10 resume la prescripción de US27.
 
@@ -1917,6 +1944,34 @@ Las rutas alternativas del diagrama son las siguientes:
 - **G42 · Revocar código (diálogo).** Se activa cuando decide revocar un código por canjear en lugar de generar nuevos. Resultado: confirma «Revocar código» y el sistema evalúa si sigue sin canjear.
 - **G42 · Códigos / Código revocado.** Se activa cuando el código seguía sin canjear. Resultado: el código sale de la lista y la plaza vuelve a la membresía; la ruta termina ahí.
 - **G42 · Código ya canjeado (409).** Se activa cuando el código ya fue canjeado por el socio. Resultado: toca «Entendido» y regresa al PASO 3.
+
+**UF-F18 · Dejar de compartir con mi cooperativa.** Meta de usuario: «Quiero dejar de compartir mis lotes con mi cooperativa cuando ya no quiero que los vea.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y cubre la historia US46. Como se observa en la \autoref{fig:uf-f18}, la ruta esperada coincide con la de WF-F18 y recorre las pantallas P02 Plan Productor, P08 Confirmar (hoja) y P09 Ya no compartes. Cierra con la meta cumplida: la cooperativa ya no ve los lotes de Teodoro. El diagrama dibuja 2 rutas alternativas.
+
+\begin{figure}[H]
+\caption{User flow UF-F18: dejar de compartir con mi cooperativa.} \label{fig:uf-f18}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f18.png}
+\caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas del diagrama son las siguientes:
+
+- **P08 · Confirmar / Cancela.** Se activa cuando Teodoro toca «Cancelar» o cierra la hoja. Resultado: no cambia nada y vuelve a Plan, PASO 1.
+- **P08 · Confirmar / Sin conexión.** Se activa cuando no hay conexión al confirmar. Resultado: la aplicación indica que necesita internet para dejar de compartir y retoma el PASO 2 al recuperar la conexión.
+
+**UF-F19 · Indicar el sector de mi lote.** Meta de usuario: «Quiero indicar en qué sector está mi lote para que mi cooperativa lo ubique en su mapa de riesgo.» Corresponde a Teodoro Mamani en la App Productor (Kotlin) y cubre la historia US47. Como se observa en la \autoref{fig:uf-f19}, la ruta esperada coincide con la de WF-F19 y recorre el detalle del lote sin sector, la hoja P11 Elegir sector y el detalle del lote con sector. Cierra con la meta cumplida: el lote tiene sector asignado. El diagrama dibuja 2 rutas alternativas.
+
+\begin{figure}[H]
+\caption{User flow UF-F19: indicar el sector de mi lote.} \label{fig:uf-f19}
+\centering
+\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f19.png}
+\caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
+\end{figure}
+
+Las rutas alternativas del diagrama son las siguientes:
+
+- **P11 · Elegir sector / Sin sugerencia.** Se activa cuando el contorno del lote no coincide con ningún sector conocido. Resultado: elige el sector manualmente de la lista y retoma el PASO 2.
+- **P11 · Elegir sector / Sin conexión.** Se activa cuando no hay conexión al guardar. Resultado: el sector queda guardado en el teléfono y se sincroniza al recuperar la conexión; el detalle del lote muestra «Pendiente de sincronizar» (PASO 3).
 
 ### Mobile Applications Prototyping
 
