@@ -1426,6 +1426,16 @@ La \autoref{fig:mu-prod-02} exhibe el asistente de configuración inicial en alt
 \caption*{\textit{Nota.} Asistente por etapas con cotización en tiempo real y previsualización de alertas agronómicas. Elaboración propia.}
 \end{figure}
 
+En la \autoref{fig:mu-prod-03} se presentan las pantallas de creación de cuenta y verificación del correo mediante un código de seis dígitos, con campos de correo y contraseña que validan los requisitos mínimos mientras el usuario escribe. Se incluyen las variantes de error para correo ya registrado, código incorrecto con conteo de intentos restantes y contraseña débil.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Vistas de Creación de Cuenta y Verificación por Código en Alta Fidelidad.}
+\label{fig:mu-prod-03}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-03-cuenta-verificacion.png}
+\caption*{\textit{Nota.} Flujo de registro con verificación por código y estados de validación de formulario. Elaboración propia.}
+\end{figure}
+
 En la \autoref{fig:mu-prod-04} se aprecian las interfaces terminadas para la activación del servicio: la tarjeta del Plan Productor con desglose de inversión anual articulada con Mercado Pago, y la confirmación institucional que acredita la membresía cubierta por la cooperativa.
 
 \begin{figure}[H]
@@ -1434,6 +1444,16 @@ En la \autoref{fig:mu-prod-04} se aprecian las interfaces terminadas para la act
 \centering
 \includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-04-activacion-del-acceso.png}
 \caption*{\textit{Nota.} Activación por pasarela digital de pago y confirmación de membresía asociativa cubierta. Elaboración propia.}
+\end{figure}
+
+En la \autoref{fig:mu-prod-05} se muestran las pantallas de inicio de sesión y recuperación de acceso, que abarcan desde el ingreso con correo y contraseña hasta el envío del enlace de restablecimiento, la creación de una nueva contraseña y la confirmación final. Las variantes contemplan credenciales inválidas con un mensaje genérico y el caso de un enlace vencido o ya utilizado.
+
+\begin{figure}[H]
+\caption{Mock-up Productor: Vistas de Inicio de Sesión y Recuperación de Acceso en Alta Fidelidad.}
+\label{fig:mu-prod-05}
+\centering
+\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-05-inicio-recuperacion.png}
+\caption*{\textit{Nota.} Flujo de autenticación y recuperación de contraseña con mensajes de error que no revelan información sensible. Elaboración propia.}
 \end{figure}
 
 Tal como se ilustra en la \autoref{fig:mu-prod-06}, el tablero principal del productor exhibe una cuidada jerarquía visual: cintillo de labor prioritaria con acento dorado, tarjeta meteorológica con lecturas de humedad en suelo, gráfico de barras alternadas para la vecería histórica, tarjetas de lotes activos y adaptaciones para cada etapa estacional.
