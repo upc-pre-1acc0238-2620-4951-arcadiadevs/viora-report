@@ -506,7 +506,6 @@ La \autoref{fig:deploy-releases-s2} muestra el historial de versiones en Firebas
 \caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution; se ocultó el correo de contacto. Elaboración propia.}
 \end{figure}
 
-<!-- TODO: aplicación Android en dispositivo físico. -->
 
 Con este sprint la aplicación Android queda publicada y culminada.
 

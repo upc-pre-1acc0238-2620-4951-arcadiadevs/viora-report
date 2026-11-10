@@ -44,7 +44,6 @@ A continuación, en la \autoref{tab:sprint-planning-2} se presenta el cuadro res
 \end{longtable}
 \end{center}
 
-\clearpage
 
 #### Aspect Leaders and Collaborators
 &nbsp;
