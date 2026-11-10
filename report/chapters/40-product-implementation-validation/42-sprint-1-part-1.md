@@ -88,7 +88,7 @@ El objetivo central del Sprint Backlog 1 es descomponer operativamente los 68 í
 Para efectos de diagramación, síntesis documental y legibilidad dentro del presente informe, en la \autoref{tab:sprint-backlog-1} se expone de manera representativa exactamente una tarea técnica principal (\textit{Work-Item / Task}) por cada requerimiento comprometido (US, TS o SPK). El desglose granular del Sprint Backlog en su totalidad, compuesto por 147 tareas técnicas distribuidas a través de las columnas de flujo ágil \textit{Goal}, \textit{Stories}, \textit{To-Do}, \textit{In process}, \textit{To Review} y \textit{Done} se encuentra registrado y disponible en el tablero oficial de gestión ágil de ArcadiaDevs en Trello, accesible mediante el siguiente enlace: \url{https://tinyurl.com/1acc0238-sb1}.
 
 \begin{figure}[H]
-\caption{Vista General del Tablero del Sprint Backlog 1} \label{fig:sprint-backlog-1-trello}
+\caption{Vista general del tablero del Sprint Backlog 1} \label{fig:sprint-backlog-1-trello}
 \centering
 \includegraphics[width=0.85\textwidth]{report/assets/sprint-backlog/sb1.png}
 \caption*{\textit{Nota.} Tablero de gestión ágil de ArcadiaDevs en Trello: \url{https://tinyurl.com/1acc0238-sb1}}
@@ -99,7 +99,7 @@ Para efectos de diagramación, síntesis documental y legibilidad dentro del pre
 \renewcommand{\arraystretch}{1.15}
 \setlength{\tabcolsep}{2.5pt}
 \begin{longtable}{|>{\centering\arraybackslash}p{0.045\textwidth}|>{\raggedright\arraybackslash}p{0.12\textwidth}|>{\centering\arraybackslash}p{0.045\textwidth}|>{\raggedright\arraybackslash}p{0.125\textwidth}|>{\raggedright\arraybackslash}p{0.305\textwidth}|>{\centering\arraybackslash}p{0.065\textwidth}|>{\raggedright\arraybackslash}p{0.085\textwidth}|>{\centering\arraybackslash}p{0.03\textwidth}|}
-\caption{Descomposición de Ítems del Sprint Backlog 1 en Tareas de Trabajo (Work-Items)} \label{tab:sprint-backlog-1} \\
+\caption{Descomposición de ítems del Sprint Backlog 1 en tareas de trabajo (Work-Items)} \label{tab:sprint-backlog-1} \\
 \hline
 \multicolumn{2}{|l|}{\textbf{Sprint \#}} & \multicolumn{6}{l|}{Sprint 1} \\ \hline
 \multicolumn{2}{|l|}{\textbf{User Story}} & \multicolumn{6}{l|}{\textbf{Work-Item / Task}} \\ \hline
