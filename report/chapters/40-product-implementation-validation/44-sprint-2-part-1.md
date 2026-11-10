@@ -329,3 +329,64 @@ TS107 & Consulta del detalle de socio productor agremiado & TK01 & Consulta Get\
 #### Development Evidence for Sprint Review
 &nbsp;
 
+En esta sección se explican y presentan los avances técnicos alcanzados en la implementación con relación a los productos que integran la solución del ecosistema Viora según el alcance comprometido para el Sprint 2: el portal institucional y comercial (\textit{Landing Page}), los servicios web del backend (\textit{Web Services}), la aplicación móvil nativa Android para el productor olivarero y la aplicación móvil multiplataforma Flutter para el gestor técnico de cooperativa (\textit{Mobile Applications}).
+
+A continuación, se resumen los principales avances consolidados en la implementación de cada producto durante este segundo ciclo de desarrollo:
+
+* **Landing Page (\texttt{viora-landing-page}):** Se completó la actualización del sitio comercial e institucional, incorporando la cotización del Plan Cooperativa desde la sección de planes, el menú y el pie de página, los enlaces directos hacia las secciones de cooperativa y canje de códigos, y la actualización del marco legal con el contacto real y las salvaguardas vigentes.
+* **Web Services (\texttt{viora-platform}):** Se completó la totalidad de los endpoints comprometidos para el Sprint 2, abarcando el ciclo completo de identidad y acceso (registro, verificación de correo, sesión, recuperación de contraseña y eliminación de cuenta), la gestión de perfiles, la suscripción individual con pago mediante Mercado Pago Checkout Pro y sus ampliaciones, las licencias y los códigos de cooperativa con consentimiento explícito de compartición de datos, las operaciones territoriales del gestor técnico (padrón de socios, parcelas socias, sectores, alertas sectoriales, proyección de acopio y expediente provisional), las notas de campo, el sellado y la verificación de expedientes agronómicos, y el asistente agronómico basado en Spring AI con validación de cifras y respuesta de respaldo.
+* **Mobile Applications (\texttt{viora-mobile-android}):** Se completó la experiencia del productor olivarero para este incremento, integrando la suscripción y el pago del plan, el canje de códigos de cooperativa con consentimiento informado y su posterior retiro, la gestión de perfil y cuenta, la asignación de sectores a sus parcelas, el expediente agronómico y el asistente agronómico con preguntas por contexto, historial disponible sin conexión y resumen diario del campo.
+* **Mobile Applications (\texttt{viora-mobile-flutter}):** Se completó la aplicación del gestor técnico de cooperativa, integrando el acceso y la gestión de cuenta, la activación de la licencia institucional, la emisión y revocación de códigos de invitación, el padrón de socios, el mapa de riesgo territorial con posicionamiento GPS y semáforo sectorial, la gestión de sectores, la proyección de acopio, el expediente provisional de parcelas socias y la desvinculación de socios.
+
+Para sustentar de manera verificable la actividad de ingeniería de software y el flujo de trabajo colaborativo del equipo ArcadiaDevs, en la \autoref{tab:development-evidence-sprint-2} se presentan los commits significativos de cada repositorio vinculados con la implementación del Sprint 2.
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}p{0.28\textwidth}|p{0.10\textwidth}|>{\centering\arraybackslash}p{0.13\textwidth}|}
+\caption{Evidencias de Desarrollo para Sprint Review (Commits por Repositorio)} \label{tab:development-evidence-sprint-2} \\
+\hline
+\textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{6}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir del historial de control de versiones Git de ArcadiaDevs en GitHub.}} \\
+\endlastfoot
+
+% viora-landing-page
+viora-landing-page & feature/\allowbreak{}quote-\allowbreak{}contact & ed04e7c & fix(contact): keep the shadows of the menu cards on tall screens &  & 07/11/2026 \\ \hline
+viora-landing-page & feature/\allowbreak{}quote-\allowbreak{}contact & 85b08f8 & fix(contact): keep the quote card of the menu to two lines &  & 07/11/2026 \\ \hline
+viora-landing-page & feature/\allowbreak{}quote-\allowbreak{}contact & 9b520cc & fix(legal): name the real contact and the safeguards in force &  & 07/11/2026 \\ \hline
+viora-landing-page & feature/\allowbreak{}quote-\allowbreak{}contact & fa5c0a1 & fix(links): point the cooperative and code links at their sections &  & 07/11/2026 \\ \hline
+viora-landing-page & feature/\allowbreak{}quote-\allowbreak{}contact & 0b59d81 & feat(contact): open the cooperative quote from the plans, the menu and the footer &  & 07/11/2026 \\ \hline
+% viora-platform
+viora-platform & feature/\allowbreak{}require-\allowbreak{}consent-\allowbreak{}on-\allowbreak{}redemption & a50bb8f & docs: record mandatory consent on code redemption &  & 09/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}require-\allowbreak{}consent-\allowbreak{}on-\allowbreak{}redemption & 14b83c5 & feat(subscription): require consent text version on cooperative code redemption &  & 09/11/2026 \\ \hline
+viora-platform & fix/\allowbreak{}jvm-\allowbreak{}memory-\allowbreak{}limits & 17c8bc4 & fix: cap jvm memory to fit the 512mb container &  & 09/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}territory-\allowbreak{}intake-\allowbreak{}renewal-\allowbreak{}exit & 44669b9 & feat(territory): add intake forecasts &  & 07/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}territory-\allowbreak{}intake-\allowbreak{}renewal-\allowbreak{}exit & a253272 & feat(settlement): expose settled harvests to other contexts &  & 07/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}territory-\allowbreak{}intake-\allowbreak{}renewal-\allowbreak{}exit & b843b6b & feat(thinning): expose the yield outlook to other contexts &  & 07/11/2026 \\ \hline
+% viora-mobile-android
+viora-mobile-android & feature/\allowbreak{}producer-\allowbreak{}consent-\allowbreak{}flow & 38a6dc8 & feat(subscription): let the producer stop sharing their data from my plan &  & 07/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}producer-\allowbreak{}consent-\allowbreak{}flow & 4e6f2b8 & feat(subscription): ask the producer to accept sharing their data before redeeming a code &  & 07/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}session-\allowbreak{}refresh-\allowbreak{}resilience & e979131 & fix(session): pause the renewals for a few seconds after a passing failure &  & 03/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}session-\allowbreak{}refresh-\allowbreak{}resilience & b354d55 & fix(session): end the session only when the server refuses the refresh token &  & 03/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}logbook-\allowbreak{}records-\allowbreak{}and-\allowbreak{}greeting & 74064c7 & fix(logbook): open samplings, thinnings and notes from their rows &  & 03/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}logbook-\allowbreak{}records-\allowbreak{}and-\allowbreak{}greeting & f0c4633 & fix(header): greet by name and open the account from plan and logbook &  & 03/11/2026 \\ \hline
+% viora-mobile-flutter
+viora-mobile-flutter & feature/\allowbreak{}territorial-\allowbreak{}risk-\allowbreak{}map & 89247e7 & feat(cooperative-operations): add the territorial risk screens &  & 08/11/2026 \\ \hline
+viora-mobile-flutter & feature/\allowbreak{}territorial-\allowbreak{}risk-\allowbreak{}map & ca68b12 & feat(cooperative-operations): read the member plots and the location of the manager &  & 08/11/2026 \\ \hline
+viora-mobile-flutter & feature/\allowbreak{}territorial-\allowbreak{}risk-\allowbreak{}map & 09d2a63 & feat(core): add the icons and the fade height of the risk screens &  & 08/11/2026 \\ \hline
+viora-mobile-flutter & feature/\allowbreak{}territorial-\allowbreak{}risk-\allowbreak{}map & 9558c55 & chore(build): add mapbox, geolocator and the location permission &  & 08/11/2026 \\ \hline
+viora-mobile-flutter & feature/\allowbreak{}members-\allowbreak{}and-\allowbreak{}codes & 809d193 & feat(cooperative-operations): add the members and codes screens &  & 07/11/2026 \\ \hline
+viora-mobile-flutter & feature/\allowbreak{}members-\allowbreak{}and-\allowbreak{}codes & 24db7f1 & feat(cooperative-operations): read the roster and handle the invitation codes &  & 07/11/2026 \\ \hline
+\end{longtable}
+\end{center}
