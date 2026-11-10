@@ -521,4 +521,42 @@ La aplicación Flutter sigue el mismo esquema de despliegue que la aplicación A
 #### Team Collaboration Insights during Sprint
 &nbsp;
 
+En esta sección se analizan las métricas de colaboración del equipo ArcadiaDevs durante el Sprint 2, iniciado el 13 de octubre, orientado a culminar el flujo completo del ecosistema Viora: los servicios web con los nuevos contextos, la aplicación móvil Android y la aplicación móvil Flutter, además del mantenimiento del Landing Page. El desarrollo continuó bajo GitFlow, con ramas de características integradas en `develop` y publicadas en `main` mediante ramas de \textit{release}, y con la convención Conventional Commits para mantener un historial trazable entre los integrantes.
+
+Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de la organización en GitHub, a continuación se presentan los analíticos de contribución temporal y autoría de código (\textit{Contributors}) de cada repositorio, con la ventana de análisis ubicada desde octubre.
+
+En el repositorio `viora-platform` la actividad se mantuvo alta durante todo el sprint, con su punto más alto en la semana del 19 de octubre y un ritmo sostenido en las semanas del 26 de octubre y 2 de noviembre (\autoref{fig:contributors-platform-s2}). Este comportamiento corresponde a la incorporación progresiva de los contextos de Identity and Access Management, Profiles, Subscription y Territory, y del módulo del asistente.
+
+\begin{figure}[H]
+\caption{Vista de Contributors de GitHub del repositorio viora-platform.} \label{fig:contributors-platform-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.45\textwidth]{report/assets/sprint-team-collaboration/sprint-2/viora-platform-contributors.png}
+\caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-platform}. Elaboración propia.}
+\end{figure}
+
+En el repositorio `viora-mobile-android` la actividad se concentró en la semana del 19 de octubre, la de mayor volumen del sprint, y continuó con menor intensidad hasta inicios de noviembre (\autoref{fig:contributors-mobile-android-s2}). Este ritmo acompaña la integración de la aplicación con los servicios web incorporados en el sprint.
+
+\begin{figure}[H]
+\caption{Vista de Contributors de GitHub del repositorio viora-mobile-android.} \label{fig:contributors-mobile-android-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.45\textwidth]{report/assets/sprint-team-collaboration/sprint-2/viora-mobile-android-contributors.png}
+\caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-mobile-android}. Elaboración propia.}
+\end{figure}
+
+En el repositorio `viora-landing-page` la mayor parte del trabajo se realizó en el Sprint 1, por lo que durante el Sprint 2 solo se registran ajustes puntuales a inicios de noviembre (\autoref{fig:contributors-landing-page-s2}). Este comportamiento es coherente con su estado: el Landing Page se mantiene publicado y se culminará en el Sprint 3 con la segunda versión del video About the Product.
+
+\begin{figure}[H]
+\caption{Vista de Contributors de GitHub del repositorio viora-landing-page.} \label{fig:contributors-landing-page-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.45\textwidth]{report/assets/sprint-team-collaboration/sprint-2/viora-landing-page-contributors.png}
+\caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-landing-page}. Elaboración propia.}
+\end{figure}
+
+<!-- TODO: analíticas de Contributors del repositorio viora-mobile-flutter. -->
+
+En el repositorio `viora-mobile-flutter` se registra el trabajo de la aplicación Flutter (\textit{analíticas pendientes}).
+
 \clearpage
