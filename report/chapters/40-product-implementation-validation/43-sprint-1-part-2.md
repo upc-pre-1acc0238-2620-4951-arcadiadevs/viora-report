@@ -161,9 +161,9 @@ El video muestra la ejecución de las vistas y los flujos de navegación impleme
 #### Services Documentation Evidence for Sprint Review 
 &nbsp;
 
-En esta sección se presenta la relación de servicios web RESTful implementados y formalmente documentados bajo el estándar OpenAPI 3.0 para la plataforma agronómica \textbf{Viora} (\texttt{viora-platform}) durante el Sprint 1. El equipo de backend consolidó una arquitectura hexagonal desacoplada guiada por el dominio (Domain-Driven Design - DDD) sobre Java 21 LTS y Spring Boot 3, implementando contratos inmutables tipados estrictamente mediante Java 21 Records y Jakarta Validation (\texttt{@NotNull}, \texttt{@NotBlank}, \texttt{@Size}, \texttt{@PositiveOrZero}), estandarización centralizada de errores semánticos bajo la especificación RFC 7807 (\textit{Problem Details}) sin exponer trazas de infraestructura, control de concurrencia optimista con cabeceras HTTP \texttt{If-Match} / \texttt{ETag} (código \texttt{412 Precondition Failed}) para proteger entidades agronómicas críticas, y autodocumentación viva en Swagger UI con soporte para pruebas interactivas (\textit{Try it out}).
+En esta sección se presenta la relación de servicios web RESTful implementados y formalmente documentados bajo el estándar OpenAPI 3.0 para la plataforma agronómica Viora (\texttt{viora-platform}) durante el Sprint 1. El equipo de backend consolidó una arquitectura hexagonal desacoplada guiada por el dominio (Domain-Driven Design, DDD) sobre Java 21 LTS y Spring Boot 3, implementando contratos inmutables tipados estrictamente mediante Java 21 Records y Jakarta Validation (\texttt{@NotNull}, \texttt{@NotBlank}, \texttt{@Size}, \texttt{@PositiveOrZero}), estandarización centralizada de errores semánticos bajo la especificación RFC 7807 (\textit{Problem Details}) sin exponer trazas de infraestructura, control de concurrencia optimista con cabeceras HTTP \texttt{If-Match} / \texttt{ETag} (código \texttt{412 Precondition Failed}) para proteger entidades agronómicas críticas, y autodocumentación viva en Swagger UI con soporte para pruebas interactivas (\textit{Try it out}).
 
-Durante este ciclo de desarrollo \textbf{se implementaron y documentaron un total de 33 endpoints RESTful} distribuidos en 5 Bounded Contexts y 11 controladores web. Con el propósito de brindar una visión rigurosa, en la \autoref{tab:services-documentation-endpoints-sprint-1} se presenta la matriz de los 12 endpoints más representativos del sistema cubriendo la totalidad de módulos operativos, encontrándose los 33 endpoints plenamente accesibles y operativos en la consola interactiva de Swagger UI.
+Durante este ciclo de desarrollo se implementaron y documentaron un total de 33 endpoints RESTful distribuidos en 5 Bounded Contexts y 11 controladores web. Con el propósito de brindar una visión rigurosa, en la \autoref{tab:services-documentation-endpoints-sprint-1} se presenta la matriz de los 12 endpoints más representativos del sistema cubriendo la totalidad de módulos operativos, encontrándose los 33 endpoints plenamente accesibles y operativos en la consola interactiva de Swagger UI.
 
 \noindent \textbf{Puntos de acceso a la documentación interactiva (Swagger UI / OpenAPI):}
 \begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
@@ -197,16 +197,16 @@ Durante este ciclo de desarrollo \textbf{se implementaron y documentaron un tota
 
 Delimitar y registrar cuartel & POST & \url{https://viora-platform.onrender.com/api/v1/plots} & Body: \texttt{CreatePlotResource} & 201, 400, 409 \\ \hline
 Listar cuarteles o sync delta & GET & \url{https://viora-platform.onrender.com/api/v1/plots} & Query: \texttt{updatedSince}, \texttt{status} & 200, 400 \\ \hline
-Actualizar cuartel con bloqueo & PUT & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}} & Path: \texttt{plotId}, Header: \texttt{If-Match} & 200, 400, 412 \\ \hline
-Consultar métricas (BBI/Erez) & GET & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/metrics} & Path: \texttt{plotId}, Query: \texttt{metricName} & 200, 400 \\ \hline
-Registrar pesaje de cosecha anual & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/harvest-records} & Path: \texttt{plotId}, Body: \texttt{RecordHarvestYield} & 201, 400 \\ \hline
+Actualizar cuartel con bloqueo & PUT & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}} & Path: \texttt{plotId}, Header: \texttt{If-Match} & 200, 400, 412 \\ \hline
+Consultar métricas (BBI/Erez) & GET & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/metrics} & Path: \texttt{plotId}, Query: \texttt{metricName} & 200, 400 \\ \hline
+Registrar pesaje de cosecha anual & POST & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/harvest-records} & Path: \texttt{plotId}, Body: \texttt{RecordHarvestYield} & 201, 400 \\ \hline
 Listar incidentes agroclimáticos & GET & \url{https://viora-platform.onrender.com/api/v1/agroclimatic-incidents} & Query: \texttt{plotId}, \texttt{status}, \texttt{severity} & 200 \\ \hline
-Registrar y enlazar nodo sensor IoT & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/iot-devices} & Path: \texttt{plotId}, Body: \texttt{RegisterIoTDevice} & 201, 409 \\ \hline
-Consultar telemetría ambiental & GET & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/telemetries} & Path: \texttt{plotId}, Query: \texttt{startDate}, \texttt{endDate} & 200, 400 \\ \hline
-Ingerir lote de muestreo de frutos & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/samplings} & Path: \texttt{plotId}, Body: \texttt{SubmitSamplingResource} & 201, 400 \\ \hline
-Registrar plena floración (raleo) & PUT & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/thinning-prescriptions/full-bloom} & Path: \texttt{plotId}, Body: \texttt{RecordFullBloom} & 200, 400 \\ \hline
-Liquidar cosecha con balanza & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/harvest-settlements} & Path: \texttt{plotId}, Body: \texttt{SettleHarvestResource} & 201, 400 \\ \hline
-Certificar informe agronómico & POST & \url{https://viora-platform.onrender.com/api/v1/plots/\{plotId\}/certifications} & Path: \texttt{plotId}, Body: \texttt{CertifyDossier} & 201, 422 \\ \hline
+Registrar y enlazar nodo sensor IoT & POST & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/iot-devices} & Path: \texttt{plotId}, Body: \texttt{RegisterIoTDevice} & 201, 409 \\ \hline
+Consultar telemetría ambiental & GET & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/telemetries} & Path: \texttt{plotId}, Query: \texttt{startDate}, \texttt{endDate} & 200, 400 \\ \hline
+Ingerir lote de muestreo de frutos & POST & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/samplings} & Path: \texttt{plotId}, Body: \texttt{SubmitSamplingResource} & 201, 400 \\ \hline
+Registrar plena floración (raleo) & PUT & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/thinning-prescriptions/full-bloom} & Path: \texttt{plotId}, Body: \texttt{RecordFullBloom} & 200, 400 \\ \hline
+Liquidar cosecha con balanza & POST & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/harvest-settlements} & Path: \texttt{plotId}, Body: \texttt{SettleHarvestResource} & 201, 400 \\ \hline
+Certificar informe agronómico & POST & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/certifications} & Path: \texttt{plotId}, Body: \texttt{CertifyDossier} & 201, 422 \\ \hline
 \end{longtable}
 \end{center}
 
@@ -220,7 +220,7 @@ A continuación se detallan los 4 endpoints que encapsulan las reglas biofísica
 \noindent \textbf{1. Delimitar y registrar cuartel olivícola (\texttt{POST /api/v1/plots}):}
 
 * **Propósito y reglas de negocio:** Recibe la cartografía del cuartel en GeoJSON sobre proyección WGS84, valida el polígono cerrado, calcula el área superficial en hectáreas y deriva la densidad dendrométrica mediante el marco de plantación $\frac{10000}{\text{rowSpacing} \times \text{treeSpacing}}$.
-* **Parámetros de entrada:** Body `CreatePlotResource` (`name`: 3--100 caracteres, `variety`: variedad permitida, `polygonGeoJson`: GeoJSON válido, `rowSpacingM` y `treeSpacingM` $> 0$).
+* **Parámetros de entrada:** Body `CreatePlotResource` (`name`: de 3 a 100 caracteres, `variety`: variedad permitida, `polygonGeoJson`: GeoJSON válido, `rowSpacingM` y `treeSpacingM` $> 0$).
 * **Ejemplo de solicitud y respuesta (\texttt{201 Created}):**
 
 ```json
@@ -391,7 +391,7 @@ En esta sección se resumen los procesos de despliegue (\textit{deployment}) rea
 \renewcommand{\arraystretch}{1.15}
 \setlength{\tabcolsep}{3.5pt}
 \begin{longtable}{|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}p{0.19\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|}
-\caption{Resumen de los Despliegues del Sprint 1 por Producto Digital} \label{tab:deployment-summary-sprint-1} \\
+\caption{Resumen de los despliegues del Sprint 1 por producto digital} \label{tab:deployment-summary-sprint-1} \\
 \hline
 \textbf{Producto} & \textbf{Repositorio} & \textbf{Plataforma} & \textbf{Mecanismo de despliegue} & \textbf{Estado} \\ \hline
 \endfirsthead
