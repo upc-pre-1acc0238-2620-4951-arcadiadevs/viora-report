@@ -52,7 +52,7 @@ Para mantener la coherencia arquitectural y optimizar la comunicación interna d
 Los aspectos considerados comprenden los nueve Bounded Contexts del diseño estratégico de Viora, junto con la presencia comercial de la *Landing Page* (*Comm.*) y los módulos transversales de la plataforma *Assistant* y *Shared*. Por razones de espacio, la matriz se presenta dividida en dos partes, en la \autoref{tab:lacx-sprint-2-a} y la \autoref{tab:lacx-sprint-2-b}.
 
 \begin{table}[H]
-\caption{Matriz de Liderazgo y Colaboración (LACX) para el Sprint 2 (parte 1 de 2)} \label{tab:lacx-sprint-2-a}
+\caption{Matriz de liderazgo y colaboración (LACX) para el Sprint 2 (parte 1 de 2)} \label{tab:lacx-sprint-2-a}
 \centering
 \small
 \renewcommand{\arraystretch}{1.25}
@@ -70,7 +70,7 @@ Trinidad León, Jahat Jassiel & trinity-bytes & C & C & \textbf{L} & C & C & C \
 \end{table}
 
 \begin{table}[H]
-\caption{Matriz de Liderazgo y Colaboración (LACX) para el Sprint 2 (parte 2 de 2)} \label{tab:lacx-sprint-2-b}
+\caption{Matriz de liderazgo y colaboración (LACX) para el Sprint 2 (parte 2 de 2)} \label{tab:lacx-sprint-2-b}
 \centering
 \small
 \renewcommand{\arraystretch}{1.25}
@@ -97,7 +97,7 @@ El objetivo central del Sprint Backlog 2 es descomponer operativamente los 97 í
 Para efectos de diagramación, síntesis documental y legibilidad dentro del presente informe, en la \autoref{tab:sprint-backlog-2} se expone de manera representativa exactamente una tarea técnica principal (\textit{Work-Item / Task}) por cada requerimiento comprometido (US, TS o SPK). El desglose granular del Sprint Backlog en su totalidad, compuesto por 204 tareas técnicas distribuidas a través de las columnas de flujo ágil \textit{Goal}, \textit{Stories}, \textit{To-Do}, \textit{In process}, \textit{To Review} y \textit{Done}, se encuentra registrado y disponible en el tablero oficial de gestión ágil de ArcadiaDevs en Trello, accesible mediante el siguiente enlace: \url{https://tinyurl.com/1acc0238-sb2}.
 
 \begin{figure}[H]
-\caption{Vista General del Tablero del Sprint Backlog 2} \label{fig:sprint-backlog-2-trello}
+\caption{Vista general del tablero del Sprint Backlog 2} \label{fig:sprint-backlog-2-trello}
 \centering
 \includegraphics[width=0.85\textwidth]{report/assets/sprint-backlog/sb2.png}
 \caption*{\textit{Nota.} Tablero de gestión ágil de ArcadiaDevs en Trello: \url{https://tinyurl.com/1acc0238-sb2}}
@@ -108,7 +108,7 @@ Para efectos de diagramación, síntesis documental y legibilidad dentro del pre
 \renewcommand{\arraystretch}{1.15}
 \setlength{\tabcolsep}{2.5pt}
 \begin{longtable}{|>{\centering\arraybackslash}p{0.05\textwidth}|>{\raggedright\arraybackslash}p{0.18\textwidth}|>{\centering\arraybackslash}p{0.045\textwidth}|>{\raggedright\arraybackslash}p{0.125\textwidth}|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\centering\arraybackslash}p{0.065\textwidth}|>{\raggedright\arraybackslash}p{0.085\textwidth}|>{\scriptsize\centering\arraybackslash}p{0.035\textwidth}|}
-\caption{Descomposición de Ítems del Sprint Backlog 2 en Tareas de Trabajo (Work-Items)} \label{tab:sprint-backlog-2} \\
+\caption{Descomposición de ítems del Sprint Backlog 2 en tareas de trabajo (work-items)} \label{tab:sprint-backlog-2} \\
 \hline
 \multicolumn{2}{|l|}{\textbf{Sprint \#}} & \multicolumn{6}{l|}{Sprint 2} \\ \hline
 \multicolumn{2}{|l|}{\textbf{User Story}} & \multicolumn{6}{l|}{\textbf{Work-Item / Task}} \\ \hline
@@ -345,7 +345,7 @@ Para sustentar de manera verificable la actividad de ingeniería de software y e
 \renewcommand{\arraystretch}{1.15}
 \setlength{\tabcolsep}{3.5pt}
 \begin{longtable}{|>{\raggedright\arraybackslash}p{0.16\textwidth}|>{\raggedright\arraybackslash}p{0.15\textwidth}|>{\centering\arraybackslash}p{0.12\textwidth}|>{\raggedright\arraybackslash}p{0.28\textwidth}|p{0.10\textwidth}|>{\centering\arraybackslash}p{0.13\textwidth}|}
-\caption{Evidencias de Desarrollo para Sprint Review (Commits por Repositorio)} \label{tab:development-evidence-sprint-2} \\
+\caption{Evidencias de desarrollo para Sprint Review (commits por repositorio)} \label{tab:development-evidence-sprint-2} \\
 \hline
 \textbf{Repository} & \textbf{Branch} & \textbf{Commit Id} & \textbf{Commit Message} & \textbf{Commit Message Body} & \textbf{Committed on (Date)} \\ \hline
 \endfirsthead
