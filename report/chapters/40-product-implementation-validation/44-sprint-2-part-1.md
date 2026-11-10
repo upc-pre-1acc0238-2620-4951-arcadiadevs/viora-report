@@ -94,9 +94,14 @@ Trinidad León, Jahat Jassiel & trinity-bytes & C & C & C & C & C & C \\ \hline
 
 El objetivo central del Sprint Backlog 2 es descomponer operativamente los 97 ítems de trabajo comprometidos (241 Story Points), conformados por 25 Historias de Usuario (US), 70 Technical Stories (TS) y 2 Spikes de investigación técnica (SPK), en tareas técnicas atómicas, medibles y verificables. Dicha descomposición abarca la gestión de identidad y perfiles, la suscripción y los códigos de cooperativa, la supervisión territorial del gestor técnico, la asistencia agronómica y los servicios web complementarios del ecosistema, estructurados bajo Domain-Driven Design.
 
-Para efectos de diagramación, síntesis documental y legibilidad dentro del presente informe, en la \autoref{tab:sprint-backlog-2} se expone de manera representativa exactamente una tarea técnica principal (\textit{Work-Item / Task}) por cada requerimiento comprometido (US, TS o SPK). El desglose granular del Sprint Backlog en su totalidad, compuesto por 204 tareas técnicas distribuidas a través de las columnas de flujo ágil \textit{Goal}, \textit{Stories}, \textit{To-Do}, \textit{In process}, \textit{To Review} y \textit{Done}, se encuentra registrado en el tablero oficial de gestión ágil de ArcadiaDevs en Trello.
+Para efectos de diagramación, síntesis documental y legibilidad dentro del presente informe, en la \autoref{tab:sprint-backlog-2} se expone de manera representativa exactamente una tarea técnica principal (\textit{Work-Item / Task}) por cada requerimiento comprometido (US, TS o SPK). El desglose granular del Sprint Backlog en su totalidad, compuesto por 204 tareas técnicas distribuidas a través de las columnas de flujo ágil \textit{Goal}, \textit{Stories}, \textit{To-Do}, \textit{In process}, \textit{To Review} y \textit{Done}, se encuentra registrado y disponible en el tablero oficial de gestión ágil de ArcadiaDevs en Trello, accesible mediante el siguiente enlace: \url{https://tinyurl.com/1acc0238-sb2}.
 
-<!-- PENDIENTE: agregar el enlace público del tablero y la figura con su captura, como en el Sprint 1. -->
+\begin{figure}[H]
+\caption{Vista General del Tablero del Sprint Backlog 2} \label{fig:sprint-backlog-2-trello}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/sprint-backlog/sb2.png}
+\caption*{\textit{Nota.} Tablero de gestión ágil de ArcadiaDevs en Trello: \url{https://tinyurl.com/1acc0238-sb2}}
+\end{figure}
 
 \begin{center}
 \footnotesize
@@ -119,7 +124,7 @@ Para efectos de diagramación, síntesis documental y legibilidad dentro del pre
 \endfoot
 
 \hline
-\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Síntesis representativa de una tarea por requerimiento (US, TS y SPK). El Sprint Backlog completo con la totalidad de las 204 tareas técnicas desglosadas se encuentra disponible en el tablero de Trello. Elaboración propia.}} \\
+\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Síntesis representativa de una tarea por requerimiento (US, TS y SPK). El Sprint Backlog completo con la totalidad de las 204 tareas técnicas desglosadas se encuentra disponible en el tablero de Trello: \url{https://tinyurl.com/1acc0238-sb2}. Elaboración propia.}} \\
 \endlastfoot
 
 % SPK03
