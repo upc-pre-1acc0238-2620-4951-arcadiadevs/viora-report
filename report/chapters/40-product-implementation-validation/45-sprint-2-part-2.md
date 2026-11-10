@@ -403,6 +403,121 @@ viora-platform & feature/require-consent-on-redemption & a50bb8f & docs: record 
 #### Software Deployment Evidence for Sprint Review
 &nbsp;
 
+En esta sección se resumen los procesos de despliegue (\textit{deployment}) realizados durante el Sprint 2 para los productos digitales de Viora: el Landing Page, los servicios web con su base de datos en la nube y las aplicaciones móviles en Android nativo y Flutter. A diferencia del Sprint 1, en el que se crearon las cuentas y se configuraron los recursos en cada proveedor, en este sprint el trabajo se centró en mantener el despliegue continuo de cada producto conforme se integraban los nuevos contextos, en habilitar el acceso de los clientes a las aplicaciones móviles mediante un vínculo de invitación y en incorporar la aplicación Flutter al mismo esquema de distribución. Con este sprint los servicios web, la base de datos y ambas aplicaciones móviles quedan publicados y culminados; el Landing Page se mantiene publicado y se culminará en el Sprint 3 con la segunda versión del video About the Product, que incorpora la entrevista al segmento de gestores. En la \autoref{tab:deployment-summary-sprint-2} se resume qué se desplegó, dónde y cómo; a continuación se detalla cada producto con sus evidencias.
+
+\begin{center}
+\small
+\renewcommand{\arraystretch}{1.15}
+\setlength{\tabcolsep}{3.5pt}
+\begin{longtable}{|>{\raggedright\arraybackslash}p{0.14\textwidth}|>{\raggedright\arraybackslash}p{0.19\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|>{\raggedright\arraybackslash}p{0.27\textwidth}|>{\raggedright\arraybackslash}p{0.17\textwidth}|}
+\caption{Resumen de los despliegues del Sprint 2 por producto digital} \label{tab:deployment-summary-sprint-2} \\
+\hline
+\textbf{Producto} & \textbf{Repositorio} & \textbf{Plataforma} & \textbf{Mecanismo de despliegue} & \textbf{Estado} \\ \hline
+\endfirsthead
+
+\hline
+\textbf{Producto} & \textbf{Repositorio} & \textbf{Plataforma} & \textbf{Mecanismo de despliegue} & \textbf{Estado} \\ \hline
+\endhead
+
+\hline
+\endfoot
+
+\hline
+\multicolumn{5}{l}{\parbox{15.5cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir de las consolas de Vercel, Render, Filess.io, Firebase y GitHub.}} \\
+\endlastfoot
+
+Landing Page & \texttt{viora-landing-page} & Vercel & Integración con Git: cada \textit{push} a \texttt{main} publica producción & Publicado \\ \hline
+Servicios web (API RESTful) & \texttt{viora-platform} & Render (\textit{Web Service} con Docker) & Despliegue automático desde la rama \texttt{main} & Publicado y culminado \\ \hline
+Base de datos & No aplica & Filess.io (PostgreSQL) & Instancia del Sprint 1; conexión mediante variables de entorno en Render & Publicado y culminado \\ \hline
+Aplicación móvil Android & \texttt{viora-mobile-android} & Firebase App Distribution & Despliegue continuo con GitHub Actions; APK \textit{release} firmado & Publicado y culminado \\ \hline
+Aplicación móvil Flutter & \texttt{viora-mobile-flutter} & Firebase App Distribution & Despliegue continuo con GitHub Actions; APK \textit{release} firmado & Publicado y culminado \\ \hline
+\end{longtable}
+\end{center}
+
+\clearpage
+
+\noindent \textbf{Landing Page (Vercel):}
+
+El Landing Page conserva el despliegue configurado en el Sprint 1: cada integración en la rama `main` genera un despliegue de producción en Vercel. En la \autoref{fig:deploy-vercel-prod-s2} se observa el despliegue vigente en estado \textit{Ready}, publicado desde la rama `main` y servido en el dominio `viora-landing-page-sable.vercel.app`. La rama `develop` cuenta además con un despliegue de vista previa (\textit{Preview}), que permite revisar los cambios antes de integrarlos en producción. El Landing Page se mantiene publicado; se culminará en el Sprint 3 con la publicación de la segunda versión del video About the Product, que incorpora la entrevista al segmento de gestores.
+
+\begin{figure}[H]
+\caption{Despliegue de producción del Landing Page en Vercel.} \label{fig:deploy-vercel-prod-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-2/landing-page/01-vercel-production-deployment.png}
+\caption*{\textit{Nota.} Captura del panel de Vercel. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Servicios web de backend (Render):}
+
+La API RESTful `viora-platform` continúa desplegada en Render como \textit{Web Service} con Docker y despliegue automático desde la rama `main`. Durante el Sprint 2, cada integración en `main` de los contextos de Identity and Access Management, Profiles, Subscription, Territory y del módulo del asistente activó un nuevo despliegue sin intervención manual. La \autoref{fig:deploy-render-live-s2} muestra el servicio en estado \textit{Live} sobre la rama `main`, publicado en \url{https://viora-platform.onrender.com}, la misma URL desde la que se ejecutaron las pruebas de Swagger UI de la sección anterior. Con este sprint los servicios web quedan publicados y culminados.
+
+\begin{figure}[H]
+\caption{Servicio viora-platform en estado Live en Render.} \label{fig:deploy-render-live-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-2/backend/01-render-service-live.png}
+\caption*{\textit{Nota.} Captura del panel de Render. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Base de datos en la nube (Filess.io):}
+
+La base de datos PostgreSQL aprovisionada en el Sprint 1 se mantuvo como única instancia de datos de la plataforma. La \autoref{fig:deploy-filess-s2} confirma que `viora_thoughage` sigue disponible (\textit{Available}) en la región Nürnberg. Las tablas de los contextos incorporados en este sprint se crean desde el backend al desplegarse, por lo que no fue necesario aprovisionar recursos adicionales. Con este sprint la base de datos queda publicada y culminada.
+
+\begin{figure}[H]
+\caption{Base de datos disponible en Filess.io.} \label{fig:deploy-filess-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-2/database/01-filess-database-available.png}
+\caption*{\textit{Nota.} Captura del panel de Filess.io. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Aplicación móvil Android (Firebase App Distribution):}
+
+La aplicación Android mantiene el despliegue continuo con GitHub Actions configurado en el Sprint 1: el flujo `deploy-android.yml` se ejecuta al publicarse una versión, compila el APK \textit{release}, lo firma con el almacén de claves guardado como secreto del repositorio y lo distribuye en Firebase App Distribution a los grupos de verificadores, sin pasos manuales.
+
+Como novedad del Sprint 2, se creó un vínculo de invitación asociado al grupo `viora-client-testers` (\autoref{fig:deploy-invitation-link-s2}). Con él, los clientes y participantes de las entrevistas pueden solicitar acceso a la versión distribuida más reciente sin que el equipo deba invitarlos uno por uno.
+
+\begin{figure}[H]
+\caption{Creación del vínculo de invitación para el grupo viora-client-testers.} \label{fig:deploy-invitation-link-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.60\textwidth]{report/assets/sprint-deployment/sprint-2/application/01-invitation-link-creation.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution. Elaboración propia.}
+\end{figure}
+
+Al abrir el vínculo, el verificador accede a la página de Firebase App Distribution de la aplicación Viora (paquete `pe.edu.upc.viora`), donde registra su correo para obtener acceso (\autoref{fig:deploy-invitation-page-s2}).
+
+\begin{figure}[H]
+\caption{Página de acceso a la aplicación mediante el vínculo de invitación.} \label{fig:deploy-invitation-page-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.60\textwidth]{report/assets/sprint-deployment/sprint-2/application/02-invitation-link-page.png}
+\caption*{\textit{Nota.} Captura de la página pública del vínculo de invitación. Elaboración propia.}
+\end{figure}
+
+La \autoref{fig:deploy-releases-s2} muestra el historial de versiones en Firebase App Distribution. Cada versión corresponde a la integración de una rama de \textit{release} en `main` y fue distribuida automáticamente por el flujo de GitHub Actions a los seis verificadores registrados, que la aceptaron y descargaron para probarla en sus dispositivos.
+
+\begin{figure}[H]
+\caption{Historial de versiones de la aplicación Android en Firebase App Distribution.} \label{fig:deploy-releases-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-2/application/03-app-distribution-releases.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution; se ocultó el correo de contacto. Elaboración propia.}
+\end{figure}
+
+<!-- TODO: aplicación Android en dispositivo físico. -->
+
+Con este sprint la aplicación Android queda publicada y culminada.
+
+\noindent \textbf{Aplicación móvil Flutter (Firebase App Distribution):}
+
+La aplicación Flutter sigue el mismo esquema de despliegue que la aplicación Android: un flujo de GitHub Actions compila y firma el APK \textit{release} y lo distribuye en Firebase App Distribution a los grupos de verificadores. Con este sprint la aplicación Flutter queda publicada y culminada.
+
+<!-- TODO: evidencias del despliegue de la aplicación Flutter. -->
+
+\clearpage
+
 #### Team Collaboration Insights during Sprint
 &nbsp;
 
