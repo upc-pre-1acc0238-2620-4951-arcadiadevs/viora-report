@@ -1,5 +1,7 @@
 ### Sprint 2
 
+En este segundo ciclo de desarrollo se registra y sustenta el avance del producto y el trabajo colaborativo del equipo ArcadiaDevs orientado a entregar el flujo completo de la solución Viora, dejando el Sprint 3 para las mejoras señaladas por los usuarios y la versión final del video About the Product. A continuación, se detallan los acuerdos del Sprint Planning 2, la asignación de responsabilidades y el Sprint Backlog, acompañados por las evidencias de desarrollo en GitHub, la suite de pruebas de aceptación, la ejecución de los flujos de las aplicaciones móviles, la documentación OpenAPI y Swagger de los servicios web, el despliegue en la nube de cada producto y las analíticas de colaboración del equipo.
+
 #### Sprint Planning 2
 &nbsp;
 
