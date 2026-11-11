@@ -141,7 +141,7 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 
 ### Registro de entrevistas
 
-En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo minucioso de la interacción con el artefacto evaluado (Landing Page o aplicación móvil Android) y la evidencia gráfica correspondiente.
+En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo minucioso de la interacción con el artefacto evaluado (Landing Page o aplicación móvil productor) y la evidencia gráfica correspondiente.
 
 #### Segmento 1: Productores olivareros de la región sur
 &nbsp;
@@ -194,11 +194,11 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Nombre} & Gustavo Calizaga Limache & \textbf{Edad} & 30 \\ 
 \textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos, Tacna} \\ 
 \textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productor olivarero} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Aplicación móvil Android} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Aplicación móvil productor} \\ 
 \textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{\textit{Pendiente}} \\ 
 \textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\textit{Enlace pendiente}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor con 7 años de experiencia en La Yarada Los Palos, a cargo de 4 hectáreas de aceituna Sevillana, que participó también en la etapa de needfinding. La sesión se centró en la aplicación móvil Android. Calificó como claro el registro guiado y como transparente la estimación de la cuota según sus hectáreas. Al registrar su lote con un marco de plantación de 6 por 6 metros, comprobó que la densidad calculada (278 árboles por hectárea) refleja su campo y consideró el flujo «bastante fácil». Validó como suficientes el listado de lotes, la información de frío invernal, el orden de las tarjetas de Inicio y el ingreso numérico de muestras en campo, aunque pidió revisar las fechas de las fases fenológicas para alinearlas con el calendario local de floración, cuajado y aclareo. Otorgó una calificación de 5/5, consideró justificada la suscripción de S/ 55 por hectárea al mes y describió la aplicación como una guía para anticiparse a cada fase. Sugirió estimar los kilos perdidos por hectárea, pues muchos productores cosechan y venden sin conocer la rentabilidad de su campaña, y mencionó la recomendación de productos fitosanitarios para reducir costos, necesidad reconocida pero ajena al problema central que aborda Viora. Durante la sesión, la ubicación de la parcela demoró al no estar activado el GPS del dispositivo.} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor con 7 años de experiencia en La Yarada Los Palos, a cargo de 4 hectáreas de aceituna Sevillana, que participó también en la etapa de needfinding. La sesión se centró en la aplicación móvil productor. Calificó como claro el registro guiado y como transparente la estimación de la cuota según sus hectáreas. Al registrar su lote con un marco de plantación de 6 por 6 metros, comprobó que la densidad calculada (278 árboles por hectárea) refleja su campo y consideró el flujo «bastante fácil». Validó como suficientes el listado de lotes, la información de frío invernal, el orden de las tarjetas de Inicio y el ingreso numérico de muestras en campo, aunque pidió revisar las fechas de las fases fenológicas para alinearlas con el calendario local de floración, cuajado y aclareo. Otorgó una calificación de 5/5, consideró justificada la suscripción de S/ 55 por hectárea al mes y describió la aplicación como una guía para anticiparse a cada fase. Sugirió estimar los kilos perdidos por hectárea, pues muchos productores cosechan y venden sin conocer la rentabilidad de su campaña, y mencionó la recomendación de productos fitosanitarios para reducir costos, necesidad reconocida pero ajena al problema central que aborda Viora. Durante la sesión, la ubicación de la parcela demoró al no estar activado el GPS del dispositivo.} \\ 
 \multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[height=4.5cm]{report/assets/interviews/validation/interview-val-gustavo-calizaga.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
@@ -277,8 +277,8 @@ Esta sección contiene el proceso de evaluación de las sesiones de validación 
 \textbf{NRC:} & 4951 \\ \hline
 \textbf{PROFESORES:} & Todos \\ \hline
 \textbf{AUDITOR:} & ArcadiaDevs \\ \hline
-\textbf{CLIENTES:} & Cristóbal Benito Barrientos Carpio, Alexandra Rosas, Ing. Daniel Estrada, Ing. Maribel Vargas \\ \hline
-\textbf{Site o App a Evaluar:} & Landing page \\ \hline
+\textbf{CLIENTES:} & Cristóbal Benito Barrientos Carpio, Alexandra Rosas, Gustavo Calizaga Limache, Ing. Daniel Estrada, Ing. Maribel Vargas \\ \hline
+\textbf{Site o App a Evaluar:} & Landing page y aplicación móvil productor \\ \hline
 \end{tabular}
 \endgroup
 
@@ -286,18 +286,22 @@ Esta sección contiene el proceso de evaluación de las sesiones de validación 
 
 \noindent \textbf{TAREAS A EVALUAR:}
 
-El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas en la Landing Page:
+El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas en la Landing Page (1 a 4) y en la aplicación móvil productor (5 a 9):
 
 1. Exploración de la propuesta de valor agronómica y módulos de frío invernal y balance de carga frutal.
 2. Consulta y diferenciación de planes comerciales (Plan Productor vs. Plan Cooperativa).
 3. Cambio de idioma de la interfaz (español / inglés) y navegación en cabecera.
 4. Localización de vías de contacto comercial y canales de soporte técnico.
+5. Creación de cuenta y bienvenida guiada (UF-F01).
+6. Consulta del resumen diario y de las fases del cultivo en Inicio (UF-F05).
+7. Registro y delimitación de un lote con ubicación del dispositivo o mapa (UF-F06 y UF-F07).
+8. Consulta del detalle del lote, la vecería y el frío invernal acumulado (UF-F10 y UF-F11).
+9. Registro de un muestreo de cuajado en la Bitácora (UF-F12).
 
 No están incluidas en esta versión de la evaluación las siguientes tareas:
 
-1. Registro y autenticación transaccional de nuevos usuarios con pasarela de pago.
-2. Muestreo de campo de racimos y brotes sin conexión (reservado para la aplicación móvil).
-3. Exportación automatizada de consolidados de cosecha a formatos descargables (Excel/PDF).
+1. Muestreo de campo de racimos y brotes sin conexión a internet.
+2. Exportación automatizada de consolidados de cosecha a formatos descargables (Excel/PDF).
 
 \vspace{0.25cm}
 
@@ -336,7 +340,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \renewcommand{\arraystretch}{1.06}
 \setlength{\tabcolsep}{3.5pt}
 \begin{longtable}{|c|>{\raggedright\arraybackslash}p{6.2cm}|c|>{\raggedright\arraybackslash}p{5.5cm}|}
-\caption{Matriz resumen de hallazgos en la evaluación heurística de UX de la Landing Page.} \label{tab:heuristic-summary} \\
+\caption{Matriz resumen de hallazgos en la evaluación heurística de UX de la Landing Page y la aplicación móvil productor.} \label{tab:heuristic-summary} \\
 \hline
 \textbf{\#} & \textbf{Problema} & \textbf{Severidad} & \textbf{Heurística / Principio violado} \\ \hline
 \endfirsthead
@@ -352,6 +356,9 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 2 & Ausencia de un canal de comunicación directa inmediata (enlace a WhatsApp o soporte rápido) en la navegación o pie de página. & 2 & Usabilidad: Reconocimiento antes que recuerdo / Arquitectura de Información: Localizable. \\ \hline
 3 & El botón de acción del Plan Cooperativa remite a la descarga de la aplicación móvil individual en lugar de un canal de cotización institucional. & 2 & Arquitectura de Información: Claridad / Usabilidad: Coincidencia entre el sistema y el mundo real. \\ \hline
 4 & Ausencia de una opción visible para previsualizar capturas del módulo móvil o exportar consolidados de acopio a formatos descargables (Excel / PDF). & 1 & Diseño Inclusivo: Brindar elección / Usabilidad: Flexibilidad y control del usuario. \\ \hline
+5 & Al delimitar un lote con la ubicación del dispositivo, la aplicación no detecta que el GPS está desactivado ni ofrece activarlo. & 3 & Usabilidad: Ayudar a reconocer, diagnosticar y recuperarse de errores / Usabilidad: Prevención de errores. \\ \hline
+6 & Las fechas de las fases fenológicas mostradas en Inicio no coinciden con el calendario que maneja el productor en su valle. & 2 & Usabilidad: Coincidencia entre el sistema y el mundo real. \\ \hline
+7 & La aplicación no estima los kilogramos por hectárea que se dejan de cosechar en una campaña baja. & 2 & Usabilidad: Visibilidad del estado del sistema / Arquitectura de Información: Claridad. \\ \hline
 \end{longtable}
 \end{center}
 
@@ -405,6 +412,42 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
   \item \textbf{Heurística violada:} Diseño Inclusivo: Brindar elección / Usabilidad: Flexibilidad y control del usuario.
   \item \textbf{Problema:} La Ing. Maribel Vargas manifestó que, si bien la narrativa técnica sobre la ventana de aclareo y la carga frutal es sólida, los evaluadores con formación agronómica sienten curiosidad por conocer de antemano la apariencia visual del formulario de muestreo móvil en la parcela. Adicionalmente, destacó la conveniencia de que los paneles analíticos permitan exportar resúmenes de estimación de cosecha a formatos universales (planillas de cálculo o documentos PDF) para su presentación en asambleas de acopio.
   \item \textbf{Recomendación:} Añadir en la tarjeta del Plan Cooperativa o en la sección de módulos una viñeta informativa que aclare la disponibilidad de "Exportación de informes a Excel y PDF", e incluir una imagen ilustrativa de la pantalla de muestreo móvil para brindar certeza visual sobre el uso de la herramienta en campo.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#5: Ausencia de detección del GPS desactivado al delimitar un lote}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 3.
+  \item \textbf{Heurística violada:} Usabilidad: Ayudar a reconocer, diagnosticar y recuperarse de errores / Usabilidad: Prevención de errores.
+  \item \textbf{Problema:} En el registro de un lote, la aplicación móvil productor solicita el permiso de ubicación precisa, pero no verifica si el servicio de ubicación (GPS) del dispositivo está activado. Durante la sesión con Gustavo Calizaga, el permiso estaba concedido y el GPS apagado, por lo que la aplicación quedó a la espera de una señal que no llegaba, sin mensaje que explicara la causa. Ubicar la parcela tomó más tiempo del previsto, ya que la causa no era evidente para el productor.
+  \item \textbf{Recomendación:} Comprobar el estado del servicio de ubicación antes de iniciar la delimitación y, si está desactivado, mostrar el diálogo del sistema para activarlo. Mientras tanto, indicar con un mensaje breve que el GPS está apagado y ofrecer delimitar el lote directamente sobre el mapa, de modo que el productor pueda continuar el registro sin depender de la señal.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#6: Fechas de las fases fenológicas desalineadas con el calendario local}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 2.
+  \item \textbf{Heurística violada:} Usabilidad: Coincidencia entre el sistema y el mundo real.
+  \item \textbf{Problema:} La pantalla de Inicio presenta las fases del olivo con fechas de referencia generales: reposo invernal de junio a agosto, floración plena a inicios de octubre, ventana de aclareo durante noviembre y cosecha de abril a junio. Gustavo Calizaga consideró claro el resumen, pero pidió ordenar las fechas de las fases, pues en su experiencia en La Yarada Los Palos la floración, el cuajado y el aclareo se adelantan respecto de lo mostrado. Si las fechas no reflejan el calendario del valle, el productor puede desconfiar de las alertas o llegar tarde a la ventana de aclareo.
+  \item \textbf{Recomendación:} Validar el calendario fenológico con asesores técnicos de La Yarada Los Palos y Yauca, y ajustar las fechas de referencia por valle. Además, permitir que el productor registre en su lote la fecha real de floración observada, para que la aplicación recalcule el cuajado y la ventana de aclareo a partir de ese dato.
+\end{itemize}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#7: Falta de estimación de la pérdida productiva por hectárea}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 2.
+  \item \textbf{Heurística violada:} Usabilidad: Visibilidad del estado del sistema / Arquitectura de Información: Claridad.
+  \item \textbf{Problema:} Gustavo Calizaga señaló que muchos productores cosechan y venden sin saber cuántos kilogramos por hectárea dejan de obtener en una campaña baja, por lo que no advierten cuándo una campaña deja de ser rentable. La aplicación móvil productor calcula el índice de vecería a partir del historial de campañas, pero no traduce esa alternancia en una cifra de pérdida que el productor pueda interpretar directamente.
+  \item \textbf{Recomendación:} Mostrar en el detalle del lote la diferencia estimada entre una campaña alta y una baja, expresada en kilogramos por hectárea y en soles según el precio de referencia, aprovechando los rendimientos ya registrados en el historial de campañas.
 \end{itemize}
 
 \clearpage
