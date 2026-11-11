@@ -141,7 +141,7 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 
 ### Registro de entrevistas
 
-En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo minucioso de la interacción con el portal web y la evidencia gráfica correspondiente.
+En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo minucioso de la interacción con el artefacto evaluado (Landing Page o aplicación móvil Android) y la evidencia gráfica correspondiente.
 
 #### Segmento 1: Productores olivareros de la región sur
 &nbsp;
@@ -185,7 +185,28 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \hline 
 \end{tabular}
 
+\vspace{0.35cm}
+
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista de Validación \#3} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Gustavo Calizaga Limache & \textbf{Edad} & 30 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productor olivarero} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Aplicación móvil Android} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{\textit{Pendiente}} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\textit{Enlace pendiente}} \\ 
+\hline 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor con 7 años de experiencia en La Yarada Los Palos, a cargo de 4 hectáreas de aceituna Sevillana, que participó también en la etapa de needfinding. La sesión se centró en la aplicación móvil Android. Calificó como claro el registro guiado y como transparente la estimación de la cuota según sus hectáreas. Al registrar su lote con un marco de plantación de 6 por 6 metros, comprobó que la densidad calculada (278 árboles por hectárea) refleja su campo y consideró el flujo «bastante fácil». Validó como suficientes el listado de lotes, la información de frío invernal, el orden de las tarjetas de Inicio y el ingreso numérico de muestras en campo, aunque pidió revisar las fechas de las fases fenológicas para alinearlas con el calendario local de floración, cuajado y aclareo. Otorgó una calificación de 5/5, consideró justificada la suscripción de S/ 55 por hectárea al mes y describió la aplicación como una guía para anticiparse a cada fase. Sugirió estimar los kilos perdidos por hectárea, pues muchos productores cosechan y venden sin conocer la rentabilidad de su campaña, y mencionó la recomendación de productos fitosanitarios para reducir costos, necesidad reconocida pero ajena al problema central que aborda Viora. Durante la sesión, la ubicación de la parcela demoró al no estar activado el GPS del dispositivo.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[height=4.5cm]{report/assets/interviews/validation/interview-val-gustavo-calizaga.png}\vspace{0.05cm}} \\ 
+\hline 
+\end{tabular}
+<!-- TODO: timing y enlace de la entrevista de validación de Gustavo. -->
+
 \endgroup
+
+\clearpage
 
 #### Segmento 2: Gestores técnicos de organizaciones olivareras
 &nbsp;
@@ -197,7 +218,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 
 \noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
-\multicolumn{4}{l}{\textbf{Entrevista de Validación \#3} \hfill \textbf{Detalles}} \\ 
+\multicolumn{4}{l}{\textbf{Entrevista de Validación \#4} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Daniel Estrada & \textbf{Edad} & 44 \\ 
 \textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
@@ -215,7 +236,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 
 \noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
-\multicolumn{4}{l}{\textbf{Entrevista de Validación \#4} \hfill \textbf{Detalles}} \\ 
+\multicolumn{4}{l}{\textbf{Entrevista de Validación \#5} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Maribel Vargas & \textbf{Edad} & 40 \\ 
 \textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos, Tacna} \\ 
