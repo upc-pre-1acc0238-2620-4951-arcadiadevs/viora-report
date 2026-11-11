@@ -47,9 +47,49 @@ viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}2-\allowbreak{
 #### Execution Evidence for Sprint Review
 &nbsp;
 
-En esta sección se presenta la evidencia de ejecución de los productos digitales implementados durante el Sprint 2. En la aplicación móvil del productor se incorporó el asistente agronómico en las principales pantallas: el inicio con el resumen del día, la alternancia, el plan de aclareo, las alertas, el clima, el frío invernal y la campaña cerrada. En cada una, el productor elige preguntas sobre sus datos y recibe respuestas con cifras reales, conserva un historial disponible sin conexión y recibe avisos claros ante errores o límites de uso. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
+En esta sección se presenta la evidencia de ejecución de los productos digitales implementados durante el Sprint 2. En la \textit{Landing Page} se incorporaron el canal de cotización del Plan Cooperativa y la primera versión de los videos About the Product y About the Team, incrustados desde YouTube. En la aplicación móvil del productor se incorporó el asistente agronómico en las principales pantallas: el inicio con el resumen del día, la alternancia, el plan de aclareo, las alertas, el clima, el frío invernal y la campaña cerrada. En cada una, el productor elige preguntas sobre sus datos y recibe respuestas con cifras reales, conserva un historial disponible sin conexión y recibe avisos claros ante errores o límites de uso. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
 
-<!-- PENDIENTE: bloque de evidencias de la Landing Page. -->
+\noindent \textbf{Landing Page:}
+
+El Plan Cooperativa cuenta ahora con un canal propio de cotización. Desde la sección de planes, el menú y el pie de página se abre una ventana que invita a la cooperativa a indicar cuántos socios y hectáreas desea cubrir, y ofrece el contacto por WhatsApp y por correo para recibir una cotización a medida en soles (\autoref{fig:exec-landing-coop-quote-s2}). Con ello, el gestor técnico ya no es derivado a la descarga de la aplicación individual.
+
+\begin{figure}[H]
+\caption{Ventana de cotización del Plan Cooperativa.} \label{fig:exec-landing-coop-quote-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-2/landing-page/01-cooperative-quote.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+La sección de video presenta un reel construido a partir del video About the Product, que se reproduce en bucle como vista previa y abre el video completo al seleccionar «Ver reel» (\autoref{fig:exec-landing-reel-s2}).
+
+\begin{figure}[H]
+\caption{Sección del reel del producto en la Landing Page.} \label{fig:exec-landing-reel-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-2/landing-page/02-product-reel.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+La primera versión del video About the Product se reproduce desde YouTube dentro de la Landing Page, con subtítulos disponibles (\autoref{fig:exec-landing-about-product-s2}). Esta versión se completará en el Sprint 3 con el segmento de entrevistas a gestores técnicos.
+
+\begin{figure}[H]
+\caption{Video About the Product incrustado en la Landing Page.} \label{fig:exec-landing-about-product-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-2/landing-page/03-about-the-product-video.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
+
+De igual forma, la sección del equipo reproduce el video About the Team desde YouTube, con el resumen del proceso de trabajo y los testimonios de los integrantes (\autoref{fig:exec-landing-about-team-s2}).
+
+\begin{figure}[H]
+\caption{Video About the Team incrustado en la Landing Page.} \label{fig:exec-landing-about-team-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.425\textwidth]{report/assets/execution-evidence/sprint-2/landing-page/04-about-the-team-video.png}
+\caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
+\end{figure}
 
 \noindent \textbf{Aplicación móvil del productor:}
 
@@ -160,8 +200,6 @@ Al cerrar la campaña, el comprobante de liquidación ofrece preguntas sobre sus
 \includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-producer/18-assistant-retry.jpg}
 \caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
 \end{figure}
-
-<!-- PENDIENTE: bloque de evidencias de la aplicación móvil del gestor técnico (Flutter). -->
 
 \noindent \textbf{Video de navegación del producto:}
 
@@ -506,14 +544,11 @@ La \autoref{fig:deploy-releases-s2} muestra el historial de versiones en Firebas
 \caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution; se ocultó el correo de contacto. Elaboración propia.}
 \end{figure}
 
-
 Con este sprint la aplicación Android queda publicada y culminada.
 
 \noindent \textbf{Aplicación móvil Flutter (Firebase App Distribution):}
 
 La aplicación Flutter sigue el mismo esquema de despliegue que la aplicación Android: un flujo de GitHub Actions compila y firma el APK \textit{release} y lo distribuye en Firebase App Distribution a los grupos de verificadores. Con este sprint la aplicación Flutter queda publicada y culminada.
-
-<!-- TODO: evidencias del despliegue de la aplicación Flutter. -->
 
 \clearpage
 
@@ -553,8 +588,6 @@ En el repositorio `viora-landing-page` la mayor parte del trabajo se realizó en
 \includegraphics[width=0.45\textwidth]{report/assets/sprint-team-collaboration/sprint-2/viora-landing-page-contributors.png}
 \caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-landing-page}. Elaboración propia.}
 \end{figure}
-
-<!-- TODO: analíticas de Contributors del repositorio viora-mobile-flutter. -->
 
 En el repositorio `viora-mobile-flutter` se registra el trabajo de la aplicación Flutter (\textit{analíticas pendientes}).
 
