@@ -14,6 +14,7 @@ El video *About the Product* presenta de forma promocional el modelo de negocio 
 * \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-ArcadiaDevs-about-the-product-av2.mp4}
 * \textbf{Duración:} 00:03:47
 * \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/26rde5pj}
+* \textbf{Enlace de visualización (YouTube):} \url{https://www.youtube.com/watch?v=beRFJeo_9yI}
 
 \vspace{0.3cm}
 
@@ -63,6 +64,7 @@ El video *About the Team* resume el proceso de trabajo del equipo ArcadiaDevs du
 * \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-ArcadiaDevs-about-the-team-av2.mp4}
 * \textbf{Duración:} 00:09:07
 * \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/7dxk7xkn}
+* \textbf{Enlace de visualización (YouTube):} \url{https://www.youtube.com/watch?v=CgOQZjVvBsY}
 
 \vspace{0.3cm}
 
