@@ -19,6 +19,17 @@ El presente glosario define los conceptos técnicos, metodológicos, arquitectó
 - **RESTful API (Interfaz de Programación de Aplicaciones REST):** Servicio web que se adhiere a los principios de transferencia de estado representacional (REST), empleando métodos HTTP estándares (GET, POST, PUT, DELETE) para la comunicación sin estado entre clientes y backend.
 - **User Story (Historia de Usuario):** Descripción funcional breve y estructurada de un requisito desde la perspectiva del usuario final, siguiendo el formato estándar de rol, deseo y beneficio.
 
+### Términos de Negocio y Membresía Cooperativa {-}
+
+- **Customer (Cliente):** Persona u organización que contrata y paga por Viora: el productor olivarero con el Plan Productor o la cooperativa con una licencia. No debe confundirse con el usuario ni con la aplicación cliente que consume la API.
+- **Holder (Titular):** Productor olivarero a cuyo nombre figura una parcela o una suscripción y que puede modificarla o darla de baja.
+- **License (Licencia):** Acuerdo corporativo entre Viora y una cooperativa que fija las plazas y la superficie autorizadas, y que sustenta la afiliación de sus socios sin cobro individual.
+- **Lot (Lote):** En las aplicaciones móviles, parcela registrada del productor; en suscripciones y operación cooperativa, lote de códigos de invitación emitido contra la licencia; en el muestreo sin conexión, conjunto de registros pendientes de sincronización.
+- **Member (Socio):** Productor olivarero afiliado a una cooperativa que accede a Viora mediante un código de invitación y queda cubierto por la licencia colectiva.
+- **Seat (Plaza):** Cupo de la licencia reservado para un socio productor; se compromete al emitir un lote de códigos y se restituye si el código expira o se revoca.
+- **Sector (Sector):** Subdivisión geográfica del valle olivarero sobre la que se agrupan las parcelas y se calcula el semáforo de riesgo territorial.
+- **Segment (Segmento):** Grupo de usuarios con perfil, necesidad y aplicación propios a los que Viora dirige su propuesta de valor: productores olivareros y gestores técnicos de organizaciones olivareras.
+
 ### Acrónimos y Abreviaturas {-}
 
 - **a11y (Accessibility):** Numerónimo utilizado para designar la accesibilidad digital en diseño y desarrollo de software (11 letras entre la 'a' y la 'y').

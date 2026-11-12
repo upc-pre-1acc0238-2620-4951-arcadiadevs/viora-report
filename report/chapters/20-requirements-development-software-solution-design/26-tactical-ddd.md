@@ -212,8 +212,15 @@ En la \autoref{tab:tactical-6} se detallan los endpoints RESTful expuestos por l
 \texttt{PATCH} & \nolinkurl{/api/v1/auth/passwords} & \texttt{ChangePassword} \texttt{Request} & \texttt{204 No Content} & Actualización de contraseña para sesión autenticada. \\
 \texttt{POST} & \nolinkurl{/api/v1/auth/password-reset-tokens} & \texttt{RequestPassword} \texttt{ResetRequest} & \texttt{202 Accepted} & Solicitud de código de recuperación por correo. \\
 \texttt{PUT} & \nolinkurl{/api/v1/auth/password-reset-tokens/{token}} & \texttt{ResetPassword} \texttt{Request} & \texttt{204 No Content} & Restablecimiento de contraseña con token efímero. \\
+\texttt{GET} & \nolinkurl{/api/v1/auth/password-reset-tokens/{token}} & N/A & \texttt{204 No Content} & Comprobación de vigencia del enlace sin consumirlo. \\
+\texttt{POST} & \nolinkurl{/api/v1/auth/sign-out} & \texttt{SignOutRequest} & \texttt{204 No Content} & Cierre de sesión con revocación del token de refresco. \\
+\texttt{POST} & \nolinkurl{/api/v1/auth/account-deletions} & \texttt{DeleteAccountRequest} & \texttt{204 No Content} & Eliminación definitiva de la cuenta con confirmación de contraseña. \\
+\texttt{POST} & \nolinkurl{/api/v1/auth/email-verifications} & \texttt{VerifyEmailRequest} & Sesión del usuario (200 OK) & Activación de la cuenta con el código enviado al correo. \\
+\texttt{POST} & \nolinkurl{/api/v1/auth/email-verification-codes} & \texttt{ResendVerificationCodeRequest} & \texttt{202 Accepted} & Reenvío del código de verificación sin revelar si el correo existe. \\
 \end{longtable}
 \endgroup
+
+**Ciclo de vida de la cuenta.** `UserAccount` nace pendiente de verificación de correo, el cierre de sesión revoca el token de refresco y la eliminación de la cuenta exige confirmar la contraseña y retira los datos del usuario (`TS72` a `TS76`).
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -1394,12 +1401,27 @@ En la \autoref{tab:tactical-37} se detallan los endpoints RESTful expuestos por 
 \texttt{GET} & \nolinkurl{/api/v1/subscriptions/{id}} & N/A & \texttt{Subscription} \texttt{Resource} (200 OK) & Consulta detallada del contrato de suscripción. \\
 \texttt{GET} & \nolinkurl{/api/v1/subscription-plans} & N/A & \texttt{List<PlanOffer>} (200 OK) & Catálogo comercial de planes y tarifas vigentes. \\
 \texttt{POST} & \nolinkurl{/api/v1/payment-notifications/mercado-pago} & \texttt{Payment} \texttt{Notification} \texttt{Request} & \texttt{200 OK} & Recepción asíncrona y reconciliación de pago externo. \\
-\texttt{POST} & \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} & \texttt{Generate} \texttt{Invitation} \texttt{CodesBatchRequest} & \texttt{InvitationBatch} \texttt{Resource} (201 Created) & Emisión de lote de códigos por gestor contra cupo institucional. \\
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} & N/A (\texttt{?page=0} \texttt{\&size=20}) & \texttt{Page<Invitation} \texttt{BatchSummary>} (200 OK) & Consulta paginada y auditoría de códigos generados. \\
+\texttt{POST} & \nolinkurl{/api/v1/invitation-codes} & \texttt{Generate} \texttt{Invitation} \texttt{CodesBatchRequest} & \texttt{InvitationBatch} \texttt{Resource} (201 Created) & Emisión de lote de códigos por gestor contra cupo institucional. \\
+\texttt{GET} & \nolinkurl{/api/v1/invitation-codes} & N/A (\texttt{?status=}) & \texttt{Page<Invitation} \texttt{BatchSummary>} (200 OK) & Consulta paginada y auditoría de códigos generados. \\
 \texttt{POST} & \nolinkurl{/api/v1/cooperative-code-redemptions} & \texttt{Redeem} \texttt{Cooperative} \texttt{CodeRequest} & \texttt{Subscription} \texttt{Resource} (201 Created) & Canje de código corporativo por productor autenticado. \\
-\texttt{POST} & \nolinkurl{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} & \texttt{Shorten} \texttt{Invitation} \texttt{CodeExpiryRequest} & \texttt{200 OK} & Adelanto de vigencia para expiración anticipada. \\
+\texttt{POST} & \nolinkurl{/api/v1/invitation-codes/{id}/revocations} & N/A & \texttt{InvitationCode} \texttt{Revocation} \texttt{Resource} (200 OK) & Revocación anticipada con restitución de plaza y hectáreas. \\
+\texttt{GET} & \nolinkurl{/api/v1/cooperative-licenses} & N/A & Lista con una licencia como máximo (200 OK) & Consulta de la licencia a cargo del gestor técnico autenticado. \\
+\texttt{GET} & \nolinkurl{/api/v1/cooperative-licenses/{id}} & N/A & Licencia y balance (200 OK) & Balance de plazas y hectáreas de la licencia corporativa. \\
+\texttt{POST} & \nolinkurl{/api/v1/manager-code-redemptions} & \texttt{Redeem} \texttt{ManagerCode} \texttt{Request} & \texttt{201 Created} & Canje del código del gestor para asumir la licencia institucional. \\
+\texttt{POST} & \nolinkurl{/api/v1/cooperative-code-previews} & \texttt{Preview} \texttt{CodeRequest} & Condiciones del código (200 OK) & Vista previa de condiciones y consentimiento antes del canje. \\
+\texttt{POST} & \nolinkurl{/api/v1/cooperative-licenses/{id}/member-releases} & \texttt{Release} \texttt{MemberRequest} & \texttt{200 OK} & Desvinculación de socio: retira acceso del gestor y libera plaza tras el periodo de gracia. \\
+\texttt{GET} & \nolinkurl{/api/v1/data-sharing-consents} & N/A & Lista de consentimientos (200 OK) & Consulta de con quién comparte datos el productor. \\
+\texttt{GET} & \nolinkurl{/api/v1/data-sharing-consents/{id}} & N/A & Consentimiento (200 OK) & Detalle de un consentimiento propio. \\
+\texttt{POST} & \nolinkurl{/api/v1/data-sharing-consents/{id}/withdrawals} & N/A & \texttt{200 OK} & Retiro del consentimiento, con el plan patrocinado vigente hasta su fin. \\
+\texttt{GET} & \nolinkurl{/api/v1/subscriptions/{subscriptionId}/extension-terms} & N/A & Condiciones de ampliación (200 OK) & Condiciones para ampliar el plan individual. \\
+\texttt{POST} & \nolinkurl{/api/v1/subscriptions/{subscriptionId}/extensions} & \texttt{addedHa} (\texttt{Idempotency-Key}) & Ampliación (201 Created) & Solicitud de ampliación pagada de hectáreas. \\
+\texttt{GET} & \nolinkurl{/api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}} & N/A & Ampliación (200 OK) & Estado de una ampliación. \\
+\texttt{POST} & \nolinkurl{/api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}/checkouts} & N/A (\texttt{Idempotency-Key}) & Datos de pago (201 Created) & Preparación del pago de una ampliación pendiente. \\
+\texttt{POST} & \nolinkurl{/api/v1/quota-extension-redemptions} & \texttt{code} & \texttt{201 Created} & Canje de código que agrega hectáreas al plan patrocinado vigente. \\
 \end{longtable}
 \endgroup
+
+**Consentimientos, ampliaciones y desvinculación.** Todo se modela dentro de los agregados existentes (`TS41` y `TS81` a `TS89`). `DataSharingConsent` es una entidad interna de `CooperativeLicense` creada en el canje del código y retirable por el productor, `SubscriptionExtension` es una entidad interna de `Subscription` para la ampliación pagada de hectáreas, y la desvinculación de socios (`TS86`) es un comportamiento de la licencia que retira el acceso del gestor de inmediato y libera la plaza al terminar el periodo de gracia. La revocación de códigos (`TS41`) emite `InvitationCodeRevokedEvent`.
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -1429,7 +1451,7 @@ En la \autoref{tab:tactical-38} se presentan las estructuras de datos de transfe
 \texttt{Create} \texttt{Subscription} \texttt{Request} & Request DTO & \texttt{{ planCode: String, requestedQuotaHa: Double }} & Selección comercial contrastada con el catálogo del servidor. \\
 \texttt{CreateCheckout} \texttt{Request} & Request DTO & \texttt{{ returnUrl?: String }} & Solicitud de preferencia de cobro en pasarela externa. \\
 \texttt{Generate} \texttt{Invitation} \texttt{CodesBatchRequest} & Request DTO & \texttt{{ quantity: Int, hectaresCapPerCode: Double, expiresAt: Instant }} & Parámetros para emisión de lote de códigos. \\
-\texttt{Shorten} \texttt{Invitation} \texttt{CodeExpiryRequest} & Request DTO & \texttt{{ newExpiresAt: Instant }} & Acortamiento de vigencia de código disponible. \\
+\texttt{InvitationCode} \texttt{Revocation} \texttt{Resource} & Response DTO & \texttt{{ codeId: UUID, status: String, releasedSeats: Int, releasedAreaHa: Double }} & Resultado de la revocación de un código disponible. \\
 \texttt{Redeem} \texttt{Cooperative} \texttt{CodeRequest} & Request DTO & \texttt{{ code: String }} & Código de activación ingresado por el productor. \\
 \texttt{Payment} \texttt{Notification} \texttt{Request} & Request DTO & \texttt{{ externalNotificationId: String, externalPaymentId: String }} & Payload webhook de notificación de pasarela. \\
 \texttt{Subscription} \texttt{Resource} & Response DTO & \texttt{{ id: UUID, mode: String, status: String, quotaHa: Double, startsAt, endsAt, entitlementActive }} & Representación pública de suscripción vigente. \\
@@ -1471,7 +1493,7 @@ En la \autoref{tab:tactical-39} se especifican los manejadores de comandos y con
 \texttt{Process} \texttt{Payment} \texttt{Confirmation} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Process} \texttt{Payment} \texttt{Confirmation} \texttt{Command} & Valida firma webhook, reconcilia pago, activa suscripción y emite evento de activación. \\
 \texttt{Generate} \texttt{Invitation} \texttt{CodesBatch} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Generate} \texttt{Invitation} \texttt{CodesBatch} \texttt{Command} & Valida gestor y cupo en licencia, descuenta plazas/área, genera lote y emite evento. \\
 \texttt{Redeem} \texttt{Cooperative} \texttt{Code} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Redeem} \texttt{Cooperative} \texttt{Code} \texttt{Command} & Localiza código, valida vigencia, marca como redimido, activa patrocinio y emite evento. \\
-\texttt{Shorten} \texttt{Invitation} \texttt{CodeExpiry} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Shorten} \texttt{Invitation} \texttt{CodeExpiry} \texttt{Command} & Adelanta expiración de código disponible, transiciona a expirado y emite evento. \\
+\texttt{Revoke} \texttt{Invitation} \texttt{Code} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Revoke} \texttt{Invitation} \texttt{Code} \texttt{Command} & Revoca un código disponible, restituye cupo a la licencia y emite \texttt{InvitationCodeRevokedEvent}. \\
 \texttt{OnInvitation} \texttt{CodeExpired} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Invitation} \texttt{Code} \texttt{ExpiredEvent} & Escucha expiración y restituye plazas y hectáreas a la licencia cooperativa. \\
 \end{longtable}
 \endgroup
@@ -1656,7 +1678,7 @@ Infrastructure & \texttt{JpaSubscription} \texttt{RepositoryAdapter}; \texttt{Jp
 4. `PaymentWebhookController` autentica la firma criptográfica HMAC y delega el procesamiento en `PaymentReconciliationCommandService`.
 5. `PaymentReconciliationCommandService` actualiza el estado a activo mediante `SubscriptionRepository` y publica el evento de activación de suscripción vía `DomainEventPublisher`.
 6. En el modelo corporativo, el socio canjea su cupo con `POST` \nolinkurl{/api/v1/cooperative-code-redemptions}; `CodeRedemptionController` delega en `CooperativeInvitationCommandService`, el cual valida el código contra `CooperativeInvitationBatchRepository`, marca el código como redimido y emite evento de canje hacia *Cooperative Operations*.
-7. El gestor cooperativo puede consultar el estado de lotes y cupos mediante `CooperativeInvitationQueryService`, o bien acortar la vigencia de un código disponible despachando `POST` \nolinkurl{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} hacia `CooperativeInvitationCommandService`, lo cual dispara evento de expiración y restituye cupos a la licencia en `CooperativeLicenseRepository`.
+7. El gestor cooperativo puede consultar el estado de lotes y cupos mediante `CooperativeInvitationQueryService`, o bien revocar un código disponible despachando `POST` \nolinkurl{/api/v1/invitation-codes/{id}/revocations} hacia `CooperativeInvitationCommandService`, lo cual dispara el evento de revocación y restituye cupos a la licencia en `CooperativeLicenseRepository`.
 
 A continuación, en la \autoref{fig:c4-component-subscription} se esquematiza el diagrama de componentes del Bounded Context Subscription and Cooperative Membership:
 
@@ -1909,8 +1931,15 @@ En la \autoref{tab:tactical-48} se detallan los endpoints RESTful expuestos por 
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}} & N/A & \texttt{PlotResource} (200 OK) & Consulta de detalle agronómico, geometría y densidad arbórea. \\
 \texttt{PUT} & \nolinkurl{/api/v1/plots/{plotId}} & \texttt{UpdatePlot} \texttt{Request} (Req:\texttt{If-Match}) & \texttt{PlotResource} (200 OK) & Actualización de linderos y marco dendrométrico con control de concurrencia. \\
 \texttt{DELETE} & \nolinkurl{/api/v1/plots/{plotId}} & N/A & \texttt{204 No Content} & Baja lógica soberana de la parcela predial. \\
+\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/restore} & N/A & \texttt{PlotResponse} (200 OK) & Restauración de un cuartel archivado al inventario activo. \\
+\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/field-notes} & \texttt{id, type, text, observedOn} & Nota (201 Created) & Registro idempotente de una nota de campo. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/field-notes} & N/A & Lista de notas (200 OK) & Notas de la parcela de la más reciente a la más antigua. \\
+\texttt{PUT} & \nolinkurl{/api/v1/plots/{plotId}/field-notes/{noteId}/photo} & Imagen & Nota (200 OK) & Adjunto de fotografía a una nota de campo. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/field-notes/{noteId}/photo} & N/A & Imagen (200 OK) & Descarga de la fotografía de una nota. \\
 \end{longtable}
 \endgroup
+
+**Restauración y notas de campo.** `Plot` permite restaurar un cuartel archivado (`TS44`). `FieldNote` es una entidad interna de `Plot`, con identificador generado por el cliente para que el reintento no duplique y una fotografía opcional guardada fuera del agregado (`TS90` a `TS93`).
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -2538,7 +2567,7 @@ Asimismo, en la \autoref{tab:tactical-65} se consolidan las firmas de métodos y
 \hline
 \multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{isFrostRisk} & \texttt{void} & \texttt{boolean} & Detecta si la temperatura mínima proyectada desciende de 2.0 °C. \\
+\texttt{isFrostRisk} & \texttt{void} & \texttt{boolean} & Detecta si la temperatura mínima proyectada a 48 horas es menor o igual a 1.5 °C. \\
 \end{longtable}
 \endgroup
 
@@ -2597,8 +2626,8 @@ En la \autoref{tab:tactical-67} se presentan los atributos, tipos de datos e inv
 \endlastfoot
 \texttt{id} & \texttt{IncidentId} & Identificador único del incidente. \\
 \texttt{type} & \texttt{IncidentType} & Tipo: \texttt{HYDRIC\_STRESS}, \texttt{THERMAL\_SHOCK}, \texttt{FROST\_WARNING}. \\
-\texttt{severity} & \texttt{IncidentSeverity} & Severidad: \texttt{WARNING}, \texttt{CRITICAL}. \\
-\texttt{status} & \texttt{IncidentStatus} & Estado: \texttt{OPEN}, \texttt{RESOLVED}. \\
+\texttt{severity} & \texttt{IncidentSeverity} & Severidad: \texttt{INFO}, \texttt{WARNING}, \texttt{CRITICAL}. \\
+\texttt{status} & \texttt{IncidentStatus} & Estado: \texttt{OPEN}, \texttt{SNOOZED}, \texttt{RESOLVED}. \\
 \texttt{triggeredAt} & \texttt{Instant} & Marca de tiempo de activación de la alerta. \\
 \texttt{resolvedAt} & \texttt{Instant} & Marca de tiempo de normalización del parámetro. \\
 \texttt{triggerValue} & \texttt{Double} & Valor registrado que causó el disparo. \\
@@ -2667,7 +2696,7 @@ En la \autoref{tab:tactical-69} se especifican los objetos de valor inmutables (
 \texttt{Volumetric} \texttt{WaterContent} & Double (Porcentaje VWC / θ) & Humedad volumétrica de suelo entre $0.0\%$ y $100.0\%$. \\
 \texttt{Temperature} & \texttt{Double (Celsius)} & Métrica de temperatura ambiental con precisión de décimas. \\
 \texttt{RelativeHumidity} & \texttt{Double (Porcentaje)} & Humedad ambiental entre $0.0\%$ y $100.0\%$. \\
-\texttt{IncidentSeverity} & \texttt{Enum} & Severidad del riesgo: \texttt{WARNING}, \texttt{CRITICAL}. \\
+\texttt{IncidentSeverity} & \texttt{Enum} & Severidad del riesgo: \texttt{INFO}, \texttt{WARNING}, \texttt{CRITICAL}. \\
 \end{longtable}
 \endgroup
 
@@ -2748,9 +2777,15 @@ En la \autoref{tab:tactical-71} se detallan los endpoints RESTful expuestos por 
 \texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/telemetries} & \texttt{IngestTelemetry} \texttt{Request} & \texttt{Telemetry} \texttt{Resource} (201 Created) & Ingesta individual o en lote de lecturas de sensores. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/telemetries} & N/A (\texttt{?startDate=} \texttt{\&endDate=}) & \texttt{List<} \texttt{TelemetryResource>} (200 OK) & Consulta de series climáticas para gráficas y monitoreo. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/forecasts} & N/A & \texttt{WeatherForecast} \texttt{Resource} (200 OK) & Consulta de pronóstico meteorológico a 7 días vía Open-Meteo. \\
-\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/incidents} & N/A (\texttt{?status=ACTIVE}) & \texttt{List<} \texttt{IncidentResource>} (200 OK) & Consulta de alertas e incidentes de estrés hídrico o térmico. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/agroclimatic-incidents} & N/A (\texttt{?status=ACTIVE}) & \texttt{List<} \texttt{IncidentResource>} (200 OK) & Consulta de alertas e incidentes de estrés hídrico o térmico. \\
+\texttt{GET} & \nolinkurl{/api/v1/agroclimatic-incidents} & N/A (\texttt{?status=} \texttt{\&page=}) & Lista paginada y contadores (200 OK) & Consulta global de incidentes con contadores por severidad. \\
+\texttt{GET} & \nolinkurl{/api/v1/agroclimatic-incidents/{incidentId}} & N/A & \texttt{AgroclimaticIncident} \texttt{DetailResponse} (200 OK) & Detalle con tendencia y pasos de mitigación. \\
+\texttt{POST} & \nolinkurl{/api/v1/agroclimatic-incidents/{incidentId}/postponements} & \texttt{snoozeHours} & Incidente en estado pospuesto (200 OK) & Postergación de avisos entre 1 y 72 horas. \\
+\texttt{PUT} & \nolinkurl{/api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}} & N/A & \texttt{AgroclimaticIncident} \texttt{DetailResponse} (200 OK) & Asiento de un paso de mitigación completado. \\
 \end{longtable}
 \endgroup
+
+**Incidentes agroclimáticos.** Las rutas de incidentes cuelgan de `agroclimatic-incidents`. `AgroclimaticIncident` admite la severidad `INFO`, el estado `SNOOZED` con `snoozeUntil` y una lista ordenada de pasos de mitigación completables (`TS46` a `TS50`).
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -4122,10 +4157,23 @@ En la \autoref{tab:tactical-108} se detallan los endpoints RESTful expuestos por
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/samplings} & N/A (\texttt{?campaignYear=} \texttt{\&view=summary}) & \texttt{SamplingSummary} \texttt{Resource} (200 OK) & Consulta del avance y representatividad muestral de la campaña. \\
 \texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions} & N/A & \texttt{Prescription} \texttt{Resource} (201 Created) & Determinación de carga frutal sostenible y emisión de prescripción bajo demanda. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions} & N/A (\texttt{?status=ACTIVE}) & \texttt{Prescription} \texttt{Resource} (200 OK) & Consulta de prescripción vigente o por campaña. \\
+\texttt{GET} & \nolinkurl{/api/v1/thinning-prescriptions} & N/A & Lista de prescripciones (200 OK) & Prescripciones de aclareo del productor. \\
 \texttt{GET} & \nolinkurl{/api/v1/thinning-prescriptions/{id}} & N/A & \texttt{Prescription} \texttt{Resource} (200 OK) & Consulta de prescripción por identificador unívoco directo. \\
 \texttt{POST} & \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations} & \texttt{Confirm} \texttt{Execution} \texttt{Request} & \texttt{Execution} \texttt{Confirmation} \texttt{Resource} (201 Created) & Declaración y confirmación de labor de aclareo oportuna o tardía. \\
+\texttt{GET} & \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations} & N/A & Ejecución registrada (200 OK) & Consulta de la ejecución registrada de un aclareo. \\
+\texttt{GET} & \nolinkurl{/api/v1/samplings} & N/A (\texttt{?campaignYear=}) & \texttt{PlotSampling} \texttt{OverviewResponse} (200 OK) & Estado de muestreo de todos los cuarteles para el selector de parcelas. \\
+\texttt{PUT} & \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions/full-bloom} & \texttt{campaignYear, fullBloomDate} & \texttt{ThinningPrescription} \texttt{Response} (200 OK) & Registro de la fecha de plena floración para calibrar la ventana de aclareo. \\
+\texttt{GET} & \nolinkurl{/api/v1/thinning-events} & N/A (\texttt{?plotId=} \texttt{\&campaignYear=}) & \texttt{ThinningEvent} \texttt{Response} (200 OK) & Bitácora cronológica de eventos de aclareo del predio. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/questions} & N/A (\texttt{?screen=} \texttt{\&plotId=}) & \texttt{QuestionCatalog} \texttt{Resource} (200 OK) & Catálogo de preguntas cerradas por pantalla y parcela. \\
+\texttt{POST} & \nolinkurl{/api/v1/assistant/answers} & \texttt{questionId, plotId} (\texttt{Idempotency-Key}) & \texttt{AssistantAnswer} \texttt{Resource} (200 OK) & Respuesta idempotente validada contra datos reales. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/answers} & N/A (\texttt{?limit=}) & \texttt{AnswerHistory} \texttt{Resource} (200 OK) & Historial de respuestas con su vigencia. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/answers/latest} & N/A (\texttt{?screen=} \texttt{\&plotId=}) & \texttt{AssistantAnswer} \texttt{Resource} (200 OK) & Última respuesta de un contexto de consulta. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/answers/{answerId}} & N/A & \texttt{AssistantAnswer} \texttt{Resource} (200 OK) & Respuesta guardada con su vigencia actual. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/daily-summary} & N/A (\texttt{?plotId=}) & \texttt{AssistantDailySummary} \texttt{Resource} (200 OK) & Resumen diario con exactamente tres hechos. \\
 \end{longtable}
 \endgroup
+
+**Muestreo, aclareo y asistente agronómico.** El contexto mantiene el estado global de muestreo, el registro de plena floración y la bitácora de aclareo (`TS51` a `TS53`). El asistente agronómico es una capacidad de este contexto (`TS66` a `TS71`). `AssistantAnswer` conserva dos hechos, fuentes, acciones y la vigencia de sus datos, la solicitud es idempotente y, si el texto generado es rechazado o no está disponible, se entrega un texto predefinido. El proveedor de texto se aísla tras un puerto implementado con Spring AI (`SPK04`).
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -4399,7 +4447,7 @@ A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class
 
 ### Bounded Context: Cooperative Operations and Territorial Intelligence
 
-Propósito: Agrupa la inteligencia territorial, la administración gremial y las proyecciones logísticas de acopio para organizaciones agrarias y cooperativas olivareras. Gobierna el Aggregate Root `Cooperative`, delimitado bajo la autoridad de un gestor técnico institucional único (`technicalManagerUserId: UserId`, validado mediante claims de token JWT con rol `ROLE_GESTOR_COOPERATIVA`). Administra el padrón unificado de socios (`cooperative_` `members`), evalúa el semáforo territorial de riesgos fenológicos, climáticos y de sobrecarga sectorial (`GET .../territorial-risk` con parámetros GPS `?latitude=` `&longitude=`), y proyecta tempranamente el volumen agregado de cosecha en toneladas verdes y negras (`EarlyIntakeProjection`), advirtiendo penalizaciones de confianza si la representatividad muestral del padrón es inferior al $50\%$.
+Propósito: Agrupa la inteligencia territorial, la administración gremial y las proyecciones logísticas de acopio para organizaciones agrarias y cooperativas olivareras. Gobierna el Aggregate Root `Cooperative`, delimitado bajo la autoridad de un gestor técnico institucional único (`technicalManagerUserId: UserId`, validado mediante claims de token JWT con rol `ROLE_GESTOR_COOPERATIVA`). Administra el padrón unificado de socios (`cooperative_` `members`), evalúa el semáforo territorial de riesgos fenológicos, climáticos y de sobrecarga sectorial (`GET .../territorial-risk` con parámetros GPS `?latitude=` `&longitude=`), y proyecta tempranamente el volumen agregado de cosecha en toneladas verdes y negras (`EarlyIntakeProjection`), marcando la proyección como preliminar si la cobertura muestral del padrón es inferior al $60\%$, sin aplicar coeficientes de reducción.
 
 #### Domain Layer
 
@@ -4683,12 +4731,26 @@ En la \autoref{tab:tactical-122} se detallan los endpoints RESTful expuestos por
 \hline
 \multicolumn{5}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members} & N/A (\texttt{?status=ACTIVE}) & \texttt{List<} \texttt{Cooperative} \texttt{Member} \texttt{Resource>} (200 OK) & Padrón de socios agremiados. \\
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members/{memberId}} & N/A & \texttt{Cooperative} \texttt{Member} \texttt{Resource} (200 OK) & Ficha gremial individual de socio. \\
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{cooperativeId}/territorial-risk} & N/A (\texttt{?latitude=} \texttt{\&longitude=}) & \texttt{TerritorialRisk} \texttt{MatrixResource} (200 OK) & Semáforo territorial de riesgo fenológico y sobrecarga con geolocalización GPS. \\
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{cooperativeId}/intake-forecasts} & N/A (\texttt{?campaignYear=}) & \texttt{IntakeForecast} \texttt{Resource} (200 OK) & Proyección temprana agregada de acopio en toneladas. \\
+\texttt{GET} & \nolinkurl{/api/v1/cooperative-members} & N/A (\texttt{?status=ACTIVE}) & \texttt{PagedMember} \texttt{ListResource} (200 OK) & Padrón de socios agremiados. \\
+\texttt{GET} & \nolinkurl{/api/v1/cooperative-members/{id}} & N/A & \texttt{Cooperative} \texttt{Member} \texttt{Resource} (200 OK) & Ficha gremial individual de socio. \\
+\texttt{GET} & \nolinkurl{/api/v1/member-plots} & N/A (\texttt{?latitude=} \texttt{\&longitude=}) & \texttt{TerritorialRisk} \texttt{Resource} (200 OK) & Semáforo territorial de riesgo fenológico y sobrecarga con geolocalización GPS. \\
+\texttt{GET} & \nolinkurl{/api/v1/intake-forecasts/{campaignYear}} & N/A & \texttt{IntakeForecast} \texttt{Resource} (200 OK) & Proyección temprana agregada de acopio en toneladas. \\
+\texttt{GET} & \nolinkurl{/api/v1/intake-forecasts} & N/A & Acopio por campaña (200 OK) & Histórico de acopio por campaña para comparar con campañas liquidadas. \\
+\texttt{GET} & \nolinkurl{/api/v1/member-plots/{id}} & N/A & \texttt{PlotAgronomic} \texttt{OverviewResource} (200 OK) & Resumen agronómico de una parcela socia en solo lectura. \\
+\texttt{GET} & \nolinkurl{/api/v1/member-plots/{id}/provisional-dossier} & N/A (\texttt{Accept: application/pdf} o \texttt{application/json}) & \texttt{Provisional} \texttt{DossierResource} (200 OK) & Instantánea documental provisional del expediente en campaña abierta. \\
+\texttt{GET} & \nolinkurl{/api/v1/sector-alerts} & N/A & \texttt{TerritorialAlert} \texttt{ListResource} (200 OK) & Alertas agroclimáticas y fenológicas internas por sector. \\
+\texttt{GET} & \nolinkurl{/api/v1/sector-zones} & N/A & Lista de sectores (200 OK) & Sectores de la licencia con sus parcelas socias. \\
+\texttt{POST} & \nolinkurl{/api/v1/sector-zones} & \texttt{name} & Sector (201 Created) & Registro de un sector territorial. \\
+\texttt{GET} & \nolinkurl{/api/v1/sector-zones/{id}} & N/A & Sector (200 OK) & Consulta de un sector. \\
+\texttt{PATCH} & \nolinkurl{/api/v1/sector-zones/{id}} & \texttt{name} & Sector (200 OK) & Renombrado de un sector. \\
+\texttt{GET} & \nolinkurl{/api/v1/plot-sector-assignments} & N/A (\texttt{?status=}) & Lista de asignaciones (200 OK) & Parcelas por sector con filtro por estado. \\
+\texttt{GET} & \nolinkurl{/api/v1/plot-sector-assignments/{plotId}} & N/A & Asignación (200 OK) & Sector de una parcela socia. \\
+\texttt{PUT} & \nolinkurl{/api/v1/plot-sector-assignments/{plotId}} & \texttt{sectorZoneId} o \texttt{name} & Asignación (200 OK) & Asignación de sector, pendiente de confirmación si el nombre es nuevo. \\
+\texttt{POST} & \nolinkurl{/api/v1/plot-sector-assignments/{plotId}/resolutions} & N/A & Asignación (200 OK) & Resolución de un sector pendiente de confirmación. \\
 \end{longtable}
 \endgroup
+
+**Sectores y lecturas territoriales.** Este contexto es dueño del catálogo de sectores de la licencia (`TS94` a `TS100`). `SectorZone` es una entidad interna de `Cooperative` con nombre único por licencia y `PlotSectorAssignment` vincula una parcela socia con un sector, quedando pendiente de confirmación cuando el nombre propuesto no existe. Las consultas de parcela (`TS60`) y de expediente provisional (`TS63`) son lecturas orquestadas que respetan el consentimiento de compartición de datos, y las alertas territoriales (`TS61`) se derivan de los incidentes agroclimáticos por sector.
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -4715,9 +4777,10 @@ En la \autoref{tab:tactical-123} se presentan las estructuras de datos de transf
 \hline
 \multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
+\texttt{PagedMember} \texttt{ListResource} & Response DTO & \texttt{{ members: List<CooperativeMemberResource>, activeMembers: Int, pendingMembers: Int }} & Padrón con contadores globales de socios activos y pendientes. \\
 \texttt{Cooperative} \texttt{Member} \texttt{Resource} & Response DTO & \texttt{{ id: UUID, producerUserId: UUID, fullName: String, contactPhone: String, totalDeclaredHa: Double, status: String }} & Datos de socio agremiado. \\
-\texttt{TerritorialRisk} \texttt{MatrixResource} & Response DTO & \texttt{{ cooperativeId: UUID, highRiskSectors: List<String>, generalStatus: String, evaluatedAt: Instant }} & Semáforo de riesgo territorial. \\
-\texttt{IntakeForecast} \texttt{Resource} & Response DTO & \texttt{{ cooperativeId: UUID, greenOlivesTons: Double, blackOlivesTons: Double, confidenceDegraded: Boolean }} & Proyección de acopio para salmuera y aceite. \\
+\texttt{TerritorialRisk} \texttt{Resource} & Response DTO & \texttt{{ cooperativeId: UUID, highRiskSectors: List<String>, generalStatus: String, evaluatedAt: Instant }} & Semáforo de riesgo territorial. \\
+\texttt{IntakeForecast} \texttt{Resource} & Response DTO & \texttt{{ cooperativeId: UUID, greenOlivesTons: Double, blackOlivesTons: Double, coveragePercentage: Double, status: String }} & Proyección de acopio para salmuera y aceite. \\
 \texttt{Cooperative} \texttt{Resource} \texttt{Assembler} & Assembler & \texttt{toResource(} \texttt{Cooperative):} \texttt{Cooperative} \texttt{Resource} & Transformador a DTO público de presentación. \\
 \end{longtable}
 \endgroup
@@ -4917,7 +4980,7 @@ Infrastructure & \texttt{JpaCooperative} \texttt{RepositoryAdapter}; \texttt{Spr
 1. El gestor técnico consulta el semáforo territorial desde la aplicación móvil o portal enviando `GET .../territorial-risk?latitude=-18.05&longitude=-70.25` hacia `CooperativeRiskController`.
 2. `CooperativeRiskController` delega la consulta en `CooperativeQueryService` (mientras que los comandos de afiliación, suspensión y evaluación formal de riesgo son atendidos por `CooperativeCommandService`).
 3. `CooperativeQueryService` consulta `Cooperative` `Repository` e interactúa con el servicio de dominio `TerritorialRiskAggregationService` para consolidar alertas de heladas y sobrecarga por sector agroclimático (*Sector Valle Bajo*, *Sector Costa*, *Sector Litoral*).
-4. Se retorna `TerritorialRiskMatrixResource` resaltando el nivel de riesgo por cuadrante operativo.
+4. Se retorna `TerritorialRiskResource` resaltando el nivel de riesgo por cuadrante operativo.
 5. Para proyecciones de cosecha temprana, `CooperativeQueryService` invoca `YieldAggregationDomainService` exponiendo las toneladas estimadas a través de `CooperativeIntakeController`.
 
 A continuación, en la \autoref{fig:c4-component-cooperative} se esquematiza el diagrama de componentes del Bounded Context Cooperative Operations:
@@ -5241,10 +5304,15 @@ En la \autoref{tab:tactical-136} se detallan los endpoints RESTful expuestos por
 \texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements} & \texttt{SettleHarvest} \texttt{Request} & \texttt{Harvest} \texttt{Settlement} \texttt{Resource} (201 Created) & Asienta liquidación anual de cosecha. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements} & N/A (\texttt{?campaignYear=}) & \texttt{List<} \texttt{Harvest} \texttt{Settlement} \texttt{Resource>} (200 OK) & Lista histórica de liquidaciones prediales. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements/{settlementId}} & N/A & \texttt{Harvest} \texttt{Settlement} \texttt{Resource} (200 OK) & Consulta liquidación puntual por su UUID. \\
-\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports} & N/A (\texttt{Accept: application/json} o \texttt{application/pdf}) & \texttt{AgronomicReport} \texttt{Resource} / \texttt{byte[]} (200 OK) & Consulta métricas (JSON) o descarga expediente oficial en PDF mediante Content Negotiation. \\
-\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports/certifications} & \texttt{CertifyDossier} \texttt{Request} & \texttt{Dossier} \texttt{Certification} \texttt{Resource} (201 Created) & Emite certificación colegiada oficial y estampa hash SHA-256. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-dossiers/{campaignYear}} & N/A (\texttt{Accept: application/json} o \texttt{application/pdf}) & \texttt{TechnicalDossier} \texttt{Resource} / \texttt{byte[]} (200 OK) & Consulta métricas (JSON) o descarga expediente oficial en PDF mediante Content Negotiation. \\
+\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/certifications} & \texttt{CertifyDossier} \texttt{Request} & \texttt{Dossier} \texttt{Certification} \texttt{Resource} (201 Created) & Emite certificación colegiada oficial y estampa hash SHA-256. \\
+\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-dossiers} & \texttt{campaignYear} & Expediente sellado (201 Created o 200 OK) & Sellado idempotente del expediente de una campaña liquidada. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-dossiers} & N/A & Lista de expedientes (200 OK) & Expedientes sellados de la parcela por campaña. \\
+\texttt{GET} & \nolinkurl{/api/v1/agronomic-dossiers/verifications/{verificationHash}} & N/A & Parcela y campaña (200 OK) & Verificación de autenticidad de un expediente por su huella. \\
 \end{longtable}
 \endgroup
+
+**Expediente agronómico por campaña.** El expediente agronómico se organiza por campaña. `TS101` sella el expediente de una campaña liquidada y es idempotente, `TS40` conserva la certificación colegiada sobre ese expediente y `TS102` y `TS103` consultan los expedientes sellados y verifican su autenticidad por huella. En campaña abierta solo existe el expediente provisional (`TS63`), sin hash definitivo.
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -5476,8 +5544,8 @@ Infrastructure & \texttt{JpaAgronomicReport} \texttt{RepositoryAdapter}; \texttt
 2. `PlotHarvestSettlementController` delega el comando `SettleCampaignHarvestCommand` en `HarvestSettlement` `CommandService`.
 3. `HarvestSettlement` `CommandService` carga el reporte desde `AgronomicReportRepository`, valida las reglas y delega en `StabilizationCurveCalculatorService` la actualización de la varianza interanual y la tasa de atenuación de vecería ($ARR$).
 4. Se persiste el cierre mediante `AgronomicReportRepository` y se despacha `CampaignHarvestSettledEvent` vía `SpringDomainEventPublisher` hacia *Phenology*.
-5. Ante la solicitud `POST` \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports/certification}, `HarvestSettlement` `CommandService` compila el expediente colegiado, estampa la firma con `OpenPdfAgronomicDossierAdapter`, genera el hash SHA-256 inmutable y emite `AgronomicDossierGeneratedEvent`.
-6. Ante `GET` \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports} con cabecera `Accept: application/pdf`, `AgronomicReportQueryService` consulta `AgronomicReportRepository` y delega en `OpenPdfAgronomicDossierAdapter` transmitiendo el binario inmutable del informe oficial en streaming directo con hash SHA-256.
+5. Ante la solicitud `POST` \nolinkurl{/api/v1/plots/{plotId}/certifications}, `HarvestSettlement` `CommandService` compila el expediente colegiado, estampa la firma con `OpenPdfAgronomicDossierAdapter`, genera el hash SHA-256 inmutable y emite `AgronomicDossierGeneratedEvent`.
+6. Ante `GET` \nolinkurl{/api/v1/plots/{plotId}/agronomic-dossiers/{campaignYear}} con cabecera `Accept: application/pdf`, `AgronomicReportQueryService` consulta `AgronomicReportRepository` y delega en `OpenPdfAgronomicDossierAdapter` transmitiendo el binario inmutable del informe oficial en streaming directo con hash SHA-256.
 
 A continuación, en la \autoref{fig:c4-component-settlement} se esquematiza el diagrama de componentes del Bounded Context Harvest Settlement and Performance Reporting:
 

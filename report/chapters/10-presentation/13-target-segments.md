@@ -1,6 +1,7 @@
 ## Segmentos objetivo
 
-Viora orienta su propuesta de valor a dos macro-segmentos del ecosistema olivarero del sur del Perú: quien ejecuta la regulación de carga en campo (productor olivarero) y quien planifica y consolida el volumen resultante en la cadena de valor (gestor técnico de organizaciones olivareras). Ambos enfrentan la alternancia productiva o vecería desde perspectivas complementarias: inestabilidad de ingresos y riesgo en la planificación de acopio.
+Viora orienta su propuesta de valor a dos macro-segmentos del ecosistema olivarero del sur del Perú que participan directamente en el ciclo de decisión de la carga frutal: quien ejecuta la regulación de carga en campo y quien planifica y consolida el volumen resultante en la cadena de valor. Ambos comparten el mismo problema, la alternancia productiva o vecería, pero lo experimentan en momentos distintos del ciclo: el productor como inestabilidad de ingreso campaña tras campaña, y la organización acopiadora como imposibilidad de proyectar el volumen que recibirá. La cooperativa no es un tercer segmento: es el cliente que paga.
+
 
 1. **Productores olivareros de la macro-región sur**
 
