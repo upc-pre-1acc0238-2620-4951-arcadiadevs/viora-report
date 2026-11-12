@@ -510,7 +510,7 @@ Para mejorar la organización del dominio y facilitar una comunicación consiste
 
 \newpage
 
-\noindent \textbf{Crop Load Regulation and Thinning Advisory (Thinning):} Este bounded context evalúa la representatividad del muestreo a pie de árbol y emite prescripciones de porcentaje de aclareo frutal antes del endurecimiento del carozo. Su propósito es intervenir oportunamente para romper el ciclo biológico de la alternancia productiva (ver \autoref{fig:bcc-thinning}).
+\noindent \textbf{Crop Load Regulation and Thinning Advisory (Thinning):} Este bounded context evalúa la representatividad del muestreo a pie de árbol y emite prescripciones de porcentaje de aclareo frutal antes del endurecimiento del carozo, calibradas con la fecha de plena floración. También aloja al asistente agronómico, que responde preguntas cerradas con datos reales del productor. Su propósito es intervenir oportunamente para romper el ciclo biológico de la alternancia productiva (ver \autoref{fig:bcc-thinning}).
 
 \begin{figure}[H]
 \caption{Bounded Context Canvas: Crop Load Regulation and Thinning Advisory (Thinning).} \label{fig:bcc-thinning}
@@ -534,7 +534,7 @@ Para mejorar la organización del dominio y facilitar una comunicación consiste
 
 \newpage
 
-\noindent \textbf{Harvest Settlement and Performance Reporting (Harvest):} Este bounded context asienta la liquidación de kilos cosechados, computa la curva interanual de estabilización y compila el expediente técnico oficial en PDF. Su propósito es certificar el rendimiento anual y validar la mitigación lograda (ver \autoref{fig:bcc-harvest}).
+\noindent \textbf{Harvest Settlement and Performance Reporting (Harvest):} Este bounded context asienta la liquidación de kilos cosechados, computa la curva interanual de estabilización y sella por campaña el expediente técnico oficial en PDF con verificación por huella. Su propósito es certificar el rendimiento anual y validar la mitigación lograda (ver \autoref{fig:bcc-harvest}).
 
 \begin{figure}[H]
 \caption{Bounded Context Canvas: Harvest Settlement and Performance Reporting (Harvest).} \label{fig:bcc-harvest}
@@ -558,7 +558,7 @@ Para mejorar la organización del dominio y facilitar una comunicación consiste
 
 \newpage
 
-\noindent \textbf{Agroclimatic Telemetry and Sensor Monitoring (Telemetry):} Este bounded context ingesta series horarias de humedad edáfica a 30 y 60 cm y pronósticos a 7 días, emitiendo alertas ante estrés hídrico o choques térmicos. Su propósito es vigilar continuamente las condiciones edafoclimáticas del suelo (ver \autoref{fig:bcc-telemetry}).
+\noindent \textbf{Agroclimatic Telemetry and Sensor Monitoring (Telemetry):} Este bounded context ingesta series horarias de humedad edáfica a 30 y 60 cm y pronósticos a 7 días, emitiendo incidentes agroclimáticos que el productor puede posponer y mitigar paso a paso. Su propósito es vigilar continuamente las condiciones edafoclimáticas del suelo (ver \autoref{fig:bcc-telemetry}).
 
 \begin{figure}[H]
 \caption{Bounded Context Canvas: Agroclimatic Telemetry and Sensor Monitoring (Telemetry).} \label{fig:bcc-telemetry}
@@ -570,7 +570,7 @@ Para mejorar la organización del dominio y facilitar una comunicación consiste
 
 \newpage
 
-\noindent \textbf{Cooperative Operations and Territorial Intelligence (Territory):} Este bounded context administra el padrón de socios, autoriza qué gestores técnicos pueden solicitar la emisión de lotes de códigos corporativos, centraliza el semáforo de riesgo por valles y proyecta el volumen de acopio colectivo. La custodia del contrato corporativo y el ciclo de vida de los códigos residen en \textit{Subscription and Cooperative Membership}. Su propósito es brindar inteligencia sectorial a la cooperativa (ver \autoref{fig:bcc-territory}).
+\noindent \textbf{Cooperative Operations and Territorial Intelligence (Territory):} Este bounded context administra el padrón de socios, autoriza qué gestores técnicos pueden solicitar la emisión de lotes de códigos corporativos, centraliza el semáforo de riesgo por valles, mantiene el catálogo de sectores territoriales de la licencia, sirve alertas sectoriales y proyecta el volumen de acopio colectivo marcándolo como preliminar cuando la cobertura muestral es menor al 60\%. Sus lecturas de socios y parcelas se limitan a quienes comparten sus datos. La custodia del contrato corporativo y el ciclo de vida de los códigos residen en \textit{Subscription and Cooperative Membership}. Su propósito es brindar inteligencia sectorial a la cooperativa (ver \autoref{fig:bcc-territory}).
 
 \begin{figure}[H]
 \caption{Bounded Context Canvas: Cooperative Operations and Territorial Intelligence (Territory).} \label{fig:bcc-territory}
@@ -594,7 +594,7 @@ Para mejorar la organización del dominio y facilitar una comunicación consiste
 
 \newpage
 
-\noindent \textbf{Subscription and Cooperative Membership (Subscription):} Este bounded context gestiona pagos al Plan Productor y el canje de códigos de patrocinio, fiscalizando la cuota de hectáreas catastrables. Su propósito es asegurar la monetización del servicio SaaS y controlar el acceso predial (ver \autoref{fig:bcc-subscription}).
+\noindent \textbf{Subscription and Cooperative Membership (Subscription):} Este bounded context gestiona pagos al Plan Productor y sus ampliaciones, el canje y la revocación de códigos de patrocinio, los consentimientos de compartición de datos y la desvinculación de socios, fiscalizando la cuota de hectáreas catastrables. Su propósito es asegurar la monetización del servicio SaaS y controlar el acceso predial (ver \autoref{fig:bcc-subscription}).
 
 \begin{figure}[H]
 \caption{Bounded Context Canvas: Subscription and Cooperative Membership (Subscription).} \label{fig:bcc-subscription}
@@ -606,7 +606,7 @@ Para mejorar la organización del dominio y facilitar una comunicación consiste
 
 \clearpage
 
-\noindent \textbf{Identity and Access Management (IAM):} Este bounded context gestiona la autenticación de usuarios, asignación de roles, emisión de tokens de sesión y recuperación segura de credenciales. Su propósito es garantizar acceso controlado y seguridad perimetral en la plataforma (ver \autoref{fig:bcc-iam}).
+\noindent \textbf{Identity and Access Management (IAM):} Este bounded context gestiona la autenticación de usuarios, asignación de roles, emisión de tokens de sesión y recuperación segura de credenciales, verificación del correo, cierre de sesión y eliminación de la cuenta. Su propósito es garantizar acceso controlado y seguridad perimetral en la plataforma (ver \autoref{fig:bcc-iam}).
 
 \begin{figure}[H]
 \caption{Bounded Context Canvas: Identity and Access Management (IAM).} \label{fig:bcc-iam}
