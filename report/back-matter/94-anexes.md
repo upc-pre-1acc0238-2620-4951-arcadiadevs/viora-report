@@ -90,6 +90,33 @@ En esta sección se presenta la evidencia audiovisual consolidada de las entrevi
 \caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/validation-interviews}}
 \end{figure}
 
+\clearpage
+
+\noindent \textbf{B.3. Video de entrevistas de validación (AV2)}
+
+\vspace{0.2cm}
+
+En esta sección se presenta la evidencia audiovisual consolidada de las entrevistas de validación de la entrega AV2. El video reúne las cuatro sesiones con la Landing Page y, a continuación, las dos sesiones con la aplicación móvil productor, distribuida mediante Firebase App Distribution. Cada sesión se identifica con el nombre del entrevistado, su segmento y la fecha.
+
+\vspace{0.3cm}
+
+\noindent \textbf{Información del registro audiovisual:}
+
+* \textbf{Título del video:} Entrevistas de validación de la Landing Page y la aplicación móvil productor, Proyecto Viora
+* \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-ArcadiaDevs-validation-av2.mp4}
+* \textbf{Duración total:} 34 minutos y 32 segundos
+* \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/upc-arcadiadevs-validation-av2}
+
+\vspace{0.3cm}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/interviews/validation/validation-video-av2.png}
+\caption{Captura del video consolidado de entrevistas de validación AV2 del proyecto Viora}
+\label{fig:anexo-b3-video-entrevistas-validacion-av2}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/upc-arcadiadevs-validation-av2}}
+\end{figure}
+
 \vspace{0.5cm}
 
 \clearpage
