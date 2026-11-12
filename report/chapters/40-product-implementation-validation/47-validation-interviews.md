@@ -236,7 +236,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos, Tacna} \\ 
 \textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor Olivarero} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Aplicación móvil Android} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{PENDIENTE} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{23:12 - 28:46} \\ 
 \textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor independiente con 7 años de experiencia en La Yarada Los Palos, a cargo de 4 hectáreas de aceituna Sevillana. Calificó el registro guiado como claro y fluido y la cuota calculada según sus hectáreas como comprensible. Registró el lote «Mi Tierra» con marco de 6 $\times$ 6 metros y consideró el trazado en el mapa bastante fácil, porque la aplicación calcula el área y los árboles a partir del contorno. En Inicio asoció el término aclareo con la poda y corrigió el calendario fenológico según su campaña: floración en julio, cuajado en agosto, crecimiento del fruto hasta febrero y cosecha en marzo. Valoró el seguimiento de frío invernal para anticipar la producción y consideró clarísimo el resumen del muestreo. Al registrar la cosecha advirtió la falta de un campo para el descarte. Asignó 5/5 a la utilidad, consideró justificada la tarifa de S/ 55 por hectárea al mes y sugirió incorporar orientación frente a plagas.} \\[4pt] 
@@ -254,7 +254,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada-Los Palos, Tacna} \\ 
 \textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productora Olivarera y Comercializadora Familiar} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Aplicación móvil Android} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{PENDIENTE} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{28:51 - 34:32} \\ 
 \textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/validation-interviews}} \\ 
 \hline 
 \multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productora independiente con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas con riego por goteo de aceituna Criolla y Sevillana. Completó el registro guiado y la verificación por correo, revisó el Plan Productor para sus 3 hectáreas y avanzó hasta el pago de prueba. Trazó en el mapa el lote «Sevillana» con marco de 7 $\times$ 7 metros y consideró adecuados los campos de delimitación y plantación. En Lotes distinguió su parcela por el nombre. En Inicio reconoció sus parcelas y el clima del día, y valoró el aviso de frío por ser lo que más le importa, aunque pidió entender mejor la etapa del olivo. Comprendió las horas de frío, pero indicó que el índice de alternancia requiere una explicación previa. Señaló que hoy anota en un cuaderno y que el expediente le daría más orden. Asignó 4/5 a la utilidad, consideró accesible la tarifa y solicitó avisos de frío por WhatsApp y funcionamiento sin señal.} \\[4pt] 
