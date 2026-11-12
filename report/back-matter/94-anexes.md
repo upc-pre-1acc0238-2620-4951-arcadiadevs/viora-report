@@ -21,11 +21,11 @@ En esta sección se presenta la evidencia audiovisual de la exposición y susten
 \vspace{0.3cm}
 
 \begin{figure}[H]
+\caption{Captura del video de exposición del hito TB1 del proyecto Viora.} \label{fig:anexo-a1-video-exposicion-tb1}
+\vspace{0.25cm}
 \centering
 \includegraphics[height=0.27\textheight,keepaspectratio]{report/assets/expo/tb1.png}
-\caption{Captura del video de exposición del hito TB1 del proyecto Viora}
-\label{fig:anexo-a1-video-exposicion-tb1}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/viora-expo-tb1}}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/viora-expo-tb1}. Elaboración propia.}
 \end{figure}
 
 \vspace{0.5cm}
@@ -54,45 +54,18 @@ En esta sección se consolida la evidencia audiovisual de las entrevistas a prof
 \vspace{0.3cm}
 
 \begin{figure}[H]
+\caption{Captura del video consolidado de entrevistas de Needfinding del proyecto Viora.} \label{fig:anexo-b1-video-entrevistas-needfinding}
+\vspace{0.25cm}
 \centering
 \includegraphics[width=0.78\textwidth]{report/assets/interviews/requirements/interviews.png}
-\caption{Captura del video consolidado de entrevistas de Needfinding del proyecto Viora}
-\label{fig:anexo-b1-video-entrevistas-needfinding}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/needfinding-interviews}}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/needfinding-interviews}. Elaboración propia.}
 \end{figure}
 
 \vspace{0.5cm}
 
 \clearpage
 
-\noindent \textbf{B.2. Video de Entrevistas de Validación}
-
-\vspace{0.2cm}
-
-En esta sección se presenta la evidencia audiovisual consolidada de las entrevistas de validación realizadas con usuarios de los segmentos objetivo (productores olivareros independientes y gestores técnicos de cooperativas) interactuando con la Landing Page de Viora. El video recopila de forma secuencial las cuatro sesiones de validación efectuadas en campo, integrando en cada una cintillos de identificación del entrevistado, su segmento correspondiente y marcas temporales de inicio.
-
-\vspace{0.3cm}
-
-\noindent \textbf{Información del registro audiovisual:}
-
-* \textbf{Título del video:} Entrevistas de Validación de la Landing Page - Proyecto Viora
-* \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-arcadiadevs-validation-tb1.mp4}
-* \textbf{Duración total:} 23 minutos y 02 segundos
-* \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/validation-interviews}
-
-\vspace{0.3cm}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.85\textwidth]{report/assets/interviews/validation/interview-val-cristobal.png}
-\caption{Captura del video consolidado de entrevistas de validación del proyecto Viora}
-\label{fig:anexo-b2-video-entrevistas-validacion}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/validation-interviews}}
-\end{figure}
-
-\clearpage
-
-\noindent \textbf{B.3. Video de entrevistas de validación (AV2)}
+\noindent \textbf{B.2. Video de entrevistas de validación}
 
 \vspace{0.2cm}
 
@@ -110,11 +83,11 @@ En esta sección se presenta la evidencia audiovisual consolidada de las entrevi
 \vspace{0.3cm}
 
 \begin{figure}[H]
+\caption{Captura del video consolidado de entrevistas de validación AV2 del proyecto Viora.} \label{fig:anexo-b2-video-entrevistas-validacion}
+\vspace{0.25cm}
 \centering
 \includegraphics[width=0.85\textwidth]{report/assets/interviews/validation/validation-video-av2.png}
-\caption{Captura del video consolidado de entrevistas de validación AV2 del proyecto Viora}
-\label{fig:anexo-b3-video-entrevistas-validacion-av2}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/upc-arcadiadevs-validation-av2}}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/upc-arcadiadevs-validation-av2}. Elaboración propia.}
 \end{figure}
 
 \vspace{0.5cm}
