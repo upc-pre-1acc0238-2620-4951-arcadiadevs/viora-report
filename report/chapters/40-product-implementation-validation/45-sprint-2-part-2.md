@@ -47,7 +47,7 @@ viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}2-\allowbreak{
 #### Execution Evidence for Sprint Review
 &nbsp;
 
-En esta sección se presenta la evidencia de ejecución de los productos digitales implementados durante el Sprint 2. En la \textit{Landing Page} se incorporaron el canal de cotización del Plan Cooperativa y la primera versión de los videos About the Product y About the Team, incrustados desde YouTube. En la aplicación móvil del productor se incorporó el asistente agronómico en las principales pantallas: el inicio con el resumen del día, la alternancia, el plan de aclareo, las alertas, el clima, el frío invernal y la campaña cerrada. En cada una, el productor elige preguntas sobre sus datos y recibe respuestas con cifras reales, conserva un historial disponible sin conexión y recibe avisos claros ante errores o límites de uso. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
+En esta sección se presenta la evidencia de ejecución de los productos digitales implementados durante el Sprint 2. En la \textit{Landing Page} se incorporaron el canal de cotización del Plan Cooperativa y la primera versión de los videos About the Product y About the Team, incrustados desde YouTube. En la aplicación móvil del productor se incorporó el asistente agronómico en las principales pantallas: el inicio con el resumen del día, la alternancia, el plan de aclareo, las alertas, el clima, el frío invernal y la campaña cerrada. En cada una, el productor elige preguntas sobre sus datos y recibe respuestas con cifras reales, conserva un historial disponible sin conexión y recibe avisos claros ante errores o límites de uso. En la aplicación móvil del gestor técnico, desarrollada en Flutter, se completaron la bienvenida, el inicio con el semáforo del valle, el riesgo territorial por sector, la consulta de los lotes socios con su prescripción y expediente técnico, la proyección de acopio, la administración de socios, sectores y códigos de activación, las alertas y la preferencia de idioma. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
 
 \noindent \textbf{Landing Page:}
 
@@ -198,6 +198,116 @@ Al cerrar la campaña, el comprobante de liquidación ofrece preguntas sobre sus
 \includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-producer/17-campaign-closed.jpg}
 \hspace{1cm}
 \includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-producer/18-assistant-retry.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Aplicación móvil del gestor técnico:}
+
+Al abrir la aplicación por primera vez, la bienvenida presenta Viora como una herramienta para leer la vecería del valle y priorizar las visitas técnicas, con un recorrido dirigido a los gestores técnicos (\autoref{fig:exec-manager-welcome-s2}).
+
+\begin{figure}[H]
+\caption{Bienvenida de la aplicación del gestor técnico.} \label{fig:exec-manager-welcome-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/01-welcome.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/02-onboarding-managers.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+La pantalla de inicio resume el estado del valle: el semáforo con las parcelas críticas, moderadas y óptimas, el sector que requiere visita y la licencia de la campaña con el acopio proyectado, las alertas de helada, las plazas ocupadas y las visitas sugeridas (\autoref{fig:exec-manager-home-s2}).
+
+\begin{figure}[H]
+\caption{Inicio del gestor técnico con el semáforo del valle y la licencia.} \label{fig:exec-manager-home-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/03-home.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/04-home-license.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+El riesgo territorial puede consultarse sobre el mapa, con la posición del gestor y los sectores de su licencia, o como una lista de sectores ordenada por riesgo (\autoref{fig:exec-manager-risk-s2}).
+
+\begin{figure}[H]
+\caption{Riesgo territorial en mapa y en lista.} \label{fig:exec-manager-risk-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/05-territorial-risk-map.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/06-territorial-risk-list.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+El detalle de un sector muestra su semáforo y las parcelas socias ordenadas por prioridad y cercanía. Desde allí, el gestor abre el lote de un socio en modo de solo lectura y consulta su carga frutal estimada frente al objetivo sostenible (\autoref{fig:exec-manager-sector-s2}).
+
+\begin{figure}[H]
+\caption{Detalle del sector y del lote socio.} \label{fig:exec-manager-sector-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/07-sector-detail.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/08-plot-detail.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+En el mismo lote, el gestor revisa la prescripción de aclareo con su ventana de intervención y su estado, el índice de vecería como dato informativo y los accesos para llamar o escribir al socio. El expediente técnico provisional de la campaña puede descargarse en PDF o compartirse (\autoref{fig:exec-manager-record-s2}).
+
+\begin{figure}[H]
+\caption{Prescripción de aclareo y expediente técnico del lote.} \label{fig:exec-manager-record-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/09-thinning-prescription.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/10-technical-record.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+La proyección de acopio estima las toneladas de aceituna verde y negra de la campaña a partir de las parcelas con muestreo, indica la cobertura alcanzada frente al umbral preliminar y desglosa el resultado por sector (\autoref{fig:exec-manager-harvest-s2}).
+
+\begin{figure}[H]
+\caption{Proyección de acopio de la campaña.} \label{fig:exec-manager-harvest-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/11-harvest-projection.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/12-harvest-projection-sectors.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+La sección de socios muestra las plazas y hectáreas disponibles de la licencia y el listado de socios con búsqueda y filtros. El detalle de cada socio reúne sus datos de contacto, las hectáreas registradas, su código de vinculación y sus lotes (\autoref{fig:exec-manager-members-s2}).
+
+\begin{figure}[H]
+\caption{Socios de la licencia y detalle de un socio.} \label{fig:exec-manager-members-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/13-members.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/14-member-detail.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+El gestor administra los sectores de su licencia, que puede añadir y renombrar, y los códigos de activación para invitar a nuevos socios, agrupados en códigos por canjear, canjeados y vencidos, con opciones para compartirlos o revocarlos (\autoref{fig:exec-manager-codes-s2}).
+
+\begin{figure}[H]
+\caption{Sectores y códigos de activación de la licencia.} \label{fig:exec-manager-codes-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/15-sectors.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/16-activation-codes.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+Finalmente, la sección de alertas agrupa los avisos activos según su nivel y explica el cambio de estado de cada sector, mientras que la cuenta permite cambiar el idioma de la aplicación entre español e inglés, junto con el formato de números y fechas (\autoref{fig:exec-manager-alerts-s2}).
+
+\begin{figure}[H]
+\caption{Alertas activas y cambio de idioma.} \label{fig:exec-manager-alerts-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/17-alerts.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-2/mobile-app-manager/18-language.jpg}
 \caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
 \end{figure}
 
@@ -589,6 +699,14 @@ En el repositorio `viora-landing-page` la mayor parte del trabajo se realizó en
 \caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-landing-page}. Elaboración propia.}
 \end{figure}
 
-En el repositorio `viora-mobile-flutter` se registra el trabajo de la aplicación Flutter (\textit{analíticas pendientes}).
+En el repositorio `viora-mobile-flutter` la actividad comenzó a fines de octubre y creció hasta alcanzar su mayor volumen a inicios de noviembre (\autoref{fig:contributors-mobile-flutter-s2}). Este ritmo corresponde a la construcción de la aplicación del gestor técnico, que en este sprint se integró con los servicios web de operaciones cooperativas, riesgo territorial y acopio.
+
+\begin{figure}[H]
+\caption{Vista de Contributors de GitHub del repositorio viora-mobile-flutter.} \label{fig:contributors-mobile-flutter-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.45\textwidth]{report/assets/sprint-team-collaboration/sprint-2/viora-mobile-flutter-contributors.png}
+\caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-mobile-flutter}. Elaboración propia.}
+\end{figure}
 
 \clearpage
