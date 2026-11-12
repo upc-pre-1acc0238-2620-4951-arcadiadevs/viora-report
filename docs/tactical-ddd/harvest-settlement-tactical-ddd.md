@@ -110,6 +110,8 @@ Eventos inmutables en tiempo pasado que comunican hechos transaccionales signifi
 
 En esta capa se definen los puntos de entrada y salida del sistema. Transforma solicitudes HTTP entrantes en Commands o Queries para la Application Layer y serializa los resultados del dominio en Resources (DTOs) conforme a OpenAPI 3.0 y respuestas de error RFC 7807.
 
+**Expediente agronómico por campaña.** El expediente agronómico se organiza por campaña. `TS101` sella el expediente de una campaña liquidada, genera la huella SHA-256 y es idempotente, de modo que repetir el sellado devuelve el expediente existente. `TS40` conserva la certificación colegiada con firma del auditor y número CIP sobre ese mismo expediente y rechaza una campaña sin liquidación (`422`) o ya certificada (`409`). `TS102` y `TS103` consultan los expedientes sellados y verifican su autenticidad por huella. En campaña abierta no se sella nada: el expediente provisional (`TS63`) es una instantánea con fecha de corte, sin hash definitivo, que se expone desde *Cooperative Operations and Territorial Intelligence*.
+
 ##### Controllers (REST)
 Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP estándar, implementando los contratos de las Historias de Usuario US29 y US30:
 
@@ -118,22 +120,25 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
   * `GET /api/v1/plots/{plotId}/harvest-settlements` - Lista el historial cronológico completo de liquidaciones asentadas para la parcela con desglose verde/negra (`TS39` / `US29`). Admite filtrado opcional mediante parámetro de consulta `?campaignYear={year}`. Responde `200 OK` con arreglo de `HarvestSettlementResource`.
   * `GET /api/v1/plots/{plotId}/harvest-settlements/{settlementId}` - Obtiene el balance detallado de una liquidación específica identificada por su UUID (`TS39` / `US29`). Responde `200 OK` con `HarvestSettlementResource` o `404 Not Found`.
 
-* **`PlotAgronomicReportController`** (Ruta base: `/api/v1/plots/{plotId}/agronomic-reports`):
-  * `GET /api/v1/plots/{plotId}/agronomic-reports` - Consulta el expediente agronómico oficial y análisis consolidado de estabilización (`TS28` / `US30`). Implementa negociación de contenido HTTP nativa (RFC 7231 / RFC 9110):
-    * Con cabecera `Accept: application/json`: entrega el análisis consolidado de atenuación de vecería ($ARR$), varianza interanual y metadatos de certificación (`200 OK` con `AgronomicReportResource`).
+* **`PlotAgronomicDossierController`** (Ruta base: `/api/v1/plots/{plotId}/agronomic-dossiers`):
+  * `GET /api/v1/plots/{plotId}/agronomic-dossiers/{campaignYear}` - Consulta el expediente agronómico sellado de una campaña cerrada y su análisis consolidado de estabilización (`TS28` / `US30`). Responde `403 Forbidden` ante parcela ajena y `404 Not Found` si la campaña no tiene expediente sellado. Implementa negociación de contenido HTTP nativa (RFC 7231 / RFC 9110):
+    * Con cabecera `Accept: application/json`: entrega el análisis consolidado de atenuación de vecería ($ARR$), varianza interanual y metadatos de certificación (`200 OK` con `TechnicalDossierResource`, que incluye resumen de rendimiento, balance de estabilización y huella SHA-256).
     * Con cabecera `Accept: application/pdf`: compila y transmite en streaming el binario inmutable del informe oficial con cabecera `Content-Disposition: attachment; filename="expediente-agronomico-[plotId].pdf"` y cabecera `ETag` portando el hash SHA-256 (`200 OK`).
-  * `POST /api/v1/plots/{plotId}/agronomic-reports/certifications` - Emite formalmente la certificación colegiada del expediente agronómico inmutable calculando y estampando el hash criptográfico SHA-256 de auditoría (`TS40` / `US30` / `CMD30`). Responde `201 Created` con cabecera `Location` y cuerpo `DossierCertificationResource`.
+  * `POST /api/v1/plots/{plotId}/certifications` - Emite formalmente la certificación colegiada del expediente agronómico inmutable calculando y estampando el hash criptográfico SHA-256 de auditoría (`TS40` / `US30` / `CMD30`). El cuerpo trae `campaignYear`, `auditorSignature`, `certifiedBy`, `cipNumber` y `notes`. Responde `201 Created` con cabecera `Location` y cuerpo `DossierCertificationResource`, y emite `AgronomicDossierGeneratedEvent`. Rechaza con `400` por validación, `404` si la parcela no existe o está inactiva, `422` si la campaña no tiene liquidación formal y `409` si el expediente ya fue certificado.
+  * `POST /api/v1/plots/{plotId}/agronomic-dossiers` - Sella el expediente de una campaña liquidada con `campaignYear` para conservar un documento definitivo verificable (`TS101`). Responde `201 Created`, o `200 OK` con el expediente existente si ya estaba sellado. Rechaza con `400` parcela o campaña inválida, `403` parcela de otro productor, `404` parcela inexistente o inactiva y `422` si la campaña no está liquidada.
+  * `GET /api/v1/plots/{plotId}/agronomic-dossiers` - Lista los expedientes sellados de la parcela desde la campaña más reciente, o una lista vacía (`TS102`). `404` si la parcela no existe o está inactiva.
+  * `GET /api/v1/agronomic-dossiers/verifications/{verificationHash}` - Verifica que un documento fue emitido por Viora y no fue modificado (`TS103`). Responde `200 OK` con la parcela y la campaña, `400` ante formato inválido y `404` si el código no coincide.
 
 ##### Resources (DTOs / Request & Response Models)
 * **`SettleHarvestRequest`**: `{ campaignYear: Integer, greenOlivesKg: Double, blackOlivesKg: Double, notes: String }` (Payload recibido en POST).
 * **`CertifyDossierRequest`**: `{ auditorSignature: String, notes: String }` (Payload recibido en POST para certificación oficial).
 * **`HarvestSettlementResource`**: `{ id: UUID, campaignYear: Integer, greenOlivesKg: Double, blackOlivesKg: Double, totalYieldKg: Double, status: String, settledAt: Instant, notes: String }` (DTO de respuesta).
-* **`AgronomicReportResource`**: `{ reportId: UUID, plotId: UUID, producerId: UUID, baselineYieldKg: Double, interannualVariance: Double, amplitudeReductionRate: Double, isEffective: boolean, settlements: List<HarvestSettlementResource>, lastCertifiedAt: Instant, verificationHash: String }` (DTO de respuesta para métricas).
+* **`TechnicalDossierResource`**: `{ reportId: UUID, plotId: UUID, producerId: UUID, baselineYieldKg: Double, interannualVariance: Double, amplitudeReductionRate: Double, isEffective: boolean, settlements: List<HarvestSettlementResource>, lastCertifiedAt: Instant, verificationHash: String }` (DTO de respuesta para métricas).
 * **`DossierCertificationResource`**: `{ reportId: UUID, verificationHash: String, certifiedBy: String, generatedAt: Instant, downloadUrl: String }`
 
 ##### Assemblers / Mappers
 * **`HarvestSettlementResourceAssembler`**: Convierte la entidad interna `HarvestSettlement` en el DTO `HarvestSettlementResource`.
-* **`AgronomicReportResourceAssembler`**: Mapea el Aggregate Root `AgronomicReport` y sus Value Objects en `AgronomicReportResource`.
+* **`TechnicalDossierResourceAssembler`**: Mapea el Aggregate Root `AgronomicReport` y sus Value Objects en `TechnicalDossierResource`.
 * **`SettleHarvestCommandAssembler`**: Transforma `SettleHarvestRequest` y la variable de ruta `{plotId}` en el comando `SettleCampaignHarvestCommand`.
 * **`GenerateAgronomicDossierCommandAssembler`**: Transforma `CertifyDossierRequest` y la variable `{plotId}` en `GenerateAgronomicDossierCommand`.
 
@@ -153,7 +158,7 @@ Coordina y orquesta los casos de uso del sistema. No implementa reglas de negoci
 
 ##### Query Handlers
 * **`GetAgronomicReportByPlotQueryHandler`** (US30 / TS28):
-  * Resuelve `GetAgronomicReportByPlotQuery` recuperando el agregado del predio y mapeándolo a `AgronomicReportResource` para alimentar los gráficos de estabilización en el cliente móvil y web.
+  * Resuelve `GetAgronomicReportByPlotQuery` recuperando el agregado del predio y mapeándolo a `TechnicalDossierResource` para alimentar los gráficos de estabilización en el cliente móvil y web.
 * **`ListPlotHarvestSettlementsQueryHandler`** (US29 / TS39):
   * Resuelve `ListPlotHarvestSettlementsQuery` retornando la colección histórica de campañas ordenadas cronológicamente por `campaignYear`.
 * **`GetHarvestSettlementByIdQueryHandler`** (US29 / TS39):
@@ -590,8 +595,8 @@ workspace "Viora - Harvest Settlement Component Architecture" "Harvest Settlemen
         crossApp -> crossDb "Reads / writes settlements and reports cache [SQLite / sqflite]"
         nativeApp -> settlementCtrl "Settles harvest [POST /plots/{id}/harvest-settlements]"
         crossApp -> settlementCtrl "Settles harvest [POST /plots/{id}/harvest-settlements]"
-        nativeApp -> reportCtrl "Downloads dossier PDF [GET .../agronomic-reports Accept: application/pdf]"
-        crossApp -> reportCtrl "Downloads dossier PDF [GET .../agronomic-reports Accept: application/pdf]"
+        nativeApp -> reportCtrl "Downloads dossier PDF [GET .../agronomic-dossiers/{campaignYear} Accept: application/pdf]"
+        crossApp -> reportCtrl "Downloads dossier PDF [GET .../agronomic-dossiers/{campaignYear} Accept: application/pdf]"
 
         settlementCtrl -> settlementCommandService "Delegates SettleCampaignHarvestCommand"
         settlementCtrl -> reportQueryService "Delegates settlement list/get queries"

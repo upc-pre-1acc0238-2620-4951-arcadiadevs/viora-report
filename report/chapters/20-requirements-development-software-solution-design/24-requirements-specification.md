@@ -8,7 +8,7 @@ En esta sección se definen los requisitos del ecosistema mediante Épicas e His
 
 Todos los criterios de aceptación son comprobables y siguen estrictamente la estructura BDD (*Behavior-Driven Development*) con sintaxis Gherkin (*Given-When-Then*) en tiempo presente y tercera persona, sin hacer referencia a detalles efímeros de interfaz gráfica y modelando escenarios representativos de éxito, validación y control de excepciones.
 
-A continuación, se presentan las 15 Épicas definidas para el ecosistema Viora, estructuradas bajo el formato estándar establecido:
+A continuación, se presentan las 16 Épicas definidas para el ecosistema Viora, estructuradas bajo el formato estándar establecido:
 
 \begin{table}[H]
 \centering
@@ -187,6 +187,18 @@ A continuación, se presentan las 15 Épicas definidas para el ecosistema Viora,
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Internacionalización y Localización del Ecosistema (i18n / l10n)} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario del ecosistema digital de Viora (Visitante, Productor Olivarero o Gestor Técnico), \textbf{quiero} acceder a la plataforma web y móvil en mi idioma de preferencia (Español o Inglés) con adaptación de contenidos y formatos regionales, \textbf{para} interactuar con las herramientas agronómicas y comerciales en un entorno comprensible que facilite la adopción y la expansión internacional de la plataforma.} \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{EP16} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Asistencia Agronómica Basada en Datos del Productor} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} productor olivarero, \textbf{quiero} obtener explicaciones comprensibles sobre la situación de mis parcelas a partir de mis propios datos, \textbf{para} entender las recomendaciones agronómicas y decidir sin depender de asistencia técnica presencial.} \\ \hline
 \end{tabular}
 \end{table}
 
@@ -403,25 +415,25 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US07} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP02} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Activación de cuenta de socio mediante canje de código de cooperativa} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Activación de membresía corporativa de socio mediante canje de código de cooperativa} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero socio de una cooperativa agraria, \textbf{quiero} canjear un código de activación proporcionado por mi organización, \textbf{para} habilitar el acceso completo a los servicios de Viora bajo la membresía corporativa de la cooperativa sin asumir costos individuales de suscripción.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero agremiado a una cooperativa agrícola, \textbf{quiero} canjear un código de activación institucional proporcionado por mi organización con validación de cuota y consentimiento explícito, \textbf{para} acceder a las prestaciones de la plataforma bajo patrocinio corporativo sin costo individual de suscripción compartiendo mi información técnica con el gestor de la entidad.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso de código de activación de cooperativa}\newline
-\textbf{Given} un productor olivarero autenticado que no cuenta con una membresía activa.\newline
-\textbf{When} ingresa un código de invitación válido emitido por su cooperativa agraria.\newline
-\textbf{Then} el sistema vincula al productor con la cooperativa correspondiente y marca el código como utilizado.\newline
-\textbf{And} el usuario accede a las herramientas del sistema con estado de membresía corporativa activa.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por código de invitación inexistente o inválido}\newline
-\textbf{Given} un productor ingresando un código de activación.\newline
-\textbf{When} proporciona un código que no existe en el registro de invitaciones del sistema.\newline
-\textbf{Then} el sistema deniega la vinculación sin alterar el estado de la cuenta.\newline
-\textbf{And} notifica que el código ingresado no es válido.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por código de invitación expirado o ya canjeado}\newline
-\textbf{Given} un productor intentando vincularse a una cooperativa.\newline
-\textbf{When} ingresa un código cuya fecha de vigencia caducó o que ya fue consumido por otro usuario.\newline
-\textbf{Then} el sistema rechaza el canje impidiendo la activación de la membresía.\newline
-\textbf{And} notifica que el código ha expirado o ya no cuenta con cupos disponibles.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso con validación de cuota de hectáreas y consentimiento}\newline
+\textbf{Given} un productor olivarero autenticado en la plataforma que no cuenta con un plan de membresía corporativa activo.\newline
+\textbf{When} ingresa un código de activación válido con formato institucional \texttt{COOP-XXXX} y confirma de forma explícita el consentimiento para compartir sus datos agronómicos con la cooperativa emisora.\newline
+\textbf{Then} el sistema valida la disponibilidad de cupo en plazas y saldo de hectáreas contratadas de la licencia institucional, vincula la cuenta del productor con la entidad y marca el código como canjeado.\newline
+\textbf{And} actualiza el estado de la suscripción a membresía patrocinada activa, mostrando la denominación de la cooperativa en la interfaz de usuario.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por código inexistente o formato malformado}\newline
+\textbf{Given} un productor olivarero en la pantalla de canje de patrocinio institucional.\newline
+\textbf{When} introduce un código que no sigue el patrón alfanumérico esperado o que no figura en los registros de códigos emitidos por ninguna organización.\newline
+\textbf{Then} el sistema bloquea la operación de canje sin modificar el estado ni los privilegios de la cuenta.\newline
+\textbf{And} notifica que el código ingresado no existe o no corresponde a una invitación institucional válida.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por código caducado, previamente utilizado o cuota agotada}\newline
+\textbf{Given} un productor olivarero intentando registrar un código emitido legítimamente por su cooperativa.\newline
+\textbf{When} el código proporcionado ya fue consumido por otro socio, ha superado su fecha límite de vigencia o la cooperativa no dispone de balance suficiente de plazas o hectáreas disponibles.\newline
+\textbf{Then} el sistema deniega la vinculación y preserva inalterado el estado del usuario.\newline
+\textbf{And} presenta un mensaje informativo especificando la causa del rechazo, ya sea por código utilizado, invitación caducada o capacidad institucional completada.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -436,20 +448,23 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US08} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP02} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Administración de la cartera de socios productores y consulta de cuota corporativa} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar la nómina de socios productores agremiados con su superficie declarada y verificar el cupo contratado de la membresía colectiva, \textbf{para} supervisar la base territorial de la cooperativa y coordinar la entrega de códigos de activación a los agricultores elegibles.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa con rol \texttt{ROLE\_TECHNICAL\_MANAGER}, \textbf{quiero} consultar el padrón de socios productores agremiados con su superficie declarada, el balance de cuota corporativa y el estado de los códigos innominados emitidos, \textbf{para} supervisar la base productiva de la organización, gestionar la entrega de invitaciones y controlar la ocupación de plazas contratadas.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta de padrón gremial}\newline
-\textbf{Given} un gestor técnico autenticado con rol \texttt{GESTOR}.\newline
-\textbf{When} accede al directorio de miembros de su cooperativa.\newline
-\textbf{Then} el sistema retorna la lista consolidada de socios agremiados detallando nombre completo, teléfono E.164, correo, hectáreas declaradas y estado de vinculación.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta de estado de licencias y códigos}\newline
-\textbf{Given} un gestor técnico consultando la capacidad contratada.\newline
-\textbf{When} solicita el balance de la licencia institucional.\newline
-\textbf{Then} el sistema presenta las plazas y hectáreas totales contratadas frente a las comprometidas y disponibles, junto con el estado de los lotes de códigos emitidos.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Restricción de acceso}\newline
-\textbf{Given} una solicitud emitida por un usuario sin rol de gestor técnico en la organización.\newline
-\textbf{When} el sistema evalúa los privilegios institucionales.\newline
-\textbf{Then} deniega el acceso con código \texttt{403 Forbidden}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta del padrón consolidado de socios vinculados y balance de cuota}\newline
+\textbf{Given} un gestor técnico autenticado con privilegios institucionales de \texttt{ROLE\_TECHNICAL\_MANAGER}.\newline
+\textbf{When} accede al directorio de miembros y licencias corporativas de su cooperativa.\newline
+\textbf{Then} el sistema retorna el listado de socios vinculados bajo la relación autorizada de supervisión, exponiendo nombre, teléfono bajo norma E.164, correo, número de parcelas activas y hectáreas totales registradas.\newline
+\textbf{And} presenta el balance contractual desagregando plazas y hectáreas contratadas, comprometidas y disponibles en la licencia colectiva.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Inspección y consulta de inventario de códigos innominados}\newline
+\textbf{Given} un gestor técnico supervisando las invitaciones generadas para la incorporación de productores.\newline
+\textbf{When} solicita el reporte de códigos de activación institucionales de su entidad.\newline
+\textbf{Then} el sistema presenta la relación de códigos innominados detallando identificador enmascarado o utilizable, fecha de expedición, fecha límite de vigencia y estado actual (disponible, canjeado o revocado).\newline
+\textbf{And} permite copiar y compartir aquellos códigos que se encuentren vigentes y no hayan sido redimidos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Denegación de acceso por rol no autorizado}\newline
+\textbf{Given} una petición de acceso a la cartera gremial emitida por una cuenta que no posee el rol \texttt{ROLE\_TECHNICAL\_MANAGER} o pertenece a otra organización.\newline
+\textbf{When} el servicio evalúa las credenciales y el ámbito institucional del solicitante.\newline
+\textbf{Then} deniega el acceso retornando código de estado HTTP \texttt{403 Forbidden}.\newline
+\textbf{And} resguarda la privacidad del padrón impidiendo la exposición de datos de productores o cupos contractuales a usuarios no facultados.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -550,23 +565,25 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US12} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP03} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la matriz de riesgo territorial y semáforo sectorial con geolocalización GPS} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar un tablero con la matriz de riesgo territorial del valle olivarero detectando mi posición GPS en tiempo real, \textbf{para} identificar en qué sector me encuentro y priorizar visitas de asistencia agronómica en las parcelas que presentan sobrecarga crítica o alerta de helada en dicha zona.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar un tablero territorial que agrupe las parcelas socias por etiquetas sectoriales y visualice mi posición actual mediante GPS, \textbf{para} identificar sectores con mayor vulnerabilidad agronómica y priorizar visitas técnicas presenciales en parcelas con sobrecarga crítica o riesgo meteorológico activo.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Detección de sector mediante GPS interno}\newline
-\textbf{Given} un gestor técnico en campo con el sensor GPS activado en su dispositivo móvil.\newline
-\textbf{When} abre la matriz de riesgo territorial de la cooperativa.\newline
-\textbf{Then} el sistema captura las coordenadas de latitud y longitud del asesor.\newline
-\textbf{And} sitúa automáticamente su posición dentro del sector geográfico correspondiente (e.g., Sector La Yarada Baja), destacando visualmente el semáforo y las alertas activas de esa zona.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Visualización consolidada de sectores del valle}\newline
-\textbf{Given} un gestor técnico consultando el estado general de su organización.\newline
-\textbf{When} examina el tablero macro territorial.\newline
-\textbf{Then} el sistema despliega el semáforo consolidado de todos los sectores agrupando el número de predios en sobrecarga crítica (> 30\%) y el conteo de alertas climáticas activas.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: GPS fuera de cobertura o sin señal}\newline
-\textbf{Given} el gestor en una zona sin fijación satelital GPS o con permisos denegados.\newline
-\textbf{When} accede a la matriz territorial.\newline
-\textbf{Then} el sistema presenta la vista global por defecto y permite seleccionar manualmente el sector de interés.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Visualización cartográfica de parcelas socias y posición del gestor mediante GPS}\newline
+\textbf{Given} un gestor técnico en campo con permisos de geolocalización concedidos en su dispositivo móvil.\newline
+\textbf{When} accede al visor territorial y matriz de riesgo de su cooperativa.\newline
+\textbf{Then} el sistema proyecta en el mapa las geometrías de las parcelas correspondientes a los productores vinculados a su cartera de supervisión.\newline
+\textbf{And} posiciona el marcador de ubicación actual del gestor mediante el sensor GPS del dispositivo para orientar su desplazamiento físico sin requerir polígonos de fronteras geográficas administrativas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Agrupación por etiquetas sectoriales y cálculo del semáforo por mayor gravedad}\newline
+\textbf{Given} un gestor técnico consultando la situación agronómica consolidada de la cooperativa.\newline
+\textbf{When} filtra por una etiqueta sectorial (e.g., Magollo, Sama o La Yarada Los Palos) o visualiza el resumen general de sectores.\newline
+\textbf{Then} el sistema calcula el estado del semáforo asignando la mayor gravedad observada entre las parcelas del sector (crítico si existe al menos una parcela con alerta crítica, moderado si no hay críticas pero sí moderadas, u óptimo si todas las evaluadas cumplen parámetros normales).\newline
+\textbf{And} reporta de forma independiente el conteo de parcelas en riesgo crítico, moderado, óptimo y sin datos suficientes, sin promediar colores ni ocultar casos urgentes.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Operación ante ausencia de señal GPS o permisos de ubicación denegados}\newline
+\textbf{Given} el gestor operando en una zona sin cobertura satelital GPS o habiendo revocado los permisos de localización en el terminal.\newline
+\textbf{When} abre la matriz territorial y tablero de sectores.\newline
+\textbf{Then} el sistema presenta la vista cartográfica centrada en la extensión envolvente de las parcelas socias registradas.\newline
+\textbf{And} mantiene plenamente funcionales la exploración interactiva del mapa, el filtrado por sectores nominales y la consulta del semáforo de riesgo.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1067,18 +1084,25 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US30} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP07} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Emisión, certificación criptográfica y exportación del expediente agronómico en PDF} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Generación y exportación del expediente agronómico de parcela} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} generar el expediente agronómico oficial de mi parcela con certificación criptográfica, \textbf{para} descargar un documento PDF auditable con el historial técnico, telemetría y labores de aclareo para trámites bancarios o cooperativos.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero o Gestor Técnico autorizado, \textbf{quiero} generar y descargar el expediente agronómico en formato PDF correspondiente a una parcela para una campaña determinada, \textbf{para} disponer de un documento técnico descargable que respalde el historial productivo, floración, cuajado, aclareo y telemetría de cara a gestiones financieras, comerciales o de supervisión cooperativa.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Descarga del expediente binario en formato PDF}\newline
-\textbf{Given} una solicitud con cabecera \texttt{Accept: application/pdf}.\newline
-\textbf{When} el motor compila el historial productivo, clima y regulaciones de carga.\newline
-\textbf{Then} responde con \texttt{Content-Type: application/pdf}, cabecera \texttt{Content-Disposition} para descarga y el sello criptográfico en el pie de página.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta de metadatos y verificación de integridad}\newline
-\textbf{Given} una solicitud con cabecera \texttt{Accept: application/json}.\newline
-\textbf{When} se consulta el expediente técnico.\newline
-\textbf{Then} responde con los datos resumidos del predio y el hash SHA-256 de autenticidad documental.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación y descarga de expediente provisional en campaña activa}\newline
+\textbf{Given} un productor o gestor técnico autorizado consultando una parcela cuya campaña agronómica se encuentra en curso.\newline
+\textbf{When} solicita la exportación del documento mediante una petición con cabecera \texttt{Accept: application/pdf}.\newline
+\textbf{Then} el sistema compila una instantánea técnica con los datos registrados y cálculos demostrables (muestreos, labores de aclareo, telemetría y proyecciones), rotulando de forma visible en el encabezado «Expediente Agronómico Provisional» e indicando la fecha y hora de corte de la emisión.\newline
+\textbf{And} responde con \texttt{Content-Type: application/pdf} y cabecera \texttt{Content-Disposition} para su descarga, declarando explícitamente los campos sin registros como no disponibles sin inventar cifras ni requerir sellos criptográficos en datos en evolución.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Emisión y verificación de integridad de expediente definitivo en campaña cerrada}\newline
+\textbf{Given} una solicitud de expediente sobre una campaña agrícola concluida y liquidada con registros definitivos de cosecha.\newline
+\textbf{When} el usuario solicita el expediente cerrado en formato binario PDF o sus metadatos mediante cabecera \texttt{Accept: application/json}.\newline
+\textbf{Then} el sistema emite el dossier consolidado inmutable incorporando el balance productivo final y adjuntando una huella digital calculada mediante algoritmo SHA-256 para verificar la integridad del archivo generado.\newline
+\textbf{And} expone en el JSON de metadatos el identificador documental, la fecha de cierre y el hash de comprobación de integridad.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Control de acceso y confidencialidad}\newline
+\textbf{Given} una solicitud de descarga de expediente emitida por un usuario no autenticado o que no posee relación de propiedad ni de supervisión técnica autorizada sobre la parcela.\newline
+\textbf{When} el servicio evalúa la autorización del solicitante sobre el predio.\newline
+\textbf{Then} el sistema deniega la descarga retornando código de estado HTTP \texttt{403 Forbidden}.\newline
+\textbf{And} bloquea la exportación de documentos técnicos protegiendo la reserva de la información productiva.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1093,16 +1117,23 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US31} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP08} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} que el semáforo territorial se actualice reactivamente cuando se detecte sobrecarga frutal (> 30\%) o riesgo de helada en las parcelas socias, \textbf{para} focalizar de inmediato la emisión de alertas agronómicas en los sectores más vulnerables.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} que el semáforo territorial refleje de forma reactiva la mayor gravedad sustentada por sobrecarga frutal (> 30\%) o riesgo de helada en las parcelas socias, \textbf{para} focalizar de inmediato la asistencia técnica en los sectores críticos sin que las alertas de supervisión se oculten si el productor pospone sus avisos locales.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Activación reactiva de semáforo rojo por sobrecarga frutal}\newline
-\textbf{Given} un socio cuya prescripción técnica arroja una sobrecarga superior al 30\%.\newline
-\textbf{When} el evento de dominio impacta en el contexto de territorio.\newline
-\textbf{Then} el semáforo del sector correspondiente transiciona automáticamente a nivel crítico (Rojo) e incrementa el contador de parcelas en riesgo.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Alerta meteorológica preventiva}\newline
-\textbf{Given} una predicción de temperatura crítica ($\le 1.5^\circ\text{C}$) a 48 horas en un sector.\newline
-\textbf{When} el evento climático es recibido desde telemetría.\newline
-\textbf{Then} el sector activa la advertencia de helada radiativa en el semáforo gremial.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Activación reactiva de semáforo rojo por sobrecarga frutal crítica}\newline
+\textbf{Given} una parcela socia cuya prescripción agronómica arroja una sobrecarga frutal superior al 30\% respecto al objetivo productivo.\newline
+\textbf{When} se registra el muestreo de cuajado o impacta el evento de dominio en el contexto de supervisión territorial.\newline
+\textbf{Then} el semáforo del sector asociado transiciona de inmediato al estado de mayor gravedad (Rojo / Crítico) e incrementa el contador de unidades productivas en riesgo urgente.\newline
+\textbf{And} el sistema mantiene la alerta visible en el panel del gestor con independencia de que el productor haya silenciado o pospuesto la notificación en su aplicación móvil.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Alerta agroclimática preventiva por riesgo de helada}\newline
+\textbf{Given} un pronóstico validado de temperatura crítica ($\le 1.5\,^\circ\text{C}$) o helada radiativa para un sector en un horizonte de 48 horas.\newline
+\textbf{When} se actualizan las series de telemetría meteorológica del valle.\newline
+\textbf{Then} el sector activa la advertencia de helada en el semáforo gremial e identifica las parcelas en estadios fenológicos vulnerables (floración o cuajado sensible).\newline
+\textbf{And} destaca el estado de alerta en el visor territorial para priorizar recomendaciones de riego defensivo o medidas de mitigación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Presentación informativa del índice de vecería histórica (BBI)}\newline
+\textbf{Given} una parcela supervisada que cuenta con un historial validado de rendimientos de tres o más campañas consecutivas.\newline
+\textbf{When} el gestor técnico examina la ficha de detalle de riesgo fenológico del predio.\newline
+\textbf{Then} el sistema presenta el Índice Bienal de Carga (BBI) como indicador contextual de alternancia productiva histórica.\newline
+\textbf{And} preserva el estado fenológico actual sin forzar colores de alerta roja exclusivamente por alternancia pasada si la campaña presente no evidencia sobrecarga ni estrés climático.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1115,20 +1146,25 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US32} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP08} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Proyección agregada temprana de volumen de acopio de aceituna verde y negra para la cooperativa} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar la estimación agregada del tonelaje total de aceituna verde y negra que entregarán los socios en la campaña, \textbf{para} planificar con meses de anticipación la logística de salmueras en almazara, gestionar turnos de recepción y asegurar contratos comerciales de exportación sin riesgo de penalidades.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} consultar la estimación agregada del tonelaje de cosecha sumando estrictamente las parcelas con evaluaciones validadas y desglosando por aptitud comercial (verde para mesa y negra para almazara), \textbf{para} dimensionar con sustento real el acopio cooperativo, organizar la logística de salmueras y patios de recepción, y comercializar volúmenes seguros sin incurrir en penalidades contractuales.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Proyección consolidada de cosecha cooperativa por aptitud comercial}\newline
-\textbf{Given} una cooperativa agraria con predios socios que han registrado sus muestreos de cuajado y regulación de carga.\newline
-\textbf{When} el gestor técnico solicita la proyección agregada de cosecha para la campaña en curso.\newline
-\textbf{Then} el sistema consolida los modelos productivos individuales y calcula el tonelaje total proyectado para la cooperativa.\newline
-\textbf{And} discrimina el volumen estimado por aptitud comercial en aceituna verde para mesa y aceituna negra para aceite y maduración.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Advertencia por baja cobertura de muestreos en la cartera de socios}\newline
-\textbf{Given} una cartera cooperativa donde menos del 50\% de las parcelas socias ha completado el protocolo de muestreo de cuajado.\newline
-\textbf{When} el gestor técnico consulta la estimación de acopio.\newline
-\textbf{Then} el sistema presenta la proyección preliminar indicando el porcentaje de predios contabilizados.\newline
-\textbf{And} notifica que la estimación posee un margen de incertidumbre elevado hasta incrementar la cobertura de fundos evaluados.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consolidación de volumen de acopio basada exclusivamente en parcelas estimables}\newline
+\textbf{Given} una cartera cooperativa con parcelas socias que cuentan con registros válidos de cuajado y modelos de carga frutal en la campaña activa.\newline
+\textbf{When} el gestor técnico consulta el módulo de proyección agregada de acopio (pantalla G30).\newline
+\textbf{Then} el sistema calcula el tonelaje total proyectado consolidando únicamente la producción de las parcelas estimables respaldadas por datos de campo, sin aplicar factores arbitrarios de reducción ni extrapolar rendimientos a predios no evaluados.\newline
+\textbf{And} reporta la cobertura muestral expresando explícitamente la cantidad de parcelas computadas respecto al universo de la cartera (e.g., «$Y$ de $N$ parcelas evaluadas»).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Desagregación por aptitud comercial en aceituna verde, negra y volumen por clasificar}\newline
+\textbf{Given} un tonelaje total consolidado sobre las parcelas socias evaluadas.\newline
+\textbf{When} se genera la distribución por aptitud comercial de cosecha.\newline
+\textbf{Then} el sistema discrimina el volumen en aceituna verde de mesa y aceituna negra para aceite según la aptitud varietal y los ratios históricos registrados.\newline
+\textbf{And} cataloga cualquier fracción de producción que carezca de tipificación de destino en el rubro explícito «Sin clasificar / Por definir», evitando asignaciones forzadas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Declaración explícita de cobertura muestral insuficiente}\newline
+\textbf{Given} una cartera cooperativa donde las parcelas con muestreo agronómico válido representan una proporción menor al 60\% del total de parcelas socias registradas.\newline
+\textbf{When} el gestor técnico accede al reporte de proyección de acopio.\newline
+\textbf{Then} el sistema presenta las toneladas estimadas identificando el resultado bajo la etiqueta «Cobertura preliminar / Muestra parcial».\newline
+\textbf{And} muestra un aviso visible indicando que la cobertura es insuficiente para el cierre definitivo de contratos comerciales, exhortando a completar los muestreos de cuajado pendientes.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1396,7 +1432,7 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US43} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP01} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado de perfil de usuario y contacto validado bajo estándar E.164} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado de perfil de usuario y contacto validado} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} usuario nuevo autenticado en Viora (Productor Olivarero o Gestor Técnico), \textbf{quiero} completar mi perfil de usuario ingresando mi nombre completo, país de residencia y número celular de contacto, \textbf{para} personalizar mi cuenta y habilitar los canales de notificación agronómica y operativa del sistema.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
@@ -1417,12 +1453,308 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{And} resalta los campos requeridos solicitando su debido diligenciamiento.} \\ \hline
 \end{longtable}
 \endgroup
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US44} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP02} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Activación de licencia corporativa de supervisión mediante código maestro de un solo uso} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} activar la licencia institucional contratada por mi organización ingresando el código maestro de activación emitido por Viora (formato \texttt{GEST-XXXX}) desde la aplicación móvil Flutter, \textbf{para} asumir la administración técnica de la membresía corporativa, consultar el saldo total de plazas y hectáreas disponibles, y habilitar la emisión de códigos de patrocinio para los socios productores.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Activación exitosa de licencia institucional con código maestro válido}\newline
+\textbf{Given} un gestor técnico debidamente registrado y autenticado en la aplicación móvil Flutter que no cuenta con una licencia corporativa activa y se encuentra en la pantalla de bienvenida y activación (\texttt{G01}). \textbf{When} ingresa un código maestro de activación válido con prefijo institucional (por ejemplo, \texttt{GEST-7K2M}) y confirma la operación. \textbf{Then} el sistema valida la vigencia del código en el servicio de licencias, asocia la cuenta del gestor técnico como responsable técnico de la entidad y transiciona a la pantalla de confirmación exitosa (\texttt{G02}) detallando la razón social de la organización, las plazas contratadas y la superficie total de hectáreas habilitadas. \textbf{And} desbloquea el panel principal de control técnico (\texttt{G10}).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por código maestro de activación inexistente o inválido}\newline
+\textbf{Given} un gestor técnico en la pantalla de activación de membresía (\texttt{G01}). \textbf{When} ingresa un código que no coincide con ninguna licencia registrada en la plataforma o cuya sintaxis no cumple el formato esperado. \textbf{Then} el sistema rechaza la solicitud sin vincular al usuario. \textbf{And} presenta una alerta modal de error (\texttt{G01 / Código no válido}) informando que el código no existe o fue digitado incorrectamente, manteniendo habilitada la casilla para reintentar el ingreso.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por código maestro ya canjeado o licencia previamente asignada}\newline
+\textbf{Given} un gestor técnico intentando activar una licencia corporativa. \textbf{When} introduce un código maestro que ya fue canjeado con anterioridad por otro gestor técnico de la misma organización. \textbf{Then} el sistema bloquea la activación. \textbf{And} notifica que la licencia ya cuenta con un responsable técnico activo asignado, orientando al usuario a comunicarse con la administración de su entidad o con soporte de Viora.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Restricción de acceso a funciones operativas para gestor sin licencia activa}\newline
+\textbf{Given} un gestor técnico autenticado en la aplicación Flutter cuya cuenta no tiene una licencia institucional asociada. \textbf{When} intenta navegar hacia las secciones de mapa territorial, semáforo de riesgo, acopio o nómina de socios. \textbf{Then} el sistema restringe el acceso a dichas vistas operativas. \textbf{And} redirige de forma persistente a la pantalla de aviso y activación (\texttt{G01 / Sin licencia}), impidiendo cualquier interacción hasta que se complete un canje de licencia válido.} \\ \hline
+\end{longtable}
+\endgroup
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US45} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP02} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Emisión de códigos de patrocinio para socios con asignación de cupo de hectáreas y control de saldo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} generar lotes de códigos de activación unívocos (formato \texttt{COOP-XXXX}) asignando un cupo individual de hectáreas para cada socio productor y consultando el balance remanente de la licencia, \textbf{para} distribuir el patrocinio corporativo a los agricultores agremiados garantizando que no se sobrepase la capacidad máxima de plazas ni de hectáreas contratadas por la organización.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación exitosa de códigos de patrocinio dentro del saldo disponible}\newline
+\textbf{Given} un gestor técnico con licencia activa que accede al módulo de administración de códigos corporativos (\texttt{G43}). \textbf{When} especifica la cantidad de códigos a generar (plazas requeridas) y define la superficie de hectáreas asignada por código, verificando que la suma no exceda las plazas ni las hectáreas disponibles en la licencia. \textbf{Then} el sistema genera los códigos criptográficos unívocos con prefijo institucional (por ejemplo, \texttt{COOP-8R4T}), almacena una copia cifrada para su consulta y descuenta inmediatamente las plazas y hectáreas del saldo disponible de la membresía. \textbf{And} transiciona a la pantalla de confirmación (\texttt{G44}) mostrando la lista de códigos generados listos para ser compartidos a los socios.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Bloqueo de emisión por plazas insuficientes en la licencia corporativa}\newline
+\textbf{Given} un gestor técnico intentando generar un nuevo lote de códigos en la pantalla \texttt{G43}. \textbf{When} solicita una cantidad de códigos que supera el número de plazas vacantes de la licencia corporativa. \textbf{Then} el sistema inhabilita la acción de emisión. \textbf{And} presenta un estado de error bloqueante (\texttt{G43 / Cupo excedido}) indicando la cantidad máxima de plazas remanentes e invitando a la organización a ampliar su contrato de licencia.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Bloqueo de emisión por hectáreas insuficientes en el balance de la licencia}\newline
+\textbf{Given} un gestor técnico configurando la emisión de códigos en la vista \texttt{G43}. \textbf{When} el total de hectáreas asignadas para los nuevos códigos excede el saldo remanente de hectáreas contratadas de la licencia. \textbf{Then} el sistema impide la confirmación del lote. \textbf{And} muestra una alerta modal (\texttt{G43 / Hectáreas insuficientes}) detallando el balance de hectáreas libres versus las hectáreas solicitadas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Consulta, copiado y estado de códigos emitidos pendientes de canje}\newline
+\textbf{Given} un gestor técnico navegando en la pestaña de códigos de la membresía (\texttt{G42}). \textbf{When} visualiza la nómina de códigos emitidos. \textbf{Then} el sistema presenta cada código agrupado por estado (Disponibles por canjear y Canjeados), permitiendo copiar la clave al portapapeles o compartirla directamente por mensajería. \textbf{And} mantiene los códigos disponibles sin asociar nombre de socio hasta que se haga efectivo el canje en la aplicación del productor.} \\ \hline
+\end{longtable}
+\endgroup
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US46} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP02} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Canje de código de membresía patrocinada con consentimiento informado de compartición de datos} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} canjear un código de patrocinio corporativo (\texttt{COOP-XXXX}) en la aplicación móvil Android, revisar la identidad de la organización titular y aceptar formalmente la cláusula de compartición de datos agronómicos en modo solo lectura conforme a la Ley N° 29733, \textbf{para} activar mi plan de suscripción institucional subvencionado y habilitar el acompañamiento técnico de mis parcelas sin realizar pagos individuales.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso con consentimiento informado y vinculación institucional}\newline
+\textbf{Given} un productor olivarero autenticado en la aplicación móvil Android que accede a la sección de planes de suscripción (\texttt{P05}). \textbf{When} ingresa un código de patrocinio válido (\texttt{COOP-XXXX}), visualiza los datos de la entidad titular patrocinadora y marca expresamente la casilla de consentimiento para compartir los datos agronómicos de sus parcelas en modo solo lectura (\texttt{P05b}) bajo la Ley N° 29733. \textbf{Then} el sistema activa el plan patrocinado en la cuenta del productor, vincula su cartera de lotes a la supervisión de la organización y transiciona a la pantalla de felicitación (\texttt{P06}). \textbf{And} orienta al socio hacia la asignación del sector territorial de sus lotes (\texttt{P06b}).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Advertencia preventiva por superficie de parcelas superior al cupo del código}\newline
+\textbf{Given} un productor olivarero que dispone de parcelas registradas en la app cuya superficie total supera la cuota de hectáreas asignada al código ingresado. \textbf{When} intenta confirmar el canje en la pantalla de aceptación (\texttt{P05b}). \textbf{Then} el sistema detecta la discrepancia métrica y presenta una advertencia informativa (\texttt{P05b / Cupo menor}) alertando que la cobertura institucional cubre hasta el límite del código y recomendando solicitar al gestor una ampliación o ajuste de cupo. \textbf{And} permite al productor decidir si continúa con el canje parcial o cancela la operación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Bloqueo de canje por rechazo de la cláusula de consentimiento de datos}\newline
+\textbf{Given} un productor olivarero en la pantalla de confirmación de patrocinio (\texttt{P05b}). \textbf{When} presiona la acción de canje sin marcar la aceptación obligatoria de los términos de compartición de datos personales y agronómicos. \textbf{Then} el sistema bloquea el procesamiento del canje. \textbf{And} resalta la cláusula legal de consentimiento indicando que la vinculación técnica a la organización requiere autorización expresa conforme al marco regulatorio de protección de datos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Rechazo por código de patrocinio inexistente, vencido o previamente canjeado}\newline
+\textbf{Given} un productor olivarero ingresando un código en la vista \texttt{P05}. \textbf{When} proporciona una clave inválida, con vigencia expirada o que ya fue consumida por otro agricultor. \textbf{Then} el sistema rechaza la transacción de canje. \textbf{And} notifica que el código no es válido o ya no se encuentra disponible, conservando el estado de suscripción previo del usuario.} \\ \hline
+\end{longtable}
+\endgroup
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US47} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP02} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Revocación de códigos de patrocinio no canjeados y restitución de saldo de licencia} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} revocar códigos de activación emitidos que aún permanezcan en estado disponible (sin canjear por ningún socio) desde la aplicación móvil Flutter, \textbf{para} invalidar códigos entregados por error o extraviados y reincorporar inmediatamente las plazas y el cupo de hectáreas reservadas al saldo disponible de la licencia corporativa.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Revocación exitosa de código disponible y liberación inmediata de cupo}\newline
+\textbf{Given} un gestor técnico en la pestaña de códigos corporativos (\texttt{G42}) visualizando un código no canjeado. \textbf{When} selecciona la opción de revocación de código y confirma la acción en el diálogo de verificación (\texttt{G42 / Revocar código}). \textbf{Then} el sistema cambia el estado del código a revocado en el backend, inhabilita su uso para cualquier solicitud de canje posterior y restituye automáticamente la plaza y el cupo de hectáreas al balance disponible de la licencia corporativa. \textbf{And} actualiza la vista mostrando la confirmación de código revocado (\texttt{G42 / Código revocado}).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Restricción de revocación directa sobre códigos ya canjeados por socios}\newline
+\textbf{Given} un gestor técnico navegando en la lista de códigos canjeados (\texttt{G42 / Canjeados}). \textbf{When} visualiza un código que ya se encuentra asociado a un socio productor activo. \textbf{Then} el sistema oculta o deshabilita la opción de revocación simple de código. \textbf{And} orienta al gestor técnico a utilizar el flujo formal de retiro de acceso y desvinculación desde la ficha individual del socio (\texttt{G41}).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo de canje en aplicación Android sobre un código previamente revocado}\newline
+\textbf{Given} un productor olivarero que intenta canjear en la app Android un código corporativo que fue revocado por el gestor técnico. \textbf{When} envía la clave de patrocinio en la pantalla \texttt{P05}. \textbf{Then} el sistema deniega el canje con mensaje de error específico. \textbf{And} notifica al agricultor que el código fue cancelado por la entidad emisora, solicitando contactar a su gestor técnico.} \\ \hline
+\end{longtable}
+\endgroup
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US48} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero / Gestor Técnico} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP02} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Desvinculación de supervisión agronómica y cese de compartición de datos de parcelas} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero o Gestor Técnico de Cooperativa, \textbf{quiero} rescindir voluntariamente la vinculación de patrocinio en cualquier momento (mediante la acción "Dejar de compartir" del productor o "Retirar acceso" del gestor técnico), \textbf{para} revocar el acceso de lectura a los lotes y monitoreos del olivar, liberar la plaza y hectáreas en la licencia corporativa y salvaguardar la privacidad de los datos conforme a la Ley N° 29733.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Productor cesa voluntariamente la compartición de datos con la organización}\newline
+\textbf{Given} un productor olivarero con membresía patrocinada activa que accede a la configuración de su suscripción en la app Android (\texttt{P99 / Mi plan activado con código}). \textbf{When} selecciona la opción "Dejar de compartir", revisa las consecuencias informativas de la revocación de consentimiento y confirma la desvinculación en el diálogo modal (\texttt{P99 / Dejar de compartir}). \textbf{Then} el sistema revoca inmediatamente el acceso de lectura del gestor sobre sus parcelas, desasocia el patrocinio corporativo y transiciona a la pantalla informativa (\texttt{P99 / Ya no compartes}). \textbf{And} reintegra la plaza y las hectáreas a la licencia corporativa de la entidad.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Gestor técnico retira el acceso de supervisión a un socio productor}\newline
+\textbf{Given} un gestor técnico consultando la ficha de detalle de un socio productor en la app Flutter (\texttt{G41 / Socio}). \textbf{When} pulsa la acción administrativa "Retirar acceso" y valida la confirmación de desvinculación. \textbf{Then} el sistema finaliza el vínculo institucional con dicho productor, retira sus lotes del semáforo y del mapa técnico, y actualiza la ficha del socio indicando el cese de supervisión (\texttt{G41 / Retiró el acceso}). \textbf{And} notifica en la cuenta del productor que el patrocinio corporativo ha finalizado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Pérdida inmediata de visualización de parcelas en mapa y semáforo del gestor}\newline
+\textbf{Given} una relación de patrocinio desvinculada entre un productor y la organización. \textbf{When} el gestor técnico abre las vistas de inteligencia territorial (\texttt{G20}) o detalle sectorial (\texttt{G22}). \textbf{Then} el sistema omite completamente los polígonos, índices de vecería y alertas de los lotes del productor desvinculado. \textbf{And} actualiza las métricas consolidadas del sector reflejando únicamente a los socios vigentes.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Preservación de registros históricos consolidados de acopio sin datos personales}\newline
+\textbf{Given} una cooperativa que contó con un socio desvinculado durante la campaña. \textbf{When} el gestor técnico consulta los balances históricos de acopio o entregas pasadas (\texttt{G30}). \textbf{Then} el sistema conserva los totales cuantitativos de cosechas registradas para no desvirtuar el consolidado global de la campaña. \textbf{And} anonimiza la procedencia eliminando nombres y datos identificatorios del agricultor desvinculado.} \\ \hline
+\end{longtable}
+\endgroup
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US49} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico / Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP03} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Gestión y asignación de sectores territoriales editables para agrupación y filtrado de lotes} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa o Productor Olivarero, \textbf{quiero} administrar una nómina dinámica de sectores territoriales (crear, renombrar y listar etiquetas del valle olivarero) y asignar o confirmar el sector correspondiente a cada parcela socia, \textbf{para} estructurar la cartera de predios por zonas agroecológicas, agilizar las rutas de asistencia técnica en campo y filtrar el semáforo de riesgo y las proyecciones de acopio por sector sin depender de fronteras poligonales rígidas.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación y edición de sectores territoriales por el Gestor Técnico}\newline
+\textbf{Given} un gestor técnico en el módulo de configuración territorial de la app Flutter (\texttt{G45 / Sectores}). \textbf{When} pulsa la acción de añadir sector (\texttt{G47}), ingresa un nombre representativo de la zona del valle (por ejemplo, "La Yarada Los Palos") y guarda los cambios, o selecciona un sector existente para renombrarlo (\texttt{G46 / Revisar sector}). \textbf{Then} el sistema persiste la etiqueta del sector en el catálogo institucional de la organización. \textbf{And} actualiza inmediatamente la lista de sectores disponibles para filtrado y asignación en todo el ecosistema.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Asignación o selección de sector territorial por el Productor en sus lotes}\newline
+\textbf{Given} un productor olivarero vinculado a una cooperativa que registra o edita una parcela en la app Android (\texttt{P24}). \textbf{When} accede al campo de sector territorial y selecciona una etiqueta de la lista sugerida por su organización (\texttt{P24 / Elegir sector}) o ingresa una denominación personalizada (\texttt{P24 / Escribir mi sector}). \textbf{Then} el sistema vincula la etiqueta del sector a los metadatos de la parcela (\texttt{P24 / Socio con sector}). \textbf{And} sincroniza dicha categorización hacia las vistas de consulta del gestor técnico.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Filtrado y navegación de parcelas y semáforo de riesgo por sector en el panel del Gestor}\newline
+\textbf{Given} un gestor técnico consultando la matriz de inteligencia territorial en la app Flutter (\texttt{G20}). \textbf{When} aplica un filtro seleccionando un sector territorial específico (\texttt{G21 / Elegir sector}). \textbf{Then} el sistema enfoca el mapa y filtra la lista de parcelas mostrando únicamente los predios pertenecientes a ese sector (\texttt{G20 / Sector elegido}). \textbf{And} recalcula el semáforo fenológico y las alertas críticas correspondientes a dicha zona en la vista de detalle (\texttt{G22 / Detalle del sector}).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Agrupación y tratamiento de parcelas socias sin sector asignado}\newline
+\textbf{Given} socios vinculados que aún no han etiquetado el sector de sus parcelas registradas. \textbf{When} el gestor técnico consulta el directorio territorial o aplica filtros en \texttt{G20}. \textbf{Then} el sistema agrupa dichas parcelas bajo la categoría transitoria "Por confirmar" o "Sin clasificar". \textbf{And} permite al gestor visualizar los predios en el mapa para coordinar con el agricultor la confirmación de su sector.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US50} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de preguntas disponibles según el contexto agronómico} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} conocer las preguntas que puedo realizar sobre la situación que estoy revisando, \textbf{para} resolver mis dudas sin tener que formularlas.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Preguntas con datos de la parcela}\newline
+\textbf{Given} un productor con plan activo que revisa una parcela de su propiedad.\newline
+\textbf{When} solicita las preguntas disponibles.\newline
+\textbf{Then} el sistema presenta las preguntas de ese contexto en orden, con las cifras reales de la parcela.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Preguntas sobre todo el campo}\newline
+\textbf{Given} un productor con plan activo que no ha seleccionado una parcela en su resumen general.\newline
+\textbf{When} solicita las preguntas disponibles.\newline
+\textbf{Then} el sistema presenta preguntas referidas al conjunto de sus parcelas activas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Pregunta no disponible por falta de datos}\newline
+\textbf{Given} una parcela que no cuenta con los datos necesarios para responder una pregunta.\newline
+\textbf{When} el productor consulta las preguntas disponibles.\newline
+\textbf{Then} el sistema indica que esa pregunta no está disponible y explica el motivo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Acceso sin plan activo}\newline
+\textbf{Given} un productor cuyo plan no se encuentra activo.\newline
+\textbf{When} intenta consultar las preguntas disponibles.\newline
+\textbf{Then} el sistema deniega el acceso a la funcionalidad.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US51} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Obtención de respuesta sustentada en datos reales} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} recibir una respuesta breve a la pregunta elegida con las cifras y la fuente que la respaldan, \textbf{para} comprender la razón de cada recomendación.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Respuesta exitosa con datos de la parcela}\newline
+\textbf{Given} una pregunta disponible sobre una parcela del productor.\newline
+\textbf{When} el productor la realiza.\newline
+\textbf{Then} el sistema entrega una explicación breve en su idioma, dos indicadores y la fuente de los datos utilizados.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Acceso a la labor relacionada}\newline
+\textbf{Given} una respuesta asociada a una labor agronómica vigente.\newline
+\textbf{When} el sistema entrega la respuesta.\newline
+\textbf{Then} ofrece acceder a la funcionalidad correspondiente sin modificar los datos del productor.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Datos insuficientes para responder}\newline
+\textbf{Given} una pregunta cuyas cifras necesarias no están registradas.\newline
+\textbf{When} el productor la realiza.\newline
+\textbf{Then} el sistema informa que faltan datos y no estima valores.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Respuesta generada no verificable}\newline
+\textbf{Given} un texto generado que contiene cifras ajenas a los datos del productor o que no puede obtenerse.\newline
+\textbf{When} el sistema valida la respuesta.\newline
+\textbf{Then} entrega una respuesta predefinida construida con los datos reales.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Límite de uso alcanzado}\newline
+\textbf{Given} un productor que alcanzó 20 respuestas nuevas en una hora.\newline
+\textbf{When} realiza otra pregunta.\newline
+\textbf{Then} el sistema rechaza la consulta e informa cuándo puede volver a intentarlo.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US52} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del historial de respuestas recientes} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} revisar mis últimas respuestas, incluso sin conexión, \textbf{para} recuperar una orientación recibida mientras estoy en campo.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Historial de respuestas disponible}\newline
+\textbf{Given} un productor con respuestas emitidas en los últimos 10 días.\newline
+\textbf{When} consulta su historial.\newline
+\textbf{Then} el sistema presenta hasta 10 respuestas, de la más reciente a la más antigua, indicando su vigencia.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta sin conexión}\newline
+\textbf{Given} un productor sin conexión que tiene respuestas guardadas en su dispositivo.\newline
+\textbf{When} consulta su historial.\newline
+\textbf{Then} el sistema presenta las respuestas guardadas e indica que realizar nuevas preguntas requiere conexión.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Historial sin respuestas}\newline
+\textbf{Given} un productor sin respuestas vigentes.\newline
+\textbf{When} consulta su historial.\newline
+\textbf{Then} el sistema informa que aún no existen consultas registradas.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US53} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización de respuestas ante cambios en los datos} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} saber si una respuesta quedó desactualizada y poder solicitarla de nuevo, \textbf{para} no tomar decisiones con información anterior.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Recuperación de la última respuesta}\newline
+\textbf{Given} un productor con una respuesta previa en un contexto de consulta.\newline
+\textbf{When} regresa a ese contexto.\newline
+\textbf{Then} el sistema presenta esa respuesta hasta que el productor decida realizar otra pregunta.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Identificación de datos modificados}\newline
+\textbf{Given} una respuesta cuyos datos de origen cambiaron después de emitirse.\newline
+\textbf{When} el productor la consulta.\newline
+\textbf{Then} el sistema la identifica como desactualizada y permite solicitarla nuevamente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Nueva respuesta con datos vigentes}\newline
+\textbf{Given} una respuesta desactualizada.\newline
+\textbf{When} el productor la solicita nuevamente.\newline
+\textbf{Then} el sistema genera una respuesta con los datos vigentes.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Límite de actualizaciones alcanzado}\newline
+\textbf{Given} un productor que alcanzó 5 actualizaciones de respuesta en una hora.\newline
+\textbf{When} solicita otra actualización.\newline
+\textbf{Then} el sistema la rechaza e informa cuándo puede volver a intentarlo.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{0.35em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US54} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Resumen diario de prioridades del campo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} recibir cada día un resumen de mi campo, \textbf{para} identificar rápidamente la ventana de aclareo, las temperaturas y las alertas relevantes.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Resumen del día disponible}\newline
+\textbf{Given} un productor con plan activo y parcelas activas.\newline
+\textbf{When} consulta su resumen del día.\newline
+\textbf{Then} el sistema presenta una explicación con tres indicadores: ventana de aclareo, temperatura máxima de la semana y alertas abiertas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Recordatorio matutino}\newline
+\textbf{Given} un productor que utiliza la aplicación móvil.\newline
+\textbf{When} llega la mañana.\newline
+\textbf{Then} el sistema le recuerda que su resumen del día está disponible.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Consulta sin conexión}\newline
+\textbf{Given} un productor sin conexión que tiene guardado el resumen del día.\newline
+\textbf{When} lo consulta.\newline
+\textbf{Then} el sistema presenta el resumen guardado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Productor sin parcelas activas}\newline
+\textbf{Given} un productor sin parcelas activas.\newline
+\textbf{When} solicita su resumen del día.\newline
+\textbf{Then} el sistema informa que no existe información por resumir.} \\ \hline
+\end{longtable}
+\endgroup
 
 
 
 \clearpage
 
-A continuación, se presentan las Historias Técnicas (\textit{Technical Stories}) orientadas al equipo de desarrollo de backend, correspondientes a los servicios de integración RESTful y arquitectura de soporte (\textbf{EP10}, \textbf{EP11}, \textbf{EP12}, \textbf{EP13} y \textbf{EP15}), así como los Spikes técnicos de investigación (\textbf{EP14}). Conforme a las buenas prácticas de diseño de software y directrices de desarrollo, cada historia técnica comprende exactamente un único endpoint HTTP con sus respectivos escenarios BDD basados en los códigos de respuesta RESTful:
+A continuación, se presentan las Historias Técnicas (\textit{Technical Stories}) orientadas al equipo de desarrollo de backend, correspondientes a los servicios de integración RESTful y arquitectura de soporte (\textbf{EP10}, \textbf{EP11}, \textbf{EP12}, \textbf{EP13}, \textbf{EP15} y \textbf{EP16}), así como los Spikes técnicos de investigación (\textbf{EP14}). Conforme a las buenas prácticas de diseño de software y directrices de desarrollo, cada historia técnica comprende exactamente un único endpoint HTTP con sus respectivos escenarios BDD basados en los códigos de respuesta RESTful:
 
 \begingroup
 \renewcommand{\arraystretch}{1.15}
@@ -1433,21 +1765,21 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS01} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro de credenciales de cuenta de usuario y asignación de rol en IAM} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar las credenciales de registro (correo, contraseña y rol) al servicio de autenticación, \textbf{para} crear la cuenta de usuario con contraseña cifrada y rol asignado en el contexto de identidad y acceso.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar las credenciales de registro (correo electrónico, contraseña, nombre completo, teléfono en formato E.164 y rol institucional) al servicio de autenticación IAM, \textbf{para} crear la cuenta de usuario con contraseña cifrada, validación telefónica y rol asignado (\texttt{ROLE\_PRODUCER} o \texttt{ROLE\_TECHNICAL\_MANAGER}).} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación exitosa de cuenta de usuario}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} es recibida con un cuerpo JSON que contiene: \texttt{email}, \texttt{password} y \texttt{role}.\newline
-\textbf{When} la API valida la sintaxis, verifica que el correo no esté registrado y genera el hash seguro de la contraseña mediante BCrypt.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{UserAccountResource} con id, email, role y status activo.\newline
-\textbf{And} persiste la cuenta de usuario en el almacén de identidades.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Correo electrónico duplicado en el sistema}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} con un correo ya existente en el sistema.\newline
-\textbf{When} la API detecta conflicto de unicidad en la base de datos de identidades.\newline
-\textbf{Then} la API responde \texttt{409 Conflict} bajo el estándar RFC 7807 indicando que la dirección de correo ya se encuentra en uso.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Contraseña no cumple con las políticas de complejidad}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} con una contraseña que no satisface las reglas de longitud mínima o complejidad.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación exitosa de cuenta de usuario con rol de gestor técnico o productor}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} con un payload JSON que contiene: \texttt{email}, \texttt{password}, \texttt{fullName}, \texttt{phoneNumber} (bajo estándar E.164) y \texttt{role} (\texttt{ROLE\_PRODUCER} o \texttt{ROLE\_TECHNICAL\_MANAGER}).\newline
+\textbf{When} la API valida la sintaxis, comprueba que el correo y teléfono no estén registrados previamente y cifra la contraseña mediante BCrypt con factor de costo 12.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando \texttt{UserAccountResource} con \texttt{id}, \texttt{email}, \texttt{fullName}, \texttt{phoneNumber}, \texttt{role}, \texttt{status: ACTIVE} y timestamp de creación.\newline
+\textbf{And} persiste la identidad en el almacén de usuarios e inicia el ciclo de vida del perfil institucional.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Correo electrónico o teléfono ya registrado en el sistema}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} con un correo electrónico o teléfono que ya figura en el repositorio de cuentas.\newline
+\textbf{When} la API evalúa la restricción de unicidad en la base de datos de identidades.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} bajo el estándar RFC 7807 especificando el conflicto de identidad en el atributo duplicado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Contraseña o número telefónico no cumplen con las políticas de validación}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-up} donde la contraseña no satisface la longitud mínima o el teléfono no respeta la estructura E.164.\newline
 \textbf{When} el validador de payload procesa los atributos del registro.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request} detallando la infracción de la política de contraseñas.} \\ \hline
+\textbf{Then} la API responde \texttt{400 Bad Request} retornando el detalle de las violaciones de restricción en el cuerpo de la respuesta.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1460,7 +1792,7 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS02} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Autenticación de usuarios y emisión de tokens JWT con claims de rol} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Autenticación de usuarios y emisión de tokens de acceso con rol} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar las credenciales de acceso a la API, \textbf{para} autenticar al usuario y recibir un token de acceso JWT con sus respectivos claims de autorización.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
@@ -1536,16 +1868,16 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS05} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización parcial de datos de perfil con validación telefónica E.164} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Actualización parcial de datos de perfil con validación telefónica} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar actualizaciones parciales del perfil a la API, \textbf{para} modificar el nombre de contacto o el número de teléfono operativo validado bajo el estándar E.164.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Actualización exitosa}\newline
 \textbf{Given} una solicitud PATCH a \url{/api/v1/profiles/{userId}} con cuerpo JSON que incluye fullName y/o phoneNumber y país.\newline
-\textbf{When} la API valida la propiedad de la cuenta y verifica el nuevo teléfono mediante la biblioteca \texttt{libphonenumber}.\newline
+\textbf{When} la API valida la propiedad de la cuenta y verifica el nuevo teléfono.\newline
 \textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{ProfileResource} con los datos actualizados y persistidos.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Teléfono inválido en actualización}\newline
-\textbf{Given} una solicitud PATCH a \url{/api/v1/profiles/{userId}} con un teléfono que no cumple la norma E.164 según \texttt{libphonenumber}.\newline
+\textbf{Given} una solicitud PATCH a \url{/api/v1/profiles/{userId}} con un teléfono que no cumple la norma E.164.\newline
 \textbf{When} la API valida los campos provistos.\newline
 \textbf{Then} la API responde \texttt{400 Bad Request} sin alterar la información previa.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Permiso denegado sobre cuenta ajena}\newline
@@ -1612,22 +1944,23 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS08} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Generación de lote de códigos de activación para socios cooperativos} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Generación de lote de códigos de activación para socios cooperativos con reserva de cuota} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la creación de códigos de activación institucionales a la API, \textbf{para} que el gestor técnico pueda distribuirlos a los socios de la cooperativa.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la solicitud de generación de un lote de códigos de activación especificando cantidad, vigencia en días y cuota de hectáreas por código mediante POST a \url{/api/v1/invitation-codes}, \textbf{para} emitir invitaciones innominadas y reservar atómicamente plazas y hectáreas en la licencia institucional.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación exitosa de códigos de activación}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/cooperatives/{id}/invitation-code-batches} con cuerpo JSON conteniendo: \texttt{quantity} y \texttt{validDays}.\newline
-\textbf{When} la API valida que el usuario tiene rol GESTOR en dicha cooperativa y que la cantidad solicitada no supera el límite contratado en la licencia.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{InvitationCodeBatchResource} con el identificador del lote, arreglo de códigos alfanuméricos únicos generados y fecha de expiración.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cupo de membresías excedido}\newline
-\textbf{Given} una solicitud POST con una cantidad que sobrepasa el cupo de la membresía cooperativa.\newline
-\textbf{When} la API evalúa la disponibilidad de cupos en la licencia.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request} indicando el límite de licencias permitidas.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado para no gestores}\newline
-\textbf{Given} una solicitud POST emitida por un usuario sin rol GESTOR en la cooperativa especificada.\newline
-\textbf{When} la API valida los permisos institucionales.\newline
-\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación exitosa de lote con reserva atómica de plazas y hectáreas}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/invitation-codes} con cabecera \texttt{Authorization: Bearer <token>} de un gestor técnico y cuerpo JSON conteniendo \texttt{quantity}, \texttt{validDays} y \texttt{quotaHaPerCode}.\newline
+\textbf{When} la API verifica que el gestor posee \texttt{ROLE\_TECHNICAL\_MANAGER}, pertenece a la cooperativa y la licencia dispone de plazas y saldo de hectáreas suficientes para cubrir el lote.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando \texttt{InvitationCodeBatchResource} con \texttt{batchId}, \texttt{quantity}, \texttt{validDays}, \texttt{quotaHaPerCode}, array de códigos innominados generados con formato \texttt{COOP-XXXX}, \texttt{expiresAt} y balance restante de la licencia.\newline
+\textbf{And} reserva atómicamente las plazas y hectáreas correspondientes en \texttt{CooperativeLicense}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cupo o hectáreas insuficientes en la licencia colectiva}\newline
+\textbf{Given} una solicitud POST para emitir un lote cuya cantidad de plazas o suma de hectáreas excede el saldo disponible en la suscripción corporativa.\newline
+\textbf{When} la API valida los límites contractuales del agregado \texttt{CooperativeLicense}.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} indicando que no se cuenta con cupo institucional suficiente para completar la emisión.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado para usuarios sin rol de gestor técnico}\newline
+\textbf{Given} una solicitud POST emitida por un usuario no autenticado, con rol ajeno o sin una licencia vigente.\newline
+\textbf{When} el filtro de seguridad evalúa las credenciales y la pertenencia institucional.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} bloqueando la generación de códigos.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1640,18 +1973,22 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS09} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta y auditoría de códigos de activación de cooperativa} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta y auditoría de inventario de lotes y códigos de activación de cooperativa} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el listado de códigos de activación de una cooperativa a la API, \textbf{para} mostrar al gestor los códigos disponibles, canjeados y los socios vinculados.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el inventario de lotes y códigos de activación mediante GET a \url{/api/v1/invitation-codes} con soporte de filtros por estado y almacenamiento recuperable protegido, \textbf{para} permitir al gestor auditar las invitaciones y copiar o compartir códigos disponibles.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de códigos disponibles y canjeados}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/cooperatives/{id}/invitation-code-batches} con token de gestor técnico y parámetros opcionales de filtro por estado.\newline
-\textbf{When} la API valida la pertenencia institucional y consulta los registros del agregado.\newline
-\textbf{Then} la API responde \texttt{200 OK} con un arreglo de objetos \texttt{InvitationCodeBatchResource} que detallan lotes, códigos, estados (AVAILABLE, REDEEMED, EXPIRED) y fechas de expiración.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Acceso no autorizado}\newline
-\textbf{Given} una solicitud GET emitida por un usuario que no es gestor de la cooperativa.\newline
-\textbf{When} la API verifica el rol institucional.\newline
-\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta de códigos de activación}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/invitation-codes} con parámetro opcional \texttt{status}, autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER}.\newline
+\textbf{When} la API consulta el repositorio de códigos y calcula los totales globales de la cooperativa.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando la lista de códigos de la licencia, con códigos legibles para los estados \texttt{AVAILABLE}, \texttt{expiresAt}, fecha de emisión y resumen de balance institucional.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Recuperación de código utilizable protegido}\newline
+\textbf{Given} un código generado en estado \texttt{AVAILABLE} que se encuentra dentro de su período de vigencia.\newline
+\textbf{When} el gestor técnico autorizado solicita su detalle para compartirlo desde la aplicación móvil.\newline
+\textbf{Then} la API devuelve la representación utilizable del código permitiendo su copia al portapapeles sin exponer secretos del sistema.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso denegado a usuarios externos o sin privilegios de gestión}\newline
+\textbf{Given} una petición GET enviada por una cuenta sin rol de gestor técnico.\newline
+\textbf{When} el servicio comprueba el ámbito de autorización.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} resguardando la confidencialidad de los códigos institucionales.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1664,22 +2001,31 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS10} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Canje de código de activación de socio para vinculación cooperativa} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Canje atómico de código de activación institucional con validación de cuota y consentimiento} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar el código de activación provisto por el socio a la API, \textbf{para} afiliar al productor a la licencia colectiva de la cooperativa sin cobro individual.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar el código de activación corporativo provisto por el productor y su consentimiento de compartición de datos mediante POST a \url{/api/v1/cooperative-code-redemptions}, \textbf{para} validar atómicamente la cuota, afiliar la cuenta a la cooperativa y activar los beneficios patrocinados sin cobro individual.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso y afiliación}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/cooperative-code-redemptions} con cuerpo JSON: \texttt{invitationCode}.\newline
-\textbf{When} la API valida que el código existe, está en estado AVAILABLE y pertenece al socio autenticado.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{CooperativeMembershipResource} confirmando la vinculación con la cooperativa y el cambio de estado del código a REDEEMED.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código inválido o agotado}\newline
-\textbf{Given} una solicitud POST con un \texttt{invitationCode} inexistente o ya canjeado previamente.\newline
-\textbf{When} la API consulta la validez del código.\newline
-\textbf{Then} la API responde \texttt{400 Bad Request} indicando que el código no es válido o expiró.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Socio ya vinculado activamente}\newline
-\textbf{Given} una solicitud POST emitida por un usuario que ya cuenta con membresía activa en la cooperativa.\newline
-\textbf{When} la API comprueba el estado actual de membresías.\newline
-\textbf{Then} la API responde \texttt{409 Conflict}.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso, validación de cuota y vinculación 1:N}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/cooperative-code-redemptions} con cuerpo JSON conteniendo \texttt{invitationCode} (formato \texttt{COOP-XXXX}) y \texttt{shareDataConsent: true} emitida por un productor olivarero autenticado.\newline
+\textbf{When} la API valida que el código existe, se encuentra en estado \texttt{AVAILABLE}, no ha expirado y la cooperativa dispone de cuota de hectáreas para la superficie del socio.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando \texttt{CooperativeCodeRedemptionResource} con la confirmación de afiliación, nombre de la cooperativa y estado de membresía patrocinada activa.\newline
+\textbf{And} transiciona el código a \texttt{REDEEMED}, emite \texttt{CooperativeCodeRedeemedEvent} y vincula al productor al padrón del gestor técnico.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código inválido, expirado o revocado}\newline
+\textbf{Given} una solicitud POST con un código que no existe en el sistema o cuyo estado es \texttt{REDEEMED}, \texttt{EXPIRED} o \texttt{REVOKED}.\newline
+\textbf{When} el servicio procesa la transacción de canje.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando el motivo del rechazo sin alterar el estado del usuario.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Productor ya vinculado a una cooperativa activa}\newline
+\textbf{Given} un usuario que ya cuenta con una afiliación corporativa activa intentando redimir otro código de activación.\newline
+\textbf{When} el agregador de suscripciones verifica la política de vinculación única por campaña.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} señalando que la cuenta ya posee patrocinio cooperativo vigente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Usuario sin rol de productor}\newline
+\textbf{Given} una solicitud POST emitida por un usuario que no tiene rol de productor.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Exceso de intentos fallidos}\newline
+\textbf{Given} un usuario que acumuló demasiados intentos fallidos de canje.\newline
+\textbf{When} envía una nueva solicitud.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1783,7 +2129,11 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Cuartel no encontrado en el inventario (HTTP 404 Not Found)}\newline
 \textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}} con un identificador \texttt{plotId} inexistente o archivado.\newline
 \textbf{When} el servicio de dominio consulta el repositorio parcelario.\newline
-\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Nombre duplicado (HTTP 409 Conflict)}\newline
+\textbf{Given} una solicitud PUT con un nombre ya utilizado por otra parcela del productor.\newline
+\textbf{When} la API valida la unicidad del nombre.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1803,7 +2153,7 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Eliminación exitosa}\newline
 \textbf{Given} una solicitud DELETE a \url{/api/v1/plots/{plotId}} emitida por el propietario del lote.\newline
 \textbf{When} la API valida la propiedad y ejecuta la baja lógica del predio.\newline
-\textbf{Then} la API responde \texttt{204 No Content}.} \\
+\textbf{Then} la API responde \texttt{200 OK}.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela ajena}\newline
 \textbf{Given} una solicitud DELETE a un lote perteneciente a otro usuario.\newline
 \textbf{When} la API verifica permisos.\newline
@@ -1879,11 +2229,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Desvinculación exitosa}\newline
 \textbf{Given} una solicitud DELETE a \url{/api/v1/plots/{plotId}/iot-devices/{deviceId}} emitida por el titular de la parcela.\newline
 \textbf{When} la API verifica la pertenencia y ejecuta la baja lógica del nodo.\newline
-\textbf{Then} la API responde \texttt{204 No Content} manteniendo la integridad de las series cronológicas previas.} \\
+\textbf{Then} la API responde \texttt{200 OK} manteniendo la integridad de las series cronológicas previas.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Dispositivo no encontrado}\newline
 \textbf{Given} una solicitud DELETE con identificador de dispositivo inexistente.\newline
 \textbf{When} la API busca el registro.\newline
-\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Revisión desactualizada del dispositivo}\newline
+\textbf{Given} una solicitud DELETE con cabecera \texttt{If-Match} que no coincide con la versión actual del dispositivo.\newline
+\textbf{When} la API compara la revisión.\newline
+\textbf{Then} la API responde \texttt{412 Precondition Failed}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2035,7 +2389,11 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela no encontrada en el repositorio (HTTP 404 Not Found)}\newline
 \textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} con un parámetro de ruta \texttt{plotId} inexistente en el sistema.\newline
 \textbf{When} la API intenta asociar el lote de muestreo al predio.\newline
-\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Árboles duplicados o lote en conflicto (HTTP 409 Conflict)}\newline
+\textbf{Given} una solicitud POST con identificadores de árbol duplicados dentro de la ronda o un lote en conflicto.\newline
+\textbf{When} la API valida la ronda de muestreo.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2074,15 +2432,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS26} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de prescripción técnica de aclareo y ventana fenológica} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar la prescripción agronómica activa mediante el método GET al endpoint \url{/api/v1/plots/{plotId}/thinning-prescriptions/active} con parámetro de ruta \texttt{{plotId}}, \textbf{para} desplegar el porcentaje de remoción recomendado, la ventana fenológica de intervención y la lista explícita de bloqueadores en caso de información faltante.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar la prescripción agronómica activa mediante el método GET al endpoint \url{/api/v1/plots/{plotId}/thinning-prescriptions} con parámetro de ruta \texttt{{plotId}}, \textbf{para} desplegar el porcentaje de remoción recomendado, la ventana fenológica de intervención y la lista explícita de bloqueadores en caso de información faltante.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de prescripción activa o bloqueadores diagnósticos (HTTP 200 OK)}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/thinning-prescriptions/active} con parámetro de ruta \texttt{plotId}.\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/thinning-prescriptions} con parámetro de ruta \texttt{plotId}.\newline
 \textbf{When} la API evalúa la representatividad del muestreo y la fecha de plena floración registrada para el cuartel.\newline
 \textbf{Then} la API responde \texttt{200 OK} retornando \texttt{ThinningPrescriptionResponse} conteniendo: \texttt{status}, \texttt{targetRemovalPercentage}, \texttt{recommendedWindowStart}, \texttt{recommendedWindowEnd}, \texttt{phenologicalStage}, \texttt{isOverloaded}, la lista explícita \texttt{blockers} (por ejemplo, \texttt{SAMPLING\_NOT\_REPRESENTATIVE} o \texttt{FULL\_BLOOM\_MISSING}) e instrucciones operativas de manejo.\newline
 \textbf{And} entrega las orientaciones técnicas para desbloquear la prescripción en caso de requerir mediciones adicionales.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cuartel no encontrado o sin prescripción activa (HTTP 404 Not Found)}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/thinning-prescriptions/active} con un identificador \texttt{plotId} inexistente o que no posee ninguna prescripción emitida en la campaña.\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/thinning-prescriptions} con un identificador \texttt{plotId} inexistente o que no posee ninguna prescripción emitida en la campaña.\newline
 \textbf{When} el servicio de aplicación consulta el contexto de aclareo.\newline
 \textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
 \end{longtable}
@@ -2099,10 +2457,10 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS27} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Confirmación y registro de ejecución de labor de aclareo en campo} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la confirmación de ejecución de aclareo mediante el método POST a \url{/api/v1/plots/{plotId}/thinning-prescriptions/active/confirmations} con parámetro de ruta \texttt{{plotId}} y cuerpo JSON (\texttt{executedDate}, \texttt{actualRemovalPercentage}, \texttt{removedKg}, \texttt{laborCrewSize}, \texttt{notes}), \textbf{para} asentar la práctica en la bitácora, actualizar el balance de carga residual y proyectar el calibre comercial COI.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la confirmación de ejecución de aclareo mediante el método POST a \url{/api/v1/thinning-prescriptions/{id}/execution-confirmations} con parámetro de ruta \texttt{{id}} y cuerpo JSON (\texttt{executedDate}, \texttt{actualRemovalPercentage}, \texttt{removedKg}, \texttt{laborCrewSize}, \texttt{notes}), \textbf{para} asentar la práctica en la bitácora, actualizar el balance de carga residual y proyectar el calibre comercial COI.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Confirmación exitosa con balance de carga y proyección de calibre COI (HTTP 201 Created)}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/thinning-prescriptions/active/confirmations} con parámetro de ruta \texttt{plotId} y cuerpo JSON con \texttt{executedDate}, \texttt{actualRemovalPercentage} (entre 0 y 100), \texttt{removedKg}, \texttt{laborCrewSize} y \texttt{notes}.\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/thinning-prescriptions/{id}/execution-confirmations} con parámetro de ruta \texttt{id} y cuerpo JSON con \texttt{executedDate}, \texttt{actualRemovalPercentage} (entre 0 y 100), \texttt{removedKg}, \texttt{laborCrewSize} y \texttt{notes}.\newline
 \textbf{When} la API valida los campos, registra la confirmación de aclareo en la bitácora del cuartel y evalúa la proyección de calibre según la calibración del modelo de la variedad.\newline
 \textbf{Then} la API responde \texttt{201 Created} retornando \texttt{ExecutionConfirmationResponse} conteniendo \texttt{id}, \texttt{executedDate}, \texttt{actualRemovalPercentage}, \texttt{loadBalance} (\texttt{residualLoadIndex}, \texttt{loadState}), \texttt{caliberProjection} (\texttt{status}: \texttt{ESTIMATED} o \texttt{IN\_CALIBRATION}, \texttt{probableGrade}, \texttt{confidenceInterval80}) y la marca temporal de confirmación.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Confirmación con 100 \% de remoción y calibre no aplicable (HTTP 201 Created)}\newline
@@ -2114,7 +2472,7 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \textbf{When} el servicio valida las restricciones de dominio agronómico.\newline
 \textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Cuartel o prescripción activa inexistente (HTTP 404 Not Found)}\newline
-\textbf{Given} una solicitud POST dirigida a un \texttt{plotId} inexistente o que carece de prescripción activa susceptible de confirmación.\newline
+\textbf{Given} una solicitud POST dirigida a un \texttt{id} de prescripción inexistente.\newline
 \textbf{When} el servicio consulta el agregado en el contexto de Thinning.\newline
 \textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
 \end{longtable}
@@ -2128,22 +2486,26 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS28} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Generación y descarga de reporte agronómico auditable en formato PDF} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS28} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta y exportación del expediente agronómico definitivo} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el archivo binario del reporte agronómico a la API, \textbf{para} descargar la ficha técnica en PDF con la trazabilidad completa del predio para trámites bancarios o cooperativos.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el expediente agronómico sellado de una parcela mediante GET a \url{/api/v1/plots/{plotId}/agronomic-dossiers/{campaignYear}} con negociación de contenidos (\texttt{Accept: application/pdf} o \texttt{application/json}), \textbf{para} descargar el dossier sellado con hash SHA-256 de una campaña cerrada.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación exitosa de PDF mediante negociación de contenidos}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/agronomic-reports} con cabecera \texttt{Accept: application/pdf} y token autorizado.\newline
-\textbf{When} la API compila los registros de cosecha, índice BBI, frío acumulado y labores de aclareo en el motor de renderizado de documentos.\newline
-\textbf{Then} la API responde \texttt{200 OK} con tipo de contenido \texttt{application/pdf} y cabecera \texttt{Content-Disposition} para descarga directa.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta en formato estructurado JSON}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/agronomic-reports} con cabecera \texttt{Accept: application/json}.\newline
-\textbf{When} la API recupera la estructura agregada del expediente agronómico.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{AgronomicReportResource} con los metadatos y hash de certificación.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela inexistente}\newline
-\textbf{Given} una solicitud GET con un identificador de parcela no existente.\newline
-\textbf{When} la API busca los datos del reporte.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Descarga del expediente sellado en formato PDF}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/agronomic-dossiers/{campaignYear}} con cabecera \texttt{Accept: application/pdf}, el año de una campaña con dossier sellado y token autorizado.\newline
+\textbf{When} la API recupera el dossier sellado de la campaña.\newline
+\textbf{Then} la API responde \texttt{200 OK} con \texttt{Content-Type: application/pdf} y el documento del dossier sellado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta de expediente consolidado y metadatos con hash en campaña cerrada}\newline
+\textbf{Given} una solicitud GET con cabecera \texttt{Accept: application/json} para una campaña agrícola concluida y liquidada formalmente.\newline
+\textbf{When} la API recupera el agregado del dossier sellado definitivo.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{TechnicalDossierResource} con el resumen de rendimiento, balance de estabilización y la huella digital SHA-256 de integridad documental.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado a expediente de parcela ajena}\newline
+\textbf{Given} una solicitud emitida por un usuario sin permisos de supervisión técnica ni titularidad sobre la parcela.\newline
+\textbf{When} la política de acceso institucional evalúa la pertenencia del predio.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} protegiendo los datos agronómicos del productor.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Campaña sin dossier sellado}\newline
+\textbf{Given} una solicitud GET sobre una campaña que no cuenta con un dossier sellado.\newline
+\textbf{When} la API busca el dossier.\newline
 \textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
 \end{longtable}
 \endgroup
@@ -2156,18 +2518,22 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS29} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS29} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el estado consolidado de riesgo de los predios socios geolocalizados a la API, \textbf{para} desplegar el semáforo fenológico y priorizar visitas técnicas a parcelas con sobrecarga crítica (> 30\%) o estrés hídrico.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el estado territorial consolidado de las parcelas socias mediante GET a \url{/api/v1/member-plots} con parámetros opcionales de geolocalización (\texttt{latitude}, \texttt{longitude}), \textbf{para} presentar el semáforo por mayor gravedad observada y orientar al gestor en campo.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de semáforo de riesgo sectorial}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/cooperatives/{cooperativeId}/territorial-risk} con parámetros \texttt{?latitude=\{lat\}\&longitude=\{lon\}} y token de gestor técnico.\newline
-\textbf{When} la API evalúa los indicadores de frío y sobrecarga de todas las parcelas socias registradas en el radio territorial.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{TerritorialRiskResource} agrupando los predios en verde (óptimo), amarillo (moderado) y rojo (sobrecarga > 30\% o frío insuficiente).} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Permisos insuficientes para no gestores}\newline
-\textbf{Given} una solicitud GET emitida por un usuario sin rol GESTOR en la cooperativa.\newline
-\textbf{When} la API valida las credenciales.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de matriz territorial con ubicación del gestor}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/member-plots} con parámetros \texttt{latitude} y \texttt{longitude} autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER}.\newline
+\textbf{When} la API ubica al gestor en el mapa y evalúa los estados de sobrecarga frutal (> 30\%) y riesgo de helada radiativa ($\le 1.5^\circ\text{C}$) en las parcelas vinculadas.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{TerritorialRiskResource} conteniendo la lista de sectores con etiquetas editables, coordenadas de parcelas socias, el sector detectado por proximidad GPS y el semáforo consolidado calculado por mayor gravedad observada (crítico, moderado, óptimo y conteo independiente de \texttt{NO\_DATA}).} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta territorial global sin coordenadas GPS}\newline
+\textbf{Given} una solicitud GET sin parámetros de latitud y longitud emitida por un gestor con GPS desactivado.\newline
+\textbf{When} la API procesa la consulta para la organización.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando el mapa general y el semáforo macro de todos los sectores con estado \texttt{locationStatus: GLOBAL}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por falta de credenciales de gestor técnico}\newline
+\textbf{Given} una petición GET emitida por un usuario no perteneciente al equipo técnico de la cooperativa.\newline
+\textbf{When} se evalúa la autorización del solicitante.\newline
 \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
 \end{longtable}
 \endgroup
@@ -2181,17 +2547,21 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS30} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Proyección agregada temprana de volumen de acopio cooperativo} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la proyección temprana consolidada de acopio a la API, \textbf{para} mostrar el tonelaje total previsto discriminado por aptitud de aceituna verde para mesa y negra para aceite.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la proyección agregada temprana de acopio a la API mediante GET a \url{/api/v1/intake-forecasts/{campaignYear}} con parámetro de ruta \texttt{campaignYear}, \textbf{para} consolidar únicamente las toneladas respaldadas por parcelas estimables y mostrar el desglose por aptitud comercial (verde para mesa y negra para almazara).} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Proyección de acopio agregada}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/cooperatives/{cooperativeId}/intake-forecasts} con parámetro \texttt{?campaignYear=\{year\}}.\newline
-\textbf{When} la API agrega las cargas estimadas de los muestreos de los socios y computa el tonelaje esperado.\newline
-\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{IntakeForecastResource} con total de toneladas estimadas, desglose mesa/aceite y el porcentaje de superficie muestreada.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Acceso no autorizado}\newline
-\textbf{Given} una solicitud GET emitida por un usuario sin rol de gestor.\newline
-\textbf{When} la API evalúa la pertenencia institucional.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Proyección agregada basada exclusivamente en parcelas evaluadas}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/intake-forecasts/{campaignYear}} con parámetro de ruta \texttt{campaignYear} y token de gestor técnico.\newline
+\textbf{When} la API consolida la producción esperada sumando únicamente las parcelas socias que cuentan con muestreo válido de cuajado, sin aplicar extrapolaciones ni coeficientes arbitrarios de reducción.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{IntakeForecastResource} con \texttt{totalEstimatedTons}, desglose \texttt{greenOlivesTons}, \texttt{blackOlivesTons}, \texttt{unclassifiedTons}, \texttt{sampledPlots}, \texttt{totalPlots} y \texttt{coveragePercentage}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Notificación de cobertura muestral parcial}\newline
+\textbf{Given} una cooperativa donde la cobertura de parcelas evaluadas es menor al 60\% del padrón.\newline
+\textbf{When} la API calcula la proyección agregada.\newline
+\textbf{Then} la API responde \texttt{200 OK} incluyendo \texttt{status: PRELIMINARY} y un indicador de representatividad insuficiente que advierte la necesidad de completar evaluaciones en campo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado para usuarios sin rol institucional}\newline
+\textbf{Given} una solicitud GET emitida por una cuenta que no posee \texttt{ROLE\_TECHNICAL\_MANAGER} en la entidad.\newline
+\textbf{When} el servicio valida los permisos.\newline
 \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
 \end{longtable}
 \endgroup
@@ -2301,21 +2671,21 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS35} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Creación y completado inicial de perfil de usuario con validación telefónica E.164} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado inicial de perfil de usuario con validación telefónica} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los datos de perfil y contacto (nombre completo, país y número celular) a la API de perfiles junto con el token JWT de autenticación, \textbf{para} crear el registro de perfil vinculado al usuario y validar el teléfono con la biblioteca especializada.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar los datos de perfil y contacto (nombre completo, país y número celular) a la API de perfiles junto con el token JWT de autenticación, \textbf{para} completar el registro de perfil vinculado al usuario y validar el teléfono.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Creación exitosa de perfil de usuario}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/profiles} es recibida con el encabezado \texttt{Authorization: Bearer <JWT>} y un cuerpo JSON que contiene: \texttt{fullName}, \texttt{country} y \texttt{phoneNumber}.\newline
-\textbf{When} la API extrae el identificador del usuario autenticado (\texttt{userId}), procesa el número telefónico mediante la biblioteca \texttt{libphonenumber} verificando su validez para el país provisto y normalizándolo al formato E.164.\newline
-\textbf{Then} la API responde \texttt{201 Created} y retorna \texttt{ProfileResource} con id, userId, fullName, country, phoneNumber normalizado y createdAt.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Completado exitoso de perfil de usuario}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/profiles/{userId}} es recibida con el encabezado \texttt{Authorization: Bearer <JWT>} y un cuerpo JSON que contiene: \texttt{fullName}, \texttt{country} y \texttt{phoneNumber}.\newline
+\textbf{When} la API extrae el identificador del usuario autenticado (\texttt{userId}), procesa el número telefónico verificando su validez para el país provisto y normalizándolo al formato E.164.\newline
+\textbf{Then} la API responde \texttt{200 OK} y retorna \texttt{ProfileResource} con id, userId, fullName, country, phoneNumber normalizado y createdAt.\newline
 \textbf{And} persiste el registro de perfil en la base de datos vinculado al usuario.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Número telefónico inválido según la biblioteca de validación}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/profiles} con un número telefónico que no cumple con el formato o longitud requerida según \texttt{libphonenumber} para el país seleccionado.\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Número telefónico inválido}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/profiles/{userId}} con un número telefónico que no cumple con el formato o longitud requerida para el país seleccionado.\newline
 \textbf{When} la API somete el teléfono a validación internacional.\newline
 \textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando la invalidez del número telefónico.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud no autenticada o token inválido}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/profiles} enviada sin la cabecera \texttt{Authorization} o con un token expirado o corrupto.\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/profiles/{userId}} enviada sin la cabecera \texttt{Authorization} o con un token expirado o corrupto.\newline
 \textbf{When} el filtro de seguridad intercepta la petición.\newline
 \textbf{Then} la API responde \texttt{401 Unauthorized} impidiendo la persistencia del perfil.} \\ \hline
 \end{longtable}
@@ -2429,7 +2799,15 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Conflicto por campaña ya liquidada previamente (HTTP 409 Conflict)}\newline
 \textbf{Given} una solicitud POST dirigida a un año de campaña agrícola que ya cuenta con una liquidación formal registrada e inmutable para dicha parcela.\newline
 \textbf{When} el servicio de aplicación valida la regla de unicidad anual de cierre de campaña.\newline
-\textbf{Then} la API responde \texttt{409 Conflict} impidiendo la sobreescritura de los pesajes oficiales.} \\ \hline
+\textbf{Then} la API responde \texttt{409 Conflict} impidiendo la sobreescritura de los pesajes oficiales.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Parcela de otro productor (HTTP 403 Forbidden)}\newline
+\textbf{Given} una solicitud POST sobre una parcela que no pertenece al solicitante.\newline
+\textbf{When} la API verifica la titularidad.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Clave de idempotencia reutilizada (HTTP 422 Unprocessable Entity)}\newline
+\textbf{Given} una solicitud POST con una cabecera \texttt{Idempotency-Key} ya utilizada para otra parcela o campaña.\newline
+\textbf{When} la API evalúa la clave.\newline
+\textbf{Then} la API responde \texttt{422 Unprocessable Entity}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2477,22 +2855,22 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
 \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS41} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Revocación anticipada y ajuste de vigencia de código de activación cooperativo} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS41} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Revocación anticipada de código de activación cooperativo y restitución de cuota} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar la solicitud de expiración inmediata de un código no canjeado a la API, \textbf{para} revocar la invitación emitida por la cooperativa y restituir el cupo disponible a la licencia colectiva.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar una solicitud de revocación inmediata para un código de activación disponible mediante POST a \url{/api/v1/invitation-codes/{id}/revocations}, \textbf{para} anular la invitación y restituir de forma atómica la plaza y las hectáreas reservadas al balance de la licencia institucional.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Expiración anticipada y restitución de cupo}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} emitida por un gestor técnico institucional.\newline
-\textbf{When} la API valida que el código se encuentre en estado AVAILABLE, adelanta su fecha de expiración a la fecha actual y transiciona su estado a EXPIRED.\newline
-\textbf{Then} la API responde \texttt{200 OK}, retorna \texttt{InvitationCodeResource} actualizado, emite \texttt{InvitationCodeExpiredEvent} y restituye automáticamente el cupo en la licencia cooperativa.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Revocación exitosa y restitución de cupo a la licencia}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/invitation-codes/{id}/revocations} autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER}.\newline
+\textbf{When} la API verifica que el código pertenece a la cooperativa y se encuentra en estado \texttt{AVAILABLE}.\newline
+\textbf{Then} la API responde \texttt{200 OK}, actualiza el estado del código a \texttt{REVOKED}, emite \texttt{InvitationCodeRevokedEvent} y reintegra la plaza y la cuota de hectáreas correspondientes al saldo disponible en \texttt{CooperativeLicense}.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código ya canjeado o inactivo}\newline
-\textbf{Given} una solicitud POST sobre un código que ya se encuentra en estado REDEEMED o EXPIRED.\newline
-\textbf{When} la API evalúa el ciclo de vida del código.\newline
-\textbf{Then} la API responde \texttt{409 Conflict} impidiendo la alteración de códigos consumidos.} \\
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado para no gestores}\newline
-\textbf{Given} una solicitud POST emitida por un usuario sin rol GESTOR en la cooperativa.\newline
-\textbf{When} la API valida los permisos institucionales.\newline
+\textbf{Given} una solicitud POST para un código que ya fue canjeado (\texttt{REDEEMED}) o previamente anulado (\texttt{REVOKED}/\texttt{EXPIRED}).\newline
+\textbf{When} la API procesa la regla de ciclo de vida del código.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} indicando que no se pueden revocar códigos consumidos o inactivos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Denegación de acceso para usuarios no gestores}\newline
+\textbf{Given} una petición POST remitida por un usuario sin rol de gestor técnico en la cooperativa.\newline
+\textbf{When} el servicio evalúa la autorización.\newline
 \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
 \end{longtable}
 \endgroup
@@ -2602,14 +2980,18 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} eliminar un pesaje de cosecha asentado por error mediante el método DELETE a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con parámetros de ruta \texttt{{plotId}} y \texttt{{recordId}}, \textbf{para} purgar datos anómalos del historial y recalcular el Índice de Vecería (BBI) del cuartel.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Eliminación exitosa de registro de cosecha (HTTP 204 No Content)}\newline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Eliminación exitosa de registro de cosecha (HTTP 200 OK)}\newline
 \textbf{Given} una solicitud DELETE a \url{/api/v1/plots/{plotId}/harvest-records/{recordId}} con parámetros de ruta \texttt{plotId} y \texttt{recordId}.\newline
 \textbf{When} la API valida la titularidad del predio, elimina el registro erróneo del histórico plurianual y recomputa reactivamente el balance y el índice BBI del cuartel.\newline
-\textbf{Then} la API responde \texttt{204 No Content} con cuerpo vacío confirmando la remoción definitiva del registro.} \\
+\textbf{Then} la API responde \texttt{200 OK} confirmando la remoción definitiva del registro.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Registro de cosecha o cuartel no encontrado (HTTP 404 Not Found)}\newline
 \textbf{Given} una solicitud DELETE con un identificador \texttt{plotId} o \texttt{recordId} inexistente en el repositorio fenológico.\newline
 \textbf{When} la API verifica la existencia del registro en la base de datos.\newline
-\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Revisión desactualizada del registro (HTTP 412 Precondition Failed)}\newline
+\textbf{Given} una solicitud DELETE con cabecera \texttt{If-Match} que no coincide con la versión actual del registro.\newline
+\textbf{When} la API compara la revisión.\newline
+\textbf{Then} la API responde \texttt{412 Precondition Failed}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2696,10 +3078,10 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS49} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Baja} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Postergación temporal de notificaciones de incidente agroclimático (Snooze)} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} postergar las notificaciones de un incidente mediante el método POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/snooze} con parámetro de ruta \texttt{{incidentId}} y cuerpo JSON (\texttt{snoozeHours}), \textbf{para} silenciar temporalmente los avisos push durante la ventana horaria definida sin resolver la alerta en el lote.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} postergar las notificaciones de un incidente mediante el método POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/postponements} con parámetro de ruta \texttt{{incidentId}} y cuerpo JSON (\texttt{snoozeHours}), \textbf{para} silenciar temporalmente los avisos push durante la ventana horaria definida sin resolver la alerta en el lote.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Postergación exitosa de notificaciones del incidente (HTTP 200 OK)}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/snooze} con parámetro de ruta \texttt{incidentId} y cuerpo JSON con \texttt{snoozeHours} (entre 1 y 72).\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/postponements} con parámetro de ruta \texttt{incidentId} y cuerpo JSON con \texttt{snoozeHours} (entre 1 y 72).\newline
 \textbf{When} la API valida el estado del incidente, calcula la marca temporal de expiración del snooze y suspende el despacho de notificaciones push recurrentes hasta dicho momento.\newline
 \textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AgroclimaticIncidentResponse} con el estado actualizado a \texttt{SNOOZED} y la fecha de reactivación programada \texttt{snoozeUntil}.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Duración de postergación fuera de rango permitido (HTTP 400 Bad Request)}\newline
@@ -2707,7 +3089,7 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \textbf{When} la API valida el valor de las horas solicitadas.\newline
 \textbf{Then} la API responde \texttt{400 Bad Request} indicando que el tiempo de postergación debe encontrarse entre 1 y 72 horas.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Incidente no encontrado (HTTP 404 Not Found)}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/snooze} con un identificador \texttt{incidentId} que no existe.\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/postponements} con un identificador \texttt{incidentId} que no existe.\newline
 \textbf{When} el servicio consulta el repositorio de incidentes.\newline
 \textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
 \end{longtable}
@@ -2724,10 +3106,10 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS50} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Completado de paso de mitigación agronómica de incidente} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} asentar la ejecución de un paso del protocolo de mitigación mediante el método POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}/complete} con parámetros de ruta \texttt{{incidentId}} y \texttt{{stepId}}, \textbf{para} registrar las labores de respuesta en campo y actualizar el estado de resolución del incidente.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} asentar la ejecución de un paso del protocolo de mitigación mediante el método PUT a \url{/api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}} con parámetros de ruta \texttt{{incidentId}} y \texttt{{stepId}}, \textbf{para} registrar las labores de respuesta en campo y actualizar el estado de resolución del incidente.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Completado exitoso de paso y avance del incidente (HTTP 200 OK)}\newline
-\textbf{Given} una solicitud POST a \url{/api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}/complete} con parámetros de ruta \texttt{incidentId} y \texttt{stepId}, y cuerpo JSON opcional con \texttt{notes}.\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}} con parámetros de ruta \texttt{incidentId} y \texttt{stepId}, y cuerpo JSON opcional con \texttt{notes}.\newline
 \textbf{When} la API valida que el paso pertenezca al incidente, lo marca como \texttt{COMPLETED} con su marca temporal de ejecución y evalúa si todos los pasos han sido concluidos para transicionar el incidente a \texttt{RESOLVED} o mantenerlo en \texttt{IN\_MITIGATION}.\newline
 \textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AgroclimaticIncidentDetailResponse} con el paso marcado como completado y el progreso actualizado de la mitigación.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Notas de ejecución exceden la longitud permitida (HTTP 400 Bad Request)}\newline
@@ -2752,14 +3134,14 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS51} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de estado global de muestreos de cuarteles (Plot Picker)} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el estado consolidado de muestreos de todos los cuarteles mediante el método GET al endpoint \url{/api/v1/samplings/overview} con parámetros de consulta de campaña y estado, \textbf{para} renderizar el selector de predios (Plot Picker) en la interfaz móvil destacando el avance y suficiencia de cada lote.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el estado consolidado de muestreos de todos los cuarteles mediante el método GET al endpoint \url{/api/v1/samplings} con parámetro de consulta de campaña, \textbf{para} renderizar el selector de predios (Plot Picker) en la interfaz móvil destacando el avance y suficiencia de cada lote.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de cobertura y estado de muestreo de los cuarteles (HTTP 200 OK)}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/samplings/overview} con parámetros de consulta opcionales \texttt{campaignYear} y \texttt{status}.\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/samplings} con parámetro de consulta opcional \texttt{campaignYear}.\newline
 \textbf{When} la API consolida la totalidad de parcelas activas del productor y computa para cada una el avance muestreal, árboles registrados y si se ha alcanzado la suficiencia estadística (≥ 5 árboles).\newline
 \textbf{Then} la API responde \texttt{200 OK} retornando una lista de \texttt{PlotSamplingOverviewResponse} optimizada para el selector de parcelas (Plot Picker) en la aplicación móvil.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Formato inválido en año de campaña o filtro de estado (HTTP 400 Bad Request)}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/samplings/overview} con un año de campaña menor a 2000 o un estado no reconocido.\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/samplings} con un año de campaña menor a 2000.\newline
 \textbf{When} el controlador procesa los parámetros de consulta.\newline
 \textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807.} \\ \hline
 \end{longtable}
@@ -2804,14 +3186,14 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS53} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de eventos cronológicos y bitácora agronómica de raleo} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar la bitácora histórica de intervenciones de aclareo mediante el método GET a \url{/api/v1/plots/{plotId}/thinning-events} con parámetro de ruta \texttt{{plotId}} y parámetro de consulta de campaña, \textbf{para} visualizar en orden cronológico todos los eventos de muestreo, prescripción y confirmación ejecutados en el predio.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar la bitácora histórica de intervenciones de aclareo mediante el método GET a \url{/api/v1/thinning-events} con parámetros de consulta \texttt{plotId} y \texttt{campaignYear}, \textbf{para} visualizar en orden cronológico todos los eventos de muestreo, prescripción y confirmación ejecutados en el predio.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta cronológica exitosa de bitácora de intervenciones (HTTP 200 OK)}\newline
-\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/thinning-events} con parámetro de ruta \texttt{plotId} y parámetro de consulta opcional \texttt{campaignYear}.\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/thinning-events} con parámetros de consulta opcionales \texttt{plotId} y \texttt{campaignYear}.\newline
 \textbf{When} la API recupera la secuencia de eventos de muestreo, cálculo de prescripción, registro de floración y confirmaciones de aclareo ordenados cronológicamente.\newline
 \textbf{Then} la API responde \texttt{200 OK} retornando una colección de \texttt{ThinningEventResponse} con el tipo de evento, fecha de ocurrencia, actores, datos cuantificados y notas asociadas.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Cuartel no encontrado (HTTP 404 Not Found)}\newline
-\textbf{Given} una solicitud GET con un parámetro de ruta \texttt{plotId} inexistente.\newline
+\textbf{Given} una solicitud GET con un \texttt{plotId} inexistente.\newline
 \textbf{When} la API evalúa la existencia de la parcela.\newline
 \textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
 \end{longtable}
@@ -2862,6 +3244,1578 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \textbf{Given} una solicitud GET con un \texttt{plotId} inexistente o para un año de campaña agrícola que no ha sido formalmente liquidado.\newline
 \textbf{When} el servicio consulta el almacén de datos de liquidaciones.\newline
 \textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS56} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la licencia institucional a cargo del gestor técnico} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar las licencias del gestor técnico autenticado mediante GET a \url{/api/v1/cooperative-licenses}, \textbf{para} determinar si tiene una licencia a su cargo y si esta permanece vigente.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta de la licencia del gestor}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/cooperative-licenses} autenticada como gestor técnico.\newline
+\textbf{When} la API consulta las licencias a su cargo.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando una lista con una licencia como máximo, que indica si permanece vigente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Gestor sin licencia asignada}\newline
+\textbf{Given} un gestor técnico que no tiene una licencia a su cargo.\newline
+\textbf{When} consulta sus licencias.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando una lista vacía.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Usuario sin rol de gestor técnico}\newline
+\textbf{Given} una solicitud emitida por un usuario que no es gestor técnico.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS57} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de balance de licencia institucional y cuota corporativa} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar una licencia corporativa mediante GET a \url{/api/v1/cooperative-licenses/{id}}, \textbf{para} presentar el balance de plazas y hectáreas de la cooperativa.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de la licencia}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/cooperative-licenses/{id}} autenticada como gestor técnico sobre una licencia a su cargo.\newline
+\textbf{When} la API recupera la licencia.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando su información y balance.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Licencia inexistente o ajena}\newline
+\textbf{Given} un identificador que no corresponde a una licencia del gestor.\newline
+\textbf{When} la API busca la licencia.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Usuario sin rol de gestor técnico}\newline
+\textbf{Given} una solicitud emitida por un usuario que no es gestor técnico.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS58} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de padrón de socios productores agremiados} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el padrón de socios productores de una cooperativa mediante GET a \url{/api/v1/cooperative-members}, \textbf{para} visualizar el directorio de agricultores, sus datos de contacto autorizado y sus parcelas supervisadas.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta del directorio de socios vinculados}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/cooperative-members}.\newline
+\textbf{When} la API valida los permisos del gestor y recupera los socios afiliados bajo la relación 1:N autorizada.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{PagedMemberListResource} con la lista de productores, teléfono E.164, correo, número de parcelas, superficie total declarada y contadores globales de socios activos y pendientes.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Acceso denegado a datos de socios de otra organización}\newline
+\textbf{Given} una petición de detalle con un \texttt{memberId} que no está vinculado a la cooperativa del gestor.\newline
+\textbf{When} la política de acceso evalúa la relación gremial.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} preservando la confidencialidad de los agricultores.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS59} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de sectores asignados a las parcelas socias} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar los sectores de las parcelas mediante GET a \url{/api/v1/plot-sector-assignments} con el parámetro opcional \texttt{status}, \textbf{para} agrupar las parcelas por sector e identificar las pendientes de confirmación.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta de sectores por parcela}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plot-sector-assignments} de un gestor técnico o de un socio.\newline
+\textbf{When} la API evalúa el alcance del usuario.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando todas las parcelas socias de la licencia para el gestor y solo las propias para el socio.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Estado desconocido}\newline
+\textbf{Given} una solicitud con un valor no reconocido en \texttt{status}.\newline
+\textbf{When} la API valida el parámetro.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Usuario sin licencia asociada}\newline
+\textbf{Given} una solicitud de un usuario que no alcanza ninguna licencia.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS60} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de resumen agronómico y ficha técnica de parcela en modo supervisión de solo lectura} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el resumen agronómico de una parcela socia mediante GET a \url{/api/v1/member-plots/{id}}, \textbf{para} presentar al gestor técnico los datos de carga frutal, prescripción vigente y fenología en modo de solo lectura estricto.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de ficha técnica de parcela supervisada}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/member-plots/{id}} con token de gestor técnico.\newline
+\textbf{When} la API verifica que la parcela pertenece a un socio vinculado y compila los modelos de muestreo, carga y prescripción vigentes.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{PlotAgronomicOverviewResource} conteniendo: nombre de la parcela, titular, variedad, marco de plantación, estado de sobrecarga frutal, prescripción de aclareo (porcentaje sugerido y frutos por brote), frío acumulado y nivel de riesgo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela con registros agronómicos insuficientes}\newline
+\textbf{Given} una parcela socia que aún no ha completado el protocolo de muestreo de cuajado en la campaña activa.\newline
+\textbf{When} la API genera el resumen técnico.\newline
+\textbf{Then} la API responde \texttt{200 OK} con \texttt{riskLevel: NO\_DATA}, valores de carga y prescripción nulos, y el estado de progreso de muestreo indicando las observaciones pendientes sin simular datos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado a parcela no vinculada a la cooperativa}\newline
+\textbf{Given} una solicitud sobre un predio cuyo propietario no mantiene vínculo con la cooperativa solicitante.\newline
+\textbf{When} la política de acceso institucional valida la relación de supervisión.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS61} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta y suscripción a alertas agroclimáticas y fitosanitarias territoriales internas} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar las alertas agroclimáticas y fenológicas internas de la cooperativa mediante GET a \url{/api/v1/sector-alerts}, \textbf{para} desplegar en el centro de avisos del gestor las notificaciones de heladas, estrés hídrico y sobrecarga frutal de sus sectores.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de alertas territoriales activas y recientes}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/sector-alerts} autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER}.\newline
+\textbf{When} la API recupera los eventos de riesgo procesados para las parcelas socias y estaciones agroclimáticas del valle.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{TerritorialAlertListResource} conteniendo: array de alertas con \texttt{alertId}, tipo (\texttt{FROST\_WARNING}, \texttt{CRITICAL\_OVERLOAD}, \texttt{WATER\_STRESS}), \texttt{sectorId}, \texttt{sectorName}, \texttt{severity}, fecha de emisión y número de predios afectados.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Persistencia del aviso para el gestor independiente del estado silenciado del productor}\newline
+\textbf{Given} una alerta de sobrecarga frutal sobre una parcela socia cuyo productor activó la opción de silenciar aviso (\texttt{SNOOZE}) en su aplicación móvil.\newline
+\textbf{When} el gestor técnico consulta el endpoint de alertas territoriales de la cooperativa.\newline
+\textbf{Then} la API incluye la alerta activa en la respuesta del gestor, garantizando que las preferencias locales del socio no oculten el estado de riesgo ante la supervisión técnica.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Denegación de acceso para solicitantes ajenos a la organización}\newline
+\textbf{Given} una petición GET emitida por un usuario sin vinculación con la cooperativa.\newline
+\textbf{When} se evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS62} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del histórico de acopio por campaña} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el acopio de cada campaña mediante GET a \url{/api/v1/intake-forecasts}, \textbf{para} comparar la campaña en curso con las cosechas liquidadas de campañas anteriores.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta del acopio por campaña}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/intake-forecasts} autenticada como gestor técnico con licencia vigente.\newline
+\textbf{When} la API proyecta la campaña en curso desde las parcelas estimables de los socios que comparten datos y suma las cosechas liquidadas desde su incorporación.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando el acopio de cada campaña.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Gestor sin licencia vigente}\newline
+\textbf{Given} una solicitud de un usuario que no es gestor técnico con licencia vigente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS63} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Generación de instantánea documental y metadatos de expediente agronómico provisional en campaña activa} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la generación de una instantánea fechada del expediente agronómico en campaña abierta mediante GET a \url{/api/v1/member-plots/{id}/provisional-dossier}, \textbf{para} emitir un documento preliminar con los hechos observados y fecha de corte sin sellos criptográficos prematuros.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación de metadatos de instantánea técnica provisional}\newline
+\textbf{Given} una solicitud GET con cabecera \texttt{Accept: application/json} sobre una parcela cuya campaña actual no ha sido liquidada.\newline
+\textbf{When} el servicio documental compila la evidencia registrada (datos fenológicos, aclareos registrados y series meteorológicas hasta el instante de la consulta).\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{ProvisionalDossierResource} con \texttt{cutOffTimestamp}, \texttt{campaignYear}, resumen de intervenciones efectuadas, etiqueta explícita \texttt{documentType: PROVISIONAL} y los campos sin datos registrados rotulados como \texttt{NOT\_AVAILABLE}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Solicitud de PDF provisional con marca de corte temporal}\newline
+\textbf{Given} una petición GET con cabecera \texttt{Accept: application/pdf}.\newline
+\textbf{When} el motor de renderizado procesa la plantilla documental.\newline
+\textbf{Then} la API genera y entrega el archivo PDF con marca de agua y encabezado «Expediente Provisional - Fecha de corte», omitiendo cualquier afirmación de certificación externa o hash SHA-256 definitivo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado}\newline
+\textbf{Given} una solicitud sobre un predio que no pertenece a la cartera de la cooperativa.\newline
+\textbf{When} la política de seguridad verifica los derechos de acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS64} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Baja} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Canje de código maestro para activación del gestor técnico} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar el código de activación del gestor mediante POST a \url{/api/v1/manager-code-redemptions}, \textbf{para} asignar al gestor técnico autenticado la responsabilidad de la licencia institucional.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso del código maestro}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/manager-code-redemptions} autenticada como gestor técnico, con \texttt{code} válido.\newline
+\textbf{When} la API consume el código y asigna la licencia al gestor, reemplazando al anterior.\newline
+\textbf{Then} la API responde \texttt{201 Created}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código no canjeable}\newline
+\textbf{Given} un código inexistente, vencido, usado, revocado o asociado a una licencia no vigente.\newline
+\textbf{When} la API procesa el canje.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Gestor con licencia vigente}\newline
+\textbf{Given} un gestor técnico que ya está a cargo de una licencia vigente.\newline
+\textbf{When} envía un código válido.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Usuario sin rol de gestor técnico}\newline
+\textbf{Given} una solicitud emitida por un usuario que no es gestor técnico.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Exceso de intentos fallidos}\newline
+\textbf{Given} un usuario que acumuló demasiados intentos fallidos.\newline
+\textbf{When} envía una nueva solicitud.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS65} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Vista previa de código de invitación cooperativa} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar lo que ofrece un código mediante POST a \url{/api/v1/cooperative-code-previews}, \textbf{para} mostrar al productor las condiciones y el consentimiento antes de canjearlo.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Vista previa exitosa}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/cooperative-code-previews} autenticada como productor, con \texttt{code} válido.\newline
+\textbf{When} la API evalúa el código sin consumirlo.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando la organización, el gestor, la cuota, el fin del plan, las hectáreas registradas y la versión del texto de consentimiento.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código no utilizable}\newline
+\textbf{Given} un código inexistente, vencido, canjeado o revocado.\newline
+\textbf{When} la API evalúa el código.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Productor con suscripción activa}\newline
+\textbf{Given} un productor que ya tiene una suscripción activa.\newline
+\textbf{When} solicita la vista previa.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Usuario sin rol de productor}\newline
+\textbf{Given} una solicitud emitida por un usuario que no es productor.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Exceso de intentos fallidos}\newline
+\textbf{Given} un usuario que acumuló demasiados intentos fallidos.\newline
+\textbf{When} envía una nueva solicitud.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS66} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del catálogo de preguntas por contexto de consulta} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar las preguntas del asistente mediante GET a \url{/api/v1/assistant/questions} con los parámetros \texttt{screen} y \texttt{plotId}, \textbf{para} presentar al productor las preguntas cerradas disponibles con sus cifras reales.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Catálogo de preguntas de una parcela}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/questions} con token válido de productor con plan activo, con \texttt{screen=ALTERNATION} y el \texttt{plotId} de una parcela propia.\newline
+\textbf{When} la API evalúa los datos de la parcela.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{QuestionCatalogResource} con \texttt{screen}, \texttt{plotId} y \texttt{questions} en orden de presentación, cada una con \texttt{questionId}, \texttt{label} localizado según \texttt{Accept-Language}, \texttt{icon}, \texttt{enabled} y \texttt{disabledReason}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Catálogo sobre todo el campo}\newline
+\textbf{Given} una solicitud GET con \texttt{screen=HOME} sin \texttt{plotId}.\newline
+\textbf{When} la API procesa la solicitud.\newline
+\textbf{Then} la API responde \texttt{200 OK} con \texttt{plotId} nulo y las preguntas referidas a todas las parcelas activas del productor.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parámetros inválidos}\newline
+\textbf{Given} una solicitud con \texttt{screen} desconocido o ausente, un \texttt{plotId} con formato inválido, o sin \texttt{plotId} en un contexto de parcela.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Acceso denegado o parcela inexistente}\newline
+\textbf{Given} una solicitud sobre una parcela ajena, de un productor sin plan activo o sobre una parcela inexistente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} ante parcela ajena o plan inactivo, y \texttt{404 Not Found} cuando la parcela no existe o está inactiva.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS67} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Solicitud idempotente de respuesta del asistente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar una pregunta del catálogo mediante POST a \url{/api/v1/assistant/answers}, \textbf{para} obtener una respuesta validada contra los datos reales del productor sin duplicarla ante reintentos.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Generación exitosa de respuesta}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/assistant/answers} con token válido de productor con plan activo, con \texttt{questionId}, \texttt{plotId}, \texttt{clientRequestId} y \texttt{forceRefresh}.\newline
+\textbf{When} la API obtiene los datos de la parcela y redacta la respuesta.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AssistantAnswerResource} con \texttt{answerId}, \texttt{questionId}, \texttt{question}, \texttt{plotId}, \texttt{createdAt}, \texttt{dataVersion}, \texttt{freshness}, \texttt{text}, exactamente dos \texttt{facts}, \texttt{sources}, \texttt{actions} y \texttt{model}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Reintento con la misma clave de idempotencia}\newline
+\textbf{Given} una solicitud que repite un \texttt{clientRequestId} ya procesado.\newline
+\textbf{When} la API identifica la clave.\newline
+\textbf{Then} la API responde \texttt{200 OK} con la misma respuesta guardada, sin generar una nueva.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Pregunta sin datos suficientes}\newline
+\textbf{Given} una pregunta del catálogo que no puede responderse con los datos registrados.\newline
+\textbf{When} la API evalúa su disponibilidad.\newline
+\textbf{Then} la API responde \texttt{409 Conflict} indicando el motivo y no estima valores.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Texto generado rechazado o no disponible}\newline
+\textbf{Given} un texto generado con cifras ausentes en los datos de origen o un servicio de redacción no disponible.\newline
+\textbf{When} la API valida el resultado.\newline
+\textbf{Then} la API responde \texttt{200 OK} con el texto predefinido e indica \texttt{model.fallback} en \texttt{true}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Límite de uso excedido}\newline
+\textbf{Given} un productor que superó 20 respuestas nuevas o 5 solicitudes con \texttt{forceRefresh} en 60 minutos.\newline
+\textbf{When} envía una nueva solicitud.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Solicitud inválida}\newline
+\textbf{Given} una solicitud POST con una pregunta desconocida o un identificador con formato inválido.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 7: Acceso denegado o parcela inexistente}\newline
+\textbf{Given} una solicitud sobre una parcela ajena, de un productor sin plan activo o sobre una parcela inexistente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} ante parcela ajena o plan inactivo, y \texttt{404 Not Found} cuando la parcela no existe o está inactiva.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS68} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del historial de respuestas del asistente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el historial mediante GET a \url{/api/v1/assistant/answers} con el parámetro \texttt{limit}, \textbf{para} presentar al productor sus respuestas recientes e indicar su vigencia.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de respuestas vigentes}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/answers} con token válido de productor con plan activo y \texttt{limit=10}.\newline
+\textbf{When} la API consulta las respuestas de los últimos 10 días.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AnswerHistoryResource} con \texttt{answers}, de la más reciente a la más antigua, cada una con \texttt{freshness} en \texttt{UP\_TO\_DATE} o \texttt{STALE}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Límite fuera de rango}\newline
+\textbf{Given} una solicitud con \texttt{limit} fuera del rango de 1 a 10.\newline
+\textbf{When} la API valida el parámetro.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Productor sin plan activo}\newline
+\textbf{Given} una solicitud de un productor sin plan activo.\newline
+\textbf{When} la API verifica su suscripción.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS69} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la última respuesta de un contexto de consulta} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la última respuesta mediante GET a \url{/api/v1/assistant/answers/latest} con los parámetros \texttt{screen} y \texttt{plotId}, \textbf{para} retomar la respuesta anterior del productor en ese contexto.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Recuperación de la última respuesta}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/answers/latest} con token válido de productor con plan activo, sobre un contexto con una respuesta de los últimos 10 días.\newline
+\textbf{When} la API localiza la respuesta.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AssistantAnswerResource}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Contexto sin respuesta previa}\newline
+\textbf{Given} un contexto sin respuestas vigentes para el productor.\newline
+\textbf{When} la API realiza la búsqueda.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parámetros inválidos o acceso denegado}\newline
+\textbf{Given} una solicitud con \texttt{screen} o \texttt{plotId} inválidos, sobre una parcela ajena o de un productor sin plan activo.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} ante parámetros inválidos y \texttt{403 Forbidden} ante parcela ajena o plan inactivo.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS70} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de una respuesta guardada del asistente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar una respuesta mediante GET a \url{/api/v1/assistant/answers/{answerId}}, \textbf{para} abrirla desde el historial con su vigencia actual.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa de la respuesta}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/answers/{answerId}} con token válido de productor con plan activo, sobre una respuesta propia de los últimos 10 días.\newline
+\textbf{When} la API localiza la respuesta y compara sus datos de origen.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AssistantAnswerResource} con su \texttt{freshness} actualizado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Respuesta inexistente o vencida}\newline
+\textbf{Given} un identificador sin respuesta vigente para el productor autenticado.\newline
+\textbf{When} la API realiza la búsqueda.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Identificador inválido o plan inactivo}\newline
+\textbf{Given} un \texttt{answerId} con formato inválido o un productor sin plan activo.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request} ante el formato inválido y \texttt{403 Forbidden} ante el plan inactivo.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS71} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP16} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del resumen diario del asistente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar el resumen mediante GET a \url{/api/v1/assistant/daily-summary} con el parámetro opcional \texttt{plotId}, \textbf{para} presentar al productor las prioridades del día de su campo o de una parcela.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Resumen diario del campo}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/assistant/daily-summary} con token válido de productor con plan activo, sin \texttt{plotId}.\newline
+\textbf{When} la API recupera o redacta el resumen del día.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando \texttt{AssistantDailySummaryResource} con \texttt{summaryId}, \texttt{questionId}, \texttt{plotId}, \texttt{createdAt}, \texttt{dataVersion}, \texttt{freshness} en \texttt{UP\_TO\_DATE}, \texttt{text}, exactamente tres \texttt{facts}, \texttt{sources} y \texttt{model}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Reutilización del resumen en el mismo día}\newline
+\textbf{Given} un resumen escrito en el día, según la hora de Lima, con las mismas cifras e idioma.\newline
+\textbf{When} el productor lo solicita nuevamente.\newline
+\textbf{Then} la API responde \texttt{200 OK} con el resumen existente, sin consumir el cupo de respuestas nuevas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Productor sin parcelas activas}\newline
+\textbf{Given} un productor sin parcelas activas.\newline
+\textbf{When} solicita el resumen.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Límite de uso excedido}\newline
+\textbf{Given} un resumen que debe redactarse bajo demanda para un productor que agotó su cupo de respuestas nuevas.\newline
+\textbf{When} envía la solicitud.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Identificador inválido}\newline
+\textbf{Given} una solicitud GET con un \texttt{plotId} de formato inválido.\newline
+\textbf{When} la API valida el parámetro.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Acceso denegado o parcela inexistente}\newline
+\textbf{Given} una solicitud sobre una parcela ajena, de un productor sin plan activo o sobre una parcela inexistente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden} ante parcela ajena o plan inactivo, y \texttt{404 Not Found} cuando la parcela no existe o está inactiva.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS72} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Cierre de sesión del usuario} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} cerrar la sesión mediante POST a \url{/api/v1/auth/sign-out} enviando \texttt{refreshToken}, \textbf{para} impedir que la sesión vuelva a renovarse.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Cierre de sesión}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/sign-out} con un \texttt{refreshToken} válido, desconocido o ya cerrado.\newline
+\textbf{When} la API procesa el cierre.\newline
+\textbf{Then} la API responde \texttt{204 No Content}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS73} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Eliminación definitiva de la cuenta} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar la eliminación de la cuenta mediante POST a \url{/api/v1/auth/account-deletions} enviando \texttt{password}, \textbf{para} retirar de forma definitiva los datos del usuario autenticado.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Eliminación exitosa}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/account-deletions} autenticada y con la contraseña correcta.\newline
+\textbf{When} la API elimina el perfil, las parcelas y sus registros, liquidaciones, expedientes, suscripciones y sesiones.\newline
+\textbf{Then} la API responde \texttt{204 No Content}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Contraseña incorrecta}\newline
+\textbf{Given} una solicitud con una contraseña incorrecta.\newline
+\textbf{When} la API verifica la contraseña.\newline
+\textbf{Then} la API responde \texttt{422 Unprocessable Entity}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS74} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Verificación del correo de la cuenta} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} enviar el código de verificación mediante POST a \url{/api/v1/auth/email-verifications} con \texttt{email} y \texttt{code}, \textbf{para} activar la cuenta y obtener la sesión.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Verificación exitosa}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/email-verifications} con el código de 6 dígitos enviado al registrarse.\newline
+\textbf{When} la API valida el código.\newline
+\textbf{Then} la API activa la cuenta y retorna la sesión del usuario.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código incorrecto}\newline
+\textbf{Given} una solicitud con un código incorrecto.\newline
+\textbf{When} la API valida el código.\newline
+\textbf{Then} la API responde \texttt{422 Unprocessable Entity} indicando los intentos restantes.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS75} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Reenvío del código de verificación de correo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar un nuevo código mediante POST a \url{/api/v1/auth/email-verification-codes} con \texttt{email}, \textbf{para} completar la activación de una cuenta pendiente.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Solicitud de reenvío aceptada}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/auth/email-verification-codes} con un correo pendiente, desconocido o ya verificado.\newline
+\textbf{When} la API procesa la solicitud.\newline
+\textbf{Then} la API responde \texttt{202 Accepted} sin revelar si el correo existe.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Reenvío antes de tiempo}\newline
+\textbf{Given} una nueva solicitud realizada dentro de los 45 segundos posteriores a la anterior.\newline
+\textbf{When} la API evalúa el intervalo.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS76} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Verificación de vigencia del enlace de restablecimiento de contraseña} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} comprobar un enlace mediante GET a \url{/api/v1/auth/password-reset-tokens/{token}}, \textbf{para} saber si puede utilizarse sin consumirlo.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Enlace vigente}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/auth/password-reset-tokens/{token}} con un enlace utilizable.\newline
+\textbf{When} la API valida el enlace sin consumirlo.\newline
+\textbf{Then} la API responde \texttt{204 No Content}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Enlace no disponible}\newline
+\textbf{Given} un enlace vencido, usado o reemplazado.\newline
+\textbf{When} la API valida el enlace.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS77} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de planes de suscripción individual} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar los planes mediante GET a \url{/api/v1/subscription-plans}, \textbf{para} presentar al productor las opciones de suscripción disponibles.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de planes}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/subscription-plans}.\newline
+\textbf{When} la API consulta el catálogo de planes individuales.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando los planes disponibles.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS78} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la suscripción actual del productor} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar la suscripción actual mediante GET a \url{/api/v1/subscriptions}, \textbf{para} conocer el estado del plan del productor autenticado.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Productor con suscripción}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/subscriptions} de un productor con suscripción vigente.\newline
+\textbf{When} la API recupera la suscripción.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando su detalle.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Productor sin suscripción}\newline
+\textbf{Given} un productor sin suscripción actual.\newline
+\textbf{When} consulta su suscripción.\newline
+\textbf{Then} la API responde \texttt{204 No Content}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS79} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de una suscripción del productor} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar una suscripción mediante GET a \url{/api/v1/subscriptions/{id}}, \textbf{para} recuperar el detalle de un plan propio.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/subscriptions/{id}} sobre una suscripción propia.\newline
+\textbf{When} la API recupera la suscripción.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando su detalle.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Suscripción no disponible}\newline
+\textbf{Given} un identificador que no corresponde a una suscripción del productor.\newline
+\textbf{When} la API busca la suscripción.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS80} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Preparación del pago de una suscripción} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} preparar o recuperar el pago mediante POST a \url{/api/v1/subscriptions/{id}/checkouts} con la cabecera \texttt{Idempotency-Key}, \textbf{para} permitir que el productor complete el pago de su plan sin duplicar la operación.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Preparación del pago}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/subscriptions/{id}/checkouts} sobre una suscripción propia pendiente de pago.\newline
+\textbf{When} la API prepara o recupera el pago.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando los datos para completarlo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Suscripción no disponible}\newline
+\textbf{Given} un identificador que no corresponde a una suscripción del productor.\newline
+\textbf{When} la API busca la suscripción.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Clave de idempotencia en conflicto}\newline
+\textbf{Given} una clave ya utilizada en una operación incompatible.\newline
+\textbf{When} la API evalúa la clave.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS81} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de condiciones de ampliación del plan} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar las condiciones mediante GET a \url{/api/v1/subscriptions/{subscriptionId}/extension-terms}, \textbf{para} informar al productor cómo puede ampliar su plan.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/subscriptions/{subscriptionId}/extension-terms} sobre un plan propio.\newline
+\textbf{When} la API evalúa el plan.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando las condiciones de ampliación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Plan no disponible}\newline
+\textbf{Given} un plan que no corresponde al productor.\newline
+\textbf{When} la API busca el plan.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS82} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Solicitud de ampliación pagada del plan individual} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} solicitar una ampliación mediante POST a \url{/api/v1/subscriptions/{subscriptionId}/extensions} con \texttt{addedHa} y la cabecera \texttt{Idempotency-Key}, \textbf{para} agregar hectáreas al plan individual del productor.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Ampliación solicitada}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/subscriptions/{subscriptionId}/extensions} válida sobre un plan propio.\newline
+\textbf{When} la API registra la ampliación pendiente de pago.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando la ampliación.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Reintento idempotente}\newline
+\textbf{Given} una solicitud que repite una \texttt{Idempotency-Key} ya procesada.\newline
+\textbf{When} la API identifica la clave.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando la ampliación existente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Datos inválidos}\newline
+\textbf{Given} una solicitud con hectáreas inválidas.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Operación en conflicto}\newline
+\textbf{Given} una ampliación incompatible con el estado actual del plan.\newline
+\textbf{When} la API evalúa la solicitud.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS83} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de una ampliación del plan} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar una ampliación mediante GET a \url{/api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}}, \textbf{para} conocer su estado.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}} sobre una ampliación propia.\newline
+\textbf{When} la API recupera la ampliación.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando su detalle.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Ampliación no disponible}\newline
+\textbf{Given} una ampliación que no corresponde al plan del productor.\newline
+\textbf{When} la API busca la ampliación.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS84} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Preparación del pago de una ampliación} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} preparar o recuperar el pago mediante POST a \url{/api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}/checkouts} con la cabecera \texttt{Idempotency-Key}, \textbf{para} completar el pago de una ampliación pendiente sin duplicar la operación.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Preparación del pago}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}/checkouts} sobre una ampliación pendiente.\newline
+\textbf{When} la API prepara o recupera el pago.\newline
+\textbf{Then} la API responde \texttt{201 Created} retornando los datos para completarlo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Ampliación no disponible}\newline
+\textbf{Given} una ampliación que no corresponde al plan del productor.\newline
+\textbf{When} la API busca la ampliación.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS85} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Canje de código de ampliación de hectáreas} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} canjear un código mediante POST a \url{/api/v1/quota-extension-redemptions} con \texttt{code}, \textbf{para} agregar hectáreas al plan patrocinado vigente del productor.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Canje exitoso}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/quota-extension-redemptions} autenticada como productor con un código válido.\newline
+\textbf{When} la API agrega las hectáreas al plan, una vez por productor, mientras la licencia tenga saldo.\newline
+\textbf{Then} la API responde \texttt{201 Created}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Código no utilizable}\newline
+\textbf{Given} un código que no puede utilizarse.\newline
+\textbf{When} la API evalúa el código.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Usuario sin rol de productor}\newline
+\textbf{Given} una solicitud emitida por un usuario que no es productor.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Exceso de intentos fallidos}\newline
+\textbf{Given} un usuario que acumuló demasiados intentos fallidos.\newline
+\textbf{When} envía una nueva solicitud.\newline
+\textbf{Then} la API responde \texttt{429 Too Many Requests} con la cabecera \texttt{Retry-After}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS86} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Desvinculación de socio de la licencia institucional} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} desvincular a un socio mediante POST a \url{/api/v1/cooperative-licenses/{id}/member-releases} con \texttt{memberId}, \textbf{para} retirar el acceso del gestor a los datos del socio y liberar su cupo al terminar el periodo de gracia.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Desvinculación exitosa}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/cooperative-licenses/{id}/member-releases} autenticada como gestor técnico sobre un socio de su licencia.\newline
+\textbf{When} la API registra la desvinculación.\newline
+\textbf{Then} la API responde \texttt{200 OK}. El gestor deja de acceder a los datos del socio de inmediato} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Socio inválido}\newline
+\textbf{Given} un \texttt{memberId} inválido.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Licencia o socio no encontrados}\newline
+\textbf{Given} una licencia ajena o un usuario que no es socio de la licencia.\newline
+\textbf{When} la API busca el socio.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Socio ya desvinculado}\newline
+\textbf{Given} un socio previamente desvinculado.\newline
+\textbf{When} la API evalúa su estado.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Usuario sin rol de gestor técnico}\newline
+\textbf{Given} una solicitud emitida por un usuario que no es gestor técnico.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS87} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de consentimientos de compartición de datos} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar los consentimientos mediante GET a \url{/api/v1/data-sharing-consents}, \textbf{para} mostrar al productor con quién comparte sus datos.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de consentimientos}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/data-sharing-consents} autenticada como productor.\newline
+\textbf{When} la API recupera sus consentimientos.\newline
+\textbf{Then} la API responde \texttt{200 OK} indicando para cada uno la organización, el gestor y su estado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Usuario sin rol de productor}\newline
+\textbf{Given} una solicitud emitida por un usuario que no es productor.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS88} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de un consentimiento de compartición de datos} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar un consentimiento mediante GET a \url{/api/v1/data-sharing-consents/{id}}, \textbf{para} revisar el detalle de una autorización propia.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/data-sharing-consents/{id}} sobre un consentimiento propio.\newline
+\textbf{When} la API lo recupera.\newline
+\textbf{Then} la API responde \texttt{200 OK}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consentimiento no disponible}\newline
+\textbf{Given} un identificador que no corresponde a un consentimiento del productor.\newline
+\textbf{When} la API lo busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Usuario sin rol de productor}\newline
+\textbf{Given} una solicitud emitida por un usuario que no es productor.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS89} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Retiro del consentimiento de compartición de datos} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} retirar un consentimiento mediante POST a \url{/api/v1/data-sharing-consents/{id}/withdrawals}, \textbf{para} dejar de compartir los datos con la cooperativa.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Retiro exitoso}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/data-sharing-consents/{id}/withdrawals} sobre un consentimiento activo.\newline
+\textbf{When} la API registra el retiro.\newline
+\textbf{Then} la API responde \texttt{200 OK}. El gestor deja de acceder a los datos, y el plan patrocinado se mantiene hasta su fin} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consentimiento no disponible}\newline
+\textbf{Given} un identificador que no corresponde a un consentimiento del productor.\newline
+\textbf{When} la API lo busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Consentimiento no activo}\newline
+\textbf{Given} un consentimiento retirado o finalizado con su plan.\newline
+\textbf{When} la API evalúa su estado.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Usuario sin rol de productor}\newline
+\textbf{Given} una solicitud emitida por un usuario que no es productor.\newline
+\textbf{When} la API verifica el rol.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS90} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro de nota de campo de una parcela} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} registrar una nota mediante POST a \url{/api/v1/plots/{plotId}/field-notes} con \texttt{id}, \texttt{type}, \texttt{text} y \texttt{observedOn}, \textbf{para} conservar las observaciones del productor sin duplicarlas al reintentar.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Nota registrada}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/field-notes} válida sobre una parcela activa propia.\newline
+\textbf{When} la API guarda la nota.\newline
+\textbf{Then} la API responde \texttt{201 Created}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Reintento de la misma nota}\newline
+\textbf{Given} una nota ya almacenada que se envía nuevamente.\newline
+\textbf{When} la API identifica la nota.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando la nota almacenada.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Datos inválidos}\newline
+\textbf{Given} un identificador, tipo o texto inválido, o una fecha futura.\newline
+\textbf{When} la API valida la nota.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Identificador en uso}\newline
+\textbf{Given} un identificador usado por otra nota.\newline
+\textbf{When} la API valida el identificador.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Parcela de otro productor}\newline
+\textbf{Given} una solicitud sobre una parcela de otro productor.\newline
+\textbf{When} la API verifica la titularidad.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Parcela inexistente o inactiva}\newline
+\textbf{Given} un identificador de parcela inexistente o inactiva.\newline
+\textbf{When} la API busca la parcela.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS91} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de notas de campo de una parcela} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} listar las notas mediante GET a \url{/api/v1/plots/{plotId}/field-notes}, \textbf{para} revisar las observaciones registradas en la parcela.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de notas}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/field-notes} sobre una parcela propia.\newline
+\textbf{When} la API recupera las notas.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornándolas de la más reciente a la más antigua, o una lista vacía.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela de otro productor}\newline
+\textbf{Given} una solicitud sobre una parcela de otro productor.\newline
+\textbf{When} la API verifica la titularidad.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela no encontrada}\newline
+\textbf{Given} un identificador de parcela inexistente.\newline
+\textbf{When} la API busca la parcela.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS92} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Adjunto de fotografía a una nota de campo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} adjuntar una fotografía mediante PUT a \url{/api/v1/plots/{plotId}/field-notes/{noteId}/photo}, \textbf{para} documentar visualmente una observación de campo.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Fotografía almacenada}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plots/{plotId}/field-notes/{noteId}/photo} con una imagen JPEG o PNG de hasta 1 MiB.\newline
+\textbf{When} la API guarda la imagen y reemplaza la anterior.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando la nota.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Imagen inválida}\newline
+\textbf{Given} un contenido vacío, demasiado grande o que no es JPEG ni PNG.\newline
+\textbf{When} la API valida la imagen.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela o nota no encontrada}\newline
+\textbf{Given} una parcela o nota inexistente.\newline
+\textbf{When} la API las busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS93} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Descarga de la fotografía de una nota de campo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} descargar una fotografía mediante GET a \url{/api/v1/plots/{plotId}/field-notes/{noteId}/photo}, \textbf{para} visualizar la evidencia registrada.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Descarga exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/field-notes/{noteId}/photo} sobre una nota con fotografía.\newline
+\textbf{When} la API recupera la imagen.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando su contenido.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Fotografía no disponible}\newline
+\textbf{Given} una parcela o nota inexistente, o una nota sin fotografía.\newline
+\textbf{When} la API busca la imagen.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS94} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de sectores territoriales de la licencia} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} listar los sectores mediante GET a \url{/api/v1/sector-zones}, \textbf{para} organizar las parcelas de la cooperativa por sector.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de sectores}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/sector-zones} de un gestor con licencia o de un socio con plan patrocinado.\newline
+\textbf{When} la API recupera los sectores de su licencia.\newline
+\textbf{Then} la API responde \texttt{200 OK} indicando las parcelas socias de cada sector.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Usuario sin licencia asociada}\newline
+\textbf{Given} un gestor sin licencia vigente o un productor sin plan patrocinado.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS95} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Registro de sector territorial} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} agregar un sector mediante POST a \url{/api/v1/sector-zones} con \texttt{name}, \textbf{para} ampliar la lista de sectores disponible para la licencia.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Sector agregado}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/sector-zones} autenticada como gestor técnico con licencia vigente.\newline
+\textbf{When} la API registra el sector.\newline
+\textbf{Then} la API responde \texttt{201 Created}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Nombre inválido}\newline
+\textbf{Given} un nombre vacío, demasiado corto o demasiado largo.\newline
+\textbf{When} la API valida el nombre.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Nombre repetido}\newline
+\textbf{Given} un nombre ya existente en la lista, sin distinguir tildes ni mayúsculas.\newline
+\textbf{When} la API valida la unicidad.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Gestor sin licencia vigente}\newline
+\textbf{Given} una solicitud de un usuario que no es gestor técnico con licencia vigente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS96} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de un sector territorial} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar un sector mediante GET a \url{/api/v1/sector-zones/{id}}, \textbf{para} recuperar su información.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/sector-zones/{id}} sobre un sector de la licencia.\newline
+\textbf{When} la API recupera el sector.\newline
+\textbf{Then} la API responde \texttt{200 OK}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Sector no encontrado}\newline
+\textbf{Given} un identificador que no corresponde a un sector de la licencia.\newline
+\textbf{When} la API lo busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Usuario sin licencia asociada}\newline
+\textbf{Given} un usuario que no alcanza ninguna licencia.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS97} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Renombrado de sector territorial} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} renombrar un sector mediante PATCH a \url{/api/v1/sector-zones/{id}} con \texttt{name}, \textbf{para} que todas sus parcelas muestren el nombre actualizado.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Sector renombrado}\newline
+\textbf{Given} una solicitud PATCH a \url{/api/v1/sector-zones/{id}} autenticada como gestor técnico con licencia vigente.\newline
+\textbf{When} la API actualiza el nombre.\newline
+\textbf{Then} la API responde \texttt{200 OK}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Nombre inválido}\newline
+\textbf{Given} un nombre vacío, demasiado corto o demasiado largo.\newline
+\textbf{When} la API valida el nombre.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Sector no encontrado}\newline
+\textbf{Given} un identificador que no corresponde a un sector de la licencia.\newline
+\textbf{When} la API lo busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Nombre repetido}\newline
+\textbf{Given} un nombre usado por otro sector.\newline
+\textbf{When} la API valida la unicidad.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Gestor sin licencia vigente}\newline
+\textbf{Given} una solicitud de un usuario que no es gestor técnico con licencia vigente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS98} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del sector de una parcela socia} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar el sector mediante GET a \url{/api/v1/plot-sector-assignments/{plotId}}, \textbf{para} conocer la ubicación territorial de la parcela.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plot-sector-assignments/{plotId}} sobre una parcela alcanzada por el usuario.\newline
+\textbf{When} la API recupera su sector.\newline
+\textbf{Then} la API responde \texttt{200 OK}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela sin sector o fuera de alcance}\newline
+\textbf{Given} una parcela sin sector o que el usuario no alcanza.\newline
+\textbf{When} la API busca el sector.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Usuario sin licencia asociada}\newline
+\textbf{Given} un usuario que no alcanza ninguna licencia.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS99} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Asignación de sector a una parcela} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} asignar un sector mediante PUT a \url{/api/v1/plot-sector-assignments/{plotId}} con \texttt{sectorZoneId} o \texttt{name}, \textbf{para} agrupar la parcela dentro de la organización territorial.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Sector asignado}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/plot-sector-assignments/{plotId}} con un sector de la lista o con un nombre que coincide con ella.\newline
+\textbf{When} la API asigna el sector.\newline
+\textbf{Then} la API responde \texttt{200 OK}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Nombre pendiente de confirmación}\newline
+\textbf{Given} un nombre que no coincide con ningún sector de la lista.\newline
+\textbf{When} la API procesa la asignación.\newline
+\textbf{Then} la API responde \texttt{200 OK}. La parcela queda por confirmar hasta que el gestor la revise} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Datos inválidos}\newline
+\textbf{Given} una solicitud sin ambos campos, con ambos o con un nombre inválido.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Productor sin plan patrocinado}\newline
+\textbf{Given} un productor sin plan patrocinado.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Parcela o sector no encontrado}\newline
+\textbf{Given} una parcela que no es activa del socio o un sector ajeno a la licencia.\newline
+\textbf{When} la API los busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS100} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP11} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Revisión de sector pendiente de confirmación} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} resolver un sector pendiente mediante POST a \url{/api/v1/plot-sector-assignments/{plotId}/resolutions}, \textbf{para} consolidar la lista de sectores de la licencia.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Revisión exitosa}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plot-sector-assignments/{plotId}/resolutions} autenticada como gestor técnico sobre una parcela por confirmar.\newline
+\textbf{When} la API agrega el nombre a la lista o vincula la parcela a un sector existente, y aplica la decisión a las parcelas con el mismo nombre.\newline
+\textbf{Then} la API responde \texttt{200 OK}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela o sector no encontrado}\newline
+\textbf{Given} una parcela o sector ajeno a la licencia.\newline
+\textbf{When} la API los busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela ya revisada}\newline
+\textbf{Given} una parcela que ya no está por confirmar.\newline
+\textbf{When} la API evalúa su estado.\newline
+\textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Gestor sin licencia vigente}\newline
+\textbf{Given} una solicitud de un usuario que no es gestor técnico con licencia vigente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS101} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Sellado del expediente agronómico de una campaña liquidada} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} sellar el expediente mediante POST a \url{/api/v1/plots/{plotId}/agronomic-dossiers} con \texttt{campaignYear}, \textbf{para} conservar un documento definitivo verificable de la campaña.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Expediente sellado}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/agronomic-dossiers} sobre una campaña liquidada de una parcela propia.\newline
+\textbf{When} la API reúne los datos de la campaña, genera el documento y almacena su huella SHA-256.\newline
+\textbf{Then} la API responde \texttt{201 Created}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Expediente ya sellado}\newline
+\textbf{Given} una campaña que ya cuenta con expediente.\newline
+\textbf{When} se solicita sellarla nuevamente.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando el expediente existente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela o campaña inválida}\newline
+\textbf{Given} un identificador de parcela o una campaña inválidos.\newline
+\textbf{When} la API valida la solicitud.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Parcela de otro productor}\newline
+\textbf{Given} una solicitud sobre una parcela de otro productor.\newline
+\textbf{When} la API verifica la titularidad.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Parcela inexistente o inactiva}\newline
+\textbf{Given} un identificador de parcela inexistente o inactiva.\newline
+\textbf{When} la API busca la parcela.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Campaña sin liquidar}\newline
+\textbf{Given} una campaña que no ha sido liquidada.\newline
+\textbf{When} la API evalúa la campaña.\newline
+\textbf{Then} la API responde \texttt{422 Unprocessable Entity}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS102} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de expedientes sellados de una parcela} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} listar los expedientes mediante GET a \url{/api/v1/plots/{plotId}/agronomic-dossiers}, \textbf{para} revisar los documentos definitivos por campaña.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de expedientes}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/plots/{plotId}/agronomic-dossiers} sobre una parcela activa.\newline
+\textbf{When} la API recupera los expedientes.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornándolos desde la campaña más reciente, o una lista vacía.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela inexistente o inactiva}\newline
+\textbf{Given} un identificador de parcela inexistente o inactiva.\newline
+\textbf{When} la API busca la parcela.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS103} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Verificación de autenticidad de un expediente} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} verificar un expediente mediante GET a \url{/api/v1/agronomic-dossiers/verifications/{verificationHash}}, \textbf{para} comprobar que el documento fue emitido por Viora y no fue modificado.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Código válido}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/agronomic-dossiers/verifications/{verificationHash}} con una huella que coincide con un expediente almacenado.\newline
+\textbf{When} la API busca la huella.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando la parcela y la campaña.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Formato inválido}\newline
+\textbf{Given} un código que no tiene 64 caracteres hexadecimales.\newline
+\textbf{When} la API valida el código.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Código sin coincidencia}\newline
+\textbf{Given} una huella que no coincide con ningún expediente.\newline
+\textbf{When} la API busca la huella.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS104} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de prescripciones de aclareo del productor} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} listar las prescripciones mediante GET a \url{/api/v1/thinning-prescriptions} con el parámetro opcional \texttt{campaignYear}, \textbf{para} revisar el estado de aclareo de todas las parcelas activas.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Listado de prescripciones}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/thinning-prescriptions} de un productor.\newline
+\textbf{When} la API recupera la prescripción de cada parcela activa de la campaña.\newline
+\textbf{Then} la API responde \texttt{200 OK} sin incluir las parcelas nunca muestreadas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Año de campaña inválido}\newline
+\textbf{Given} un valor inválido en \texttt{campaignYear}.\newline
+\textbf{When} la API valida el parámetro.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS105} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de una prescripción de aclareo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar una prescripción mediante GET a \url{/api/v1/thinning-prescriptions/{id}}, \textbf{para} recuperarla en cualquiera de sus estados.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/thinning-prescriptions/{id}} sobre una prescripción propia.\newline
+\textbf{When} la API la recupera.\newline
+\textbf{Then} la API responde \texttt{200 OK}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Identificador inválido}\newline
+\textbf{Given} un identificador con formato inválido.\newline
+\textbf{When} la API valida el parámetro.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Prescripción de otro productor}\newline
+\textbf{Given} una prescripción de otro productor.\newline
+\textbf{When} la API verifica la titularidad.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Prescripción no encontrada}\newline
+\textbf{Given} una prescripción inexistente o de una parcela inactiva.\newline
+\textbf{When} la API la busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS106} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta de la ejecución registrada de un aclareo} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar la ejecución mediante GET a \url{/api/v1/thinning-prescriptions/{id}/execution-confirmations}, \textbf{para} revisar su balance de carga, proyección de calibre y rendimiento.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/thinning-prescriptions/{id}/execution-confirmations} sobre una labor registrada.\newline
+\textbf{When} la API recupera la ejecución.\newline
+\textbf{Then} la API responde \texttt{200 OK} retornando su balance de carga, proyección de calibre y rendimiento.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Identificador inválido}\newline
+\textbf{Given} un identificador con formato inválido.\newline
+\textbf{When} la API valida el parámetro.\newline
+\textbf{Then} la API responde \texttt{400 Bad Request}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Ejecución no disponible}\newline
+\textbf{Given} una prescripción inexistente o sin labor registrada.\newline
+\textbf{When} la API la busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS107} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP10} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta del detalle de socio productor agremiado} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar un socio mediante GET a \url{/api/v1/cooperative-members/{id}}, \textbf{para} revisar su ficha mientras comparte sus datos.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Consulta exitosa}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/cooperative-members/{id}} autenticada como gestor técnico sobre un socio de su licencia.\newline
+\textbf{When} la API recupera el socio.\newline
+\textbf{Then} la API responde \texttt{200 OK} incluyendo teléfono, correo y parcelas solo mientras comparte sus datos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Socio no encontrado}\newline
+\textbf{Given} un identificador que no corresponde a un socio de la licencia.\newline
+\textbf{When} la API lo busca.\newline
+\textbf{Then} la API responde \texttt{404 Not Found}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Solicitud sin autenticación}\newline
+\textbf{Given} una solicitud sin token de acceso válido.\newline
+\textbf{When} la API evalúa la identidad del solicitante.\newline
+\textbf{Then} la API responde \texttt{401 Unauthorized}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Gestor sin licencia vigente}\newline
+\textbf{Given} una solicitud de un usuario que no es gestor técnico con licencia vigente.\newline
+\textbf{When} la API verifica el acceso.\newline
+\textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2947,6 +4901,42 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \end{longtable}
 \endgroup
 
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{SPK04} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Equipo de Desarrollo (Móvil y Backend)} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP14} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Investigación de Spring AI para respuestas validadas y de persistencia y tareas en segundo plano en Android} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} equipo de desarrollo (móvil y backend),\newline \textbf{queremos} investigar y prototipar la redacción de respuestas con Spring AI en el backend Spring Boot y el uso de Room 3 y WorkManager en la aplicación móvil Android (Kotlin),\newline \textbf{para} que podamos entender las implicaciones técnicas, los riesgos de generar texto con un modelo de lenguaje y el esfuerzo requerido para implementar el asistente agronómico en los componentes móvil y backend.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Integración de Spring AI con un proveedor compatible}\newline
+\textbf{Given} el backend Spring Boot configurado con Spring AI 2.0.2 y su starter compatible con OpenAI apuntando a la URL de Groq.\newline
+\textbf{When} envía datos agronómicos de prueba en español e inglés.\newline
+\textbf{Then} obtiene un texto estructurado y el equipo registra la compatibilidad de versiones, la latencia y los tokens consumidos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Validación de cifras del texto generado}\newline
+\textbf{Given} un texto generado que incluye un número ausente en los datos de origen.\newline
+\textbf{When} el backend aplica la validación del texto.\newline
+\textbf{Then} rechaza el texto y utiliza una respuesta predefinida construida con los datos reales.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Tolerancia a fallas del proveedor}\newline
+\textbf{Given} un proveedor del modelo que acumula 5 fallas consecutivas.\newline
+\textbf{When} el backend recibe una nueva solicitud.\newline
+\textbf{Then} abre el circuito durante 2 minutos, evita nuevas llamadas al proveedor y mantiene la respuesta mediante plantillas.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Historial local de respuestas con Room 3}\newline
+\textbf{Given} la aplicación Android con respuestas del asistente persistidas mediante Room 3.\newline
+\textbf{When} el dispositivo se encuentra sin conexión.\newline
+\textbf{Then} la aplicación recupera hasta 10 respuestas de los últimos 10 días sin solicitarlas al backend.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Programación del recordatorio con WorkManager}\newline
+\textbf{Given} la aplicación Android con WorkManager 2.12 y una tarea periódica única para el recordatorio diario.\newline
+\textbf{When} la aplicación solicita programar nuevamente el recordatorio.\newline
+\textbf{Then} WorkManager conserva la tarea existente y evita recordatorios duplicados, incluso tras cerrar la aplicación.} \\ \hline
+\end{longtable}
+\endgroup
+
 
 
 \clearpage
@@ -2983,7 +4973,7 @@ En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual art
 
 ### Product Backlog
 
-El Product Backlog de Viora consolida y prioriza los 101 ítems de trabajo del sistema (43 Historias de Usuario, 55 Technical Stories y 3 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica (US33 a US41), los spikes críticos de campo (SPK01 sobre el modelo dinámico de Erez y SPK02 sobre persistencia offline-first con SQLite), la arquitectura base del backend bajo RFC 7807 y convenciones JPA (TS31 a TS34), la suite completa de los 33 servicios RESTful del backend (TS11 a TS27, TS39, TS40, TS42, TS43 y TS44 a TS55) que respaldan operativamente todas las funcionalidades del productor y gestor, y las 20 Historias de Usuario móviles clave priorizadas según la asignación de responsabilidades del equipo de desarrollo. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro), mientras que las historias de gestinnn de identidad y accesos (IAM) se posponen al Sprint 3; durante las primeras iteraciones, el backend operará mediante perfiles de entorno automáticos que inyectan el contexto del usuario en la API REST sin requerir credenciales manuales. El Sprint 2 despliega los algoritmos de carga frutal sostenible, prescripción fenológica de aclareo, la pasarela de pagos y las herramientas territoriales y códigos de cooperativa. Finalmente, el Sprint 3 culmina con la implementación integral de la seguridad e IAM, los cuadros de mando territoriales de acopio y la exportación de reportes técnicos auditables en formato PDF.
+El Product Backlog de Viora consolida y prioriza los 165 ítems de trabajo del sistema (54 Historias de Usuario, 107 Technical Stories y 4 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica (US33 a US41), los spikes críticos de campo (SPK01 sobre el modelo dinámico de Erez y SPK02 sobre persistencia offline-first con SQLite), la arquitectura base del backend bajo RFC 7807 y convenciones JPA (TS31 a TS34), la suite completa de servicios RESTful iniciales del backend (TS11 a TS27, TS39, TS40, TS42, TS43 y TS44 a TS55) que respaldan operativamente las funcionalidades nucleares del productor, y las Historias de Usuario móviles clave priorizadas según la asignación de responsabilidades del equipo de desarrollo. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro con SPK03, TS06 a TS10 y US06 a US08). Asimismo, el Sprint 2 culmina con la implementación integral de la seguridad e IAM (US01 a US05, US43, TS01 a TS05 y TS35 a TS38), la internacionalización (US42), los cuadros de mando avanzados de supervisión agronómica y patrocinio corporativo para el gestor técnico (US44 a US49, TS41 y TS56 a TS65), el semáforo reactivo (US31), la proyección agregada sustentada de acopio (US32) y la exportación documental de expedientes técnicos provisionales y definitivos en formato PDF (TS63, US30), junto con la asistencia agronómica basada en los datos del productor (SPK04, US50 a US54 y TS66 a TS71) y los servicios complementarios de cuenta, suscripción, consentimiento, sectores, notas de campo, expedientes y aclareo (TS72 a TS107). Finalmente, el Sprint 3 se reserva para la incorporación de las mejoras señaladas por los usuarios y para la entrega final del video *About the Product* y su publicación en la Landing Page, reutilizando el reproductor implementado en el Sprint 1 (US37), que ya cubre la funcionalidad de reproducción, por lo que no se le asignan ítems adicionales en la matriz.
 
 A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integral del Product Backlog del sistema Viora, detallando el orden de ejecución, identificador, denominación técnica, estimación de esfuerzo en puntos de historia (*Story Points*) y la asignación a su respectivo ciclo de iteración (*Sprint*).
 
@@ -3076,42 +5066,106 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 69 & SPK03 & Investigación e integración de Checkout Pro en Mercado Pago Sandbox y webhooks & 3 & Sprint 2 \\ \hline
 70 & TS06 & Generación de preferencia de checkout para suscripción de productor independiente & 3 & Sprint 2 \\ \hline
 71 & TS07 & Recepción y procesamiento de webhooks de notificación de pagos & 5 & Sprint 2 \\ \hline
-72 & TS08 & Generación de lote de códigos de activación para socios cooperativos & 3 & Sprint 2 \\ \hline
-73 & TS09 & Consulta y auditoría de códigos de activación de cooperativa & 2 & Sprint 2 \\ \hline
-74 & TS10 & Canje de código de activación de socio para vinculación cooperativa & 3 & Sprint 2 \\ \hline
+72 & TS08 & Generación de lote de códigos de activación para socios cooperativos con reserva de cuota & 3 & Sprint 2 \\ \hline
+73 & TS09 & Consulta y auditoría de inventario de lotes y códigos de activación de cooperativa & 2 & Sprint 2 \\ \hline
+74 & TS10 & Canje atómico de código de activación institucional con validación de cuota y consentimiento & 3 & Sprint 2 \\ \hline
 75 & US06 & Suscripción individual al Plan Productor mediante pasarela de pago digital & 5 & Sprint 2 \\ \hline
-76 & US07 & Activación de cuenta de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
+76 & US07 & Activación de membresía corporativa de socio mediante canje de código de cooperativa & 3 & Sprint 2 \\ \hline
 77 & US08 & Administración de la cartera de socios productores y consulta de cuota corporativa & 3 & Sprint 2 \\ \hline
-78 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con geolocalización GPS & 5 & Sprint 2 \\ \hline
-79 & TS28 & Generación y descarga de reporte agronómico auditable en formato PDF & 5 & Sprint 2 \\ \hline
-80 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial para el gestor técnico & 3 & Sprint 2 \\ \hline
-81 & TS30 & Proyección agregada temprana de volumen de acopio cooperativo & 5 & Sprint 2 \\ \hline
-82 & US01 & Registro de cuenta de acceso y credenciales seguras con asignación de rol & 3 & Sprint 3 \\ \hline
-83 & US02 & Inicio de sesión y autenticación persistente mediante tokens & 3 & Sprint 3 \\ \hline
-84 & US03 & Consulta y actualización de datos de perfil y contacto & 2 & Sprint 3 \\ \hline
-85 & US04 & Cambio seguro de contraseña de acceso & 2 & Sprint 3 \\ \hline
-86 & US05 & Recuperación de contraseña olvidada mediante enlace por correo & 3 & Sprint 3 \\ \hline
-87 & US43 & Completado de perfil de usuario y contacto validado bajo estándar E.164 & 3 & Sprint 3 \\ \hline
-88 & US42 & Configuración y cambio de idioma de la interfaz en la aplicación móvil & 2 & Sprint 3 \\ \hline
-89 & TS01 & Registro de credenciales de cuenta de usuario y asignación de rol en IAM & 3 & Sprint 3 \\ \hline
-90 & TS02 & Autenticación de usuarios y emisión de tokens JWT con claims de rol & 3 & Sprint 3 \\ \hline
-91 & TS03 & Renovación periódica de tokens de sesión mediante Refresh Token & 2 & Sprint 3 \\ \hline
-92 & TS04 & Consulta de información de perfil del usuario autenticado & 2 & Sprint 3 \\ \hline
-93 & TS05 & Actualización parcial de datos de perfil con validación telefónica E.164 & 2 & Sprint 3 \\ \hline
-94 & TS35 & Creación y completado inicial de perfil de usuario con validación telefónica E.164 & 3 & Sprint 3 \\ \hline
-95 & TS36 & Actualización de contraseña para sesión de usuario autenticado & 2 & Sprint 3 \\ \hline
-96 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 3 \\ \hline
-97 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 3 \\ \hline
-98 & TS41 & Revocación anticipada y ajuste de vigencia de código de activación cooperativo & 2 & Sprint 3 \\ \hline
-99 & US30 & Emisión, certificación criptográfica y exportación del expediente agronómico en PDF & 5 & Sprint 3 \\ \hline
-100 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 3 \\ \hline
-101 & US32 & Proyección agregada temprana de volumen de acopio de aceituna verde y negra para la cooperativa & 5 & Sprint 3 \\ \hline
+78 & US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & 5 & Sprint 2 \\ \hline
+79 & TS28 & Consulta y exportación del expediente agronómico definitivo & 5 & Sprint 2 \\ \hline
+80 & TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & 3 & Sprint 2 \\ \hline
+81 & TS30 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra & 5 & Sprint 2 \\ \hline
+82 & US01 & Registro de cuenta de acceso y credenciales seguras con asignación de rol & 3 & Sprint 2 \\ \hline
+83 & US02 & Inicio de sesión y autenticación persistente mediante tokens & 3 & Sprint 2 \\ \hline
+84 & US03 & Consulta y actualización de datos de perfil y contacto & 2 & Sprint 2 \\ \hline
+85 & US04 & Cambio seguro de contraseña de acceso & 2 & Sprint 2 \\ \hline
+86 & US05 & Recuperación de contraseña olvidada mediante enlace por correo & 3 & Sprint 2 \\ \hline
+87 & US43 & Completado de perfil de usuario y contacto validado & 3 & Sprint 2 \\ \hline
+88 & US42 & Configuración y cambio de idioma de la interfaz en la aplicación móvil & 2 & Sprint 2 \\ \hline
+89 & TS01 & Registro de credenciales de cuenta de usuario y asignación de rol en IAM & 3 & Sprint 2 \\ \hline
+90 & TS02 & Autenticación de usuarios y emisión de tokens de acceso con rol & 3 & Sprint 2 \\ \hline
+91 & TS03 & Renovación periódica de tokens de sesión mediante Refresh Token & 2 & Sprint 2 \\ \hline
+92 & TS04 & Consulta de información de perfil del usuario autenticado & 2 & Sprint 2 \\ \hline
+93 & TS05 & Actualización parcial de datos de perfil con validación telefónica & 2 & Sprint 2 \\ \hline
+94 & TS35 & Completado inicial de perfil de usuario con validación telefónica & 3 & Sprint 2 \\ \hline
+95 & TS36 & Actualización de contraseña para sesión de usuario autenticado & 2 & Sprint 2 \\ \hline
+96 & TS37 & Solicitud de código de restablecimiento de contraseña olvidada vía correo & 3 & Sprint 2 \\ \hline
+97 & TS38 & Restablecimiento de contraseña mediante token temporal de un solo uso & 2 & Sprint 2 \\ \hline
+98 & US44 & Activación de licencia corporativa de supervisión mediante código maestro de un solo uso & 3 & Sprint 2 \\ \hline
+99 & TS56 & Consulta de la licencia institucional a cargo del gestor técnico & 2 & Sprint 2 \\ \hline
+100 & TS57 & Consulta de balance de licencia institucional y cuota corporativa & 3 & Sprint 2 \\ \hline
+101 & TS58 & Consulta de padrón de socios productores agremiados & 3 & Sprint 2 \\ \hline
+102 & US45 & Emisión de códigos de patrocinio para socios con asignación de cupo de hectáreas y control de saldo & 3 & Sprint 2 \\ \hline
+103 & US46 & Canje de código de membresía patrocinada con consentimiento informado de compartición de datos & 2 & Sprint 2 \\ \hline
+104 & US47 & Revocación de códigos de patrocinio no canjeados y restitución de saldo de licencia & 2 & Sprint 2 \\ \hline
+105 & TS41 & Revocación anticipada de código de activación cooperativo y restitución de cuota & 2 & Sprint 2 \\ \hline
+106 & TS64 & Canje de código maestro para activación del gestor técnico & 2 & Sprint 2 \\ \hline
+107 & TS59 & Consulta de sectores asignados a las parcelas socias & 3 & Sprint 2 \\ \hline
+108 & US49 & Gestión y asignación de sectores territoriales editables para agrupación y filtrado de lotes & 3 & Sprint 2 \\ \hline
+109 & TS60 & Consulta de resumen agronómico y ficha técnica de parcela en modo supervisión de solo lectura & 3 & Sprint 2 \\ \hline
+110 & US48 & Desvinculación de supervisión agronómica y cese de compartición de datos de parcelas & 3 & Sprint 2 \\ \hline
+111 & TS61 & Consulta y suscripción a alertas agroclimáticas y fitosanitarias territoriales internas & 3 & Sprint 2 \\ \hline
+112 & US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & 5 & Sprint 2 \\ \hline
+113 & TS62 & Consulta del histórico de acopio por campaña & 2 & Sprint 2 \\ \hline
+114 & TS65 & Vista previa de código de invitación cooperativa & 3 & Sprint 2 \\ \hline
+115 & US32 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa & 5 & Sprint 2 \\ \hline
+116 & TS63 & Generación de instantánea documental y metadatos de expediente agronómico provisional en campaña activa & 3 & Sprint 2 \\ \hline
+117 & US30 & Generación y exportación del expediente agronómico de parcela & 5 & Sprint 2 \\ \hline
+118 & SPK04 & Investigación de Spring AI para respuestas validadas y de persistencia y tareas en segundo plano en Android & 3 & Sprint 2 \\ \hline
+119 & TS66 & Consulta del catálogo de preguntas por contexto de consulta & 3 & Sprint 2 \\ \hline
+120 & US50 & Consulta de preguntas disponibles según el contexto agronómico & 3 & Sprint 2 \\ \hline
+121 & TS67 & Solicitud idempotente de respuesta del asistente & 5 & Sprint 2 \\ \hline
+122 & US51 & Obtención de respuesta sustentada en datos reales & 5 & Sprint 2 \\ \hline
+123 & TS68 & Consulta del historial de respuestas del asistente & 2 & Sprint 2 \\ \hline
+124 & TS69 & Consulta de la última respuesta de un contexto de consulta & 2 & Sprint 2 \\ \hline
+125 & TS70 & Consulta de una respuesta guardada del asistente & 2 & Sprint 2 \\ \hline
+126 & US52 & Consulta del historial de respuestas recientes & 3 & Sprint 2 \\ \hline
+127 & US53 & Actualización de respuestas ante cambios en los datos & 3 & Sprint 2 \\ \hline
+128 & TS71 & Consulta del resumen diario del asistente & 3 & Sprint 2 \\ \hline
+129 & US54 & Resumen diario de prioridades del campo & 3 & Sprint 2 \\ \hline
+130 & TS72 & Cierre de sesión del usuario & 1 & Sprint 2 \\ \hline
+131 & TS73 & Eliminación definitiva de la cuenta & 2 & Sprint 2 \\ \hline
+132 & TS74 & Verificación del correo de la cuenta & 2 & Sprint 2 \\ \hline
+133 & TS75 & Reenvío del código de verificación de correo & 1 & Sprint 2 \\ \hline
+134 & TS76 & Verificación de vigencia del enlace de restablecimiento de contraseña & 1 & Sprint 2 \\ \hline
+135 & TS77 & Consulta de planes de suscripción individual & 1 & Sprint 2 \\ \hline
+136 & TS78 & Consulta de la suscripción actual del productor & 1 & Sprint 2 \\ \hline
+137 & TS79 & Consulta de una suscripción del productor & 1 & Sprint 2 \\ \hline
+138 & TS80 & Preparación del pago de una suscripción & 3 & Sprint 2 \\ \hline
+139 & TS81 & Consulta de condiciones de ampliación del plan & 1 & Sprint 2 \\ \hline
+140 & TS82 & Solicitud de ampliación pagada del plan individual & 3 & Sprint 2 \\ \hline
+141 & TS83 & Consulta de una ampliación del plan & 1 & Sprint 2 \\ \hline
+142 & TS84 & Preparación del pago de una ampliación & 3 & Sprint 2 \\ \hline
+143 & TS85 & Canje de código de ampliación de hectáreas & 2 & Sprint 2 \\ \hline
+144 & TS86 & Desvinculación de socio de la licencia institucional & 2 & Sprint 2 \\ \hline
+145 & TS87 & Consulta de consentimientos de compartición de datos & 1 & Sprint 2 \\ \hline
+146 & TS88 & Consulta de un consentimiento de compartición de datos & 1 & Sprint 2 \\ \hline
+147 & TS89 & Retiro del consentimiento de compartición de datos & 2 & Sprint 2 \\ \hline
+148 & TS90 & Registro de nota de campo de una parcela & 2 & Sprint 2 \\ \hline
+149 & TS91 & Consulta de notas de campo de una parcela & 2 & Sprint 2 \\ \hline
+150 & TS92 & Adjunto de fotografía a una nota de campo & 2 & Sprint 2 \\ \hline
+151 & TS93 & Descarga de la fotografía de una nota de campo & 1 & Sprint 2 \\ \hline
+152 & TS94 & Consulta de sectores territoriales de la licencia & 1 & Sprint 2 \\ \hline
+153 & TS95 & Registro de sector territorial & 2 & Sprint 2 \\ \hline
+154 & TS96 & Consulta de un sector territorial & 1 & Sprint 2 \\ \hline
+155 & TS97 & Renombrado de sector territorial & 2 & Sprint 2 \\ \hline
+156 & TS98 & Consulta del sector de una parcela socia & 1 & Sprint 2 \\ \hline
+157 & TS99 & Asignación de sector a una parcela & 2 & Sprint 2 \\ \hline
+158 & TS100 & Revisión de sector pendiente de confirmación & 2 & Sprint 2 \\ \hline
+159 & TS101 & Sellado del expediente agronómico de una campaña liquidada & 3 & Sprint 2 \\ \hline
+160 & TS102 & Consulta de expedientes sellados de una parcela & 1 & Sprint 2 \\ \hline
+161 & TS103 & Verificación de autenticidad de un expediente & 1 & Sprint 2 \\ \hline
+162 & TS104 & Consulta de prescripciones de aclareo del productor & 1 & Sprint 2 \\ \hline
+163 & TS105 & Consulta de una prescripción de aclareo & 1 & Sprint 2 \\ \hline
+164 & TS106 & Consulta de la ejecución registrada de un aclareo & 1 & Sprint 2 \\ \hline
+165 & TS107 & Consulta del detalle de socio productor agremiado & 1 & Sprint 2 \\ \hline
 \end{longtable}
 \end{center}
 
 
 
-Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 101 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
+Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 165 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
 
 \begin{figure}[H]
 \caption{Product Backlog del proyecto Viora en Trello.} \label{fig:trello-product-backlog}

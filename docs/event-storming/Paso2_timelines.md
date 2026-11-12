@@ -268,7 +268,7 @@ graph LR
 | :---: | :---: | :--- | :--- | :--- |
 | **8.1** | **EV49** | `CooperativeRiskMatrixEvaluated` | Agregación del estado fenológico de los predios socios. | Matriz colectiva clasificada en semáforo de riesgo. |
 | **8.2** | **EV50** | `CooperativeIntakeVolumeProjected` | Proyección consolidada de acopio (verde y negro). | Estimación global de acopio para la cooperativa. |
-| **8.3** | **EV51** | `LowSamplingCoverageWarnedForIntake` | Proyección con menos del 50% de parcelas muestreadas. | Advertencia por estimación con sesgo muestral. |
+| **8.3** | **EV51** | `LowSamplingCoverageWarnedForIntake` | Proyección con menos del 60% de parcelas muestreadas. | Advertencia por estimación con sesgo muestral. |
 
 ---
 

@@ -1,0 +1,4032 @@
+{
+  "sprint": 2,
+  "sprintTitle": "Sprint 2",
+  "sprintGoal": "Nuestro enfoque se orienta a completar la experiencia integral de Viora, de modo que productores y gestores técnicos accedan de forma segura y en su idioma, que el productor active el servicio por cuenta propia o a través de su cooperativa conservando el control de su información, que las cooperativas incorporen a sus socios y supervisen el riesgo y el volumen productivo de su territorio, y que el productor comprenda sus recomendaciones a partir de sus propios datos. Creemos que esto entrega ingresos recurrentes y adopción institucional para el negocio, autonomía y confianza a los productores olivareros sobre el acceso al servicio y el uso de sus datos, mayor comprensión de sus decisiones agronómicas, y mayor anticipación a los gestores técnicos en la supervisión de campo y la planificación del acopio. Esto se confirmará cuando un productor nuevo cree su cuenta y active su acceso, pagando su plan o canjeando un código de su cooperativa, en una sola sesión y sin asistencia del equipo; cuando autorice o retire la compartición de sus datos; cuando reciba la explicación de una recomendación sustentada en sus propios datos; y cuando un gestor técnico habilitado invite a sus socios, supervise sus parcelas e identifique por sector el riesgo, la proyección de acopio y el expediente agronómico de cada parcela sin solicitar información adicional a los productores.",
+  "targetVelocityStoryPoints": 250,
+  "committedStoryPoints": 241,
+  "totalItems": 97,
+  "totalTasks": 204,
+  "totalEstimatedHours": 183.5,
+  "items": [
+    {
+      "id": "SPK03",
+      "trello_formatted_id": "SPK003",
+      "type": "Spike Story",
+      "title": "Investigación e integración de Checkout Pro en Mercado Pago Sandbox y webhooks",
+      "user_story_format": "Como equipo de desarrollo (móvil y backend), queremos investigar y prototipar la integración de Mercado Pago Checkout Pro (Sandbox) y webhooks en nuestras aplicaciones móviles Android (Kotlin) / Flutter y backend Spring Boot Java para la Plataforma Viora, para que podamos entender las implicaciones técnicas, riesgos potenciales de transacción y esfuerzo requerido para la implementación completa en los componentes móvil y backend.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "SPK003TASK001",
+          "trello_card_title": "SPK003TASK001 | Prototipo Checkout Pro en Sandbox",
+          "title": "Prototipo Checkout Pro en Sandbox",
+          "description": "Validar preferencia y CheckoutService con credenciales de prueba.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "SPK003TASK002",
+          "trello_card_title": "SPK003TASK002 | Verificación de notificaciones de pago",
+          "title": "Verificación de notificaciones de pago",
+          "description": "Probar PaymentNotificationAuthenticator con eventos simulados del Sandbox.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS06",
+      "trello_formatted_id": "TS006",
+      "type": "Technical Story",
+      "title": "Generación de preferencia de checkout para suscripción de productor independiente",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar a la API la creación de una orden de suscripción SaaS, para obtener el identificador de preferencia y la URL de redirección a la pasarela digital de pagos.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS006TASK001",
+          "trello_card_title": "TS006TASK001 | Comando CreateSubscriptionCommand en aplicación",
+          "title": "Comando CreateSubscriptionCommand en aplicación",
+          "description": "Ejecutar CreateSubscriptionCommand en SubscriptionCommandService creando suscripción pendiente de pago.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS006TASK002",
+          "trello_card_title": "TS006TASK002 | Endpoint create en SubscriptionController",
+          "title": "Endpoint create en SubscriptionController",
+          "description": "Exponer POST subscriptions con CreateSubscriptionResource retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS07",
+      "trello_formatted_id": "TS007",
+      "type": "Technical Story",
+      "title": "Recepción y procesamiento de webhooks de notificación de pagos",
+      "user_story_format": "Como desarrollador de plataforma backend, quiero exponer un endpoint webhook para la pasarela de pagos, para procesar asíncronamente las confirmaciones de transacción y activar la suscripción del productor de manera inmediata.",
+      "story_points": 5,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS007TASK001",
+          "trello_card_title": "TS007TASK001 | Autenticación PaymentNotificationAuthenticator en infraestructura",
+          "title": "Autenticación PaymentNotificationAuthenticator en infraestructura",
+          "description": "Validar firma de la notificación de Mercado Pago.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS007TASK002",
+          "trello_card_title": "TS007TASK002 | Confirmación CheckoutService en aplicación",
+          "title": "Confirmación CheckoutService en aplicación",
+          "description": "Conciliar pago y activar suscripción de forma idempotente.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "TS007TASK003",
+          "trello_card_title": "TS007TASK003 | Endpoint notification en PaymentNotificationController",
+          "title": "Endpoint notification en PaymentNotificationController",
+          "description": "Exponer POST mercado-pago retornando 200 tras autenticar la notificación.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS08",
+      "trello_formatted_id": "TS008",
+      "type": "Technical Story",
+      "title": "Generación de lote de códigos de activación para socios cooperativos con reserva de cuota",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar la solicitud de generación de un lote de códigos de activación especificando cantidad, vigencia en días y cuota de hectáreas por código mediante POST a /api/v1/invitation-codes, para emitir invitaciones innominadas y reservar atómicamente plazas y hectáreas en la licencia institucional.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS008TASK001",
+          "trello_card_title": "TS008TASK001 | Comando IssueInvitationCodesCommand en aplicación",
+          "title": "Comando IssueInvitationCodesCommand en aplicación",
+          "description": "Ejecutar IssueInvitationCodesCommand en InvitationCodeCommandService reservando plazas y hectáreas.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS008TASK002",
+          "trello_card_title": "TS008TASK002 | Endpoint issue en InvitationCodeController",
+          "title": "Endpoint issue en InvitationCodeController",
+          "description": "Exponer POST invitation-codes con IssueInvitationCodesResource retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS09",
+      "trello_formatted_id": "TS009",
+      "type": "Technical Story",
+      "title": "Consulta y auditoría de inventario de lotes y códigos de activación de cooperativa",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el inventario de lotes y códigos de activación mediante GET a /api/v1/invitation-codes con soporte de filtros por estado y almacenamiento recuperable protegido, para permitir al gestor auditar las invitaciones y copiar o compartir códigos disponibles.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS009TASK001",
+          "trello_card_title": "TS009TASK001 | Consulta GetInvitationCodesByManagerIdQuery en aplicación",
+          "title": "Consulta GetInvitationCodesByManagerIdQuery en aplicación",
+          "description": "Ejecutar GetInvitationCodesByManagerIdQuery en InvitationCodeQueryService filtrando códigos por estado.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS009TASK002",
+          "trello_card_title": "TS009TASK002 | Endpoint list en InvitationCodeController",
+          "title": "Endpoint list en InvitationCodeController",
+          "description": "Exponer GET invitation-codes retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS10",
+      "trello_formatted_id": "TS010",
+      "type": "Technical Story",
+      "title": "Canje atómico de código de activación institucional con validación de cuota y consentimiento",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar el código de activación corporativo provisto por el productor y su consentimiento de compartición de datos mediante POST a /api/v1/cooperative-code-redemptions, para validar atómicamente la cuota, afiliar la cuenta a la cooperativa y activar los beneficios patrocinados sin cobro individual.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS010TASK001",
+          "trello_card_title": "TS010TASK001 | Comando RedeemCooperativeCodeCommand en aplicación",
+          "title": "Comando RedeemCooperativeCodeCommand en aplicación",
+          "description": "Ejecutar RedeemCooperativeCodeCommand en CooperativeCodeRedemptionCommandService validando cuota y consentimiento.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS010TASK002",
+          "trello_card_title": "TS010TASK002 | Endpoint redeem en CooperativeCodeRedemptionController",
+          "title": "Endpoint redeem en CooperativeCodeRedemptionController",
+          "description": "Exponer POST cooperative-code-redemptions con RedeemCooperativeCodeResource retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US06",
+      "trello_formatted_id": "US006",
+      "type": "User Story",
+      "title": "Suscripción individual al Plan Productor mediante pasarela de pago digital",
+      "user_story_format": "Como Productor Olivarero independiente, quiero suscribirme al Plan Productor seleccionando la tarifa correspondiente a la extensión de mis parcelas y realizando el pago en línea mediante una pasarela digital segura, para habilitar de inmediato las herramientas de diagnóstico histórico, monitoreo climático y prescripción agronómica de Viora sin depender de intermediarios ni membresías corporativas.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US006TASK001",
+          "trello_card_title": "US006TASK001 | Pantalla ProducerPlanScreen en presentación",
+          "title": "Pantalla ProducerPlanScreen en presentación",
+          "description": "Integrar ProducerPlanViewModel e IndividualCheckoutViewModel con planes.",
+          "estimation_hours": 1.8,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US006TASK002",
+          "trello_card_title": "US006TASK002 | Casos de compra en aplicación",
+          "title": "Casos de compra en aplicación",
+          "description": "Orquestar PrepareIndividualPurchaseUseCase y CreateIndividualCheckoutUseCase.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US006TASK003",
+          "trello_card_title": "US006TASK003 | Resultado de pago en presentación",
+          "title": "Resultado de pago en presentación",
+          "description": "Confirmar retorno mediante PaymentResultScreen y PaymentResultProfileViewModel.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US07",
+      "trello_formatted_id": "US007",
+      "type": "User Story",
+      "title": "Activación de membresía corporativa de socio mediante canje de código de cooperativa",
+      "user_story_format": "Como Productor Olivarero agremiado a una cooperativa agrícola, quiero canjear un código de activación institucional proporcionado por mi organización con validación de cuota y consentimiento explícito, para acceder a las prestaciones de la plataforma bajo patrocinio corporativo sin costo individual de suscripción compartiendo mi información técnica con el gestor de la entidad.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US007TASK001",
+          "trello_card_title": "US007TASK001 | Pantalla RedeemCodeScreen en presentación",
+          "title": "Pantalla RedeemCodeScreen en presentación",
+          "description": "Capturar código y estados mediante RedeemCodeViewModel.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US007TASK002",
+          "trello_card_title": "US007TASK002 | Caso RedeemCooperativeCodeUseCase en aplicación",
+          "title": "Caso RedeemCooperativeCodeUseCase en aplicación",
+          "description": "Canjear código y actualizar membresía del productor.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US08",
+      "trello_formatted_id": "US008",
+      "type": "User Story",
+      "title": "Administración de la cartera de socios productores y consulta de cuota corporativa",
+      "user_story_format": "Como Gestor Técnico de Cooperativa con rol ROLE_TECHNICAL_MANAGER, quiero consultar el padrón de socios productores agremiados con su superficie declarada, el balance de cuota corporativa y el estado de los códigos innominados emitidos, para supervisar la base productiva de la organización, gestionar la entrega de invitaciones y controlar la ocupación de plazas contratadas.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US008TASK001",
+          "trello_card_title": "US008TASK001 | Padrón Flutter en MembersPage",
+          "title": "Padrón Flutter en MembersPage",
+          "description": "Integrar MembersViewModel con GetMembersUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US008TASK002",
+          "trello_card_title": "US008TASK002 | Cuota mediante GetLicenseCapacityUseCase",
+          "title": "Cuota mediante GetLicenseCapacityUseCase",
+          "description": "Consultar balance de licencia desde CooperativeRepository.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US12",
+      "trello_formatted_id": "US012",
+      "type": "User Story",
+      "title": "Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS",
+      "user_story_format": "Como Gestor Técnico de Cooperativa, quiero consultar un tablero territorial que agrupe las parcelas socias por etiquetas sectoriales y visualice mi posición actual mediante GPS, para identificar sectores con mayor vulnerabilidad agronómica y priorizar visitas técnicas presenciales en parcelas con sobrecarga crítica o riesgo meteorológico activo.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US012TASK001",
+          "trello_card_title": "US012TASK001 | Mapa RiskPage en presentación",
+          "title": "Mapa RiskPage en presentación",
+          "description": "Integrar RiskMapViewModel con parcelas y posición del gestor.",
+          "estimation_hours": 1.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US012TASK002",
+          "trello_card_title": "US012TASK002 | Caso GetRiskPlotsUseCase en aplicación",
+          "title": "Caso GetRiskPlotsUseCase en aplicación",
+          "description": "Obtener parcelas socias y agrupar semáforo sectorial.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US012TASK003",
+          "trello_card_title": "US012TASK003 | Ubicación DeviceLocationRepository en infraestructura",
+          "title": "Ubicación DeviceLocationRepository en infraestructura",
+          "description": "Obtener GPS y consumir member-plots desde RiskRepository.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS28",
+      "trello_formatted_id": "TS028",
+      "type": "Technical Story",
+      "title": "Consulta y exportación del expediente agronómico definitivo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el expediente agronómico sellado de una parcela mediante GET a /api/v1/plots/{plotId}/agronomic-dossiers/{campaignYear} con negociación de contenidos (Accept: application/pdf o application/json), para descargar el dossier sellado con hash SHA-256 de una campaña cerrada.",
+      "story_points": 5,
+      "application": "Web Service Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS028TASK001",
+          "trello_card_title": "TS028TASK001 | Agregado SealedDossier en dominio",
+          "title": "Agregado SealedDossier en dominio",
+          "description": "Modelar expediente sellado con huella y documento almacenado.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS028TASK002",
+          "trello_card_title": "TS028TASK002 | Consulta SealedDossierQueryService en aplicación",
+          "title": "Consulta SealedDossierQueryService en aplicación",
+          "description": "Recuperar expediente sellado por parcela y campaña.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "TS028TASK003",
+          "trello_card_title": "TS028TASK003 | Endpoint get en AgronomicDossierController",
+          "title": "Endpoint get en AgronomicDossierController",
+          "description": "Exponer GET agronomic-dossiers negociando formato y retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS29",
+      "trello_formatted_id": "TS029",
+      "type": "Technical Story",
+      "title": "Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el estado territorial consolidado de las parcelas socias mediante GET a /api/v1/member-plots con parámetros opcionales de geolocalización (latitude, longitude), para presentar el semáforo por mayor gravedad observada y orientar al gestor en campo.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS029TASK001",
+          "trello_card_title": "TS029TASK001 | Consulta GetMemberPlotsByManagerIdQuery en aplicación",
+          "title": "Consulta GetMemberPlotsByManagerIdQuery en aplicación",
+          "description": "Ejecutar GetMemberPlotsByManagerIdQuery en MemberPlotQueryService agregando riesgo de parcelas socias.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS029TASK002",
+          "trello_card_title": "TS029TASK002 | Endpoint list en MemberPlotController",
+          "title": "Endpoint list en MemberPlotController",
+          "description": "Exponer GET member-plots retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS30",
+      "trello_formatted_id": "TS030",
+      "type": "Technical Story",
+      "title": "Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar la proyección agregada temprana de acopio a la API mediante GET a /api/v1/intake-forecasts/{campaignYear} con parámetro de ruta campaignYear, para consolidar únicamente las toneladas respaldadas por parcelas estimables y mostrar el desglose por aptitud comercial (verde para mesa y negra para almazara).",
+      "story_points": 5,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS030TASK001",
+          "trello_card_title": "TS030TASK001 | Servicio YieldAggregationDomainService en dominio",
+          "title": "Servicio YieldAggregationDomainService en dominio",
+          "description": "Consolidar toneladas de parcelas estimables por aptitud comercial.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS030TASK002",
+          "trello_card_title": "TS030TASK002 | Consulta GetIntakeForecastByCampaignYearAndManagerIdQuery en aplicación",
+          "title": "Consulta GetIntakeForecastByCampaignYearAndManagerIdQuery en aplicación",
+          "description": "Resolver proyección de acopio mediante IntakeForecastQueryService.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "TS030TASK003",
+          "trello_card_title": "TS030TASK003 | Endpoint get en IntakeForecastController",
+          "title": "Endpoint get en IntakeForecastController",
+          "description": "Exponer GET intake-forecasts por campaña retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US01",
+      "trello_formatted_id": "US001",
+      "type": "User Story",
+      "title": "Registro de cuenta de acceso y credenciales seguras con asignación de rol",
+      "user_story_format": "Como usuario nuevo de Viora (Productor Olivarero o Gestor Técnico), quiero registrar una cuenta en la plataforma ingresando mi correo electrónico y una contraseña segura desde la aplicación móvil de mi segmento, para darme de alta en el sistema y disponer de una identidad de acceso con el rol asignado automáticamente según la aplicación cliente utilizada.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US001TASK001",
+          "trello_card_title": "US001TASK001 | Registro Android con SignUpUseCase",
+          "title": "Registro Android con SignUpUseCase",
+          "description": "Integrar IamScreen e IamViewModel con SignUpUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US001TASK002",
+          "trello_card_title": "US001TASK002 | Registro Flutter con SignUpUseCase",
+          "title": "Registro Flutter con SignUpUseCase",
+          "description": "Integrar IamPage e IamViewModel con SignUpUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US02",
+      "trello_formatted_id": "US002",
+      "type": "User Story",
+      "title": "Inicio de sesión y autenticación persistente mediante tokens",
+      "user_story_format": "Como usuario registrado de Viora (Productor Olivarero o Gestor Técnico), quiero autenticarme con mi correo electrónico y contraseña para mantener mi sesión activa en el dispositivo móvil mediante tokens seguros, para operar de forma continua y protegida en la gestión de mis predios o cartera cooperativa sin tener que reingresar credenciales continuamente durante mis labores agrícolas en campo.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US002TASK001",
+          "trello_card_title": "US002TASK001 | Sesión Android con SignInUseCase",
+          "title": "Sesión Android con SignInUseCase",
+          "description": "Autenticar mediante SignInUseCase y persistir sesión en AuthRepository.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US002TASK002",
+          "trello_card_title": "US002TASK002 | Sesión Flutter con SignInUseCase",
+          "title": "Sesión Flutter con SignInUseCase",
+          "description": "Autenticar mediante SignInUseCase y evaluar IsSignedInUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US03",
+      "trello_formatted_id": "US003",
+      "type": "User Story",
+      "title": "Consulta y actualización de datos de perfil y contacto",
+      "user_story_format": "Como usuario autenticado de Viora (Productor Olivarero o Gestor Técnico), quiero consultar y modificar mis datos personales, país y número telefónico en mi perfil, para mantener actualizada mi información de contacto y facilitar las coordinaciones operativas y de asistencia técnica entre productores y la administración cooperativa.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "Profiles",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US003TASK001",
+          "trello_card_title": "US003TASK001 | Perfil Android en EditProfileScreen",
+          "title": "Perfil Android en EditProfileScreen",
+          "description": "Consultar ObserveProfileUseCase y actualizar mediante UpdateProfileUseCase.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Profiles"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US003TASK002",
+          "trello_card_title": "US003TASK002 | Perfil Flutter en EditProfilePage",
+          "title": "Perfil Flutter en EditProfilePage",
+          "description": "Consultar GetCurrentProfileUseCase y actualizar mediante UpdateProfileUseCase.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Profiles"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US04",
+      "trello_formatted_id": "US004",
+      "type": "User Story",
+      "title": "Cambio seguro de contraseña de acceso",
+      "user_story_format": "Como usuario autenticado de Viora (Productor Olivarero o Gestor Técnico), quiero actualizar mi contraseña de acceso verificando mi clave actual e ingresando una nueva clave robusta, para proteger el acceso a mis registros agrícolas, históricos de cosecha y datos comerciales ante sospechas de vulneración y salvaguardar la privacidad de mis parcelas o cartera gremial.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US004TASK001",
+          "trello_card_title": "US004TASK001 | Contraseña Android en ChangePasswordScreen",
+          "title": "Contraseña Android en ChangePasswordScreen",
+          "description": "Integrar ChangePasswordViewModel con ChangePasswordUseCase.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US004TASK002",
+          "trello_card_title": "US004TASK002 | Contraseña Flutter en ChangePasswordPage",
+          "title": "Contraseña Flutter en ChangePasswordPage",
+          "description": "Integrar ChangePasswordViewModel con ChangePasswordUseCase.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US05",
+      "trello_formatted_id": "US005",
+      "type": "User Story",
+      "title": "Recuperación de contraseña olvidada mediante enlace por correo",
+      "user_story_format": "Como usuario registrado de Viora (Productor Olivarero o Gestor Técnico), quiero solicitar el restablecimiento de mi clave ingresando mi correo electrónico para recibir un enlace de un solo uso, para recuperar el acceso a mis registros agrícolas o cartera gremial de forma autónoma sin depender de soporte técnico ni perder la trazabilidad histórica de mis parcelas.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US005TASK001",
+          "trello_card_title": "US005TASK001 | Recuperación Android de contraseña",
+          "title": "Recuperación Android de contraseña",
+          "description": "Orquestar RequestPasswordResetUseCase, CheckPasswordResetLinkUseCase y ResetPasswordUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US005TASK002",
+          "trello_card_title": "US005TASK002 | Recuperación Flutter de contraseña",
+          "title": "Recuperación Flutter de contraseña",
+          "description": "Orquestar RequestPasswordResetUseCase, CheckPasswordResetLinkUseCase y ResetPasswordUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US43",
+      "trello_formatted_id": "US043",
+      "type": "User Story",
+      "title": "Completado de perfil de usuario y contacto validado",
+      "user_story_format": "Como usuario nuevo autenticado en Viora (Productor Olivarero o Gestor Técnico), quiero completar mi perfil de usuario ingresando mi nombre completo, país de residencia y número celular de contacto, para personalizar mi cuenta y habilitar los canales de notificación agronómica y operativa del sistema.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Profiles",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US043TASK001",
+          "trello_card_title": "US043TASK001 | Perfil Android con UpdateProfileUseCase",
+          "title": "Perfil Android con UpdateProfileUseCase",
+          "description": "Validar contacto desde EditProfileViewModel.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Profiles"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US043TASK002",
+          "trello_card_title": "US043TASK002 | Perfil Flutter con UpdateProfileUseCase",
+          "title": "Perfil Flutter con UpdateProfileUseCase",
+          "description": "Validar contacto desde EditProfileViewModel.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Profiles"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US42",
+      "trello_formatted_id": "US042",
+      "type": "User Story",
+      "title": "Configuración y cambio de idioma de la interfaz en la aplicación móvil",
+      "user_story_format": "Como usuario autenticado de la aplicación móvil de Viora (Productor Olivarero o Gestor Técnico), quiero seleccionar mi idioma de preferencia (Español o Inglés) desde el panel de ajustes de la aplicación, para visualizar todos los menús, diagnósticos y alertas en el idioma con el que tenga mayor familiaridad.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "Shared",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US042TASK001",
+          "trello_card_title": "US042TASK001 | Idioma Android en LanguageBottomSheet",
+          "title": "Idioma Android en LanguageBottomSheet",
+          "description": "Persistir AppLanguage y aplicar AcceptLanguageInterceptor.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Shared"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US042TASK002",
+          "trello_card_title": "US042TASK002 | Idioma Flutter con AppLanguageCubit",
+          "title": "Idioma Flutter con AppLanguageCubit",
+          "description": "Persistir idioma y actualizar localización de la aplicación.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Shared"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS01",
+      "trello_formatted_id": "TS001",
+      "type": "Technical Story",
+      "title": "Registro de credenciales de cuenta de usuario y asignación de rol en IAM",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar las credenciales de registro (correo electrónico, contraseña, nombre completo, teléfono en formato E.164 y rol institucional) al servicio de autenticación IAM, para crear la cuenta de usuario con contraseña cifrada, validación telefónica y rol asignado (ROLE_PRODUCER o ROLE_TECHNICAL_MANAGER).",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS001TASK001",
+          "trello_card_title": "TS001TASK001 | Comando RegisterUserAccountCommand en aplicación",
+          "title": "Comando RegisterUserAccountCommand en aplicación",
+          "description": "Ejecutar RegisterUserAccountCommand en UserAccountCommandService creando cuenta con rol.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS001TASK002",
+          "trello_card_title": "TS001TASK002 | Endpoint signUp en AuthController",
+          "title": "Endpoint signUp en AuthController",
+          "description": "Exponer POST sign-up con SignUpResource retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS02",
+      "trello_formatted_id": "TS002",
+      "type": "Technical Story",
+      "title": "Autenticación de usuarios y emisión de tokens de acceso con rol",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar las credenciales de acceso a la API, para autenticar al usuario y recibir un token de acceso JWT con sus respectivos claims de autorización.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS002TASK001",
+          "trello_card_title": "TS002TASK001 | Comando AuthenticateUserCommand en aplicación",
+          "title": "Comando AuthenticateUserCommand en aplicación",
+          "description": "Ejecutar AuthenticateUserCommand en UserSessionCommandService validando credenciales y emitiendo tokens.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS002TASK002",
+          "trello_card_title": "TS002TASK002 | Endpoint signIn en AuthController",
+          "title": "Endpoint signIn en AuthController",
+          "description": "Exponer POST sign-in con SignInResource retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS03",
+      "trello_formatted_id": "TS003",
+      "type": "Technical Story",
+      "title": "Renovación periódica de tokens de sesión mediante Refresh Token",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar el refresh token a la API, para renovar el token de acceso JWT expirado sin requerir que el usuario vuelva a ingresar sus credenciales.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS003TASK001",
+          "trello_card_title": "TS003TASK001 | Comando RefreshUserSessionCommand en aplicación",
+          "title": "Comando RefreshUserSessionCommand en aplicación",
+          "description": "Ejecutar RefreshUserSessionCommand en UserSessionCommandService renovando sesión con token.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS003TASK002",
+          "trello_card_title": "TS003TASK002 | Endpoint refreshTokens en AuthController",
+          "title": "Endpoint refreshTokens en AuthController",
+          "description": "Exponer POST refresh-tokens con RefreshTokenResource retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS04",
+      "trello_formatted_id": "TS004",
+      "type": "Technical Story",
+      "title": "Consulta de información de perfil del usuario autenticado",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consumir el endpoint GET del perfil de usuario, para obtener los datos personales, de membresía y contacto del usuario autenticado.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Profiles",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS004TASK001",
+          "trello_card_title": "TS004TASK001 | Consulta GetProfileByUserIdQuery en aplicación",
+          "title": "Consulta GetProfileByUserIdQuery en aplicación",
+          "description": "Ejecutar GetProfileByUserIdQuery en ProfileQueryService leyendo perfil del usuario.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Profiles"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS004TASK002",
+          "trello_card_title": "TS004TASK002 | Endpoint getProfileByUserId en ProfileController",
+          "title": "Endpoint getProfileByUserId en ProfileController",
+          "description": "Exponer GET profiles retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Profiles"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS05",
+      "trello_formatted_id": "TS005",
+      "type": "Technical Story",
+      "title": "Actualización parcial de datos de perfil con validación telefónica",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar actualizaciones parciales del perfil a la API, para modificar el nombre de contacto o el número de teléfono operativo validado bajo el estándar E.164.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Profiles",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS005TASK001",
+          "trello_card_title": "TS005TASK001 | Comando UpdateContactProfileCommand en aplicación",
+          "title": "Comando UpdateContactProfileCommand en aplicación",
+          "description": "Ejecutar UpdateContactProfileCommand en ProfileCommandService validando cambios parciales de teléfono.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Profiles"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS005TASK002",
+          "trello_card_title": "TS005TASK002 | Endpoint patchProfile en ProfileController",
+          "title": "Endpoint patchProfile en ProfileController",
+          "description": "Exponer PATCH profiles con UpdateProfileResource retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Profiles"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS35",
+      "trello_formatted_id": "TS035",
+      "type": "Technical Story",
+      "title": "Completado inicial de perfil de usuario con validación telefónica",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar los datos de perfil y contacto (nombre completo, país y número celular) a la API de perfiles junto con el token JWT de autenticación, para completar el registro de perfil vinculado al usuario y validar el teléfono.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Profiles",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS035TASK001",
+          "trello_card_title": "TS035TASK001 | Comando UpdateContactProfileCommand en aplicación",
+          "title": "Comando UpdateContactProfileCommand en aplicación",
+          "description": "Ejecutar UpdateContactProfileCommand en ProfileCommandService normalizando teléfono por país.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Profiles"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS035TASK002",
+          "trello_card_title": "TS035TASK002 | Endpoint updateProfile en ProfileController",
+          "title": "Endpoint updateProfile en ProfileController",
+          "description": "Exponer PUT profiles con UpdateProfileResource retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Profiles"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS36",
+      "trello_formatted_id": "TS036",
+      "type": "Technical Story",
+      "title": "Actualización de contraseña para sesión de usuario autenticado",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar la contraseña actual y la nueva contraseña confirmada a la API de autenticación, para que el usuario con sesión activa modifique sus credenciales de acceso de forma segura.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS036TASK001",
+          "trello_card_title": "TS036TASK001 | Comando ChangeUserPasswordCommand en aplicación",
+          "title": "Comando ChangeUserPasswordCommand en aplicación",
+          "description": "Ejecutar ChangeUserPasswordCommand en UserAccountCommandService verificando contraseña actual.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS036TASK002",
+          "trello_card_title": "TS036TASK002 | Endpoint changePassword en AuthController",
+          "title": "Endpoint changePassword en AuthController",
+          "description": "Exponer PATCH passwords con ChangePasswordResource retornando 204.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS37",
+      "trello_formatted_id": "TS037",
+      "type": "Technical Story",
+      "title": "Solicitud de código de restablecimiento de contraseña olvidada vía correo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar la dirección de correo del usuario al servicio de recuperación de contraseñas, para que el sistema despache de manera asíncrona un token temporal seguro sin revelar la existencia previa del correo en la base de datos.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS037TASK001",
+          "trello_card_title": "TS037TASK001 | Comando RequestPasswordResetCommand en aplicación",
+          "title": "Comando RequestPasswordResetCommand en aplicación",
+          "description": "Ejecutar RequestPasswordResetCommand en UserAccountCommandService emitiendo token temporal.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS037TASK002",
+          "trello_card_title": "TS037TASK002 | Endpoint requestPasswordReset en AuthController",
+          "title": "Endpoint requestPasswordReset en AuthController",
+          "description": "Exponer POST password-reset-tokens con PasswordResetResource retornando 202.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS38",
+      "trello_formatted_id": "TS038",
+      "type": "Technical Story",
+      "title": "Restablecimiento de contraseña mediante token temporal de un solo uso",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar el token temporal recibido por correo y la nueva contraseña a la API, para restablecer el acceso a la cuenta del usuario y revocar el token consumido.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS038TASK001",
+          "trello_card_title": "TS038TASK001 | Comando ResetUserPasswordCommand en aplicación",
+          "title": "Comando ResetUserPasswordCommand en aplicación",
+          "description": "Ejecutar ResetUserPasswordCommand en UserAccountCommandService consumiendo token y actualizando contraseña.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS038TASK002",
+          "trello_card_title": "TS038TASK002 | Endpoint resetPassword en AuthController",
+          "title": "Endpoint resetPassword en AuthController",
+          "description": "Exponer PUT password-reset-tokens con ResetPasswordResource retornando 204.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US44",
+      "trello_formatted_id": "US044",
+      "type": "User Story",
+      "title": "Activación de licencia corporativa de supervisión mediante código maestro de un solo uso",
+      "user_story_format": "Como Gestor Técnico de Cooperativa, quiero activar la licencia institucional contratada por mi organización ingresando el código maestro de activación emitido por Viora (formato GEST-XXXX) desde la aplicación móvil Flutter, para asumir la administración técnica de la membresía corporativa, consultar el saldo total de plazas y hectáreas disponibles, y habilitar la emisión de códigos de patrocinio para los socios productores.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US044TASK001",
+          "trello_card_title": "US044TASK001 | Pantalla LicenseActivationPage en presentación",
+          "title": "Pantalla LicenseActivationPage en presentación",
+          "description": "Capturar código maestro mediante LicenseActivationViewModel.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US044TASK002",
+          "trello_card_title": "US044TASK002 | Caso ActivateLicenseUseCase en aplicación",
+          "title": "Caso ActivateLicenseUseCase en aplicación",
+          "description": "Canjear código y refrescar licencia del gestor.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS56",
+      "trello_formatted_id": "TS056",
+      "type": "Technical Story",
+      "title": "Consulta de la licencia institucional a cargo del gestor técnico",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar las licencias del gestor técnico autenticado mediante GET a /api/v1/cooperative-licenses, para determinar si tiene una licencia a su cargo y si esta permanece vigente.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS056TASK001",
+          "trello_card_title": "TS056TASK001 | Consulta GetAllCooperativeLicensesByManagerIdQuery en aplicación",
+          "title": "Consulta GetAllCooperativeLicensesByManagerIdQuery en aplicación",
+          "description": "Ejecutar GetAllCooperativeLicensesByManagerIdQuery en CooperativeLicenseQueryService listando licencias del gestor.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS056TASK002",
+          "trello_card_title": "TS056TASK002 | Endpoint list en CooperativeLicenseController",
+          "title": "Endpoint list en CooperativeLicenseController",
+          "description": "Exponer GET cooperative-licenses retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS57",
+      "trello_formatted_id": "TS057",
+      "type": "Technical Story",
+      "title": "Consulta de balance de licencia institucional y cuota corporativa",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar una licencia corporativa mediante GET a /api/v1/cooperative-licenses/{id}, para presentar el balance de plazas y hectáreas de la cooperativa.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS057TASK001",
+          "trello_card_title": "TS057TASK001 | Consulta GetCooperativeLicenseByIdAndManagerIdQuery en aplicación",
+          "title": "Consulta GetCooperativeLicenseByIdAndManagerIdQuery en aplicación",
+          "description": "Ejecutar GetCooperativeLicenseByIdAndManagerIdQuery en CooperativeLicenseQueryService calculando balance de plazas.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS057TASK002",
+          "trello_card_title": "TS057TASK002 | Endpoint get en CooperativeLicenseController",
+          "title": "Endpoint get en CooperativeLicenseController",
+          "description": "Exponer GET cooperative-licenses retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS58",
+      "trello_formatted_id": "TS058",
+      "type": "Technical Story",
+      "title": "Consulta de padrón de socios productores agremiados",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar el padrón de socios productores de una cooperativa mediante GET a /api/v1/cooperative-members, para visualizar el directorio de agricultores, sus datos de contacto autorizado y sus parcelas supervisadas.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS058TASK001",
+          "trello_card_title": "TS058TASK001 | Consulta GetCooperativeMembersByManagerIdQuery en aplicación",
+          "title": "Consulta GetCooperativeMembersByManagerIdQuery en aplicación",
+          "description": "Ejecutar GetCooperativeMembersByManagerIdQuery en CooperativeMemberQueryService listando socios de licencia.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS058TASK002",
+          "trello_card_title": "TS058TASK002 | Endpoint list en CooperativeMemberController",
+          "title": "Endpoint list en CooperativeMemberController",
+          "description": "Exponer GET cooperative-members retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US45",
+      "trello_formatted_id": "US045",
+      "type": "User Story",
+      "title": "Emisión de códigos de patrocinio para socios con asignación de cupo de hectáreas y control de saldo",
+      "user_story_format": "Como Gestor Técnico de Cooperativa, quiero generar lotes de códigos de activación unívocos (formato COOP-XXXX) asignando un cupo individual de hectáreas para cada socio productor y consultando el balance remanente de la licencia, para distribuir el patrocinio corporativo a los agricultores agremiados garantizando que no se sobrepase la capacidad máxima de plazas ni de hectáreas contratadas por la organización.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US045TASK001",
+          "trello_card_title": "US045TASK001 | Pantalla CodesPage en presentación",
+          "title": "Pantalla CodesPage en presentación",
+          "description": "Configurar lote mediante IssueCodesViewModel.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US045TASK002",
+          "trello_card_title": "US045TASK002 | Caso IssueInvitationCodesUseCase en aplicación",
+          "title": "Caso IssueInvitationCodesUseCase en aplicación",
+          "description": "Emitir códigos y actualizar balance de licencia.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US46",
+      "trello_formatted_id": "US046",
+      "type": "User Story",
+      "title": "Canje de código de membresía patrocinada con consentimiento informado de compartición de datos",
+      "user_story_format": "Como Productor Olivarero, quiero canjear un código de patrocinio corporativo (COOP-XXXX) en la aplicación móvil Android, revisar la identidad de la organización titular y aceptar formalmente la cláusula de compartición de datos agronómicos en modo solo lectura conforme a la Ley N° 29733, para activar mi plan de suscripción institucional subvencionado y habilitar el acompañamiento técnico de mis parcelas sin realizar pagos individuales.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US046TASK001",
+          "trello_card_title": "US046TASK001 | Vista previa con PreviewCooperativeCodeUseCase",
+          "title": "Vista previa con PreviewCooperativeCodeUseCase",
+          "description": "Mostrar organización, cuota y consentimiento antes del canje.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US046TASK002",
+          "trello_card_title": "US046TASK002 | Consentimiento con GetLatestDataSharingConsentUseCase",
+          "title": "Consentimiento con GetLatestDataSharingConsentUseCase",
+          "description": "Consultar autorización vigente desde DataSharingConsentRepository.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US47",
+      "trello_formatted_id": "US047",
+      "type": "User Story",
+      "title": "Revocación de códigos de patrocinio no canjeados y restitución de saldo de licencia",
+      "user_story_format": "Como Gestor Técnico de Cooperativa, quiero revocar códigos de activación emitidos que aún permanezcan en estado disponible (sin canjear por ningún socio) desde la aplicación móvil Flutter, para invalidar códigos entregados por error o extraviados y reincorporar inmediatamente las plazas y el cupo de hectáreas reservadas al saldo disponible de la licencia corporativa.",
+      "story_points": 2,
+      "application": "Mobile Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US047TASK001",
+          "trello_card_title": "US047TASK001 | Pantalla IssuedCodesPage en presentación",
+          "title": "Pantalla IssuedCodesPage en presentación",
+          "description": "Listar códigos y acciones mediante CodesViewModel.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US047TASK002",
+          "trello_card_title": "US047TASK002 | Caso RevokeInvitationCodeUseCase en aplicación",
+          "title": "Caso RevokeInvitationCodeUseCase en aplicación",
+          "description": "Revocar código disponible y restituir saldo.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS41",
+      "trello_formatted_id": "TS041",
+      "type": "Technical Story",
+      "title": "Revocación anticipada de código de activación cooperativo y restitución de cuota",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar una solicitud de revocación inmediata para un código de activación disponible mediante POST a /api/v1/invitation-codes/{id}/revocations, para anular la invitación y restituir de forma atómica la plaza y las hectáreas reservadas al balance de la licencia institucional.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS041TASK001",
+          "trello_card_title": "TS041TASK001 | Comando RevokeInvitationCodeCommand en aplicación",
+          "title": "Comando RevokeInvitationCodeCommand en aplicación",
+          "description": "Ejecutar RevokeInvitationCodeCommand en InvitationCodeCommandService restituyendo plaza y hectáreas.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS041TASK002",
+          "trello_card_title": "TS041TASK002 | Endpoint revoke en InvitationCodeController",
+          "title": "Endpoint revoke en InvitationCodeController",
+          "description": "Exponer POST revocations retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS64",
+      "trello_formatted_id": "TS064",
+      "type": "Technical Story",
+      "title": "Canje de código maestro para activación del gestor técnico",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar el código de activación del gestor mediante POST a /api/v1/manager-code-redemptions, para asignar al gestor técnico autenticado la responsabilidad de la licencia institucional.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS064TASK001",
+          "trello_card_title": "TS064TASK001 | Comando RedeemManagerCodeCommand en aplicación",
+          "title": "Comando RedeemManagerCodeCommand en aplicación",
+          "description": "Ejecutar RedeemManagerCodeCommand en ManagerCodeRedemptionCommandService asignando licencia al gestor.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS064TASK002",
+          "trello_card_title": "TS064TASK002 | Endpoint redeem en ManagerCodeRedemptionController",
+          "title": "Endpoint redeem en ManagerCodeRedemptionController",
+          "description": "Exponer POST manager-code-redemptions con RedeemManagerCodeResource retornando 201.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS59",
+      "trello_formatted_id": "TS059",
+      "type": "Technical Story",
+      "title": "Consulta de sectores asignados a las parcelas socias",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar los sectores de las parcelas mediante GET a /api/v1/plot-sector-assignments con el parámetro opcional status, para agrupar las parcelas por sector e identificar las pendientes de confirmación.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS059TASK001",
+          "trello_card_title": "TS059TASK001 | Consulta GetPlotSectorAssignmentsByUserIdQuery en aplicación",
+          "title": "Consulta GetPlotSectorAssignmentsByUserIdQuery en aplicación",
+          "description": "Ejecutar GetPlotSectorAssignmentsByUserIdQuery en PlotSectorAssignmentQueryService aplicando alcance gestor o socio.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS059TASK002",
+          "trello_card_title": "TS059TASK002 | Endpoint list en PlotSectorAssignmentController",
+          "title": "Endpoint list en PlotSectorAssignmentController",
+          "description": "Exponer GET plot-sector-assignments retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US49",
+      "trello_formatted_id": "US049",
+      "type": "User Story",
+      "title": "Gestión y asignación de sectores territoriales editables para agrupación y filtrado de lotes",
+      "user_story_format": "Como Gestor Técnico de Cooperativa o Productor Olivarero, quiero administrar una nómina dinámica de sectores territoriales (crear, renombrar y listar etiquetas del valle olivarero) y asignar o confirmar el sector correspondiente a cada parcela socia, para estructurar la cartera de predios por zonas agroecológicas, agilizar las rutas de asistencia técnica en campo y filtrar el semáforo de riesgo y las proyecciones de acopio por sector sin depender de fronteras poligonales rígidas.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US049TASK001",
+          "trello_card_title": "US049TASK001 | Gestión de sectores en Flutter",
+          "title": "Gestión de sectores en Flutter",
+          "description": "Consumir sector-zones para crear, renombrar y listar sectores.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US049TASK002",
+          "trello_card_title": "US049TASK002 | Asignación de sector en Android",
+          "title": "Asignación de sector en Android",
+          "description": "Consumir plot-sector-assignments desde la parcela del socio.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS60",
+      "trello_formatted_id": "TS060",
+      "type": "Technical Story",
+      "title": "Consulta de resumen agronómico y ficha técnica de parcela en modo supervisión de solo lectura",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar el resumen agronómico de una parcela socia mediante GET a /api/v1/member-plots/{id}, para presentar al gestor técnico los datos de carga frutal, prescripción vigente y fenología en modo de solo lectura estricto.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS060TASK001",
+          "trello_card_title": "TS060TASK001 | Consulta GetMemberPlotByIdAndManagerIdQuery en aplicación",
+          "title": "Consulta GetMemberPlotByIdAndManagerIdQuery en aplicación",
+          "description": "Ejecutar GetMemberPlotByIdAndManagerIdQuery en MemberPlotQueryService verificando socio que comparte.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS060TASK002",
+          "trello_card_title": "TS060TASK002 | Endpoint get en MemberPlotController",
+          "title": "Endpoint get en MemberPlotController",
+          "description": "Exponer GET member-plots retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US48",
+      "trello_formatted_id": "US048",
+      "type": "User Story",
+      "title": "Desvinculación de supervisión agronómica y cese de compartición de datos de parcelas",
+      "user_story_format": "Como Productor Olivarero o Gestor Técnico de Cooperativa, quiero rescindir voluntariamente la vinculación de patrocinio en cualquier momento (mediante la acción \"Dejar de compartir\" del productor o \"Retirar acceso\" del gestor técnico), para revocar el acceso de lectura a los lotes y monitoreos del olivar, liberar la plaza y hectáreas en la licencia corporativa y salvaguardar la privacidad de los datos conforme a la Ley N° 29733.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US048TASK001",
+          "trello_card_title": "US048TASK001 | Retiro con WithdrawDataSharingConsentUseCase",
+          "title": "Retiro con WithdrawDataSharingConsentUseCase",
+          "description": "Dejar de compartir datos desde CooperativeMembershipScreen.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US048TASK002",
+          "trello_card_title": "US048TASK002 | Desvinculación de socio en Flutter",
+          "title": "Desvinculación de socio en Flutter",
+          "description": "Consumir member-releases desde la ficha del socio.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS61",
+      "trello_formatted_id": "TS061",
+      "type": "Technical Story",
+      "title": "Consulta y suscripción a alertas agroclimáticas y fitosanitarias territoriales internas",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar las alertas agroclimáticas y fenológicas internas de la cooperativa mediante GET a /api/v1/sector-alerts, para desplegar en el centro de avisos del gestor las notificaciones de heladas, estrés hídrico y sobrecarga frutal de sus sectores.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS061TASK001",
+          "trello_card_title": "TS061TASK001 | Consulta GetSectorAlertsByManagerIdQuery en aplicación",
+          "title": "Consulta GetSectorAlertsByManagerIdQuery en aplicación",
+          "description": "Ejecutar GetSectorAlertsByManagerIdQuery en SectorAlertQueryService leyendo alertas de sectores.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS061TASK002",
+          "trello_card_title": "TS061TASK002 | Endpoint list en SectorAlertController",
+          "title": "Endpoint list en SectorAlertController",
+          "description": "Exponer GET sector-alerts retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US31",
+      "trello_formatted_id": "US031",
+      "type": "User Story",
+      "title": "Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica",
+      "user_story_format": "Como Gestor Técnico de Cooperativa, quiero que el semáforo territorial refleje de forma reactiva la mayor gravedad sustentada por sobrecarga frutal (> 30%) o riesgo de helada en las parcelas socias, para focalizar de inmediato la asistencia técnica en los sectores críticos sin que las alertas de supervisión se oculten si el productor pospone sus avisos locales.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US031TASK001",
+          "trello_card_title": "US031TASK001 | Detalle SectorDetailPage en presentación",
+          "title": "Detalle SectorDetailPage en presentación",
+          "description": "Integrar SectorDetailViewModel con semáforo por mayor gravedad.",
+          "estimation_hours": 1.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US031TASK002",
+          "trello_card_title": "US031TASK002 | Caso HasActiveSectorAlertsUseCase en aplicación",
+          "title": "Caso HasActiveSectorAlertsUseCase en aplicación",
+          "description": "Evaluar alertas activas de sectores de la licencia.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US031TASK003",
+          "trello_card_title": "US031TASK003 | Ficha RiskPlotPage en presentación",
+          "title": "Ficha RiskPlotPage en presentación",
+          "description": "Consultar sobrecarga y riesgo mediante GetRiskPlotUseCase.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS62",
+      "trello_formatted_id": "TS062",
+      "type": "Technical Story",
+      "title": "Consulta del histórico de acopio por campaña",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar el acopio de cada campaña mediante GET a /api/v1/intake-forecasts, para comparar la campaña en curso con las cosechas liquidadas de campañas anteriores.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS062TASK001",
+          "trello_card_title": "TS062TASK001 | Consulta GetIntakeForecastsByManagerIdQuery en aplicación",
+          "title": "Consulta GetIntakeForecastsByManagerIdQuery en aplicación",
+          "description": "Ejecutar GetIntakeForecastsByManagerIdQuery en IntakeForecastQueryService sumando acopio por campaña.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS062TASK002",
+          "trello_card_title": "TS062TASK002 | Endpoint list en IntakeForecastController",
+          "title": "Endpoint list en IntakeForecastController",
+          "description": "Exponer GET intake-forecasts retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS65",
+      "trello_formatted_id": "TS065",
+      "type": "Technical Story",
+      "title": "Vista previa de código de invitación cooperativa",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar lo que ofrece un código mediante POST a /api/v1/cooperative-code-previews, para mostrar al productor las condiciones y el consentimiento antes de canjearlo.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS065TASK001",
+          "trello_card_title": "TS065TASK001 | Consulta GetCooperativeCodePreviewQuery en aplicación",
+          "title": "Consulta GetCooperativeCodePreviewQuery en aplicación",
+          "description": "Ejecutar GetCooperativeCodePreviewQuery en CooperativeCodeQueryService evaluando código sin consumirlo.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS065TASK002",
+          "trello_card_title": "TS065TASK002 | Endpoint preview en CooperativeCodePreviewController",
+          "title": "Endpoint preview en CooperativeCodePreviewController",
+          "description": "Exponer POST cooperative-code-previews con PreviewCooperativeCodeResource retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US32",
+      "trello_formatted_id": "US032",
+      "type": "User Story",
+      "title": "Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa",
+      "user_story_format": "Como Gestor Técnico de Cooperativa, quiero consultar la estimación agregada del tonelaje de cosecha sumando estrictamente las parcelas con evaluaciones validadas y desglosando por aptitud comercial (verde para mesa y negra para almazara), para dimensionar con sustento real el acopio cooperativo, organizar la logística de salmueras y patios de recepción, y comercializar volúmenes seguros sin incurrir en penalidades contractuales.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US032TASK001",
+          "trello_card_title": "US032TASK001 | Pantalla de acopio en Flutter",
+          "title": "Pantalla de acopio en Flutter",
+          "description": "Presentar proyección agregada y cobertura muestral.",
+          "estimation_hours": 1.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US032TASK002",
+          "trello_card_title": "US032TASK002 | Caso de proyección en aplicación",
+          "title": "Caso de proyección en aplicación",
+          "description": "Obtener acopio por campaña desde repositorio cooperativo.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US032TASK003",
+          "trello_card_title": "US032TASK003 | Cliente intake-forecasts en infraestructura",
+          "title": "Cliente intake-forecasts en infraestructura",
+          "description": "Consumir proyección y mapear aptitudes comerciales.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS63",
+      "trello_formatted_id": "TS063",
+      "type": "Technical Story",
+      "title": "Generación de instantánea documental y metadatos de expediente agronómico provisional en campaña activa",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar la generación de una instantánea fechada del expediente agronómico en campaña abierta mediante GET a /api/v1/member-plots/{id}/provisional-dossier, para emitir un documento preliminar con los hechos observados y fecha de corte sin sellos criptográficos prematuros.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS063TASK001",
+          "trello_card_title": "TS063TASK001 | Consulta GetProvisionalDossierByPlotIdAndManagerIdQuery en aplicación",
+          "title": "Consulta GetProvisionalDossierByPlotIdAndManagerIdQuery en aplicación",
+          "description": "Ejecutar GetProvisionalDossierByPlotIdAndManagerIdQuery en MemberPlotQueryService compilando expediente provisional.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS063TASK002",
+          "trello_card_title": "TS063TASK002 | Endpoint getProvisionalDossier en MemberPlotController",
+          "title": "Endpoint getProvisionalDossier en MemberPlotController",
+          "description": "Exponer GET provisional-dossier retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US30",
+      "trello_formatted_id": "US030",
+      "type": "User Story",
+      "title": "Generación y exportación del expediente agronómico de parcela",
+      "user_story_format": "Como Productor Olivarero o Gestor Técnico autorizado, quiero generar y descargar el expediente agronómico en formato PDF correspondiente a una parcela para una campaña determinada, para disponer de un documento técnico descargable que respalde el historial productivo, floración, cuajado, aclareo y telemetría de cara a gestiones financieras, comerciales o de supervisión cooperativa.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US030TASK001",
+          "trello_card_title": "US030TASK001 | Pantalla AgronomicDossierScreen en presentación",
+          "title": "Pantalla AgronomicDossierScreen en presentación",
+          "description": "Integrar AgronomicDossierViewModel con estados del expediente.",
+          "estimation_hours": 1.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US030TASK002",
+          "trello_card_title": "US030TASK002 | Casos de expediente en aplicación",
+          "title": "Casos de expediente en aplicación",
+          "description": "Orquestar SealAgronomicDossierUseCase y DownloadDossierPdfUseCase.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US030TASK003",
+          "trello_card_title": "US030TASK003 | Expediente provisional del gestor Flutter",
+          "title": "Expediente provisional del gestor Flutter",
+          "description": "Consumir provisional-dossier de parcelas socias.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "SPK04",
+      "trello_formatted_id": "SPK004",
+      "type": "Spike Story",
+      "title": "Investigación de Spring AI para respuestas validadas y de persistencia y tareas en segundo plano en Android",
+      "user_story_format": "Como equipo de desarrollo (móvil y backend), queremos investigar y prototipar la redacción de respuestas con Spring AI en el backend Spring Boot y el uso de Room 3 y WorkManager en la aplicación móvil Android (Kotlin), para que podamos entender las implicaciones técnicas, los riesgos de generar texto con un modelo de lenguaje y el esfuerzo requerido para implementar el asistente agronómico en los componentes móvil y backend.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "SPK004TASK001",
+          "trello_card_title": "SPK004TASK001 | Prototipo Spring AI con validación",
+          "title": "Prototipo Spring AI con validación",
+          "description": "Evaluar SpringAiAnswerTextWriter, AnswerTextValidator y ModelCircuitBreaker con Groq.",
+          "estimation_hours": 1.0,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "SPK004TASK002",
+          "trello_card_title": "SPK004TASK002 | Prueba Room y WorkManager Android",
+          "title": "Prueba Room y WorkManager Android",
+          "description": "Validar AssistantAnswerDao y WorkManagerDailySummaryReminder sin conexión.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS66",
+      "trello_formatted_id": "TS066",
+      "type": "Technical Story",
+      "title": "Consulta del catálogo de preguntas por contexto de consulta",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar las preguntas del asistente mediante GET a /api/v1/assistant/questions con los parámetros screen y plotId, para presentar al productor las preguntas cerradas disponibles con sus cifras reales.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS066TASK001",
+          "trello_card_title": "TS066TASK001 | Consulta GetQuestionCatalogQuery en aplicación",
+          "title": "Consulta GetQuestionCatalogQuery en aplicación",
+          "description": "Ejecutar GetQuestionCatalogQuery en QuestionCatalogQueryService filtrando preguntas por contexto.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS066TASK002",
+          "trello_card_title": "TS066TASK002 | Endpoint listQuestions en AssistantQuestionController",
+          "title": "Endpoint listQuestions en AssistantQuestionController",
+          "description": "Exponer GET questions retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US50",
+      "trello_formatted_id": "US050",
+      "type": "User Story",
+      "title": "Consulta de preguntas disponibles según el contexto agronómico",
+      "user_story_format": "Como Productor Olivarero, quiero conocer las preguntas que puedo realizar sobre la situación que estoy revisando, para resolver mis dudas sin tener que formularlas.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US050TASK001",
+          "trello_card_title": "US050TASK001 | Hoja AssistantSheet en presentación",
+          "title": "Hoja AssistantSheet en presentación",
+          "description": "Mostrar preguntas por contexto mediante AssistantSheetViewModel.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US050TASK002",
+          "trello_card_title": "US050TASK002 | Caso LoadAssistantQuestionsUseCase en aplicación",
+          "title": "Caso LoadAssistantQuestionsUseCase en aplicación",
+          "description": "Obtener catálogo desde AssistantRepository con cifras reales.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS67",
+      "trello_formatted_id": "TS067",
+      "type": "Technical Story",
+      "title": "Solicitud idempotente de respuesta del asistente",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar una pregunta del catálogo mediante POST a /api/v1/assistant/answers, para obtener una respuesta validada contra los datos reales del productor sin duplicarla ante reintentos.",
+      "story_points": 5,
+      "application": "Web Service Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS067TASK001",
+          "trello_card_title": "TS067TASK001 | Validador AnswerTextValidator en dominio",
+          "title": "Validador AnswerTextValidator en dominio",
+          "description": "Rechazar textos con cifras ausentes en los hechos.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS067TASK002",
+          "trello_card_title": "TS067TASK002 | Comando AskQuestionCommand en aplicación",
+          "title": "Comando AskQuestionCommand en aplicación",
+          "description": "Componer respuesta idempotente con AnswerComposer y límite de uso.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "TS067TASK003",
+          "trello_card_title": "TS067TASK003 | Endpoint ask en AssistantAnswerController",
+          "title": "Endpoint ask en AssistantAnswerController",
+          "description": "Exponer POST answers con AskQuestionResource retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US51",
+      "trello_formatted_id": "US051",
+      "type": "User Story",
+      "title": "Obtención de respuesta sustentada en datos reales",
+      "user_story_format": "Como Productor Olivarero, quiero recibir una respuesta breve a la pregunta elegida con las cifras y la fuente que la respaldan, para comprender la razón de cada recomendación.",
+      "story_points": 5,
+      "application": "Mobile Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US051TASK001",
+          "trello_card_title": "US051TASK001 | Respuesta AssistantAnswerViews en presentación",
+          "title": "Respuesta AssistantAnswerViews en presentación",
+          "description": "Renderizar texto, indicadores, fuente y acciones de respuesta.",
+          "estimation_hours": 1.8,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US051TASK002",
+          "trello_card_title": "US051TASK002 | Caso AskAssistantUseCase en aplicación",
+          "title": "Caso AskAssistantUseCase en aplicación",
+          "description": "Solicitar respuesta con clave de idempotencia.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK03",
+          "trello_task_id": "US051TASK003",
+          "trello_card_title": "US051TASK003 | Cliente AssistantService en infraestructura",
+          "title": "Cliente AssistantService en infraestructura",
+          "description": "Consumir respuestas y mapear errores en AssistantRepositoryImpl.",
+          "estimation_hours": 1.6,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS68",
+      "trello_formatted_id": "TS068",
+      "type": "Technical Story",
+      "title": "Consulta del historial de respuestas del asistente",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el historial mediante GET a /api/v1/assistant/answers con el parámetro limit, para presentar al productor sus respuestas recientes e indicar su vigencia.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS068TASK001",
+          "trello_card_title": "TS068TASK001 | Consulta GetAnswerHistoryQuery en aplicación",
+          "title": "Consulta GetAnswerHistoryQuery en aplicación",
+          "description": "Ejecutar GetAnswerHistoryQuery en AssistantAnswerQueryService limitando historial a diez días.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS068TASK002",
+          "trello_card_title": "TS068TASK002 | Endpoint listAnswers en AssistantAnswerController",
+          "title": "Endpoint listAnswers en AssistantAnswerController",
+          "description": "Exponer GET answers retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS69",
+      "trello_formatted_id": "TS069",
+      "type": "Technical Story",
+      "title": "Consulta de la última respuesta de un contexto de consulta",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar la última respuesta mediante GET a /api/v1/assistant/answers/latest con los parámetros screen y plotId, para retomar la respuesta anterior del productor en ese contexto.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS069TASK001",
+          "trello_card_title": "TS069TASK001 | Consulta GetLatestAnswerQuery en aplicación",
+          "title": "Consulta GetLatestAnswerQuery en aplicación",
+          "description": "Ejecutar GetLatestAnswerQuery en AssistantAnswerQueryService recuperando última respuesta.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS069TASK002",
+          "trello_card_title": "TS069TASK002 | Endpoint latestAnswer en AssistantAnswerController",
+          "title": "Endpoint latestAnswer en AssistantAnswerController",
+          "description": "Exponer GET latest retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS70",
+      "trello_formatted_id": "TS070",
+      "type": "Technical Story",
+      "title": "Consulta de una respuesta guardada del asistente",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar una respuesta mediante GET a /api/v1/assistant/answers/{answerId}, para abrirla desde el historial con su vigencia actual.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS070TASK001",
+          "trello_card_title": "TS070TASK001 | Consulta GetAnswerByIdQuery en aplicación",
+          "title": "Consulta GetAnswerByIdQuery en aplicación",
+          "description": "Ejecutar GetAnswerByIdQuery en AssistantAnswerQueryService calculando vigencia de respuesta.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS070TASK002",
+          "trello_card_title": "TS070TASK002 | Endpoint getAnswer en AssistantAnswerController",
+          "title": "Endpoint getAnswer en AssistantAnswerController",
+          "description": "Exponer GET answers retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US52",
+      "trello_formatted_id": "US052",
+      "type": "User Story",
+      "title": "Consulta del historial de respuestas recientes",
+      "user_story_format": "Como Productor Olivarero, quiero revisar mis últimas respuestas, incluso sin conexión, para recuperar una orientación recibida mientras estoy en campo.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US052TASK001",
+          "trello_card_title": "US052TASK001 | Historial AssistantRecent en presentación",
+          "title": "Historial AssistantRecent en presentación",
+          "description": "Mostrar recientes mediante ObserveRecentAnswersUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US052TASK002",
+          "trello_card_title": "US052TASK002 | Persistencia AssistantAnswerDao en infraestructura",
+          "title": "Persistencia AssistantAnswerDao en infraestructura",
+          "description": "Sincronizar historial local con RefreshRecentAnswersUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US53",
+      "trello_formatted_id": "US053",
+      "type": "User Story",
+      "title": "Actualización de respuestas ante cambios en los datos",
+      "user_story_format": "Como Productor Olivarero, quiero saber si una respuesta quedó desactualizada y poder solicitarla de nuevo, para no tomar decisiones con información anterior.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US053TASK001",
+          "trello_card_title": "US053TASK001 | Reapertura con FindAnswerToReopenUseCase",
+          "title": "Reapertura con FindAnswerToReopenUseCase",
+          "description": "Recuperar última respuesta y aplicar MoveOnFromAnswerUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US053TASK002",
+          "trello_card_title": "US053TASK002 | Actualización con AskAssistantUseCase",
+          "title": "Actualización con AskAssistantUseCase",
+          "description": "Solicitar nueva respuesta cuando los datos cambian.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS71",
+      "trello_formatted_id": "TS071",
+      "type": "Technical Story",
+      "title": "Consulta del resumen diario del asistente",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar el resumen mediante GET a /api/v1/assistant/daily-summary con el parámetro opcional plotId, para presentar al productor las prioridades del día de su campo o de una parcela.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS071TASK001",
+          "trello_card_title": "TS071TASK001 | Comando PrepareDailySummaryCommand en aplicación",
+          "title": "Comando PrepareDailySummaryCommand en aplicación",
+          "description": "Ejecutar PrepareDailySummaryCommand en DailySummaryCommandService reutilizando resumen del día.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS071TASK002",
+          "trello_card_title": "TS071TASK002 | Endpoint dailySummary en AssistantDailySummaryController",
+          "title": "Endpoint dailySummary en AssistantDailySummaryController",
+          "description": "Exponer GET daily-summary retornando 200.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Trinidad, Jahat",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "US54",
+      "trello_formatted_id": "US054",
+      "type": "User Story",
+      "title": "Resumen diario de prioridades del campo",
+      "user_story_format": "Como Productor Olivarero, quiero recibir cada día un resumen de mi campo, para identificar rápidamente la ventana de aclareo, las temperaturas y las alertas relevantes.",
+      "story_points": 3,
+      "application": "Mobile Application",
+      "aspect": "Assistant",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "US054TASK001",
+          "trello_card_title": "US054TASK001 | Tarjeta HomeAssistantCard en presentación",
+          "title": "Tarjeta HomeAssistantCard en presentación",
+          "description": "Mostrar resumen mediante DailySummaryViewModel y LoadDailySummaryUseCase.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "US054TASK002",
+          "trello_card_title": "US054TASK002 | Recordatorio WorkManagerDailySummaryReminder en infraestructura",
+          "title": "Recordatorio WorkManagerDailySummaryReminder en infraestructura",
+          "description": "Programar DailySummaryWorker sin duplicar la tarea.",
+          "estimation_hours": 1.4,
+          "assigned_to": "Paredes, Victor",
+          "status": "Done",
+          "labels": [
+            "Mobile Application",
+            "Assistant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS72",
+      "trello_formatted_id": "TS072",
+      "type": "Technical Story",
+      "title": "Cierre de sesión del usuario",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero cerrar la sesión mediante POST a /api/v1/auth/sign-out enviando refreshToken, para impedir que la sesión vuelva a renovarse.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS072TASK001",
+          "trello_card_title": "TS072TASK001 | Comando SignOutUserSessionCommand en aplicación",
+          "title": "Comando SignOutUserSessionCommand en aplicación",
+          "description": "Ejecutar SignOutUserSessionCommand en UserSessionCommandService cerrando sesión del token.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS072TASK002",
+          "trello_card_title": "TS072TASK002 | Endpoint signOut en AuthController",
+          "title": "Endpoint signOut en AuthController",
+          "description": "Exponer POST sign-out con RefreshTokenResource retornando 204.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS73",
+      "trello_formatted_id": "TS073",
+      "type": "Technical Story",
+      "title": "Eliminación definitiva de la cuenta",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar la eliminación de la cuenta mediante POST a /api/v1/auth/account-deletions enviando password, para retirar de forma definitiva los datos del usuario autenticado.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS073TASK001",
+          "trello_card_title": "TS073TASK001 | Comando DeleteUserAccountCommand en aplicación",
+          "title": "Comando DeleteUserAccountCommand en aplicación",
+          "description": "Ejecutar DeleteUserAccountCommand en UserAccountCommandService verificando contraseña antes de eliminar.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS073TASK002",
+          "trello_card_title": "TS073TASK002 | Endpoint deleteAccount en AuthController",
+          "title": "Endpoint deleteAccount en AuthController",
+          "description": "Exponer POST account-deletions con DeleteAccountResource retornando 204.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS74",
+      "trello_formatted_id": "TS074",
+      "type": "Technical Story",
+      "title": "Verificación del correo de la cuenta",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero enviar el código de verificación mediante POST a /api/v1/auth/email-verifications con email y code, para activar la cuenta y obtener la sesión.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS074TASK001",
+          "trello_card_title": "TS074TASK001 | Comando OpenUserSessionCommand en aplicación",
+          "title": "Comando OpenUserSessionCommand en aplicación",
+          "description": "Ejecutar OpenUserSessionCommand en UserAccountCommandService validando código y activando cuenta.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS074TASK002",
+          "trello_card_title": "TS074TASK002 | Endpoint verifyEmail en AuthController",
+          "title": "Endpoint verifyEmail en AuthController",
+          "description": "Exponer POST email-verifications con VerifyEmailResource retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS75",
+      "trello_formatted_id": "TS075",
+      "type": "Technical Story",
+      "title": "Reenvío del código de verificación de correo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar un nuevo código mediante POST a /api/v1/auth/email-verification-codes con email, para completar la activación de una cuenta pendiente.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS075TASK001",
+          "trello_card_title": "TS075TASK001 | Comando ResendEmailVerificationCommand en aplicación",
+          "title": "Comando ResendEmailVerificationCommand en aplicación",
+          "description": "Ejecutar ResendEmailVerificationCommand en UserAccountCommandService aplicando intervalo de reenvío.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS075TASK002",
+          "trello_card_title": "TS075TASK002 | Endpoint resendEmailVerificationCode en AuthController",
+          "title": "Endpoint resendEmailVerificationCode en AuthController",
+          "description": "Exponer POST email-verification-codes con EmailVerificationCodeResource retornando 202.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS76",
+      "trello_formatted_id": "TS076",
+      "type": "Technical Story",
+      "title": "Verificación de vigencia del enlace de restablecimiento de contraseña",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero comprobar un enlace mediante GET a /api/v1/auth/password-reset-tokens/{token}, para saber si puede utilizarse sin consumirlo.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "IAM",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS076TASK001",
+          "trello_card_title": "TS076TASK001 | Consulta CheckPasswordResetTokenQuery en aplicación",
+          "title": "Consulta CheckPasswordResetTokenQuery en aplicación",
+          "description": "Ejecutar CheckPasswordResetTokenQuery en UserAccountQueryService validando enlace sin consumirlo.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS076TASK002",
+          "trello_card_title": "TS076TASK002 | Endpoint checkPasswordResetToken en AuthController",
+          "title": "Endpoint checkPasswordResetToken en AuthController",
+          "description": "Exponer GET password-reset-tokens retornando 204.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "IAM"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS77",
+      "trello_formatted_id": "TS077",
+      "type": "Technical Story",
+      "title": "Consulta de planes de suscripción individual",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar los planes mediante GET a /api/v1/subscription-plans, para presentar al productor las opciones de suscripción disponibles.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS077TASK001",
+          "trello_card_title": "TS077TASK001 | Servicio SubscriptionQueryService en aplicación",
+          "title": "Servicio SubscriptionQueryService en aplicación",
+          "description": "Implementar SubscriptionQueryService listando planes individuales.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS077TASK002",
+          "trello_card_title": "TS077TASK002 | Endpoint planes en SubscriptionController",
+          "title": "Endpoint planes en SubscriptionController",
+          "description": "Exponer GET subscription-plans retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS78",
+      "trello_formatted_id": "TS078",
+      "type": "Technical Story",
+      "title": "Consulta de la suscripción actual del productor",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar la suscripción actual mediante GET a /api/v1/subscriptions, para conocer el estado del plan del productor autenticado.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS078TASK001",
+          "trello_card_title": "TS078TASK001 | Servicio SubscriptionQueryService en aplicación",
+          "title": "Servicio SubscriptionQueryService en aplicación",
+          "description": "Implementar SubscriptionQueryService recuperando suscripción actual.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS078TASK002",
+          "trello_card_title": "TS078TASK002 | Endpoint current en SubscriptionController",
+          "title": "Endpoint current en SubscriptionController",
+          "description": "Exponer GET subscriptions retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS79",
+      "trello_formatted_id": "TS079",
+      "type": "Technical Story",
+      "title": "Consulta de una suscripción del productor",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar una suscripción mediante GET a /api/v1/subscriptions/{id}, para recuperar el detalle de un plan propio.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS079TASK001",
+          "trello_card_title": "TS079TASK001 | Servicio SubscriptionQueryService en aplicación",
+          "title": "Servicio SubscriptionQueryService en aplicación",
+          "description": "Implementar SubscriptionQueryService validando titularidad de suscripción.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS079TASK002",
+          "trello_card_title": "TS079TASK002 | Endpoint get en SubscriptionController",
+          "title": "Endpoint get en SubscriptionController",
+          "description": "Exponer GET subscriptions retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS80",
+      "trello_formatted_id": "TS080",
+      "type": "Technical Story",
+      "title": "Preparación del pago de una suscripción",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero preparar o recuperar el pago mediante POST a /api/v1/subscriptions/{id}/checkouts con la cabecera Idempotency-Key, para permitir que el productor complete el pago de su plan sin duplicar la operación.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS080TASK001",
+          "trello_card_title": "TS080TASK001 | Servicio CheckoutService en aplicación",
+          "title": "Servicio CheckoutService en aplicación",
+          "description": "Implementar CheckoutService preparando pago idempotente.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS080TASK002",
+          "trello_card_title": "TS080TASK002 | Endpoint checkout en SubscriptionController",
+          "title": "Endpoint checkout en SubscriptionController",
+          "description": "Exponer POST checkouts retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS81",
+      "trello_formatted_id": "TS081",
+      "type": "Technical Story",
+      "title": "Consulta de condiciones de ampliación del plan",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar las condiciones mediante GET a /api/v1/subscriptions/{subscriptionId}/extension-terms, para informar al productor cómo puede ampliar su plan.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS081TASK001",
+          "trello_card_title": "TS081TASK001 | Servicio QuotaExtensionQueryService en aplicación",
+          "title": "Servicio QuotaExtensionQueryService en aplicación",
+          "description": "Implementar QuotaExtensionQueryService evaluando ampliación del plan.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS081TASK002",
+          "trello_card_title": "TS081TASK002 | Endpoint terms en QuotaExtensionController",
+          "title": "Endpoint terms en QuotaExtensionController",
+          "description": "Exponer GET extension-terms retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS82",
+      "trello_formatted_id": "TS082",
+      "type": "Technical Story",
+      "title": "Solicitud de ampliación pagada del plan individual",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero solicitar una ampliación mediante POST a /api/v1/subscriptions/{subscriptionId}/extensions con addedHa y la cabecera Idempotency-Key, para agregar hectáreas al plan individual del productor.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS082TASK001",
+          "trello_card_title": "TS082TASK001 | Comando RequestQuotaExtensionCommand en aplicación",
+          "title": "Comando RequestQuotaExtensionCommand en aplicación",
+          "description": "Ejecutar RequestQuotaExtensionCommand en QuotaExtensionCommandService registrando ampliación pendiente de pago.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS082TASK002",
+          "trello_card_title": "TS082TASK002 | Endpoint request en QuotaExtensionController",
+          "title": "Endpoint request en QuotaExtensionController",
+          "description": "Exponer POST extensions con RequestQuotaExtensionResource retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS83",
+      "trello_formatted_id": "TS083",
+      "type": "Technical Story",
+      "title": "Consulta de una ampliación del plan",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar una ampliación mediante GET a /api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}, para conocer su estado.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS083TASK001",
+          "trello_card_title": "TS083TASK001 | Servicio QuotaExtensionQueryService en aplicación",
+          "title": "Servicio QuotaExtensionQueryService en aplicación",
+          "description": "Implementar QuotaExtensionQueryService validando titularidad de ampliación.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS083TASK002",
+          "trello_card_title": "TS083TASK002 | Endpoint get en QuotaExtensionController",
+          "title": "Endpoint get en QuotaExtensionController",
+          "description": "Exponer GET extensions retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS84",
+      "trello_formatted_id": "TS084",
+      "type": "Technical Story",
+      "title": "Preparación del pago de una ampliación",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero preparar o recuperar el pago mediante POST a /api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}/checkouts con la cabecera Idempotency-Key, para completar el pago de una ampliación pendiente sin duplicar la operación.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS084TASK001",
+          "trello_card_title": "TS084TASK001 | Servicio CheckoutService en aplicación",
+          "title": "Servicio CheckoutService en aplicación",
+          "description": "Implementar CheckoutService preparando pago de ampliación.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS084TASK002",
+          "trello_card_title": "TS084TASK002 | Endpoint checkout en QuotaExtensionController",
+          "title": "Endpoint checkout en QuotaExtensionController",
+          "description": "Exponer POST checkouts retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS85",
+      "trello_formatted_id": "TS085",
+      "type": "Technical Story",
+      "title": "Canje de código de ampliación de hectáreas",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero canjear un código mediante POST a /api/v1/quota-extension-redemptions con code, para agregar hectáreas al plan patrocinado vigente del productor.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS085TASK001",
+          "trello_card_title": "TS085TASK001 | Comando RedeemExtensionCodeCommand en aplicación",
+          "title": "Comando RedeemExtensionCodeCommand en aplicación",
+          "description": "Ejecutar RedeemExtensionCodeCommand en QuotaExtensionCommandService agregando hectáreas al plan.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS085TASK002",
+          "trello_card_title": "TS085TASK002 | Endpoint redeem en QuotaExtensionRedemptionController",
+          "title": "Endpoint redeem en QuotaExtensionRedemptionController",
+          "description": "Exponer POST quota-extension-redemptions con RedeemExtensionCodeResource retornando 201.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS86",
+      "trello_formatted_id": "TS086",
+      "type": "Technical Story",
+      "title": "Desvinculación de socio de la licencia institucional",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero desvincular a un socio mediante POST a /api/v1/cooperative-licenses/{id}/member-releases con memberId, para retirar el acceso del gestor a los datos del socio y liberar su cupo al terminar el periodo de gracia.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS086TASK001",
+          "trello_card_title": "TS086TASK001 | Comando ReleaseCooperativeMemberCommand en aplicación",
+          "title": "Comando ReleaseCooperativeMemberCommand en aplicación",
+          "description": "Ejecutar ReleaseCooperativeMemberCommand en CooperativeLicenseCommandService aplicando periodo de gracia.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS086TASK002",
+          "trello_card_title": "TS086TASK002 | Endpoint releaseMember en CooperativeLicenseController",
+          "title": "Endpoint releaseMember en CooperativeLicenseController",
+          "description": "Exponer POST member-releases con ReleaseCooperativeMemberResource retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS87",
+      "trello_formatted_id": "TS087",
+      "type": "Technical Story",
+      "title": "Consulta de consentimientos de compartición de datos",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar los consentimientos mediante GET a /api/v1/data-sharing-consents, para mostrar al productor con quién comparte sus datos.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS087TASK001",
+          "trello_card_title": "TS087TASK001 | Consulta GetDataSharingConsentsByProducerIdQuery en aplicación",
+          "title": "Consulta GetDataSharingConsentsByProducerIdQuery en aplicación",
+          "description": "Ejecutar GetDataSharingConsentsByProducerIdQuery en DataSharingConsentQueryService listando consentimientos del productor.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS087TASK002",
+          "trello_card_title": "TS087TASK002 | Endpoint list en DataSharingConsentController",
+          "title": "Endpoint list en DataSharingConsentController",
+          "description": "Exponer GET data-sharing-consents retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS88",
+      "trello_formatted_id": "TS088",
+      "type": "Technical Story",
+      "title": "Consulta de un consentimiento de compartición de datos",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar un consentimiento mediante GET a /api/v1/data-sharing-consents/{id}, para revisar el detalle de una autorización propia.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS088TASK001",
+          "trello_card_title": "TS088TASK001 | Consulta GetDataSharingConsentByIdAndProducerIdQuery en aplicación",
+          "title": "Consulta GetDataSharingConsentByIdAndProducerIdQuery en aplicación",
+          "description": "Ejecutar GetDataSharingConsentByIdAndProducerIdQuery en DataSharingConsentQueryService validando titularidad del consentimiento.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS088TASK002",
+          "trello_card_title": "TS088TASK002 | Endpoint get en DataSharingConsentController",
+          "title": "Endpoint get en DataSharingConsentController",
+          "description": "Exponer GET data-sharing-consents retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS89",
+      "trello_formatted_id": "TS089",
+      "type": "Technical Story",
+      "title": "Retiro del consentimiento de compartición de datos",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero retirar un consentimiento mediante POST a /api/v1/data-sharing-consents/{id}/withdrawals, para dejar de compartir los datos con la cooperativa.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Subscription",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS089TASK001",
+          "trello_card_title": "TS089TASK001 | Comando WithdrawDataSharingConsentCommand en aplicación",
+          "title": "Comando WithdrawDataSharingConsentCommand en aplicación",
+          "description": "Ejecutar WithdrawDataSharingConsentCommand en DataSharingConsentCommandService retirando acceso del gestor.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS089TASK002",
+          "trello_card_title": "TS089TASK002 | Endpoint withdraw en DataSharingConsentController",
+          "title": "Endpoint withdraw en DataSharingConsentController",
+          "description": "Exponer POST withdrawals retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Subscription"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS90",
+      "trello_formatted_id": "TS090",
+      "type": "Technical Story",
+      "title": "Registro de nota de campo de una parcela",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero registrar una nota mediante POST a /api/v1/plots/{plotId}/field-notes con id, type, text y observedOn, para conservar las observaciones del productor sin duplicarlas al reintentar.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS090TASK001",
+          "trello_card_title": "TS090TASK001 | Comando RecordFieldNoteCommand en aplicación",
+          "title": "Comando RecordFieldNoteCommand en aplicación",
+          "description": "Ejecutar RecordFieldNoteCommand en FieldNoteCommandService evitando duplicados por identificador.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS090TASK002",
+          "trello_card_title": "TS090TASK002 | Endpoint record en FieldNoteController",
+          "title": "Endpoint record en FieldNoteController",
+          "description": "Exponer POST field-notes con RecordFieldNoteResource retornando 201.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS91",
+      "trello_formatted_id": "TS091",
+      "type": "Technical Story",
+      "title": "Consulta de notas de campo de una parcela",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero listar las notas mediante GET a /api/v1/plots/{plotId}/field-notes, para revisar las observaciones registradas en la parcela.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS091TASK001",
+          "trello_card_title": "TS091TASK001 | Servicio FieldNoteQueryService en aplicación",
+          "title": "Servicio FieldNoteQueryService en aplicación",
+          "description": "Implementar FieldNoteQueryService ordenando notas por fecha.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS091TASK002",
+          "trello_card_title": "TS091TASK002 | Endpoint list en FieldNoteController",
+          "title": "Endpoint list en FieldNoteController",
+          "description": "Exponer GET field-notes retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS92",
+      "trello_formatted_id": "TS092",
+      "type": "Technical Story",
+      "title": "Adjunto de fotografía a una nota de campo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero adjuntar una fotografía mediante PUT a /api/v1/plots/{plotId}/field-notes/{noteId}/photo, para documentar visualmente una observación de campo.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS092TASK001",
+          "trello_card_title": "TS092TASK001 | Comando AttachFieldNotePhotoCommand en aplicación",
+          "title": "Comando AttachFieldNotePhotoCommand en aplicación",
+          "description": "Ejecutar AttachFieldNotePhotoCommand en FieldNoteCommandService validando formato y tamaño.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS092TASK002",
+          "trello_card_title": "TS092TASK002 | Endpoint attachPhoto en FieldNoteController",
+          "title": "Endpoint attachPhoto en FieldNoteController",
+          "description": "Exponer PUT photo retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS93",
+      "trello_formatted_id": "TS093",
+      "type": "Technical Story",
+      "title": "Descarga de la fotografía de una nota de campo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero descargar una fotografía mediante GET a /api/v1/plots/{plotId}/field-notes/{noteId}/photo, para visualizar la evidencia registrada.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Orchard",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS093TASK001",
+          "trello_card_title": "TS093TASK001 | Servicio FieldNoteQueryService en aplicación",
+          "title": "Servicio FieldNoteQueryService en aplicación",
+          "description": "Implementar FieldNoteQueryService recuperando bytes de fotografía.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS093TASK002",
+          "trello_card_title": "TS093TASK002 | Endpoint photo en FieldNoteController",
+          "title": "Endpoint photo en FieldNoteController",
+          "description": "Exponer GET photo retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Orchard"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS94",
+      "trello_formatted_id": "TS094",
+      "type": "Technical Story",
+      "title": "Consulta de sectores territoriales de la licencia",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero listar los sectores mediante GET a /api/v1/sector-zones, para organizar las parcelas de la cooperativa por sector.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS094TASK001",
+          "trello_card_title": "TS094TASK001 | Consulta GetSectorZonesByUserIdQuery en aplicación",
+          "title": "Consulta GetSectorZonesByUserIdQuery en aplicación",
+          "description": "Ejecutar GetSectorZonesByUserIdQuery en SectorZoneQueryService contando parcelas por sector.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS094TASK002",
+          "trello_card_title": "TS094TASK002 | Endpoint list en SectorZoneController",
+          "title": "Endpoint list en SectorZoneController",
+          "description": "Exponer GET sector-zones retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS95",
+      "trello_formatted_id": "TS095",
+      "type": "Technical Story",
+      "title": "Registro de sector territorial",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero agregar un sector mediante POST a /api/v1/sector-zones con name, para ampliar la lista de sectores disponible para la licencia.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS095TASK001",
+          "trello_card_title": "TS095TASK001 | Comando CreateSectorZoneCommand en aplicación",
+          "title": "Comando CreateSectorZoneCommand en aplicación",
+          "description": "Ejecutar CreateSectorZoneCommand en SectorZoneCommandService validando unicidad del nombre.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS095TASK002",
+          "trello_card_title": "TS095TASK002 | Endpoint create en SectorZoneController",
+          "title": "Endpoint create en SectorZoneController",
+          "description": "Exponer POST sector-zones con SectorZoneNameResource retornando 201.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS96",
+      "trello_formatted_id": "TS096",
+      "type": "Technical Story",
+      "title": "Consulta de un sector territorial",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar un sector mediante GET a /api/v1/sector-zones/{id}, para recuperar su información.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS096TASK001",
+          "trello_card_title": "TS096TASK001 | Consulta GetSectorZoneByIdAndUserIdQuery en aplicación",
+          "title": "Consulta GetSectorZoneByIdAndUserIdQuery en aplicación",
+          "description": "Ejecutar GetSectorZoneByIdAndUserIdQuery en SectorZoneQueryService recuperando sector de licencia.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS096TASK002",
+          "trello_card_title": "TS096TASK002 | Endpoint get en SectorZoneController",
+          "title": "Endpoint get en SectorZoneController",
+          "description": "Exponer GET sector-zones retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS97",
+      "trello_formatted_id": "TS097",
+      "type": "Technical Story",
+      "title": "Renombrado de sector territorial",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero renombrar un sector mediante PATCH a /api/v1/sector-zones/{id} con name, para que todas sus parcelas muestren el nombre actualizado.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS097TASK001",
+          "trello_card_title": "TS097TASK001 | Comando RenameSectorZoneCommand en aplicación",
+          "title": "Comando RenameSectorZoneCommand en aplicación",
+          "description": "Ejecutar RenameSectorZoneCommand en SectorZoneCommandService validando nombre único.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS097TASK002",
+          "trello_card_title": "TS097TASK002 | Endpoint rename en SectorZoneController",
+          "title": "Endpoint rename en SectorZoneController",
+          "description": "Exponer PATCH sector-zones con SectorZoneNameResource retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS98",
+      "trello_formatted_id": "TS098",
+      "type": "Technical Story",
+      "title": "Consulta del sector de una parcela socia",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar el sector mediante GET a /api/v1/plot-sector-assignments/{plotId}, para conocer la ubicación territorial de la parcela.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS098TASK001",
+          "trello_card_title": "TS098TASK001 | Consulta GetPlotSectorAssignmentByPlotIdAndUserIdQuery en aplicación",
+          "title": "Consulta GetPlotSectorAssignmentByPlotIdAndUserIdQuery en aplicación",
+          "description": "Ejecutar GetPlotSectorAssignmentByPlotIdAndUserIdQuery en PlotSectorAssignmentQueryService verificando alcance del usuario.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS098TASK002",
+          "trello_card_title": "TS098TASK002 | Endpoint get en PlotSectorAssignmentController",
+          "title": "Endpoint get en PlotSectorAssignmentController",
+          "description": "Exponer GET plot-sector-assignments retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS99",
+      "trello_formatted_id": "TS099",
+      "type": "Technical Story",
+      "title": "Asignación de sector a una parcela",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero asignar un sector mediante PUT a /api/v1/plot-sector-assignments/{plotId} con sectorZoneId o name, para agrupar la parcela dentro de la organización territorial.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS099TASK001",
+          "trello_card_title": "TS099TASK001 | Comando AssignPlotSectorCommand en aplicación",
+          "title": "Comando AssignPlotSectorCommand en aplicación",
+          "description": "Ejecutar AssignPlotSectorCommand en PlotSectorAssignmentCommandService resolviendo sector por nombre.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS099TASK002",
+          "trello_card_title": "TS099TASK002 | Endpoint assign en PlotSectorAssignmentController",
+          "title": "Endpoint assign en PlotSectorAssignmentController",
+          "description": "Exponer PUT plot-sector-assignments con AssignPlotSectorResource retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS100",
+      "trello_formatted_id": "TS100",
+      "type": "Technical Story",
+      "title": "Revisión de sector pendiente de confirmación",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero resolver un sector pendiente mediante POST a /api/v1/plot-sector-assignments/{plotId}/resolutions, para consolidar la lista de sectores de la licencia.",
+      "story_points": 2,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS100TASK001",
+          "trello_card_title": "TS100TASK001 | Comando ResolvePlotSectorCommand en aplicación",
+          "title": "Comando ResolvePlotSectorCommand en aplicación",
+          "description": "Ejecutar ResolvePlotSectorCommand en PlotSectorAssignmentCommandService aplicando decisión a parcelas coincidentes.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS100TASK002",
+          "trello_card_title": "TS100TASK002 | Endpoint resolve en PlotSectorAssignmentController",
+          "title": "Endpoint resolve en PlotSectorAssignmentController",
+          "description": "Exponer POST resolutions retornando 200.",
+          "estimation_hours": 0.7,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS101",
+      "trello_formatted_id": "TS101",
+      "type": "Technical Story",
+      "title": "Sellado del expediente agronómico de una campaña liquidada",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero sellar el expediente mediante POST a /api/v1/plots/{plotId}/agronomic-dossiers con campaignYear, para conservar un documento definitivo verificable de la campaña.",
+      "story_points": 3,
+      "application": "Web Service Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS101TASK001",
+          "trello_card_title": "TS101TASK001 | Comando SealAgronomicDossierCommand en aplicación",
+          "title": "Comando SealAgronomicDossierCommand en aplicación",
+          "description": "Ejecutar SealAgronomicDossierCommand en SealAgronomicDossierCommandService almacenando documento con huella.",
+          "estimation_hours": 0.9,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS101TASK002",
+          "trello_card_title": "TS101TASK002 | Endpoint seal en AgronomicDossierController",
+          "title": "Endpoint seal en AgronomicDossierController",
+          "description": "Exponer POST agronomic-dossiers con SealDossierResource retornando 201.",
+          "estimation_hours": 0.8,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS102",
+      "trello_formatted_id": "TS102",
+      "type": "Technical Story",
+      "title": "Consulta de expedientes sellados de una parcela",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero listar los expedientes mediante GET a /api/v1/plots/{plotId}/agronomic-dossiers, para revisar los documentos definitivos por campaña.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS102TASK001",
+          "trello_card_title": "TS102TASK001 | Servicio SealedDossierQueryService en aplicación",
+          "title": "Servicio SealedDossierQueryService en aplicación",
+          "description": "Implementar SealedDossierQueryService ordenando expedientes por campaña.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS102TASK002",
+          "trello_card_title": "TS102TASK002 | Endpoint list en AgronomicDossierController",
+          "title": "Endpoint list en AgronomicDossierController",
+          "description": "Exponer GET agronomic-dossiers retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS103",
+      "trello_formatted_id": "TS103",
+      "type": "Technical Story",
+      "title": "Verificación de autenticidad de un expediente",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero verificar un expediente mediante GET a /api/v1/agronomic-dossiers/verifications/{verificationHash}, para comprobar que el documento fue emitido por Viora y no fue modificado.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Harvest",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS103TASK001",
+          "trello_card_title": "TS103TASK001 | Servicio SealedDossierQueryService en aplicación",
+          "title": "Servicio SealedDossierQueryService en aplicación",
+          "description": "Implementar SealedDossierQueryService buscando expediente por huella.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS103TASK002",
+          "trello_card_title": "TS103TASK002 | Endpoint verify en DossierVerificationController",
+          "title": "Endpoint verify en DossierVerificationController",
+          "description": "Exponer GET verifications retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Li, Diana",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS104",
+      "trello_formatted_id": "TS104",
+      "type": "Technical Story",
+      "title": "Consulta de prescripciones de aclareo del productor",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero listar las prescripciones mediante GET a /api/v1/thinning-prescriptions con el parámetro opcional campaignYear, para revisar el estado de aclareo de todas las parcelas activas.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS104TASK001",
+          "trello_card_title": "TS104TASK001 | Consulta GetThinningPrescriptionsQuery en aplicación",
+          "title": "Consulta GetThinningPrescriptionsQuery en aplicación",
+          "description": "Ejecutar GetThinningPrescriptionsQuery en GetThinningPrescriptionQueryService leyendo prescripciones de parcelas activas.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS104TASK002",
+          "trello_card_title": "TS104TASK002 | Endpoint getThinningPrescriptions en ThinningPrescriptionsController",
+          "title": "Endpoint getThinningPrescriptions en ThinningPrescriptionsController",
+          "description": "Exponer GET thinning-prescriptions retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS105",
+      "trello_formatted_id": "TS105",
+      "type": "Technical Story",
+      "title": "Consulta de una prescripción de aclareo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar una prescripción mediante GET a /api/v1/thinning-prescriptions/{id}, para recuperarla en cualquiera de sus estados.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS105TASK001",
+          "trello_card_title": "TS105TASK001 | Comando EvaluateThinningPrescriptionCommand en aplicación",
+          "title": "Comando EvaluateThinningPrescriptionCommand en aplicación",
+          "description": "Ejecutar EvaluateThinningPrescriptionCommand en FruitThinningPrescriptionCommandService verificando titularidad de prescripción.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS105TASK002",
+          "trello_card_title": "TS105TASK002 | Endpoint getThinningPrescription en ThinningPrescriptionsController",
+          "title": "Endpoint getThinningPrescription en ThinningPrescriptionsController",
+          "description": "Exponer GET thinning-prescriptions retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS106",
+      "trello_formatted_id": "TS106",
+      "type": "Technical Story",
+      "title": "Consulta de la ejecución registrada de un aclareo",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar la ejecución mediante GET a /api/v1/thinning-prescriptions/{id}/execution-confirmations, para revisar su balance de carga, proyección de calibre y rendimiento.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Thinning",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS106TASK001",
+          "trello_card_title": "TS106TASK001 | Consulta GetThinningPrescriptionByIdQuery en aplicación",
+          "title": "Consulta GetThinningPrescriptionByIdQuery en aplicación",
+          "description": "Ejecutar GetThinningPrescriptionByIdQuery en GetThinningPrescriptionQueryService leyendo balance de ejecución.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS106TASK002",
+          "trello_card_title": "TS106TASK002 | Endpoint get en ThinningExecutionController",
+          "title": "Endpoint get en ThinningExecutionController",
+          "description": "Exponer GET execution-confirmations retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Espada, Piero",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Thinning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "TS107",
+      "trello_formatted_id": "TS107",
+      "type": "Technical Story",
+      "title": "Consulta del detalle de socio productor agremiado",
+      "user_story_format": "Como desarrollador de aplicaciones cliente, quiero consultar un socio mediante GET a /api/v1/cooperative-members/{id}, para revisar su ficha mientras comparte sus datos.",
+      "story_points": 1,
+      "application": "Web Service Application",
+      "aspect": "Territory",
+      "tasks": [
+        {
+          "task_id": "TK01",
+          "trello_task_id": "TS107TASK001",
+          "trello_card_title": "TS107TASK001 | Consulta GetCooperativeMemberByIdAndManagerIdQuery en aplicación",
+          "title": "Consulta GetCooperativeMemberByIdAndManagerIdQuery en aplicación",
+          "description": "Ejecutar GetCooperativeMemberByIdAndManagerIdQuery en CooperativeMemberQueryService verificando socio de licencia.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        },
+        {
+          "task_id": "TK02",
+          "trello_task_id": "TS107TASK002",
+          "trello_card_title": "TS107TASK002 | Endpoint get en CooperativeMemberController",
+          "title": "Endpoint get en CooperativeMemberController",
+          "description": "Exponer GET cooperative-members retornando 200.",
+          "estimation_hours": 0.5,
+          "assigned_to": "Santi, Fabrizio",
+          "status": "Done",
+          "labels": [
+            "Web Service Application",
+            "Territory"
+          ]
+        }
+      ]
+    }
+  ]
+}
