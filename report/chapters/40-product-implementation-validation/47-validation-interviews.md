@@ -193,6 +193,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \newpage
 
 #### Segmento 2: Gestores técnicos de organizaciones olivareras
+&nbsp;
 
 ```{=latex}
 \noindent \begin{tabular}{p{\dimexpr 0.15\textwidth-2\tabcolsep\relax} p{\dimexpr 0.37\textwidth-2\tabcolsep\relax} p{\dimexpr 0.13\textwidth-2\tabcolsep\relax} p{\dimexpr 0.35\textwidth-2\tabcolsep\relax}} 
