@@ -164,92 +164,72 @@ Alfabético & Padrón de socios de la cooperativa (US08), selección manual de s
 
 Viora utiliza etiquetas breves y consistentes que permiten anticipar el contenido o la acción de cada elemento. Se mantiene el vocabulario de las Style Guidelines y se asocia cada etiqueta con los grupos definidos en Organization Systems. Los nombres de navegación pueden agrupar varios conceptos: no es necesario convertir cada entidad del dominio en una pestaña. Las dos implementaciones móviles, Kotlin y Flutter, comparten las etiquetas y diferencian el contenido según el rol autenticado.
 
-**Landing Page.** Las etiquetas del menú remiten a secciones del mismo documento; los botones describen su destino. En la \autoref{tab:ia-labels-landing} se expone el vocabulario para concretar los bloques de Organization Systems:
+**Landing Page.** Las etiquetas del menú remiten a secciones del mismo documento; los botones describen su destino. Se propone el siguiente vocabulario para concretar los bloques de Organization Systems:
 
-\begingroup
-\small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
-\begin{longtable}{p{0.32\textwidth} p{0.63\textwidth}}
-\caption{Vocabulario y sistemas de etiquetado del Landing Page.} \label{tab:ia-labels-landing} \\
-\hline
-\textbf{Etiqueta} & \textbf{Información o acción asociada} \\
-\hline
-\endfirsthead
-\hline
-\textbf{Etiqueta} & \textbf{Información o acción asociada} \\
-\hline
-\endhead
-\hline
-\endfoot
-\hline
-\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
-\endlastfoot
-Inicio & Propuesta de valor, problema de la vecería y solución. \\
-Producto & Funcionalidades, casos de uso y video About the Product. \\
-Para quién & Contexto de Tacna y beneficios para productores y gestores técnicos. \\
-Planes & Plan Productor y Plan Cooperativa, condiciones de acceso y tarifas en PEN. \\
-Equipo & ArcadiaDevs, integrantes y video About the Team. \\
-Descargar app & Acceso al medio de distribución móvil disponible. \\
-Ver Plan Productor / Ver Plan Cooperativa & Desplazamiento desde cada segmento a su modalidad de acceso. \\
-Canjear código & Remite a la aplicación para canjear el código de activación que la cooperativa entrega a sus socios; el socio no paga de forma individual. \\
-Términos y condiciones / Privacidad & Documentos legales correspondientes. \\
-Español / English & Selección del idioma del contenido. \\
-\end{longtable}
-\endgroup
+| Etiqueta | Información o acción asociada |
+|:-----------------------------|:---------------------------------------------------------------------|
+| Inicio | Propuesta de valor, problema de la vecería y solución. |
+| Producto | Funcionalidades, casos de uso y video About the Product. |
+| Para quién | Contexto de Tacna y beneficios para productores y gestores técnicos. |
+| Planes | Plan Productor y Plan Cooperativa, condiciones de acceso y tarifas en PEN. |
+| Equipo | ArcadiaDevs, integrantes y video About the Team. |
+| Descargar app | Acceso al medio de distribución móvil disponible. |
+| Ver Plan Productor / Ver Plan Cooperativa | Desplazamiento desde cada segmento a su modalidad de acceso. |
+| Canjear código | Remite a la aplicación para canjear el código de activación que la cooperativa entrega a sus socios; el socio no paga de forma individual y, al canjearlo, decide si comparte sus lotes con la cooperativa. |
+| Términos y condiciones / Privacidad | Documentos legales correspondientes. |
+| Español / English | Selección del idioma del contenido. |
 
 No se utiliza “Contacto” como destino de un formulario, porque la organización del landing establece que el alta ocurre en la aplicación y no contempla ese formulario.
 
-**Aplicaciones móviles.** Se adopta “Lotes” como etiqueta de navegación, según Style Guidelines. En esta interfaz, un lote corresponde a la parcela registrada; no representa un fundo completo ni una agrupación adicional de parcelas. En la documentación técnica se conserva el término parcela. En la \autoref{tab:ia-labels-mobile} se consolidan las etiquetas móviles y su criterio de uso:
+**Aplicaciones móviles.** Se adopta “Lotes” como etiqueta de navegación, según Style Guidelines. En esta interfaz, un lote corresponde a la parcela registrada; no representa un fundo completo ni una agrupación adicional de parcelas. En la documentación técnica se conserva el término parcela. Esta equivalencia evita introducir una jerarquía inexistente.
 
-\begingroup
-\small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
-\begin{longtable}{p{0.30\textwidth} p{0.65\textwidth}}
-\caption{Vocabulario y sistemas de etiquetado de las aplicaciones móviles.} \label{tab:ia-labels-mobile} \\
-\hline
-\textbf{Etiqueta} & \textbf{Asociación y criterio de uso} \\
-\hline
-\endfirsthead
-\hline
-\textbf{Etiqueta} & \textbf{Asociación y criterio de uso} \\
-\hline
-\endhead
-\hline
-\endfoot
-\hline
-\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
-\endlastfoot
-Inicio & Resumen y accesos a las tareas del rol. \\
-Lotes & Inventario de parcelas del productor; cada elemento abre su detalle. \\
-Plan & Evaluación de carga y prescripción de aclareo por lote y campaña. Se distingue de “Suscripción”. \\
-Bitácora & Registros de muestreo, aclareo y cosecha asociados a un lote y una campaña. \\
-Muestreo de cuajado & Ronda de observaciones de árboles, brotes y frutos. “Registrar muestreo” inicia la captura. \\
-Carga frutal & Evaluación calculada a partir de los insumos agronómicos; no equivale al pesaje real de cosecha. \\
-Prescripción & Porcentaje de remoción y ventana de aclareo calculados por el sistema. \\
-Registrar aclareo & Fecha y porcentaje realmente ejecutados por el productor. \\
-Ventana de aclareo & Estado y fecha límite informados por el sistema. Una fecha vencida se acompaña de la advertencia correspondiente. \\
-Cosecha / Registrar cosecha & Kilogramos de la campaña, diferenciados en aceituna verde y negra cuando corresponda. \\
-Cerrar campaña & Confirmación del cierre productivo; se diferencia del registro retrospectivo de cosechas. \\
-Alternancia / Índice BBI & El primer término identifica el fenómeno; el segundo, su indicador numérico. La ayuda explica que alternancia también se conoce como vecería. \\
-Frío acumulado & Acumulación de frío de la temporada evaluada, con su unidad y período. \\
-Clima & Series agroclimáticas y pronóstico, mostrando fuente y fecha de actualización. \\
-Nodos virtuales & Dispositivos lógicos vinculados al lote; sus lecturas sintéticas se identifican como “Datos simulados”. \\
-Riesgo territorial & Priorización de parcelas de la cooperativa por su situación agronómica y climática. \\
-Acopio & Proyección agregada de aceituna verde y negra para la campaña, con cobertura de muestreo. \\
-Socios & Productores vinculados a la cooperativa y datos de membresía autorizados. \\
-Expediente técnico & Documento PDF de trazabilidad agronómica; “Descargar PDF” expresa la acción. \\
-Suscripción & Modalidad de acceso, estado y vigencia. \\
-Código de cooperativa & Código de activación para acceder mediante una membresía cooperativa. \\
-Cuenta / Idioma & Perfil, preferencias y gestión del acceso. \\
-Lote archivado & Parcela retirada del inventario activo que conserva su historial. \\
-\end{longtable}
-\endgroup
+De forma análoga, “Sector” designa la zona territorial del valle en la que se ubica un lote (por ejemplo, La Yarada Baja o Los Palos); no designa una subdivisión interna del lote. El productor, en la hoja de selección de sector, y el gestor, en el mapa de riesgo y en el acopio, ven los mismos nombres de sector, tomados de un único catálogo. Por su parte, “lote” conserva un solo significado, el de parcela: los grupos de códigos que genera la cooperativa se denominan “emisiones” y no “lotes de códigos”, para no mezclar ambos conceptos.
+
+| Etiqueta | Asociación y criterio de uso |
+|:-----------------------------|:---------------------------------------------------------------------|
+| Inicio | Resumen y accesos a las tareas del rol. |
+| Lotes | Inventario de parcelas del productor; cada elemento abre su detalle. |
+| Sector | Zona territorial del valle en la que se ubica un lote. Se muestra como atributo del lote y como unidad de agrupación del riesgo territorial y del acopio. |
+| Elegir sector / Guardar sector | Acciones del productor sobre el detalle del lote. La hoja propone el sector que corresponde al contorno y ofrece los demás sectores del valle en orden alfabético. |
+| Sin sector | Estado de un lote al que aún no se le asignó sector; se acompaña de la acción “Elegir sector”. Mientras persista, la cooperativa no puede ubicar el lote en su mapa de riesgo. |
+| Plan | Evaluación de carga y prescripción de aclareo por lote y campaña. Se distingue de “Suscripción”. |
+| Bitácora | Registros de muestreo, aclareo y cosecha asociados a un lote y una campaña. |
+| Muestreo de cuajado | Ronda de observaciones de árboles, brotes y frutos. “Registrar muestreo” inicia la captura. |
+| Carga frutal | Evaluación calculada a partir de los insumos agronómicos; no equivale al pesaje real de cosecha. |
+| Prescripción | Porcentaje de remoción y ventana de aclareo calculados por el sistema. |
+| Registrar aclareo | Fecha y porcentaje realmente ejecutados por el productor. |
+| Ventana de aclareo | Estado y fecha límite informados por el sistema. Una fecha vencida se acompaña de la advertencia correspondiente. |
+| Cosecha / Registrar cosecha | Kilogramos de la campaña, diferenciados en aceituna verde y negra cuando corresponda. |
+| Cerrar campaña | Confirmación del cierre productivo; se diferencia del registro retrospectivo de cosechas. |
+| Alternancia / Índice BBI | El primer término identifica el fenómeno; el segundo, su indicador numérico. La ayuda explica que alternancia también se conoce como vecería. |
+| Frío acumulado | Acumulación de frío de la temporada evaluada, con su unidad y período. |
+| Clima | Series agroclimáticas y pronóstico, mostrando fuente y fecha de actualización. |
+| Nodos virtuales | Dispositivos lógicos vinculados al lote; sus lecturas sintéticas se identifican como “Datos simulados”. |
+| Riesgo territorial | Priorización de parcelas de la cooperativa por su situación agronómica y climática, con alternancia Mapa / Lista y filtro por nivel de riesgo. |
+| ¿En qué sector estás? | Selección manual del sector del gestor cuando no hay GPS o permiso de ubicación. Si el permiso está activo, “Permitir ubicación” abre el mapa en el sector donde se encuentra. |
+| Detalle del sector | Parcelas de un sector ordenadas por prioridad, con el contador de parcelas en nivel Crítico sobre el total del sector (por ejemplo, 5 de 18) y el resto agrupado por nivel. |
+| Parcela del socio | Vista de solo lectura de una parcela supervisada: carga frutal, prescripción vigente y contacto por llamada y WhatsApp. Desde aquí se abre el expediente técnico. |
+| Acopio | Proyección agregada de aceituna verde y negra para la campaña, con cobertura de muestreo y desglose por sector. Un sector sin muestreo se indica como “sin cifra”. |
+| Socios | Padrón de productores de la cooperativa con su estado (“Vinculado” o “Por activar”) y datos de membresía autorizados. Muestra el cupo de la licencia y da acceso a Códigos. |
+| Cupo de la licencia / Plazas | Plazas ocupadas y libres de la licencia (por ejemplo, 48 de 60), junto con las hectáreas contratadas. Una plaza corresponde a un socio; no equivale a una hectárea ni a una parcela. |
+| Códigos / Códigos por canjear | Códigos de activación emitidos por la cooperativa, con filtro por estado (“Por canjear”, “Canjeados” y “Vencidos”) y agrupados por emisión. “Códigos por canjear” es el acceso rápido desde Socios. |
+| Generar códigos | Hoja para definir cantidad, hectáreas por código y vencimiento (7, 15 o 30 días); anticipa el cupo resultante. El botón incluye la cantidad, por ejemplo “Generar 5 códigos”. |
+| Copiar / Compartir por WhatsApp | Acciones sobre los códigos generados: se copian uno por uno o se comparten por WhatsApp. |
+| Revocar código | Acción sobre un código “Por canjear”; la plaza vuelve a la membresía. Requiere confirmación. Si el socio ya lo canjeó, se informa y no se revoca. |
+| Expediente técnico | Documento PDF de trazabilidad agronómica; “Descargar PDF” expresa la acción. |
+| Suscripción | Modalidad de acceso (Plan Productor o membresía cooperativa), estado y vigencia. |
+| Código de cooperativa | Código de activación que entrega la cooperativa. El productor lo canjea desde Suscripción (“Tengo un código de cooperativa”); el gestor lo escribe al crear su cuenta (código GEST). |
+| Canjear código | Acción que valida el código con la cooperativa. Si está vencido o ya fue canjeado, se informa “Código no válido” y se ofrece “Probar otro código”. |
+| Compartir con tu cooperativa | Pantalla de aceptación previa a la activación: indica qué verá la cooperativa (lotes, sector de cada lote y alertas de riesgo) y qué no (pagos y datos de cuenta). Las acciones son “Aceptar y activar” y “No aceptar”. |
+| Compartiendo con [cooperativa] / Dejar de compartir | Estado de la membresía cooperativa y acción para retirar el acceso de la cooperativa a los lotes y alertas del productor. Los datos que ya registró siguen siendo suyos. |
+| Cuenta / Idioma | Perfil, preferencias y gestión del acceso. |
+| Lote archivado | Parcela retirada del inventario activo que conserva su historial. |
 
 Los estados se presentan con texto además de color. Para el semáforo se proponen “Óptimo”, “Moderado” y “Crítico”, acompañados del motivo comunicado por el sistema, como sobrecarga o riesgo climático. “Sobrecarga” no sustituye el nombre de todo el nivel crítico. “Sin datos suficientes” indica ausencia de una evaluación válida y no se interpreta como riesgo óptimo.
 
 En los muestreos se distingue “Pendiente de sincronizar” de “Sincronizado”; un registro guardado localmente no se presenta como recibido por el servidor. El índice BBI muestra “Historial insuficiente” cuando no se cumple el mínimo de campañas históricas de US20. La proyección de acopio muestra “Preliminar” y la cobertura cuando menos del 50 % de parcelas ha completado el muestreo, según US32.
+
+Los estados de socios, códigos y sectores también combinan texto y color. El padrón distingue “Vinculado” de “Por activar”, y cada código se muestra como “Por canjear”, “Canjeado” o “Vencido”; un código revocado sale de la lista y la plaza vuelve a la membresía. “Cupo excedido” aparece al generar códigos cuando la cantidad pedida supera las plazas libres. Un lote sin sector se muestra como “Sin sector” y nunca con un sector supuesto: el sector propuesto por la aplicación solo se asigna cuando el productor toca “Guardar sector”. Si el sector se guardó sin conexión, se marca “Pendiente de sincronizar”, igual que un muestreo local. En el acopio, un sector sin muestreo se muestra como “sin cifra” y no como cero.
 
 El vocabulario se localiza en español e inglés conforme a US42. Se permite explicar un término agronómico mediante un sinónimo en la ayuda, sin cambiar el nombre del mismo destino entre pantallas. Los iconos acompañan las etiquetas; las unidades, fechas y nombres de lote y campaña aportan el contexto necesario para interpretar los datos.
 
@@ -394,72 +374,47 @@ La navegación conecta los bloques de Organization Systems con las tareas del vi
 
 En pantallas estrechas, el menú se despliega sin cambiar los destinos. Los enlaces internos llevan al encabezado de la sección y los enlaces legales permiten volver mediante la navegación del navegador. La descarga remite al canal efectivamente habilitado, sin mostrar como disponibles tiendas en las que el producto aún no está publicado. El registro y la contratación se realizan desde la aplicación.
 
-**Aplicación: experiencia del productor.** Se conservan los cuatro destinos inferiores establecidos en Style Guidelines, detallados en la \autoref{tab:ia-nav-producer}:
+**Aplicación: experiencia del productor.** Se conservan los cuatro destinos inferiores establecidos en Style Guidelines:
 
-\begingroup
-\small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
-\begin{longtable}{p{0.20\textwidth} p{0.75\textwidth}}
-\caption{Destinos de navegación de la barra inferior para el Productor Olivarero.} \label{tab:ia-nav-producer} \\
-\hline
-\textbf{Destino} & \textbf{Contenido y recorrido} \\
-\hline
-\endfirsthead
-\hline
-\textbf{Destino} & \textbf{Contenido y recorrido} \\
-\hline
-\endhead
-\hline
-\endfoot
-\hline
-\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
-\endlastfoot
-Inicio & Resumen contextual de lotes, clima, alertas y estado de sincronización; cada resumen permite abrir el detalle correspondiente. \\
-Lotes & Inventario, registro y detalle de parcela. Desde el detalle se accede a nodos virtuales, clima, historial, BBI, frío acumulado y expediente de campaña. \\
-Plan & Selección de lote y campaña, evaluación de carga y prescripción de aclareo. Permite abrir el registro de la labor ejecutada. \\
-Bitácora & Muestreos, registros de aclareo y cosechas, con lote y campaña visibles. Incluye el acceso a registrar muestreo y a los flujos de cosecha y cierre. \\
-\end{longtable}
-\endgroup
+| Destino | Contenido y recorrido |
+|:-----------------------------|:---------------------------------------------------------------------|
+| Inicio | Resumen contextual de lotes, clima, alertas y estado de sincronización; cada resumen permite abrir el detalle correspondiente. |
+| Lotes | Inventario, registro y detalle de parcela. Desde el detalle se accede a nodos virtuales, clima, historial, BBI, frío acumulado, expediente de campaña y asignación del sector del lote. |
+| Plan | Selección de lote y campaña, evaluación de carga y prescripción de aclareo. Permite abrir el registro de la labor ejecutada. |
+| Bitácora | Muestreos, registros de aclareo y cosechas, con lote y campaña visibles. Incluye el acceso a registrar muestreo y a los flujos de cosecha y cierre. |
 
-Cuenta se abre desde el encabezado y agrupa perfil, idioma y suscripción o código de cooperativa; no introduce una quinta pestaña. Las rutas hacia un mismo registro reutilizan su detalle y conservan el contexto de origen. “Plan” corresponde al manejo agronómico, mientras que la modalidad comercial se consulta en Suscripción.
+Cuenta se abre desde el encabezado y agrupa perfil, idioma y Suscripción; no introduce una quinta pestaña. Suscripción reúne el Plan Productor y, cuando existe, la membresía cooperativa. Las rutas hacia un mismo registro reutilizan su detalle y conservan el contexto de origen. “Plan” corresponde al manejo agronómico, mientras que la modalidad comercial, el código de cooperativa y lo que se comparte con la cooperativa se consultan en Suscripción.
 
-**Aplicación: experiencia del gestor.** El gestor utiliza la misma barra inferior de cuatro destinos, con contenido propio de su rol: Inicio, Riesgo territorial, Acopio y Socios. Esta agrupación concreta las áreas compartidas y exclusivas de la taxonomía. Inicio resume el estado de la organización; Riesgo territorial abre la matriz o mapa y el detalle autorizado de parcela; Acopio permite revisar la campaña y sus proyecciones; Socios reúne la cartera y los accesos a la administración de membresías y cupos; al igual que en la experiencia del productor, Cuenta se abre desde el encabezado y contiene perfil e idioma. Los expedientes se abren desde el contexto de la parcela y campaña, conforme a US30.
+**Membresía cooperativa.** Tras crear la cuenta, el recorrido conduce a Suscripción para activar el acceso: el productor paga su plan o canjea el código que le entregó su cooperativa. Con un código vigente, la aplicación no activa el plan de inmediato, sino que abre Compartir con tu cooperativa, donde se explica qué verá la cooperativa y qué no (US07 y US45). El acceso se activa solo cuando el productor toca “Aceptar y activar”; si elige “No aceptar”, el código no se canjea, no se comparte ningún dato y regresa a Suscripción. Con la membresía activa, Suscripción muestra con qué cooperativa se comparte y ofrece “Dejar de compartir”, que abre una hoja con las consecuencias antes de confirmar (US46). Ninguna de estas rutas agrega una pestaña ni un destino nuevo.
+
+**Sector del lote.** El sector se asigna desde el detalle del lote (US47). Si el campo muestra “Sin sector”, “Elegir sector” abre una hoja que propone el sector correspondiente al contorno y ofrece los demás en orden alfabético; “Guardar sector” confirma la elección y el detalle muestra el sector asignado. Si el contorno no coincide con ningún sector conocido, el productor elige de la lista. Sin conexión, la asignación se conserva en el teléfono hasta sincronizarse.
+
+**Aplicación: experiencia del gestor.** El gestor utiliza la misma barra inferior de cuatro destinos, con contenido propio de su rol: Inicio, Riesgo territorial, Acopio y Socios. Esta agrupación concreta las áreas compartidas y exclusivas de la taxonomía. Inicio resume el estado de la organización y sus tarjetas abren el destino correspondiente (riesgo territorial, acopio y cupo de la licencia); Riesgo territorial abre el mapa o la lista, los sectores y el detalle autorizado de parcela; Acopio permite revisar la campaña y sus proyecciones, con su desglose por sector; Socios reúne el padrón, el cupo de la licencia y el acceso a Códigos; al igual que en la experiencia del productor, Cuenta se abre desde el encabezado y contiene perfil e idioma. Los expedientes se abren desde el contexto de la parcela y campaña, conforme a US30.
+
+**Sectores y riesgo territorial.** Riesgo territorial se recorre de lo general a lo particular: sector, parcelas del sector y parcela de un socio (US12 y US31). La primera vez, una hoja solicita el permiso de ubicación para abrir el mapa en el sector donde se encuentra el gestor (“Permitir ubicación”); sin GPS o sin permiso, el gestor elige su sector con “¿En qué sector estás?”. La vista ofrece la alternancia Mapa / Lista y los filtros por nivel de riesgo. Al abrir un sector, Detalle del sector indica cuántas parcelas están en nivel Crítico y las ordena por prioridad; el resto se agrupa por nivel. La parcela de un socio se abre en solo lectura, con contacto por llamada o WhatsApp y acceso al expediente técnico. Solo se muestran parcelas de productores que comparten con la cooperativa: al dejar de compartir, el productor deja de aparecer en esta vista, y un lote sin sector no puede ubicarse en el mapa.
+
+**Socios y códigos.** Desde Socios, el gestor ve el cupo de la licencia (plazas ocupadas y libres, y hectáreas contratadas) y el padrón con el estado de cada socio (US08). “Códigos por canjear” abre Códigos, donde se filtran por estado y se agrupan por emisión; cada código ofrece “Copiar” y “Revocar”. “Generar códigos” abre una hoja para definir cantidad, hectáreas por código y vencimiento, y el resultado se muestra en una pantalla con los códigos listos para copiar uno por uno o compartir por WhatsApp. Revocar pide confirmación; si el socio canjeó el código mientras tanto, se informa y se vuelve a Códigos. El padrón solo muestra los datos de membresía autorizados.
 
 Los destinos de gestor se aplican en Kotlin y Flutter según el rol autenticado. La supervisión no concede automáticamente permisos para editar los datos del productor ni para emitir prescripciones manuales. El diseño debe permitir consultar la cartera durante una visita de campo; no presupone que el gestor trabaje siempre en oficina o con conexión estable.
 
-**Recorridos de tarea.** En la \autoref{tab:ia-task-flows} se sintetizan las rutas operativas para las tareas críticas del sistema:
+**Recorridos de tarea.**
 
-\begingroup
-\small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
-\begin{longtable}{p{0.30\textwidth} p{0.65\textwidth}}
-\caption{Recorridos de navegación de tareas principales en Viora.} \label{tab:ia-task-flows} \\
-\hline
-\textbf{Meta} & \textbf{Recorrido principal} \\
-\hline
-\endfirsthead
-\hline
-\textbf{Meta} & \textbf{Recorrido principal} \\
-\hline
-\endhead
-\hline
-\endfoot
-\hline
-\multicolumn{2}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
-\endlastfoot
-Dar de alta un lote & Lotes $\to$ Registrar lote $\to$ delimitación y caracterización $\to$ guardar $\to$ detalle del lote. \\
-Registrar un muestreo & Bitácora $\to$ Registrar muestreo $\to$ lote y campaña $\to$ captura guiada $\to$ guardado local $\to$ sincronización al recuperar conexión. \\
-Consultar y registrar aclareo & Plan $\to$ lote y campaña $\to$ evaluación y prescripción $\to$ Registrar aclareo $\to$ confirmación y consulta en Bitácora. \\
-Cerrar la campaña & Bitácora $\to$ lote y campaña $\to$ registro de cosecha $\to$ revisión y confirmación del cierre $\to$ expediente técnico. \\
-Priorizar una visita & Riesgo territorial $\to$ sector o nivel de riesgo $\to$ parcela $\to$ motivo y detalle autorizado. \\
-Revisar el acopio & Acopio $\to$ campaña $\to$ volúmenes verde y negro $\to$ cobertura y advertencias. \\
-\end{longtable}
-\endgroup
+| Meta | Recorrido principal |
+|:-----------------------------|:---------------------------------------------------------------------|
+| Dar de alta un lote | Lotes → Registrar lote → delimitación y caracterización → guardar → detalle del lote. |
+| Registrar un muestreo | Bitácora → Registrar muestreo → lote y campaña → captura guiada → guardado local → sincronización al recuperar conexión. |
+| Consultar y registrar aclareo | Plan → lote y campaña → evaluación y prescripción → Registrar aclareo → confirmación y consulta en Bitácora. |
+| Cerrar la campaña | Bitácora → lote y campaña → registro de cosecha → revisión y confirmación del cierre → expediente técnico. |
+| Priorizar una visita | Riesgo territorial → ubicación o “¿En qué sector estás?” → sector → Detalle del sector → parcela del socio → motivo y detalle autorizado → expediente técnico. |
+| Revisar el acopio | Acopio → campaña → volúmenes verde y negro → cobertura y advertencias. |
+| Activar el acceso con código de cooperativa | Suscripción → “Tengo un código de cooperativa” → Canjear código → Compartir con tu cooperativa → “Aceptar y activar” → membresía activa → Inicio. |
+| Dejar de compartir con la cooperativa | Cuenta → Suscripción → “Dejar de compartir” → confirmación → aviso de que ya no comparte. |
+| Indicar el sector de un lote | Lotes → detalle del lote → “Elegir sector” → sugerencia o lista alfabética → “Guardar sector” → detalle con sector. |
+| Administrar socios y códigos | Socios → Códigos por canjear → Generar códigos → cantidad, hectáreas y vencimiento → códigos generados → copiar o compartir. |
+| Revocar un código | Socios → Códigos → código “Por canjear” → Revocar → confirmación → plaza liberada. |
 
 Los formularios indican el paso actual y permiten retroceder sin perder los datos ya guardados. La acción Atrás retorna a la pantalla de origen; cuando se abandona una edición sin guardar, se explica la consecuencia. El encabezado identifica lote y campaña en las pantallas que lo requieren. No se exige una hilera permanente de migas de pan en teléfonos: el contexto se conserva mediante títulos y navegación de retorno.
 
-**Conectividad y acceso directo.** La captura de muestreos conserva los registros localmente y diferencia su guardado de la aceptación del servidor. Las pantallas pueden mostrar información previamente almacenada y autorizada con su fecha de actualización, sin garantizar que esté completa o vigente. Los cálculos de carga y prescripción, la actualización del riesgo y acopio, el cierre confirmado, la generación de PDF y las operaciones de suscripción requieren la comunicación correspondiente con el servidor.
+**Conectividad y acceso directo.** La captura de muestreos conserva los registros localmente y diferencia su guardado de la aceptación del servidor. Las pantallas pueden mostrar información previamente almacenada y autorizada con su fecha de actualización, sin garantizar que esté completa o vigente. Los cálculos de carga y prescripción, la actualización del riesgo y acopio, el cierre confirmado, la generación de PDF, las operaciones de suscripción y las operaciones sobre códigos y membresía (canjear, generar, revocar y dejar de compartir) requieren la comunicación correspondiente con el servidor. La asignación del sector de un lote, en cambio, se conserva en el teléfono y se marca “Pendiente de sincronizar” hasta que el servidor la acepte; en Riesgo territorial sin conexión se muestra el último estado guardado con su fecha.
 
 Los enlaces profundos hacia detalles validan sesión, rol y acceso al recurso antes de mostrar datos. Si el recurso no está disponible localmente y no hay conexión, se informa y se permite volver o reintentar. Una prescripción almacenada muestra su fecha y no se presenta como recién calculada. Al retornar de un pago, la aplicación consulta el estado validado por el servidor antes de mostrar la suscripción como activada.

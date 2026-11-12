@@ -357,3 +357,57 @@ Como se evidencia en la \autoref{fig:mk-mobile-01}, la portada móvil preserva l
 \end{minipage}
 \caption*{\textit{Nota.} Presentación comercial móvil, bloque institucional y pie de página en alta definición. Elaboración propia.}
 \end{figure}
+
+#### Landing Page: Botón «Solicitar cotización»
+
+Esta sección documenta el botón «Solicitar cotización» del Landing Page de Viora, ubicado en la tarjeta del Plan Cooperativa (Bloque 4.2 de Organization Systems). Su diseño responde al hallazgo de la validación del landing, según el cual los gestores técnicos necesitan pedir una cotización a medida, en función del volumen de socios, antes de contratar. El botón reemplaza a «Lo quiero», que en la versión evaluada remitía a la descarga de la aplicación individual.
+
+##### Propósito y trazabilidad
+
+| Aspecto | Descripción |
+|:--------------------|:--------------------------------------------------------------------------|
+| Para qué | Ofrecer a las organizaciones agrarias un canal directo para solicitar una licencia colectiva a medida, sin pasar por el flujo de instalación individual. |
+| Segmento atendido | Gestor de Cooperativa (Rubén Ticona). |
+| Historias de usuario | US35 (exploración de herramientas de gestión territorial para cooperativas) y US36 (planes y tarifas transparentes en PEN). |
+| Heurísticas atendidas | Arquitectura de la Información: Claridad. Usabilidad: coincidencia entre el sistema y el mundo real. |
+| Ubicación | Tarjeta «Plan Cooperativa», Bloque 4.2, junto al enlace secundario «Ver qué incluye». |
+
+El Plan Cooperativa se ofrece «A medida, según socios y hectáreas, en soles». Una tarifa que depende del número de socios y de hectáreas no puede contratarse con un botón de descarga. Por eso el botón cambia de la acción «Lo quiero» a la acción «Solicitar cotización», que describe lo que realmente ocurre al tocarlo.
+
+##### Especificación del botón
+
+| Atributo | Especificación |
+|:--------------------|:--------------------------------------------------------------------------|
+| Etiqueta | «Solicitar cotización» (ES) y «Request a quote» (EN), según US42. |
+| Tipo | Botón primario en forma de píldora (radio completamente redondeado de Material 3), con el ícono de flecha direccional del Design System. |
+| Color | Contenedor claro sobre la tarjeta *Forest*, con texto en *Forest* y acento *Harvest* (#E8B923) en el ícono, como el botón actual. |
+| Tipografía | Roboto (rol *Label Large*), por ser texto funcional de interfaz. |
+| Destino propuesto | Enlace de correo comercial, con asunto y cuerpo precargados, o canal de WhatsApp corporativo. |
+| Alcance | No abre un formulario ni la descarga de la aplicación. Es coherente con Labeling Systems, que descarta un formulario de «Contacto» en el landing. |
+| Enlace secundario | «Ver qué incluye» se conserva y desplaza a la descripción de las prestaciones del plan. |
+
+**Mensaje precargado (propuesta).** Para que la cooperativa no tenga que redactar desde cero, el enlace de correo prellena el asunto y un cuerpo breve con los datos que el equipo comercial necesita para cotizar:
+
+> **Asunto:** Cotización Plan Cooperativa Viora
+>
+> Hola, equipo de Viora. Somos la cooperativa [nombre] y queremos cotizar el Plan Cooperativa. Cantidad aproximada de socios: [ ]. Hectáreas aproximadas: [ ]. Contacto: [nombre y celular].
+
+##### Estados y comportamiento
+
+| Estado | Comportamiento |
+|:--------------------|:--------------------------------------------------------------------------|
+| Reposo | Píldora con etiqueta e ícono de flecha, con sombra difusa teñida en *Shadow* (#1F2C26). |
+| Foco (teclado) | Anillo de foco visible y de contraste suficiente; el orden de tabulación sigue la lectura de la tarjeta. |
+| Presionado | Capa de estado de Material 3 sobre el contenedor, sin cambio de tamaño. |
+| Desktop | Abre el cliente de correo predeterminado o, si se elige el canal alternativo, WhatsApp Web. |
+| Móvil | Abre la aplicación de correo o de WhatsApp instalada; el botón mantiene un área táctil mínima de 48 dp. |
+
+En móvil el botón ocupa el ancho de la tarjeta, sin desplazamiento horizontal, y se mantiene en la posición que ocupaba «Lo quiero», de modo que el recorrido visual no cambia.
+
+##### Accesibilidad y tono de voz
+
+- La etiqueta describe la acción por sí sola, sin depender del color ni del ícono (Labeling Systems: «los botones describen su destino»).
+- El ícono de flecha es decorativo. El nombre accesible es «Solicitar cotización del Plan Cooperativa».
+- El texto de apoyo mantiene el tono directo, empático y respetuoso de *Tone of Voice*; por ejemplo: «Cuéntanos cuántos socios tiene tu cooperativa y te enviamos una propuesta a medida».
+- El botón no sugiere un costo ni un compromiso de contratación: solicitar una cotización no implica contratar.
+
