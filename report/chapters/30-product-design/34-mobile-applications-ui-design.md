@@ -887,7 +887,7 @@ Como se ilustra en la \autoref{fig:wf-shared-00}, la secuencia de inicio modela 
 \caption{Wireframe Mobile: Secuencia de Inicio y Arranque del Servicio.}
 \label{fig:wf-shared-00}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/shared/wf-shared-00-splash.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/shared/wf-shared-00-splash.png}
 \caption*{\textit{Nota.} Progresión esquelética de inicialización de servicios locales y carga del aplicativo. Elaboración propia.}
 \end{figure}
 
@@ -897,7 +897,7 @@ En la \autoref{fig:wf-shared-03} se expone el flujo de registro y verificación 
 \caption{Wireframe Mobile: Registro de Cuenta y Verificación OTP.}
 \label{fig:wf-shared-03}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/shared/wf-shared-03-cuenta-y-verificacion.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/shared/wf-shared-03-cuenta-y-verificacion.png}
 \caption*{\textit{Nota.} Disposición esquelética del formulario de alta, teclado numérico in-app y estados de validación. Elaboración propia.}
 \end{figure}
 
@@ -907,7 +907,7 @@ Tal como se detalla en la \autoref{fig:wf-shared-05}, el procedimiento de inicio
 \caption{Wireframe Mobile: Inicio de Sesión y Recuperación de Credenciales.}
 \label{fig:wf-shared-05}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/shared/wf-shared-05-iniciar-sesion-y-recuperar-acceso.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/shared/wf-shared-05-iniciar-sesion-y-recuperar-acceso.png}
 \caption*{\textit{Nota.} Estructura funcional del inicio de sesión diario y restauración de contraseña olvidada. Elaboración propia.}
 \end{figure}
 
@@ -921,7 +921,7 @@ En la \autoref{fig:wf-prod-01} se presentan las pantallas de bienvenida e inducc
 \caption{Wireframe Productor: Vistas de Bienvenida e Introducción Agronómica.}
 \label{fig:wf-prod-01}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-01-bienvenida.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-01-bienvenida.png}
 \caption*{\textit{Nota.} Estructura esquelética de las vistas introductorias para productores independientes y asociados. Elaboración propia.}
 \end{figure}
 
@@ -931,7 +931,7 @@ La \autoref{fig:wf-prod-02} modela el asistente de configuración inicial estruc
 \caption{Wireframe Productor: Asistente Secuencial de Configuración Inicial.}
 \label{fig:wf-prod-02}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-02-preguntas-del-onboarding.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-02-preguntas-del-onboarding.png}
 \caption*{\textit{Nota.} Esquema por etapas para la captura de parámetros iniciales del productor y predio. Elaboración propia.}
 \end{figure}
 
@@ -941,7 +941,7 @@ En la \autoref{fig:wf-prod-04} se representan las dos rutas de activación del s
 \caption{Wireframe Productor: Activación del Servicio y Canje de Código.}
 \label{fig:wf-prod-04}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-04-activacion-del-acceso.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-04-activacion-del-acceso.png}
 \caption*{\textit{Nota.} Rutas de activación de suscripción directa individual y canje asociativo de socio. Elaboración propia.}
 \end{figure}
 
@@ -951,7 +951,17 @@ Tal como se ilustra en la \autoref{fig:wf-prod-06}, el tablero principal del pro
 \caption{Wireframe Productor: Tablero Principal de Inicio y Estados Estacionales.}
 \label{fig:wf-prod-06}
 \centering
-\includegraphics[width=0.40\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-06-inicio-del-productor.png}
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-06-inicio-del-productor-part1.png}
+\caption*{(a) Tablero operativo e indicadores clave.}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-06-inicio-del-productor-part2.png}
+\caption*{(b) Variantes estacionales y operación offline.}
+\end{minipage}
 \caption*{\textit{Nota.} Disposición del tablero operativo, variantes por etapa fenológica y estados del sistema. Elaboración propia.}
 \end{figure}
 
@@ -961,7 +971,7 @@ En la \autoref{fig:wf-prod-07} se estructura el alta técnica de una parcela agr
 \caption{Wireframe Productor: Registro y Georreferenciación Cartográfica de Lotes.}
 \label{fig:wf-prod-07}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-07-registrar-un-lote.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-07-registrar-un-lote.png}
 \caption*{\textit{Nota.} Flujo de registro cartográfico, ingreso de marco agronómico y control de geometrías. Elaboración propia.}
 \end{figure}
 
@@ -971,7 +981,7 @@ La \autoref{fig:wf-prod-08} exhibe el módulo de muestreo de cuajado fuera de l�
 \caption{Wireframe Productor: Protocolo de Muestreo de Cuajado sin Conexión.}
 \label{fig:wf-prod-08}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-08-muestrear-el-cuajado-sin-conexion.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-08-muestrear-el-cuajado-sin-conexion.png}
 \caption*{\textit{Nota.} Interfaz de captura táctil en campo, cálculo de frutos por brote y persistencia local. Elaboración propia.}
 \end{figure}
 
@@ -981,7 +991,7 @@ En la \autoref{fig:wf-prod-09} se modela el módulo de prescripción y registro 
 \caption{Wireframe Productor: Prescripción y Registro de Aclareo Frutal.}
 \label{fig:wf-prod-09}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-09-aclarear-a-tiempo.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-09-aclarear-a-tiempo.png}
 \caption*{\textit{Nota.} Estructura de prescripción de raleo, ventana temporal de intervención y recálculo de calibre. Elaboración propia.}
 \end{figure}
 
@@ -991,7 +1001,17 @@ Tal como se observa en la \autoref{fig:wf-prod-13}, la herramienta analítica de
 \caption{Wireframe Productor: Análisis de Vecería e Índice Bienal BBI.}
 \label{fig:wf-prod-13}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-13-conocer-la-veceria-de-mi-lote.png}
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-13-conocer-la-veceria-de-mi-lote-part1.png}
+\caption*{(a) Indicador de alternancia y curva histórica.}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-13-conocer-la-veceria-de-mi-lote-part2.png}
+\caption*{(b) Proyección fenológica y registro previo.}
+\end{minipage}
 \caption*{\textit{Nota.} Disposición esquelética del indicador de alternancia, curva histórica y registro de cosechas previas. Elaboración propia.}
 \end{figure}
 
@@ -1001,7 +1021,7 @@ En la \autoref{fig:wf-prod-14} se organiza la liquidación anual de campaña: re
 \caption{Wireframe Productor: Cierre de Campaña y Expediente Agronómico.}
 \label{fig:wf-prod-14}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-14-cerrar-la-campana.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-14-cerrar-la-campana.png}
 \caption*{\textit{Nota.} Liquidación de pesaje final por destino comercial, bloqueo inmutable y emisión de expediente. Elaboración propia.}
 \end{figure}
 
@@ -1011,7 +1031,7 @@ La \autoref{fig:wf-prod-15} ilustra el seguimiento agrometeorológico de acumula
 \caption{Wireframe Productor: Seguimiento de Frío Invernal y Ruptura de Latencia.}
 \label{fig:wf-prod-15}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-15-seguir-el-frio-invernal.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-15-seguir-el-frio-invernal.png}
 \caption*{\textit{Nota.} Esquema estructural del monitor de frío acumulado y detección de inviernos cálidos. Elaboración propia.}
 \end{figure}
 
@@ -1021,7 +1041,7 @@ En la \autoref{fig:wf-prod-16} se detalla el tablero de condiciones climáticas 
 \caption{Wireframe Productor: Monitoreo Microclimático y Telemetría de Suelo.}
 \label{fig:wf-prod-16}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-16-vigilar-el-clima-del-lote.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-16-vigilar-el-clima-del-lote.png}
 \caption*{\textit{Nota.} Estructura del pronóstico localizado, curvas térmicas y sensores de humedad radicular. Elaboración propia.}
 \end{figure}
 
@@ -1031,7 +1051,7 @@ Tal como se muestra en la \autoref{fig:wf-prod-18}, el panel de cuenta del produ
 \caption{Wireframe Productor: Administración de Perfil de Usuario y Seguridad.}
 \label{fig:wf-prod-18}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-18-mi-cuenta.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-18-mi-cuenta.png}
 \caption*{\textit{Nota.} Disposición esquelética de la cuenta, cambio de contraseña y conmutación idiomática. Elaboración propia.}
 \end{figure}
 
@@ -1041,7 +1061,7 @@ En la \autoref{fig:wf-prod-19} se modela la gestión del lote agrícola mediante
 \caption{Wireframe Productor: Modificación Cartográfica y Archivado de Lotes.}
 \label{fig:wf-prod-19}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-19-editar-o-archivar-un-lote.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-19-editar-o-archivar-un-lote.png}
 \caption*{\textit{Nota.} Estructura de edición interactiva de polígonos y confirmación de archivado con datos históricos. Elaboración propia.}
 \end{figure}
 
@@ -1051,7 +1071,7 @@ La \autoref{fig:wf-prod-20} presenta la supervisión de nodos de telemetría IoT
 \caption{Wireframe Productor: Supervisión de Sensores y Nodos de Telemetría IoT.}
 \label{fig:wf-prod-20}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-20-sensores-del-lote.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/productor/wf-productor-20-sensores-del-lote.png}
 \caption*{\textit{Nota.} Disposición estructural de dispositivos físicos asociados, estado de batería y sincronización. Elaboración propia.}
 \end{figure}
 
@@ -1065,7 +1085,7 @@ En la \autoref{fig:wf-gest-01} se modelan las pantallas de bienvenida e inducci�
 \caption{Wireframe Gestor: Bienvenida Institucional y Visión Colectiva del Valle.}
 \label{fig:wf-gest-01}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-01-bienvenida.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-01-bienvenida.png}
 \caption*{\textit{Nota.} Esquema de las vistas introductorias adaptadas a la supervisión técnica asociativa. Elaboración propia.}
 \end{figure}
 
@@ -1075,7 +1095,7 @@ La \autoref{fig:wf-gest-02} despliega el asistente de configuración técnica en
 \caption{Wireframe Gestor: Asistente de Configuración de Alertas Territoriales.}
 \label{fig:wf-gest-02}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-02-preguntas-del-onboarding.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-02-preguntas-del-onboarding.png}
 \caption*{\textit{Nota.} Captura esquelética del perfil técnico y criterios de priorización agronómica del valle. Elaboración propia.}
 \end{figure}
 
@@ -1085,7 +1105,7 @@ En la \autoref{fig:wf-gest-04} se define la vista de espera institucional que in
 \caption{Wireframe Gestor: Estado de Validación y Asignación Institucional.}
 \label{fig:wf-gest-04}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-04-activacion-del-acceso.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-04-activacion-del-acceso.png}
 \caption*{\textit{Nota.} Interfaz de notificación de espera mientras la gerencia cooperativa habilita el rol técnico. Elaboración propia.}
 \end{figure}
 
@@ -1095,7 +1115,7 @@ Tal como se ilustra en la \autoref{fig:wf-gest-10}, el tablero de mando del gest
 \caption{Wireframe Gestor: Tablero Territorial de Mando y Semáforo de Riesgo.}
 \label{fig:wf-gest-10}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-10-inicio-del-gestor.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-10-inicio-del-gestor.png}
 \caption*{\textit{Nota.} Estructura del tablero territorial, métricas agregadas de acopio y sugerencias de visitas. Elaboración propia.}
 \end{figure}
 
@@ -1105,7 +1125,7 @@ En la \autoref{fig:wf-gest-11} se expone el módulo de priorización de visitas 
 \caption{Wireframe Gestor: Zonificación Territorial y Priorización de Visitas de Campo.}
 \label{fig:wf-gest-11}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-11-priorizar-mis-visitas-de-campo.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-11-priorizar-mis-visitas-de-campo.png}
 \caption*{\textit{Nota.} Zonificación cartográfica por riesgo frutal, padrón de socios priorizados y ficha de auditoría. Elaboración propia.}
 \end{figure}
 
@@ -1115,7 +1135,17 @@ La \autoref{fig:wf-gest-12} modela la estimación de acopio territorial estructu
 \caption{Wireframe Gestor: Estimación y Desglose Territorial del Acopio Proyectado.}
 \label{fig:wf-gest-12}
 \centering
-\includegraphics[width=0.60\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-12-proyectar-el-acopio.png}
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-12-proyectar-el-acopio-part1.png}
+\caption*{(a) Estimación global y desglose por destino.}
+\end{minipage}
+\hfill
+\begin{minipage}[b]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.34\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-12-proyectar-el-acopio-part2.png}
+\caption*{(b) Cobertura muestral y comparativa histórica.}
+\end{minipage}
 \caption*{\textit{Nota.} Desglose de tonelaje por destino comercial, umbrales de cobertura y consulta de campañas previas. Elaboración propia.}
 \end{figure}
 
@@ -1125,7 +1155,7 @@ En la \autoref{fig:wf-gest-17} se estructura el control del padrón cooperativo 
 \caption{Wireframe Gestor: Administración de Padrón, Cupo Colectivo y Códigos.}
 \label{fig:wf-gest-17}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-17-administrar-socios-y-codigos.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-17-administrar-socios-y-codigos.png}
 \caption*{\textit{Nota.} Gestión del cupo institucional de socios, emisión y revocación de códigos con validación de límites. Elaboración propia.}
 \end{figure}
 
@@ -1135,11 +1165,12 @@ Como se observa en la \autoref{fig:wf-gest-18}, el gestor técnico reutiliza la 
 \caption{Wireframe Gestor: Administración de Cuenta, Seguridad e Idioma.}
 \label{fig:wf-gest-18}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-18-mi-cuenta.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/wireframes/gestor/wf-gestor-18-mi-cuenta.png}
 \caption*{\textit{Nota.} Disposición esquelética de la cuenta del gestor, sus formularios de edición y los estados de validación. Elaboración propia.}
 \end{figure}
 
 #### Mobile Applications Wireflow Diagrams
+&nbsp;
 
 Un wireflow combina las pantallas de la aplicación con el flujo de acciones que lleva de una a otra. Su propósito es mostrar cómo una persona de usuario alcanza una meta concreta, qué información ve y entrega en cada paso y qué hace el sistema con ella. Esta sección presenta un wireflow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance. El alcance es el de los 19 flujos centrales del catálogo del equipo (F01 a F19) para las dos personas de Viora: Teodoro Mamani, productor olivarero que usa la App Productor (Kotlin), y Rubén Ticona, gestor técnico que usa la App Gestor (Flutter). Los flujos F01, F02 y F03 (crear la cuenta, iniciar sesión y mantener la cuenta al día) existen para ambas personas, de modo que el conjunto suma 22 wireflows. Cada uno incluye una meta de usuario redactada en primera persona y una explicación del flujo representado.
 
@@ -1179,7 +1210,7 @@ Los wireflows recorren únicamente destinos declarados en Navigation Systems: lo
 \begin{figure}[H]
 \caption{Wireflow WF-F01: crear mi cuenta y entrar por primera vez (productor).} \label{fig:wf-f01-teodoro}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f01-teodoro.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f01-teodoro.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1190,7 +1221,7 @@ El splash (T01) termina por sí solo y abre la bienvenida (T02), donde Teodoro t
 \begin{figure}[H]
 \caption{Wireflow WF-F01: crear mi cuenta y entrar por primera vez (gestor).} \label{fig:wf-f01-ruben}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f01-ruben.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f01-ruben.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1201,7 +1232,7 @@ Los tres primeros pasos replican el inicio del productor (T01 Splash, T02 Bienve
 \begin{figure}[H]
 \caption{Wireflow WF-F02: iniciar sesión y recuperar mi acceso (productor).} \label{fig:wf-f02-teodoro}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f02-teodoro.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f02-teodoro.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1212,7 +1243,7 @@ Desde Iniciar sesión (T03), Teodoro toca «¿Olvidaste tu contraseña?» y lleg
 \begin{figure}[H]
 \caption{Wireflow WF-F02: iniciar sesión y recuperar mi acceso (gestor).} \label{fig:wf-f02-ruben}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f02-ruben.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f02-ruben.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1223,7 +1254,7 @@ Las pantallas T03, T06, T07 y T08 se reutilizan y por eso aparecen desaturadas. 
 \begin{figure}[H]
 \caption{Wireflow WF-F03: mantener mi cuenta al día (productor).} \label{fig:wf-f03-teodoro}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f03-teodoro.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f03-teodoro.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1234,7 +1265,7 @@ Desde Inicio (P10), Teodoro toca su avatar y abre Mi cuenta (P95), que agrupa da
 \begin{figure}[H]
 \caption{Wireflow WF-F03: mantener mi cuenta al día (gestor).} \label{fig:wf-f03-ruben}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f03-ruben.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f03-ruben.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1245,7 +1276,7 @@ El recorrido comienza en Inicio (G10). Rubén toca su avatar, abre Mi cuenta (P9
 \begin{figure}[H]
 \caption{Wireflow WF-F04: activar mi acceso con pago o código.} \label{fig:wf-f04}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f04.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f04.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1256,7 +1287,7 @@ Teodoro parte de Plan Productor (P02), donde ve sus hectáreas (12 ha), el total
 \begin{figure}[H]
 \caption{Wireflow WF-F05: saber qué hacer hoy en mi olivar.} \label{fig:wf-f05}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f05.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f05.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1267,7 +1298,7 @@ Al abrir la aplicación, Teodoro ve Inicio (P10) con la fase de la campaña, el 
 \begin{figure}[H]
 \caption{Wireflow WF-F06: registrar un lote.} \label{fig:wf-f06}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f06.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f06.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1278,7 +1309,7 @@ Desde Lotes (P20), Teodoro toca «Registrar lote» y en Método (P21) elige «Ca
 \begin{figure}[H]
 \caption{Wireflow WF-F07: mantener mis lotes al día.} \label{fig:wf-f07}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f07.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f07.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1289,7 +1320,7 @@ Desde el detalle del lote (P26), Teodoro toca «Más opciones» y se abre la hoj
 \begin{figure}[H]
 \caption{Wireflow WF-F08: configurar el monitoreo del lote.} \label{fig:wf-f08}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f08.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f08.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1300,7 +1331,7 @@ Desde el detalle del lote (P26), Teodoro toca «Más opciones» y, en la hoja P2
 \begin{figure}[H]
 \caption{Wireflow WF-F09: vigilar el clima del lote.} \label{fig:wf-f09}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f09.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f09.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1311,7 +1342,7 @@ En la ruta principal, Teodoro toca «Hoy en tu campo · 7 días» en Inicio (P10
 \begin{figure}[H]
 \caption{Wireflow WF-F10: conocer la vecería de mi lote.} \label{fig:wf-f10}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f10.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f10.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1322,7 +1353,7 @@ Desde el detalle del lote (P26), Teodoro toca «Vecería del lote» y abre Alter
 \begin{figure}[H]
 \caption{Wireflow WF-F11: seguir el frío invernal.} \label{fig:wf-f11}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f11.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f11.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1333,7 +1364,7 @@ En la ruta principal, Teodoro ve Inicio (P10) en fase de reposo invernal, con la
 \begin{figure}[H]
 \caption{Wireflow WF-F12: muestrear el cuajado sin conexión.} \label{fig:wf-f12}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f12.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f12.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1344,7 +1375,7 @@ Desde Bitácora (P50), Teodoro toca «+» y el menú de acciones (paso 2) le ofr
 \begin{figure}[H]
 \caption{Wireflow WF-F13: aclarear a tiempo.} \label{fig:wf-f13}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f13.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f13.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1355,7 +1386,7 @@ En Plan (P60), el sistema indica cuántos lotes necesitan aclareo esta semana, y
 \begin{figure}[H]
 \caption{Wireflow WF-F14: cerrar la campaña y obtener el expediente.} \label{fig:wf-f14}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f14.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f14.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1366,7 +1397,7 @@ En Inicio (P10), en fase de cosecha, Teodoro toca «Registrar cosecha» en la ta
 \begin{figure}[H]
 \caption{Wireflow WF-F15: priorizar mis visitas de campo.} \label{fig:wf-f15}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f15.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f15.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1377,7 +1408,7 @@ Desde Inicio (G10), Rubén toca «Ver riesgo territorial». La primera vez, el s
 \begin{figure}[H]
 \caption{Wireflow WF-F16: proyectar el acopio de la campaña.} \label{fig:wf-f16}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f16.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f16.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1388,7 +1419,7 @@ Desde Inicio (G10), Rubén toca la tarjeta «Acopio» y abre Acopio (G30). El si
 \begin{figure}[H]
 \caption{Wireflow WF-F17: administrar socios y códigos.} \label{fig:wf-f17}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f17.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-wireflows/wf-f17.png}
 \caption*{\textit{Nota.} Elaboración propia.}
 \end{figure}
 
@@ -1431,7 +1462,7 @@ Como se ilustra en la \autoref{fig:mu-shared-00}, la secuencia de inicio en alta
 \caption{Mock-up Mobile: Secuencia de Inicio y Arranque del Servicio en Alta Fidelidad.}
 \label{fig:mu-shared-00}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/shared/mk-shared-00-splash.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/shared/mk-shared-00-splash.png}
 \caption*{\textit{Nota.} Aplicación del Design System y cinemática de marca durante el arranque del servicio móvil. Elaboración propia.}
 \end{figure}
 
@@ -1441,7 +1472,7 @@ En la \autoref{fig:mu-shared-03} se aprecia la terminación visual del registro 
 \caption{Mock-up Mobile: Registro de Cuenta y Verificación OTP en Alta Fidelidad.}
 \label{fig:mu-shared-03}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/shared/mk-shared-03-cuenta-y-verificacion.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/shared/mk-shared-03-cuenta-y-verificacion.png}
 \caption*{\textit{Nota.} Formulario de alta, teclado in-app y componentes de validación en alta fidelidad. Elaboración propia.}
 \end{figure}
 
@@ -1451,7 +1482,7 @@ Tal como se expone en la \autoref{fig:mu-shared-05}, el acceso diario y la resta
 \caption{Mock-up Mobile: Inicio de Sesión y Recuperación de Credenciales en Alta Fidelidad.}
 \label{fig:mu-shared-05}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/shared/mk-shared-05-iniciar-sesion-y-recuperar-acceso.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/shared/mk-shared-05-iniciar-sesion-y-recuperar-acceso.png}
 \caption*{\textit{Nota.} Diseño visual del acceso seguro y secuencia de restauración de clave de usuario. Elaboración propia.}
 \end{figure}
 
@@ -1465,7 +1496,7 @@ En la \autoref{fig:mu-prod-01} se despliegan las pantallas de bienvenida del pro
 \caption{Mock-up Productor: Vistas de Bienvenida e Introducción Agronómica en Alta Fidelidad.}
 \label{fig:mu-prod-01}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-01-bienvenida.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-01-bienvenida.png}
 \caption*{\textit{Nota.} Integración de grabados ilustrativos y estilo tipográfico editorial para productores. Elaboración propia.}
 \end{figure}
 
@@ -1475,7 +1506,7 @@ La \autoref{fig:mu-prod-02} exhibe el asistente de configuración inicial en alt
 \caption{Mock-up Productor: Asistente Secuencial de Configuración Inicial en Alta Fidelidad.}
 \label{fig:mu-prod-02}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-02-preguntas-del-onboarding.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-02-preguntas-del-onboarding.png}
 \caption*{\textit{Nota.} Asistente por etapas con cotización en tiempo real y previsualización de alertas agronómicas. Elaboración propia.}
 \end{figure}
 
@@ -1485,7 +1516,7 @@ En la \autoref{fig:mu-prod-04} se aprecian las interfaces terminadas para la act
 \caption{Mock-up Productor: Activación del Servicio y Canje de Código en Alta Fidelidad.}
 \label{fig:mu-prod-04}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-04-activacion-del-acceso.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-04-activacion-del-acceso.png}
 \caption*{\textit{Nota.} Activación por pasarela digital de pago y confirmación de membresía asociativa cubierta. Elaboración propia.}
 \end{figure}
 
@@ -1495,7 +1526,7 @@ Tal como se ilustra en la \autoref{fig:mu-prod-06}, el tablero principal del pro
 \caption{Mock-up Productor: Tablero Principal de Inicio y Estados Estacionales en Alta Fidelidad.}
 \label{fig:mu-prod-06}
 \centering
-\includegraphics[width=0.40\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-06-inicio-del-productor.png}
+\includegraphics[width=0.40\textwidth,height=0.28\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-06-inicio-del-productor.png}
 \caption*{\textit{Nota.} Tablero operativo integral, transiciones estacionales y manejo de estados fuera de línea. Elaboración propia.}
 \end{figure}
 
@@ -1505,7 +1536,7 @@ En la \autoref{fig:mu-prod-07} se presenta la interfaz cartográfica de delimita
 \caption{Mock-up Productor: Registro y Georreferenciación Cartográfica de Lotes en Alta Fidelidad.}
 \label{fig:mu-prod-07}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-07-registrar-un-lote.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-07-registrar-un-lote.png}
 \caption*{\textit{Nota.} Trazado cartográfico de predios sobre ortofoto satelital y configuración del marco de siembra. Elaboración propia.}
 \end{figure}
 
@@ -1515,7 +1546,7 @@ La \autoref{fig:mu-prod-08} exhibe el módulo de muestreo de cuajado fuera de l�
 \caption{Mock-up Productor: Protocolo de Muestreo de Cuajado sin Conexión en Alta Fidelidad.}
 \label{fig:mu-prod-08}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-08-muestrear-el-cuajado-sin-conexion.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-08-muestrear-el-cuajado-sin-conexion.png}
 \caption*{\textit{Nota.} Contadores táctiles sobredimensionados para campo y almacenamiento local garantizado. Elaboración propia.}
 \end{figure}
 
@@ -1525,7 +1556,7 @@ En la \autoref{fig:mu-prod-09} se modela el módulo de aclareo frutal, integrand
 \caption{Mock-up Productor: Prescripción y Registro de Aclareo Frutal en Alta Fidelidad.}
 \label{fig:mu-prod-09}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-09-aclarear-a-tiempo.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-09-aclarear-a-tiempo.png}
 \caption*{\textit{Nota.} Prescripción de raleo, cuenta regresiva de ventana óptima y simulación de ganancia de calibre. Elaboración propia.}
 \end{figure}
 
@@ -1535,7 +1566,7 @@ Tal como se observa en la \autoref{fig:mu-prod-13}, la vista analítica de vecer
 \caption{Mock-up Productor: Análisis de Vecería e Índice Bienal BBI en Alta Fidelidad.}
 \label{fig:mu-prod-13}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-13-conocer-la-veceria-de-mi-lote.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-13-conocer-la-veceria-de-mi-lote.png}
 \caption*{\textit{Nota.} Reloj del índice BBI, proyección temporal de alternancia y registro de cosechas anteriores. Elaboración propia.}
 \end{figure}
 
@@ -1545,7 +1576,7 @@ En la \autoref{fig:mu-prod-14} se visualiza la liquidación productiva anual con
 \caption{Mock-up Productor: Cierre de Campaña y Expediente Agronómico en Alta Fidelidad.}
 \label{fig:mu-prod-14}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-14-cerrar-la-campana.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-14-cerrar-la-campana.png}
 \caption*{\textit{Nota.} Liquidación por destino comercial, bloqueo de ciclo y generación de expediente con hash criptográfico. Elaboración propia.}
 \end{figure}
 
@@ -1555,7 +1586,7 @@ La \autoref{fig:mu-prod-15} ilustra el seguimiento agrometeorológico de frío i
 \caption{Mock-up Productor: Seguimiento de Frío Invernal y Ruptura de Latencia en Alta Fidelidad.}
 \label{fig:mu-prod-15}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-15-seguir-el-frio-invernal.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-15-seguir-el-frio-invernal.png}
 \caption*{\textit{Nota.} Monitor de porciones de frío acumuladas y detección temprana de anomalías térmicas en invierno. Elaboración propia.}
 \end{figure}
 
@@ -1565,7 +1596,7 @@ En la \autoref{fig:mu-prod-16} se aprecia el tablero climático con pronóstico 
 \caption{Mock-up Productor: Monitoreo Microclimático y Telemetría de Suelo en Alta Fidelidad.}
 \label{fig:mu-prod-16}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-16-vigilar-el-clima-del-lote.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-16-vigilar-el-clima-del-lote.png}
 \caption*{\textit{Nota.} Pronóstico microclimático localizado y telemetría de humedad de suelo en alta fidelidad. Elaboración propia.}
 \end{figure}
 
@@ -1575,7 +1606,7 @@ Tal como se exhibe en la \autoref{fig:mu-prod-18}, el panel de cuenta del produc
 \caption{Mock-up Productor: Administración de Perfil de Usuario y Seguridad en Alta Fidelidad.}
 \label{fig:mu-prod-18}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-18-mi-cuenta.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-18-mi-cuenta.png}
 \caption*{\textit{Nota.} Perfil de usuario, parámetros de seguridad y selector de idioma en alta fidelidad. Elaboración propia.}
 \end{figure}
 
@@ -1585,7 +1616,7 @@ En la \autoref{fig:mu-prod-19} se ilustra la edición interactiva de vértices c
 \caption{Mock-up Productor: Modificación Cartográfica y Archivado de Lotes en Alta Fidelidad.}
 \label{fig:mu-prod-19}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-19-editar-o-archivar-un-lote.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-19-editar-o-archivar-un-lote.png}
 \caption*{\textit{Nota.} Ajuste de polígonos perimétricos y archivado con preservación de series estadísticas. Elaboración propia.}
 \end{figure}
 
@@ -1595,7 +1626,7 @@ La \autoref{fig:mu-prod-20} muestra la lista de dispositivos IoT asociados a la 
 \caption{Mock-up Productor: Supervisión de Sensores y Nodos de Telemetría IoT en Alta Fidelidad.}
 \label{fig:mu-prod-20}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-20-sensores-del-lote.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/productor/mk-productor-20-sensores-del-lote.png}
 \caption*{\textit{Nota.} Supervisión de sondas y microestaciones IoT con estado de conectividad y batería. Elaboración propia.}
 \end{figure}
 
@@ -1609,7 +1640,7 @@ En la \autoref{fig:mu-gest-01} se despliegan las pantallas de bienvenida del ges
 \caption{Mock-up Gestor: Bienvenida Institucional y Visión Colectiva del Valle en Alta Fidelidad.}
 \label{fig:mu-gest-01}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-01-bienvenida.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-01-bienvenida.png}
 \caption*{\textit{Nota.} Portada introductoria orientada a la gestión asociativa y coordinación territorial del valle. Elaboración propia.}
 \end{figure}
 
@@ -1619,7 +1650,7 @@ La \autoref{fig:mu-gest-02} presenta el asistente de alta técnica en tres pasos
 \caption{Mock-up Gestor: Asistente de Configuración de Alertas Territoriales en Alta Fidelidad.}
 \label{fig:mu-gest-02}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-02-preguntas-del-onboarding.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-02-preguntas-del-onboarding.png}
 \caption*{\textit{Nota.} Asistente de configuración técnica y parametrización de alertas colectivas del valle. Elaboración propia.}
 \end{figure}
 
@@ -1629,7 +1660,7 @@ En la \autoref{fig:mu-gest-04} se aprecia la pantalla de espera institucional co
 \caption{Mock-up Gestor: Estado de Validación y Asignación Institucional en Alta Fidelidad.}
 \label{fig:mu-gest-04}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-04-activacion-del-acceso.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-04-activacion-del-acceso.png}
 \caption*{\textit{Nota.} Pantalla de espera institucional previa a la asignación de permisos técnicos. Elaboración propia.}
 \end{figure}
 
@@ -1639,7 +1670,7 @@ Tal como se ilustra en la \autoref{fig:mu-gest-10}, el tablero territorial de ma
 \caption{Mock-up Gestor: Tablero Territorial de Mando y Semáforo de Riesgo en Alta Fidelidad.}
 \label{fig:mu-gest-10}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-10-inicio-del-gestor.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-10-inicio-del-gestor.png}
 \caption*{\textit{Nota.} Tablero de mando territorial con semáforo agronómico, acopio agregado y priorización de visitas. Elaboración propia.}
 \end{figure}
 
@@ -1649,7 +1680,7 @@ En la \autoref{fig:mu-gest-11} se expone el módulo de visitas de campo con cart
 \caption{Mock-up Gestor: Zonificación Territorial y Priorización de Visitas de Campo en Alta Fidelidad.}
 \label{fig:mu-gest-11}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-11-priorizar-mis-visitas-de-campo.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-11-priorizar-mis-visitas-de-campo.png}
 \caption*{\textit{Nota.} Mapa de riesgo sectorial, ranking de atención a productores y ficha técnica de parcela. Elaboración propia.}
 \end{figure}
 
@@ -1659,7 +1690,7 @@ La \autoref{fig:mu-gest-12} despliega el módulo de proyección de acopio territ
 \caption{Mock-up Gestor: Estimación y Desglose Territorial del Acopio Proyectado en Alta Fidelidad.}
 \label{fig:mu-gest-12}
 \centering
-\includegraphics[width=0.60\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-12-proyectar-el-acopio.png}
+\includegraphics[width=0.40\textwidth,height=0.28\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-12-proyectar-el-acopio.png}
 \caption*{\textit{Nota.} Modelo volumétrico de acopio, desglose comercial, umbrales de cobertura y consulta offline. Elaboración propia.}
 \end{figure}
 
@@ -1669,7 +1700,7 @@ En la \autoref{fig:mu-gest-17} se presenta el panel de gestión del padrón de s
 \caption{Mock-up Gestor: Administración de Padrón, Cupo Colectivo y Códigos en Alta Fidelidad.}
 \label{fig:mu-gest-17}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-17-administrar-socios-y-codigos.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-17-administrar-socios-y-codigos.png}
 \caption*{\textit{Nota.} Control de cupo asociativo, emisión masiva de códigos y auditoría de vinculación de socios. Elaboración propia.}
 \end{figure}
 
@@ -1679,11 +1710,12 @@ Tal como se ilustra en la \autoref{fig:mu-gest-18}, el panel de cuenta del gesto
 \caption{Mock-up Gestor: Administración de Cuenta Institucional y Bilingüismo en Caliente en Alta Fidelidad.}
 \label{fig:mu-gest-18}
 \centering
-\includegraphics[width=0.85\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-18-mi-cuenta.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-ui-design/mockups/gestor/mk-gestor-18-mi-cuenta.png}
 \caption*{\textit{Nota.} Perfil institucional de gestor técnico, auditoría de credenciales y conmutación idiomática en caliente. Elaboración propia.}
 \end{figure}
 
 #### Mobile Applications User Flow Diagrams
+&nbsp;
 
 Un user flow representa el recorrido completo que sigue una persona de usuario para alcanzar una meta, con las pantallas reales de la aplicación, la ruta esperada (*happy path*) y las rutas alternativas (*unhappy paths*) que se activan cuando una condición no se cumple. Esta sección presenta un user flow por cada meta de usuario y por cada persona de usuario de cada aplicación del alcance. Cada user flow se deriva del wireflow homónimo de la sección anterior (UF-F01 de WF-F01, y así sucesivamente) y conserva su ruta esperada, de modo que ambos conjuntos son consistentes: los 19 flujos centrales del catálogo (F01 a F19) para Teodoro Mamani, productor olivarero que usa la App Productor (Kotlin), y Rubén Ticona, gestor técnico que usa la App Gestor (Flutter). Como F01, F02 y F03 existen para ambas personas, el conjunto suma 20 user flows.
 
@@ -1724,7 +1756,7 @@ La siguiente tabla resume el conjunto, con el número de rutas alternativas que 
 \begin{figure}[H]
 \caption{User flow UF-F01: crear mi cuenta y entrar por primera vez (productor).} \label{fig:uf-f01-teodoro}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f01-teodoro.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f01-teodoro.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1740,7 +1772,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F01: crear mi cuenta y entrar por primera vez (gestor).} \label{fig:uf-f01-ruben}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f01-ruben.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f01-ruben.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1757,7 +1789,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F02: iniciar sesión y recuperar mi acceso (productor).} \label{fig:uf-f02-teodoro}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f02-teodoro.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f02-teodoro.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1772,7 +1804,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F02: iniciar sesión y recuperar mi acceso (gestor).} \label{fig:uf-f02-ruben}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f02-ruben.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f02-ruben.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1787,7 +1819,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F03: mantener mi cuenta al día (productor).} \label{fig:uf-f03-teodoro}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f03-teodoro.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f03-teodoro.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1803,7 +1835,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F03: mantener mi cuenta al día (gestor).} \label{fig:uf-f03-ruben}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f03-ruben.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f03-ruben.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1819,7 +1851,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F04: activar mi acceso con pago o código.} \label{fig:uf-f04}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f04.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f04.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1834,7 +1866,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F05: saber qué hacer hoy en mi olivar.} \label{fig:uf-f05}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f05.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f05.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1854,7 +1886,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F06: registrar un lote.} \label{fig:uf-f06}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f06.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f06.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1871,7 +1903,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F07: mantener mis lotes al día.} \label{fig:uf-f07}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f07.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f07.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1884,7 +1916,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F08: configurar el monitoreo del lote.} \label{fig:uf-f08}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f08.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f08.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1899,7 +1931,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F09: vigilar el clima del lote.} \label{fig:uf-f09}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f09.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f09.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1913,7 +1945,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F10: conocer la vecería de mi lote.} \label{fig:uf-f10}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f10.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f10.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1928,7 +1960,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F11: seguir el frío invernal.} \label{fig:uf-f11}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f11.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f11.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1942,7 +1974,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F12: muestrear el cuajado sin conexión.} \label{fig:uf-f12}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f12.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f12.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1955,7 +1987,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F13: aclarear a tiempo.} \label{fig:uf-f13}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f13.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f13.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1972,7 +2004,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F14: cerrar la campaña y obtener el expediente.} \label{fig:uf-f14}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f14.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f14.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -1987,7 +2019,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F15: priorizar mis visitas de campo.} \label{fig:uf-f15}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f15.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f15.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -2003,7 +2035,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F16: proyectar el acopio de la campaña.} \label{fig:uf-f16}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f16.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f16.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
@@ -2018,7 +2050,7 @@ Las rutas alternativas del diagrama son las siguientes:
 \begin{figure}[H]
 \caption{User flow UF-F17: administrar socios y códigos.} \label{fig:uf-f17}
 \centering
-\includegraphics[width=0.95\textwidth,height=0.85\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f17.png}
+\includegraphics[width=0.92\textwidth,height=0.26\textheight,keepaspectratio]{report/assets/mobile-userflows/uf-f17.png}
 \caption*{\textit{Nota.} Elaboración propia en Lucidchart con los mock-ups de Figma.}
 \end{figure}
 
