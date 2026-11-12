@@ -93,15 +93,19 @@ En esta capa se modela la lógica de negocio pura, independiente de frameworks, 
 * **Atributos:**
   * `id: IncidentId` (Identificador único local / UUID)
   * `type: IncidentType` (Enum: `HYDRIC_STRESS`, `THERMAL_SHOCK`, `FROST_WARNING`)
-  * `severity: IncidentSeverity` (Enum: `WARNING`, `CRITICAL`)
-  * `status: IncidentStatus` (Enum: `OPEN`, `RESOLVED`)
+  * `severity: IncidentSeverity` (Enum: `INFO`, `WARNING`, `CRITICAL`)
+  * `status: IncidentStatus` (Enum: `OPEN`, `SNOOZED`, `RESOLVED`)
   * `triggeredAt: Instant` (Momento de detección de la anomalía)
   * `resolvedAt: Instant` (Momento de normalización o resolución, anulable)
   * `triggerValue: Double` (Valor métrico que causó el disparo, ej. 16.2% de humedad o 33.5°C)
   * `thresholdValue: Double` (Umbral agronómico transgredido, ej. 18.0% o 32.0°C)
   * `stressDurationMinutes: Long` (Duración acumulada de estrés en minutos calculada al resolverse)
+  * `snoozeUntil: Instant` (Fecha de reactivación de los avisos mientras el incidente está `SNOOZED`, anulable)
+  * `mitigationSteps: List<MitigationStep>` (Pasos ordenados del protocolo de mitigación, cada uno con `stepId`, descripción y estado `PENDING` o `COMPLETED`)
 * **Métodos:**
   * `resolve(resolutionTime: Instant): void` - Cierra el incidente, fija la fecha de resolución y computa la duración acumulada.
+  * `postpone(snoozeHours: Int, at: Instant): void` - Silencia los avisos push entre 1 y 72 horas sin resolver el incidente, pasa a `SNOOZED` y fija `snoozeUntil` (`TS49`). Fuera de rango produce `400`.
+  * `completeMitigationStep(stepId: StepId, at: Instant): void` - Marca un paso del protocolo como `COMPLETED` y actualiza el estado de resolución del incidente (`TS50`).
 
 ##### Value Objects (Conceptuales e Inmutables)
 * **`SensorNodeId`**: Encapsula el identificador UUID inmutable del nodo sensor virtual. Valida formato canónico y no nulidad en constructor.
@@ -187,8 +191,14 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
   * `GET /api/v1/plots/{plotId}/forecasts` - Consulta el pronóstico meteorológico geolocalizado a 7 días calculado a partir del centroide de la parcela (`TS20` / `US19`). Implementa almacenamiento en caché local con caducidad de 3 horas y sincronización automática vía `WeatherSyncScheduler`. Responde `200 OK` con `ForecastResource`, o `400 Bad Request` si la parcela carece de coordenadas perimétricas.
   * `POST /api/v1/plots/{plotId}/forecasts` - Ingesta o actualización de lote de pronóstico a 7 días para la parcela (`TS20` / `CMD19`). Responde `200 OK` o `202 Accepted`.
 
-* **`PlotIncidentController`** (Ruta base: `/api/v1/plots/{plotId}/incidents`):
-  * `GET /api/v1/plots/{plotId}/incidents` - Lista los incidentes agroclimáticos registrados en el lote (activos e históricos). Responde `200 OK`.
+* **`AgroclimaticIncidentController`** (Ruta base: `/api/v1/agroclimatic-incidents`):
+  * `GET /api/v1/agroclimatic-incidents` - Consulta global de incidentes con filtro de estado y paginación, más contadores por severidad (`CRITICAL`, `WARNING`, `INFO`) (`TS46`). Responde `200 OK` o `400 Bad Request` ante parámetros inválidos.
+  * `GET /api/v1/agroclimatic-incidents/{incidentId}` - Detalle del incidente con la serie temporal de la anomalía, el diagnóstico y el checklist de mitigación (`TS48`). Responde `200 OK` con `AgroclimaticIncidentDetailResponse` o `404 Not Found`.
+  * `POST /api/v1/agroclimatic-incidents/{incidentId}/postponements` - Posterga los avisos con `snoozeHours` entre 1 y 72 (`TS49`). Responde `200 OK` con el incidente en `SNOOZED` y `snoozeUntil`, `400` fuera de rango o `404`.
+  * `PUT /api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}` - Asienta la ejecución de un paso del protocolo de mitigación (`TS50`). Responde `200 OK` con el detalle actualizado.
+
+* **`PlotIncidentController`** (Ruta base: `/api/v1/plots/{plotId}/agroclimatic-incidents`):
+  * `GET /api/v1/plots/{plotId}/agroclimatic-incidents` - Lista los incidentes de un cuartel con tipología de riesgo, valores medidos, umbrales y estado de mitigación (`TS47`). Responde `200 OK` o `404 Not Found` si el cuartel no existe.
 
 ##### Resources (DTOs / Request & Response Models)
 * **`CreateIotDeviceRequest`**: `{ name: String, type: String, depthCm: Integer, soilTextureType: String, calibrationMultiplier: Double }`
@@ -201,6 +211,7 @@ Diseño basado estrictamente en recursos, sustantivos en plural y verbos HTTP es
 * **`ForecastDayResource`**: `{ forecastDate: LocalDate, maxTemperature: Double, minTemperature: Double, precipitationProbability: Double, windSpeedKmh: Double, frostRisk: boolean }`
 * **`ForecastResource`**: `{ plotId: UUID, syncedAt: Instant, cached: boolean, dailyForecasts: List<ForecastDayResource> }`
 * **`AgroclimaticIncidentResource`**: `{ id: UUID, type: String, severity: String, status: String, triggeredAt: Instant, resolvedAt: Instant, triggerValue: Double, thresholdValue: Double, stressDurationMinutes: Long }`
+* **`AgroclimaticIncidentDetailResponse`**: `{ ...AgroclimaticIncidentResource, description: String, trendSeries: List<TrendPointResource>, mitigationSteps: List<MitigationStepResource> }` (detalle de `TS48` y respuesta de `TS50`).
 
 ##### Assemblers / Mappers
 * **`IotDeviceResourceAssembler`**: Convierte la entidad de dominio `VirtualSensorNode` en el DTO `IotDeviceResource`.

@@ -81,11 +81,22 @@ Alineados con los contratos oficiales del reporte (TS01, TS02, TS03) y con las U
   * `PATCH /api/v1/auth/passwords` - Cambio de contraseña del usuario autenticado (`TS36`, `US04`). Retorna `204 No Content`.
   * `POST /api/v1/auth/password-reset-tokens` - Solicitud de token temporal de restablecimiento por correo (`TS37`, `US05`). Retorna `202 Accepted`.
   * `PUT /api/v1/auth/password-reset-tokens/{token}` - Consumo del token temporal y definición de nueva contraseña (`TS38`, `US05`). Retorna `204 No Content`.
+  * `GET /api/v1/auth/password-reset-tokens/{token}` - Comprueba si un enlace de restablecimiento sigue vigente sin consumirlo (`TS76`, `US05`). Retorna `204 No Content`, o `404 Not Found` si el enlace no está disponible.
+  * `POST /api/v1/auth/sign-out` - Cierre de sesión (`TS72`). Recibe `refreshToken` y lo revoca para impedir que la sesión vuelva a renovarse. Retorna `204 No Content`.
+  * `POST /api/v1/auth/account-deletions` - Eliminación definitiva de la cuenta autenticada (`TS73`). Exige `password` y retira los datos del usuario. Retorna `204 No Content`, o `422 Unprocessable Entity` si la contraseña es incorrecta.
+  * `POST /api/v1/auth/email-verifications` - Envío del código de verificación con `email` y `code` (`TS74`). Activa la cuenta y retorna la sesión del usuario, o `422 Unprocessable Entity` indicando los intentos restantes.
+  * `POST /api/v1/auth/email-verification-codes` - Reenvío del código de verificación de una cuenta pendiente (`TS75`). Retorna `202 Accepted` sin revelar si el correo existe, o `429 Too Many Requests` con la cabecera `Retry-After` si se reenvía antes de tiempo.
+
+Las historias técnicas `TS72` a `TS76` amplían el ciclo de vida de `UserAccount` sin cambiar su frontera. La cuenta nace pendiente de verificación y solo se activa al validar el código enviado al correo, con un número limitado de intentos y un reenvío sujeto a espera mínima. El cierre de sesión revoca el `refreshToken` recibido. La eliminación de cuenta exige confirmar la contraseña y retira los datos del usuario, por lo que los demás contextos deben reaccionar a la baja de la cuenta mediante su evento de integración.
 
 ##### Resources (DTOs / Request & Response Models)
 * **`SignUpRequest`**: `{ email: String, password: String, role: String }`
 * **`SignInRequest`**: `{ email: String, password: String }`
 * **`RefreshTokenRequest`**: `{ refreshToken: String }`
+* **`SignOutRequest`**: `{ refreshToken: String }` (`TS72`).
+* **`DeleteAccountRequest`**: `{ password: String }` (`TS73`).
+* **`VerifyEmailRequest`**: `{ email: String, code: String }` (`TS74`).
+* **`ResendVerificationCodeRequest`**: `{ email: String }` (`TS75`).
 * **`ChangePasswordRequest`**: `{ currentPassword: String, newPassword: String }`
 * **`CreatePasswordResetTokenRequest`**: `{ email: String }`
 * **`ConfirmPasswordResetRequest`**: `{ newPassword: String }`
