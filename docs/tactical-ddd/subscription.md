@@ -111,7 +111,7 @@ Referencia al productor por `ProducerId`, identidad proveniente de IAM y perfil 
 
 **Atributos del lote:** `id: InvitationCodeBatchId`, `licenseId: CooperativeLicenseId`, `issuedBy: ActorId`, `issuedAt: Instant`, `codes: List<InvitationCode>`.
 
-**Métodos del lote:** `redeem(codeId: InvitationCodeId, producerId: ProducerId, license: CooperativeLicense, at: Instant): RedeemedCode`, `shortenExpiry(codeId: InvitationCodeId, newExpiry: Instant, at: Instant): void`, `expireCode(codeId: InvitationCodeId, at: Instant): void`, `snapshot(): InvitationBatchSnapshot`.
+**Métodos del lote:** `redeem(codeId: InvitationCodeId, producerId: ProducerId, license: CooperativeLicense, at: Instant): RedeemedCode`, `revoke(codeId: InvitationCodeId, at: Instant): void`, `expireCode(codeId: InvitationCodeId, at: Instant): void`, `snapshot(): InvitationBatchSnapshot`.
 
 **Atributos del código:** `id: InvitationCodeId`, `fingerprint: CodeFingerprint`, `quota: HectaresQuota`, `expiresAt: Instant`, `status: InvitationCodeStatus` (`AVAILABLE`, `REDEEMED`, `EXPIRED`), `redeemedBy: ProducerId?`, `redeemedAt: Instant?`, `expiredAt: Instant?`.
 
@@ -119,7 +119,7 @@ Referencia al productor por `ProducerId`, identidad proveniente de IAM y perfil 
 
 **Modelo de estados del código.** Las transiciones admitidas son `AVAILABLE` $\rightarrow$ `REDEEMED` (terminal) y `AVAILABLE` $\rightarrow$ `EXPIRED` (libera plaza y superficie). Un código `REDEEMED` no retorna a ningún otro estado. **La caducidad es un estado registrado, no una condición derivada de la fecha:** una redacción anterior indicaba que «la expiración se determina por fecha, aunque el estado almacenado siga siendo `AVAILABLE`». Eso ya no se sostiene, porque el decremento de los acumuladores necesita un hecho puntual y único al cual engancharse; ese hecho es `EV52`.
 
-**Cancelación anticipada.** `shortenExpiry(...)` (`CMD33`) solo puede **adelantar** `expiresAt`, nunca extenderla; opera únicamente sobre códigos en estado `AVAILABLE`; y es idempotente frente a reintentos. No introduce un camino de liberación propio: adelanta la fecha y deja que la caducidad ordinaria haga el resto. La liberación resultante es inmediata —el comando dispara la verificación al terminar— y no queda diferida a un barrido programado, para que el gestor no siga viendo el cupo ocupado después de cancelar.
+**Revocación anticipada.** Con la historia `TS41`, `CMD33` se expresa como `revoke(codeId, at)`: anula un código en estado `AVAILABLE`, lo transiciona a `REVOKED` y restituye de forma atómica la plaza y las hectáreas reservadas al balance de `CooperativeLicense`. Sustituye al ajuste de vigencia previo (`shortenExpiry`), que adelantaba `expiresAt` y dejaba que la caducidad hiciera el resto. Un código ya canjeado o inactivo no puede revocarse (`409 Conflict`). Es idempotente frente a reintentos y emite `InvitationCodeRevokedEvent`, que reemplaza al `EV52` en este camino. `EV52` queda reservado a la caducidad por fecha. La liberación es inmediata y no queda diferida a un barrido programado.
 
 **Invariantes:** un lote no está vacío; cada código tiene huella única; solo se canjea una vez, antes de expirar y con licencia vigente. Un código solo puede expirar desde `AVAILABLE`. **La suscripción del productor y el código consumido se confirman juntos o se revierten juntos**, porque ambos residen en este contexto. El canje no modifica el rol IAM del productor ni le concede permisos de gestor.
 
@@ -172,6 +172,17 @@ Todos los eventos son registros inmutables con `eventId: UUID`, `aggregateId: UU
 
 ---
 
+#### Consentimientos, ampliaciones y desvinculación
+
+Las historias técnicas `TS41` y `TS81` a `TS89` incorporan conceptos que este contexto absorbe sin crear un agregado nuevo, porque todos dependen de la `Subscription` o de la `CooperativeLicense` ya existentes:
+
+- **`DataSharingConsent` (Internal Entity de `CooperativeLicense`).** Se crea en el canje del código (`TS10`) junto con la afiliación. Campos: `consentId`, `producerId`, `licenseId`, `cooperativeName`, `managerId`, `textVersion`, `status` (`ACTIVE` o `WITHDRAWN`), `grantedAt`, `withdrawnAt?`. Invariante: solo un consentimiento `ACTIVE` por productor y licencia. `withdraw()` (`TS89`) lo pasa a `WITHDRAWN`, revoca de inmediato el acceso del gestor y no altera el plan patrocinado, que se mantiene hasta su fin.
+- **`SponsoredMembership` y desvinculación.** `CooperativeLicense.releaseMember(memberId, at)` (`TS86`) retira el acceso del gestor a los datos del socio de inmediato y programa la liberación de la plaza al terminar el periodo de gracia. Un socio ya desvinculado produce `409`.
+- **`SubscriptionExtension` (Internal Entity de `Subscription`).** Representa la ampliación pagada de hectáreas del plan individual (`TS81` a `TS84`): `extensionId`, `addedHa`, `status` (`PENDING_PAYMENT`, `ACTIVE`, `CANCELLED`), `checkoutIntentId?`. Se solicita con `Idempotency-Key`. Las condiciones de ampliación se calculan en el servidor y no son editables por el cliente.
+- **Canje de código de ampliación (`TS85`).** Un código de ampliación agrega hectáreas al plan patrocinado vigente. Reutiliza la reserva atómica de cuota de `InvitationCodeBatch`.
+- **Revocación de códigos (`TS41`).** Reemplaza al ajuste de vigencia: ver *Revocación anticipada* en `InvitationCodeBatch`.
+- **Canje del gestor y vista previa (`TS64`, `TS65`).** `ManagerActivation` asigna la licencia al gestor con el código maestro `GEST-XXXX` y la vista previa de `COOP-XXXX` expone condiciones y versión del consentimiento sin consumir el código.
+
 #### Interface Layer
 
 ##### Controllers (REST)
@@ -180,7 +191,15 @@ Todos los eventos son registros inmutables con `eventId: UUID`, `aggregateId: UU
 |---|---|---|
 | `SubscriptionController`; `commands: SubscriptionCommandFacade`, `queries: SubscriptionQueryFacade`, `assembler: SubscriptionResourceAssembler` | `create()` → `POST /api/v1/subscriptions`; `get()` → `GET /api/v1/subscriptions/{id}`; `getCurrent()` → `GET /api/v1/subscriptions` (o con filtro explícito `?scope=current`); `getPlans()` → `GET /api/v1/subscription-plans` | Crea la intención contractual y consulta estado/planes. Solo el titular accede al contrato. |
 | `CheckoutController`; `handler: CreateCheckoutCommandHandler` | `create()` → `POST /api/v1/subscriptions/{id}/checkouts` | Solicita checkout para términos resueltos en el servidor. |
-| `CooperativeInvitationController`; `commands`, `queries`, `assembler` | `generate()` → `POST /api/v1/cooperatives/{id}/invitation-code-batches`; `list()` → `GET /api/v1/cooperatives/{id}/invitation-code-batches?page=0&size=20`; `shortenExpiry()` → `POST /api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments` (`TS41` / `CMD33`); `redeem()` → `POST /api/v1/cooperative-code-redemptions` | Generación y cancelación anticipada solo por gestor autorizado (`TS41`); canje por productor autenticado (`TS10`). El path cooperativo no transfiere la propiedad comercial a Territory. |
+| `CooperativeInvitationController`; `commands`, `queries`, `assembler` | `generate()` → `POST /api/v1/invitation-codes`; `list()` → `GET /api/v1/invitation-codes?status={status}`; `revoke()` → `POST /api/v1/invitation-codes/{id}/revocations` (`TS41` / `CMD33`); `redeem()` → `POST /api/v1/cooperative-code-redemptions` | Generación (`TS08`), consulta (`TS09`) y cancelación anticipada solo por gestor autorizado (`TS41`), y canje por productor autenticado (`TS10`). El path cooperativo no transfiere la propiedad comercial a Territory. |
+| `CooperativeLicenseController`; `queries`, `assembler` | `list()` → `GET /api/v1/cooperative-licenses` (`TS56`, lista con una licencia como máximo), `get()` → `GET /api/v1/cooperative-licenses/{id}` (`TS57`, balance de plazas y hectáreas) | Consulta de la licencia institucional a cargo del gestor técnico autenticado. No expone alta de licencia ni de cupos. |
+| `ManagerActivationController`; `commands` | `redeem()` → `POST /api/v1/manager-code-redemptions` (`TS64`) | Asigna al gestor autenticado la responsabilidad de la licencia mediante su código maestro. Rechaza con `409` si ya tiene licencia vigente y limita intentos fallidos (`429`). |
+| `CooperativeCodePreviewController`; `queries` | `preview()` → `POST /api/v1/cooperative-code-previews` (`TS65`) | Muestra al productor las condiciones y el consentimiento de un código antes de canjearlo. No consume el código. |
+| `CooperativeLicenseController` (continuación) | `releaseMember()` → `POST /api/v1/cooperative-licenses/{id}/member-releases` con `memberId` (`TS86`) | Desvincula al socio: el gestor pierde de inmediato el acceso a sus datos y la plaza se libera al terminar el periodo de gracia. `400` socio inválido, `404` licencia o socio inexistente, `409` socio ya desvinculado. |
+| `DataSharingConsentController`; `queries`, `commands` | `list()` → `GET /api/v1/data-sharing-consents` (`TS87`), `get()` → `GET /api/v1/data-sharing-consents/{id}` (`TS88`), `withdraw()` → `POST /api/v1/data-sharing-consents/{id}/withdrawals` (`TS89`) | El productor revisa con quién comparte sus datos y retira el consentimiento. Tras el retiro el gestor deja de acceder a los datos y el plan patrocinado se mantiene hasta su fin. `404` no disponible, `409` consentimiento no activo, `403` sin rol de productor. |
+| `SubscriptionExtensionController`; `commands`, `queries` | `terms()` → `GET /api/v1/subscriptions/{subscriptionId}/extension-terms` (`TS81`), `request()` → `POST /api/v1/subscriptions/{subscriptionId}/extensions` con `addedHa` e `Idempotency-Key` (`TS82`), `get()` → `GET /api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}` (`TS83`) | Ampliación pagada de hectáreas del plan individual. `201` creación, `200` reintento idempotente, `400` datos inválidos, `409` operación en conflicto. |
+| `ExtensionCheckoutController`; `handler` | `create()` → `POST /api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}/checkouts` con `Idempotency-Key` (`TS84`) | Prepara o recupera el pago de una ampliación pendiente sin duplicar la operación. |
+| `QuotaExtensionRedemptionController`; `commands` | `redeem()` → `POST /api/v1/quota-extension-redemptions` con `code` (`TS85`) | Canje de un código de ampliación que agrega hectáreas al plan patrocinado vigente del productor. `400` código no utilizable, `403` sin rol de productor, `429` con `Retry-After`. |
 | `MercadoPagoWebhookController`; `authenticator: PaymentWebhookAuthenticator`, `handler: ProcessPaymentConfirmationCommandHandler` | `receive()` → `POST /api/v1/payment-notifications/mercado-pago` | Entrada del proveedor con autenticación propia; no utiliza JWT del productor ni confía en el estado recibido sin reconciliación. |
 
 No se expone `PATCH {status: ACTIVE}` ni un `PUT` genérico sobre suscripciones. Las rutas son recursos; la activación es un comportamiento del dominio. Operaciones mutantes admiten `Idempotency-Key`; `201` identifica creación, `200` consulta/repetición ya procesada, `409` conflicto de estado/cupo y `422` datos semánticamente inválidos. Los fallos externos transitorios devuelven error recuperable; no se confunden con rechazo bancario. Un webhook solo recibe confirmación de procesamiento después de persistir el resultado; ante indisponibilidad recuperable se conserva la posibilidad de reintento.
@@ -195,7 +214,7 @@ No se expone `PATCH {status: ACTIVE}` ni un `PUT` genérico sobre suscripciones.
 | `CheckoutResource` | `intentId`, `checkoutUrl`, `expiresAt`; URL emitida por el adaptador y validada antes de abrirla. |
 | `GenerateInvitationCodesBatchRequest` | `quantity: int`, `hectaresCapPerCode: Decimal`, `expiresAt: Instant`; validados contra licencia. |
 | `InvitationBatchResource` | `id`, `quantity`, `issuedAt`, `availableSeats`, `availableAreaHa`, `codes: List<String>` únicamente en entrega autorizada; las consultas posteriores devuelven IDs, estados (`AVAILABLE`, `REDEEMED`, `EXPIRED`) y vencimientos enmascarados. |
-| `ShortenInvitationCodeExpiryRequest` | `newExpiresAt: Instant`; solo se admite si adelanta la vigencia vigente del código. |
+| `InvitationCodeRevocationResource` | `codeId`, `status: REVOKED`, `releasedSeats`, `releasedAreaHa`, como respuesta de la revocación (`TS41`). No requiere cuerpo de solicitud. |
 | `RedeemCooperativeCodeRequest` | `code: String`; el productor se deriva del principal autenticado. |
 | `PaymentNotificationRequest` | `externalNotificationId`, `externalPaymentId`; formato externo confinado al adaptador. |
 | `AuditResource` | `createdAt`, `updatedAt`, `createdBy`, `updatedBy`; metadatos técnicos de respuesta. |
@@ -215,7 +234,7 @@ Cada handler implementa `handle(command): Result`. Las fachadas `SubscriptionCom
 | `ProcessPaymentConfirmationCommandHandler` / `ProcessPaymentConfirmation` — CMD09 | `paymentGateway`, `subscriptions`, `paymentInbox`, `producerGate`, `eventDispatcher` | Consulta estado autoritativo fuera de la transacción; valida cuenta receptora, referencia interna, importe y moneda; bajo bloqueo aplica estado nuevo; registra comprobante; despacha POL01; confirma todo junto. |
 | `ActivateSubscriptionCommandHandler` / `ActivateSubscription` | `subscriptions`, `activationPolicy`, `eventDispatcher` | Manejador interno de POL01. Activa utilizando un comprobante aprobado de ese agregado y emite EV11 en la misma transacción. |
 | `GenerateInvitationCodesBatchCommandHandler` / `GenerateInvitationCodesBatch` — CMD11 | `licenses`, `batches`, `institutionalAccess`, `codeGenerator`, `factory`, `idempotency` | Verifica gestor y cooperativa; bloquea licencia; comprueba plazas **y** superficie disponibles; reserva ambas; genera códigos; guarda lote y reserva; emite EV14. |
-| `ShortenInvitationCodeExpiryCommandHandler` / `ShortenInvitationCodeExpiry` — CMD33 | `batches`, `licenses`, `institutionalAccess`, `eventDispatcher`, `idempotency`, `clock` | Verifica gestor autorizado; bloquea lote y licencia; adelanta `expiresAt` solo sobre un código `AVAILABLE`; evalúa la caducidad de inmediato y, si ya venció, transiciona a `EXPIRED` y emite EV52 en la misma transacción. Idempotente ante reintentos. |
+| `RevokeInvitationCodeCommandHandler` / `RevokeInvitationCode` — CMD33 | `batches`, `licenses`, `institutionalAccess`, `eventDispatcher`, `idempotency`, `clock` | Verifica gestor autorizado; bloquea lote y licencia; revoca solo un código `AVAILABLE`, lo transiciona a `REVOKED`, restituye plaza y hectáreas a la licencia y emite `InvitationCodeRevokedEvent` en la misma transacción. Rechaza códigos canjeados o inactivos con `409`. Idempotente ante reintentos. |
 | `RedeemCooperativeCodeCommandHandler` / `RedeemCooperativeCode` — CMD10 | `batches`, `licenses`, `subscriptions`, `producerGate`, `profilesPort`, `eventDispatcher`, `idempotency` | Verifica perfil y ausencia de membresía activa; bloquea productor, licencia y lote; consume código; activa patrocinio; emite EV13 y EV11 en un *commit* único **de este contexto**. No descuenta cupo: plazas y superficie se comprometieron al emitir. La afiliación en Territory **no** participa de esta transacción: ocurre por POL02 como reacción a EV13, de forma idempotente. |
 
 No se hace HTTP a Mercado Pago mientras se retiene un bloqueo de base de datos. El procesamiento reconsulta el estado externo si recibe eventos fuera de orden. Un `PENDING` se conserva como pendiente; un error de red no genera EV12. Reembolsos o contracargos requieren una política adicional y no se traducen silenciosamente al flujo de alta.
@@ -343,7 +362,7 @@ Una caché de derechos no permite aprobar operaciones comerciales sin conexión.
 | US06, CMD09, EV10–EV12, POL01 | Subscription, PaymentIntent, PaymentReceipt, activación verificada | Subscription; Mercado Pago vía ACL. |
 | US07, CMD10, EV13, POL02 | Canje atómico y afiliación por evento | Código/contrato en Subscription; padrón en Territory. |
 | US08, CMD11, EV14 | CooperativeLicense, InvitationCodeBatch; compromiso de plazas y superficie al emitir | Bloqueo de licencia; consumo único del código. |
-| US08, CMD33, EV52, POL17 | `shortenExpiry` sobre código `AVAILABLE`; estado `EXPIRED` registrado; `releaseSeat` devuelve plaza y superficie | Bloqueo de licencia y lote; camino único de liberación. |
+| US08, CMD33, EV52, POL17 | `revoke` (TS41) o caducidad por fecha sobre código `AVAILABLE`; estado `REVOKED` o `EXPIRED` registrado; `releaseSeat` devuelve plaza y superficie | Bloqueo de licencia y lote; camino único de liberación. |
 
 Se requiere acordar con el equipo: precios y escalones de hectáreas; alta institucional y vigencia corporativa; cancelación, reembolso, renovación y cambio entre modalidades; tolerancia agronómica entre densidad observada y teórica. Ninguna de esas decisiones se presenta aquí como requisito ya aprobado.
 
@@ -677,7 +696,7 @@ class InvitationCodeBatch <<AggregateRoot>> {
   -issuedAt: Instant
   -codes: List<InvitationCode>
   +redeem(codeId: InvitationCodeId, producerId: ProducerId, license: CooperativeLicense, at: Instant): RedeemedCode
-  +shortenExpiry(codeId: InvitationCodeId, newExpiry: Instant, at: Instant): void
+  +revoke(codeId: InvitationCodeId, at: Instant): void
   +expireCode(codeId: InvitationCodeId, at: Instant): void
   +snapshot(): InvitationBatchSnapshot
 }

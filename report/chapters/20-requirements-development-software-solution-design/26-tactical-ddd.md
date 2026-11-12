@@ -23,10 +23,9 @@ Propósito: Administra el ciclo de vida de las credenciales de acceso, la autent
 En la \autoref{tab:tactical-1} se describe la estructura y delimitación transaccional del modelo `UserAccount`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio UserAccount (Aggregate Root) en Identity and Access Management (IAM).} \label{tab:tactical-1} \\
 \hline
@@ -46,15 +45,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Delimita la consistencia transaccional para credenciales, autenticación y recuperación de cuenta. \\
 Relaciones de dominio & Raíz autónoma. Referenciada lógicamente por ID desde \texttt{UserProfile} y \texttt{Subscription}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-2} se presentan los atributos, tipos de datos e invariantes que rigen a `UserAccount`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo UserAccount en Identity and Access Management (IAM).} \label{tab:tactical-2} \\
 \hline
@@ -76,15 +74,14 @@ En la \autoref{tab:tactical-2} se presentan los atributos, tipos de datos e inva
 \texttt{role} & \texttt{Role} & Rol canónico asignado: \texttt{ROLE\_PRODUCER} o \texttt{ROLE\_TECHNICAL\_MANAGER}. \\
 \texttt{passwordResetToken} & \texttt{Optional<Password} \texttt{ResetToken>} & Token efímero de un solo uso con marca temporal de expiración a 15 minutos. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-3} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `UserAccount`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de UserAccount en Identity and Access Management (IAM).} \label{tab:tactical-3} \\
 \hline
@@ -104,7 +101,7 @@ Asimismo, en la \autoref{tab:tactical-3} se consolidan las firmas de métodos y 
 \texttt{request} \texttt{PasswordReset} & \texttt{generator: TokenGenerator}, \texttt{expiryMinutes: int} & \texttt{Password} \texttt{ResetToken} & Genera un token efímero de 64 caracteres criptográficos y emite evento de solicitud de restablecimiento. \\
 \texttt{resetPassword} & \texttt{tokenVal: String}, \texttt{newHash: HashedPassword} & \texttt{void} & Valida vigencia del token, aplica el nuevo hash, invalida el token y emite evento de confirmación de restablecimiento. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Objetos de valor (Value Objects)
 &nbsp;
@@ -112,10 +109,9 @@ Asimismo, en la \autoref{tab:tactical-3} se consolidan las firmas de métodos y 
 En la \autoref{tab:tactical-4} se especifican los objetos de valor inmutables (*Value Objects*) que encapsulan las reglas y tipos base del contexto:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
 \caption{Objetos de valor (Value Objects) e invariantes en Identity and Access Management (IAM).} \label{tab:tactical-4} \\
 \hline
@@ -138,7 +134,7 @@ En la \autoref{tab:tactical-4} se especifican los objetos de valor inmutables (*
 \texttt{Role} & \texttt{Enum (String)} & Roles canónicos del sistema: \texttt{ROLE\_PRODUCER}, \texttt{ROLE\_TECHNICAL\_MANAGER}. \\
 \texttt{PasswordResetToken} & \texttt{tokenValue: String}, \texttt{expiresAt: Instant} & Token pseudoaleatorio de 64 caracteres criptográficos con marca temporal de expiración. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Servicios de dominio, repositorios y eventos
 &nbsp;
@@ -146,10 +142,9 @@ En la \autoref{tab:tactical-4} se especifican los objetos de valor inmutables (*
 En la \autoref{tab:tactical-5} se definen los servicios puros de dominio, los contratos de repositorio y los eventos soberanos despachados:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.10\textwidth} p{0.43\textwidth} p{0.14\textwidth}}
 \caption{Servicios de dominio, contratos de repositorio y eventos en Identity and Access Management (IAM).} \label{tab:tactical-5} \\
 \hline
@@ -177,7 +172,7 @@ En la \autoref{tab:tactical-5} se definen los servicios puros de dominio, los co
 \texttt{PasswordReset} \texttt{RequestedEvent} & Domain Event & \texttt{userId: UUID, email: String,} \texttt{tokenValue: String, expiresAt: Instant} & Dispara la entrega del correo con el enlace de recuperación vía Brevo. \\
 \texttt{PasswordReset} \texttt{CompletedEvent} & Domain Event & \texttt{userId: UUID, email: String,} \texttt{occurredOn: Instant} & Confirma el restablecimiento exitoso de la credencial. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Interface Layer
 
@@ -187,10 +182,9 @@ En la \autoref{tab:tactical-5} se definen los servicios puros de dominio, los co
 En la \autoref{tab:tactical-6} se detallan los endpoints RESTful expuestos por los controladores de la capa de interfaz:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.08\textwidth} p{0.22\textwidth} p{0.18\textwidth} p{0.23\textwidth} p{0.18\textwidth}}
 \caption{Controladores y especificación de endpoints REST en Identity and Access Management (IAM).} \label{tab:tactical-6} \\
 \hline
@@ -212,8 +206,15 @@ En la \autoref{tab:tactical-6} se detallan los endpoints RESTful expuestos por l
 \texttt{PATCH} & \nolinkurl{/api/v1/auth/passwords} & \texttt{ChangePassword} \texttt{Request} & \texttt{204 No Content} & Actualización de contraseña para sesión autenticada. \\
 \texttt{POST} & \nolinkurl{/api/v1/auth/password-reset-tokens} & \texttt{RequestPassword} \texttt{ResetRequest} & \texttt{202 Accepted} & Solicitud de código de recuperación por correo. \\
 \texttt{PUT} & \nolinkurl{/api/v1/auth/password-reset-tokens/{token}} & \texttt{ResetPassword} \texttt{Request} & \texttt{204 No Content} & Restablecimiento de contraseña con token efímero. \\
+\texttt{GET} & \nolinkurl{/api/v1/auth/password-reset-tokens/{token}} & N/A & \texttt{204 No Content} & Comprobación de vigencia del enlace sin consumirlo. \\
+\texttt{POST} & \nolinkurl{/api/v1/auth/sign-out} & \texttt{SignOutRequest} & \texttt{204 No Content} & Cierre de sesión con revocación del token de refresco. \\
+\texttt{POST} & \nolinkurl{/api/v1/auth/account-deletions} & \texttt{DeleteAccountRequest} & \texttt{204 No Content} & Eliminación definitiva de la cuenta con confirmación de contraseña. \\
+\texttt{POST} & \nolinkurl{/api/v1/auth/email-verifications} & \texttt{VerifyEmailRequest} & Sesión del usuario (200 OK) & Activación de la cuenta con el código enviado al correo. \\
+\texttt{POST} & \nolinkurl{/api/v1/auth/email-verification-codes} & \texttt{ResendVerificationCodeRequest} & \texttt{202 Accepted} & Reenvío del código de verificación sin revelar si el correo existe. \\
 \end{longtable}
-\endgroup
+\end{center}
+
+**Ciclo de vida de la cuenta.** `UserAccount` nace pendiente de verificación de correo, el cierre de sesión revoca el token de refresco y la eliminación de la cuenta exige confirmar la contraseña y retira los datos del usuario (`TS72` a `TS76`).
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -221,10 +222,9 @@ En la \autoref{tab:tactical-6} se detallan los endpoints RESTful expuestos por l
 En la \autoref{tab:tactical-7} se presentan las estructuras de datos de transferencia (DTOs) y sus ensambladores hacia recursos de presentación:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.41\textwidth} p{0.14\textwidth}}
 \caption{Estructura de DTOs y ensambladores de recursos en Identity and Access Management (IAM).} \label{tab:tactical-7} \\
 \hline
@@ -246,7 +246,7 @@ En la \autoref{tab:tactical-7} se presentan las estructuras de datos de transfer
 \texttt{Authenticated} \texttt{UserResource} & Response DTO & \texttt{{ accessToken: String, refreshToken: String, tokenType: String, expiresIn: Long }} & Paquete de autenticación con Bearer token JWT. \\
 \texttt{UserAccount} \texttt{ResourceAssembler} & Assembler & \texttt{toResource(} \texttt{UserAccount):} \texttt{UserAccountResource} & Convierte la entidad de dominio a su representación de salida. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Application Layer
 
@@ -256,10 +256,9 @@ En la \autoref{tab:tactical-7} se presentan las estructuras de datos de transfer
 En la \autoref{tab:tactical-8} se especifican los manejadores de comandos y consultas que orquestan los flujos de aplicación y sus límites transaccionales:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.22\textwidth} p{0.33\textwidth}}
 \caption{Manejadores de comandos y consultas (Handlers) en Identity and Access Management (IAM).} \label{tab:tactical-8} \\
 \hline
@@ -282,7 +281,7 @@ En la \autoref{tab:tactical-8} se especifican los manejadores de comandos y cons
 \texttt{Request} \texttt{Password} \texttt{Reset} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Request} \texttt{Password} \texttt{Reset} \texttt{Command} & Genera token de 15 min, lo vincula a la cuenta y dispara evento para envío de correo vía Brevo. \\
 \texttt{Reset} \texttt{User} \texttt{Password} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Reset} \texttt{User} \texttt{Password} \texttt{Command} & Busca cuenta por token, verifica no expiración, aplica nuevo hash, consume el token y emite evento de confirmación. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Infrastructure Layer
 
@@ -292,10 +291,9 @@ En la \autoref{tab:tactical-8} se especifican los manejadores de comandos y cons
 En la \autoref{tab:tactical-9} se detallan los adaptadores técnicos y componentes de infraestructura que dan soporte a las operaciones:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.33\textwidth}}
 \caption{Componentes técnicos y adaptadores de infraestructura en Identity and Access Management (IAM).} \label{tab:tactical-9} \\
 \hline
@@ -317,7 +315,7 @@ En la \autoref{tab:tactical-9} se detallan los adaptadores técnicos y component
 \texttt{BCryptPassword} \texttt{Service} & Security Adapter & Spring Security Crypto & Implementa \texttt{HashingService} con costo de cómputo configurable. \\
 \texttt{BrevoEmail} \texttt{DeliveryAdapter} & External Adapter & Brevo REST API & Despacho de plantillas transaccionales para recuperación de contraseña. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Perspectiva táctica de la aplicación móvil (Android / Flutter)
 &nbsp;
@@ -335,10 +333,9 @@ En la \autoref{tab:tactical-9} se detallan los adaptadores técnicos y component
 En la \autoref{tab:tactical-10} se expone el diccionario de datos relacional con las tablas, columnas, restricciones e índices implementados en PostgreSQL:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Identity and Access Management (IAM).} \label{tab:tactical-10} \\
 \hline
@@ -356,14 +353,14 @@ En la \autoref{tab:tactical-10} se expone el diccionario de datos relacional con
 \endlastfoot
 \texttt{user\_} \texttt{accounts} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador único inmutable de la cuenta. \\
 \texttt{user\_} \texttt{accounts} & \texttt{email} & \texttt{VARCHAR(255)} & \texttt{NOT NULL, UNIQUE} & Correo electrónico normalizado para inicio de sesión. \\
-\texttt{user\_} \texttt{accounts} & \texttt{password\_} \texttt{hash} & \texttt{VARCHAR(255)} & \texttt{NOT NULL} & Hash seguro derivado con sal (BCrypt). \\
+\texttt{user\_} \texttt{accounts} & \texttt{password\_hash} & \texttt{VARCHAR(255)} & \texttt{NOT NULL} & Hash seguro derivado con sal (BCrypt). \\
 \texttt{user\_} \texttt{accounts} & \texttt{role} & \texttt{VARCHAR(50)} & \texttt{NOT NULL, CHECK} & Rol del usuario (\texttt{ROLE\_PRODUCER}, \texttt{ROLE\_TECHNICAL\_MANAGER}). \\
 \texttt{user\_} \texttt{accounts} & \texttt{reset\_token} & \texttt{VARCHAR(100)} & \texttt{NULL} & Token criptográfico temporal de restablecimiento. \\
 \texttt{user\_} \texttt{accounts} & \texttt{reset\_token\_} \texttt{expires\_at} & \texttt{TIMESTAMPTZ} & \texttt{NULL} & Fecha y hora límite para uso del token de recuperación. \\
 \texttt{user\_} \texttt{accounts} & \texttt{created\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL DEFAULT NOW()} & Marca temporal de auditoría de creación. \\
 \texttt{user\_} \texttt{accounts} & \texttt{updated\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL DEFAULT NOW()} & Marca temporal de última modificación. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Script DDL de base de datos
 &nbsp;
@@ -398,10 +395,9 @@ CREATE INDEX idx_user_accounts_reset_token
 En la \autoref{tab:tactical-11} se esquematiza la distribución arquitectónica de componentes internos y tecnologías empleadas por cada nivel conceptual:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.11\textwidth} p{0.24\textwidth} p{0.44\textwidth} p{0.10\textwidth}}
 \caption{Descomposición de componentes arquitectónicos por capa en Identity and Access Management (IAM).} \label{tab:tactical-11} \\
 \hline
@@ -422,7 +418,7 @@ Application & \texttt{UserAccount} \texttt{CommandService}; \texttt{UserAccount}
 Domain & \texttt{UserAccount} \texttt{Repository}; \texttt{BCryptPasswordHasher} & Contrato de persistencia de cuentas (puerto de dominio) y servicio de derivación de claves con sal. & Java / Spring Security Crypto \\
 Infrastructure & \texttt{JpaUserAccount} \texttt{RepositoryAdapter}; \texttt{JwtTokenProvider}; \texttt{BrevoEmailDeliveryAdapter} & Implementación JPA sobre PostgreSQL, emisión de JWT y entrega de correos vía Brevo. & Spring Data JPA, Nimbus, Brevo API \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Flujo de comunicación y conectividad
 &nbsp;
@@ -441,7 +437,7 @@ A continuación, en la \autoref{fig:c4-component-iam} se esquematiza el diagrama
 \caption{C4 Model - Component Level: Diagrama de Componentes de Identity and Access Management.} \label{fig:c4-component-iam}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/component-diagram-iam.png}
+\includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-iam.png}
 \caption*{\textit{Nota.} Descomposición de componentes de la arquitectura del Bounded Context Identity and Access Management. Elaboración propia.}
 \end{figure}
 
@@ -454,23 +450,25 @@ A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Identity and Access Management (IAM).} \label{fig:class-diagram-iam}
+\caption{Diagrama de Clases UML: Domain Layer de Identity and Access Management.} \label{fig:class-diagram-iam}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/class-diagram-iam.png}
-\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de Identity and Access Management (IAM). Elaboración propia.}
+\includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-iam.png}
+\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de IAM. Elaboración propia.}
 \end{figure}
 
-##### Bounded Context Database Design Diagram
+##### Bounded Context Database Design Diagram 
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Identity and Access Management (IAM).} \label{fig:database-diagram-iam}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Identity and Access Management.} \label{fig:database-diagram-iam}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-iam.png}
-\caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para Identity and Access Management (IAM). Elaboración propia.}
+\includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-iam.png}
+\caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para IAM. Elaboración propia.}
 \end{figure}
 
-
+\clearpage
 
 ### Bounded Context: User Profiles
 
@@ -484,10 +482,9 @@ Propósito: Gestiona la información civil, personal y de contacto de los usuari
 En la \autoref{tab:tactical-12} se describe la estructura y delimitación transaccional del modelo `UserProfile`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio UserProfile (Aggregate Root) en User Profiles.} \label{tab:tactical-12} \\
 \hline
@@ -507,15 +504,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Custodia la identidad civil, datos personales y de contacto verificados de los actores del sistema. \\
 Relaciones de dominio & Vinculado 1:1 mediante referencia lógica externa (\texttt{userId}) con \texttt{UserAccount}. Referenciado por ID en predios y contratos. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-13} se presentan los atributos, tipos de datos e invariantes que rigen a `UserProfile`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo UserProfile en User Profiles.} \label{tab:tactical-13} \\
 \hline
@@ -537,15 +533,14 @@ En la \autoref{tab:tactical-13} se presentan los atributos, tipos de datos e inv
 \texttt{country} & \texttt{Country} & Código de país ISO 3166-1 alpha-2 para localización. \\
 \texttt{phoneNumber} & \texttt{PhoneNumber} & Número telefónico normalizado bajo estándar internacional E.164. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-14} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `UserProfile`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de UserProfile en User Profiles.} \label{tab:tactical-14} \\
 \hline
@@ -564,7 +559,7 @@ Asimismo, en la \autoref{tab:tactical-14} se consolidan las firmas de métodos y
 \texttt{create} & \texttt{userId: UserId}, \texttt{name: FullName}, \texttt{country: Country}, \texttt{phone: PhoneNumber} & \texttt{UserProfile} & Método fábrica que valida integridad de datos civiles y emite evento de creación de perfil. \\
 \texttt{updateContact} \texttt{Info} & \texttt{name: FullName}, \texttt{country: Country}, \texttt{phone: PhoneNumber} & \texttt{void} & Actualiza datos de contacto y emite evento de actualización de contacto hacia la cooperativa. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Objetos de valor (Value Objects)
 &nbsp;
@@ -572,10 +567,9 @@ Asimismo, en la \autoref{tab:tactical-14} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-15} se especifican los objetos de valor inmutables (*Value Objects*) que encapsulan las reglas y tipos base del contexto:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
 \caption{Objetos de valor (Value Objects) e invariantes en User Profiles.} \label{tab:tactical-15} \\
 \hline
@@ -597,7 +591,7 @@ En la \autoref{tab:tactical-15} se especifican los objetos de valor inmutables (
 \texttt{Country} & \texttt{String (ISO 3166-1 alpha-2)} & Código de país estándar de residencia (ej. \texttt{PE}, \texttt{CL}). \\
 \texttt{PhoneNumber} & \texttt{String (E.164)} & Teléfono normalizado con signo \texttt{+} y prefijo internacional. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Servicios de dominio, repositorios y eventos
 &nbsp;
@@ -605,10 +599,9 @@ En la \autoref{tab:tactical-15} se especifican los objetos de valor inmutables (
 En la \autoref{tab:tactical-16} se definen los servicios puros de dominio, los contratos de repositorio y los eventos soberanos despachados:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.10\textwidth} p{0.43\textwidth} p{0.14\textwidth}}
 \caption{Servicios de dominio, contratos de repositorio y eventos en User Profiles.} \label{tab:tactical-16} \\
 \hline
@@ -632,7 +625,7 @@ En la \autoref{tab:tactical-16} se definen los servicios puros de dominio, los c
 \texttt{ProfileCreated} \texttt{Event} & Domain Event & \texttt{profileId: UUID, userId: UUID,} \texttt{fullName: String, occurredOn: Instant} & Notifica la creación del perfil civil para habilitar contratación. \\
 \texttt{ContactProfile} \texttt{UpdatedEvent} & Domain Event & \texttt{profileId: UUID, userId: UUID,} \texttt{phone: String, email: String,} \texttt{occurredOn: Instant} & Propaga actualización de datos de contacto hacia la cooperativa. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Interface Layer
 
@@ -642,10 +635,9 @@ En la \autoref{tab:tactical-16} se definen los servicios puros de dominio, los c
 En la \autoref{tab:tactical-17} se detallan los endpoints RESTful expuestos por los controladores de la capa de interfaz:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.08\textwidth} p{0.22\textwidth} p{0.18\textwidth} p{0.23\textwidth} p{0.18\textwidth}}
 \caption{Controladores y especificación de endpoints REST en User Profiles.} \label{tab:tactical-17} \\
 \hline
@@ -666,7 +658,7 @@ En la \autoref{tab:tactical-17} se detallan los endpoints RESTful expuestos por 
 \texttt{PUT} & \nolinkurl{/api/v1/profiles/{userId}} & \texttt{UpdateProfile} \texttt{Request} & \texttt{UserProfile} \texttt{Resource} (200 OK) & Actualización completa de datos personales y teléfono con validación E.164. \\
 \texttt{PATCH} & \nolinkurl{/api/v1/profiles/{userId}} & \texttt{UpdateContact} \texttt{ProfileRequest} & \texttt{UserProfile} \texttt{Resource} (200 OK) & Actualización parcial de datos de contacto y teléfono con validación E.164. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -674,10 +666,9 @@ En la \autoref{tab:tactical-17} se detallan los endpoints RESTful expuestos por 
 En la \autoref{tab:tactical-18} se presentan las estructuras de datos de transferencia (DTOs) y sus ensambladores hacia recursos de presentación:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.41\textwidth} p{0.14\textwidth}}
 \caption{Estructura de DTOs y ensambladores de recursos en User Profiles.} \label{tab:tactical-18} \\
 \hline
@@ -699,7 +690,7 @@ En la \autoref{tab:tactical-18} se presentan las estructuras de datos de transfe
 \texttt{UserProfile} \texttt{Resource} & Response DTO & \texttt{{ id: UUID, userId: UUID, fullName: String, country: String, phoneNumber: String }} & Perfil de usuario consolidado. \\
 \texttt{UserProfile} \texttt{ResourceAssembler} & Assembler & \texttt{toResource(} \texttt{UserProfile):} \texttt{UserProfileResource} & Transforma el agregado en el DTO de presentación. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Application Layer
 
@@ -709,10 +700,9 @@ En la \autoref{tab:tactical-18} se presentan las estructuras de datos de transfe
 En la \autoref{tab:tactical-19} se especifican los manejadores de comandos y consultas que orquestan los flujos de aplicación y sus límites transaccionales:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.22\textwidth} p{0.33\textwidth}}
 \caption{Manejadores de comandos y consultas (Handlers) en User Profiles.} \label{tab:tactical-19} \\
 \hline
@@ -732,7 +722,7 @@ En la \autoref{tab:tactical-19} se especifican los manejadores de comandos y con
 \texttt{Update} \texttt{Contact} \texttt{Profile} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Update} \texttt{Contact} \texttt{Profile} \texttt{Command} & Carga perfil por \texttt{userId}, aplica validaciones de contacto, persiste cambios y publica evento de contacto. \\
 \texttt{Get} \texttt{UserProfile} \texttt{ByUserId} \texttt{Query} \texttt{Handler} & Query Handler & \texttt{Get} \texttt{UserProfile} \texttt{ByUserId} \texttt{Query} & Recupera el perfil optimizado en solo lectura y mapea a \texttt{UserProfileResource}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Infrastructure Layer
 
@@ -742,10 +732,9 @@ En la \autoref{tab:tactical-19} se especifican los manejadores de comandos y con
 En la \autoref{tab:tactical-20} se detallan los adaptadores técnicos y componentes de infraestructura que dan soporte a las operaciones:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.33\textwidth}}
 \caption{Componentes técnicos y adaptadores de infraestructura en User Profiles.} \label{tab:tactical-20} \\
 \hline
@@ -765,7 +754,7 @@ En la \autoref{tab:tactical-20} se detallan los adaptadores técnicos y componen
 \texttt{JpaUserProfile} \texttt{RepositoryAdapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{UserProfileRepository}. \\
 \texttt{Libphonenumber} \texttt{Adapter} & Service Adapter & Google libphonenumber & Parsing, validación y normalización a estándar E.164. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Perspectiva táctica de la aplicación móvil (Android / Flutter)
 &nbsp;
@@ -782,10 +771,9 @@ En la \autoref{tab:tactical-20} se detallan los adaptadores técnicos y componen
 En la \autoref{tab:tactical-21} se expone el diccionario de datos relacional con las tablas, columnas, restricciones e índices implementados en PostgreSQL:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en User Profiles.} \label{tab:tactical-21} \\
 \hline
@@ -805,11 +793,11 @@ En la \autoref{tab:tactical-21} se expone el diccionario de datos relacional con
 \texttt{profiles} & \texttt{user\_id} & \texttt{UUID} & \texttt{NOT NULL, UNIQUE} & Referencia externa a la cuenta en \texttt{iam.user\_accounts}. \\
 \texttt{profiles} & \texttt{full\_name} & \texttt{VARCHAR(150)} & \texttt{NOT NULL, CHECK} & Nombre y apellidos completos del usuario. \\
 \texttt{profiles} & \texttt{country} & \texttt{VARCHAR(2)} & \texttt{NOT NULL} & Código de país ISO 3166-1 alpha-2. \\
-\texttt{profiles} & \texttt{phone\_} \texttt{number} & \texttt{VARCHAR(25)} & \texttt{NOT NULL} & Teléfono normalizado bajo formato E.164. \\
+\texttt{profiles} & \texttt{phone\_number} & \texttt{VARCHAR(25)} & \texttt{NOT NULL} & Teléfono normalizado bajo formato E.164. \\
 \texttt{profiles} & \texttt{created\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL DEFAULT NOW()} & Marca temporal de registro civil. \\
 \texttt{profiles} & \texttt{updated\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL DEFAULT NOW()} & Marca temporal de última modificación. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Script DDL de base de datos
 &nbsp;
@@ -843,10 +831,9 @@ CREATE INDEX idx_profiles_phone
 En la \autoref{tab:tactical-22} se esquematiza la distribución arquitectónica de componentes internos y tecnologías empleadas por cada nivel conceptual:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.11\textwidth} p{0.24\textwidth} p{0.44\textwidth} p{0.10\textwidth}}
 \caption{Descomposición de componentes arquitectónicos por capa en User Profiles.} \label{tab:tactical-22} \\
 \hline
@@ -867,7 +854,7 @@ Application & \texttt{Profile} \texttt{CommandService}; \texttt{Profile} \texttt
 Domain & \texttt{Profile} \texttt{Repository}; \texttt{PhoneNumberValidator} & Contrato de persistencia de perfil (puerto de dominio) y servicio de validación de formato internacional E.164. & Java puro / libphonenumber \\
 Infrastructure & \texttt{JpaProfile} \texttt{RepositoryAdapter}; \texttt{DomainEventPublisher} & Persistencia JPA sobre PostgreSQL (\texttt{profiles.profiles}) y despacho de eventos de dominio. & Spring Data JPA, Spring Events \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Flujo de comunicación y conectividad
 &nbsp;
@@ -885,7 +872,7 @@ A continuación, en la \autoref{fig:c4-component-profiles} se esquematiza el dia
 \caption{C4 Model - Component Level: Diagrama de Componentes de User Profiles.} \label{fig:c4-component-profiles}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/component-diagram-profiles.png}
+\includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-profiles.png}
 \caption*{\textit{Nota.} Descomposición de componentes de la arquitectura del Bounded Context User Profiles. Elaboración propia.}
 \end{figure}
 
@@ -899,22 +886,24 @@ A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class
 
 \begin{figure}[H]
 \caption{Diagrama de Clases UML: Domain Layer de User Profiles.} \label{fig:class-diagram-profiles}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/class-diagram-profiles.png}
-\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de User Profiles. Elaboración propia.}
+\includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-profiles.png}
+\caption*{\textit{Nota.} Estructura estática de clases y objetos de valor del modelo de dominio de User Profiles. Elaboración propia.}
 \end{figure}
 
-##### Bounded Context Database Design Diagram
+##### Bounded Context Database Design Diagram 
 &nbsp;
 
 \begin{figure}[H]
 \caption{Modelo Relacional Físico: Esquema de Base de Datos de User Profiles.} \label{fig:database-diagram-profiles}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-profiles.png}
-\caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para User Profiles. Elaboración propia.}
+\includegraphics[width=0.60\textwidth]{report/assets/tactical-diagrams/database-diagram-profiles.png}
+\caption*{\textit{Nota.} Estructura de la tabla profiles, índices y restricciones en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-
+\clearpage
 
 ### Bounded Context: Subscription and Cooperative Membership
 
@@ -928,10 +917,9 @@ Propósito: Gobierna los contratos comerciales, planes SaaS y cupos instituciona
 En la \autoref{tab:tactical-23} se describe la estructura y delimitación transaccional del modelo `Subscription`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio Subscription (Aggregate Root) en Subscription and Cooperative Membership.} \label{tab:tactical-23} \\
 \hline
@@ -951,15 +939,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Delimita la consistencia de los derechos comerciales contratados, cálculo de vigencias y balance de superficie. \\
 Relaciones de dominio & Referencia por ID a \texttt{ProducerId},\texttt{CooperativeId }y opcionalmente a \texttt{InvitationCodeId}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-24} se presentan los atributos, tipos de datos e invariantes que rigen a `Subscription`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo Subscription en Subscription and Cooperative Membership.} \label{tab:tactical-24} \\
 \hline
@@ -982,15 +969,14 @@ En la \autoref{tab:tactical-24} se presentan los atributos, tipos de datos e inv
 \texttt{status} & \texttt{Subscription} \texttt{Status} & Estado del contrato:\texttt{PENDING\_} \texttt{PAYMENT}, \texttt{ACTIVE}, \texttt{EXPIRED}, \texttt{CANCELLED}. \\
 \texttt{period} & \texttt{Optional<} \texttt{SubscriptionPeriod>} & Período de vigencia con marcas temporales de inicio y fin. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-25} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `Subscription`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de Subscription en Subscription and Cooperative Membership.} \label{tab:tactical-25} \\
 \hline
@@ -1012,7 +998,7 @@ Asimismo, en la \autoref{tab:tactical-25} se consolidan las firmas de métodos y
 \texttt{expire} & \texttt{currentTime: Instant} & \texttt{void} & Invalida derechos de uso al vencer el plazo del ciclo contratado. \\
 \texttt{hasActive} \texttt{Entitlement} & \texttt{currentTime: Instant} & \texttt{boolean} & Verifica si el productor dispone de cobertura vigente para sus parcelas. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `CooperativeLicense` (Aggregate Root)
 &nbsp;
@@ -1020,10 +1006,9 @@ Asimismo, en la \autoref{tab:tactical-25} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-26} se describe la estructura y delimitación transaccional del modelo `CooperativeLicense`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio CooperativeLicense (Aggregate Root) en Subscription and Cooperative Membership.} \label{tab:tactical-26} \\
 \hline
@@ -1043,15 +1028,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Administra el saldo corporativo global de plazas de agricultores y superficie de hectáreas para una cooperativa. \\
 Relaciones de dominio & Referencia externa a \texttt{CooperativeId}. Gobierna lotes de códigos vinculados por \texttt{licenseId}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-27} se presentan los atributos, tipos de datos e invariantes que rigen a `CooperativeLicense`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo CooperativeLicense en Subscription and Cooperative Membership.} \label{tab:tactical-27} \\
 \hline
@@ -1075,15 +1059,14 @@ En la \autoref{tab:tactical-27} se presentan los atributos, tipos de datos e inv
 \texttt{totalAreaHa} & \texttt{Double} & Superficie máxima consolidada autorizada en hectáreas. \\
 \texttt{issuedAreaHa} & \texttt{Double} & Hectáreas actualmente comprometidas en lotes emitidos. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-28} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `CooperativeLicense`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de CooperativeLicense en Subscription and Cooperative Membership.} \label{tab:tactical-28} \\
 \hline
@@ -1103,7 +1086,7 @@ Asimismo, en la \autoref{tab:tactical-28} se consolidan las firmas de métodos y
 \texttt{releaseQuota} & \texttt{seats: Int}, \texttt{area: Double} & \texttt{void} & Restaura plazas y hectáreas liberadas por caducidad de códigos. \\
 \texttt{hasAvailable} \texttt{Capacity} & \texttt{seats: Int}, \texttt{area: Double} & \texttt{boolean} & Consulta si la cooperativa cuenta con cupo libre para un nuevo lote. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `InvitationCodeBatch` (Aggregate Root)
 &nbsp;
@@ -1111,10 +1094,9 @@ Asimismo, en la \autoref{tab:tactical-28} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-29} se describe la estructura y delimitación transaccional del modelo `InvitationCodeBatch`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio InvitationCodeBatch (Aggregate Root) en Subscription and Cooperative Membership.} \label{tab:tactical-29} \\
 \hline
@@ -1134,15 +1116,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Gestiona la generación criptográfica, vigencia y canje de un lote de códigos de invitación. \\
 Relaciones de dominio & Referencia a \texttt{LicenseId} y contiene una colección de entidades subordinadas \texttt{Invitation} \texttt{Code}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-30} se presentan los atributos, tipos de datos e invariantes que rigen a `InvitationCodeBatch`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo InvitationCodeBatch en Subscription and Cooperative Membership.} \label{tab:tactical-30} \\
 \hline
@@ -1163,15 +1144,14 @@ En la \autoref{tab:tactical-30} se presentan los atributos, tipos de datos e inv
 \texttt{codes} & \texttt{List<InvitationCode>} & Colección de códigos individuales de invitación emitidos. \\
 \texttt{status} & \texttt{BatchStatus} & Estado operativo del lote: \texttt{ACTIVE}, \texttt{EXHAUSTED}, \texttt{EXPIRED}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-31} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `InvitationCodeBatch`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de InvitationCodeBatch en Subscription and Cooperative Membership.} \label{tab:tactical-31} \\
 \hline
@@ -1191,7 +1171,7 @@ Asimismo, en la \autoref{tab:tactical-31} se consolidan las firmas de métodos y
 \texttt{redeemCode} & \texttt{codeId: CodeId}, \texttt{producerId: UserId} & \texttt{Invitation} \texttt{Code} & Consume atómicamente un código disponible y retorna evidencia de canje. \\
 \texttt{shorten} \texttt{CodeExpiry} & \texttt{codeId: CodeId}, \texttt{newExpiry: Instant} & \texttt{void} & Anticipa la fecha límite de canje para un código no consumido. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `InvitationCode` (Internal Entity)
 &nbsp;
@@ -1199,10 +1179,9 @@ Asimismo, en la \autoref{tab:tactical-31} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-32} se describe la estructura y delimitación transaccional del modelo `InvitationCode`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio InvitationCode (Internal Entity) en Subscription and Cooperative Membership.} \label{tab:tactical-32} \\
 \hline
@@ -1222,15 +1201,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Representa un vale digital unívoco e intransferible que otorga derecho de suscripción a un socio. \\
 Relaciones de dominio & Subordinado estrictamente a \texttt{Invitation} \texttt{Code} \texttt{Batch} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-33} se presentan los atributos, tipos de datos e invariantes que rigen a `InvitationCode`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo InvitationCode en Subscription and Cooperative Membership.} \label{tab:tactical-33} \\
 \hline
@@ -1252,15 +1230,14 @@ En la \autoref{tab:tactical-33} se presentan los atributos, tipos de datos e inv
 \texttt{status} & \texttt{CodeStatus} & Estado: \texttt{AVAILABLE}, \texttt{REDEEMED}, \texttt{EXPIRED}. \\
 \texttt{expiresAt} & \texttt{Instant} & Fecha y hora límite improrrogable para su consumo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-34} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `InvitationCode`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de InvitationCode en Subscription and Cooperative Membership.} \label{tab:tactical-34} \\
 \hline
@@ -1279,7 +1256,7 @@ Asimismo, en la \autoref{tab:tactical-34} se consolidan las firmas de métodos y
 \texttt{redeem} & \texttt{producerId: UserId} & \texttt{void} & Asocia el código al productor beneficiario y transiciona a estado redimido. \\
 \texttt{adjustExpiry} & \texttt{newExpiry: Instant} & \texttt{void} & Actualiza la marca temporal de caducidad si el código permanece disponible. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Objetos de valor (Value Objects)
 &nbsp;
@@ -1287,10 +1264,9 @@ Asimismo, en la \autoref{tab:tactical-34} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-35} se especifican los objetos de valor inmutables (*Value Objects*) que encapsulan las reglas y tipos base del contexto:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
 \caption{Objetos de valor (Value Objects) e invariantes en Subscription and Cooperative Membership.} \label{tab:tactical-35} \\
 \hline
@@ -1313,7 +1289,7 @@ En la \autoref{tab:tactical-35} se especifican los objetos de valor inmutables (
 \texttt{CodeStatus} & \texttt{Enum} & Estados de la invitación: \texttt{AVAILABLE}, \texttt{REDEEMED}, \texttt{EXPIRED}, \texttt{REVOKED}. \\
 \texttt{Money} & \texttt{amount: BigDecimal}, \texttt{currency: String} & Monto dinerario exacto con divisa ISO 4217 (\texttt{PEN}). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Servicios de dominio, repositorios y eventos
 &nbsp;
@@ -1321,10 +1297,9 @@ En la \autoref{tab:tactical-35} se especifican los objetos de valor inmutables (
 En la \autoref{tab:tactical-36} se definen los servicios puros de dominio, los contratos de repositorio y los eventos soberanos despachados:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.10\textwidth} p{0.43\textwidth} p{0.14\textwidth}}
 \caption{Servicios de dominio, contratos de repositorio y eventos en Subscription and Cooperative Membership.} \label{tab:tactical-36} \\
 \hline
@@ -1359,7 +1334,7 @@ En la \autoref{tab:tactical-36} se definen los servicios puros de dominio, los c
 \texttt{Invitation} \texttt{CodesBatch} \texttt{GeneratedEvent} & Domain Event & \texttt{batchId: UUID, licenseId: UUID,} \texttt{quantity: int, reservedArea: Decimal} & Registra reserva de cupos corporativos. \\
 \texttt{Invitation} \texttt{Code} \texttt{ExpiredEvent} & Domain Event & \texttt{batchId: UUID, licenseId: UUID,} \texttt{codeId: UUID, releasedQuota: Decimal} & Notifica liberación de cupo por código vencido. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Interface Layer
 
@@ -1369,10 +1344,9 @@ En la \autoref{tab:tactical-36} se definen los servicios puros de dominio, los c
 En la \autoref{tab:tactical-37} se detallan los endpoints RESTful expuestos por los controladores de la capa de interfaz:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.08\textwidth} p{0.22\textwidth} p{0.18\textwidth} p{0.23\textwidth} p{0.18\textwidth}}
 \caption{Controladores y especificación de endpoints REST en Subscription and Cooperative Membership.} \label{tab:tactical-37} \\
 \hline
@@ -1394,12 +1368,27 @@ En la \autoref{tab:tactical-37} se detallan los endpoints RESTful expuestos por 
 \texttt{GET} & \nolinkurl{/api/v1/subscriptions/{id}} & N/A & \texttt{Subscription} \texttt{Resource} (200 OK) & Consulta detallada del contrato de suscripción. \\
 \texttt{GET} & \nolinkurl{/api/v1/subscription-plans} & N/A & \texttt{List<PlanOffer>} (200 OK) & Catálogo comercial de planes y tarifas vigentes. \\
 \texttt{POST} & \nolinkurl{/api/v1/payment-notifications/mercado-pago} & \texttt{Payment} \texttt{Notification} \texttt{Request} & \texttt{200 OK} & Recepción asíncrona y reconciliación de pago externo. \\
-\texttt{POST} & \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} & \texttt{Generate} \texttt{Invitation} \texttt{CodesBatchRequest} & \texttt{InvitationBatch} \texttt{Resource} (201 Created) & Emisión de lote de códigos por gestor contra cupo institucional. \\
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{id}/invitation-code-batches} & N/A (\texttt{?page=0} \texttt{\&size=20}) & \texttt{Page<Invitation} \texttt{BatchSummary>} (200 OK) & Consulta paginada y auditoría de códigos generados. \\
+\texttt{POST} & \nolinkurl{/api/v1/invitation-codes} & \texttt{Generate} \texttt{Invitation} \texttt{CodesBatchRequest} & \texttt{InvitationBatch} \texttt{Resource} (201 Created) & Emisión de lote de códigos por gestor contra cupo institucional. \\
+\texttt{GET} & \nolinkurl{/api/v1/invitation-codes} & N/A (\texttt{?status=}) & \texttt{Page<Invitation} \texttt{BatchSummary>} (200 OK) & Consulta paginada y auditoría de códigos generados. \\
 \texttt{POST} & \nolinkurl{/api/v1/cooperative-code-redemptions} & \texttt{Redeem} \texttt{Cooperative} \texttt{CodeRequest} & \texttt{Subscription} \texttt{Resource} (201 Created) & Canje de código corporativo por productor autenticado. \\
-\texttt{POST} & \nolinkurl{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} & \texttt{Shorten} \texttt{Invitation} \texttt{CodeExpiryRequest} & \texttt{200 OK} & Adelanto de vigencia para expiración anticipada. \\
+\texttt{POST} & \nolinkurl{/api/v1/invitation-codes/{id}/revocations} & N/A & \texttt{InvitationCode} \texttt{Revocation} \texttt{Resource} (200 OK) & Revocación anticipada con restitución de plaza y hectáreas. \\
+\texttt{GET} & \nolinkurl{/api/v1/cooperative-licenses} & N/A & Lista con una licencia como máximo (200 OK) & Consulta de la licencia a cargo del gestor técnico autenticado. \\
+\texttt{GET} & \nolinkurl{/api/v1/cooperative-licenses/{id}} & N/A & Licencia y balance (200 OK) & Balance de plazas y hectáreas de la licencia corporativa. \\
+\texttt{POST} & \nolinkurl{/api/v1/manager-code-redemptions} & \texttt{Redeem} \texttt{ManagerCode} \texttt{Request} & \texttt{201 Created} & Canje del código del gestor para asumir la licencia institucional. \\
+\texttt{POST} & \nolinkurl{/api/v1/cooperative-code-previews} & \texttt{Preview} \texttt{CodeRequest} & Condiciones del código (200 OK) & Vista previa de condiciones y consentimiento antes del canje. \\
+\texttt{POST} & \nolinkurl{/api/v1/cooperative-licenses/{id}/member-releases} & \texttt{Release} \texttt{MemberRequest} & \texttt{200 OK} & Desvinculación de socio: retira acceso del gestor y libera plaza tras el periodo de gracia. \\
+\texttt{GET} & \nolinkurl{/api/v1/data-sharing-consents} & N/A & Lista de consentimientos (200 OK) & Consulta de con quién comparte datos el productor. \\
+\texttt{GET} & \nolinkurl{/api/v1/data-sharing-consents/{id}} & N/A & Consentimiento (200 OK) & Detalle de un consentimiento propio. \\
+\texttt{POST} & \nolinkurl{/api/v1/data-sharing-consents/{id}/withdrawals} & N/A & \texttt{200 OK} & Retiro del consentimiento, con el plan patrocinado vigente hasta su fin. \\
+\texttt{GET} & \nolinkurl{/api/v1/subscriptions/{subscriptionId}/extension-terms} & N/A & Condiciones de ampliación (200 OK) & Condiciones para ampliar el plan individual. \\
+\texttt{POST} & \nolinkurl{/api/v1/subscriptions/{subscriptionId}/extensions} & \texttt{addedHa} (\texttt{Idempotency-Key}) & Ampliación (201 Created) & Solicitud de ampliación pagada de hectáreas. \\
+\texttt{GET} & \nolinkurl{/api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}} & N/A & Ampliación (200 OK) & Estado de una ampliación. \\
+\texttt{POST} & \nolinkurl{/api/v1/subscriptions/{subscriptionId}/extensions/{extensionId}/checkouts} & N/A (\texttt{Idempotency-Key}) & Datos de pago (201 Created) & Preparación del pago de una ampliación pendiente. \\
+\texttt{POST} & \nolinkurl{/api/v1/quota-extension-redemptions} & \texttt{code} & \texttt{201 Created} & Canje de código que agrega hectáreas al plan patrocinado vigente. \\
 \end{longtable}
-\endgroup
+\end{center}
+
+**Consentimientos, ampliaciones y desvinculación.** Todo se modela dentro de los agregados existentes (`TS41` y `TS81` a `TS89`). `DataSharingConsent` es una entidad interna de `CooperativeLicense` creada en el canje del código y retirable por el productor, `SubscriptionExtension` es una entidad interna de `Subscription` para la ampliación pagada de hectáreas, y la desvinculación de socios (`TS86`) es un comportamiento de la licencia que retira el acceso del gestor de inmediato y libera la plaza al terminar el periodo de gracia. La revocación de códigos (`TS41`) emite `InvitationCodeRevokedEvent`.
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -1407,10 +1396,9 @@ En la \autoref{tab:tactical-37} se detallan los endpoints RESTful expuestos por 
 En la \autoref{tab:tactical-38} se presentan las estructuras de datos de transferencia (DTOs) y sus ensambladores hacia recursos de presentación:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.41\textwidth} p{0.14\textwidth}}
 \caption{Estructura de DTOs y ensambladores de recursos en Subscription and Cooperative Membership.} \label{tab:tactical-38} \\
 \hline
@@ -1429,7 +1417,7 @@ En la \autoref{tab:tactical-38} se presentan las estructuras de datos de transfe
 \texttt{Create} \texttt{Subscription} \texttt{Request} & Request DTO & \texttt{{ planCode: String, requestedQuotaHa: Double }} & Selección comercial contrastada con el catálogo del servidor. \\
 \texttt{CreateCheckout} \texttt{Request} & Request DTO & \texttt{{ returnUrl?: String }} & Solicitud de preferencia de cobro en pasarela externa. \\
 \texttt{Generate} \texttt{Invitation} \texttt{CodesBatchRequest} & Request DTO & \texttt{{ quantity: Int, hectaresCapPerCode: Double, expiresAt: Instant }} & Parámetros para emisión de lote de códigos. \\
-\texttt{Shorten} \texttt{Invitation} \texttt{CodeExpiryRequest} & Request DTO & \texttt{{ newExpiresAt: Instant }} & Acortamiento de vigencia de código disponible. \\
+\texttt{InvitationCode} \texttt{Revocation} \texttt{Resource} & Response DTO & \texttt{{ codeId: UUID, status: String, releasedSeats: Int, releasedAreaHa: Double }} & Resultado de la revocación de un código disponible. \\
 \texttt{Redeem} \texttt{Cooperative} \texttt{CodeRequest} & Request DTO & \texttt{{ code: String }} & Código de activación ingresado por el productor. \\
 \texttt{Payment} \texttt{Notification} \texttt{Request} & Request DTO & \texttt{{ externalNotificationId: String, externalPaymentId: String }} & Payload webhook de notificación de pasarela. \\
 \texttt{Subscription} \texttt{Resource} & Response DTO & \texttt{{ id: UUID, mode: String, status: String, quotaHa: Double, startsAt, endsAt, entitlementActive }} & Representación pública de suscripción vigente. \\
@@ -1437,7 +1425,7 @@ En la \autoref{tab:tactical-38} se presentan las estructuras de datos de transfe
 \texttt{InvitationBatch} \texttt{Resource} & Response DTO & \texttt{{ id: UUID, quantity: Int, availableSeats: Int, availableAreaHa: Double, codes: List<String> }} & Lote de códigos entregado al gestor cooperativo. \\
 \texttt{Subscription} \texttt{ResourceAssembler} & Assembler & \texttt{toResource(} \texttt{Subscription):} \texttt{SubscriptionResource} & Mapeador del agregado a DTO público de presentación. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Application Layer
 
@@ -1447,10 +1435,9 @@ En la \autoref{tab:tactical-38} se presentan las estructuras de datos de transfe
 En la \autoref{tab:tactical-39} se especifican los manejadores de comandos y consultas que orquestan los flujos de aplicación y sus límites transaccionales:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.22\textwidth} p{0.33\textwidth}}
 \caption{Manejadores de comandos y consultas (Handlers) en Subscription and Cooperative Membership.} \label{tab:tactical-39} \\
 \hline
@@ -1471,10 +1458,10 @@ En la \autoref{tab:tactical-39} se especifican los manejadores de comandos y con
 \texttt{Process} \texttt{Payment} \texttt{Confirmation} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Process} \texttt{Payment} \texttt{Confirmation} \texttt{Command} & Valida firma webhook, reconcilia pago, activa suscripción y emite evento de activación. \\
 \texttt{Generate} \texttt{Invitation} \texttt{CodesBatch} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Generate} \texttt{Invitation} \texttt{CodesBatch} \texttt{Command} & Valida gestor y cupo en licencia, descuenta plazas/área, genera lote y emite evento. \\
 \texttt{Redeem} \texttt{Cooperative} \texttt{Code} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Redeem} \texttt{Cooperative} \texttt{Code} \texttt{Command} & Localiza código, valida vigencia, marca como redimido, activa patrocinio y emite evento. \\
-\texttt{Shorten} \texttt{Invitation} \texttt{CodeExpiry} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Shorten} \texttt{Invitation} \texttt{CodeExpiry} \texttt{Command} & Adelanta expiración de código disponible, transiciona a expirado y emite evento. \\
+\texttt{Revoke} \texttt{Invitation} \texttt{Code} \texttt{Command} \texttt{Handler} & Command Handler & \texttt{Revoke} \texttt{Invitation} \texttt{Code} \texttt{Command} & Revoca un código disponible, restituye cupo a la licencia y emite \texttt{InvitationCodeRevokedEvent}. \\
 \texttt{OnInvitation} \texttt{CodeExpired} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Invitation} \texttt{Code} \texttt{ExpiredEvent} & Escucha expiración y restituye plazas y hectáreas a la licencia cooperativa. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Infrastructure Layer
 
@@ -1484,10 +1471,9 @@ En la \autoref{tab:tactical-39} se especifican los manejadores de comandos y con
 En la \autoref{tab:tactical-40} se detallan los adaptadores técnicos y componentes de infraestructura que dan soporte a las operaciones:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.33\textwidth}}
 \caption{Componentes técnicos y adaptadores de infraestructura en Subscription and Cooperative Membership.} \label{tab:tactical-40} \\
 \hline
@@ -1507,7 +1493,7 @@ En la \autoref{tab:tactical-40} se detallan los adaptadores técnicos y componen
 \texttt{MercadoPago} \texttt{Gateway} \texttt{Adapter} & External Adapter & Mercado Pago SDK & Creación de preferencias de pago y consulta de órdenes de cobro. \\
 \texttt{SpringEventBus} \texttt{Adapter} & Integration & Spring ApplicationEvent & Publicación y enrutamiento interno de eventos transaccionales. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Perspectiva táctica de la aplicación móvil (Android / Flutter)
 &nbsp;
@@ -1525,10 +1511,9 @@ En la \autoref{tab:tactical-40} se detallan los adaptadores técnicos y componen
 En la \autoref{tab:tactical-41} se expone el diccionario de datos relacional con las tablas, columnas, restricciones e índices implementados en PostgreSQL:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Subscription and Cooperative Membership.} \label{tab:tactical-41} \\
 \hline
@@ -1553,10 +1538,10 @@ En la \autoref{tab:tactical-41} se expone el diccionario de datos relacional con
 \texttt{subscrip-} \texttt{tions} & \texttt{ends\_at} & \texttt{TIMESTAMPTZ} & \texttt{NULL} & Término de vigencia activa. \\
 \texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Licencia corporativa institucional. \\
 \texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{coop-} \texttt{erative\_} \texttt{id} & \texttt{UUID} & \texttt{NOT NULL, UNIQUE} & Cooperativa propietaria del convenio. \\
-\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{total\_} \texttt{seats} & \texttt{INT} & \texttt{NOT NULL, CHECK} & Plazas máximas autorizadas. \\
-\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{issued\_} \texttt{seats} & \texttt{INT} & \texttt{NOT NULL, CHECK} & Plazas comprometidas en códigos vigentes. \\
-\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{total\_} \texttt{area\_ha} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL} & Superficie máxima del convenio. \\
-\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{issued\_} \texttt{area\_ha} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL} & Superficie comprometida en códigos vigentes. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{total\_seats} & \texttt{INT} & \texttt{NOT NULL, CHECK} & Plazas máximas autorizadas. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{issued\_seats} & \texttt{INT} & \texttt{NOT NULL, CHECK} & Plazas comprometidas en códigos vigentes. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{total\_area\_ha} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL} & Superficie máxima del convenio. \\
+\texttt{coop-} \texttt{erative\_} \texttt{licenses} & \texttt{issued\_area\_ha} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL} & Superficie comprometida en códigos vigentes. \\
 \texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador único del código. \\
 \texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{batch\_id} & \texttt{UUID} & \texttt{NOT NULL, FK} & Lote de procedencia. \\
 \texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{code\_hash} & \texttt{VARCHAR(64)} & \texttt{NOT NULL, UNIQUE} & Hash SHA-256 del código alfanumérico. \\
@@ -1564,7 +1549,7 @@ En la \autoref{tab:tactical-41} se expone el diccionario de datos relacional con
 \texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL} & Estado (\texttt{AVAILABLE}, \texttt{REDEEMED}, \texttt{EXPIRED}). \\
 \texttt{invita-} \texttt{tion\_} \texttt{codes} & \texttt{expires\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL} & Marca temporal límite para canje. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Script DDL de base de datos
 &nbsp;
@@ -1621,10 +1606,9 @@ CREATE TABLE subscription.invitation_codes (
 En la \autoref{tab:tactical-42} se esquematiza la distribución arquitectónica de componentes internos y tecnologías empleadas por cada nivel conceptual:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.11\textwidth} p{0.24\textwidth} p{0.44\textwidth} p{0.10\textwidth}}
 \caption{Descomposición de componentes arquitectónicos por capa en Subscription and Cooperative Membership.} \label{tab:tactical-42} \\
 \hline
@@ -1645,7 +1629,7 @@ Application & \texttt{Subscription} \texttt{CommandService}; \texttt{Subscriptio
 Domain & \texttt{Subscription} \texttt{Repository}; \texttt{CooperativeInvitation} \texttt{BatchRepository}; \texttt{CooperativeLicense} \texttt{Repository}; \texttt{InvitationCodeGenerator}; \texttt{HectareQuotaPolicy}; \texttt{SubscriptionActivationPolicy} & Puertos de repositorio y servicios de dominio para cuotas de hectáreas, códigos y períodos de vigencia. & Java Security / SecureRandom \\
 Infrastructure & \texttt{JpaSubscription} \texttt{RepositoryAdapter}; \texttt{JpaInvitationBatch} \texttt{RepositoryAdapter}; \texttt{JpaCooperativeLicense} \texttt{RepositoryAdapter}; \texttt{MercadoPagoPayment} \texttt{Adapter}; \texttt{DomainEventPublisher} & Adaptadores de persistencia JPA sobre PostgreSQL, cliente HTTP de Mercado Pago y publicador de eventos. & Spring Data JPA, HTTP Client \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Flujo de comunicación y conectividad
 &nbsp;
@@ -1656,7 +1640,7 @@ Infrastructure & \texttt{JpaSubscription} \texttt{RepositoryAdapter}; \texttt{Jp
 4. `PaymentWebhookController` autentica la firma criptográfica HMAC y delega el procesamiento en `PaymentReconciliationCommandService`.
 5. `PaymentReconciliationCommandService` actualiza el estado a activo mediante `SubscriptionRepository` y publica el evento de activación de suscripción vía `DomainEventPublisher`.
 6. En el modelo corporativo, el socio canjea su cupo con `POST` \nolinkurl{/api/v1/cooperative-code-redemptions}; `CodeRedemptionController` delega en `CooperativeInvitationCommandService`, el cual valida el código contra `CooperativeInvitationBatchRepository`, marca el código como redimido y emite evento de canje hacia *Cooperative Operations*.
-7. El gestor cooperativo puede consultar el estado de lotes y cupos mediante `CooperativeInvitationQueryService`, o bien acortar la vigencia de un código disponible despachando `POST` \nolinkurl{/api/v1/cooperatives/{id}/invitation-codes/{codeId}/expiry-adjustments} hacia `CooperativeInvitationCommandService`, lo cual dispara evento de expiración y restituye cupos a la licencia en `CooperativeLicenseRepository`.
+7. El gestor cooperativo puede consultar el estado de lotes y cupos mediante `CooperativeInvitationQueryService`, o bien revocar un código disponible despachando `POST` \nolinkurl{/api/v1/invitation-codes/{id}/revocations} hacia `CooperativeInvitationCommandService`, lo cual dispara el evento de revocación y restituye cupos a la licencia en `CooperativeLicenseRepository`.
 
 A continuación, en la \autoref{fig:c4-component-subscription} se esquematiza el diagrama de componentes del Bounded Context Subscription and Cooperative Membership:
 
@@ -1664,46 +1648,46 @@ A continuación, en la \autoref{fig:c4-component-subscription} se esquematiza el
 \caption{C4 Model - Component Level: Diagrama de Componentes de Subscription and Cooperative Membership.} \label{fig:c4-component-subscription}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/component-diagram-subscription.png}
+\includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-subscription.png}
 \caption*{\textit{Nota.} Descomposición de componentes de la arquitectura del Bounded Context Subscription and Cooperative Membership. Elaboración propia.}
 \end{figure}
 
 #### Bounded Context Software Architecture Code Level Diagrams 
 &nbsp;
 
-A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-subscription}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-subscription-part1}) para el Bounded Context Subscription and Cooperative Membership:
+A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class-diagram-subscription}) y de diseño de base de datos relacional (ver \autoref{fig:database-diagram-subscription-part1} y \autoref{fig:database-diagram-subscription-part2}) para el Bounded Context Subscription and Cooperative Membership:
 
 ##### Bounded Context Domain Layer Class Diagrams
 &nbsp;
 
 \begin{figure}[H]
 \caption{Diagrama de Clases UML: Domain Layer de Subscription and Cooperative Membership.} \label{fig:class-diagram-subscription}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{report/assets/tactical-diagrams/class-diagram-subscription.png}
-\caption*{\textit{Nota.} Clases, entidades internas y objetos de valor del dominio de Subscription and Cooperative Membership. Elaboración propia.}
+\includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-subscription.png}
+\caption*{\textit{Nota.} Clases, entidades internas, acumuladores de cupo y objetos de valor de Subscription. Elaboración propia.}
 \end{figure}
 
-##### Bounded Context Database Design Diagram
+##### Bounded Context Database Design Diagram 
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Subscription and Cooperative Membership.} \label{fig:database-diagram-subscription-part1}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Subscription and Cooperative Membership (Parte 1).} \label{fig:database-diagram-subscription-part1}
+\vspace{0.25cm}
 \centering
-\begin{minipage}[b]{0.48\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-subscription-part1.png}
-\caption*{(a) Tablas de Suscripción y Cuotas.}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{0.48\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-subscription-part2.png}
-\caption*{(b) Tablas de Lotes y Códigos de Canje.}
-\end{minipage}
-\caption*{\textit{Nota.} Tablas relacionales, índices y restricciones en PostgreSQL para Subscription and Cooperative Membership. Elaboración propia.}
+\includegraphics[width=0.25\textwidth]{report/assets/tactical-diagrams/database-diagram-subscription-part1.png}
+\caption*{\textit{Nota.} Tablas relacionales principales y acumuladores de cuotas (Parte 1). Elaboración propia.}
 \end{figure}
 
+\begin{figure}[H]
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Subscription and Cooperative Membership (Parte 2).} \label{fig:database-diagram-subscription-part2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.25\textwidth]{report/assets/tactical-diagrams/database-diagram-subscription-part2.png}
+\caption*{\textit{Nota.} Tablas relacionales de lotes y códigos de canje (Parte 2). Elaboración propia.}
+\end{figure}
 
+\clearpage
 
 ### Bounded Context: Olive Orchard and Plot Management
 
@@ -1717,10 +1701,9 @@ Propósito: Administra el catastro territorial y la caracterización dendrométr
 En la \autoref{tab:tactical-43} se describe la estructura y delimitación transaccional del modelo `Plot`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio Plot (Aggregate Root) en Olive Orchard and Plot Management.} \label{tab:tactical-43} \\
 \hline
@@ -1740,15 +1723,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Delimita la identidad geográfica, catastral y dendrométrica del cuartel olivarero y salvaguarda el historial de linderos. \\
 Relaciones de dominio & Referencia externa por ID a \texttt{OwnerId}. Raíz espacial referenciada por telemetría, fenología y muestreos. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-44} se presentan los atributos, tipos de datos e invariantes que rigen a `Plot`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo Plot en Olive Orchard and Plot Management.} \label{tab:tactical-44} \\
 \hline
@@ -1774,15 +1756,14 @@ En la \autoref{tab:tactical-44} se presentan los atributos, tipos de datos e inv
 \texttt{lastPruningDate} & \texttt{Optional<LocalDate>} & Fecha de última labor de poda registrada. \\
 \texttt{status} & \texttt{PlotStatus} & Estado del predio: \texttt{ACTIVE}, \texttt{REMOVED\_SOFT\_DELETE}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-45} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `Plot`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de Plot en Olive Orchard and Plot Management.} \label{tab:tactical-45} \\
 \hline
@@ -1803,7 +1784,7 @@ Asimismo, en la \autoref{tab:tactical-45} se consolidan las firmas de métodos y
 \texttt{update} \texttt{Boundaries} & \texttt{newGeometry: PlotGeometry}, \texttt{quotaChecker: HectareQuotaPolicy} & \texttt{void} & Valida nueva geometría contra cupo de suscripción y emite \texttt{PlotBoundariesUpdatedEvent}. \\
 \texttt{remove} & \texttt{reason: String} & \texttt{void} & Ejecuta baja lógica preservando trazabilidad histórica y emite \texttt{PlotRemovedEvent}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Objetos de valor (Value Objects)
 &nbsp;
@@ -1811,10 +1792,9 @@ Asimismo, en la \autoref{tab:tactical-45} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-46} se especifican los objetos de valor inmutables (*Value Objects*) que encapsulan las reglas y tipos base del contexto:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
 \caption{Objetos de valor (Value Objects) e invariantes en Olive Orchard and Plot Management.} \label{tab:tactical-46} \\
 \hline
@@ -1837,7 +1817,7 @@ En la \autoref{tab:tactical-46} se especifican los objetos de valor inmutables (
 \texttt{PlantationFrame} & \texttt{rowSpacingM: Double}, \texttt{treeSpacingM: Double} & Distancias de siembra en metros ($m \times m$). \\
 \texttt{TreeDensity} & \texttt{treesPerHectare: Int} & Densidad calculada ($D = 10000 / (row \times tree)$). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Servicios de dominio, repositorios y eventos
 &nbsp;
@@ -1845,10 +1825,9 @@ En la \autoref{tab:tactical-46} se especifican los objetos de valor inmutables (
 En la \autoref{tab:tactical-47} se definen los servicios puros de dominio, los contratos de repositorio y los eventos soberanos despachados:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.10\textwidth} p{0.43\textwidth} p{0.14\textwidth}}
 \caption{Servicios de dominio, contratos de repositorio y eventos en Olive Orchard and Plot Management.} \label{tab:tactical-47} \\
 \hline
@@ -1875,7 +1854,7 @@ En la \autoref{tab:tactical-47} se definen los servicios puros de dominio, los c
 \texttt{PlotBoundaries} \texttt{UpdatedEvent} & Domain Event & \texttt{plotId: UUID, ownerId: UUID, polygon: String, areaHa: Decimal, occurredOn: Instant} & Notifica alteración de linderos para recalibrar modelos. \\
 \texttt{PlotRemovedEvent} & Domain Event & \texttt{plotId: UUID, ownerId: UUID, reason: String, occurredOn: Instant} & Notifica baja lógica de parcela para desvincular sensores. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Interface Layer
 
@@ -1885,10 +1864,9 @@ En la \autoref{tab:tactical-47} se definen los servicios puros de dominio, los c
 En la \autoref{tab:tactical-48} se detallan los endpoints RESTful expuestos por los controladores de la capa de interfaz:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.08\textwidth} p{0.22\textwidth} p{0.18\textwidth} p{0.23\textwidth} p{0.18\textwidth}}
 \caption{Controladores y especificación de endpoints REST en Olive Orchard and Plot Management.} \label{tab:tactical-48} \\
 \hline
@@ -1909,8 +1887,15 @@ En la \autoref{tab:tactical-48} se detallan los endpoints RESTful expuestos por 
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}} & N/A & \texttt{PlotResource} (200 OK) & Consulta de detalle agronómico, geometría y densidad arbórea. \\
 \texttt{PUT} & \nolinkurl{/api/v1/plots/{plotId}} & \texttt{UpdatePlot} \texttt{Request} (Req:\texttt{If-Match}) & \texttt{PlotResource} (200 OK) & Actualización de linderos y marco dendrométrico con control de concurrencia. \\
 \texttt{DELETE} & \nolinkurl{/api/v1/plots/{plotId}} & N/A & \texttt{204 No Content} & Baja lógica soberana de la parcela predial. \\
+\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/restore} & N/A & \texttt{PlotResponse} (200 OK) & Restauración de un cuartel archivado al inventario activo. \\
+\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/field-notes} & \texttt{id, type, text, observedOn} & Nota (201 Created) & Registro idempotente de una nota de campo. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/field-notes} & N/A & Lista de notas (200 OK) & Notas de la parcela de la más reciente a la más antigua. \\
+\texttt{PUT} & \nolinkurl{/api/v1/plots/{plotId}/field-notes/{noteId}/photo} & Imagen & Nota (200 OK) & Adjunto de fotografía a una nota de campo. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/field-notes/{noteId}/photo} & N/A & Imagen (200 OK) & Descarga de la fotografía de una nota. \\
 \end{longtable}
-\endgroup
+\end{center}
+
+**Restauración y notas de campo.** `Plot` permite restaurar un cuartel archivado (`TS44`). `FieldNote` es una entidad interna de `Plot`, con identificador generado por el cliente para que el reintento no duplique y una fotografía opcional guardada fuera del agregado (`TS90` a `TS93`).
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -1918,10 +1903,9 @@ En la \autoref{tab:tactical-48} se detallan los endpoints RESTful expuestos por 
 En la \autoref{tab:tactical-49} se presentan las estructuras de datos de transferencia (DTOs) y sus ensambladores hacia recursos de presentación:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.41\textwidth} p{0.14\textwidth}}
 \caption{Estructura de DTOs y ensambladores de recursos en Olive Orchard and Plot Management.} \label{tab:tactical-49} \\
 \hline
@@ -1942,7 +1926,7 @@ En la \autoref{tab:tactical-49} se presentan las estructuras de datos de transfe
 \texttt{PlotResource} & Response DTO & \texttt{{ id: UUID, name: String, variety: String, areaHa: Double, treeDensity: Int, geoJson: String }} & Representación pública del predio. \\
 \texttt{PlotResource} \texttt{Assembler} & Assembler & \texttt{toResource(} \texttt{Plot):} \texttt{PlotResource} & Mapeador a DTO con cálculo de métricas. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Application Layer
 
@@ -1952,10 +1936,9 @@ En la \autoref{tab:tactical-49} se presentan las estructuras de datos de transfe
 En la \autoref{tab:tactical-50} se especifican los manejadores de comandos y consultas que orquestan los flujos de aplicación y sus límites transaccionales:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.22\textwidth} p{0.33\textwidth}}
 \caption{Manejadores de comandos y consultas (Handlers) en Olive Orchard and Plot Management.} \label{tab:tactical-50} \\
 \hline
@@ -1977,7 +1960,7 @@ En la \autoref{tab:tactical-50} se especifican los manejadores de comandos y con
 \texttt{Get} \texttt{Plot} \texttt{ById} \texttt{Query} \texttt{Handler} & Query Handler & \texttt{Get} \texttt{Plot} \texttt{ById} \texttt{Query} & Consulta predio por ID con optimización de lectura y retorno en DTO. \\
 \texttt{List} \texttt{Plots} \texttt{Query} \texttt{Handler} & Query Handler & \texttt{List} \texttt{Plots} \texttt{Query} & Sincronización incremental y listado filtrado por titular y timestamp delta. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Infrastructure Layer
 
@@ -1987,10 +1970,9 @@ En la \autoref{tab:tactical-50} se especifican los manejadores de comandos y con
 En la \autoref{tab:tactical-51} se detallan los adaptadores técnicos y componentes de infraestructura que dan soporte a las operaciones:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.33\textwidth}}
 \caption{Componentes técnicos y adaptadores de infraestructura en Olive Orchard and Plot Management.} \label{tab:tactical-51} \\
 \hline
@@ -2010,7 +1992,7 @@ En la \autoref{tab:tactical-51} se detallan los adaptadores técnicos y componen
 \texttt{JpaPlotRepository} \texttt{Adapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{Plot} \texttt{Repository}. \\
 \texttt{MapboxSpatial} \texttt{ValidationAdapter} & Adapter & GeoTools / JTS & Validación topológica de polígonos y cálculo esferoidal de área. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Perspectiva táctica de la aplicación móvil (Android / Flutter)
 &nbsp;
@@ -2028,10 +2010,9 @@ En la \autoref{tab:tactical-51} se detallan los adaptadores técnicos y componen
 En la \autoref{tab:tactical-52} se expone el diccionario de datos relacional con las tablas, columnas, restricciones e índices implementados en PostgreSQL:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Olive Orchard and Plot Management.} \label{tab:tactical-52} \\
 \hline
@@ -2052,14 +2033,14 @@ En la \autoref{tab:tactical-52} se expone el diccionario de datos relacional con
 \texttt{plots} & \texttt{name} & \texttt{VARCHAR(100)} & \texttt{NOT NULL} & Denominación del cuartel o predio. \\
 \texttt{plots} & \texttt{variety} & \texttt{VARCHAR(50)} & \texttt{NOT NULL} & Variedad botánica de olivo cultivada. \\
 \texttt{plots} & \texttt{area\_ha} & \texttt{NUMERIC(8,2)} & \texttt{NOT NULL, CHECK} & Superficie física calculada en hectáreas. \\
-\texttt{plots} & \texttt{row\_} \texttt{spacing\_m} & \texttt{NUMERIC(4,2)} & \texttt{NOT NULL} & Distancia entre hileras en metros. \\
+\texttt{plots} & \texttt{row\_spacing\_m} & \texttt{NUMERIC(4,2)} & \texttt{NOT NULL} & Distancia entre hileras en metros. \\
 \texttt{plots} & \texttt{tree\_spacing\_} \texttt{m} & \texttt{NUMERIC(4,2)} & \texttt{NOT NULL} & Distancia entre plantas en metros. \\
-\texttt{plots} & \texttt{tree\_} \texttt{density} & \texttt{INT} & \texttt{NOT NULL} & Densidad calculada de árboles/ha. \\
+\texttt{plots} & \texttt{tree\_density} & \texttt{INT} & \texttt{NOT NULL} & Densidad calculada de árboles/ha. \\
 \texttt{plots} & \texttt{polygon\_} \texttt{geojson} & \texttt{TEXT} & \texttt{NOT NULL} & Polígono espacial en formato GeoJSON. \\
-\texttt{plots} & \texttt{last\_} \texttt{pruning\_} \texttt{date} & \texttt{DATE} & \texttt{NULL} & Fecha registrada de la última poda. \\
+\texttt{plots} & \texttt{last\_pruning\_} \texttt{date} & \texttt{DATE} & \texttt{NULL} & Fecha registrada de la última poda. \\
 \texttt{plots} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL} & Estado del predio (\texttt{ACTIVE}, \texttt{REMOVED}). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Script DDL de base de datos
 &nbsp;
@@ -2100,10 +2081,9 @@ CREATE INDEX idx_plots_status ON orchard.plots(status);
 En la \autoref{tab:tactical-53} se esquematiza la distribución arquitectónica de componentes internos y tecnologías empleadas por cada nivel conceptual:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.11\textwidth} p{0.24\textwidth} p{0.44\textwidth} p{0.10\textwidth}}
 \caption{Descomposición de componentes arquitectónicos por capa en Olive Orchard and Plot Management.} \label{tab:tactical-53} \\
 \hline
@@ -2124,7 +2104,7 @@ Application & \texttt{PlotCommandService}; \texttt{PlotQueryService} & Orquestac
 Domain & \texttt{Plot} \texttt{Repository}; \texttt{GeospatialPolygonValidator}; \texttt{SubscriptionQuotaPort} & Contrato de persistencia (puerto de dominio), validación topológica JTS y verificación de cupo de ha. & Java puro / JTS Topology Suite \\
 Infrastructure & \texttt{JpaPlotRepository} \texttt{Adapter}; \texttt{DomainEventPublisher} & Persistencia JPA en PostgreSQL con soporte geoespacial PostGIS y despacho de eventos de dominio. & Spring Data JPA, PostGIS, Hibernate Spatial \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Flujo de comunicación y conectividad
 &nbsp;
@@ -2142,7 +2122,7 @@ A continuación, en la \autoref{fig:c4-component-orchard} se esquematiza el diag
 \caption{C4 Model - Component Level: Diagrama de Componentes de Olive Orchard and Plot Management.} \label{fig:c4-component-orchard}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/component-diagram-orchard.png}
+\includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-orchard.png}
 \caption*{\textit{Nota.} Descomposición de componentes de la arquitectura del Bounded Context Olive Orchard and Plot Management. Elaboración propia.}
 \end{figure}
 
@@ -2156,22 +2136,24 @@ A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class
 
 \begin{figure}[H]
 \caption{Diagrama de Clases UML: Domain Layer de Olive Orchard and Plot Management.} \label{fig:class-diagram-orchard}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/class-diagram-orchard.png}
-\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de Olive Orchard and Plot Management. Elaboración propia.}
+\includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-orchard.png}
+\caption*{\textit{Nota.} Estructura estática de clases, atributos dendrométricos y métodos de Plot. Elaboración propia.}
 \end{figure}
 
-##### Bounded Context Database Design Diagram
+##### Bounded Context Database Design Diagram 
 &nbsp;
 
 \begin{figure}[H]
 \caption{Modelo Relacional Físico: Esquema de Base de Datos de Olive Orchard and Plot Management.} \label{fig:database-diagram-orchard}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-orchard.png}
-\caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para Olive Orchard and Plot Management. Elaboración propia.}
+\includegraphics[width=0.60\textwidth]{report/assets/tactical-diagrams/database-diagram-orchard.png}
+\caption*{\textit{Nota.} Estructura de la tabla plots, columnas espaciales e índices en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-
+\clearpage
 
 ### Bounded Context: Agroclimatic Telemetry and Sensor Monitoring
 
@@ -2185,10 +2167,9 @@ Propósito: Custodia la memoria agroclimática y el monitoreo de microclima del 
 En la \autoref{tab:tactical-54} se describe la estructura y delimitación transaccional del modelo `VirtualSensorNode`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio VirtualSensorNode (Aggregate Root) en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-54} \\
 \hline
@@ -2208,15 +2189,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Gestiona el inventario, profundidad y factor de calibración de los dispositivos sensores de suelo y microclima. \\
 Relaciones de dominio & Referencia lógica a \texttt{PlotId}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-55} se presentan los atributos, tipos de datos e invariantes que rigen a `VirtualSensorNode`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo VirtualSensorNode en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-55} \\
 \hline
@@ -2242,15 +2222,14 @@ En la \autoref{tab:tactical-55} se presentan los atributos, tipos de datos e inv
 \texttt{status} & \texttt{SensorNodeStatus} & Estado: \texttt{ACTIVE}, \texttt{PAUSED}, \texttt{UNLINKED}. \\
 \texttt{lastReading} \texttt{Timestamp} & \texttt{Instant} & Marca temporal de la última telemetría procesada. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-56} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `VirtualSensorNode`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de VirtualSensorNode en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-56} \\
 \hline
@@ -2271,7 +2250,7 @@ Asimismo, en la \autoref{tab:tactical-56} se consolidan las firmas de métodos y
 \texttt{rename} & \texttt{newName: SensorNodeName} & \texttt{void} & Actualiza la denominación del nodo garantizando unicidad en el predio. \\
 \texttt{unlink} & \texttt{void} & \texttt{void} & Desvincula lógicamente el sensor de la parcela activa. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `TelemetrySeries` (Aggregate Root)
 &nbsp;
@@ -2279,10 +2258,9 @@ Asimismo, en la \autoref{tab:tactical-56} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-57} se describe la estructura y delimitación transaccional del modelo `TelemetrySeries`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio TelemetrySeries (Aggregate Root) en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-57} \\
 \hline
@@ -2302,15 +2280,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Agrupa las lecturas temporales horarias, pronósticos y eventos de estrés agroclimático para un sensor predial. \\
 Relaciones de dominio & Referencia a \texttt{SensorNodeId} y \texttt{PlotId}. Compone lecturas horarias, pronósticos e incidentes. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-58} se presentan los atributos, tipos de datos e invariantes que rigen a `TelemetrySeries`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo TelemetrySeries en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-58} \\
 \hline
@@ -2334,15 +2311,14 @@ En la \autoref{tab:tactical-58} se presentan los atributos, tipos de datos e inv
 \texttt{incidents} & \texttt{List<} \texttt{Agroclimatic} \texttt{Incident>} & Registro de alertas activas e históricas de estrés. \\
 \texttt{currentStatus} & \texttt{Telemetry} \texttt{SeriesStatus} & Estado operativo: \texttt{NORMAL}, \texttt{HYDRIC\_STRESS\_ACTIVE}, \texttt{FROST\_ALERT}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-59} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `TelemetrySeries`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de TelemetrySeries en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-59} \\
 \hline
@@ -2362,7 +2338,7 @@ Asimismo, en la \autoref{tab:tactical-59} se consolidan las firmas de métodos y
 \texttt{updateWeather} \texttt{Forecast} & \texttt{forecasts:} \texttt{List<Weather-} \texttt{ForecastDay>} & \texttt{void} & Actualiza pronóstico semanal georreferenciado y emite \texttt{WeatherForecastIngestedEvent}. \\
 \texttt{getActive} \texttt{Incidents} & \texttt{void} & \texttt{List<} \texttt{Agroclimatic} \texttt{Incident>} & Retorna incidentes abiertos de estrés hídrico o choque térmico. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `HourlyTelemetryReading` (Internal Entity)
 &nbsp;
@@ -2370,10 +2346,9 @@ Asimismo, en la \autoref{tab:tactical-59} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-60} se describe la estructura y delimitación transaccional del modelo `HourlyTelemetryReading`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio HourlyTelemetryReading (Internal Entity) en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-60} \\
 \hline
@@ -2393,15 +2368,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Captura los parámetros físicos y edafoclimáticos registrados en una hora determinada. \\
 Relaciones de dominio & Subordinada a \texttt{TelemetrySeries} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-61} se presentan los atributos, tipos de datos e invariantes que rigen a `HourlyTelemetryReading`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo HourlyTelemetryReading en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-61} \\
 \hline
@@ -2425,15 +2399,14 @@ En la \autoref{tab:tactical-61} se presentan los atributos, tipos de datos e inv
 \texttt{relativeHumidity} & \texttt{RelativeHumidity} & Humedad relativa del aire (\%). \\
 \texttt{isSynthetic} & \texttt{boolean} & Indicador si la lectura proviene del simulador de contingencia. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-62} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `HourlyTelemetryReading`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de HourlyTelemetryReading en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-62} \\
 \hline
@@ -2451,7 +2424,7 @@ Asimismo, en la \autoref{tab:tactical-62} se consolidan las firmas de métodos y
 \endlastfoot
 \texttt{isStress} \texttt{Inducing} & \texttt{void} & \texttt{boolean} & Determina si los niveles hídricos caen por debajo del punto de marchitez temporal. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `WeatherForecastDay` (Internal Entity)
 &nbsp;
@@ -2459,10 +2432,9 @@ Asimismo, en la \autoref{tab:tactical-62} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-63} se describe la estructura y delimitación transaccional del modelo `WeatherForecastDay`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio WeatherForecastDay (Internal Entity) en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-63} \\
 \hline
@@ -2482,15 +2454,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Almacena la predicción meteorológica para una jornada específica en el predio. \\
 Relaciones de dominio & Subordinada a \texttt{TelemetrySeries} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-64} se presentan los atributos, tipos de datos e invariantes que rigen a `WeatherForecastDay`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo WeatherForecastDay en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-64} \\
 \hline
@@ -2514,15 +2485,14 @@ En la \autoref{tab:tactical-64} se presentan los atributos, tipos de datos e inv
 \texttt{windSpeedKmh} & \texttt{WindSpeed} & Velocidad estimada del viento en km/h. \\
 \texttt{syncedAt} & \texttt{Instant} & Marca temporal de sincronización con Open-Meteo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-65} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `WeatherForecastDay`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de WeatherForecastDay en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-65} \\
 \hline
@@ -2538,9 +2508,9 @@ Asimismo, en la \autoref{tab:tactical-65} se consolidan las firmas de métodos y
 \hline
 \multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{isFrostRisk} & \texttt{void} & \texttt{boolean} & Detecta si la temperatura mínima proyectada desciende de 2.0 °C. \\
+\texttt{isFrostRisk} & \texttt{void} & \texttt{boolean} & Detecta si la temperatura mínima proyectada a 48 horas es menor o igual a 1.5 °C. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `AgroclimaticIncident` (Internal Entity)
 &nbsp;
@@ -2548,10 +2518,9 @@ Asimismo, en la \autoref{tab:tactical-65} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-66} se describe la estructura y delimitación transaccional del modelo `AgroclimaticIncident`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio AgroclimaticIncident (Internal Entity) en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-66} \\
 \hline
@@ -2571,15 +2540,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Modela el ciclo de vida de una anomalía agroclimática que amenaza la fisiología del olivar. \\
 Relaciones de dominio & Subordinada a \texttt{TelemetrySeries} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-67} se presentan los atributos, tipos de datos e invariantes que rigen a `AgroclimaticIncident`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo AgroclimaticIncident en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-67} \\
 \hline
@@ -2597,23 +2565,22 @@ En la \autoref{tab:tactical-67} se presentan los atributos, tipos de datos e inv
 \endlastfoot
 \texttt{id} & \texttt{IncidentId} & Identificador único del incidente. \\
 \texttt{type} & \texttt{IncidentType} & Tipo: \texttt{HYDRIC\_STRESS}, \texttt{THERMAL\_SHOCK}, \texttt{FROST\_WARNING}. \\
-\texttt{severity} & \texttt{IncidentSeverity} & Severidad: \texttt{WARNING}, \texttt{CRITICAL}. \\
-\texttt{status} & \texttt{IncidentStatus} & Estado: \texttt{OPEN}, \texttt{RESOLVED}. \\
+\texttt{severity} & \texttt{IncidentSeverity} & Severidad: \texttt{INFO}, \texttt{WARNING}, \texttt{CRITICAL}. \\
+\texttt{status} & \texttt{IncidentStatus} & Estado: \texttt{OPEN}, \texttt{SNOOZED}, \texttt{RESOLVED}. \\
 \texttt{triggeredAt} & \texttt{Instant} & Marca de tiempo de activación de la alerta. \\
 \texttt{resolvedAt} & \texttt{Instant} & Marca de tiempo de normalización del parámetro. \\
 \texttt{triggerValue} & \texttt{Double} & Valor registrado que causó el disparo. \\
 \texttt{thresholdValue} & \texttt{Double} & Umbral agronómico de referencia. \\
 \texttt{stress} \texttt{DurationMinutes} & \texttt{Long} & Minutos acumulados bajo condición de estrés. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-68} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `AgroclimaticIncident`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de AgroclimaticIncident en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-68} \\
 \hline
@@ -2631,7 +2598,7 @@ Asimismo, en la \autoref{tab:tactical-68} se consolidan las firmas de métodos y
 \endlastfoot
 \texttt{resolve} & \texttt{resolutionTime: Instant} & \texttt{void} & Cierra formalmente la alerta y computa la duración del estrés fisiológico. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Objetos de valor (Value Objects)
 &nbsp;
@@ -2639,10 +2606,9 @@ Asimismo, en la \autoref{tab:tactical-68} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-69} se especifican los objetos de valor inmutables (*Value Objects*) que encapsulan las reglas y tipos base del contexto:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
 \caption{Objetos de valor (Value Objects) e invariantes en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-69} \\
 \hline
@@ -2667,9 +2633,9 @@ En la \autoref{tab:tactical-69} se especifican los objetos de valor inmutables (
 \texttt{Volumetric} \texttt{WaterContent} & Double (Porcentaje VWC / θ) & Humedad volumétrica de suelo entre $0.0\%$ y $100.0\%$. \\
 \texttt{Temperature} & \texttt{Double (Celsius)} & Métrica de temperatura ambiental con precisión de décimas. \\
 \texttt{RelativeHumidity} & \texttt{Double (Porcentaje)} & Humedad ambiental entre $0.0\%$ y $100.0\%$. \\
-\texttt{IncidentSeverity} & \texttt{Enum} & Severidad del riesgo: \texttt{WARNING}, \texttt{CRITICAL}. \\
+\texttt{IncidentSeverity} & \texttt{Enum} & Severidad del riesgo: \texttt{INFO}, \texttt{WARNING}, \texttt{CRITICAL}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Servicios de dominio, repositorios y eventos
 &nbsp;
@@ -2677,10 +2643,9 @@ En la \autoref{tab:tactical-69} se especifican los objetos de valor inmutables (
 En la \autoref{tab:tactical-70} se definen los servicios puros de dominio, los contratos de repositorio y los eventos soberanos despachados:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.10\textwidth} p{0.43\textwidth} p{0.14\textwidth}}
 \caption{Servicios de dominio, contratos de repositorio y eventos en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-70} \\
 \hline
@@ -2712,7 +2677,7 @@ En la \autoref{tab:tactical-70} se definen los servicios puros de dominio, los c
 \texttt{HydricStress} \texttt{AlertTriggeredEvent} & Domain Event & \texttt{plotId: UUID, severity: String, moisture: Double, occurredOn: Instant} & Alerta estrés hídrico para activar recomendaciones de riego. \\
 \texttt{WeatherForecast} \texttt{IngestedEvent} & Domain Event & \texttt{plotId: UUID, forecastDate: LocalDate, minTemp: Double, occurredOn: Instant} & Notifica pronóstico sincronizado con Open-Meteo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Interface Layer
 
@@ -2722,10 +2687,9 @@ En la \autoref{tab:tactical-70} se definen los servicios puros de dominio, los c
 En la \autoref{tab:tactical-71} se detallan los endpoints RESTful expuestos por los controladores de la capa de interfaz:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.08\textwidth} p{0.22\textwidth} p{0.18\textwidth} p{0.23\textwidth} p{0.18\textwidth}}
 \caption{Controladores y especificación de endpoints REST en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-71} \\
 \hline
@@ -2748,9 +2712,15 @@ En la \autoref{tab:tactical-71} se detallan los endpoints RESTful expuestos por 
 \texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/telemetries} & \texttt{IngestTelemetry} \texttt{Request} & \texttt{Telemetry} \texttt{Resource} (201 Created) & Ingesta individual o en lote de lecturas de sensores. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/telemetries} & N/A (\texttt{?startDate=} \texttt{\&endDate=}) & \texttt{List<} \texttt{TelemetryResource>} (200 OK) & Consulta de series climáticas para gráficas y monitoreo. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/forecasts} & N/A & \texttt{WeatherForecast} \texttt{Resource} (200 OK) & Consulta de pronóstico meteorológico a 7 días vía Open-Meteo. \\
-\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/incidents} & N/A (\texttt{?status=ACTIVE}) & \texttt{List<} \texttt{IncidentResource>} (200 OK) & Consulta de alertas e incidentes de estrés hídrico o térmico. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/agroclimatic-incidents} & N/A (\texttt{?status=ACTIVE}) & \texttt{List<} \texttt{IncidentResource>} (200 OK) & Consulta de alertas e incidentes de estrés hídrico o térmico. \\
+\texttt{GET} & \nolinkurl{/api/v1/agroclimatic-incidents} & N/A (\texttt{?status=} \texttt{\&page=}) & Lista paginada y contadores (200 OK) & Consulta global de incidentes con contadores por severidad. \\
+\texttt{GET} & \nolinkurl{/api/v1/agroclimatic-incidents/{incidentId}} & N/A & \texttt{AgroclimaticIncident} \texttt{DetailResponse} (200 OK) & Detalle con tendencia y pasos de mitigación. \\
+\texttt{POST} & \nolinkurl{/api/v1/agroclimatic-incidents/{incidentId}/postponements} & \texttt{snoozeHours} & Incidente en estado pospuesto (200 OK) & Postergación de avisos entre 1 y 72 horas. \\
+\texttt{PUT} & \nolinkurl{/api/v1/agroclimatic-incidents/{incidentId}/mitigation-steps/{stepId}} & N/A & \texttt{AgroclimaticIncident} \texttt{DetailResponse} (200 OK) & Asiento de un paso de mitigación completado. \\
 \end{longtable}
-\endgroup
+\end{center}
+
+**Incidentes agroclimáticos.** Las rutas de incidentes cuelgan de `agroclimatic-incidents`. `AgroclimaticIncident` admite la severidad `INFO`, el estado `SNOOZED` con `snoozeUntil` y una lista ordenada de pasos de mitigación completables (`TS46` a `TS50`).
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -2758,10 +2728,9 @@ En la \autoref{tab:tactical-71} se detallan los endpoints RESTful expuestos por 
 En la \autoref{tab:tactical-72} se presentan las estructuras de datos de transferencia (DTOs) y sus ensambladores hacia recursos de presentación:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.41\textwidth} p{0.14\textwidth}}
 \caption{Estructura de DTOs y ensambladores de recursos en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-72} \\
 \hline
@@ -2786,7 +2755,7 @@ En la \autoref{tab:tactical-72} se presentan las estructuras de datos de transfe
 \texttt{IncidentResource} & Response DTO & \texttt{{ id: UUID, plotId: UUID, incidentType: String, severity: String, triggeredAt: Instant }} & Alerta de estrés hídrico o térmico. \\
 \texttt{Telemetry} \texttt{Resource} \texttt{Assembler} & Assembler & \texttt{toResource(} \texttt{TelemetryReading):} \texttt{Telemetry} \texttt{Resource} & Convierte lectura interna a DTO de visualización. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Application Layer
 
@@ -2796,10 +2765,9 @@ En la \autoref{tab:tactical-72} se presentan las estructuras de datos de transfe
 En la \autoref{tab:tactical-73} se especifican los manejadores de comandos y consultas que orquestan los flujos de aplicación y sus límites transaccionales:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.22\textwidth} p{0.33\textwidth}}
 \caption{Manejadores de comandos y consultas (Handlers) en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-73} \\
 \hline
@@ -2823,7 +2791,7 @@ En la \autoref{tab:tactical-73} se especifican los manejadores de comandos y con
 \texttt{Get} \texttt{Weather} \texttt{Forecast} \texttt{Query} \texttt{Handler} & Query Handler & \texttt{Get} \texttt{Weather} \texttt{Forecast} \texttt{Query} & Consulta caché local de pronóstico meteorológico a 7 días para la parcela. \\
 \texttt{Weather} \texttt{SyncScheduler} & Scheduled Task & \texttt{ScheduledCron} & Orquesta la sincronización automática periódica con Open-Meteo emitiendo \texttt{WeatherForecastIngestedEvent}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Infrastructure Layer
 
@@ -2833,10 +2801,9 @@ En la \autoref{tab:tactical-73} se especifican los manejadores de comandos y con
 En la \autoref{tab:tactical-74} se detallan los adaptadores técnicos y componentes de infraestructura que dan soporte a las operaciones:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.33\textwidth}}
 \caption{Componentes técnicos y adaptadores de infraestructura en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-74} \\
 \hline
@@ -2857,7 +2824,7 @@ En la \autoref{tab:tactical-74} se detallan los adaptadores técnicos y componen
 \texttt{OpenMeteoWeather} \texttt{ClientAdapter} & External Adapter & Spring RestClient & Consumo de pronósticos horarios y datos meteorológicos de Open-Meteo con caché. \\
 \texttt{InAppNotification} \texttt{Adapter} & Notification & WebSocket / FCM & Difusión push e in-app de alertas de estrés hídrico y choque térmico. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Perspectiva táctica de la aplicación móvil (Android / Flutter)
 &nbsp;
@@ -2874,10 +2841,9 @@ En la \autoref{tab:tactical-74} se detallan los adaptadores técnicos y componen
 En la \autoref{tab:tactical-75} se expone el diccionario de datos relacional con las tablas, columnas, restricciones e índices implementados en PostgreSQL:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-75} \\
 \hline
@@ -2897,14 +2863,14 @@ En la \autoref{tab:tactical-75} se expone el diccionario de datos relacional con
 \texttt{telemetry\_} \texttt{readings} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL, INDEX} & Parcela monitoreada. \\
 \texttt{telemetry\_} \texttt{readings} & \texttt{temperature} & \texttt{NUMERIC(4,2)} & \texttt{NOT NULL} & Temperatura ambiente en grados Celsius. \\
 \texttt{telemetry\_} \texttt{readings} & \texttt{humidity} & \texttt{NUMERIC(5,2)} & \texttt{NOT NULL} & Humedad relativa porcentual. \\
-\texttt{telemetry\_} \texttt{readings} & \texttt{soil\_} \texttt{moisture} & \texttt{NUMERIC(5,2)} & \texttt{NULL} & Humedad de suelo o potencial mátrico. \\
+\texttt{telemetry\_} \texttt{readings} & \texttt{soil\_moisture} & \texttt{NUMERIC(5,2)} & \texttt{NULL} & Humedad de suelo o potencial mátrico. \\
 \texttt{telemetry\_} \texttt{readings} & \texttt{recorded\_at} & \texttt{TIMESTAMPTZ} & \texttt{NOT NULL, INDEX} & Marca temporal exacta de la medición. \\
 \texttt{iot\_} \texttt{devices} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador de la sonda o sensor. \\
 \texttt{iot\_} \texttt{devices} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL} & Parcela asociada. \\
 \texttt{iot\_} \texttt{devices} & \texttt{calibration\_} \texttt{offset} & \texttt{NUMERIC(5,2)} & \texttt{NOT NULL DEFAULT 0} & Desviación calibrada de la sonda. \\
 \texttt{iot\_} \texttt{devices} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL} & Estado del dispositivo (\texttt{ACTIVE}, \texttt{CALIBRATING}). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Script DDL de base de datos
 &nbsp;
@@ -2943,10 +2909,9 @@ CREATE INDEX idx_telemetry_plot_time
 En la \autoref{tab:tactical-76} se esquematiza la distribución arquitectónica de componentes internos y tecnologías empleadas por cada nivel conceptual:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.11\textwidth} p{0.24\textwidth} p{0.44\textwidth} p{0.10\textwidth}}
 \caption{Descomposición de componentes arquitectónicos por capa en Agroclimatic Telemetry and Sensor Monitoring.} \label{tab:tactical-76} \\
 \hline
@@ -2963,11 +2928,11 @@ En la \autoref{tab:tactical-76} se esquematiza la distribución arquitectónica 
 \multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
 Interface & \texttt{PlotIot} \texttt{DeviceController}; \texttt{PlotTelemetryController}; \texttt{PlotForecastController} & Ingesta horaria, configuración de nodos sensores y consulta REST de series agroclimáticas y pronóstico. & Spring MVC, Jakarta Validation \\
-Application & \texttt{Telemetry-} \texttt{CommandService}; \texttt{Telemetry-} \texttt{QueryService}; \texttt{ForecastSync-} \texttt{Scheduler} & Orquestación de comandos de sensores/lecturas, consultas de series/alertas y tarea programada de clima. & Spring \texttt{@Transactional}, \texttt{@Scheduled}, \texttt{@Service} \\
+Application & \texttt{TelemetryCommandService}; \texttt{TelemetryQueryService}; \texttt{ForecastSyncScheduler} & Orquestación de comandos de sensores/lecturas, consultas de series/alertas y tarea programada de clima. & Spring \texttt{@Transactional}, \texttt{@Scheduled}, \texttt{@Service} \\
 Domain & \texttt{Virtual} \texttt{SensorNode} \texttt{Repository}; \texttt{TelemetrySeries} \texttt{Repository}; \texttt{AgroclimaticThresholdEvaluator} & Contratos de persistencia (puertos de dominio) y servicio de evaluación de estrés hídrico (SWP) y heladas. & Java puro / DDD \\
 Infrastructure & \texttt{JpaVirtualSensorNode} \texttt{RepositoryAdapter}; \texttt{JpaTelemetrySeries} \texttt{RepositoryAdapter}; \texttt{OpenMeteoWeatherAdapter}; \texttt{SpringDomainEventPublisher} & Persistencia JPA en PostgreSQL, consumo API Open-Meteo y publicación de eventos. & Spring Data JPA, HTTP Client, Caffeine \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Flujo de comunicación y conectividad
 &nbsp;
@@ -2985,7 +2950,7 @@ A continuación, en la \autoref{fig:c4-component-telemetry} se esquematiza el di
 \caption{C4 Model - Component Level: Diagrama de Componentes de Agroclimatic Telemetry.} \label{fig:c4-component-telemetry}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/component-diagram-telemetry.png}
+\includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-telemetry.png}
 \caption*{\textit{Nota.} Descomposición de componentes de la arquitectura del Bounded Context Agroclimatic Telemetry. Elaboración propia.}
 \end{figure}
 
@@ -2998,23 +2963,25 @@ A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class
 &nbsp;
 
 \begin{figure}[H]
-\caption{Diagrama de Clases UML: Domain Layer de Agroclimatic Telemetry and Sensor Monitoring.} \label{fig:class-diagram-telemetry}
+\caption{Diagrama de Clases UML: Domain Layer de Agroclimatic Telemetry.} \label{fig:class-diagram-telemetry}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/class-diagram-telemetry.png}
-\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de Agroclimatic Telemetry and Sensor Monitoring. Elaboración propia.}
+\includegraphics[width=0.70\textwidth]{report/assets/tactical-diagrams/class-diagram-telemetry.png}
+\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de Telemetría. Elaboración propia.}
 \end{figure}
 
-##### Bounded Context Database Design Diagram
+##### Bounded Context Database Design Diagram 
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Agroclimatic Telemetry and Sensor Monitoring.} \label{fig:database-diagram-telemetry}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Agroclimatic Telemetry.} \label{fig:database-diagram-telemetry}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-telemetry.png}
-\caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para Agroclimatic Telemetry and Sensor Monitoring. Elaboración propia.}
+\includegraphics[width=0.65\textwidth]{report/assets/tactical-diagrams/database-diagram-telemetry.png}
+\caption*{\textit{Nota.} Estructura de tablas de telemetría y dispositivos IoT en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-
+\clearpage
 
 ### Bounded Context: Phenology and Historical Bearing Analytics
 
@@ -3028,10 +2995,9 @@ Propósito: Gobierna la memoria biológica y el análisis plurianual de vecería
 En la \autoref{tab:tactical-77} se describe la estructura y delimitación transaccional del modelo `ChillAccumulationTracker`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio ChillAccumulationTracker (Aggregate Root) en Phenology and Historical Bearing Analytics.} \label{tab:tactical-77} \\
 \hline
@@ -3051,15 +3017,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Monitorea la acumulación invernal de frío (Modelo Dinámico de Erez), el tiempo térmico post-antesis y el índice de vecería de Hoblyn. \\
 Relaciones de dominio & Referencia a \texttt{PlotId}. Compone bitácoras diarias de frío y registros históricos plurianuales de cosecha. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-78} se presentan los atributos, tipos de datos e invariantes que rigen a `ChillAccumulationTracker`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo ChillAccumulationTracker en Phenology and Historical Bearing Analytics.} \label{tab:tactical-78} \\
 \hline
@@ -3084,15 +3049,14 @@ En la \autoref{tab:tactical-78} se presentan los atributos, tipos de datos e inv
 \texttt{accumulatedGdd} \texttt{PostAnthesis} & \texttt{Double} & Grados día de desarrollo acumulados tras plena floración. \\
 \texttt{pitHardening} \texttt{Reached} & \texttt{Boolean} & Indicador si se alcanzó el endurecimiento de carozo (~680 GDD). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-79} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `ChillAccumulationTracker`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de ChillAccumulationTracker en Phenology and Historical Bearing Analytics.} \label{tab:tactical-79} \\
 \hline
@@ -3114,7 +3078,7 @@ Asimismo, en la \autoref{tab:tactical-79} se consolidan las firmas de métodos y
 \texttt{processDaily} \texttt{Temperatures} & \texttt{date: LocalDate}, \texttt{temps: List<Double>} & \texttt{void} & Computa porciones de frío de Erez considerando termodestrucción. \\
 \texttt{processPost} \texttt{Anthesis} \texttt{ThermalTime} & \texttt{date: LocalDate}, \texttt{max: Double}, \texttt{min: Double} & \texttt{void} & Acumula GDD y detecta endurecimiento de carozo emitiendo \texttt{PitHardeningStageReachedEvent}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `HistoricalHarvestEntry` (Internal Entity)
 &nbsp;
@@ -3122,10 +3086,9 @@ Asimismo, en la \autoref{tab:tactical-79} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-80} se describe la estructura y delimitación transaccional del modelo `HistoricalHarvestEntry`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio HistoricalHarvestEntry (Internal Entity) en Phenology and Historical Bearing Analytics.} \label{tab:tactical-80} \\
 \hline
@@ -3145,15 +3108,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Registra el rendimiento cuantitativo anual obtenido en una campaña previa para cálculo de alternancia. \\
 Relaciones de dominio & Subordinada a \texttt{ChillAccumulationTracker} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-81} se presentan los atributos, tipos de datos e invariantes que rigen a `HistoricalHarvestEntry`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo HistoricalHarvestEntry en Phenology and Historical Bearing Analytics.} \label{tab:tactical-81} \\
 \hline
@@ -3176,15 +3138,14 @@ En la \autoref{tab:tactical-81} se presentan los atributos, tipos de datos e inv
 \texttt{blackKg} & \texttt{Double} & Kilogramos de aceituna negra natural. \\
 \texttt{bearing} \texttt{Classification} & \texttt{BearingClassification} & Clasificación: \texttt{ON\_YEAR}, \texttt{OFF\_YEAR}, \texttt{BALANCED}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-82} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `HistoricalHarvestEntry`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de HistoricalHarvestEntry en Phenology and Historical Bearing Analytics.} \label{tab:tactical-82} \\
 \hline
@@ -3203,7 +3164,7 @@ Asimismo, en la \autoref{tab:tactical-82} se consolidan las firmas de métodos y
 \texttt{updateYield} & \texttt{total: Double}, \texttt{green: Double}, \texttt{black: Double} & \texttt{void} & Actualiza rendimientos verificando consistencia de pesajes. \\
 \texttt{classify} & \texttt{averageYield: Double} & \texttt{void} & Asigna categoría productiva comparando contra el promedio móvil predial. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `DailyChillLog` (Internal Entity)
 &nbsp;
@@ -3211,10 +3172,9 @@ Asimismo, en la \autoref{tab:tactical-82} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-83} se describe la estructura y delimitación transaccional del modelo `DailyChillLog`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio DailyChillLog (Internal Entity) en Phenology and Historical Bearing Analytics.} \label{tab:tactical-83} \\
 \hline
@@ -3234,15 +3194,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Almacena el cálculo matemático de porciones de frío acumuladas en una jornada invernal. \\
 Relaciones de dominio & Subordinada a \texttt{ChillAccumulationTracker} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-84} se presentan los atributos, tipos de datos e invariantes que rigen a `DailyChillLog`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo DailyChillLog en Phenology and Historical Bearing Analytics.} \label{tab:tactical-84} \\
 \hline
@@ -3265,15 +3224,14 @@ En la \autoref{tab:tactical-84} se presentan los atributos, tipos de datos e inv
 \texttt{maxDayTemperature} & \texttt{Double} & Temperatura máxima diurna (°C). \\
 \texttt{minNight} \texttt{Temperature} & \texttt{Double} & Temperatura mínima nocturna (°C). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-85} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `DailyChillLog`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de DailyChillLog en Phenology and Historical Bearing Analytics.} \label{tab:tactical-85} \\
 \hline
@@ -3291,7 +3249,7 @@ Asimismo, en la \autoref{tab:tactical-85} se consolidan las firmas de métodos y
 \endlastfoot
 \texttt{isDestructive} \texttt{HeatOccurred} & \texttt{void} & \texttt{boolean} & Indica si temperaturas > 24 °C destruyeron el intermediario térmico inestable. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Objetos de valor (Value Objects)
 &nbsp;
@@ -3299,10 +3257,9 @@ Asimismo, en la \autoref{tab:tactical-85} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-86} se especifican los objetos de valor inmutables (*Value Objects*) que encapsulan las reglas y tipos base del contexto:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
 \caption{Objetos de valor (Value Objects) e invariantes en Phenology and Historical Bearing Analytics.} \label{tab:tactical-86} \\
 \hline
@@ -3325,7 +3282,7 @@ En la \autoref{tab:tactical-86} se especifican los objetos de valor inmutables (
 \texttt{GrowingDegreeDays} & \texttt{Double (Grados-Día)} & Acumulación térmica sobre umbral base ($T_{base} = 10^\circ\text{C}$). \\
 \texttt{DynamicErezPortion} & \texttt{Double} & Porciones de frío dinámico acumuladas según cinética Erez-Fishman. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Servicios de dominio, repositorios y eventos
 &nbsp;
@@ -3333,10 +3290,9 @@ En la \autoref{tab:tactical-86} se especifican los objetos de valor inmutables (
 En la \autoref{tab:tactical-87} se definen los servicios puros de dominio, los contratos de repositorio y los eventos soberanos despachados:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.10\textwidth} p{0.43\textwidth} p{0.14\textwidth}}
 \caption{Servicios de dominio, contratos de repositorio y eventos en Phenology and Historical Bearing Analytics.} \label{tab:tactical-87} \\
 \hline
@@ -3361,7 +3317,7 @@ En la \autoref{tab:tactical-87} se definen los servicios puros de dominio, los c
 \texttt{PitHardening} \texttt{StageReachedEvent} & Domain Event & \texttt{plotId: UUID, previousStage: String, newStage: String, gdd: Double, occurredOn: Instant} & Notifica cambio de fase fenológica (ej. carozo a 680 GDD). \\
 \texttt{BiennialBearing} \texttt{IndexAssessedEvent} & Domain Event & \texttt{plotId: UUID, bbiValue: Double, classification: String, occurredOn: Instant} & Informa severidad de vecería hacia Crop Load Regulation. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Interface Layer
 
@@ -3371,10 +3327,9 @@ En la \autoref{tab:tactical-87} se definen los servicios puros de dominio, los c
 En la \autoref{tab:tactical-88} se detallan los endpoints RESTful expuestos por los controladores de la capa de interfaz:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.08\textwidth} p{0.22\textwidth} p{0.18\textwidth} p{0.23\textwidth} p{0.18\textwidth}}
 \caption{Controladores y especificación de endpoints REST en Phenology and Historical Bearing Analytics.} \label{tab:tactical-88} \\
 \hline
@@ -3397,7 +3352,7 @@ En la \autoref{tab:tactical-88} se detallan los endpoints RESTful expuestos por 
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/metrics} & N/A (\texttt{?name=BBI} / \texttt{?name=CHILLING}) & \texttt{MetricResource} (200 OK) & Consulta de $BBI$ de Hoblyn y porciones de frío de Erez. \\
 \texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/phenology-observations} & \texttt{RecordPhenology} \texttt{ObservationRequest} & \texttt{Phenology} \texttt{ObservationResource} (201 Created) & Registro visual de estadio fenológico en escala BBCH. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -3405,10 +3360,9 @@ En la \autoref{tab:tactical-88} se detallan los endpoints RESTful expuestos por 
 En la \autoref{tab:tactical-89} se presentan las estructuras de datos de transferencia (DTOs) y sus ensambladores hacia recursos de presentación:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.41\textwidth} p{0.14\textwidth}}
 \caption{Estructura de DTOs y ensambladores de recursos en Phenology and Historical Bearing Analytics.} \label{tab:tactical-89} \\
 \hline
@@ -3432,7 +3386,7 @@ En la \autoref{tab:tactical-89} se presentan las estructuras de datos de transfe
 \texttt{Phenology} \texttt{ObservationResource} & Response DTO & \texttt{{ id: UUID, plotId: UUID, currentStage: Int, accumulatedGdd: Double, isWindowClosed: Boolean }} & Estado biológico y ventana de aclareo. \\
 \texttt{HarvestRecord} \texttt{ResourceAssembler} & Assembler & \texttt{toResource(} \texttt{HistoricalHarvestEntry):} \texttt{HarvestRecordResource} & Transformador a DTO desacoplado. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Application Layer
 
@@ -3442,10 +3396,9 @@ En la \autoref{tab:tactical-89} se presentan las estructuras de datos de transfe
 En la \autoref{tab:tactical-90} se especifican los manejadores de comandos y consultas que orquestan los flujos de aplicación y sus límites transaccionales:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.22\textwidth} p{0.33\textwidth}}
 \caption{Manejadores de comandos y consultas (Handlers) en Phenology and Historical Bearing Analytics.} \label{tab:tactical-90} \\
 \hline
@@ -3472,7 +3425,7 @@ En la \autoref{tab:tactical-90} se especifican los manejadores de comandos y con
 \texttt{OnCampaign} \texttt{Harvest} \texttt{Settled} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Campaign} \texttt{Harvest} \texttt{Settled} \texttt{Event} & Escucha cierre de cosecha en Liquidación y actualiza bitácora plurianual recalculando $BBI$. \\
 \texttt{OnLate} \texttt{Thinning} \texttt{Execution} \texttt{Recorded} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Late} \texttt{Thinning} \texttt{Execution} \texttt{Recorded} \texttt{Event} & Penaliza el factor de mitigación en un $70\%$ ante aclareo extemporáneo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Infrastructure Layer
 
@@ -3482,10 +3435,9 @@ En la \autoref{tab:tactical-90} se especifican los manejadores de comandos y con
 En la \autoref{tab:tactical-91} se detallan los adaptadores técnicos y componentes de infraestructura que dan soporte a las operaciones:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.33\textwidth}}
 \caption{Componentes técnicos y adaptadores de infraestructura en Phenology and Historical Bearing Analytics.} \label{tab:tactical-91} \\
 \hline
@@ -3505,7 +3457,7 @@ En la \autoref{tab:tactical-91} se detallan los adaptadores técnicos y componen
 \texttt{JpaPhenology} \texttt{Repository} \texttt{Adapter} & Adapter & Spring Component & Implementa contratos de persistencia de fenología. \\
 \texttt{ErezAlgorithmNative} \texttt{Adapter} & Domain Service Impl & Java Puro & Motor matemático optimizado para porciones de frío. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Perspectiva táctica de la aplicación móvil (Android / Flutter)
 &nbsp;
@@ -3522,10 +3474,9 @@ En la \autoref{tab:tactical-91} se detallan los adaptadores técnicos y componen
 En la \autoref{tab:tactical-92} se expone el diccionario de datos relacional con las tablas, columnas, restricciones e índices implementados en PostgreSQL:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Phenology and Historical Bearing Analytics.} \label{tab:tactical-92} \\
 \hline
@@ -3543,15 +3494,15 @@ En la \autoref{tab:tactical-92} se expone el diccionario de datos relacional con
 \endlastfoot
 \texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador del registro. \\
 \texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL, INDEX} & Parcela monitoreada. \\
-\texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{current\_} \texttt{stage} & \texttt{INT} & \texttt{NOT NULL} & Código numérico BBCH actual. \\
+\texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{current\_stage} & \texttt{INT} & \texttt{NOT NULL} & Código numérico BBCH actual. \\
 \texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{accumulated\_} \texttt{gdd} & \texttt{NUMERIC(6,2)} & \texttt{NOT NULL DEFAULT 0} & Grados-día de desarrollo post-antesis. \\
 \texttt{pheno-} \texttt{logical\_} \texttt{records} & \texttt{is\_window\_} \texttt{closed} & \texttt{BOOLEAN} & \texttt{NOT NULL DEFAULT FALSE} & Indicador de carozo endurecido. \\
 \texttt{chill\_} \texttt{trackers} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador del seguimiento de frío. \\
 \texttt{chill\_} \texttt{trackers} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL} & Parcela asociada. \\
-\texttt{chill\_} \texttt{trackers} & \texttt{campaign\_} \texttt{year} & \texttt{INT} & \texttt{NOT NULL} & Año agrícola evaluado. \\
-\texttt{chill\_} \texttt{trackers} & \texttt{erez\_} \texttt{portions} & \texttt{NUMERIC(6,2)} & \texttt{NOT NULL} & Porciones de frío dinámico acumuladas. \\
+\texttt{chill\_} \texttt{trackers} & \texttt{campaign\_year} & \texttt{INT} & \texttt{NOT NULL} & Año agrícola evaluado. \\
+\texttt{chill\_} \texttt{trackers} & \texttt{erez\_portions} & \texttt{NUMERIC(6,2)} & \texttt{NOT NULL} & Porciones de frío dinámico acumuladas. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Script DDL de base de datos
 &nbsp;
@@ -3586,10 +3537,9 @@ CREATE TABLE phenology.chill_trackers (
 En la \autoref{tab:tactical-93} se esquematiza la distribución arquitectónica de componentes internos y tecnologías empleadas por cada nivel conceptual:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.11\textwidth} p{0.24\textwidth} p{0.44\textwidth} p{0.10\textwidth}}
 \caption{Descomposición de componentes arquitectónicos por capa en Phenology and Historical Bearing Analytics.} \label{tab:tactical-93} \\
 \hline
@@ -3610,7 +3560,7 @@ Application & \texttt{Phenology} \texttt{CommandService}; \texttt{PhenologyQuery
 Domain & \texttt{ChillAccumulation} \texttt{TrackerRepository}; \texttt{ErezDynamicModelCalculator}; \texttt{GrowingDegreeDaysCalculator}; \texttt{HoblynBbiCalculatorService} & Contrato de persistencia (puerto de dominio), algoritmos biológicos Erez, GDD post-antesis e índice $BBI$ de Hoblyn. & Java puro / DDD \\
 Infrastructure & \texttt{JpaChillAccumulation} \texttt{TrackerRepositoryAdapter}; \texttt{SpringDomainEventPublisher} & Persistencia JPA en PostgreSQL (\texttt{phenology}) y despacho de eventos de dominio. & Spring Data JPA, Spring Events \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Flujo de comunicación y conectividad
 &nbsp;
@@ -3628,7 +3578,7 @@ A continuación, en la \autoref{fig:c4-component-phenology} se esquematiza el di
 \caption{C4 Model - Component Level: Diagrama de Componentes de Phenology and Historical Bearing Analytics.} \label{fig:c4-component-phenology}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/component-diagram-phenology.png}
+\includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-phenology.png}
 \caption*{\textit{Nota.} Descomposición de componentes de la arquitectura del Bounded Context Phenology. Elaboración propia.}
 \end{figure}
 
@@ -3642,22 +3592,24 @@ A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class
 
 \begin{figure}[H]
 \caption{Diagrama de Clases UML: Domain Layer de Phenology and Historical Bearing Analytics.} \label{fig:class-diagram-phenology}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/class-diagram-phenology.png}
-\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de Phenology and Historical Bearing Analytics. Elaboración propia.}
+\includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-phenology.png}
+\caption*{\textit{Nota.} Clases biológicas, algoritmos de frío y analítica de vecería en Phenology. Elaboración propia.}
 \end{figure}
 
-##### Bounded Context Database Design Diagram
+##### Bounded Context Database Design Diagram 
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Phenology and Historical Bearing Analytics.} \label{fig:database-diagram-phenology}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Phenology.} \label{fig:database-diagram-phenology}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-phenology.png}
-\caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para Phenology and Historical Bearing Analytics. Elaboración propia.}
+\includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-phenology.png}
+\caption*{\textit{Nota.} Estructura de tablas de fenología y acumulación térmica en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-
+\clearpage
 
 ### Bounded Context: Crop Load Regulation and Thinning Advisory
 
@@ -3671,10 +3623,9 @@ Propósito: Núcleo agronómico prescriptivo de Viora. Regula la carga frutal de
 En la \autoref{tab:tactical-94} se describe la estructura y delimitación transaccional del modelo `FruitThinningPrescription`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio FruitThinningPrescription (Aggregate Root) en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-94} \\
 \hline
@@ -3694,15 +3645,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Consolida los muestreos de brotes en campo, determina la carga frutal sostenible y emite la prescripción de raleo manual. \\
 Relaciones de dominio & Referencia a \texttt{PlotId}. Compone rondas de muestreo y la confirmación de ejecución de raleo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-95} se presentan los atributos, tipos de datos e invariantes que rigen a `FruitThinningPrescription`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo FruitThinningPrescription en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-95} \\
 \hline
@@ -3727,15 +3677,14 @@ En la \autoref{tab:tactical-95} se presentan los atributos, tipos de datos e inv
 \texttt{status} & \texttt{PrescriptionStatus} & Estado: \texttt{SAMPLING\_IN\_PROGRESS}, \texttt{PRESCRIBED}, \texttt{EXECUTED\_OPTIMAL}, \texttt{CLOSED\_BY\_PIT\_HARDENING}. \\
 \texttt{execution} & \texttt{Execution} \texttt{Confirmation} & Datos de auditoría de la labor de raleo en campo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-96} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `FruitThinningPrescription`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de FruitThinningPrescription en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-96} \\
 \hline
@@ -3757,7 +3706,7 @@ Asimismo, en la \autoref{tab:tactical-96} se consolidan las firmas de métodos y
 \texttt{confirm} \texttt{Execution} & \texttt{confirm:} \texttt{Execution} \texttt{Confirmation} & \texttt{void} & Registra ejecución de raleo emitiendo \texttt{ThinningExecutionConfirmedEvent}. \\
 \texttt{closeWindowBy} \texttt{PitHardening} & \texttt{date: LocalDate} & \texttt{void} & Cierra la ventana de intervención oportuna por endurecimiento de carozo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `SamplingRound` (Internal Entity)
 &nbsp;
@@ -3765,10 +3714,9 @@ Asimismo, en la \autoref{tab:tactical-96} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-97} se describe la estructura y delimitación transaccional del modelo `SamplingRound`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio SamplingRound (Internal Entity) en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-97} \\
 \hline
@@ -3788,15 +3736,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Agrupa un conjunto de árboles muestreados en un cuartel olivarero durante una jornada de evaluación. \\
 Relaciones de dominio & Subordinada a \texttt{FruitThinning} \texttt{Prescription} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-98} se presentan los atributos, tipos de datos e invariantes que rigen a `SamplingRound`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo SamplingRound en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-98} \\
 \hline
@@ -3818,15 +3765,14 @@ En la \autoref{tab:tactical-98} se presentan los atributos, tipos de datos e inv
 \texttt{samplingRecords} & \texttt{List<} \texttt{TreeSampling} \texttt{Record>} & Muestras individuales de árboles recolectadas. \\
 \texttt{isRepresentative} & \texttt{Boolean} & Indicador si cumple el tamaño muestral mínimo representativo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-99} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `SamplingRound`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de SamplingRound en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-99} \\
 \hline
@@ -3845,7 +3791,7 @@ Asimismo, en la \autoref{tab:tactical-99} se consolidan las firmas de métodos y
 \texttt{addRecord} & \texttt{record:} \texttt{TreeSampling} \texttt{Record} & \texttt{void} & Añade una muestra individual al lote de la ronda. \\
 \texttt{evaluate} \texttt{Representativeness} & \texttt{evaluator: SamplingCoverageEvaluator} & \texttt{void} & Valida que la cobertura de muestreo sea estadísticamente sólida. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `TreeSamplingRecord` (Internal Entity)
 &nbsp;
@@ -3853,10 +3799,9 @@ Asimismo, en la \autoref{tab:tactical-99} se consolidan las firmas de métodos y
 En la \autoref{tab:tactical-100} se describe la estructura y delimitación transaccional del modelo `TreeSamplingRecord`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio TreeSamplingRecord (Internal Entity) en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-100} \\
 \hline
@@ -3876,15 +3821,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Captura los conteos de brotes, cuajado y vigor en un olivo individualizado. \\
 Relaciones de dominio & Subordinada a \texttt{SamplingRound} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-101} se presentan los atributos, tipos de datos e invariantes que rigen a `TreeSamplingRecord`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo TreeSamplingRecord en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-101} \\
 \hline
@@ -3907,15 +3851,14 @@ En la \autoref{tab:tactical-101} se presentan los atributos, tipos de datos e in
 \texttt{trunkDiameterMm} & \texttt{Double} & Diámetro de tronco a 30 cm de altura para estimar área de sección transversal (TCSA). \\
 \texttt{samplingDate} & \texttt{LocalDate} & Fecha de recolección de la muestra. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-102} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `TreeSamplingRecord`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de TreeSamplingRecord en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-102} \\
 \hline
@@ -3933,7 +3876,7 @@ Asimismo, en la \autoref{tab:tactical-102} se consolidan las firmas de métodos 
 \endlastfoot
 \texttt{getFruits} \texttt{PerMeter} & \texttt{void} & \texttt{Double} & Calcula la densidad lineal de carga en frutos por metro de brote. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `ExecutionConfirmation` (Internal Entity)
 &nbsp;
@@ -3941,10 +3884,9 @@ Asimismo, en la \autoref{tab:tactical-102} se consolidan las firmas de métodos 
 En la \autoref{tab:tactical-103} se describe la estructura y delimitación transaccional del modelo `ExecutionConfirmation`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio ExecutionConfirmation (Internal Entity) en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-103} \\
 \hline
@@ -3964,15 +3906,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Acredita la ejecución material de la labor de raleo manual en el cuartel. \\
 Relaciones de dominio & Subordinada a \texttt{FruitThinning} \texttt{Prescription} (1 a 1). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-104} se presentan los atributos, tipos de datos e invariantes que rigen a `ExecutionConfirmation`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo ExecutionConfirmation en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-104} \\
 \hline
@@ -3994,15 +3935,14 @@ En la \autoref{tab:tactical-104} se presentan los atributos, tipos de datos e in
 \texttt{laborCrewSize} & \texttt{Int} & Número de operarios de campo participantes. \\
 \texttt{timeliness} & \texttt{ExecutionTimeliness} & Calificación: \texttt{OPTIMAL} (previo a carozo) o \texttt{LATE}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-105} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `ExecutionConfirmation`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de ExecutionConfirmation en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-105} \\
 \hline
@@ -4020,7 +3960,7 @@ Asimismo, en la \autoref{tab:tactical-105} se consolidan las firmas de métodos 
 \endlastfoot
 \texttt{isOpportune} & \texttt{void} & \texttt{Boolean} & Verifica si la intervención ocurrió antes del endurecimiento de carozo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Objetos de valor (Value Objects)
 &nbsp;
@@ -4028,10 +3968,9 @@ Asimismo, en la \autoref{tab:tactical-105} se consolidan las firmas de métodos 
 En la \autoref{tab:tactical-106} se especifican los objetos de valor inmutables (*Value Objects*) que encapsulan las reglas y tipos base del contexto:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
 \caption{Objetos de valor (Value Objects) e invariantes en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-106} \\
 \hline
@@ -4052,7 +3991,7 @@ En la \autoref{tab:tactical-106} se especifican los objetos de valor inmutables 
 \texttt{ThinningIntensity} & \texttt{percentage\-ToRemove: Double, kgToRemovePerTree: Double} & Porcentaje y masa recomendada a defructificar en verde. \\
 \texttt{PrescriptionStatus} & \texttt{Enum (7 estados)} & \texttt{SAMPLING\_IN\_PROGRESS}, \texttt{PRESCRIBED}, \texttt{CONFIRMED}, \texttt{EXECUTED}, \texttt{EXPIRED}, \texttt{VOIDED\_BY\_PLOT\_REMOVAL}, \texttt{REJECTED}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Servicios de dominio, repositorios y eventos
 &nbsp;
@@ -4060,10 +3999,9 @@ En la \autoref{tab:tactical-106} se especifican los objetos de valor inmutables 
 En la \autoref{tab:tactical-107} se definen los servicios puros de dominio, los contratos de repositorio y los eventos soberanos despachados:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.10\textwidth} p{0.43\textwidth} p{0.14\textwidth}}
 \caption{Servicios de dominio, contratos de repositorio y eventos en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-107} \\
 \hline
@@ -4089,7 +4027,7 @@ En la \autoref{tab:tactical-107} se definen los servicios puros de dominio, los 
 \texttt{OverloadRisk} \texttt{DetectedEvent} & Domain Event & \texttt{prescriptionId: UUID, plotId: UUID, overloadFactor: Double, occurredOn: Instant} & Alerta riesgo de sobrecarga crítica hacia la cooperativa. \\
 \texttt{Thinning} \texttt{Execution} \texttt{ConfirmedEvent} & Domain Event & \texttt{prescriptionId: UUID, plotId: UUID, removalPct: Double, timeliness: String, occurredOn: Instant} & Confirma ejecución de la labor para liquidación de cosecha. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Interface Layer
 
@@ -4099,10 +4037,9 @@ En la \autoref{tab:tactical-107} se definen los servicios puros de dominio, los 
 En la \autoref{tab:tactical-108} se detallan los endpoints RESTful expuestos por los controladores de la capa de interfaz:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.08\textwidth} p{0.22\textwidth} p{0.18\textwidth} p{0.23\textwidth} p{0.18\textwidth}}
 \caption{Controladores y especificación de endpoints REST en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-108} \\
 \hline
@@ -4122,10 +4059,23 @@ En la \autoref{tab:tactical-108} se detallan los endpoints RESTful expuestos por
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/samplings} & N/A (\texttt{?campaignYear=} \texttt{\&view=summary}) & \texttt{SamplingSummary} \texttt{Resource} (200 OK) & Consulta del avance y representatividad muestral de la campaña. \\
 \texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions} & N/A & \texttt{Prescription} \texttt{Resource} (201 Created) & Determinación de carga frutal sostenible y emisión de prescripción bajo demanda. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions} & N/A (\texttt{?status=ACTIVE}) & \texttt{Prescription} \texttt{Resource} (200 OK) & Consulta de prescripción vigente o por campaña. \\
+\texttt{GET} & \nolinkurl{/api/v1/thinning-prescriptions} & N/A & Lista de prescripciones (200 OK) & Prescripciones de aclareo del productor. \\
 \texttt{GET} & \nolinkurl{/api/v1/thinning-prescriptions/{id}} & N/A & \texttt{Prescription} \texttt{Resource} (200 OK) & Consulta de prescripción por identificador unívoco directo. \\
 \texttt{POST} & \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations} & \texttt{Confirm} \texttt{Execution} \texttt{Request} & \texttt{Execution} \texttt{Confirmation} \texttt{Resource} (201 Created) & Declaración y confirmación de labor de aclareo oportuna o tardía. \\
+\texttt{GET} & \nolinkurl{/api/v1/thinning-prescriptions/{id}/execution-confirmations} & N/A & Ejecución registrada (200 OK) & Consulta de la ejecución registrada de un aclareo. \\
+\texttt{GET} & \nolinkurl{/api/v1/samplings} & N/A (\texttt{?campaignYear=}) & \texttt{PlotSampling} \texttt{OverviewResponse} (200 OK) & Estado de muestreo de todos los cuarteles para el selector de parcelas. \\
+\texttt{PUT} & \nolinkurl{/api/v1/plots/{plotId}/thinning-prescriptions/full-bloom} & \texttt{campaignYear, fullBloomDate} & \texttt{ThinningPrescription} \texttt{Response} (200 OK) & Registro de la fecha de plena floración para calibrar la ventana de aclareo. \\
+\texttt{GET} & \nolinkurl{/api/v1/thinning-events} & N/A (\texttt{?plotId=} \texttt{\&campaignYear=}) & \texttt{ThinningEvent} \texttt{Response} (200 OK) & Bitácora cronológica de eventos de aclareo del predio. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/questions} & N/A (\texttt{?screen=} \texttt{\&plotId=}) & \texttt{QuestionCatalog} \texttt{Resource} (200 OK) & Catálogo de preguntas cerradas por pantalla y parcela. \\
+\texttt{POST} & \nolinkurl{/api/v1/assistant/answers} & \texttt{questionId, plotId} (\texttt{Idempotency-Key}) & \texttt{AssistantAnswer} \texttt{Resource} (200 OK) & Respuesta idempotente validada contra datos reales. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/answers} & N/A (\texttt{?limit=}) & \texttt{AnswerHistory} \texttt{Resource} (200 OK) & Historial de respuestas con su vigencia. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/answers/latest} & N/A (\texttt{?screen=} \texttt{\&plotId=}) & \texttt{AssistantAnswer} \texttt{Resource} (200 OK) & Última respuesta de un contexto de consulta. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/answers/{answerId}} & N/A & \texttt{AssistantAnswer} \texttt{Resource} (200 OK) & Respuesta guardada con su vigencia actual. \\
+\texttt{GET} & \nolinkurl{/api/v1/assistant/daily-summary} & N/A (\texttt{?plotId=}) & \texttt{AssistantDailySummary} \texttt{Resource} (200 OK) & Resumen diario con exactamente tres hechos. \\
 \end{longtable}
-\endgroup
+\end{center}
+
+**Muestreo, aclareo y asistente agronómico.** El contexto mantiene el estado global de muestreo, el registro de plena floración y la bitácora de aclareo (`TS51` a `TS53`). El asistente agronómico es una capacidad de este contexto (`TS66` a `TS71`). `AssistantAnswer` conserva dos hechos, fuentes, acciones y la vigencia de sus datos, la solicitud es idempotente y, si el texto generado es rechazado o no está disponible, se entrega un texto predefinido. El proveedor de texto se aísla tras un puerto implementado con Spring AI (`SPK04`).
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -4133,10 +4083,9 @@ En la \autoref{tab:tactical-108} se detallan los endpoints RESTful expuestos por
 En la \autoref{tab:tactical-109} se presentan las estructuras de datos de transferencia (DTOs) y sus ensambladores hacia recursos de presentación:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.41\textwidth} p{0.14\textwidth}}
 \caption{Estructura de DTOs y ensambladores de recursos en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-109} \\
 \hline
@@ -4159,7 +4108,7 @@ En la \autoref{tab:tactical-109} se presentan las estructuras de datos de transf
 \texttt{Execution} \texttt{Confirmation} \texttt{Resource} & Response DTO & \texttt{{ prescriptionId: UUID, confirmationStatus: String, executedDate: LocalDate, isOpportune: Boolean, recordedAt: Instant }} & Constancia de ejecución y sellado biológico. \\
 \texttt{Prescription} \texttt{ResourceAssembler} & Assembler & \texttt{toResource(} \texttt{FruitThinningPrescription):} \texttt{Prescription} \texttt{Resource} & Mapeo a DTO con formateo agronómico. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Application Layer
 
@@ -4169,10 +4118,9 @@ En la \autoref{tab:tactical-109} se presentan las estructuras de datos de transf
 En la \autoref{tab:tactical-110} se especifican los manejadores de comandos y consultas que orquestan los flujos de aplicación y sus límites transaccionales:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.22\textwidth} p{0.33\textwidth}}
 \caption{Manejadores de comandos y consultas (Handlers) en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-110} \\
 \hline
@@ -4196,7 +4144,7 @@ En la \autoref{tab:tactical-110} se especifican los manejadores de comandos y co
 \texttt{OnThinning} \texttt{WindowClosed} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Thinning} \texttt{WindowClosed} \texttt{ByPitHardening} \texttt{Event} & Transiciona prescripciones pendientes a \texttt{EXPIRED}. \\
 \texttt{OnPlot} \texttt{Removed} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Plot} \texttt{Removed} \texttt{Event} & Anula reactivamente prescripciones abiertas al darse de baja el predio. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Infrastructure Layer
 
@@ -4206,10 +4154,9 @@ En la \autoref{tab:tactical-110} se especifican los manejadores de comandos y co
 En la \autoref{tab:tactical-111} se detallan los adaptadores técnicos y componentes de infraestructura que dan soporte a las operaciones:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.33\textwidth}}
 \caption{Componentes técnicos y adaptadores de infraestructura en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-111} \\
 \hline
@@ -4229,7 +4176,7 @@ En la \autoref{tab:tactical-111} se detallan los adaptadores técnicos y compone
 \texttt{FieldSamplingRound} \texttt{JpaRepository} & Persistence & Spring Data JPA & Ingesta transaccional con índice único de lote. \\
 \texttt{MobileOffline} \texttt{StorageStrategy} & Client Persistence & Room (Android) / sqflite (Flutter) & Almacenamiento local SQLite y cola durable \texttt{WorkManager}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Perspectiva táctica de la aplicación móvil (Android / Flutter)
 &nbsp;
@@ -4248,10 +4195,9 @@ En la \autoref{tab:tactical-111} se detallan los adaptadores técnicos y compone
 En la \autoref{tab:tactical-112} se expone el diccionario de datos relacional con las tablas, columnas, restricciones e índices implementados en PostgreSQL:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-112} \\
 \hline
@@ -4269,7 +4215,7 @@ En la \autoref{tab:tactical-112} se expone el diccionario de datos relacional co
 \endlastfoot
 \texttt{thinning\_} \texttt{prescriptions} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador de la prescripción. \\
 \texttt{thinning\_} \texttt{prescriptions} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL, INDEX} & Parcela asociada. \\
-\texttt{thinning\_} \texttt{prescriptions} & \texttt{campaign\_} \texttt{year} & \texttt{INT} & \texttt{NOT NULL} & Año agrícola de la labor. \\
+\texttt{thinning\_} \texttt{prescriptions} & \texttt{campaign\_year} & \texttt{INT} & \texttt{NOT NULL} & Año agrícola de la labor. \\
 \texttt{thinning\_} \texttt{prescriptions} & \texttt{target\_} \texttt{fruits\_m} & \texttt{NUMERIC(5,2)} & \texttt{NOT NULL} & Carga objetivo de frutos/m lineal. \\
 \texttt{thinning\_} \texttt{prescriptions} & \texttt{percentage\_} \texttt{remove} & \texttt{NUMERIC(4,2)} & \texttt{NOT NULL} & Porcentaje de remoción recomendado. \\
 \texttt{thinning\_} \texttt{prescriptions} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL, INDEX} & Estado del ciclo de vida (7 estados). \\
@@ -4279,7 +4225,7 @@ En la \autoref{tab:tactical-112} se expone el diccionario de datos relacional co
 \texttt{field\_} \texttt{sampling\_} \texttt{rounds} & \texttt{actor\_id} & \texttt{UUID} & \texttt{NOT NULL} & Usuario que ejecutó el muestreo. \\
 \texttt{field\_} \texttt{sampling\_} \texttt{rounds} & \texttt{client\_batch\_} \texttt{id} & \texttt{VARCHAR(64)} & \texttt{NOT NULL} & Identificador UUID local para idempotencia. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Script DDL de base de datos
 &nbsp;
@@ -4324,10 +4270,9 @@ WHERE status IN ('SAMPLING_IN_PROGRESS', 'PRESCRIBED');
 En la \autoref{tab:tactical-113} se esquematiza la distribución arquitectónica de componentes internos y tecnologías empleadas por cada nivel conceptual:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.11\textwidth} p{0.24\textwidth} p{0.44\textwidth} p{0.10\textwidth}}
 \caption{Descomposición de componentes arquitectónicos por capa en Crop Load Regulation and Thinning Advisory.} \label{tab:tactical-113} \\
 \hline
@@ -4348,7 +4293,7 @@ Application & \texttt{CropLoad} \texttt{CommandService}; \texttt{CropLoadQuerySe
 Domain & \texttt{FruitThinning} \texttt{PrescriptionRepository}; \texttt{CropLoadBalancingCalculatorService}; \texttt{FieldSamplingDeduplicator} & Contrato de persistencia (puerto de dominio), cálculo de carga admisible y deduplicación de lotes offline. & Java puro / DDD \\
 Infrastructure & \texttt{JpaFruitThinning} \texttt{PrescriptionRepositoryAdapter}; \texttt{SamplingSyncWorkManager}; \texttt{SpringDomainEventPublisher} & Persistencia JPA en PostgreSQL, sincronización en background en clientes móviles y publicación de eventos. & Spring Data JPA, WorkManager, SQLite \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Flujo de comunicación y conectividad
 &nbsp;
@@ -4366,7 +4311,7 @@ A continuación, en la \autoref{fig:c4-component-crop-load} se esquematiza el di
 \caption{C4 Model - Component Level: Diagrama de Componentes de Crop Load Regulation.} \label{fig:c4-component-crop-load}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/component-diagram-crop-load.png}
+\includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-crop-load.png}
 \caption*{\textit{Nota.} Descomposición de componentes de la arquitectura del Bounded Context Crop Load Regulation. Elaboración propia.}
 \end{figure}
 
@@ -4380,26 +4325,28 @@ A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class
 
 \begin{figure}[H]
 \caption{Diagrama de Clases UML: Domain Layer de Crop Load Regulation and Thinning Advisory.} \label{fig:class-diagram-crop-load}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/class-diagram-crop-load.png}
-\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de Crop Load Regulation and Thinning Advisory. Elaboración propia.}
+\includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-crop-load.png}
+\caption*{\textit{Nota.} Estructura estática de clases, entidades de muestreo y prescripción en Crop Load Regulation. Elaboración propia.}
 \end{figure}
 
-##### Bounded Context Database Design Diagram
+##### Bounded Context Database Design Diagram 
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Crop Load Regulation and Thinning Advisory.} \label{fig:database-diagram-crop-load}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Crop Load Regulation.} \label{fig:database-diagram-crop-load}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-crop-load.png}
-\caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para Crop Load Regulation and Thinning Advisory. Elaboración propia.}
+\includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-crop-load.png}
+\caption*{\textit{Nota.} Estructura de tablas, índices de idempotencia y restricciones en PostgreSQL para Crop Load Regulation. Elaboración propia.}
 \end{figure}
 
-
+\clearpage
 
 ### Bounded Context: Cooperative Operations and Territorial Intelligence
 
-Propósito: Agrupa la inteligencia territorial, la administración gremial y las proyecciones logísticas de acopio para organizaciones agrarias y cooperativas olivareras. Gobierna el Aggregate Root `Cooperative`, delimitado bajo la autoridad de un gestor técnico institucional único (`technicalManagerUserId: UserId`, validado mediante claims de token JWT con rol `ROLE_GESTOR_COOPERATIVA`). Administra el padrón unificado de socios (`cooperative_` `members`), evalúa el semáforo territorial de riesgos fenológicos, climáticos y de sobrecarga sectorial (`GET .../territorial-risk` con parámetros GPS `?latitude=` `&longitude=`), y proyecta tempranamente el volumen agregado de cosecha en toneladas verdes y negras (`EarlyIntakeProjection`), advirtiendo penalizaciones de confianza si la representatividad muestral del padrón es inferior al $50\%$.
+Propósito: Agrupa la inteligencia territorial, la administración gremial y las proyecciones logísticas de acopio para organizaciones agrarias y cooperativas olivareras. Gobierna el Aggregate Root `Cooperative`, delimitado bajo la autoridad de un gestor técnico institucional único (`technicalManagerUserId: UserId`, validado mediante claims de token JWT con rol `ROLE_GESTOR_COOPERATIVA`). Administra el padrón unificado de socios (`cooperative_` `members`), evalúa el semáforo territorial de riesgos fenológicos, climáticos y de sobrecarga sectorial (`GET .../territorial-risk` con parámetros GPS `?latitude=` `&longitude=`), y proyecta tempranamente el volumen agregado de cosecha en toneladas verdes y negras (`EarlyIntakeProjection`), marcando la proyección como preliminar si la cobertura muestral del padrón es inferior al $60\%$, sin aplicar coeficientes de reducción.
 
 #### Domain Layer
 
@@ -4409,10 +4356,9 @@ Propósito: Agrupa la inteligencia territorial, la administración gremial y las
 En la \autoref{tab:tactical-114} se describe la estructura y delimitación transaccional del modelo `Cooperative`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio Cooperative (Aggregate Root) en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-114} \\
 \hline
@@ -4432,15 +4378,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Administra el padrón de socios olivareros, proyecta el volumen de cosecha temprana y evalúa la matriz territorial de riesgos. \\
 Relaciones de dominio & Gobierna miembros (\texttt{Cooperative} \texttt{Member}), proyecciones de acopio y evaluaciones de riesgo territorial. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-115} se presentan los atributos, tipos de datos e invariantes que rigen a `Cooperative`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo Cooperative en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-115} \\
 \hline
@@ -4465,15 +4410,14 @@ En la \autoref{tab:tactical-115} se presentan los atributos, tipos de datos e in
 \texttt{riskMatrix} & \texttt{Territorial} \texttt{RiskMatrix} & Semáforo de riesgo geográfico por sector. \\
 \texttt{intakeProjection} & \texttt{Early} \texttt{IntakeProjection} & Estimación agregada de volumen de cosecha para almazara. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-116} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `Cooperative`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de Cooperative en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-116} \\
 \hline
@@ -4495,7 +4439,7 @@ Asimismo, en la \autoref{tab:tactical-116} se consolidan las firmas de métodos 
 \texttt{evaluate} \texttt{Territorial} \texttt{RiskMatrix} & \texttt{incidents:} \texttt{List<Agroclimatic} \texttt{Incident>} & \texttt{void} & Consolida alertas activas y emite \texttt{CooperativeRiskMatrixEvaluatedEvent}. \\
 \texttt{projectIntake} \texttt{Volume} & \texttt{service: YieldAggregationDomainService} & \texttt{void} & Agrega proyecciones de cosecha a partir de muestras y floración. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `CooperativeMember` (Internal Entity)
 &nbsp;
@@ -4503,10 +4447,9 @@ Asimismo, en la \autoref{tab:tactical-116} se consolidan las firmas de métodos 
 En la \autoref{tab:tactical-117} se describe la estructura y delimitación transaccional del modelo `CooperativeMember`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio CooperativeMember (Internal Entity) en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-117} \\
 \hline
@@ -4526,15 +4469,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Representa la membresía y situación gremial de un productor olivarero en la cooperativa. \\
 Relaciones de dominio & Subordinada a \texttt{Cooperative} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-118} se presentan los atributos, tipos de datos e invariantes que rigen a `CooperativeMember`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo CooperativeMember en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-118} \\
 \hline
@@ -4557,15 +4499,14 @@ En la \autoref{tab:tactical-118} se presentan los atributos, tipos de datos e in
 \texttt{totalDeclaredHa} & \texttt{Double} & Hectáreas olivareras declaradas ante la cooperativa. \\
 \texttt{status} & \texttt{MemberStatus} & Estado de membresía: \texttt{ACTIVE}, \texttt{SUSPENDED}, \texttt{RESIGNED}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-119} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `CooperativeMember`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de CooperativeMember en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-119} \\
 \hline
@@ -4584,7 +4525,7 @@ Asimismo, en la \autoref{tab:tactical-119} se consolidan las firmas de métodos 
 \texttt{updateContact} & \texttt{name: String}, \texttt{phone: String}, \texttt{email: String} & \texttt{void} & Actualiza datos civiles de comunicación del socio. \\
 \texttt{linkPlot} & \texttt{plotId: PlotId}, \texttt{ha: Double} & \texttt{void} & Registra parcela asociada a la cuota de entrega de aceituna. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Objetos de valor (Value Objects)
 &nbsp;
@@ -4592,10 +4533,9 @@ Asimismo, en la \autoref{tab:tactical-119} se consolidan las firmas de métodos 
 En la \autoref{tab:tactical-120} se especifican los objetos de valor inmutables (*Value Objects*) que encapsulan las reglas y tipos base del contexto:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
 \caption{Objetos de valor (Value Objects) e invariantes en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-120} \\
 \hline
@@ -4618,7 +4558,7 @@ En la \autoref{tab:tactical-120} se especifican los objetos de valor inmutables 
 \texttt{Territorial} \texttt{RiskMatrix} & \texttt{Map<String, RiskLevel>} & Evaluación cualitativa de riesgos sectoriales (\texttt{LOW}, \texttt{MEDIUM}, \texttt{HIGH}, \texttt{CRITICAL}). \\
 \texttt{Early} \texttt{IntakeProjection} & \texttt{greenTons: Double, blackTons: Double} & Estimación temprana de acopio en toneladas métricas por variedad y uso industrial. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Servicios de dominio, repositorios y eventos
 &nbsp;
@@ -4626,10 +4566,9 @@ En la \autoref{tab:tactical-120} se especifican los objetos de valor inmutables 
 En la \autoref{tab:tactical-121} se definen los servicios puros de dominio, los contratos de repositorio y los eventos soberanos despachados:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.10\textwidth} p{0.43\textwidth} p{0.14\textwidth}}
 \caption{Servicios de dominio, contratos de repositorio y eventos en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-121} \\
 \hline
@@ -4654,7 +4593,7 @@ En la \autoref{tab:tactical-121} se definen los servicios puros de dominio, los 
 \texttt{CooperativeRisk} \texttt{MatrixEvaluatedEvent} & Domain Event & \texttt{cooperativeId: UUID, severity: String, frostAlertsCount: int, occurredOn: Instant} & Notifica mapa de calor territorial a gestores cooperativos. \\
 \texttt{MemberAffiliated} \texttt{Event} & Domain Event & \texttt{cooperativeId: UUID, memberId: UUID, producerUserId: UUID, occurredOn: Instant} & Confirma afiliación de productor al padrón cooperativo. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Interface Layer
 
@@ -4664,10 +4603,9 @@ En la \autoref{tab:tactical-121} se definen los servicios puros de dominio, los 
 En la \autoref{tab:tactical-122} se detallan los endpoints RESTful expuestos por los controladores de la capa de interfaz:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.08\textwidth} p{0.22\textwidth} p{0.18\textwidth} p{0.23\textwidth} p{0.18\textwidth}}
 \caption{Controladores y especificación de endpoints REST en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-122} \\
 \hline
@@ -4683,12 +4621,26 @@ En la \autoref{tab:tactical-122} se detallan los endpoints RESTful expuestos por
 \hline
 \multicolumn{5}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members} & N/A (\texttt{?status=ACTIVE}) & \texttt{List<} \texttt{Cooperative} \texttt{Member} \texttt{Resource>} (200 OK) & Padrón de socios agremiados. \\
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{cooperativeId}/members/{memberId}} & N/A & \texttt{Cooperative} \texttt{Member} \texttt{Resource} (200 OK) & Ficha gremial individual de socio. \\
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{cooperativeId}/territorial-risk} & N/A (\texttt{?latitude=} \texttt{\&longitude=}) & \texttt{TerritorialRisk} \texttt{MatrixResource} (200 OK) & Semáforo territorial de riesgo fenológico y sobrecarga con geolocalización GPS. \\
-\texttt{GET} & \nolinkurl{/api/v1/cooperatives/{cooperativeId}/intake-forecasts} & N/A (\texttt{?campaignYear=}) & \texttt{IntakeForecast} \texttt{Resource} (200 OK) & Proyección temprana agregada de acopio en toneladas. \\
+\texttt{GET} & \nolinkurl{/api/v1/cooperative-members} & N/A (\texttt{?status=ACTIVE}) & \texttt{PagedMember} \texttt{ListResource} (200 OK) & Padrón de socios agremiados. \\
+\texttt{GET} & \nolinkurl{/api/v1/cooperative-members/{id}} & N/A & \texttt{Cooperative} \texttt{Member} \texttt{Resource} (200 OK) & Ficha gremial individual de socio. \\
+\texttt{GET} & \nolinkurl{/api/v1/member-plots} & N/A (\texttt{?latitude=} \texttt{\&longitude=}) & \texttt{TerritorialRisk} \texttt{Resource} (200 OK) & Semáforo territorial de riesgo fenológico y sobrecarga con geolocalización GPS. \\
+\texttt{GET} & \nolinkurl{/api/v1/intake-forecasts/{campaignYear}} & N/A & \texttt{IntakeForecast} \texttt{Resource} (200 OK) & Proyección temprana agregada de acopio en toneladas. \\
+\texttt{GET} & \nolinkurl{/api/v1/intake-forecasts} & N/A & Acopio por campaña (200 OK) & Histórico de acopio por campaña para comparar con campañas liquidadas. \\
+\texttt{GET} & \nolinkurl{/api/v1/member-plots/{id}} & N/A & \texttt{PlotAgronomic} \texttt{OverviewResource} (200 OK) & Resumen agronómico de una parcela socia en solo lectura. \\
+\texttt{GET} & \nolinkurl{/api/v1/member-plots/{id}/provisional-dossier} & N/A (\texttt{Accept: application/pdf} o \texttt{application/json}) & \texttt{Provisional} \texttt{DossierResource} (200 OK) & Instantánea documental provisional del expediente en campaña abierta. \\
+\texttt{GET} & \nolinkurl{/api/v1/sector-alerts} & N/A & \texttt{TerritorialAlert} \texttt{ListResource} (200 OK) & Alertas agroclimáticas y fenológicas internas por sector. \\
+\texttt{GET} & \nolinkurl{/api/v1/sector-zones} & N/A & Lista de sectores (200 OK) & Sectores de la licencia con sus parcelas socias. \\
+\texttt{POST} & \nolinkurl{/api/v1/sector-zones} & \texttt{name} & Sector (201 Created) & Registro de un sector territorial. \\
+\texttt{GET} & \nolinkurl{/api/v1/sector-zones/{id}} & N/A & Sector (200 OK) & Consulta de un sector. \\
+\texttt{PATCH} & \nolinkurl{/api/v1/sector-zones/{id}} & \texttt{name} & Sector (200 OK) & Renombrado de un sector. \\
+\texttt{GET} & \nolinkurl{/api/v1/plot-sector-assignments} & N/A (\texttt{?status=}) & Lista de asignaciones (200 OK) & Parcelas por sector con filtro por estado. \\
+\texttt{GET} & \nolinkurl{/api/v1/plot-sector-assignments/{plotId}} & N/A & Asignación (200 OK) & Sector de una parcela socia. \\
+\texttt{PUT} & \nolinkurl{/api/v1/plot-sector-assignments/{plotId}} & \texttt{sectorZoneId} o \texttt{name} & Asignación (200 OK) & Asignación de sector, pendiente de confirmación si el nombre es nuevo. \\
+\texttt{POST} & \nolinkurl{/api/v1/plot-sector-assignments/{plotId}/resolutions} & N/A & Asignación (200 OK) & Resolución de un sector pendiente de confirmación. \\
 \end{longtable}
-\endgroup
+\end{center}
+
+**Sectores y lecturas territoriales.** Este contexto es dueño del catálogo de sectores de la licencia (`TS94` a `TS100`). `SectorZone` es una entidad interna de `Cooperative` con nombre único por licencia y `PlotSectorAssignment` vincula una parcela socia con un sector, quedando pendiente de confirmación cuando el nombre propuesto no existe. Las consultas de parcela (`TS60`) y de expediente provisional (`TS63`) son lecturas orquestadas que respetan el consentimiento de compartición de datos, y las alertas territoriales (`TS61`) se derivan de los incidentes agroclimáticos por sector.
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -4696,10 +4648,9 @@ En la \autoref{tab:tactical-122} se detallan los endpoints RESTful expuestos por
 En la \autoref{tab:tactical-123} se presentan las estructuras de datos de transferencia (DTOs) y sus ensambladores hacia recursos de presentación:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.41\textwidth} p{0.14\textwidth}}
 \caption{Estructura de DTOs y ensambladores de recursos en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-123} \\
 \hline
@@ -4715,12 +4666,13 @@ En la \autoref{tab:tactical-123} se presentan las estructuras de datos de transf
 \hline
 \multicolumn{4}{l}{\footnotesize\textit{Nota.} Elaboración propia.} \\
 \endlastfoot
+\texttt{PagedMember} \texttt{ListResource} & Response DTO & \texttt{{ members: List<CooperativeMemberResource>, activeMembers: Int, pendingMembers: Int }} & Padrón con contadores globales de socios activos y pendientes. \\
 \texttt{Cooperative} \texttt{Member} \texttt{Resource} & Response DTO & \texttt{{ id: UUID, producerUserId: UUID, fullName: String, contactPhone: String, totalDeclaredHa: Double, status: String }} & Datos de socio agremiado. \\
-\texttt{TerritorialRisk} \texttt{MatrixResource} & Response DTO & \texttt{{ cooperativeId: UUID, highRiskSectors: List<String>, generalStatus: String, evaluatedAt: Instant }} & Semáforo de riesgo territorial. \\
-\texttt{IntakeForecast} \texttt{Resource} & Response DTO & \texttt{{ cooperativeId: UUID, greenOlivesTons: Double, blackOlivesTons: Double, confidenceDegraded: Boolean }} & Proyección de acopio para salmuera y aceite. \\
+\texttt{TerritorialRisk} \texttt{Resource} & Response DTO & \texttt{{ cooperativeId: UUID, highRiskSectors: List<String>, generalStatus: String, evaluatedAt: Instant }} & Semáforo de riesgo territorial. \\
+\texttt{IntakeForecast} \texttt{Resource} & Response DTO & \texttt{{ cooperativeId: UUID, greenOlivesTons: Double, blackOlivesTons: Double, coveragePercentage: Double, status: String }} & Proyección de acopio para salmuera y aceite. \\
 \texttt{Cooperative} \texttt{Resource} \texttt{Assembler} & Assembler & \texttt{toResource(} \texttt{Cooperative):} \texttt{Cooperative} \texttt{Resource} & Transformador a DTO público de presentación. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Application Layer
 
@@ -4730,10 +4682,9 @@ En la \autoref{tab:tactical-123} se presentan las estructuras de datos de transf
 En la \autoref{tab:tactical-124} se especifican los manejadores de comandos y consultas que orquestan los flujos de aplicación y sus límites transaccionales:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.22\textwidth} p{0.33\textwidth}}
 \caption{Manejadores de comandos y consultas (Handlers) en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-124} \\
 \hline
@@ -4760,7 +4711,7 @@ En la \autoref{tab:tactical-124} se especifican los manejadores de comandos y co
 \texttt{OnWeather} \texttt{ForecastIngested} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Weather} \texttt{ForecastIngested} \texttt{Event} & Si se proyecta helada próxima en un sector, actualiza el semáforo territorial a nivel crítico. \\
 \texttt{OnSampling} \texttt{RoundCompleted} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Sampling} \texttt{RoundCompleted} \texttt{Event} & Despacha comando para recalcular y actualizar la proyección de acopio gremial. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Infrastructure Layer
 
@@ -4770,10 +4721,9 @@ En la \autoref{tab:tactical-124} se especifican los manejadores de comandos y co
 En la \autoref{tab:tactical-125} se detallan los adaptadores técnicos y componentes de infraestructura que dan soporte a las operaciones:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.33\textwidth}}
 \caption{Componentes técnicos y adaptadores de infraestructura en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-125} \\
 \hline
@@ -4793,7 +4743,7 @@ En la \autoref{tab:tactical-125} se detallan los adaptadores técnicos y compone
 \texttt{JpaCooperative} \texttt{Repository} \texttt{Adapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{Cooperative} \texttt{Repository}. \\
 \texttt{GpsSpatial} \texttt{SectoringAdapter} & GIS Adapter & GeoTools / JTS & Asocia coordenadas GPS (\texttt{lat, lon}) a sectores territoriales del valle olivarero. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Perspectiva táctica de la aplicación móvil (Android / Flutter)
 &nbsp;
@@ -4810,10 +4760,9 @@ En la \autoref{tab:tactical-125} se detallan los adaptadores técnicos y compone
 En la \autoref{tab:tactical-126} se expone el diccionario de datos relacional con las tablas, columnas, restricciones e índices implementados en PostgreSQL:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-126} \\
 \hline
@@ -4832,15 +4781,15 @@ En la \autoref{tab:tactical-126} se expone el diccionario de datos relacional co
 \texttt{cooperat-} \texttt{ives} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador de la cooperativa. \\
 \texttt{cooperat-} \texttt{ives} & \texttt{name} & \texttt{VARCHAR(150)} & \texttt{NOT NULL} & Razón social de la organización agraria. \\
 \texttt{cooperat-} \texttt{ives} & \texttt{tax\_id} & \texttt{VARCHAR(11)} & \texttt{NOT NULL, UNIQUE} & RUC institucional de 11 dígitos. \\
-\texttt{cooperat-} \texttt{ives} & \texttt{license\_} \texttt{id} & \texttt{UUID} & \texttt{NOT NULL} & Referencia al contrato corporativo en Subscription. \\
+\texttt{cooperat-} \texttt{ives} & \texttt{license\_id} & \texttt{UUID} & \texttt{NOT NULL} & Referencia al contrato corporativo en Subscription. \\
 \texttt{cooperat-} \texttt{ives} & \texttt{technical\_} \texttt{manager\_} \texttt{user\_id} & \texttt{UUID} & \texttt{NOT NULL} & Gestor técnico único autorizado de la cooperativa. \\
 \texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador del socio en padrón. \\
 \texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{coop-} \texttt{erative\_} \texttt{id} & \texttt{UUID} & \texttt{NOT NULL, FK} & Cooperativa a la que pertenece. \\
 \texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{producer\_} \texttt{user\_id} & \texttt{UUID} & \texttt{NOT NULL} & Usuario productor socio. \\
 \texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{full\_name} & \texttt{VARCHAR(150)} & \texttt{NOT NULL} & Nombre civil del socio. \\
-\texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{declared\_} \texttt{ha} & \texttt{NUMERIC(8,2)} & \texttt{NOT NULL} & Hectáreas aportadas al padrón. \\
+\texttt{coopera-} \texttt{tive\_} \texttt{members} & \texttt{declared\_ha} & \texttt{NUMERIC(8,2)} & \texttt{NOT NULL} & Hectáreas aportadas al padrón. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Script DDL de base de datos
 &nbsp;
@@ -4885,10 +4834,9 @@ CREATE INDEX idx_coop_manager
 En la \autoref{tab:tactical-127} se esquematiza la distribución arquitectónica de componentes internos y tecnologías empleadas por cada nivel conceptual:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.11\textwidth} p{0.24\textwidth} p{0.44\textwidth} p{0.10\textwidth}}
 \caption{Descomposición de componentes arquitectónicos por capa en Cooperative Operations and Territorial Intelligence.} \label{tab:tactical-127} \\
 \hline
@@ -4909,7 +4857,7 @@ Application & \texttt{Cooperative} \texttt{CommandService}; \texttt{CooperativeQ
 Domain & \texttt{Cooperative} \texttt{Repository}; \texttt{TerritorialRiskAggregationService}; \texttt{YieldAggregationDomainService} & Contrato de persistencia (puerto de dominio), agregación de riesgo bioclimático y proyección de rendimiento. & Java puro / DDD \\
 Infrastructure & \texttt{JpaCooperative} \texttt{RepositoryAdapter}; \texttt{SpringDomainEventPublisher} & Persistencia JPA en PostgreSQL y despacho de eventos de dominio de riesgo territorial. & Spring Data JPA, Spring Events \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Flujo de comunicación y conectividad
 &nbsp;
@@ -4917,7 +4865,7 @@ Infrastructure & \texttt{JpaCooperative} \texttt{RepositoryAdapter}; \texttt{Spr
 1. El gestor técnico consulta el semáforo territorial desde la aplicación móvil o portal enviando `GET .../territorial-risk?latitude=-18.05&longitude=-70.25` hacia `CooperativeRiskController`.
 2. `CooperativeRiskController` delega la consulta en `CooperativeQueryService` (mientras que los comandos de afiliación, suspensión y evaluación formal de riesgo son atendidos por `CooperativeCommandService`).
 3. `CooperativeQueryService` consulta `Cooperative` `Repository` e interactúa con el servicio de dominio `TerritorialRiskAggregationService` para consolidar alertas de heladas y sobrecarga por sector agroclimático (*Sector Valle Bajo*, *Sector Costa*, *Sector Litoral*).
-4. Se retorna `TerritorialRiskMatrixResource` resaltando el nivel de riesgo por cuadrante operativo.
+4. Se retorna `TerritorialRiskResource` resaltando el nivel de riesgo por cuadrante operativo.
 5. Para proyecciones de cosecha temprana, `CooperativeQueryService` invoca `YieldAggregationDomainService` exponiendo las toneladas estimadas a través de `CooperativeIntakeController`.
 
 A continuación, en la \autoref{fig:c4-component-cooperative} se esquematiza el diagrama de componentes del Bounded Context Cooperative Operations:
@@ -4926,7 +4874,7 @@ A continuación, en la \autoref{fig:c4-component-cooperative} se esquematiza el 
 \caption{C4 Model - Component Level: Diagrama de Componentes de Cooperative Operations.} \label{fig:c4-component-cooperative}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/component-diagram-cooperative.png}
+\includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-cooperative.png}
 \caption*{\textit{Nota.} Descomposición de componentes de la arquitectura del Bounded Context Cooperative Operations. Elaboración propia.}
 \end{figure}
 
@@ -4940,22 +4888,24 @@ A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class
 
 \begin{figure}[H]
 \caption{Diagrama de Clases UML: Domain Layer de Cooperative Operations and Territorial Intelligence.} \label{fig:class-diagram-cooperative}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/class-diagram-cooperative.png}
-\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de Cooperative Operations and Territorial Intelligence. Elaboración propia.}
+\includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-cooperative.png}
+\caption*{\textit{Nota.} Estructura estática de clases, padrón de socios y modelos de acopio en Cooperative Operations. Elaboración propia.}
 \end{figure}
 
-##### Bounded Context Database Design Diagram
+##### Bounded Context Database Design Diagram 
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Cooperative Operations and Territorial Intelligence.} \label{fig:database-diagram-cooperative}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Cooperative Operations.} \label{fig:database-diagram-cooperative}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-cooperative.png}
-\caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para Cooperative Operations and Territorial Intelligence. Elaboración propia.}
+\includegraphics[width=0.85\textwidth]{report/assets/tactical-diagrams/database-diagram-cooperative.png}
+\caption*{\textit{Nota.} Tablas de cooperativas, padrón de socios y claves foráneas en PostgreSQL. Elaboración propia.}
 \end{figure}
 
-
+\clearpage
 
 ### Bounded Context: Harvest Settlement and Performance Reporting
 
@@ -4969,10 +4919,9 @@ Propósito: Custodia la memoria productiva consolidada y la emisión de certific
 En la \autoref{tab:tactical-128} se describe la estructura y delimitación transaccional del modelo `AgronomicReport`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio AgronomicReport (Aggregate Root) en Harvest Settlement and Performance Reporting.} \label{tab:tactical-128} \\
 \hline
@@ -4992,15 +4941,14 @@ Estereotipo DDD & Aggregate Root \\
 Propósito & Consolida la memoria productiva auditada de una parcela, evalúa la curva de atenuación de vecería y emite expedientes oficiales certificados. \\
 Relaciones de dominio & Referencia a \texttt{PlotId} y \texttt{UserId}. Compone las liquidaciones anuales de cosecha (\texttt{Harvest} \texttt{Settlement}). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-129} se presentan los atributos, tipos de datos e invariantes que rigen a `AgronomicReport`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo AgronomicReport en Harvest Settlement and Performance Reporting.} \label{tab:tactical-129} \\
 \hline
@@ -5023,15 +4971,14 @@ En la \autoref{tab:tactical-129} se presentan los atributos, tipos de datos e in
 \texttt{trendCurve} & \texttt{Stabilization} \texttt{TrendCurve} & Curva y tasa de atenuación de vecería interanual (ARR). \\
 \texttt{dossierMetadata} & \texttt{DossierMetadata} & Sello criptográfico SHA-256 y firma del auditor colegiado. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-130} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `AgronomicReport`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de AgronomicReport en Harvest Settlement and Performance Reporting.} \label{tab:tactical-130} \\
 \hline
@@ -5052,7 +4999,7 @@ Asimismo, en la \autoref{tab:tactical-130} se consolidan las firmas de métodos 
 \texttt{compileDossier} & \texttt{signature: AuditorSignature}, \texttt{pdfGen: AgronomicDossierPdfGenerator} & \texttt{byte[]} & Compila expediente binario PDF, estampa SHA-256 y emite \texttt{AgronomicDossierGeneratedEvent}. \\
 \texttt{is} \texttt{Stabilization} \texttt{TargetAchieved} & \texttt{void} & \texttt{boolean} & Determina si la reducción de fluctuación interanual supera el 30\% esperado. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Modelo de dominio: `HarvestSettlement` (Internal Entity)
 &nbsp;
@@ -5060,10 +5007,9 @@ Asimismo, en la \autoref{tab:tactical-130} se consolidan las firmas de métodos 
 En la \autoref{tab:tactical-131} se describe la estructura y delimitación transaccional del modelo `HarvestSettlement`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.67\textwidth}}
 \caption{Definición táctica y relaciones del modelo de dominio HarvestSettlement (Internal Entity) en Harvest Settlement and Performance Reporting.} \label{tab:tactical-131} \\
 \hline
@@ -5083,15 +5029,14 @@ Estereotipo DDD & Internal Entity \\
 Propósito & Modela la liquidación formal de pesaje y destino comercial de aceituna para una campaña anual concreta. \\
 Relaciones de dominio & Subordinada a \texttt{AgronomicReport} (1 a N). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 En la \autoref{tab:tactical-132} se presentan los atributos, tipos de datos e invariantes que rigen a `HarvestSettlement`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.25\textwidth} p{0.42\textwidth}}
 \caption{Atributos y definición de tipos del modelo HarvestSettlement en Harvest Settlement and Performance Reporting.} \label{tab:tactical-132} \\
 \hline
@@ -5114,15 +5059,14 @@ En la \autoref{tab:tactical-132} se presentan los atributos, tipos de datos e in
 \texttt{totalHarvestWeight} & \texttt{OliveWeight} & Suma consolidada de cosecha en kilogramos. \\
 \texttt{status} & \texttt{SettlementStatus} & Estado: \texttt{DRAFT}, \texttt{SETTLED}, \texttt{AUDITED}. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 Asimismo, en la \autoref{tab:tactical-133} se consolidan las firmas de métodos y reglas de negocio ejecutadas por `HarvestSettlement`:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.21\textwidth} p{0.13\textwidth} p{0.38\textwidth}}
 \caption{Comportamientos, métodos e invariantes de HarvestSettlement en Harvest Settlement and Performance Reporting.} \label{tab:tactical-133} \\
 \hline
@@ -5141,7 +5085,7 @@ Asimismo, en la \autoref{tab:tactical-133} se consolidan las firmas de métodos 
 \texttt{calculateTotal} \texttt{Weight} & \texttt{void} & \texttt{OliveWeight} & Suma pesajes de verde y negra garantizando consistencia contable. \\
 \texttt{markAsAudited} & \texttt{auditor: AuditorSignature} & \texttt{void} & Congela la liquidación bajo sello de auditoría técnica. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Objetos de valor (Value Objects)
 &nbsp;
@@ -5149,10 +5093,9 @@ Asimismo, en la \autoref{tab:tactical-133} se consolidan las firmas de métodos 
 En la \autoref{tab:tactical-134} se especifican los objetos de valor inmutables (*Value Objects*) que encapsulan las reglas y tipos base del contexto:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.22\textwidth} p{0.45\textwidth}}
 \caption{Objetos de valor (Value Objects) e invariantes en Harvest Settlement and Performance Reporting.} \label{tab:tactical-134} \\
 \hline
@@ -5174,7 +5117,7 @@ En la \autoref{tab:tactical-134} se especifican los objetos de valor inmutables 
 \texttt{Stabilization} \texttt{TrendCurve} & \texttt{baselineYield: Double, variance: Double, arr: Double} & Curva de estabilización interanual de vecería. \\
 \texttt{DossierMetadata} & \texttt{verificationHash: String (SHA-256), certifiedAt: Instant} & Metadatos inmutables de sellado criptográfico del expediente. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Servicios de dominio, repositorios y eventos
 &nbsp;
@@ -5182,10 +5125,9 @@ En la \autoref{tab:tactical-134} se especifican los objetos de valor inmutables 
 En la \autoref{tab:tactical-135} se definen los servicios puros de dominio, los contratos de repositorio y los eventos soberanos despachados:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.10\textwidth} p{0.43\textwidth} p{0.14\textwidth}}
 \caption{Servicios de dominio, contratos de repositorio y eventos en Harvest Settlement and Performance Reporting.} \label{tab:tactical-135} \\
 \hline
@@ -5209,7 +5151,7 @@ En la \autoref{tab:tactical-135} se definen los servicios puros de dominio, los 
 \texttt{CampaignHarvest} \texttt{SettledEvent} & Domain Event & \texttt{reportId: UUID, plotId: UUID, campaignYear: int, totalKg: Double, occurredOn: Instant} & Notifica liquidación anual de cosecha hacia Fenología. \\
 \texttt{AgronomicDossier} \texttt{GeneratedEvent} & Domain Event & \texttt{reportId: UUID, plotId: UUID, verificationHash: String, certifiedAt: Instant} & Certifica emisión oficial de expediente con hash SHA-256. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Interface Layer
 
@@ -5219,10 +5161,9 @@ En la \autoref{tab:tactical-135} se definen los servicios puros de dominio, los 
 En la \autoref{tab:tactical-136} se detallan los endpoints RESTful expuestos por los controladores de la capa de interfaz:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.08\textwidth} p{0.22\textwidth} p{0.18\textwidth} p{0.23\textwidth} p{0.18\textwidth}}
 \caption{Controladores y especificación de endpoints REST en Harvest Settlement and Performance Reporting.} \label{tab:tactical-136} \\
 \hline
@@ -5241,10 +5182,15 @@ En la \autoref{tab:tactical-136} se detallan los endpoints RESTful expuestos por
 \texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements} & \texttt{SettleHarvest} \texttt{Request} & \texttt{Harvest} \texttt{Settlement} \texttt{Resource} (201 Created) & Asienta liquidación anual de cosecha. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements} & N/A (\texttt{?campaignYear=}) & \texttt{List<} \texttt{Harvest} \texttt{Settlement} \texttt{Resource>} (200 OK) & Lista histórica de liquidaciones prediales. \\
 \texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/harvest-settlements/{settlementId}} & N/A & \texttt{Harvest} \texttt{Settlement} \texttt{Resource} (200 OK) & Consulta liquidación puntual por su UUID. \\
-\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports} & N/A (\texttt{Accept: application/json} o \texttt{application/pdf}) & \texttt{AgronomicReport} \texttt{Resource} / \texttt{byte[]} (200 OK) & Consulta métricas (JSON) o descarga expediente oficial en PDF mediante Content Negotiation. \\
-\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports/certifications} & \texttt{CertifyDossier} \texttt{Request} & \texttt{Dossier} \texttt{Certification} \texttt{Resource} (201 Created) & Emite certificación colegiada oficial y estampa hash SHA-256. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-dossiers/{campaignYear}} & N/A (\texttt{Accept: application/json} o \texttt{application/pdf}) & \texttt{TechnicalDossier} \texttt{Resource} / \texttt{byte[]} (200 OK) & Consulta métricas (JSON) o descarga expediente oficial en PDF mediante Content Negotiation. \\
+\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/certifications} & \texttt{CertifyDossier} \texttt{Request} & \texttt{Dossier} \texttt{Certification} \texttt{Resource} (201 Created) & Emite certificación colegiada oficial y estampa hash SHA-256. \\
+\texttt{POST} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-dossiers} & \texttt{campaignYear} & Expediente sellado (201 Created o 200 OK) & Sellado idempotente del expediente de una campaña liquidada. \\
+\texttt{GET} & \nolinkurl{/api/v1/plots/{plotId}/agronomic-dossiers} & N/A & Lista de expedientes (200 OK) & Expedientes sellados de la parcela por campaña. \\
+\texttt{GET} & \nolinkurl{/api/v1/agronomic-dossiers/verifications/{verificationHash}} & N/A & Parcela y campaña (200 OK) & Verificación de autenticidad de un expediente por su huella. \\
 \end{longtable}
-\endgroup
+\end{center}
+
+**Expediente agronómico por campaña.** El expediente agronómico se organiza por campaña. `TS101` sella el expediente de una campaña liquidada y es idempotente, `TS40` conserva la certificación colegiada sobre ese expediente y `TS102` y `TS103` consultan los expedientes sellados y verifican su autenticidad por huella. En campaña abierta solo existe el expediente provisional (`TS63`), sin hash definitivo.
 
 ##### DTOs (Resources) y mappers (Assemblers)
 &nbsp;
@@ -5252,10 +5198,9 @@ En la \autoref{tab:tactical-136} se detallan los endpoints RESTful expuestos por
 En la \autoref{tab:tactical-137} se presentan las estructuras de datos de transferencia (DTOs) y sus ensambladores hacia recursos de presentación:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.41\textwidth} p{0.14\textwidth}}
 \caption{Estructura de DTOs y ensambladores de recursos en Harvest Settlement and Performance Reporting.} \label{tab:tactical-137} \\
 \hline
@@ -5277,7 +5222,7 @@ En la \autoref{tab:tactical-137} se presentan las estructuras de datos de transf
 \texttt{AgronomicReport} \texttt{Resource} & Response DTO & \texttt{{ reportId: UUID, interannualVariance: Double, amplitudeReductionRate: Double, isEffective: Boolean }} & Resumen de estabilización interanual. \\
 \texttt{GenerateAgronomic} \texttt{DossierCommandAssembler} & Assembler & \texttt{toCommand(} \texttt{CertifyDossierRequest,} \texttt{plotId):} \texttt{Generate} \texttt{Agronomic} \texttt{DossierCommand} & Ensamblador alineado al comando canónico. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Application Layer
 
@@ -5287,10 +5232,9 @@ En la \autoref{tab:tactical-137} se presentan las estructuras de datos de transf
 En la \autoref{tab:tactical-138} se especifican los manejadores de comandos y consultas que orquestan los flujos de aplicación y sus límites transaccionales:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.24\textwidth} p{0.10\textwidth} p{0.22\textwidth} p{0.33\textwidth}}
 \caption{Manejadores de comandos y consultas (Handlers) en Harvest Settlement and Performance Reporting.} \label{tab:tactical-138} \\
 \hline
@@ -5312,7 +5256,7 @@ En la \autoref{tab:tactical-138} se especifican los manejadores de comandos y co
 \texttt{OnThinning} \texttt{Execution} \texttt{Confirmed} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Thinning} \texttt{Execution} \texttt{Confirmed} \texttt{Event} & Vincula remoción en verde con el balance final cosechado en fin de campaña. \\
 \texttt{OnHistorical} \texttt{Bearing} \texttt{IndexAssessed} \texttt{Event} \texttt{Handler} & Event Handler & \texttt{Biennial} \texttt{Bearing} \texttt{IndexAssessed} \texttt{Event} & Recibe $BBI$ de Fenología y actualiza índices de contraste para la curva de atenuación. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 #### Infrastructure Layer
 
@@ -5322,10 +5266,9 @@ En la \autoref{tab:tactical-138} se especifican los manejadores de comandos y co
 En la \autoref{tab:tactical-139} se detallan los adaptadores técnicos y componentes de infraestructura que dan soporte a las operaciones:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.22\textwidth} p{0.16\textwidth} p{0.18\textwidth} p{0.33\textwidth}}
 \caption{Componentes técnicos y adaptadores de infraestructura en Harvest Settlement and Performance Reporting.} \label{tab:tactical-139} \\
 \hline
@@ -5345,7 +5288,7 @@ En la \autoref{tab:tactical-139} se detallan los adaptadores técnicos y compone
 \texttt{JpaAgronomicReport} \texttt{RepositoryAdapter} & Adapter & Spring Component & Implementa el puerto de dominio \texttt{AgronomicReport} \texttt{Repository}. \\
 \texttt{OpenPdfAgronomic} \texttt{DossierAdapter} & PDF Adapter & OpenPDF / iText & Renderizado en memoria del expediente técnico inmutable en PDF. \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Perspectiva táctica de la aplicación móvil (Android / Flutter)
 &nbsp;
@@ -5364,10 +5307,9 @@ En la \autoref{tab:tactical-139} se detallan los adaptadores técnicos y compone
 En la \autoref{tab:tactical-140} se expone el diccionario de datos relacional con las tablas, columnas, restricciones e índices implementados en PostgreSQL:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.17\textwidth} p{0.14\textwidth} p{0.14\textwidth} p{0.17\textwidth} p{0.27\textwidth}}
 \caption{Diccionario de datos relacional (PostgreSQL) en Harvest Settlement and Performance Reporting.} \label{tab:tactical-140} \\
 \hline
@@ -5387,17 +5329,17 @@ En la \autoref{tab:tactical-140} se expone el diccionario de datos relacional co
 \texttt{agronomic\_} \texttt{reports} & \texttt{plot\_id} & \texttt{UUID} & \texttt{NOT NULL, UNIQUE} & Parcela asociada. \\
 \texttt{agronomic\_} \texttt{reports} & \texttt{producer\_id} & \texttt{UUID} & \texttt{NOT NULL} & Productor titular. \\
 \texttt{agronomic\_} \texttt{reports} & \texttt{interannual\_} \texttt{variance} & \texttt{NUMERIC(8,2)} & \texttt{NOT NULL DEFAULT 0} & Varianza de rendimiento entre campañas. \\
-\texttt{agronomic\_} \texttt{reports} & \texttt{amplitude\_} \texttt{reduction\_} \texttt{rate} & \texttt{NUMERIC(5,2)} & \texttt{NOT NULL DEFAULT 0} & Tasa de reducción de alternancia ($ARR$). \\
+\texttt{agronomic\_} \texttt{reports} & \texttt{amplitude\_} \texttt{reduction\_rate} & \texttt{NUMERIC(5,2)} & \texttt{NOT NULL DEFAULT 0} & Tasa de reducción de alternancia ($ARR$). \\
 \texttt{agronomic\_} \texttt{reports} & \texttt{verification\_} \texttt{hash} & \texttt{VARCHAR(64)} & \texttt{NULL} & Hash SHA-256 del expediente certificado. \\
 \texttt{harvest\_} \texttt{settlements} & \texttt{id} & \texttt{UUID} & \texttt{PRIMARY KEY} & Identificador único de la liquidación anual. \\
 \texttt{harvest\_} \texttt{settlements} & \texttt{report\_id} & \texttt{UUID} & \texttt{NOT NULL, FK} & Reporte agronómico al que pertenece. \\
-\texttt{harvest\_} \texttt{settlements} & \texttt{campaign\_} \texttt{year} & \texttt{INT} & \texttt{NOT NULL} & Año agrícola liquidado. \\
+\texttt{harvest\_} \texttt{settlements} & \texttt{campaign\_year} & \texttt{INT} & \texttt{NOT NULL} & Año agrícola liquidado. \\
 \texttt{harvest\_} \texttt{settlements} & \texttt{green\_olives\_} \texttt{kg} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL CHECK (green\_olives\_kg >= 0)} & Kilos cosechados de aceituna verde. \\
 \texttt{harvest\_} \texttt{settlements} & \texttt{black\_olives\_} \texttt{kg} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL CHECK (black\_olives\_kg >= 0)} & Kilos cosechados de aceituna negra. \\
 \texttt{harvest\_} \texttt{settlements} & \texttt{total\_yield\_} \texttt{kg} & \texttt{NUMERIC(10,2)} & \texttt{NOT NULL CHECK (total\_yield\_kg > 0)} & Kilos totales consolidados de la campaña. \\
 \texttt{harvest\_} \texttt{settlements} & \texttt{status} & \texttt{VARCHAR(30)} & \texttt{NOT NULL} & Estado (\texttt{AUDITED}, \texttt{SETTLED}). \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Script DDL de base de datos
 &nbsp;
@@ -5443,10 +5385,9 @@ CREATE TABLE settlement.harvest_settlements (
 En la \autoref{tab:tactical-141} se esquematiza la distribución arquitectónica de componentes internos y tecnologías empleadas por cada nivel conceptual:
 
 
-\begingroup
+\begin{center}
 \small
-\renewcommand{\arraystretch}{1.08}
-\linespread{1.0}\selectfont
+\renewcommand{\arraystretch}{1.2}
 \begin{longtable}{p{0.11\textwidth} p{0.24\textwidth} p{0.44\textwidth} p{0.10\textwidth}}
 \caption{Descomposición de componentes arquitectónicos por capa en Harvest Settlement and Performance Reporting.} \label{tab:tactical-141} \\
 \hline
@@ -5467,7 +5408,7 @@ Application & \texttt{HarvestSettlement} \texttt{CommandService}; \texttt{Agrono
 Domain & \texttt{AgronomicReport} \texttt{Repository}; \texttt{StabilizationCurveCalculatorService} & Contrato de persistencia (puerto de dominio) y servicio de cálculo de curva de atenuación de vecería ($ARR$). & Java puro / DDD \\
 Infrastructure & \texttt{JpaAgronomicReport} \texttt{RepositoryAdapter}; \texttt{OpenPdfAgronomicDossierAdapter}; \texttt{SpringDomainEventPublisher} & Persistencia en PostgreSQL, compilación binaria OpenPDF con hash SHA-256 y publicación de eventos. & Spring Data JPA, OpenPDF \\
 \end{longtable}
-\endgroup
+\end{center}
 
 ##### Flujo de comunicación y conectividad
 &nbsp;
@@ -5476,8 +5417,8 @@ Infrastructure & \texttt{JpaAgronomicReport} \texttt{RepositoryAdapter}; \texttt
 2. `PlotHarvestSettlementController` delega el comando `SettleCampaignHarvestCommand` en `HarvestSettlement` `CommandService`.
 3. `HarvestSettlement` `CommandService` carga el reporte desde `AgronomicReportRepository`, valida las reglas y delega en `StabilizationCurveCalculatorService` la actualización de la varianza interanual y la tasa de atenuación de vecería ($ARR$).
 4. Se persiste el cierre mediante `AgronomicReportRepository` y se despacha `CampaignHarvestSettledEvent` vía `SpringDomainEventPublisher` hacia *Phenology*.
-5. Ante la solicitud `POST` \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports/certification}, `HarvestSettlement` `CommandService` compila el expediente colegiado, estampa la firma con `OpenPdfAgronomicDossierAdapter`, genera el hash SHA-256 inmutable y emite `AgronomicDossierGeneratedEvent`.
-6. Ante `GET` \nolinkurl{/api/v1/plots/{plotId}/agronomic-reports} con cabecera `Accept: application/pdf`, `AgronomicReportQueryService` consulta `AgronomicReportRepository` y delega en `OpenPdfAgronomicDossierAdapter` transmitiendo el binario inmutable del informe oficial en streaming directo con hash SHA-256.
+5. Ante la solicitud `POST` \nolinkurl{/api/v1/plots/{plotId}/certifications}, `HarvestSettlement` `CommandService` compila el expediente colegiado, estampa la firma con `OpenPdfAgronomicDossierAdapter`, genera el hash SHA-256 inmutable y emite `AgronomicDossierGeneratedEvent`.
+6. Ante `GET` \nolinkurl{/api/v1/plots/{plotId}/agronomic-dossiers/{campaignYear}} con cabecera `Accept: application/pdf`, `AgronomicReportQueryService` consulta `AgronomicReportRepository` y delega en `OpenPdfAgronomicDossierAdapter` transmitiendo el binario inmutable del informe oficial en streaming directo con hash SHA-256.
 
 A continuación, en la \autoref{fig:c4-component-settlement} se esquematiza el diagrama de componentes del Bounded Context Harvest Settlement and Performance Reporting:
 
@@ -5485,7 +5426,7 @@ A continuación, en la \autoref{fig:c4-component-settlement} se esquematiza el d
 \caption{C4 Model - Component Level: Diagrama de Componentes de Harvest Settlement and Performance Reporting.} \label{fig:c4-component-settlement}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/component-diagram-settlement.png}
+\includegraphics[width=0.95\textwidth]{report/assets/tactical-diagrams/component-diagram-settlement.png}
 \caption*{\textit{Nota.} Descomposición de componentes de la arquitectura del Bounded Context Harvest Settlement. Elaboración propia.}
 \end{figure}
 
@@ -5499,19 +5440,21 @@ A continuación se presentan los diagramas de clases UML (ver \autoref{fig:class
 
 \begin{figure}[H]
 \caption{Diagrama de Clases UML: Domain Layer de Harvest Settlement and Performance Reporting.} \label{fig:class-diagram-settlement}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/class-diagram-settlement.png}
-\caption*{\textit{Nota.} Estructura estática de clases, tipos y métodos del modelo de dominio de Harvest Settlement and Performance Reporting. Elaboración propia.}
+\includegraphics[width=0.90\textwidth]{report/assets/tactical-diagrams/class-diagram-settlement.png}
+\caption*{\textit{Nota.} Estructura estática de clases, liquidaciones y servicio de estabilización en Harvest Settlement. Elaboración propia.}
 \end{figure}
 
-##### Bounded Context Database Design Diagram
+##### Bounded Context Database Design Diagram 
 &nbsp;
 
 \begin{figure}[H]
-\caption{Modelo Relacional Físico: Esquema de Base de Datos de Harvest Settlement and Performance Reporting.} \label{fig:database-diagram-settlement}
+\caption{Modelo Relacional Físico: Esquema de Base de Datos de Harvest Settlement.} \label{fig:database-diagram-settlement}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/tactical-diagrams/database-diagram-settlement.png}
-\caption*{\textit{Nota.} Estructura de tabla, índices y restricciones en PostgreSQL para Harvest Settlement and Performance Reporting. Elaboración propia.}
+\includegraphics[width=0.65\textwidth]{report/assets/tactical-diagrams/database-diagram-settlement.png}
+\caption*{\textit{Nota.} Tablas de reporte agronómico y liquidaciones anuales en PostgreSQL. Elaboración propia.}
 \end{figure}
 
 \clearpage

@@ -104,6 +104,8 @@ La actualización del nombre/variedad forma parte del handler CMD13 y produce un
 
 #### Interface Layer
 
+**Restauración y notas de campo.** `TS44` agrega la restauración del cuartel archivado como comportamiento de `Plot` (`restore()`), válido solo desde el estado archivado y sin tocar geometría ni historial. `TS90` a `TS93` incorporan `FieldNote` como entidad interna de `Plot`, con `id` generado por el cliente, `type`, `text`, `observedOn` y una fotografía opcional. Solo el titular de la parcela puede registrar notas y la fotografía se guarda fuera del agregado, referenciada por la nota.
+
 ##### Controllers (REST)
 
 **`PlotController`**, atributos `commands: PlotCommandFacade`, `queries: PlotQueryFacade`, `assembler: PlotResourceAssembler`:
@@ -113,6 +115,14 @@ La actualización del nombre/variedad forma parte del handler CMD13 y produce un
 - `list()` → `GET /api/v1/plots?status=ACTIVE&page=0&size=20` (`TS12` / `US09`): ámbito propio por defecto. El filtro cooperativo exige autorización institucional y limita propietarios desde Territory.
 - `update()` → `PUT /api/v1/plots/{plotId}` (`TS14` / `CMD13` / `US10`): sustituye datos editables mediante `UpdatePlotBoundaries`; exige revisión/`If-Match`. No acepta owner, área, densidad, estado comercial ni cuota como campos editables.
 - `remove()` → `DELETE /api/v1/plots/{plotId}` (`TS15` / `CMD14` / `US11`): `RemovePlot`, baja lógica y `204`. El motivo puede transmitirse como query `?reason=...` con longitud limitada; la UI pide confirmación y explica que el histórico se conserva.
+- `restore()` → `POST /api/v1/plots/{plotId}/restore` (`TS44`): reintegra el cuartel archivado al inventario productivo activo sin perder historial ni geometrías. Devuelve `200` con `PlotResponse` activo y un `ETag` actualizado, `404` si el cuartel no existe y `409` si no se encuentra archivado.
+
+**`PlotFieldNoteController`**, atributos `commands`, `queries`, `assembler`:
+
+- `register()` → `POST /api/v1/plots/{plotId}/field-notes` (`TS90`): registra una nota con `id`, `type`, `text` y `observedOn`. El `id` lo genera el cliente para que el reintento no duplique. Devuelve `201`, `200` con la nota almacenada si se repite, `400` datos inválidos, `409` identificador en uso, `403` parcela de otro productor y `404` parcela inexistente o inactiva.
+- `list()` → `GET /api/v1/plots/{plotId}/field-notes` (`TS91`): devuelve las notas de la más reciente a la más antigua, o una lista vacía.
+- `attachPhoto()` → `PUT /api/v1/plots/{plotId}/field-notes/{noteId}/photo` (`TS92`): adjunta una fotografía a la nota. Devuelve `200` con la nota, `400` si la imagen es inválida y `404` si no existe la parcela o la nota.
+- `getPhoto()` → `GET /api/v1/plots/{plotId}/field-notes/{noteId}/photo` (`TS93`): descarga el contenido de la fotografía, o `404` si no está disponible.
 
 La sintaxis malformada produce `400`, geometría/valores inválidos `422`, falta de identidad `401`, falta de permisos `403` o `404` para no revelar recursos, y cuota excedida `409`. Una revisión obsoleta en `If-Match` produce `412`. No se confía en un `ownerId` enviado por la aplicación.
 
