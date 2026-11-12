@@ -41,24 +41,17 @@
 
 \vspace{0.15cm}
 
-A continuación, se presentan las métricas de contribución y actividad del equipo de desarrollo en el repositorio del presente informe. Como se detalla en la \autoref{fig:contributors-part1}, se exhibe el volumen histórico de confirmaciones (\textit{commits}) y la participación de los primeros integrantes. Complementariamente, en la \autoref{fig:contributors-part2} se consolida el aporte del resto de miembros del equipo. Es importante mencionar que el compañero Piero Espada utilizó dos cuentas (espadita2510 y pierodeveloper25).
+A continuación, se presentan las métricas de contribución y actividad del equipo en el repositorio del presente informe (\autoref{fig:contributors-report}). La vista reúne el volumen semanal de confirmaciones (\textit{commits}) desde agosto de 2026 y el aporte de cada integrante. La actividad se concentra en tres momentos: entre fines de agosto y septiembre, con la redacción de los capítulos de requisitos y diseño para la entrega TB1; a inicios de octubre, con el cierre de esa entrega y el Sprint 1; y en la semana del 9 de noviembre, con la incorporación del Sprint 2, las entrevistas de validación de la aplicación móvil y la revisión general del informe para la entrega AV2. Es importante mencionar que el compañero Piero Espada utilizó dos cuentas (espadita2510 y pieroedeveloper25).
 
 \vspace{0.25cm}
 
 \begin{figure}[H]
-\caption{Contributors del repositorio de informe - Parte 1}
-\label{fig:contributors-part1}
+\caption{Contributors del repositorio del informe.}
+\label{fig:contributors-report}
+\vspace{0.25cm}
 \centering
-\includegraphics[width=0.6\textwidth]{report/assets/collaboration-stats/contributors1.png}
-\caption*{\textit{Nota.} Elaboración propia.}
-\end{figure}
-
-\begin{figure}[H]
-\caption{Contributors del repositorio de informe - Parte 2}
-\label{fig:contributors-part2}
-\centering
-\includegraphics[width=0.6\textwidth]{report/assets/collaboration-stats/contributors2.png}
-\caption*{\textit{Nota.} Elaboración propia.}
+\includegraphics[width=0.65\textwidth]{report/assets/collaboration-stats/contributors.png}
+\caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-report}. Elaboración propia.}
 \end{figure}
 
 \clearpage
