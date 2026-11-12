@@ -318,7 +318,7 @@ El video muestra la ejecución de las vistas y los flujos de navegación impleme
 * **Título:** Product Navigation - Sprint 2
 * **Entrega:** Sprint 2
 * **Formato:** MP4
-* **Enlace de visualización (OneDrive):** \textit{Enlace pendiente}
+* **Enlace de visualización (OneDrive):** \url{https://tinyurl.com/product-navigation-av-2}
 
 \clearpage
 
@@ -658,7 +658,17 @@ Con este sprint la aplicación Android queda publicada y culminada.
 
 \noindent \textbf{Aplicación móvil Flutter (Firebase App Distribution):}
 
-La aplicación Flutter sigue el mismo esquema de despliegue que la aplicación Android: un flujo de GitHub Actions compila y firma el APK \textit{release} y lo distribuye en Firebase App Distribution a los grupos de verificadores. Con este sprint la aplicación Flutter queda publicada y culminada.
+La aplicación Flutter sigue el mismo esquema de despliegue que la aplicación Android: al integrarse una rama de \textit{release} en `main`, un flujo de GitHub Actions compila el APK \textit{release}, lo firma con la clave de la aplicación y lo distribuye en Firebase App Distribution a los grupos de verificadores. La \autoref{fig:deploy-flutter-s2} muestra la aplicación del gestor técnico (paquete `pe.edu.upc.viora.gestor`) en la vista del verificador, con la versión más reciente disponible para su descarga y la cuenta de servicio de GitHub Actions como contacto, lo que evidencia que la distribución se realiza de forma automática.
+
+\begin{figure}[H]
+\caption{Aplicación del gestor técnico disponible en Firebase App Distribution.} \label{fig:deploy-flutter-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.3\textwidth]{report/assets/sprint-deployment/sprint-2/application/04-flutter-app-distribution.png}
+\caption*{\textit{Nota.} Captura de la aplicación Firebase App Tester en el dispositivo de un verificador. Elaboración propia.}
+\end{figure}
+
+Con este sprint la aplicación Flutter queda publicada y culminada.
 
 \clearpage
 
