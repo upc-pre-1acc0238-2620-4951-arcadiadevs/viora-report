@@ -1,5 +1,3 @@
-# Videos de Entrega {-}
-
 ## Video App Validation {-}
 
 En esta sección se documenta la evaluación de la aplicación móvil productor mediante pruebas con usuarios. La aplicación se distribuyó a los participantes a través de Firebase App Distribution, de modo que cada productor la instaló y la utilizó en su propio teléfono Android antes de su lanzamiento. Durante las sesiones, los participantes recorrieron los flujos de creación de cuenta y activación del acceso, registro y delimitación de lotes, consulta de Inicio, vecería y frío invernal, muestreo de cuajado y registro de cosecha. Los hallazgos se analizaron con el formato para evaluación de User Experience según heurísticas, cuyo detalle se presenta en la sección de evaluaciones según heurísticas de las Validation Interviews.
@@ -36,36 +34,50 @@ El video *About the Product* presenta de forma promocional el modelo de negocio 
 
 \vspace{0.3cm}
 
-\noindent \textbf{Secuencia de contenido:}
-
-| Inicio | Sección | Contenido |
-|---|---|---|
-| 00:00:00 | Apertura | La memoria del olivo: cada cosecha condiciona la siguiente. |
-| 00:00:16 | Contexto | El olivar de Tacna, entre el desierto y el mar, y su escala productiva. |
-| 00:00:32 | El problema | La vecería y el agotamiento de las reservas del árbol. |
-| 00:00:48 | La magnitud | Variación interanual de la producción regional y su caída de hasta 90 %. |
-| 00:01:20 | Los segmentos | El productor olivarero y el gestor técnico de la cooperativa. |
-| 00:01:44 | La solución | Viora responde cuánta fruta debe sostener cada árbol y cuándo actuar. |
-| 00:02:08 | Viora para el productor | Registro de lotes, seguimiento del frío invernal y muestreo de cuajado. |
-| 00:02:24 | Viora para la cooperativa | Mapa de socios, priorización de visitas y proyección del acopio. |
-| 00:02:40 | Testimonio | Gustavo, productor olivarero de La Yarada-Los Palos, valora la propuesta con 5/5. |
-| 00:03:04 | Cierre | Del calendario a la medición: "Viora, anticipa la próxima cosecha". |
-| 00:03:12 | Créditos | Equipo ArcadiaDevs, fuentes y dedicatoria. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.10}
+\begin{longtable}{p{0.12\textwidth} p{0.22\textwidth} p{0.58\textwidth}}
+\caption{Secuencia de contenido del video About the Product.} \label{tab:video-about-the-product-sequence} \\
+\hline
+\textbf{Inicio} & \textbf{Sección} & \textbf{Contenido} \\ \hline
+\endfirsthead
+\hline
+\textbf{Inicio} & \textbf{Sección} & \textbf{Contenido} \\ \hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{3}{l}{\parbox{15cm}{\vspace{0.1cm} \textit{Nota.} Timing de inicio de cada sección del video. Elaboración propia.}} \\
+\endlastfoot
+00:00:00 & Apertura & La memoria del olivo: cada cosecha condiciona la siguiente. \\
+00:00:16 & Contexto & El olivar de Tacna, entre el desierto y el mar, y su escala productiva. \\
+00:00:32 & El problema & La vecería y el agotamiento de las reservas del árbol. \\
+00:00:48 & La magnitud & Variación interanual de la producción regional y su caída de hasta 90 \%. \\
+00:01:20 & Los segmentos & El productor olivarero y el gestor técnico de la cooperativa. \\
+00:01:44 & La solución & Viora responde cuánta fruta debe sostener cada árbol y cuándo actuar. \\
+00:02:08 & Viora para el productor & Registro de lotes, seguimiento del frío invernal y muestreo de cuajado. \\
+00:02:24 & Viora para la cooperativa & Mapa de socios, priorización de visitas y proyección del acopio. \\
+00:02:40 & Testimonio & Gustavo, productor olivarero de La Yarada-Los Palos, valora la propuesta con 5/5. \\
+00:03:04 & Cierre & Del calendario a la medición: «Viora, anticipa la próxima cosecha». \\
+00:03:12 & Créditos & Equipo ArcadiaDevs, fuentes y dedicatoria. \\
+\end{longtable}
+\endgroup
 
 \begin{figure}[H]
+\caption{Captura del video About the Product del proyecto Viora.} \label{fig:video-about-the-product}
+\vspace{0.25cm}
 \centering
 \includegraphics[height=0.27\textheight,keepaspectratio]{report/assets/videos/about-the-product.png}
-\caption{Captura del video About the Product del proyecto Viora}
-\label{fig:video-about-the-product}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/26rde5pj}}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/26rde5pj}. Elaboración propia.}
 \end{figure}
 
 \begin{figure}[H]
+\caption{Testimonio de un productor olivarero en el video About the Product.} \label{fig:video-about-the-product-testimonial}
+\vspace{0.25cm}
 \centering
 \includegraphics[height=0.27\textheight,keepaspectratio]{report/assets/videos/about-the-product-testimonial.png}
-\caption{Testimonio de un productor olivarero en el video About the Product}
-\label{fig:video-about-the-product-testimonial}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/26rde5pj}}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/26rde5pj}. Elaboración propia.}
 \end{figure}
 
 \clearpage
@@ -86,31 +98,45 @@ El video *About the Team* resume el proceso de trabajo del equipo ArcadiaDevs du
 
 \vspace{0.3cm}
 
-\noindent \textbf{Secuencia de contenido:}
-
-| Inicio | Sección | Contenido |
-|---|---|---|
-| 00:00:00 | Apertura | Presentación del video y del olivar de Tacna. |
-| 00:00:55 | El problema | La vecería y la incertidumbre de la próxima cosecha. |
-| 00:01:10 | Nuestra respuesta | Viora y sus pantallas principales para productor y gestor. |
-| 00:01:40 | El equipo | Presentación de los integrantes: Víctor, Diana, Fabrizio, Jahat y Piero. |
-| 00:02:20 | Needfinding | Entrevistas con productores y jefes técnicos, e Impact Mapping. |
-| 00:02:55 | Modelado del dominio | Bounded contexts y modelado colaborativo del dominio. |
-| 00:03:25 | Diseño | Diseño de la experiencia, Landing Page y prototipos en Figma. |
-| 00:03:50 | Construcción técnica | Modelo de la vecería, backend y servicios web. |
-| 00:04:25 | El trabajo real | Dailies, planificación, diseño y construcción en conjunto. |
-| 00:05:25 | Student Outcome | Testimonios: adquirir y aplicar nuevos conocimientos. |
-| 00:06:10 | Aprendizaje permanente | Testimonios: reconocer la necesidad del aprendizaje permanente. |
-| 00:06:40 | Lo que me llevo | Testimonios: competencias alcanzadas y próximos pasos. |
-| 00:08:15 | Cierre | Reflexión final del equipo. |
-| 00:08:40 | Créditos | Equipo ArcadiaDevs y créditos de producción. |
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.10}
+\begin{longtable}{p{0.12\textwidth} p{0.22\textwidth} p{0.58\textwidth}}
+\caption{Secuencia de contenido del video About the Team.} \label{tab:video-about-the-team-sequence} \\
+\hline
+\textbf{Inicio} & \textbf{Sección} & \textbf{Contenido} \\ \hline
+\endfirsthead
+\hline
+\textbf{Inicio} & \textbf{Sección} & \textbf{Contenido} \\ \hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{3}{l}{\parbox{15cm}{\vspace{0.1cm} \textit{Nota.} Timing de inicio de cada sección del video. Elaboración propia.}} \\
+\endlastfoot
+00:00:00 & Apertura & Presentación del video y del olivar de Tacna. \\
+00:00:55 & El problema & La vecería y la incertidumbre de la próxima cosecha. \\
+00:01:10 & Nuestra respuesta & Viora y sus pantallas principales para productor y gestor. \\
+00:01:40 & El equipo & Presentación de los integrantes: Víctor, Diana, Fabrizio, Jahat y Piero. \\
+00:02:20 & Needfinding & Entrevistas con productores y jefes técnicos, e Impact Mapping. \\
+00:02:55 & Modelado del dominio & Bounded contexts y modelado colaborativo del dominio. \\
+00:03:25 & Diseño & Diseño de la experiencia, Landing Page y prototipos en Figma. \\
+00:03:50 & Construcción técnica & Modelo de la vecería, backend y servicios web. \\
+00:04:25 & El trabajo real & Dailies, planificación, diseño y construcción en conjunto. \\
+00:05:25 & Student Outcome & Testimonios: adquirir y aplicar nuevos conocimientos. \\
+00:06:10 & Aprendizaje permanente & Testimonios: reconocer la necesidad del aprendizaje permanente. \\
+00:06:40 & Lo que me llevo & Testimonios: competencias alcanzadas y próximos pasos. \\
+00:08:15 & Cierre & Reflexión final del equipo. \\
+00:08:40 & Créditos & Equipo ArcadiaDevs y créditos de producción. \\
+\end{longtable}
+\endgroup
 
 \begin{figure}[H]
+\caption{Captura del video About the Team del equipo ArcadiaDevs.} \label{fig:video-about-the-team}
+\vspace{0.25cm}
 \centering
 \includegraphics[height=0.27\textheight,keepaspectratio]{report/assets/videos/about-the-team.png}
-\caption{Captura del video About the Team del equipo ArcadiaDevs}
-\label{fig:video-about-the-team}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/7dxk7xkn}}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/7dxk7xkn}. Elaboración propia.}
 \end{figure}
 
 \newpage
