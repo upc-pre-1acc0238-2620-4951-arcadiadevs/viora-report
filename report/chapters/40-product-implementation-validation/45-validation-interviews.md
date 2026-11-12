@@ -66,8 +66,6 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 *   ¿Identificó algún aspecto de la información que considere ambiguo o que requiera mayor detalle técnico?
 *   ¿Considera que la plataforma facilitaría la articulación entre el equipo técnico y los productores asociados? ¿Por qué?
 
-\newpage
-
 \noindent \textbf{3. Preguntas de cierre y evaluación institucional}
 
 *   En una escala del 1 al 5, ¿qué tan pertinente considera la solución de Viora para la coordinación técnica y comercial en cooperativas?
@@ -110,8 +108,6 @@ Durante cada sesión, el participante opera la aplicación instalada en un telé
 *   ¿La alerta visual de acumulación de frío y estado fenológico le ayuda a identificar rápidamente si el olivar requiere una intervención urgente?
 *   ¿La organización de las tarjetas de información le permite identificar de un vistazo las prioridades y tareas del día en su olivar?
 
-\newpage
-
 \noindent \textbf{5. Lotes}
 
 *   Al acceder a la sección de Lotes, ¿le resulta fácil encontrar y diferenciar sus parcelas según su nombre y la variedad de olivo?
@@ -146,42 +142,47 @@ Durante cada sesión, el participante opera la aplicación instalada en un telé
 
 En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo minucioso de la interacción con el portal web y la evidencia gráfica correspondiente.
 
+\newpage
+
 #### Segmento 1: Productores olivareros de la región sur
 &nbsp;
 
-\newpage
+\begingroup
+\small
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#1} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Cristóbal Benito Barrientos Carpio & \textbf{Edad} & 51 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{Valle de Yauca, Provincia de Caravelí, Arequipa} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor olivarero y acopiador local} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{00:05 - 05:07} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{Valle de Yauca, Provincia de Caravelí, Arequipa} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productor olivarero y acopiador local} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Landing page} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{00:05 - 05:07} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor con 10 años en el olivar de Yauca, a cargo de 2 hectáreas propias y acopio local. Al revisar el portal web, comprendió de inmediato que la herramienta previene las pérdidas por falta de floración y frío invernal insuficiente. Validó que la vecería afecta con igual severidad a Tacna y Yauca, con mermas de hasta 90\% en campañas anómalas. Calificó los módulos de frío y balance de carga como claros y orientados a proteger la cosecha. Respecto al Plan Productor, consideró accesible la tarifa, aunque consultó si el costo incluye IGV y facturación con RUC para gastos contables. Otorgó una calificación de 4/5 a la plataforma, señalando que la adopción tecnológica requiere comprobación en campo. Afirmó que su disposición de pago se afianzará al observar resultados o recibir recomendaciones de colegas, sugiriendo incorporar testimonios reales de agricultores para generar mayor confianza.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-cristobal.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor con 10 años en el olivar de Yauca, a cargo de 2 hectáreas propias y acopio local. Al revisar el portal web, comprendió de inmediato que la herramienta previene las pérdidas por falta de floración y frío invernal insuficiente. Validó que la vecería afecta con igual severidad a Tacna y Yauca, con mermas de hasta 90\% en campañas anómalas. Calificó los módulos de frío y balance de carga como claros y orientados a proteger la cosecha. Respecto al Plan Productor, consideró accesible la tarifa, aunque consultó si el costo incluye IGV y facturación con RUC para gastos contables. Otorgó una calificación de 4/5 a la plataforma, señalando que la adopción tecnológica requiere comprobación en campo. Afirmó que su disposición de pago se afianzará al observar resultados o recibir recomendaciones de colegas, sugiriendo incorporar testimonios reales de agricultores para generar mayor confianza.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-cristobal.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\newpage
+\vspace{0.35cm}
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#2} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Alexandra Rosas & \textbf{Edad} & 50 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada-Los Palos, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productora olivarera y comercializadora familiar} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{05:17 - 11:10} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada-Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productora olivarera y comercializadora familiar} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Landing page} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{05:17 - 11:10} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productora con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas tecnificadas de aceituna Criolla. Comprendió con inmediatez que el producto es un asistente predial frente a la vecería. Ratificó que las oscilaciones productivas descritas reflejan su realidad, con caídas drásticas de cosecha en años impactados por El Niño. Resaltó el módulo de aclareo como una valiosa ventana de oportunidad antes del endurecimiento del hueso, eliminando dudas operativas. Calificó la tarifa de S/ 55 por hectárea/mes del Plan Productor como transparente y accesible, pues un mal manejo genera pérdidas muy superiores a la suscripción anual. Destacó especialmente el soporte sin conexión para registrar muestras sin señal en campo. Asignó una calificación de 5/5 a la propuesta y recomendó integrar un enlace directo a WhatsApp en la página para brindar asistencia técnica rápida.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productora con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas tecnificadas de aceituna Criolla. Comprendió con inmediatez que el producto es un asistente predial frente a la vecería. Ratificó que las oscilaciones productivas descritas reflejan su realidad, con caídas drásticas de cosecha en años impactados por El Niño. Resaltó el módulo de aclareo como una valiosa ventana de oportunidad antes del endurecimiento del hueso, eliminando dudas operativas. Calificó la tarifa de S/ 55 por hectárea/mes del Plan Productor como transparente y accesible, pues un mal manejo genera pérdidas muy superiores a la suscripción anual. Destacó especialmente el soporte sin conexión para registrar muestras sin señal en campo. Asignó una calificación de 5/5 a la propuesta y recomendó integrar un enlace directo a WhatsApp en la página para brindar asistencia técnica rápida.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
@@ -189,37 +190,37 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 
 #### Segmento 2: Gestores técnicos de organizaciones olivareras
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#3} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Daniel Estrada & \textbf{Edad} & 44 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Ingeniero agrónomo, jefe técnico de cooperativa agraria} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{11:13 - 16:41} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos / Magollo, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Ingeniero agrónomo, jefe técnico de cooperativa agraria} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Landing page} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{11:13 - 16:41} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniero Agrónomo con 18 años de experiencia, a cargo de supervisar 68 socios y 420 hectáreas en La Yarada y Magollo. Valoró la centralización de datos para mitigar la dispersión territorial y superar la «ceguera logística» en planta, donde estimaciones tradicionales provocan desviaciones de hasta 40\% en acopio. Destacó el esquema del Plan Cooperativa basado en códigos institucionales de activación, eliminando trabas administrativas con los productores. Confirmó que el seguimiento de frío entre mayo y agosto posee pleno rigor agronómico y que los descargos legales aportan solidez formal ante directivos. Calificó la utilidad de la plataforma con 5/5 y acordó presentarla en asamblea directiva para una prueba piloto. Como recomendaciones de diseño, sugirió habilitar un botón directo para coordinar demostraciones a nivel gerencial y una sección de preguntas frecuentes sobre el soporte a socios con menor destreza digital.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-daniel-estrada.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniero Agrónomo con 18 años de experiencia, a cargo de supervisar 68 socios y 420 hectáreas en La Yarada y Magollo. Valoró la centralización de datos para mitigar la dispersión territorial y superar la «ceguera logística» en planta, donde estimaciones tradicionales provocan desviaciones de hasta 40\% en acopio. Destacó el esquema del Plan Cooperativa basado en códigos institucionales de activación, eliminando trabas administrativas con los productores. Confirmó que el seguimiento de frío entre mayo y agosto posee pleno rigor agronómico y que los descargos legales aportan solidez formal ante directivos. Calificó la utilidad de la plataforma con 5/5 y acordó presentarla en asamblea directiva para una prueba piloto. Como recomendaciones de diseño, sugirió habilitar un botón directo para coordinar demostraciones a nivel gerencial y una sección de preguntas frecuentes sobre el soporte a socios con menor destreza digital.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-daniel-estrada.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\newpage
+\vspace{0.35cm}
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#4} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Maribel Vargas & \textbf{Edad} & 40 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Ingeniera agrónoma, responsable técnica y de acopio} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Landing page} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{16:44 - 23:02} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Ingeniera agrónoma, responsable técnica y de acopio} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Landing page} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{16:44 - 23:02} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniera Agrónoma con 15 años de trayectoria en Tacna, a cargo de 35 socios y 150 hectáreas con riego tecnificado. Valoró positivamente la distinción entre el panel operativo del productor y el módulo analítico institucional. Resaltó la pertinencia técnica de alertar la ventana de aclareo previa al endurecimiento del hueso, señalando que retrasar el raleo deteriora el calibre del fruto y la floración de la siguiente campaña. Confirmó que la plataforma optimiza la coordinación técnica al suministrar datos objetivos de campo. Calificó la propuesta con 4.8/5, fundamentando que la inversión institucional se amortiza al prevenir penalizaciones comerciales en contratos de acopio. Como mejoras puntuales, propuso permitir la exportación de estimaciones a hojas de cálculo para comisiones directivas e incorporar en el sitio web vistas previas directas de la interfaz móvil de muestreo.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-maribel-vargas.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Ingeniera Agrónoma con 15 años de trayectoria en Tacna, a cargo de 35 socios y 150 hectáreas con riego tecnificado. Valoró positivamente la distinción entre el panel operativo del productor y el módulo analítico institucional. Resaltó la pertinencia técnica de alertar la ventana de aclareo previa al endurecimiento del hueso, señalando que retrasar el raleo deteriora el calibre del fruto y la floración de la siguiente campaña. Confirmó que la plataforma optimiza la coordinación técnica al suministrar datos objetivos de campo. Calificó la propuesta con 4.8/5, fundamentando que la inversión institucional se amortiza al prevenir penalizaciones comerciales en contratos de acopio. Como mejoras puntuales, propuso permitir la exportación de estimaciones a hojas de cálculo para comisiones directivas e incorporar en el sitio web vistas previas directas de la interfaz móvil de muestreo.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-maribel-vargas.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
@@ -228,39 +229,41 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 #### Aplicación móvil Android: productores olivareros de la región sur
 &nbsp;
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#5} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Gustavo Calizaga Limache & \textbf{Edad} & 30 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada Los Palos, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productor olivarero} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Aplicación móvil productor} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{23:12 - 28:46} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productor olivarero} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Aplicación móvil productor} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{23:12 - 28:46} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor independiente con 7 años de experiencia en La Yarada Los Palos, a cargo de 4 hectáreas de aceituna Sevillana. Calificó el registro guiado como claro y fluido y la cuota calculada según sus hectáreas como comprensible. Registró el lote «Mi Tierra» con marco de 6 $\times$ 6 metros y consideró el trazado en el mapa bastante fácil, porque la aplicación calcula el área y los árboles a partir del contorno. En Inicio asoció el término aclareo con la poda y corrigió el calendario fenológico según su campaña: floración en julio, cuajado en agosto, crecimiento del fruto hasta febrero y cosecha en marzo. Valoró el seguimiento de frío invernal para anticipar la producción y consideró clarísimo el resumen del muestreo. Al registrar la cosecha advirtió la falta de un campo para el descarte. Asignó 5/5 a la utilidad, consideró justificada la tarifa de S/ 55 por hectárea al mes y mencionó la orientación frente a plagas, necesidad que queda fuera del alcance de Viora. Durante la sesión, ubicar la parcela tomó más tiempo al no estar activado el GPS del dispositivo.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-gustavo-calizaga.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productor independiente con 7 años de experiencia en La Yarada Los Palos, a cargo de 4 hectáreas de aceituna Sevillana. Calificó el registro guiado como claro y fluido y la cuota calculada según sus hectáreas como comprensible. Registró el lote «Mi Tierra» con marco de 6 $\times$ 6 metros y consideró el trazado en el mapa bastante fácil, porque la aplicación calcula el área y los árboles a partir del contorno. En Inicio asoció el término aclareo con la poda y corrigió el calendario fenológico según su campaña: floración en julio, cuajado en agosto, crecimiento del fruto hasta febrero y cosecha en marzo. Valoró el seguimiento de frío invernal para anticipar la producción y consideró clarísimo el resumen del muestreo. Al registrar la cosecha advirtió la falta de un campo para el descarte. Asignó 5/5 a la utilidad, consideró justificada la tarifa de S/ 55 por hectárea al mes y mencionó la orientación frente a plagas, necesidad que queda fuera del alcance de Viora. Durante la sesión, ubicar la parcela tomó más tiempo al no estar activado el GPS del dispositivo.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-gustavo-calizaga.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 
-\newpage
+\vspace{0.35cm}
 
-\noindent \begin{tabular}{p{0.15\textwidth} p{0.30\textwidth} p{0.15\textwidth} p{0.30\textwidth}} 
+\noindent \begin{tabular}{p{0.14\textwidth} p{0.34\textwidth} p{0.12\textwidth} p{0.32\textwidth}} 
 \hline 
 \multicolumn{4}{l}{\textbf{Entrevista de Validación \#6} \hfill \textbf{Detalles}} \\ 
 \hline 
 \textbf{Nombre} & Alexandra Rosas & \textbf{Edad} & 50 \\ 
-\textbf{Distrito} & \multicolumn{3}{p{0.75\textwidth}}{La Yarada-Los Palos, Tacna} \\ 
-\textbf{Ocupación} & \multicolumn{3}{p{0.75\textwidth}}{Productora olivarera y comercializadora familiar} \\ 
-\textbf{Artefacto} & \multicolumn{3}{p{0.75\textwidth}}{Aplicación móvil productor} \\ 
-\textbf{Timing} & \multicolumn{3}{p{0.75\textwidth}}{28:51 - 34:32} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{0.75\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Distrito} & \multicolumn{3}{p{0.78\textwidth}}{La Yarada-Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{0.78\textwidth}}{Productora olivarera y comercializadora familiar} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{0.78\textwidth}}{Aplicación móvil productor} \\ 
+\textbf{Timing} & \multicolumn{3}{p{0.78\textwidth}}{28:51 - 34:32} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{0.78\textwidth}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
 \hline 
-\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productora independiente con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas con riego por goteo de aceituna Criolla y Sevillana. Completó el registro guiado y la verificación por correo, revisó el Plan Productor para sus 3 hectáreas y avanzó hasta el pago de prueba. Trazó en el mapa el lote «Sevillana» con marco de 7 $\times$ 7 metros y consideró adecuados los campos de delimitación y plantación. En Lotes distinguió su parcela por el nombre. En Inicio reconoció sus parcelas y el clima del día, y valoró el aviso de frío por ser lo que más le importa, aunque pidió entender mejor la etapa del olivo. Comprendió las horas de frío, pero indicó que el índice de alternancia requiere una explicación previa. Señaló que hoy anota en un cuaderno y que el expediente le daría más orden. Asignó 4/5 a la utilidad, consideró accesible la tarifa y solicitó avisos de frío por WhatsApp y funcionamiento sin señal.} \\[4pt] 
-\multicolumn{4}{c}{\includegraphics[width=0.68\textwidth,height=0.20\textheight,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas-app.png}} \\ 
+\multicolumn{4}{p{0.95\textwidth}}{\textbf{Resumen de la sesión:} Productora independiente con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas con riego por goteo de aceituna Criolla y Sevillana. Completó el registro guiado y la verificación por correo, revisó el Plan Productor para sus 3 hectáreas y avanzó hasta el pago de prueba. Trazó en el mapa el lote «Sevillana» con marco de 7 $\times$ 7 metros y consideró adecuados los campos de delimitación y plantación. En Lotes distinguió su parcela por el nombre. En Inicio reconoció sus parcelas y el clima del día, y valoró el aviso de frío por ser lo que más le importa, aunque pidió entender mejor la etapa del olivo. Comprendió las horas de frío, pero indicó que el índice de alternancia requiere una explicación previa. Señaló que hoy anota en un cuaderno y que el expediente le daría más orden. Asignó 4/5 a la utilidad, consideró accesible la tarifa y solicitó avisos de frío por WhatsApp y funcionamiento sin señal.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas-app.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
+
+\endgroup
 
 \newpage
 
@@ -300,11 +303,8 @@ El alcance de esta evaluación incluye la revisión de la usabilidad de las sigu
 
 No están incluidas en esta versión de la evaluación las siguientes tareas:
 
-1. Registro y autenticación transaccional de nuevos usuarios con pasarela de pago.
-2. Muestreo de campo de racimos y brotes sin conexión (reservado para la aplicación móvil).
-3. Exportación automatizada de consolidados de cosecha a formatos descargables (Excel/PDF).
-
-\newpage
+1. Muestreo de campo de racimos y brotes sin conexión a internet.
+2. Exportación automatizada de consolidados de cosecha a formatos descargables (Excel/PDF).
 
 \noindent \textbf{ESCALA DE SEVERIDAD:} Los errores identificados han sido puntuados tomando en cuenta la siguiente escala:
 
@@ -343,8 +343,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 4 & Ausencia de una opción visible para previsualizar capturas del módulo móvil o exportar consolidados de acopio a formatos descargables (Excel / PDF). & 1 & Diseño Inclusivo: Brindar elección / Usabilidad: Flexibilidad y control del usuario. \\ \hline
 \end{longtable}
 
-\newpage
-
+\par\vskip 0pt plus 8\baselineskip\penalty-150\vskip 0pt plus -8\baselineskip
 \noindent \textbf{DESCRIPCIÓN DE PROBLEMAS:}
 
 \vspace{0.2cm}
@@ -371,8 +370,6 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
   \item \textbf{Recomendación:} Añadir un enlace directo de contacto con el ícono reconocido de WhatsApp en la barra de navegación o en el pie de página que redirija a una línea de atención técnica (\url{https://wa.me/...}), facilitando una vía de comunicación inmediata sin necesidad de navegar formularios externos.
 \end{itemize}
 
-\newpage
-
 \noindent \textbf{PROBLEMA \#3: Carencia de flujo diferenciado para cotizaciones institucionales en el Plan Cooperativa}
 \begin{itemize}
   \setlength{\itemsep}{1pt}
@@ -396,8 +393,6 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \end{itemize}
 
 \clearpage
-
-\newpage
 
 \begin{center}
 \textbf{--- UX Heuristics \& Principles Evaluation ---} \\
@@ -435,8 +430,6 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 2. Confirmación de una labor de aclareo ejecutada desde el Plan.
 3. Activación del acceso mediante código de cooperativa.
 4. Tareas del gestor técnico en la aplicación multiplataforma.
-
-\newpage
 
 \noindent \textbf{ESCALA DE SEVERIDAD:} Los errores identificados han sido puntuados tomando en cuenta la siguiente escala:
 
@@ -478,8 +471,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 7 & Las alertas solo se consultan dentro de la aplicación, sin un canal externo de aviso. & 1 & Diseño Inclusivo: Brindar elección. \\ \hline
 \end{longtable}
 
-\newpage
-
+\par\vskip 0pt plus 8\baselineskip\penalty-150\vskip 0pt plus -8\baselineskip
 \noindent \textbf{DESCRIPCIÓN DE PROBLEMAS:}
 
 \vspace{0.2cm}
@@ -498,11 +490,11 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \caption{Calendario fenológico de Inicio con la etapa de aclareo en noviembre} \label{fig:problem-app-02}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.82\textwidth,height=0.32\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-02-calendario.png}
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-02-calendario.png}
 \caption*{\textit{Nota.} Captura de la sesión de validación con Gustavo Calizaga. Elaboración propia.}
 \end{figure}
 
-\newpage
+\vspace{0.25cm}
 
 \noindent \textbf{PROBLEMA \#2: Ausencia de detección del GPS desactivado al delimitar un lote}
 \begin{itemize}
@@ -530,11 +522,11 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \caption{Mensaje principal de Inicio basado en el término aclareo} \label{fig:problem-app-03}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.82\textwidth,height=0.32\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-03-terminos.png}
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-03-terminos.png}
 \caption*{\textit{Nota.} Captura de la sesión de validación con Alexandra Rosas. Elaboración propia.}
 \end{figure}
 
-\newpage
+\vspace{0.25cm}
 
 \noindent \textbf{PROBLEMA \#4: Registro de cosecha sin campo para el descarte}
 \begin{itemize}
@@ -550,11 +542,11 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \caption{Formulario de registro de cosecha sin campo de descarte} \label{fig:problem-app-04}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.82\textwidth,height=0.32\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-04-cosecha.png}
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-04-cosecha.png}
 \caption*{\textit{Nota.} Captura de la sesión de validación con Gustavo Calizaga. Elaboración propia.}
 \end{figure}
 
-\newpage
+\vspace{0.25cm}
 
 \noindent \textbf{PROBLEMA \#5: Trazado del lote sin advertencia ante un área incoherente}
 \begin{itemize}
@@ -570,11 +562,11 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \caption{Lote registrado con un área de 0,03 hectáreas} \label{fig:problem-app-05}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.82\textwidth,height=0.32\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-05-lote.png}
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-05-lote.png}
 \caption*{\textit{Nota.} Captura de la sesión de validación con Alexandra Rosas. Elaboración propia.}
 \end{figure}
 
-\newpage
+\vspace{0.25cm}
 
 \noindent \textbf{PROBLEMA \#6: Texto repetido y contradictorio en la tarjeta «Resumen de hoy»}
 \begin{itemize}
@@ -590,7 +582,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \caption{Tarjeta «Resumen de hoy» con texto repetido} \label{fig:problem-app-06}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.82\textwidth,height=0.32\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-06-resumen.png}
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-06-resumen.png}
 \caption*{\textit{Nota.} Captura de la sesión de validación con Gustavo Calizaga. Elaboración propia.}
 \end{figure}
 
@@ -610,6 +602,8 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \caption{Alertas activas en la sección «Hoy en tu campo»} \label{fig:problem-app-07}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.82\textwidth,height=0.32\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-07-alertas.png}
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-07-alertas.png}
 \caption*{\textit{Nota.} Captura de la sesión de validación con Alexandra Rosas. Elaboración propia.}
 \end{figure}
+
+\clearpage
