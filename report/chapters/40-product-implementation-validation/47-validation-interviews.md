@@ -469,13 +469,12 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \endhead
 \hline
 \endfoot
-1 & El rechazo del pago no explica su causa ni ofrece una ruta clara para retomar la activación dentro de la aplicación. & 4 & Usabilidad: Ayudar a reconocer, diagnosticar y recuperarse de errores / Visibilidad del estado del sistema. \\ \hline
-2 & Las fechas del calendario fenológico no coinciden con la campaña real del productor. & 3 & Usabilidad: Coincidencia entre el sistema y el mundo real. \\ \hline
-3 & Los términos «aclareo» e «índice de alternancia» no se comprenden sin una explicación previa. & 2 & Usabilidad: Coincidencia entre el sistema y el mundo real / Arquitectura de Información: Claridad. \\ \hline
-4 & El registro de cosecha no incluye un campo para la aceituna de descarte. & 2 & Usabilidad: Coincidencia entre el sistema y el mundo real / Flexibilidad y eficiencia de uso. \\ \hline
-5 & El trazado del lote admite un área muy inferior a las hectáreas declaradas sin advertirlo. & 2 & Usabilidad: Prevención de errores. \\ \hline
-6 & La tarjeta «Resumen de hoy» repite una palabra y contradice el mensaje principal de Inicio. & 1 & Usabilidad: Consistencia y estándares. \\ \hline
-7 & Las alertas solo se consultan dentro de la aplicación, sin un canal externo de aviso. & 1 & Diseño Inclusivo: Brindar elección. \\ \hline
+1 & Las fechas del calendario fenológico no coinciden con la campaña real del productor. & 3 & Usabilidad: Coincidencia entre el sistema y el mundo real. \\ \hline
+2 & Los términos «aclareo» e «índice de alternancia» no se comprenden sin una explicación previa. & 2 & Usabilidad: Coincidencia entre el sistema y el mundo real / Arquitectura de Información: Claridad. \\ \hline
+3 & El registro de cosecha no incluye un campo para la aceituna de descarte. & 2 & Usabilidad: Coincidencia entre el sistema y el mundo real / Flexibilidad y eficiencia de uso. \\ \hline
+4 & El trazado del lote admite un área muy inferior a las hectáreas declaradas sin advertirlo. & 2 & Usabilidad: Prevención de errores. \\ \hline
+5 & La tarjeta «Resumen de hoy» repite una palabra y contradice el mensaje principal de Inicio. & 1 & Usabilidad: Consistencia y estándares. \\ \hline
+6 & Las alertas solo se consultan dentro de la aplicación, sin un canal externo de aviso. & 1 & Diseño Inclusivo: Brindar elección. \\ \hline
 \end{longtable}
 
 \newpage
@@ -484,27 +483,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 
 \vspace{0.2cm}
 
-\noindent \textbf{PROBLEMA \#1: Rechazo del pago sin causa ni ruta de recuperación hacia la aplicación}
-\begin{itemize}
-  \setlength{\itemsep}{1pt}
-  \setlength{\parskip}{0pt}
-  \item \textbf{Severidad:} 4.
-  \item \textbf{Heurística violada:} Usabilidad: Ayudar a reconocer, diagnosticar y recuperarse de errores / Visibilidad del estado del sistema.
-  \item \textbf{Problema:} En las sesiones de Gustavo Calizaga y de Alexandra Rosas, la activación del Plan Productor se interrumpió en la pasarela de pago. Como se observa en la \autoref{fig:problem-app-01}, la pantalla informa que la tarjeta rechazó el pago, pero no indica el motivo y solo ofrece pagar con otro medio o volver al sitio. En ambas sesiones el participante no pudo continuar por su cuenta y el facilitador tuvo que intervenir para retomar el recorrido, lo que consumió varios minutos de la sesión.
-  \item \textbf{Recomendación:} Mostrar en la aplicación una pantalla propia de resultado del pago que explique en lenguaje sencillo qué ocurrió, conserve las hectáreas elegidas y ofrezca las acciones «Reintentar pago» y «Consultar estado». Añadir además un retorno automático desde la pasarela hacia la aplicación, de modo que el productor nunca quede fuera del flujo de activación.
-\end{itemize}
-
-\begin{figure}[H]
-\caption{Pantalla de rechazo del pago durante la activación del plan} \label{fig:problem-app-01}
-\vspace{0.25cm}
-\centering
-\includegraphics[width=0.82\textwidth,height=0.32\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-01-pago.png}
-\caption*{\textit{Nota.} Captura de la sesión de validación con Alexandra Rosas. Elaboración propia.}
-\end{figure}
-
-\newpage
-
-\noindent \textbf{PROBLEMA \#2: Calendario fenológico desfasado respecto de la campaña real}
+\noindent \textbf{PROBLEMA \#1: Calendario fenológico desfasado respecto de la campaña real}
 \begin{itemize}
   \setlength{\itemsep}{1pt}
   \setlength{\parskip}{0pt}
@@ -524,7 +503,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 
 \newpage
 
-\noindent \textbf{PROBLEMA \#3: Términos agronómicos que no se comprenden sin explicación}
+\noindent \textbf{PROBLEMA \#2: Términos agronómicos que no se comprenden sin explicación}
 \begin{itemize}
   \setlength{\itemsep}{1pt}
   \setlength{\parskip}{0pt}
@@ -544,7 +523,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 
 \newpage
 
-\noindent \textbf{PROBLEMA \#4: Registro de cosecha sin campo para el descarte}
+\noindent \textbf{PROBLEMA \#3: Registro de cosecha sin campo para el descarte}
 \begin{itemize}
   \setlength{\itemsep}{1pt}
   \setlength{\parskip}{0pt}
@@ -564,7 +543,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 
 \newpage
 
-\noindent \textbf{PROBLEMA \#5: Trazado del lote sin advertencia ante un área incoherente}
+\noindent \textbf{PROBLEMA \#4: Trazado del lote sin advertencia ante un área incoherente}
 \begin{itemize}
   \setlength{\itemsep}{1pt}
   \setlength{\parskip}{0pt}
@@ -584,7 +563,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 
 \newpage
 
-\noindent \textbf{PROBLEMA \#6: Texto repetido y contradictorio en la tarjeta «Resumen de hoy»}
+\noindent \textbf{PROBLEMA \#5: Texto repetido y contradictorio en la tarjeta «Resumen de hoy»}
 \begin{itemize}
   \setlength{\itemsep}{1pt}
   \setlength{\parskip}{0pt}
@@ -604,7 +583,7 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 
 \vspace{0.25cm}
 
-\noindent \textbf{PROBLEMA \#7: Alertas sin un canal externo de aviso}
+\noindent \textbf{PROBLEMA \#6: Alertas sin un canal externo de aviso}
 \begin{itemize}
   \setlength{\itemsep}{1pt}
   \setlength{\parskip}{0pt}
