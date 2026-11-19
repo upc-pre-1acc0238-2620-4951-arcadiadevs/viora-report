@@ -495,7 +495,17 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{Given} un productor delimitando un lote en campo sin recepción de señal satelital en el sensor GPS del dispositivo.\newline
 \textbf{When} no se obtiene fijación de coordenadas satelitales directas.\newline
 \textbf{Then} el sistema permite fijar manualmente los puntos perimétricos sobre la vista satelital de la zona.\newline
-\textbf{And} calcula el área delimitada conservando la validez geométrica del lote.} \\ \hline
+\textbf{And} calcula el área delimitada conservando la validez geométrica del lote.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Servicio de ubicación desactivado al iniciar la delimitación}\newline
+\textbf{Given} un productor que inicia la delimitación de un lote con el servicio de ubicación del dispositivo desactivado.\newline
+\textbf{When} elige el método de delimitación.\newline
+\textbf{Then} el sistema informa que la ubicación está desactivada y ofrece abrir los ajustes del dispositivo para activarla.\newline
+\textbf{And} mantiene disponible el trazado manual sobre el mapa satelital, de modo que el productor no queda bloqueado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Advertencia por diferencia entre el área trazada y el área indicada}\newline
+\textbf{Given} un productor que indicó de forma opcional el área aproximada del lote al iniciar el registro.\newline
+\textbf{When} el área calculada del polígono difiere en más de 30\% del área indicada e intenta guardar el lote.\newline
+\textbf{Then} el sistema muestra ambas áreas y advierte la diferencia antes de guardar.\newline
+\textbf{And} permite corregir el contorno conservando los vértices marcados o confirmar el registro tal como está.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -754,7 +764,12 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{Given} una parcela con alerta activa por estrés hídrico.\newline
 \textbf{When} una nueva lectura de la sonda registra una recuperación de humedad de suelo por encima del umbral seguro tras un evento de riego.\newline
 \textbf{Then} el sistema actualiza el estado de la alerta a normalizada.\newline
-\textbf{And} registra el tiempo total que el olivar permaneció bajo estrés hídrico.} \\ \hline
+\textbf{And} registra el tiempo total que el olivar permaneció bajo estrés hídrico.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Aviso de alerta crítica fuera de la aplicación}\newline
+\textbf{Given} un productor con las notificaciones de alertas críticas activadas en la aplicación móvil.\newline
+\textbf{When} una de sus parcelas registra un riesgo de helada o una alerta de severidad crítica, o termina la postergación de una de ellas.\newline
+\textbf{Then} el sistema envía una notificación al dispositivo una sola vez por alerta, que abre el detalle de la alerta.\newline
+\textbf{And} el productor puede desactivar este aviso desde su cuenta; si el permiso de notificaciones del dispositivo está desactivado, la aplicación le indica cómo habilitarlo.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1746,7 +1761,12 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Productor sin parcelas activas}\newline
 \textbf{Given} un productor sin parcelas activas.\newline
 \textbf{When} solicita su resumen del día.\newline
-\textbf{Then} el sistema informa que no existe información por resumir.} \\ \hline
+\textbf{Then} el sistema informa que no existe información por resumir.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Ventana de aclareo de un campo con varias parcelas}\newline
+\textbf{Given} un productor con varias parcelas activas y al menos una ventana de aclareo abierta o por abrir en la semana.\newline
+\textbf{When} consulta su resumen del día.\newline
+\textbf{Then} el indicador de la ventana de aclareo nombra la parcela cuya ventana cuenta, por ejemplo «22 días de ventana en La Yarada».\newline
+\textbf{And} los días restantes incluyen el día de hoy, igual que en la tarjeta de fase de Inicio y en el plan de aclareo.} \\ \hline
 \end{longtable}
 \endgroup
 
