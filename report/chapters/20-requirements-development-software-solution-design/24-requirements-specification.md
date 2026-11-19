@@ -764,7 +764,12 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{Given} una parcela con alerta activa por estrés hídrico.\newline
 \textbf{When} una nueva lectura de la sonda registra una recuperación de humedad de suelo por encima del umbral seguro tras un evento de riego.\newline
 \textbf{Then} el sistema actualiza el estado de la alerta a normalizada.\newline
-\textbf{And} registra el tiempo total que el olivar permaneció bajo estrés hídrico.} \\ \hline
+\textbf{And} registra el tiempo total que el olivar permaneció bajo estrés hídrico.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Aviso de alerta crítica fuera de la aplicación}\newline
+\textbf{Given} un productor con las notificaciones de alertas críticas activadas en la aplicación móvil.\newline
+\textbf{When} una de sus parcelas registra un riesgo de helada o una alerta de severidad crítica, o termina la postergación de una de ellas.\newline
+\textbf{Then} el sistema envía una notificación al dispositivo una sola vez por alerta, que abre el detalle de la alerta.\newline
+\textbf{And} el productor puede desactivar este aviso desde su cuenta; si el permiso de notificaciones del dispositivo está desactivado, la aplicación le indica cómo habilitarlo.} \\ \hline
 \end{longtable}
 \endgroup
 
