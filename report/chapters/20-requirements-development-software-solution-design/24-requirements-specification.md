@@ -1761,7 +1761,12 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Productor sin parcelas activas}\newline
 \textbf{Given} un productor sin parcelas activas.\newline
 \textbf{When} solicita su resumen del día.\newline
-\textbf{Then} el sistema informa que no existe información por resumir.} \\ \hline
+\textbf{Then} el sistema informa que no existe información por resumir.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Ventana de aclareo de un campo con varias parcelas}\newline
+\textbf{Given} un productor con varias parcelas activas y al menos una ventana de aclareo abierta o por abrir en la semana.\newline
+\textbf{When} consulta su resumen del día.\newline
+\textbf{Then} el indicador de la ventana de aclareo nombra la parcela cuya ventana cuenta, por ejemplo «22 días de ventana en La Yarada».\newline
+\textbf{And} los días restantes incluyen el día de hoy, igual que en la tarjeta de fase de Inicio y en el plan de aclareo.} \\ \hline
 \end{longtable}
 \endgroup
 
