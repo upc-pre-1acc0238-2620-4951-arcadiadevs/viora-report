@@ -495,7 +495,17 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{Given} un productor delimitando un lote en campo sin recepción de señal satelital en el sensor GPS del dispositivo.\newline
 \textbf{When} no se obtiene fijación de coordenadas satelitales directas.\newline
 \textbf{Then} el sistema permite fijar manualmente los puntos perimétricos sobre la vista satelital de la zona.\newline
-\textbf{And} calcula el área delimitada conservando la validez geométrica del lote.} \\ \hline
+\textbf{And} calcula el área delimitada conservando la validez geométrica del lote.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Servicio de ubicación desactivado al iniciar la delimitación}\newline
+\textbf{Given} un productor que inicia la delimitación de un lote con el servicio de ubicación del dispositivo desactivado.\newline
+\textbf{When} elige el método de delimitación.\newline
+\textbf{Then} el sistema informa que la ubicación está desactivada y ofrece abrir los ajustes del dispositivo para activarla.\newline
+\textbf{And} mantiene disponible el trazado manual sobre el mapa satelital, de modo que el productor no queda bloqueado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Advertencia por diferencia entre el área trazada y el área indicada}\newline
+\textbf{Given} un productor que indicó de forma opcional el área aproximada del lote al iniciar el registro.\newline
+\textbf{When} el área calculada del polígono difiere en más de 30\% del área indicada e intenta guardar el lote.\newline
+\textbf{Then} el sistema muestra ambas áreas y advierte la diferencia antes de guardar.\newline
+\textbf{And} permite corregir el contorno conservando los vértices marcados o confirmar el registro tal como está.} \\ \hline
 \end{longtable}
 \endgroup
 
