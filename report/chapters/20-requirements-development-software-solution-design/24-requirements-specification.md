@@ -1073,11 +1073,11 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US29} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Productor Olivarero} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Alta} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP07} \\ \hline
 \multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
-\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} asentar formalmente el pesaje real de cosecha al término de la temporada discriminando kilos de aceituna verde y negra e indicando opcionalmente el calibre comercial de venta (\texttt{commercialFruitsPerKg}), \textbf{para} formalizar la liquidación de entrega, alimentar la calibración empírica del modelo varietal y auditar la curva interanual de atenuación de vecería.} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Productor Olivarero, \textbf{quiero} asentar formalmente el pesaje real de cosecha al término de la temporada discriminando kilos de aceituna verde y negra, registrando opcionalmente la aceituna de descarte (\texttt{discardOlivesKg}) e indicando opcionalmente el calibre comercial de venta (\texttt{commercialFruitsPerKg}), \textbf{para} formalizar la liquidación de entrega con el total completo de lo cosechado, alimentar la calibración empírica del modelo varietal y auditar la curva interanual de atenuación de vecería.} \\ \hline
 \multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Asentamiento exitoso de liquidación de cosecha con calibre comercial opcional}\newline
 \textbf{Given} la culminación de las faenas de cosecha de la campaña en curso.\newline
-\textbf{When} el productor o la almazara asienta los kilogramos recolectados (\texttt{greenOlivesKg} y \texttt{blackOlivesKg}) e ingresa opcionalmente el calibre comercial de venta (\texttt{commercialFruitsPerKg} en escala COI).\newline
+\textbf{When} el productor o la almazara asienta los kilogramos recolectados (\texttt{greenOlivesKg} y \texttt{blackOlivesKg}), opcionalmente los kilogramos de aceituna de descarte (\texttt{discardOlivesKg}) e ingresa opcionalmente el calibre comercial de venta (\texttt{commercialFruitsPerKg} en escala COI).\newline
 \textbf{Then} el sistema emite el comprobante inmutable de liquidación, registra la observación para calibración de calibre, actualiza la curva de estabilización productiva y bloquea el año contra modificaciones no autorizadas.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Campaña previamente liquidada}\newline
 \textbf{Given} un intento de registrar un pesaje sobre una campaña ya asentada.\newline
@@ -1086,7 +1086,12 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Calibre comercial fuera de rango biológico admisible}\newline
 \textbf{Given} un registro de liquidación que incluye el dato opcional de calibre de venta.\newline
 \textbf{When} el valor de \texttt{commercialFruitsPerKg} es menor o igual a cero o excede el límite agronómico de frutos por kilogramo configurable en el sistema.\newline
-\textbf{Then} el sistema rechaza la solicitud notificando error de validación biológica (\texttt{400 Bad Request}).} \\ \hline
+\textbf{Then} el sistema rechaza la solicitud notificando error de validación biológica (\texttt{400 Bad Request}).} \\ 
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Registro de aceituna de descarte}\newline
+\textbf{Given} una cosecha que incluye fruta de descarte además de aceituna verde y negra.\newline
+\textbf{When} el productor ingresa \texttt{discardOlivesKg} en la liquidación.\newline
+\textbf{Then} el sistema suma el descarte al total de cosecha (\texttt{totalYieldKg}), conserva su desglose en el comprobante y no lo cuenta dentro de la proporción verde y negra.\newline
+\textbf{And} si el productor no informa descarte, el sistema lo trata como cero y el total coincide con la suma de verde y negra.} \\ \hline
 \end{longtable}
 \endgroup
 
