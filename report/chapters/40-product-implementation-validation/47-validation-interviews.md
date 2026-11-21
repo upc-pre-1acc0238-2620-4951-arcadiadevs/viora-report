@@ -564,7 +564,6 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 1. Muestreo de cuajado sin conexión a pie de árbol en el predio.
 2. Confirmación de una labor de aclareo ejecutada desde el Plan.
 3. Activación del acceso mediante código de cooperativa.
-4. Tareas del gestor técnico en la aplicación multiplataforma.
 
 \noindent \textbf{ESCALA DE SEVERIDAD:} Los errores identificados han sido puntuados tomando en cuenta la siguiente escala:
 
