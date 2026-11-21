@@ -209,7 +209,7 @@ Durante cada sesión, el participante opera la aplicación instalada en un telé
 
 ### Registro de entrevistas
 
-En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo minucioso de la interacción con el portal web y la evidencia gráfica correspondiente.
+En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo de la interacción con la landing page o con las aplicaciones móviles productor y gestor, y la evidencia gráfica correspondiente.
 
 \newpage
 
@@ -341,6 +341,49 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \hline 
 \multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Productora independiente con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas con riego por goteo de aceituna Criolla y Sevillana. Completó el registro guiado y la verificación por correo, revisó el Plan Productor para sus 3 hectáreas y avanzó hasta el pago de prueba. Trazó en el mapa el lote «Sevillana» con marco de 7 $\times$ 7 metros y consideró adecuados los campos de delimitación y plantación. En Lotes distinguió su parcela por el nombre. En Inicio reconoció sus parcelas y el clima del día, y valoró el aviso de frío por ser lo que más le importa, aunque pidió entender mejor la etapa del olivo. Comprendió las horas de frío, pero indicó que el índice de alternancia requiere una explicación previa. Señaló que hoy anota en un cuaderno y que el expediente le daría más orden. Asignó 4/5 a la utilidad, consideró accesible la tarifa y solicitó avisos de frío por WhatsApp y funcionamiento sin señal.} \\ 
 \multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas-app.png}\vspace{0.05cm}} \\ 
+\hline 
+\end{tabular}
+```
+
+\newpage
+
+#### Aplicación móvil Flutter: gestores técnicos de organizaciones olivareras
+&nbsp;
+
+```{=latex}
+\noindent \begin{tabular}{p{\dimexpr 0.15\textwidth-2\tabcolsep\relax} p{\dimexpr 0.37\textwidth-2\tabcolsep\relax} p{\dimexpr 0.13\textwidth-2\tabcolsep\relax} p{\dimexpr 0.35\textwidth-2\tabcolsep\relax}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista de Validación \#7} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Juan Maquera & \textbf{Edad} & 55 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{La Yarada-Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Técnico agrónomo e ingeniero civil, gestor de campo de cooperativa} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Aplicación móvil gestor} \\ 
+\textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{34:31 - 39:33} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
+\hline 
+\multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Gestor de campo de la Cooperativa 28 en La Yarada-Los Palos, con cerca de 20 años supervisando olivares. Inició sesión con el correo y la contraseña asignados y recorrió Inicio, Riesgo territorial, Acopio y Socios desde la barra inferior. En Riesgo territorial coincidió en visitar primero la parcela «Flut 1» por su prioridad y señaló que usaría la sobrecarga de 275 \% y el expediente para conocer la variedad y las hectáreas del lote. En Acopio identificó 20 toneladas proyectadas, aunque consideró que la proyección necesitaría más hectáreas muestreadas para ser confiable. Ubicó el cupo de la licencia en la tarjeta verde y generó códigos de activación con las opciones de la pantalla. Interpretó el aviso de la última información guardada como la última acción realizada. Asignó 4/5 a la utilidad, la usaría al gestionar muchos productores y pidió integrar estudios meteorológicos e información satelital.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-juan-maquera.png}\vspace{0.05cm}} \\ 
+\hline 
+\end{tabular}
+```
+
+\vspace{0.35cm}
+
+```{=latex}
+\noindent \begin{tabular}{p{\dimexpr 0.15\textwidth-2\tabcolsep\relax} p{\dimexpr 0.37\textwidth-2\tabcolsep\relax} p{\dimexpr 0.13\textwidth-2\tabcolsep\relax} p{\dimexpr 0.35\textwidth-2\tabcolsep\relax}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista de Validación \#8} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Daniel Estrada & \textbf{Edad} & 44 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{La Yarada Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Ingeniero agrónomo, jefe técnico de cooperativa agraria} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Aplicación móvil gestor} \\ 
+\textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{39:34 - 44:40} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
+\hline 
+\multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Jefe técnico de una cooperativa olivarera de La Yarada Los Palos y Magollo, con 18 años en el sector y 68 socios en cerca de 420 hectáreas bajo su supervisión. Indicó que Inicio le permite ver en una sola pantalla el estado de predios dispersos y que los cuatro botones de la barra inferior coinciden con su trabajo, aunque pidió simplificar las tarjetas para los socios mayores. En Riesgo territorial interpretó la carga frutal de la parcela crítica y solicitó mostrar el nombre o un código del productor. Comprendió el semáforo, pidió íconos más grandes y valoró ordenar las visitas por cercanía. En Acopio solicitó el desglose por calibre, generó cinco códigos y señaló que coordina con los socios por WhatsApp. Valoró que la aplicación funcione sin señal, asignó entre 4/5 y 5/5 a la utilidad y pidió alertas por WhatsApp y textos más cortos.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-daniel-estrada-app.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 ```
