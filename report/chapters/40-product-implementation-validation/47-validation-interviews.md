@@ -741,3 +741,185 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \end{figure}
 
 \clearpage
+
+#### Aplicación móvil Flutter
+&nbsp;
+
+La evaluación de la aplicación móvil Flutter recoge las observaciones de los gestores técnicos que recorrieron la aplicación en las sesiones de validación.
+
+\begin{center}
+\textbf{--- UX Heuristics \& Principles Evaluation ---} \\
+\textbf{-- Usability - Inclusive Design - Information Architecture --}
+\end{center}
+
+\vspace{0.2cm}
+
+\noindent \begin{tabular}{p{4.2cm} p{11cm}}
+\textbf{CARRERA:} & Ingeniería de Software \\
+\textbf{CURSO:} & 1ACC0238 - Aplicaciones para Dispositivos Móviles \\
+\textbf{NRC:} & 4951 \\
+\textbf{PROFESORES:} & Todos \\
+\textbf{AUDITOR:} & ArcadiaDevs \\
+\textbf{CLIENTES:} & Juan Maquera, Ing. Daniel Estrada \\
+\textbf{Site o App a Evaluar:} & Aplicación móvil gestor \\
+\end{tabular}
+
+\vspace{0.35cm}
+
+\noindent \textbf{TAREAS A EVALUAR:}
+
+El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas en la aplicación móvil Flutter:
+
+1. Inicio de sesión con la cuenta del gestor y navegación entre Inicio, Riesgo territorial, Acopio y Socios.
+2. Consulta del resumen de la organización en Inicio.
+3. Priorización de visitas por sector y parcela en Riesgo territorial y consulta del expediente técnico.
+4. Consulta de la proyección de acopio y de su cobertura de muestreo.
+5. Revisión del padrón de socios y del cupo de la licencia, y generación de códigos de activación.
+
+No están incluidas en esta versión de la evaluación las siguientes tareas:
+
+1. Registro del acopio real recibido en planta al cierre de la campaña.
+2. Revocación de códigos de activación emitidos.
+
+\noindent \textbf{ESCALA DE SEVERIDAD:} Los errores identificados han sido puntuados tomando en cuenta la siguiente escala:
+
+\renewcommand{\arraystretch}{0.98}
+\begin{longtable}{p{1.2cm} p{13.2cm}}
+\hline
+\textbf{Nivel} & \textbf{Descripción} \\ \hline
+\endfirsthead
+\hline
+\textbf{Nivel} & \textbf{Descripción} \\ \hline
+\endhead
+\hline
+\endfoot
+1 & Problema superficial: Puede ser fácilmente superado por el usuario y ocurre con muy poca frecuencia. No necesita ser corregido a no ser que exista disponibilidad de tiempo. \\ \hline
+2 & Problema menor: Puede ocurrir un poco más frecuentemente o es un poco más difícil de superar para el usuario. Se le debe asignar una prioridad baja de cara al siguiente ciclo de desarrollo. \\ \hline
+3 & Problema mayor: Ocurre frecuentemente o los usuarios no son capaces de resolverlo. Es importante que sea corregido y se le debe asignar una prioridad alta. \\ \hline
+4 & Problema muy grave: Error de gran impacto que impide al usuario continuar con el uso de la herramienta. Es imperativo que sea corregido antes del lanzamiento oficial. \\ \hline
+\end{longtable}
+
+\noindent \textbf{TABLA RESUMEN:}
+
+\renewcommand{\arraystretch}{0.95}
+\begin{longtable}{p{0.6cm} p{6.2cm} p{2.2cm} p{5.2cm}}
+\caption{Matriz resumen de hallazgos en la evaluación heurística de UX de la aplicación móvil Flutter.} \label{tab:heuristic-summary-gestor} \\
+\hline
+\textbf{\#} & \textbf{Problema} & \textbf{Severidad} & \textbf{Heurística / Principio violado} \\ \hline
+\endfirsthead
+\hline
+\textbf{\#} & \textbf{Problema} & \textbf{Severidad} & \textbf{Heurística / Principio violado} \\ \hline
+\endhead
+\hline
+\endfoot
+1 & La pantalla de códigos generados muestra cada código con una letra por línea. & 2 & Usabilidad: Consistencia y estándares / Arquitectura de Información: Claridad. \\ \hline
+2 & El detalle de la parcela no identifica de forma explícita al socio productor. & 2 & Usabilidad: Reconocer antes que recordar / Arquitectura de Información: Localizable. \\ \hline
+3 & La proyección de acopio solo distingue aceituna verde y negra, sin desglose por calibre. & 2 & Usabilidad: Coincidencia entre el sistema y el mundo real. \\ \hline
+4 & La proyección se marca con «Cobertura suficiente» cuando solo la mitad de las parcelas cuenta con muestreo. & 1 & Usabilidad: Visibilidad del estado del sistema / Arquitectura de Información: Claridad. \\ \hline
+5 & La leyenda del semáforo usa puntos de color y textos de tamaño reducido. & 1 & Diseño Inclusivo: Considerar la situación / Usabilidad: Estética y diseño minimalista. \\ \hline
+\end{longtable}
+
+\par\vskip 0pt plus 8\baselineskip\penalty-150\vskip 0pt plus -8\baselineskip
+\noindent \textbf{DESCRIPCIÓN DE PROBLEMAS:}
+
+\vspace{0.2cm}
+
+\noindent \textbf{PROBLEMA \#1: Códigos de activación mostrados con una letra por línea}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 2.
+  \item \textbf{Heurística violada:} Usabilidad: Consistencia y estándares / Arquitectura de Información: Claridad.
+  \item \textbf{Problema:} Al generar códigos de activación, la pantalla «5 códigos listos» presenta cada código en una columna angosta con una letra por línea, de modo que el texto «COOP-PRY» se lee de arriba hacia abajo (ver \autoref{fig:problem-gestor-01}). El error se repitió en las sesiones con Juan Maquera y Daniel Estrada. Ninguno de los dos lo comentó, pero un gestor que necesite dictar o anotar un código para un socio no puede leerlo con facilidad.
+  \item \textbf{Recomendación:} Mostrar cada código en una sola línea, con tipografía de ancho fijo y un control para copiarlo, y verificar el ancho de la tarjeta en pantallas de distinto tamaño.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Códigos de activación mostrados con una letra por línea} \label{fig:problem-gestor-01}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-01-codigos.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Daniel Estrada. Elaboración propia.}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#2: Detalle de la parcela sin identificar al productor}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 2.
+  \item \textbf{Heurística violada:} Usabilidad: Reconocer antes que recordar / Arquitectura de Información: Localizable.
+  \item \textbf{Problema:} En Riesgo territorial, el detalle de la parcela crítica muestra como título «Flut 1», nombre del socio, y debajo la parcela, el sector y las hectáreas, sin una etiqueta que lo identifique como productor (ver \autoref{fig:problem-gestor-02}). Daniel Estrada no reconoció ese dato y sugirió incluir el nombre o un código del productor para ubicarlo con facilidad antes de la visita.
+  \item \textbf{Recomendación:} Rotular el título del detalle como socio productor e incluir su código de socio, y mostrar el mismo dato en las tarjetas de visitas sugeridas y de la lista por prioridad.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Detalle de la parcela crítica sin identificar al productor} \label{fig:problem-gestor-02}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-02-productor.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Daniel Estrada. Elaboración propia.}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#3: Proyección de acopio sin desglose por calibre}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 2.
+  \item \textbf{Heurística violada:} Usabilidad: Coincidencia entre el sistema y el mundo real.
+  \item \textbf{Problema:} La sección Acopio proyecta las toneladas de la campaña separadas solo en aceituna verde y negra (ver \autoref{fig:problem-gestor-03}). Daniel Estrada indicó que la recepción en planta necesita además el desglose por calibre, por ejemplo de 140 a 260 frutos por kilo, y condicionó su calificación de utilidad a esta mejora.
+  \item \textbf{Recomendación:} Incorporar rangos de calibre a la proyección a partir del muestreo de frutos y permitir que cada organización configure los rangos que emplea en su planta.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Proyección de acopio separada solo en aceituna verde y negra} \label{fig:problem-gestor-03}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-03-calibre.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Daniel Estrada. Elaboración propia.}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#4: Cobertura suficiente con la mitad de las parcelas muestreadas}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 1.
+  \item \textbf{Heurística violada:} Usabilidad: Visibilidad del estado del sistema / Arquitectura de Información: Claridad.
+  \item \textbf{Problema:} La tarjeta de proyección muestra la etiqueta «Cobertura suficiente» cuando solo 1 de 2 parcelas cuenta con muestreo, es decir, en el umbral mínimo del 50 \% (ver \autoref{fig:problem-gestor-04}). Juan Maquera leyó las 20 toneladas proyectadas, pero consideró que la proyección necesitaría más hectáreas muestreadas para ser confiable.
+  \item \textbf{Recomendación:} Reemplazar la etiqueta por un nivel de confianza graduado según la cobertura e indicar cuántas parcelas o hectáreas faltan muestrear para mejorarlo.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Proyección marcada con cobertura suficiente al 50 \% de muestreo} \label{fig:problem-gestor-04}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-04-cobertura.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Juan Maquera. Elaboración propia.}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#5: Leyenda del semáforo con indicadores de tamaño reducido}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 1.
+  \item \textbf{Heurística violada:} Diseño Inclusivo: Considerar la situación / Usabilidad: Estética y diseño minimalista.
+  \item \textbf{Problema:} La leyenda del semáforo en Riesgo territorial usa puntos de color y textos pequeños para distinguir las parcelas críticas, moderadas, óptimas y sin datos (ver \autoref{fig:problem-gestor-05}). Daniel Estrada indicó que el semáforo se entiende, pero pidió íconos más grandes y textos más cortos, en especial para los socios mayores de 55 o 60 años de su organización.
+  \item \textbf{Recomendación:} Aumentar el tamaño de los indicadores y de los textos de la leyenda, acompañar el color con un ícono o una etiqueta y revisar el contraste para su lectura en campo.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Leyenda del semáforo en la lista de Riesgo territorial} \label{fig:problem-gestor-05}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-05-semaforo.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Daniel Estrada. Elaboración propia.}
+\end{figure}
+
+\clearpage
