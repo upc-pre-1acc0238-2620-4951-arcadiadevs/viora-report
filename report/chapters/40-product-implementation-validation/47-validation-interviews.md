@@ -4,6 +4,8 @@ Esta sección aborda la investigación cualitativa de validación en campo a tra
 
 La validación comprende además sesiones con productores olivareros sobre la aplicación móvil Android, en las que cada participante crea su cuenta, activa su acceso, registra un lote y consulta la información agronómica de su olivar. Estas sesiones permiten contrastar la facilidad de uso de los recorridos principales y la correspondencia del calendario fenológico, la vecería y el frío invernal con la práctica de campo.
 
+La validación incluye también sesiones con gestores técnicos de organizaciones olivareras sobre la aplicación móvil Flutter, en las que cada participante revisa el riesgo territorial de los sectores y las parcelas socias, la proyección de acopio y la administración de socios y códigos de activación. Estas sesiones permiten contrastar la priorización de visitas, la proyección de toneladas de aceituna verde y negra y el padrón de socios con la práctica de supervisión de la organización.
+
 ### Diseño de entrevistas
 
 Para la validación de la propuesta de Viora se estructuran sesiones de evaluación adaptadas al productor olivarero y al gestor técnico de cooperativas. Durante cada sesión, los participantes interactúan con la Landing Page de Viora para evaluar la claridad de la propuesta de valor, la comprensión del problema agronómico abordado, la estructura de la información y la disposición de las opciones de acceso al servicio, permitiendo validar los arquetipos de usuario y fundamentar los flujos de las aplicaciones móviles.
@@ -137,6 +139,73 @@ Durante cada sesión, el participante opera la aplicación instalada en un telé
 *   ¿Considera que la aplicación móvil le permitiría tomar decisiones de aclareo y manejo con mayor rapidez y precisión que su método tradicional de cálculo?
 *   Considerando que la aplicación le brinda asistencia técnica personalizada y directa en la palma de su mano, ¿considera justificada la suscripción mensual de S/ 55 por hectárea?
 *   ¿Qué función o aspecto de la aplicación Android agregaría, modificaría o eliminaría para que se ajuste mejor a su jornada diaria de trabajo en el campo?
+
+\newpage
+
+#### **Aplicación móvil Flutter: gestores técnicos de organizaciones olivareras**
+&nbsp;
+
+**Objetivo:** Determinar si el gestor técnico logra crear su cuenta con el código de su cooperativa, identificar los sectores y parcelas socias en riesgo, proyectar el acopio de la campaña y administrar el padrón de socios y los códigos de activación en la aplicación móvil Flutter sin asistencia técnica, evaluar si la priorización de visitas, la proyección de toneladas de aceituna verde y negra y la cobertura de muestreo se corresponden con su práctica de supervisión y medir su disposición a adoptar la herramienta en la coordinación técnica de la organización.
+
+Durante cada sesión, el participante opera la aplicación instalada en un teléfono Android y recorre los user flows que materializan las metas de usuario del gestor técnico: crear la cuenta y entrar por primera vez (UF-F01), priorizar las visitas de campo (UF-F15), proyectar el acopio de la campaña (UF-F16) y administrar socios y códigos (UF-F17). Al inicio de la sesión se explica su propósito y, antes de cada bloque de preguntas, se indica la tarea que el participante debe realizar.
+
+\noindent \textbf{1. Datos generales y ámbito organizacional}
+
+*   ¿Cuál es su nombre completo y edad?
+*   ¿En qué distrito, institución o cooperativa agraria labora actualmente?
+*   ¿Cuál es su profesión o cargo dentro de la organización?
+*   ¿Cuántos años de experiencia tiene en la asistencia técnica y supervisión de olivares?
+*   ¿Cuántos productores o hectáreas supervisa de forma agregada durante una campaña?
+
+\noindent \textbf{2. Navegación general}
+
+*   Al abrir la aplicación en el teléfono, ¿la barra de navegación inferior con Inicio, Riesgo territorial, Acopio y Socios le resulta intuitiva para pasar de una sección a otra?
+*   ¿Los iconos, los colores y el tamaño de las letras se leen bien durante una visita de campo y en la oficina de la cooperativa?
+*   ¿Identifica con facilidad en qué pantalla o sección de la aplicación se encuentra en cada momento?
+
+\noindent \textbf{3. Bienvenida, registro y acceso con código de cooperativa}
+
+*   Al hacer el proceso de bienvenida y registro inicial, ¿el paso a paso guiado le resultó claro y fluido?
+*   Al ingresar el código GEST que le entrega su cooperativa, ¿entendió que con él se habilita su acceso de gestor técnico sin un pago adicional?
+*   Al crear su contraseña y verificar su cuenta, ¿los mensajes de ayuda y validación le permitieron acceder sin dudas ni fricciones?
+
+\noindent \textbf{4. Inicio}
+
+*   Al ingresar a la pantalla de Inicio, ¿el resumen de la organización le transmite una visión clara del estado de los socios y sus parcelas?
+*   ¿Las visitas sugeridas y los avisos de frío por sector le ayudan a identificar rápidamente dónde se requiere su presencia?
+*   ¿La organización de las tarjetas de información le permite identificar de un vistazo las prioridades de la jornada de supervisión?
+
+\noindent \textbf{5. Riesgo territorial y priorización de visitas}
+
+*   Al abrir el mapa de Riesgo territorial, ¿los colores rojo, ámbar y verde le permiten distinguir sin ayuda los sectores y parcelas que requieren atención?
+*   Al ordenar las visitas según su ubicación, ¿la lista le ayuda a decidir a qué socio visitar primero durante el recorrido de campo?
+*   Al abrir el detalle de un sector y de una parcela socia, ¿la información de carga frutal, frío invernal y motivo del riesgo le resulta suficiente para preparar la visita?
+*   ¿Considera que el expediente técnico descargable de la parcela facilita el seguimiento y la comunicación con el socio y los directivos?
+
+\noindent \textbf{6. Proyección de acopio}
+
+*   En la sección de Acopio, ¿la proyección de toneladas de aceituna verde y negra le parece comprensible y útil para planificar la recepción en planta?
+*   ¿La cobertura de muestreo que respalda la proyección le permite valorar qué tan confiable es la estimación de la campaña?
+*   Al cambiar de campaña, ¿la comparación con el acopio real de campañas anteriores le resulta clara para negociar contratos de venta?
+
+\noindent \textbf{7. Socios, sectores y códigos de activación}
+
+*   Al acceder a la sección de Socios, ¿le resulta fácil encontrar a un socio y consultar sus parcelas y el cupo disponible de la licencia?
+*   Al generar códigos de activación indicando la cantidad, las hectáreas por código y el vencimiento, ¿el formulario le pareció ágil y fácil de completar?
+*   ¿Compartir los códigos generados por WhatsApp se ajusta a la forma en que hoy se comunica con los socios?
+*   Al revisar los sectores declarados por los socios, ¿le resulta claro confirmar, renombrar o unir los sectores para mantener ordenado el territorio de la organización?
+
+\noindent \textbf{8. Trabajo sin conexión}
+
+*   Al perder la señal durante una visita, ¿el aviso de último estado guardado le transmite confianza para seguir consultando el mapa de riesgo y la proyección de acopio?
+*   ¿La información disponible sin conexión es suficiente para atender a un socio en su parcela, o qué datos adicionales necesitaría tener a mano?
+
+\noindent \textbf{9. Preguntas de cierre y evaluación institucional}
+
+*   En una escala del 1 al 5, ¿qué tan útil considera la aplicación móvil para la supervisión técnica de los socios y la coordinación del acopio en su organización?
+*   ¿Considera que la aplicación le permitiría priorizar visitas y estimar el acopio con mayor rapidez y precisión que su método actual de seguimiento?
+*   Considerando que la licencia del Plan Cooperativa cubre a los socios mediante códigos de activación, ¿considera justificada la inversión institucional frente a las pérdidas que evita una estimación de acopio desviada?
+*   ¿Qué función o aspecto de la aplicación agregaría, modificaría o eliminaría para que se ajuste mejor a la gestión técnica y comercial de su organización?
 
 ### Registro de entrevistas
 
