@@ -10,7 +10,7 @@ La validación incluye también sesiones con gestores técnicos de organizacione
 
 Para la validación de la propuesta de Viora se estructuran sesiones de evaluación adaptadas al productor olivarero y al gestor técnico de cooperativas. Durante cada sesión, los participantes interactúan con la Landing Page de Viora para evaluar la claridad de la propuesta de valor, la comprensión del problema agronómico abordado, la estructura de la información y la disposición de las opciones de acceso al servicio, permitiendo validar los arquetipos de usuario y fundamentar los flujos de las aplicaciones móviles.
 
-#### **Segmento 1: Productores olivareros de la región sur**
+#### **Landing page: productores olivareros de la región sur**
 &nbsp;
 
 **Objetivo:** Determinar si el productor comprende con inmediatez que Viora es un asistente digital agronómico diseñado específicamente para mitigar la vecería en el olivo, evaluar su reacción ante el modelo de suscripción mensual por hectárea y medir la tranquilidad que le confiere el soporte de trabajo en campo sin conectividad a internet.
@@ -44,7 +44,7 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 
 \newpage
 
-#### **Segmento 2: Gestores técnicos de organizaciones olivareras**
+#### **Landing page: gestores técnicos de organizaciones olivareras**
 &nbsp;
 
 **Objetivo:** Evaluar si el portal comunica con suficiente solvencia técnica el respaldo metodológico del sistema, verificar la claridad del Plan Cooperativa basado en códigos de activación para los agricultores asociados y ponderar el interés de adopción institucional para coordinar la logística de acopio en planta.
@@ -213,7 +213,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 
 \newpage
 
-#### Segmento 1: Productores olivareros de la región sur
+#### Landing page: productores olivareros de la región sur
 &nbsp;
 
 \begingroup
@@ -261,7 +261,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 
 \newpage
 
-#### Segmento 2: Gestores técnicos de organizaciones olivareras
+#### Landing page: gestores técnicos de organizaciones olivareras
 &nbsp;
 
 ```{=latex}
@@ -352,6 +352,11 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 ### Evaluaciones según heurísticas
 
 Esta sección contiene el proceso de evaluación de las sesiones de validación basado en heurísticas, considerando heurísticas de usabilidad, arquitectura de información e inclusive design de la experiencia propuesta.
+
+#### Landing page
+&nbsp;
+
+La evaluación de la landing page recoge las observaciones de los productores olivareros y de los gestores técnicos que participaron en las sesiones de validación.
 
 \vspace{0.3cm}
 
@@ -475,6 +480,11 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \end{itemize}
 
 \clearpage
+
+#### Aplicación móvil Android
+&nbsp;
+
+La evaluación de la aplicación móvil Android recoge las observaciones de los productores olivareros que recorrieron la aplicación en las sesiones de validación.
 
 \begin{center}
 \textbf{--- UX Heuristics \& Principles Evaluation ---} \\
