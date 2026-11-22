@@ -248,7 +248,11 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo por polígono abierto o vértices insuficientes}\newline
 \textbf{Given} un productor trazando los límites de su predio. \textbf{When} intenta registrar el predio con menos de tres coordenadas georreferenciadas o con un trazado perimétrico que no cierra geométricamente. \textbf{Then} el sistema deniega el registro impidiendo la creación del lote. \textbf{And} notifica que se requiere un polígono cerrado de al menos tres vértices válidos.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Trazado manual sobre mapa satelital ante ausencia de señal GPS}\newline
-\textbf{Given} un productor delimitando un lote en campo sin recepción de señal satelital en el sensor GPS del dispositivo. \textbf{When} no se obtiene fijación de coordenadas satelitales directas. \textbf{Then} el sistema permite fijar manualmente los puntos perimétricos sobre la vista satelital de la zona. \textbf{And} calcula el área delimitada conservando la validez geométrica del lote.} \\ \hline
+\textbf{Given} un productor delimitando un lote en campo sin recepción de señal satelital en el sensor GPS del dispositivo. \textbf{When} no se obtiene fijación de coordenadas satelitales directas. \textbf{Then} el sistema permite fijar manualmente los puntos perimétricos sobre la vista satelital de la zona. \textbf{And} calcula el área delimitada conservando la validez geométrica del lote.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Servicio de ubicación desactivado al iniciar la delimitación}\newline
+\textbf{Given} un productor que inicia la delimitación de un lote con el servicio de ubicación del dispositivo desactivado. \textbf{When} elige el método de delimitación. \textbf{Then} el sistema informa que la ubicación está desactivada y ofrece abrir los ajustes del dispositivo para activarla. \textbf{And} mantiene disponible el trazado manual sobre el mapa satelital, de modo que el productor no queda bloqueado.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Advertencia por diferencia entre el área trazada y el área indicada}\newline
+\textbf{Given} un productor que indicó de forma opcional el área aproximada del lote al iniciar el registro. \textbf{When} el área calculada del polígono difiere en más de 30\% del área indicada e intenta guardar el lote. \textbf{Then} el sistema muestra ambas áreas y advierte la diferencia antes de guardar. \textbf{And} permite corregir el contorno conservando los vértices marcados o confirmar el registro tal como está.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -438,7 +442,9 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Emisión de alerta por temperatura extrema durante floración}\newline
 \textbf{Given} una parcela en fase de floración con telemetría de microclima activa. \textbf{When} la temperatura ambiental supera los 32°C con humedad relativa inferior al 20\% durante más de tres horas consecutivas. \textbf{Then} el sistema registra una advertencia de riesgo de desecación estigmática y aborto floral. \textbf{And} notifica al productor el peligro de reducción en la tasa de cuajado.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Normalización de alerta tras restablecimiento de variables dentro de rango}\newline
-\textbf{Given} una parcela con alerta activa por estrés hídrico. \textbf{When} una nueva lectura de la sonda registra una recuperación de humedad de suelo por encima del umbral seguro tras un evento de riego. \textbf{Then} el sistema actualiza el estado de la alerta a normalizada. \textbf{And} registra el tiempo total que el olivar permaneció bajo estrés hídrico.} \\ \hline
+\textbf{Given} una parcela con alerta activa por estrés hídrico. \textbf{When} una nueva lectura de la sonda registra una recuperación de humedad de suelo por encima del umbral seguro tras un evento de riego. \textbf{Then} el sistema actualiza el estado de la alerta a normalizada. \textbf{And} registra el tiempo total que el olivar permaneció bajo estrés hídrico.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Aviso de alerta crítica fuera de la aplicación}\newline
+\textbf{Given} un productor con las notificaciones de alertas críticas activadas en la aplicación móvil. \textbf{When} una de sus parcelas registra un riesgo de helada o una alerta de severidad crítica, o termina la postergación de una de ellas. \textbf{Then} el sistema envía una notificación al dispositivo una sola vez por alerta, que abre el detalle de la alerta. \textbf{And} el productor puede desactivar este aviso desde su cuenta; si el permiso de notificaciones del dispositivo está desactivado, la aplicación le indica cómo habilitarlo.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1218,7 +1224,9 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Consulta sin conexión}\newline
 \textbf{Given} un productor sin conexión que tiene guardado el resumen del día. \textbf{When} lo consulta. \textbf{Then} el sistema presenta el resumen guardado.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Productor sin parcelas activas}\newline
-\textbf{Given} un productor sin parcelas activas. \textbf{When} solicita su resumen del día. \textbf{Then} el sistema informa que no existe información por resumir.} \\ \hline
+\textbf{Given} un productor sin parcelas activas. \textbf{When} solicita su resumen del día. \textbf{Then} el sistema informa que no existe información por resumir.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Ventana de aclareo de un campo con varias parcelas}\newline
+\textbf{Given} un productor con varias parcelas activas y al menos una ventana de aclareo abierta o por abrir en la semana. \textbf{When} consulta su resumen del día. \textbf{Then} el indicador de la ventana de aclareo nombra la parcela cuya ventana cuenta, por ejemplo «22 días de ventana en La Yarada». \textbf{And} los días restantes incluyen el día de hoy, igual que en la tarjeta de fase de Inicio y en el plan de aclareo.} \\ \hline
 \end{longtable}
 \endgroup
 
