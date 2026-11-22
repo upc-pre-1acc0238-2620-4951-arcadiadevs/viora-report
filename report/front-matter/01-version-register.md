@@ -43,6 +43,7 @@ v2.0.1 & 09/10/26 & Santi Guerrero, Fabrizio Alonso & Reducción de tamaño de i
 v2.1.0 & 12/11/26 & Espada Lazo, Piero Anthony & Redacción de entrevistas de validación de la aplicación móvil Android, evaluación heurística y conclusiones \tabularnewline \hline
 v3.0.0 & 12/11/26 & Santi Guerrero, Fabrizio Alonso & Consolidación y cierre de la versión 3.0.0 del informe con el Sprint 2 \tabularnewline \hline
 v3.1.0 & 22/11/26 & Santi Guerrero, Fabrizio Alonso & Revisión general del informe: reducción de páginas, actualización de conclusiones y videos de entrega, y ajustes de formato \tabularnewline \hline
+v3.2.0 & 22/11/26 & Espada Lazo, Piero Anthony & Redacción de entrevistas de validación de la aplicación móvil Flutter, evaluación heurística y conclusiones \tabularnewline \hline
 \end{longtable}
 
 \newpage

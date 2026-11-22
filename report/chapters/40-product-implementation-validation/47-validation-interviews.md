@@ -4,11 +4,13 @@ Esta sección aborda la investigación cualitativa de validación en campo a tra
 
 La validación comprende además sesiones con productores olivareros sobre la aplicación móvil Android, en las que cada participante crea su cuenta, activa su acceso, registra un lote y consulta la información agronómica de su olivar. Estas sesiones permiten contrastar la facilidad de uso de los recorridos principales y la correspondencia del calendario fenológico, la vecería y el frío invernal con la práctica de campo.
 
+La validación incluye también sesiones con gestores técnicos de organizaciones olivareras sobre la aplicación móvil Flutter, en las que cada participante revisa el riesgo territorial de los sectores y las parcelas socias, la proyección de acopio y la administración de socios y códigos de activación. Estas sesiones permiten contrastar la priorización de visitas, la proyección de toneladas de aceituna verde y negra y el padrón de socios con la práctica de supervisión de la organización.
+
 ### Diseño de entrevistas
 
 Para la validación de la propuesta de Viora se estructuran sesiones de evaluación adaptadas al productor olivarero y al gestor técnico de cooperativas. Durante cada sesión, los participantes interactúan con la Landing Page de Viora para evaluar la claridad de la propuesta de valor, la comprensión del problema agronómico abordado, la estructura de la información y la disposición de las opciones de acceso al servicio, permitiendo validar los arquetipos de usuario y fundamentar los flujos de las aplicaciones móviles.
 
-#### **Segmento 1: Productores olivareros de la región sur**
+#### **Landing page: productores olivareros de la región sur**
 &nbsp;
 
 **Objetivo:** Determinar si el productor comprende con inmediatez que Viora es un asistente digital agronómico diseñado específicamente para mitigar la vecería en el olivo, evaluar su reacción ante el modelo de suscripción mensual por hectárea y medir la tranquilidad que le confiere el soporte de trabajo en campo sin conectividad a internet.
@@ -42,7 +44,7 @@ Para la validación de la propuesta de Viora se estructuran sesiones de evaluaci
 
 \newpage
 
-#### **Segmento 2: Gestores técnicos de organizaciones olivareras**
+#### **Landing page: gestores técnicos de organizaciones olivareras**
 &nbsp;
 
 **Objetivo:** Evaluar si el portal comunica con suficiente solvencia técnica el respaldo metodológico del sistema, verificar la claridad del Plan Cooperativa basado en códigos de activación para los agricultores asociados y ponderar el interés de adopción institucional para coordinar la logística de acopio en planta.
@@ -138,13 +140,80 @@ Durante cada sesión, el participante opera la aplicación instalada en un telé
 *   Considerando que la aplicación le brinda asistencia técnica personalizada y directa en la palma de su mano, ¿considera justificada la suscripción mensual de S/ 55 por hectárea?
 *   ¿Qué función o aspecto de la aplicación Android agregaría, modificaría o eliminaría para que se ajuste mejor a su jornada diaria de trabajo en el campo?
 
+\newpage
+
+#### **Aplicación móvil Flutter: gestores técnicos de organizaciones olivareras**
+&nbsp;
+
+**Objetivo:** Determinar si el gestor técnico logra crear su cuenta con el código de su cooperativa, identificar los sectores y parcelas socias en riesgo, proyectar el acopio de la campaña y administrar el padrón de socios y los códigos de activación en la aplicación móvil Flutter sin asistencia técnica, evaluar si la priorización de visitas, la proyección de toneladas de aceituna verde y negra y la cobertura de muestreo se corresponden con su práctica de supervisión y medir su disposición a adoptar la herramienta en la coordinación técnica de la organización.
+
+Durante cada sesión, el participante opera la aplicación instalada en un teléfono Android y recorre los user flows que materializan las metas de usuario del gestor técnico: crear la cuenta y entrar por primera vez (UF-F01), priorizar las visitas de campo (UF-F15), proyectar el acopio de la campaña (UF-F16) y administrar socios y códigos (UF-F17). Al inicio de la sesión se explica su propósito y, antes de cada bloque de preguntas, se indica la tarea que el participante debe realizar.
+
+\noindent \textbf{1. Datos generales y ámbito organizacional}
+
+*   ¿Cuál es su nombre completo y edad?
+*   ¿En qué distrito, institución o cooperativa agraria labora actualmente?
+*   ¿Cuál es su profesión o cargo dentro de la organización?
+*   ¿Cuántos años de experiencia tiene en la asistencia técnica y supervisión de olivares?
+*   ¿Cuántos productores o hectáreas supervisa de forma agregada durante una campaña?
+
+\noindent \textbf{2. Navegación general}
+
+*   Al abrir la aplicación en el teléfono, ¿la barra de navegación inferior con Inicio, Riesgo territorial, Acopio y Socios le resulta intuitiva para pasar de una sección a otra?
+*   ¿Los iconos, los colores y el tamaño de las letras se leen bien durante una visita de campo y en la oficina de la cooperativa?
+*   ¿Identifica con facilidad en qué pantalla o sección de la aplicación se encuentra en cada momento?
+
+\noindent \textbf{3. Bienvenida, registro y acceso con código de cooperativa}
+
+*   Al hacer el proceso de bienvenida y registro inicial, ¿el paso a paso guiado le resultó claro y fluido?
+*   Al ingresar el código GEST que le entrega su cooperativa, ¿entendió que con él se habilita su acceso de gestor técnico sin un pago adicional?
+*   Al crear su contraseña y verificar su cuenta, ¿los mensajes de ayuda y validación le permitieron acceder sin dudas ni fricciones?
+
+\noindent \textbf{4. Inicio}
+
+*   Al ingresar a la pantalla de Inicio, ¿el resumen de la organización le transmite una visión clara del estado de los socios y sus parcelas?
+*   ¿Las visitas sugeridas y los avisos de frío por sector le ayudan a identificar rápidamente dónde se requiere su presencia?
+*   ¿La organización de las tarjetas de información le permite identificar de un vistazo las prioridades de la jornada de supervisión?
+
+\noindent \textbf{5. Riesgo territorial y priorización de visitas}
+
+*   Al abrir el mapa de Riesgo territorial, ¿los colores rojo, ámbar y verde le permiten distinguir sin ayuda los sectores y parcelas que requieren atención?
+*   Al ordenar las visitas según su ubicación, ¿la lista le ayuda a decidir a qué socio visitar primero durante el recorrido de campo?
+*   Al abrir el detalle de un sector y de una parcela socia, ¿la información de carga frutal, frío invernal y motivo del riesgo le resulta suficiente para preparar la visita?
+*   ¿Considera que el expediente técnico descargable de la parcela facilita el seguimiento y la comunicación con el socio y los directivos?
+
+\noindent \textbf{6. Proyección de acopio}
+
+*   En la sección de Acopio, ¿la proyección de toneladas de aceituna verde y negra le parece comprensible y útil para planificar la recepción en planta?
+*   ¿La cobertura de muestreo que respalda la proyección le permite valorar qué tan confiable es la estimación de la campaña?
+*   Al cambiar de campaña, ¿la comparación con el acopio real de campañas anteriores le resulta clara para negociar contratos de venta?
+
+\noindent \textbf{7. Socios, sectores y códigos de activación}
+
+*   Al acceder a la sección de Socios, ¿le resulta fácil encontrar a un socio y consultar sus parcelas y el cupo disponible de la licencia?
+*   Al generar códigos de activación indicando la cantidad, las hectáreas por código y el vencimiento, ¿el formulario le pareció ágil y fácil de completar?
+*   ¿Compartir los códigos generados por WhatsApp se ajusta a la forma en que hoy se comunica con los socios?
+*   Al revisar los sectores declarados por los socios, ¿le resulta claro confirmar, renombrar o unir los sectores para mantener ordenado el territorio de la organización?
+
+\noindent \textbf{8. Trabajo sin conexión}
+
+*   Al perder la señal durante una visita, ¿el aviso de último estado guardado le transmite confianza para seguir consultando el mapa de riesgo y la proyección de acopio?
+*   ¿La información disponible sin conexión es suficiente para atender a un socio en su parcela, o qué datos adicionales necesitaría tener a mano?
+
+\noindent \textbf{9. Preguntas de cierre y evaluación institucional}
+
+*   En una escala del 1 al 5, ¿qué tan útil considera la aplicación móvil para la supervisión técnica de los socios y la coordinación del acopio en su organización?
+*   ¿Considera que la aplicación le permitiría priorizar visitas y estimar el acopio con mayor rapidez y precisión que su método actual de seguimiento?
+*   Considerando que la licencia del Plan Cooperativa cubre a los socios mediante códigos de activación, ¿considera justificada la inversión institucional frente a las pérdidas que evita una estimación de acopio desviada?
+*   ¿Qué función o aspecto de la aplicación agregaría, modificaría o eliminaría para que se ajuste mejor a la gestión técnica y comercial de su organización?
+
 ### Registro de entrevistas
 
-En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo minucioso de la interacción con el portal web y la evidencia gráfica correspondiente.
+En esta sección se presenta el registro individual de las sesiones de validación cualitativa realizadas con los usuarios representativos de los dos segmentos objetivo del proyecto Viora (productores olivareros independientes y gestores técnicos de organizaciones olivareras). Cada ficha detalla los datos demográficos y agronómicos del participante, el intervalo temporal y duración total de la sesión, el enlace directo a la grabación audiovisual alojada en la nube institucional, un resumen descriptivo de la interacción con la landing page o con las aplicaciones móviles productor y gestor, y la evidencia gráfica correspondiente.
 
 \newpage
 
-#### Segmento 1: Productores olivareros de la región sur
+#### Landing page: productores olivareros de la región sur
 &nbsp;
 
 \begingroup
@@ -162,7 +231,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Productor olivarero y acopiador local} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Landing page} \\ 
 \textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{00:05 - 05:07} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
 \hline 
 \multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Productor con 10 años en el olivar de Yauca, a cargo de 2 hectáreas propias y acopio local. Al revisar el portal web, comprendió de inmediato que la herramienta previene las pérdidas por falta de floración y frío invernal insuficiente. Validó que la vecería afecta con igual severidad a Tacna y Yauca, con mermas de hasta 90\% en campañas anómalas. Calificó los módulos de frío y balance de carga como claros y orientados a proteger la cosecha. Respecto al Plan Productor, consideró accesible la tarifa, aunque consultó si el costo incluye IGV y facturación con RUC para gastos contables. Otorgó una calificación de 4/5 a la plataforma, señalando que la adopción tecnológica requiere comprobación en campo. Afirmó que su disposición de pago se afianzará al observar resultados o recibir recomendaciones de colegas, sugiriendo incorporar testimonios reales de agricultores para generar mayor confianza.} \\ 
 \multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-cristobal.png}\vspace{0.05cm}} \\ 
@@ -182,7 +251,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Productora olivarera y comercializadora familiar} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Landing page} \\ 
 \textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{05:17 - 11:10} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
 \hline 
 \multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Productora con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas tecnificadas de aceituna Criolla. Comprendió con inmediatez que el producto es un asistente predial frente a la vecería. Ratificó que las oscilaciones productivas descritas reflejan su realidad, con caídas drásticas de cosecha en años impactados por El Niño. Resaltó el módulo de aclareo como una valiosa ventana de oportunidad antes del endurecimiento del hueso, eliminando dudas operativas. Calificó la tarifa de S/ 55 por hectárea/mes del Plan Productor como transparente y accesible, pues un mal manejo genera pérdidas muy superiores a la suscripción anual. Destacó especialmente el soporte sin conexión para registrar muestras sin señal en campo. Asignó una calificación de 5/5 a la propuesta y recomendó integrar un enlace directo a WhatsApp en la página para brindar asistencia técnica rápida.} \\ 
 \multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas.png}\vspace{0.05cm}} \\ 
@@ -192,7 +261,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 
 \newpage
 
-#### Segmento 2: Gestores técnicos de organizaciones olivareras
+#### Landing page: gestores técnicos de organizaciones olivareras
 &nbsp;
 
 ```{=latex}
@@ -205,7 +274,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Ingeniero agrónomo, jefe técnico de cooperativa agraria} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Landing page} \\ 
 \textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{11:13 - 16:41} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
 \hline 
 \multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Ingeniero Agrónomo con 18 años de experiencia, a cargo de supervisar 68 socios y 420 hectáreas en La Yarada y Magollo. Valoró la centralización de datos para mitigar la dispersión territorial y superar la «ceguera logística» en planta, donde estimaciones tradicionales provocan desviaciones de hasta 40\% en acopio. Destacó el esquema del Plan Cooperativa basado en códigos institucionales de activación, eliminando trabas administrativas con los productores. Confirmó que el seguimiento de frío entre mayo y agosto posee pleno rigor agronómico y que los descargos legales aportan solidez formal ante directivos. Calificó la utilidad de la plataforma con 5/5 y acordó presentarla en asamblea directiva para una prueba piloto. Como recomendaciones de diseño, sugirió habilitar un botón directo para coordinar demostraciones a nivel gerencial y una sección de preguntas frecuentes sobre el soporte a socios con menor destreza digital.} \\ 
 \multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-daniel-estrada.png}\vspace{0.05cm}} \\ 
@@ -225,7 +294,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Ingeniera agrónoma, responsable técnica y de acopio} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Landing page} \\ 
 \textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{16:44 - 23:02} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
 \hline 
 \multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Ingeniera Agrónoma con 15 años de trayectoria en Tacna, a cargo de 35 socios y 150 hectáreas con riego tecnificado. Valoró positivamente la distinción entre el panel operativo del productor y el módulo analítico institucional. Resaltó la pertinencia técnica de alertar la ventana de aclareo previa al endurecimiento del hueso, señalando que retrasar el raleo deteriora el calibre del fruto y la floración de la siguiente campaña. Confirmó que la plataforma optimiza la coordinación técnica al suministrar datos objetivos de campo. Calificó la propuesta con 4.8/5, fundamentando que la inversión institucional se amortiza al prevenir penalizaciones comerciales en contratos de acopio. Como mejoras puntuales, propuso permitir la exportación de estimaciones a hojas de cálculo para comisiones directivas e incorporar en el sitio web vistas previas directas de la interfaz móvil de muestreo.} \\ 
 \multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-maribel-vargas.png}\vspace{0.05cm}} \\ 
@@ -248,7 +317,7 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Productor olivarero} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Aplicación móvil productor} \\ 
 \textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{23:12 - 28:46} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
 \hline 
 \multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Productor independiente con 7 años de experiencia en La Yarada Los Palos, a cargo de 4 hectáreas de aceituna Sevillana. Calificó el registro guiado como claro y fluido y la cuota calculada según sus hectáreas como comprensible. Registró el lote «Mi Tierra» con marco de 6 $\times$ 6 metros y consideró el trazado en el mapa bastante fácil, porque la aplicación calcula el área y los árboles a partir del contorno. En Inicio asoció el término aclareo con la poda y corrigió el calendario fenológico según su campaña: floración en julio, cuajado en agosto, crecimiento del fruto hasta febrero y cosecha en marzo. Valoró el seguimiento de frío invernal para anticipar la producción y consideró clarísimo el resumen del muestreo. Al registrar la cosecha advirtió la falta de un campo para el descarte. Asignó 5/5 a la utilidad, consideró justificada la tarifa de S/ 55 por hectárea al mes y mencionó la orientación frente a plagas, necesidad que queda fuera del alcance de Viora. Durante la sesión, ubicar la parcela tomó más tiempo al no estar activado el GPS del dispositivo.} \\ 
 \multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-gustavo-calizaga.png}\vspace{0.05cm}} \\ 
@@ -268,10 +337,53 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 \textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Productora olivarera y comercializadora familiar} \\ 
 \textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Aplicación móvil productor} \\ 
 \textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{28:51 - 34:32} \\ 
-\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/upc-arcadiadevs-validation-av2}} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
 \hline 
 \multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Productora independiente con más de 10 años de experiencia en La Yarada-Los Palos, a cargo de 3 hectáreas con riego por goteo de aceituna Criolla y Sevillana. Completó el registro guiado y la verificación por correo, revisó el Plan Productor para sus 3 hectáreas y avanzó hasta el pago de prueba. Trazó en el mapa el lote «Sevillana» con marco de 7 $\times$ 7 metros y consideró adecuados los campos de delimitación y plantación. En Lotes distinguió su parcela por el nombre. En Inicio reconoció sus parcelas y el clima del día, y valoró el aviso de frío por ser lo que más le importa, aunque pidió entender mejor la etapa del olivo. Comprendió las horas de frío, pero indicó que el índice de alternancia requiere una explicación previa. Señaló que hoy anota en un cuaderno y que el expediente le daría más orden. Asignó 4/5 a la utilidad, consideró accesible la tarifa y solicitó avisos de frío por WhatsApp y funcionamiento sin señal.} \\ 
 \multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-alexandra-rosas-app.png}\vspace{0.05cm}} \\ 
+\hline 
+\end{tabular}
+```
+
+\newpage
+
+#### Aplicación móvil Flutter: gestores técnicos de organizaciones olivareras
+&nbsp;
+
+```{=latex}
+\noindent \begin{tabular}{p{\dimexpr 0.15\textwidth-2\tabcolsep\relax} p{\dimexpr 0.37\textwidth-2\tabcolsep\relax} p{\dimexpr 0.13\textwidth-2\tabcolsep\relax} p{\dimexpr 0.35\textwidth-2\tabcolsep\relax}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista de Validación \#7} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Juan Maquera & \textbf{Edad} & 55 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{La Yarada-Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Técnico agrónomo e ingeniero civil, gestor de campo de cooperativa} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Aplicación móvil gestor} \\ 
+\textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{34:31 - 39:33} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
+\hline 
+\multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Gestor de campo de la Cooperativa 28 en La Yarada-Los Palos, con cerca de 20 años supervisando olivares. Inició sesión con el correo y la contraseña asignados y recorrió Inicio, Riesgo territorial, Acopio y Socios desde la barra inferior. En Riesgo territorial coincidió en visitar primero la parcela «Flut 1» por su prioridad y señaló que usaría la sobrecarga de 275 \% y el expediente para conocer la variedad y las hectáreas del lote. En Acopio identificó 20 toneladas proyectadas, aunque consideró que la proyección necesitaría más hectáreas muestreadas para ser confiable. Ubicó el cupo de la licencia en la tarjeta verde y generó códigos de activación con las opciones de la pantalla. Interpretó el aviso de la última información guardada como la última acción realizada. Asignó 4/5 a la utilidad, la usaría al gestionar muchos productores y pidió integrar estudios meteorológicos e información satelital.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-juan-maquera.png}\vspace{0.05cm}} \\ 
+\hline 
+\end{tabular}
+```
+
+\vspace{0.35cm}
+
+```{=latex}
+\noindent \begin{tabular}{p{\dimexpr 0.15\textwidth-2\tabcolsep\relax} p{\dimexpr 0.37\textwidth-2\tabcolsep\relax} p{\dimexpr 0.13\textwidth-2\tabcolsep\relax} p{\dimexpr 0.35\textwidth-2\tabcolsep\relax}} 
+\hline 
+\multicolumn{4}{l}{\textbf{Entrevista de Validación \#8} \hfill \textbf{Detalles}} \\ 
+\hline 
+\textbf{Nombre} & Daniel Estrada & \textbf{Edad} & 44 \\ 
+\textbf{Distrito} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{La Yarada Los Palos, Tacna} \\ 
+\textbf{Ocupación} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Ingeniero agrónomo, jefe técnico de cooperativa agraria} \\ 
+\textbf{Artefacto} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{Aplicación móvil gestor} \\ 
+\textbf{Timing} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{39:34 - 44:40} \\ 
+\textbf{Enlace} & \multicolumn{3}{p{\dimexpr 0.85\textwidth-2\tabcolsep\relax}}{\url{https://tinyurl.com/validation-interviews-tb2}} \\ 
+\hline 
+\multicolumn{4}{p{\dimexpr\textwidth-2\tabcolsep\relax}}{\textbf{Resumen de la sesión:} Jefe técnico de una cooperativa olivarera de La Yarada Los Palos y Magollo, con 18 años en el sector y 68 socios en cerca de 420 hectáreas bajo su supervisión. Indicó que Inicio le permite ver en una sola pantalla el estado de predios dispersos y que los cuatro botones de la barra inferior coinciden con su trabajo, aunque pidió simplificar las tarjetas para los socios mayores. En Riesgo territorial interpretó la carga frutal de la parcela crítica y solicitó mostrar el nombre o un código del productor. Comprendió el semáforo, pidió íconos más grandes y valoró ordenar las visitas por cercanía. En Acopio solicitó el desglose por calibre, generó cinco códigos y señaló que coordina con los socios por WhatsApp. Valoró que la aplicación funcione sin señal, asignó entre 4/5 y 5/5 a la utilidad y pidió alertas por WhatsApp y textos más cortos.} \\ 
+\multicolumn{4}{c}{\vspace{0.05cm}\includegraphics[width=0.28\textwidth,height=4.2cm,keepaspectratio]{report/assets/interviews/validation/interview-val-daniel-estrada-app.png}\vspace{0.05cm}} \\ 
 \hline 
 \end{tabular}
 ```
@@ -283,6 +395,11 @@ En esta sección se presenta el registro individual de las sesiones de validaci�
 ### Evaluaciones según heurísticas
 
 Esta sección contiene el proceso de evaluación de las sesiones de validación basado en heurísticas, considerando heurísticas de usabilidad, arquitectura de información e inclusive design de la experiencia propuesta.
+
+#### Landing page
+&nbsp;
+
+La evaluación de la landing page recoge las observaciones de los productores olivareros y de los gestores técnicos que participaron en las sesiones de validación.
 
 \vspace{0.3cm}
 
@@ -407,6 +524,11 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 
 \clearpage
 
+#### Aplicación móvil Android
+&nbsp;
+
+La evaluación de la aplicación móvil Android recoge las observaciones de los productores olivareros que recorrieron la aplicación en las sesiones de validación.
+
 \begin{center}
 \textbf{--- UX Heuristics \& Principles Evaluation ---} \\
 \textbf{-- Usability - Inclusive Design - Information Architecture --}
@@ -442,7 +564,6 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 1. Muestreo de cuajado sin conexión a pie de árbol en el predio.
 2. Confirmación de una labor de aclareo ejecutada desde el Plan.
 3. Activación del acceso mediante código de cooperativa.
-4. Tareas del gestor técnico en la aplicación multiplataforma.
 
 \noindent \textbf{ESCALA DE SEVERIDAD:} Los errores identificados han sido puntuados tomando en cuenta la siguiente escala:
 
@@ -617,6 +738,188 @@ No están incluidas en esta versión de la evaluación las siguientes tareas:
 \centering
 \includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-app-07-alertas.png}
 \caption*{\textit{Nota.} Captura de la sesión de validación con Alexandra Rosas. Elaboración propia.}
+\end{figure}
+
+\clearpage
+
+#### Aplicación móvil Flutter
+&nbsp;
+
+La evaluación de la aplicación móvil Flutter recoge las observaciones de los gestores técnicos que recorrieron la aplicación en las sesiones de validación.
+
+\begin{center}
+\textbf{--- UX Heuristics \& Principles Evaluation ---} \\
+\textbf{-- Usability - Inclusive Design - Information Architecture --}
+\end{center}
+
+\vspace{0.2cm}
+
+\noindent \begin{tabular}{p{4.2cm} p{11cm}}
+\textbf{CARRERA:} & Ingeniería de Software \\
+\textbf{CURSO:} & 1ACC0238 - Aplicaciones para Dispositivos Móviles \\
+\textbf{NRC:} & 4951 \\
+\textbf{PROFESORES:} & Todos \\
+\textbf{AUDITOR:} & ArcadiaDevs \\
+\textbf{CLIENTES:} & Juan Maquera, Ing. Daniel Estrada \\
+\textbf{Site o App a Evaluar:} & Aplicación móvil gestor \\
+\end{tabular}
+
+\vspace{0.35cm}
+
+\noindent \textbf{TAREAS A EVALUAR:}
+
+El alcance de esta evaluación incluye la revisión de la usabilidad de las siguientes tareas en la aplicación móvil Flutter:
+
+1. Inicio de sesión con la cuenta del gestor y navegación entre Inicio, Riesgo territorial, Acopio y Socios.
+2. Consulta del resumen de la organización en Inicio.
+3. Priorización de visitas por sector y parcela en Riesgo territorial y consulta del expediente técnico.
+4. Consulta de la proyección de acopio y de su cobertura de muestreo.
+5. Revisión del padrón de socios y del cupo de la licencia, y generación de códigos de activación.
+
+No están incluidas en esta versión de la evaluación las siguientes tareas:
+
+1. Registro del acopio real recibido en planta al cierre de la campaña.
+2. Revocación de códigos de activación emitidos.
+
+\noindent \textbf{ESCALA DE SEVERIDAD:} Los errores identificados han sido puntuados tomando en cuenta la siguiente escala:
+
+\renewcommand{\arraystretch}{0.98}
+\begin{longtable}{p{1.2cm} p{13.2cm}}
+\hline
+\textbf{Nivel} & \textbf{Descripción} \\ \hline
+\endfirsthead
+\hline
+\textbf{Nivel} & \textbf{Descripción} \\ \hline
+\endhead
+\hline
+\endfoot
+1 & Problema superficial: Puede ser fácilmente superado por el usuario y ocurre con muy poca frecuencia. No necesita ser corregido a no ser que exista disponibilidad de tiempo. \\ \hline
+2 & Problema menor: Puede ocurrir un poco más frecuentemente o es un poco más difícil de superar para el usuario. Se le debe asignar una prioridad baja de cara al siguiente ciclo de desarrollo. \\ \hline
+3 & Problema mayor: Ocurre frecuentemente o los usuarios no son capaces de resolverlo. Es importante que sea corregido y se le debe asignar una prioridad alta. \\ \hline
+4 & Problema muy grave: Error de gran impacto que impide al usuario continuar con el uso de la herramienta. Es imperativo que sea corregido antes del lanzamiento oficial. \\ \hline
+\end{longtable}
+
+\noindent \textbf{TABLA RESUMEN:}
+
+\renewcommand{\arraystretch}{0.95}
+\begin{longtable}{p{0.6cm} p{6.2cm} p{2.2cm} p{5.2cm}}
+\caption{Matriz resumen de hallazgos en la evaluación heurística de UX de la aplicación móvil Flutter.} \label{tab:heuristic-summary-gestor} \\
+\hline
+\textbf{\#} & \textbf{Problema} & \textbf{Severidad} & \textbf{Heurística / Principio violado} \\ \hline
+\endfirsthead
+\hline
+\textbf{\#} & \textbf{Problema} & \textbf{Severidad} & \textbf{Heurística / Principio violado} \\ \hline
+\endhead
+\hline
+\endfoot
+1 & La pantalla de códigos generados muestra cada código con una letra por línea. & 2 & Usabilidad: Consistencia y estándares / Arquitectura de Información: Claridad. \\ \hline
+2 & El detalle de la parcela no identifica de forma explícita al socio productor. & 2 & Usabilidad: Reconocer antes que recordar / Arquitectura de Información: Localizable. \\ \hline
+3 & La proyección de acopio solo distingue aceituna verde y negra, sin desglose por calibre. & 2 & Usabilidad: Coincidencia entre el sistema y el mundo real. \\ \hline
+4 & La proyección se marca con «Cobertura suficiente» cuando solo la mitad de las parcelas cuenta con muestreo. & 1 & Usabilidad: Visibilidad del estado del sistema / Arquitectura de Información: Claridad. \\ \hline
+5 & La leyenda del semáforo usa puntos de color y textos de tamaño reducido. & 1 & Diseño Inclusivo: Considerar la situación / Usabilidad: Estética y diseño minimalista. \\ \hline
+\end{longtable}
+
+\par\vskip 0pt plus 8\baselineskip\penalty-150\vskip 0pt plus -8\baselineskip
+\noindent \textbf{DESCRIPCIÓN DE PROBLEMAS:}
+
+\vspace{0.2cm}
+
+\noindent \textbf{PROBLEMA \#1: Códigos de activación mostrados con una letra por línea}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 2.
+  \item \textbf{Heurística violada:} Usabilidad: Consistencia y estándares / Arquitectura de Información: Claridad.
+  \item \textbf{Problema:} Al generar códigos de activación, la pantalla «5 códigos listos» presenta cada código en una columna angosta con una letra por línea, de modo que el texto «COOP-PRY» se lee de arriba hacia abajo (ver \autoref{fig:problem-gestor-01}). El error se repitió en las sesiones con Juan Maquera y Daniel Estrada. Ninguno de los dos lo comentó, pero un gestor que necesite dictar o anotar un código para un socio no puede leerlo con facilidad.
+  \item \textbf{Recomendación:} Mostrar cada código en una sola línea, con tipografía de ancho fijo y un control para copiarlo, y verificar el ancho de la tarjeta en pantallas de distinto tamaño.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Códigos de activación mostrados con una letra por línea} \label{fig:problem-gestor-01}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-01-codigos.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Daniel Estrada. Elaboración propia.}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#2: Detalle de la parcela sin identificar al productor}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 2.
+  \item \textbf{Heurística violada:} Usabilidad: Reconocer antes que recordar / Arquitectura de Información: Localizable.
+  \item \textbf{Problema:} En Riesgo territorial, el detalle de la parcela crítica muestra como título «Flut 1», nombre del socio, y debajo la parcela, el sector y las hectáreas, sin una etiqueta que lo identifique como productor (ver \autoref{fig:problem-gestor-02}). Daniel Estrada no reconoció ese dato y sugirió incluir el nombre o un código del productor para ubicarlo con facilidad antes de la visita.
+  \item \textbf{Recomendación:} Rotular el título del detalle como socio productor e incluir su código de socio, y mostrar el mismo dato en las tarjetas de visitas sugeridas y de la lista por prioridad.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Detalle de la parcela crítica sin identificar al productor} \label{fig:problem-gestor-02}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-02-productor.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Daniel Estrada. Elaboración propia.}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#3: Proyección de acopio sin desglose por calibre}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 2.
+  \item \textbf{Heurística violada:} Usabilidad: Coincidencia entre el sistema y el mundo real.
+  \item \textbf{Problema:} La sección Acopio proyecta las toneladas de la campaña separadas solo en aceituna verde y negra (ver \autoref{fig:problem-gestor-03}). Daniel Estrada indicó que la recepción en planta necesita además el desglose por calibre, por ejemplo de 140 a 260 frutos por kilo, y condicionó su calificación de utilidad a esta mejora.
+  \item \textbf{Recomendación:} Incorporar rangos de calibre a la proyección a partir del muestreo de frutos y permitir que cada organización configure los rangos que emplea en su planta.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Proyección de acopio separada solo en aceituna verde y negra} \label{fig:problem-gestor-03}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-03-calibre.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Daniel Estrada. Elaboración propia.}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#4: Cobertura suficiente con la mitad de las parcelas muestreadas}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 1.
+  \item \textbf{Heurística violada:} Usabilidad: Visibilidad del estado del sistema / Arquitectura de Información: Claridad.
+  \item \textbf{Problema:} La tarjeta de proyección muestra la etiqueta «Cobertura suficiente» cuando solo 1 de 2 parcelas cuenta con muestreo, es decir, en el umbral mínimo del 50 \% (ver \autoref{fig:problem-gestor-04}). Juan Maquera leyó las 20 toneladas proyectadas, pero consideró que la proyección necesitaría más hectáreas muestreadas para ser confiable.
+  \item \textbf{Recomendación:} Reemplazar la etiqueta por un nivel de confianza graduado según la cobertura e indicar cuántas parcelas o hectáreas faltan muestrear para mejorarlo.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Proyección marcada con cobertura suficiente al 50 \% de muestreo} \label{fig:problem-gestor-04}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-04-cobertura.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Juan Maquera. Elaboración propia.}
+\end{figure}
+
+\vspace{0.25cm}
+
+\noindent \textbf{PROBLEMA \#5: Leyenda del semáforo con indicadores de tamaño reducido}
+\begin{itemize}
+  \setlength{\itemsep}{1pt}
+  \setlength{\parskip}{0pt}
+  \item \textbf{Severidad:} 1.
+  \item \textbf{Heurística violada:} Diseño Inclusivo: Considerar la situación / Usabilidad: Estética y diseño minimalista.
+  \item \textbf{Problema:} La leyenda del semáforo en Riesgo territorial usa puntos de color y textos pequeños para distinguir las parcelas críticas, moderadas, óptimas y sin datos (ver \autoref{fig:problem-gestor-05}). Daniel Estrada indicó que el semáforo se entiende, pero pidió íconos más grandes y textos más cortos, en especial para los socios mayores de 55 o 60 años de su organización.
+  \item \textbf{Recomendación:} Aumentar el tamaño de los indicadores y de los textos de la leyenda, acompañar el color con un ícono o una etiqueta y revisar el contraste para su lectura en campo.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Leyenda del semáforo en la lista de Riesgo territorial} \label{fig:problem-gestor-05}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.82\textwidth,height=0.17\textheight,keepaspectratio]{report/assets/interviews/validation/problem-gestor-05-semaforo.png}
+\caption*{\textit{Nota.} Captura de la sesión de validación con Daniel Estrada. Elaboración propia.}
 \end{figure}
 
 \clearpage
