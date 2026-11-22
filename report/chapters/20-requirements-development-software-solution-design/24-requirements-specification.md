@@ -2544,7 +2544,9 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela con registros agronómicos insuficientes}\newline
 \textbf{Given} una parcela socia que aún no ha completado el protocolo de muestreo de cuajado en la campaña activa. \textbf{When} la API genera el resumen técnico. \textbf{Then} la API responde \texttt{200 OK} con \texttt{riskLevel: NO\_DATA}, valores de carga y prescripción nulos, y el estado de progreso de muestreo indicando las observaciones pendientes sin simular datos.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado a parcela no vinculada a la cooperativa}\newline
-\textbf{Given} una solicitud sobre un predio cuyo propietario no mantiene vínculo con la cooperativa solicitante. \textbf{When} la política de acceso institucional valida la relación de supervisión. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\textbf{Given} una solicitud sobre un predio cuyo propietario no mantiene vínculo con la cooperativa solicitante. \textbf{When} la política de acceso institucional valida la relación de supervisión. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Identificación del socio productor en el detalle de la parcela}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/member-plots/{id}} autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER} sobre una parcela de un socio vinculado. \textbf{When} la API construye el resumen técnico de la parcela. \textbf{Then} la respuesta incluye \texttt{producerId}, \texttt{producerName} y \texttt{memberCode} del socio productor. \textbf{And} los mismos valores coinciden con los de la parcela en \url{/api/v1/member-plots}, de modo que el cliente rotule al socio de forma consistente.} \\ \hline
 \end{longtable}
 \endgroup
 
