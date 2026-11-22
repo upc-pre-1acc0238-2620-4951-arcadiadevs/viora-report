@@ -41,7 +41,7 @@ v1.5.0 & 08/10/26 & Santi Guerrero, Fabrizio Alonso & Creación de Sprint 1 \tab
 v2.0.0 & 08/10/26 & Espada Lazo, Piero Anthony & Consolidación y cierre de la versión 2.0.0 del informe \tabularnewline \hline
 v2.0.1 & 09/10/26 & Santi Guerrero, Fabrizio Alonso & Reducción de tamaño de imágenes y agrupación de contenido \tabularnewline \hline
 v2.1.0 & 12/11/26 & Espada Lazo, Piero Anthony & Redacción de entrevistas de validación de la aplicación móvil Android, evaluación heurística y conclusiones \tabularnewline \hline
-v2.2.0 & 12/11/26 & Santi Guerrero, Fabrizio Alonso & Consolidación y cierre de la versión 2.2.0 del informe: Sprint 2 y entrevistas de validación de la aplicación móvil \tabularnewline \hline
+v2.2.0 & 12/11/26 & Santi Guerrero, Fabrizio Alonso & Consolidación y cierre de la versión 2.2.0 del informe con el Sprint 2 \tabularnewline \hline
 \end{longtable}
 
 \newpage

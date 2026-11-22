@@ -658,7 +658,27 @@ Con este sprint la aplicación Android queda publicada y culminada.
 
 \noindent \textbf{Aplicación móvil Flutter (Firebase App Distribution):}
 
-La aplicación Flutter sigue el mismo esquema de despliegue que la aplicación Android: al integrarse una rama de \textit{release} en `main`, un flujo de GitHub Actions compila el APK \textit{release}, lo firma con la clave de la aplicación y lo distribuye en Firebase App Distribution a los grupos de verificadores. La \autoref{fig:deploy-flutter-s2} muestra la aplicación del gestor técnico (paquete `pe.edu.upc.viora.gestor`) en la vista del verificador, con la versión más reciente disponible para su descarga y la cuenta de servicio de GitHub Actions como contacto, lo que evidencia que la distribución se realiza de forma automática.
+La aplicación Flutter sigue el mismo esquema de despliegue que la aplicación Android: al integrarse una rama de \textit{release} en `main`, un flujo de GitHub Actions compila el APK \textit{release}, lo firma con la clave de la aplicación y lo distribuye en Firebase App Distribution a los grupos de verificadores. Los datos sensibles que necesita el flujo se guardan como secretos del repositorio `viora-mobile-flutter`: el almacén de claves codificado en Base64 con su alias y contraseñas, la clave de la cuenta de servicio de Firebase y el token público de Mapbox (\autoref{fig:deploy-flutter-secrets-s2}). Sus valores no se exponen en el código ni en los registros del flujo.
+
+\begin{figure}[H]
+\caption{Secretos del repositorio viora-mobile-flutter utilizados por el flujo de despliegue.} \label{fig:deploy-flutter-secrets-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.70\textwidth]{report/assets/sprint-deployment/sprint-2/application/05-flutter-repository-secrets.png}
+\caption*{\textit{Nota.} Captura de la configuración de GitHub Actions del repositorio. Elaboración propia.}
+\end{figure}
+
+En la consola de Firebase App Distribution, la aplicación Viora Gestor registra la versión distribuida por la cuenta de servicio de GitHub Actions, que figura como correo de contacto, y enviada a los seis verificadores registrados (\autoref{fig:deploy-flutter-console-s2}).
+
+\begin{figure}[H]
+\caption{Versión de la aplicación del gestor técnico en la consola de Firebase App Distribution.} \label{fig:deploy-flutter-console-s2}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.75\textwidth]{report/assets/sprint-deployment/sprint-2/application/06-flutter-app-distribution-console.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution. Elaboración propia.}
+\end{figure}
+
+Desde el dispositivo de un verificador, la aplicación del gestor técnico (paquete `pe.edu.upc.viora.gestor`) aparece en Firebase App Tester con la versión más reciente disponible para su descarga (\autoref{fig:deploy-flutter-s2}).
 
 \begin{figure}[H]
 \caption{Aplicación del gestor técnico disponible en Firebase App Distribution.} \label{fig:deploy-flutter-s2}
