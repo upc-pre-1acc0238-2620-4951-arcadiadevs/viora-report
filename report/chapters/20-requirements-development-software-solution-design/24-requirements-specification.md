@@ -3670,6 +3670,30 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 
 \vspace{1em}
 
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS108} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta y actualización de rangos de calibre de la cooperativa} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar y reemplazar los rangos de calibre de la organización mediante GET y PUT a \url{/api/v1/caliber-ranges}, \textbf{para} configurar la clasificación que utiliza la proyección de acopio.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Reemplazo exitoso de los rangos de calibre}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/caliber-ranges} autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER} con una lista de rangos (\texttt{minFruitsPerKg} y \texttt{maxFruitsPerKg}) consecutivos y sin superposición. \textbf{When} la API valida y persiste la configuración de la organización. \textbf{Then} la API responde \texttt{200 OK} con la lista de rangos registrada. \textbf{And} las siguientes consultas a \url{/api/v1/intake-forecasts/{campaignYear}} incluyen el desglose con esos rangos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rangos superpuestos o invertidos}\newline
+\textbf{Given} una solicitud PUT con un rango cuyo mínimo supera al máximo o que se superpone con otro. \textbf{When} la API valida la lista de rangos. \textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando el rango en conflicto. \textbf{And} conserva la configuración vigente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Consulta de los rangos configurados}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/caliber-ranges} de un gestor técnico autenticado. \textbf{When} la API consulta la configuración de su organización. \textbf{Then} la API responde \texttt{200 OK} con los rangos registrados, o con una lista vacía si aún no se configuraron.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Acceso no autorizado}\newline
+\textbf{Given} una solicitud GET o PUT emitida por un usuario sin rol de gestor técnico. \textbf{When} la API evalúa la autorización del solicitante. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
 
 
 \begingroup
