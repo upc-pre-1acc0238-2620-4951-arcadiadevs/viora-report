@@ -75,19 +75,19 @@ En esta sección se presenta la evidencia audiovisual consolidada de las entrevi
 
 \noindent \textbf{Información del registro audiovisual:}
 
-* \textbf{Título del video:} Entrevistas de validación de la Landing Page y la aplicación móvil productor, Proyecto Viora
-* \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-ArcadiaDevs-validation-av2.mp4}
-* \textbf{Duración total:} 34 minutos y 32 segundos
-* \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/upc-arcadiadevs-validation-av2}
+* \textbf{Título del video:} Entrevistas de validación de la Landing Page y las aplicaciones móviles productor y gestor, Proyecto Viora
+* \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-ArcadiaDevs-validation-tb2.mp4}
+* \textbf{Duración total:} 44 minutos y 40 segundos
+* \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/validation-interviews-tb2}
 
 \vspace{0.3cm}
 
 \begin{figure}[H]
-\caption{Captura del video consolidado de entrevistas de validación AV2 del proyecto Viora.} \label{fig:anexo-b2-video-entrevistas-validacion}
+\caption{Captura del video consolidado de entrevistas de validación TB2 del proyecto Viora.} \label{fig:anexo-b2-video-entrevistas-validacion}
 \vspace{0.25cm}
 \centering
-\includegraphics[width=0.85\textwidth]{report/assets/interviews/validation/validation-video-av2.png}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/upc-arcadiadevs-validation-av2}. Elaboración propia.}
+\includegraphics[width=0.85\textwidth]{report/assets/interviews/validation/validation-video-tb2.png}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/validation-interviews-tb2}. Elaboración propia.}
 \end{figure}
 
 \vspace{0.5cm}
