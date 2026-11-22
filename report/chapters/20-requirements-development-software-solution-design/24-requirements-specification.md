@@ -316,7 +316,9 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Agrupación por etiquetas sectoriales y cálculo del semáforo por mayor gravedad}\newline
 \textbf{Given} un gestor técnico consultando la situación agronómica consolidada de la cooperativa. \textbf{When} filtra por una etiqueta sectorial (e.g., Magollo, Sama o La Yarada Los Palos) o visualiza el resumen general de sectores. \textbf{Then} el sistema calcula el estado del semáforo asignando la mayor gravedad observada entre las parcelas del sector (crítico si existe al menos una parcela con alerta crítica, moderado si no hay críticas pero sí moderadas, u óptimo si todas las evaluadas cumplen parámetros normales). \textbf{And} reporta de forma independiente el conteo de parcelas en riesgo crítico, moderado, óptimo y sin datos suficientes, sin promediar colores ni ocultar casos urgentes.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Operación ante ausencia de señal GPS o permisos de ubicación denegados}\newline
-\textbf{Given} el gestor operando en una zona sin cobertura satelital GPS o habiendo revocado los permisos de localización en el terminal. \textbf{When} abre la matriz territorial y tablero de sectores. \textbf{Then} el sistema presenta la vista cartográfica centrada en la extensión envolvente de las parcelas socias registradas. \textbf{And} mantiene plenamente funcionales la exploración interactiva del mapa, el filtrado por sectores nominales y la consulta del semáforo de riesgo.} \\ \hline
+\textbf{Given} el gestor operando en una zona sin cobertura satelital GPS o habiendo revocado los permisos de localización en el terminal. \textbf{When} abre la matriz territorial y tablero de sectores. \textbf{Then} el sistema presenta la vista cartográfica centrada en la extensión envolvente de las parcelas socias registradas. \textbf{And} mantiene plenamente funcionales la exploración interactiva del mapa, el filtrado por sectores nominales y la consulta del semáforo de riesgo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Identificación del socio productor en el detalle de la parcela}\newline
+\textbf{Given} un gestor técnico que abre el detalle de una parcela socia desde el mapa, la lista por prioridad o las visitas sugeridas. \textbf{When} el sistema presenta la parcela con su semáforo, sector y hectáreas. \textbf{Then} el encabezado identifica al socio productor con su nombre y su código de socio, rotulados de forma explícita. \textbf{And} las tarjetas de visitas sugeridas y de la lista por prioridad muestran el mismo dato, para que el gestor ubique al productor antes de la visita.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -570,7 +572,11 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Sincronización automática de muestreos al recuperar conexión}\newline
 \textbf{Given} un dispositivo con muestreos de cuajado pendientes de sincronización en su almacenamiento local. \textbf{When} el dispositivo restablece la conectividad a internet. \textbf{Then} el sistema transmite de manera automática el lote de registros al servidor de Viora. \textbf{And} actualiza el estado de los muestreos a sincronizados sin requerir intervención manual del usuario.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por conteos fuera de rango biológico}\newline
-\textbf{Given} un productor registrando datos en el protocolo de muestreo. \textbf{When} ingresa valores negativos o una cantidad de frutos cuajados que supera físicamente la capacidad biológica del brote evaluado. \textbf{Then} el sistema rechaza el ingreso impidiendo registrar mediciones inverosímiles. \textbf{And} notifica los rangos biológicos admisibles para el conteo de frutos por brote.} \\ \hline
+\textbf{Given} un productor registrando datos en el protocolo de muestreo. \textbf{When} ingresa valores negativos o una cantidad de frutos cuajados que supera físicamente la capacidad biológica del brote evaluado. \textbf{Then} el sistema rechaza el ingreso impidiendo registrar mediciones inverosímiles. \textbf{And} notifica los rangos biológicos admisibles para el conteo de frutos por brote.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Registro opcional del calibre de los frutos}\newline
+\textbf{Given} un productor que completa una ronda de muestreo en una parcela con frutos en crecimiento. \textbf{When} pesa una muestra de frutos e ingresa la cantidad de frutos y su peso. \textbf{Then} el sistema calcula el calibre de la ronda en frutos por kilo y lo guarda junto con los conteos de cuajado. \textbf{And} el registro del calibre es opcional, de modo que la ronda puede guardarse sin él, también sin conexión a internet.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Rechazo de calibre fuera de rango}\newline
+\textbf{Given} un productor que registra la muestra de frutos de una ronda. \textbf{When} ingresa una cantidad de frutos o un peso nulos, o un calibre resultante fuera del rango admisible. \textbf{Then} el sistema no guarda el calibre y conserva los conteos de cuajado de la ronda. \textbf{And} indica los valores admisibles para la cantidad de frutos y el peso de la muestra.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -724,7 +730,9 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Alerta agroclimática preventiva por riesgo de helada}\newline
 \textbf{Given} un pronóstico validado de temperatura crítica ($\le 1.5\,^\circ\text{C}$) o helada radiativa para un sector en un horizonte de 48 horas. \textbf{When} se actualizan las series de telemetría meteorológica del valle. \textbf{Then} el sector activa la advertencia de helada en el semáforo gremial e identifica las parcelas en estadios fenológicos vulnerables (floración o cuajado sensible). \textbf{And} destaca el estado de alerta en el visor territorial para priorizar recomendaciones de riego defensivo o medidas de mitigación.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Presentación informativa del índice de vecería histórica (BBI)}\newline
-\textbf{Given} una parcela supervisada que cuenta con un historial validado de rendimientos de tres o más campañas consecutivas. \textbf{When} el gestor técnico examina la ficha de detalle de riesgo fenológico del predio. \textbf{Then} el sistema presenta el Índice Bienal de Carga (BBI) como indicador contextual de alternancia productiva histórica. \textbf{And} preserva el estado fenológico actual sin forzar colores de alerta roja exclusivamente por alternancia pasada si la campaña presente no evidencia sobrecarga ni estrés climático.} \\ \hline
+\textbf{Given} una parcela supervisada que cuenta con un historial validado de rendimientos de tres o más campañas consecutivas. \textbf{When} el gestor técnico examina la ficha de detalle de riesgo fenológico del predio. \textbf{Then} el sistema presenta el Índice Bienal de Carga (BBI) como indicador contextual de alternancia productiva histórica. \textbf{And} preserva el estado fenológico actual sin forzar colores de alerta roja exclusivamente por alternancia pasada si la campaña presente no evidencia sobrecarga ni estrés climático.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Leyenda del semáforo legible en campo}\newline
+\textbf{Given} un gestor técnico que consulta el semáforo en Riesgo territorial. \textbf{When} el sistema presenta la leyenda de niveles del semáforo. \textbf{Then} cada nivel (crítico, moderado, óptimo y sin datos) se muestra con un ícono y una etiqueta además del color, con un tamaño de texto legible y contraste suficiente para su lectura al aire libre. \textbf{And} la leyenda usa textos breves, de modo que ningún nivel se distinga únicamente por su color.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -746,7 +754,11 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Desagregación por aptitud comercial en aceituna verde, negra y volumen por clasificar}\newline
 \textbf{Given} un tonelaje total consolidado sobre las parcelas socias evaluadas. \textbf{When} se genera la distribución por aptitud comercial de cosecha. \textbf{Then} el sistema discrimina el volumen en aceituna verde de mesa y aceituna negra para aceite según la aptitud varietal y los ratios históricos registrados. \textbf{And} cataloga cualquier fracción de producción que carezca de tipificación de destino en el rubro explícito «Sin clasificar / Por definir», evitando asignaciones forzadas.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Declaración explícita de cobertura muestral insuficiente}\newline
-\textbf{Given} una cartera cooperativa donde las parcelas con muestreo agronómico válido representan una proporción menor al 60\% del total de parcelas socias registradas. \textbf{When} el gestor técnico accede al reporte de proyección de acopio. \textbf{Then} el sistema presenta las toneladas estimadas identificando el resultado bajo la etiqueta «Cobertura preliminar / Muestra parcial». \textbf{And} muestra un aviso visible indicando que la cobertura es insuficiente para el cierre definitivo de contratos comerciales, exhortando a completar los muestreos de cuajado pendientes.} \\ \hline
+\textbf{Given} una cartera cooperativa donde las parcelas con muestreo agronómico válido representan una proporción menor al 60\% del total de parcelas socias registradas. \textbf{When} el gestor técnico accede al reporte de proyección de acopio. \textbf{Then} el sistema presenta las toneladas estimadas identificando el resultado bajo la etiqueta «Cobertura preliminar / Muestra parcial». \textbf{And} muestra un aviso visible indicando que la cobertura es insuficiente para el cierre definitivo de contratos comerciales, exhortando a completar los muestreos de cuajado pendientes.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Desglose de la proyección por rangos de calibre}\newline
+\textbf{Given} una cooperativa que configuró los rangos de calibre que emplea en su planta (por ejemplo, de 140 a 260 frutos por kilo) y parcelas socias con muestreo de frutos. \textbf{When} el gestor técnico consulta la proyección de acopio de la campaña. \textbf{Then} el sistema desglosa las toneladas proyectadas de aceituna verde y negra por rango de calibre. \textbf{And} indica como «Sin calibre» el volumen de las parcelas cuyo muestreo no permite estimarlo.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Nivel de confianza graduado según la cobertura muestral}\newline
+\textbf{Given} parcelas socias con distinta cobertura de muestreo en la campaña. \textbf{When} el gestor técnico consulta la proyección de acopio. \textbf{Then} el sistema muestra un nivel de confianza graduado (baja, media o alta) según el porcentaje de parcelas y hectáreas muestreadas, en lugar de una etiqueta única de cobertura suficiente. \textbf{And} indica cuántas parcelas y hectáreas faltan muestrear para alcanzar el siguiente nivel de confianza.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1014,7 +1026,9 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Bloqueo de emisión por hectáreas insuficientes en el balance de la licencia}\newline
 \textbf{Given} un gestor técnico configurando la emisión de códigos en la vista \texttt{G43}. \textbf{When} el total de hectáreas asignadas para los nuevos códigos excede el saldo remanente de hectáreas contratadas de la licencia. \textbf{Then} el sistema impide la confirmación del lote. \textbf{And} muestra una alerta modal (\texttt{G43 / Hectáreas insuficientes}) detallando el balance de hectáreas libres versus las hectáreas solicitadas.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Consulta, copiado y estado de códigos emitidos pendientes de canje}\newline
-\textbf{Given} un gestor técnico navegando en la pestaña de códigos de la membresía (\texttt{G42}). \textbf{When} visualiza la nómina de códigos emitidos. \textbf{Then} el sistema presenta cada código agrupado por estado (Disponibles por canjear y Canjeados), permitiendo copiar la clave al portapapeles o compartirla directamente por mensajería. \textbf{And} mantiene los códigos disponibles sin asociar nombre de socio hasta que se haga efectivo el canje en la aplicación del productor.} \\ \hline
+\textbf{Given} un gestor técnico navegando en la pestaña de códigos de la membresía (\texttt{G42}). \textbf{When} visualiza la nómina de códigos emitidos. \textbf{Then} el sistema presenta cada código agrupado por estado (Disponibles por canjear y Canjeados), permitiendo copiar la clave al portapapeles o compartirla directamente por mensajería. \textbf{And} mantiene los códigos disponibles sin asociar nombre de socio hasta que se haga efectivo el canje en la aplicación del productor.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Presentación legible de los códigos generados}\newline
+\textbf{Given} un gestor técnico que acaba de generar un lote de códigos de activación en la pantalla de confirmación (\texttt{G44}). \textbf{When} el sistema presenta los códigos listos para compartir. \textbf{Then} cada código se muestra completo en una sola línea, con tipografía de ancho fijo y un control para copiarlo. \textbf{And} el formato se mantiene legible en pantallas de distinto ancho, de modo que el gestor pueda dictar o anotar el código sin errores.} \\ \hline
 \end{longtable}
 \endgroup
 \vspace{0.35em}
@@ -1227,6 +1241,28 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \textbf{Given} un productor sin parcelas activas. \textbf{When} solicita su resumen del día. \textbf{Then} el sistema informa que no existe información por resumir.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Ventana de aclareo de un campo con varias parcelas}\newline
 \textbf{Given} un productor con varias parcelas activas y al menos una ventana de aclareo abierta o por abrir en la semana. \textbf{When} consulta su resumen del día. \textbf{Then} el indicador de la ventana de aclareo nombra la parcela cuya ventana cuenta, por ejemplo «22 días de ventana en La Yarada». \textbf{And} los días restantes incluyen el día de hoy, igual que en la tarjeta de fase de Inicio y en el plan de aclareo.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US55} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP08} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Configuración de rangos de calibre de la cooperativa} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} definir los rangos de calibre en frutos por kilo que emplea la planta de mi organización, \textbf{para} que la proyección de acopio se desglose con la misma clasificación con la que se recibe la aceituna.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro de los rangos de calibre de la planta}\newline
+\textbf{Given} un gestor técnico con licencia vigente que accede a la configuración de calibres de su organización. \textbf{When} define rangos consecutivos en frutos por kilo (por ejemplo, de 140 a 180, de 181 a 220 y de 221 a 260) y los guarda. \textbf{Then} el sistema registra los rangos para la organización. \textbf{And} la proyección de acopio de la campaña pasa a desglosarse con esos rangos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo de rangos superpuestos o invertidos}\newline
+\textbf{Given} un gestor técnico editando los rangos de calibre de su organización. \textbf{When} ingresa un rango cuyo límite inferior supera al superior o que se superpone con otro rango. \textbf{Then} el sistema no guarda la configuración y conserva los rangos vigentes. \textbf{And} señala el rango en conflicto para que el gestor lo corrija.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Proyección sin rangos configurados}\newline
+\textbf{Given} una organización que aún no definió sus rangos de calibre. \textbf{When} el gestor técnico consulta la proyección de acopio. \textbf{Then} el sistema muestra la proyección solo por aceituna verde y negra. \textbf{And} ofrece acceder a la configuración de rangos para habilitar el desglose por calibre.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1742,7 +1778,11 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela no encontrada en el repositorio (HTTP 404 Not Found)}\newline
 \textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} con un parámetro de ruta \texttt{plotId} inexistente en el sistema. \textbf{When} la API intenta asociar el lote de muestreo al predio. \textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Árboles duplicados o lote en conflicto (HTTP 409 Conflict)}\newline
-\textbf{Given} una solicitud POST con identificadores de árbol duplicados dentro de la ronda o un lote en conflicto. \textbf{When} la API valida la ronda de muestreo. \textbf{Then} la API responde \texttt{409 Conflict}.} \\ \hline
+\textbf{Given} una solicitud POST con identificadores de árbol duplicados dentro de la ronda o un lote en conflicto. \textbf{When} la API valida la ronda de muestreo. \textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Registro del calibre de la ronda de muestreo}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} que incluye el objeto opcional \texttt{fruitSample} con \texttt{fruitCount} y \texttt{weightGrams}. \textbf{When} la API valida y persiste la ronda de muestreo. \textbf{Then} la API responde \texttt{201 Created} con \texttt{fruitsPerKg} calculado a partir de la muestra. \textbf{And} el valor queda disponible para el desglose por calibre de la proyección de acopio.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Muestra de frutos inválida}\newline
+\textbf{Given} una solicitud POST con \texttt{fruitSample} cuyo \texttt{fruitCount} o \texttt{weightGrams} es cero, negativo o produce un calibre fuera del rango admisible. \textbf{When} la API valida la muestra de frutos. \textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando el campo inválido. \textbf{And} no registra la ronda hasta que la muestra se corrija o se omita.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1852,7 +1892,9 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta territorial global sin coordenadas GPS}\newline
 \textbf{Given} una solicitud GET sin parámetros de latitud y longitud emitida por un gestor con GPS desactivado. \textbf{When} la API procesa la consulta para la organización. \textbf{Then} la API responde \texttt{200 OK} retornando el mapa general y el semáforo macro de todos los sectores con estado \texttt{locationStatus: GLOBAL}.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por falta de credenciales de gestor técnico}\newline
-\textbf{Given} una petición GET emitida por un usuario no perteneciente al equipo técnico de la cooperativa. \textbf{When} se evalúa la autorización del solicitante. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\textbf{Given} una petición GET emitida por un usuario no perteneciente al equipo técnico de la cooperativa. \textbf{When} se evalúa la autorización del solicitante. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Identificación del socio productor de cada parcela}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/member-plots} autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER}. \textbf{When} la API construye cada elemento de la respuesta. \textbf{Then} cada parcela incluye \texttt{producerId}, \texttt{producerName} y \texttt{memberCode} del socio productor. \textbf{And} el detalle de la parcela socia expone los mismos campos, de modo que el cliente rotule al socio sin consultas adicionales.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -1874,7 +1916,11 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Notificación de cobertura muestral parcial}\newline
 \textbf{Given} una cooperativa donde la cobertura de parcelas evaluadas es menor al 60\% del padrón. \textbf{When} la API calcula la proyección agregada. \textbf{Then} la API responde \texttt{200 OK} incluyendo \texttt{status: PRELIMINARY} y un indicador de representatividad insuficiente que advierte la necesidad de completar evaluaciones en campo.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado para usuarios sin rol institucional}\newline
-\textbf{Given} una solicitud GET emitida por una cuenta que no posee \texttt{ROLE\_TECHNICAL\_MANAGER} en la entidad. \textbf{When} el servicio valida los permisos. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\textbf{Given} una solicitud GET emitida por una cuenta que no posee \texttt{ROLE\_TECHNICAL\_MANAGER} en la entidad. \textbf{When} el servicio valida los permisos. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Desglose por rangos de calibre en la proyección}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/intake-forecasts/{campaignYear}} de una organización con rangos de calibre configurados. \textbf{When} la API calcula la proyección agregada de la campaña. \textbf{Then} la respuesta incluye \texttt{caliberBreakdown} con las toneladas de aceituna verde y negra por rango (\texttt{minFruitsPerKg} y \texttt{maxFruitsPerKg}). \textbf{And} agrupa como \texttt{unsizedTons} el volumen de las parcelas sin muestreo de calibre.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Nivel de confianza y muestreo pendiente}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/intake-forecasts/{campaignYear}} autorizada para el gestor técnico. \textbf{When} la API evalúa la cobertura de parcelas y hectáreas muestreadas. \textbf{Then} la respuesta incluye \texttt{confidenceLevel} (\texttt{LOW}, \texttt{MEDIUM} o \texttt{HIGH}) junto con \texttt{pendingPlots} y \texttt{pendingHectares} para alcanzar el siguiente nivel. \textbf{And} conserva \texttt{status} y \texttt{coveragePercent} por compatibilidad con los clientes existentes.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -2528,7 +2574,9 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Parcela con registros agronómicos insuficientes}\newline
 \textbf{Given} una parcela socia que aún no ha completado el protocolo de muestreo de cuajado en la campaña activa. \textbf{When} la API genera el resumen técnico. \textbf{Then} la API responde \texttt{200 OK} con \texttt{riskLevel: NO\_DATA}, valores de carga y prescripción nulos, y el estado de progreso de muestreo indicando las observaciones pendientes sin simular datos.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Acceso no autorizado a parcela no vinculada a la cooperativa}\newline
-\textbf{Given} una solicitud sobre un predio cuyo propietario no mantiene vínculo con la cooperativa solicitante. \textbf{When} la política de acceso institucional valida la relación de supervisión. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\textbf{Given} una solicitud sobre un predio cuyo propietario no mantiene vínculo con la cooperativa solicitante. \textbf{When} la política de acceso institucional valida la relación de supervisión. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Identificación del socio productor en el detalle de la parcela}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/member-plots/{id}} autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER} sobre una parcela de un socio vinculado. \textbf{When} la API construye el resumen técnico de la parcela. \textbf{Then} la respuesta incluye \texttt{producerId}, \texttt{producerName} y \texttt{memberCode} del socio productor. \textbf{And} los mismos valores coinciden con los de la parcela en \url{/api/v1/member-plots}, de modo que el cliente rotule al socio de forma consistente.} \\ \hline
 \end{longtable}
 \endgroup
 
@@ -3622,6 +3670,30 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 
 \vspace{1em}
 
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{TS108} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Desarrollador de Aplicaciones Cliente} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP12} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Consulta y actualización de rangos de calibre de la cooperativa} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} desarrollador de aplicaciones cliente, \textbf{quiero} consultar y reemplazar los rangos de calibre de la organización mediante GET y PUT a \url{/api/v1/caliber-ranges}, \textbf{para} configurar la clasificación que utiliza la proyección de acopio.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Reemplazo exitoso de los rangos de calibre}\newline
+\textbf{Given} una solicitud PUT a \url{/api/v1/caliber-ranges} autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER} con una lista de rangos (\texttt{minFruitsPerKg} y \texttt{maxFruitsPerKg}) consecutivos y sin superposición. \textbf{When} la API valida y persiste la configuración de la organización. \textbf{Then} la API responde \texttt{200 OK} con la lista de rangos registrada. \textbf{And} las siguientes consultas a \url{/api/v1/intake-forecasts/{campaignYear}} incluyen el desglose con esos rangos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rangos superpuestos o invertidos}\newline
+\textbf{Given} una solicitud PUT con un rango cuyo mínimo supera al máximo o que se superpone con otro. \textbf{When} la API valida la lista de rangos. \textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando el rango en conflicto. \textbf{And} conserva la configuración vigente.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Consulta de los rangos configurados}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/caliber-ranges} de un gestor técnico autenticado. \textbf{When} la API consulta la configuración de su organización. \textbf{Then} la API responde \texttt{200 OK} con los rangos registrados, o con una lista vacía si aún no se configuraron.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Acceso no autorizado}\newline
+\textbf{Given} una solicitud GET o PUT emitida por un usuario sin rol de gestor técnico. \textbf{When} la API evalúa la autorización del solicitante. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\end{longtable}
+\endgroup
+
+\vspace{1em}
+
 
 
 \begingroup
@@ -3744,7 +3816,7 @@ En esta sección se presenta el Impact Mapping del ecosistema Viora, el cual art
 
 ### Product Backlog
 
-El Product Backlog de Viora consolida y prioriza los 165 ítems de trabajo del sistema (54 Historias de Usuario, 107 Technical Stories y 4 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica (US33 a US41), los spikes críticos de campo (SPK01 sobre el modelo dinámico de Erez y SPK02 sobre persistencia offline-first con SQLite), la arquitectura base del backend bajo RFC 7807 y convenciones JPA (TS31 a TS34), la suite completa de servicios RESTful iniciales del backend (TS11 a TS27, TS39, TS40, TS42, TS43 y TS44 a TS55) que respaldan operativamente las funcionalidades nucleares del productor, y las Historias de Usuario móviles clave priorizadas según la asignación de responsabilidades del equipo de desarrollo. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro con SPK03, TS06 a TS10 y US06 a US08). Asimismo, el Sprint 2 culmina con la implementación integral de la seguridad e IAM (US01 a US05, US43, TS01 a TS05 y TS35 a TS38), la internacionalización (US42), los cuadros de mando avanzados de supervisión agronómica y patrocinio corporativo para el gestor técnico (US44 a US49, TS41 y TS56 a TS65), el semáforo reactivo (US31), la proyección agregada sustentada de acopio (US32) y la exportación documental de expedientes técnicos provisionales y definitivos en formato PDF (TS63, US30), junto con la asistencia agronómica basada en los datos del productor (SPK04, US50 a US54 y TS66 a TS71) y los servicios complementarios de cuenta, suscripción, consentimiento, sectores, notas de campo, expedientes y aclareo (TS72 a TS107). Finalmente, el Sprint 3 se reserva para la incorporación de las mejoras señaladas por los usuarios y para la entrega final del video *About the Product* y su publicación en la Landing Page, reutilizando el reproductor implementado en el Sprint 1 (US37), que ya cubre la funcionalidad de reproducción, por lo que no se le asignan ítems adicionales en la matriz.
+El Product Backlog de Viora consolida y prioriza los 167 ítems de trabajo del sistema (55 Historias de Usuario, 108 Technical Stories y 4 Spike Stories) estructurados rigurosamente bajo el criterio de valor para el negocio y mitigación temprana de riesgo técnico. La iteración inicial (Sprint 1) concentra el despliegue íntegro de la Landing Page para asegurar la captación comercial y la credibilidad agronómica (US33 a US41), los spikes críticos de campo (SPK01 sobre el modelo dinámico de Erez y SPK02 sobre persistencia offline-first con SQLite), la arquitectura base del backend bajo RFC 7807 y convenciones JPA (TS31 a TS34), la suite completa de servicios RESTful iniciales del backend (TS11 a TS27, TS39, TS40, TS42, TS43 y TS44 a TS55) que respaldan operativamente las funcionalidades nucleares del productor, y las Historias de Usuario móviles clave priorizadas según la asignación de responsabilidades del equipo de desarrollo. Siguiendo las buenas prácticas ágiles, las historias de pasarela de pagos digitales y los servicios de gestión corporativa de cooperativas se abordan en el Sprint 2 (junto con el spike de Mercado Pago Checkout Pro con SPK03, TS06 a TS10 y US06 a US08). Asimismo, el Sprint 2 culmina con la implementación integral de la seguridad e IAM (US01 a US05, US43, TS01 a TS05 y TS35 a TS38), la internacionalización (US42), los cuadros de mando avanzados de supervisión agronómica y patrocinio corporativo para el gestor técnico (US44 a US49, TS41 y TS56 a TS65), el semáforo reactivo (US31), la proyección agregada sustentada de acopio (US32) y la exportación documental de expedientes técnicos provisionales y definitivos en formato PDF (TS63, US30), junto con la asistencia agronómica basada en los datos del productor (SPK04, US50 a US54 y TS66 a TS71) y los servicios complementarios de cuenta, suscripción, consentimiento, sectores, notas de campo, expedientes y aclareo (TS72 a TS107). Finalmente, el Sprint 3 se reserva para la incorporación de las mejoras señaladas por los usuarios en las entrevistas de validación, entre ellas la configuración de rangos de calibre de la cooperativa (US55 y TS108), y para la entrega final del video *About the Product* y su publicación en la Landing Page, reutilizando el reproductor implementado en el Sprint 1 (US37).
 
 A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integral del Product Backlog del sistema Viora, detallando el orden de ejecución, identificador, denominación técnica, estimación de esfuerzo en puntos de historia (*Story Points*) y la asignación a su respectivo ciclo de iteración (*Sprint*).
 
@@ -3931,12 +4003,14 @@ A continuación, en la \autoref{tab:product-backlog} se presenta la matriz integ
 163 & TS105 & Consulta de una prescripción de aclareo & 1 & Sprint 2 \\ \hline
 164 & TS106 & Consulta de la ejecución registrada de un aclareo & 1 & Sprint 2 \\ \hline
 165 & TS107 & Consulta del detalle de socio productor agremiado & 1 & Sprint 2 \\ \hline
+166 & US55 & Configuración de rangos de calibre de la cooperativa & 3 & Sprint 3 \\ \hline
+167 & TS108 & Consulta y actualización de rangos de calibre de la cooperativa & 2 & Sprint 3 \\ \hline
 \end{longtable}
 \end{center}
 
 
 
-Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 165 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
+Para garantizar la visibilidad compartida, la trazabilidad ágil y la gestión continua del flujo de trabajo, los 167 ítems del Product Backlog han sido registrados y priorizados en la herramienta colaborativa Trello. La \autoref{fig:trello-product-backlog} ilustra el tablero del proyecto, donde cada tarjeta consolida su código de historia, denominación estandarizada, etiquetas visuales de esfuerzo y componente, así como la narrativa ágil de usuario.
 
 \begin{figure}[H]
 \caption{Product Backlog del proyecto Viora en Trello.} \label{fig:trello-product-backlog}
