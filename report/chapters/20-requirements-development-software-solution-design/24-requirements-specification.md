@@ -1244,6 +1244,28 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \end{longtable}
 \endgroup
 
+\vspace{1em}
+
+\begingroup
+\renewcommand{\arraystretch}{1.08}
+\linespread{1.0}\selectfont
+\begin{longtable}{|m{0.18\textwidth}|m{0.32\textwidth}|m{0.18\textwidth}|m{0.22\textwidth}|}
+\hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Story ID}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{\textbf{User}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Priority}} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{\textbf{Epic}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{US55} & \multicolumn{1}{>{\centering\arraybackslash}m{0.32\textwidth}|}{Gestor Técnico de Cooperativa} & \multicolumn{1}{>{\centering\arraybackslash}m{0.18\textwidth}|}{Media} & \multicolumn{1}{>{\centering\arraybackslash}m{0.22\textwidth}|}{EP08} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{0.18\textwidth}|}{\textbf{Title}} & \multicolumn{3}{m{\dimexpr 0.72\textwidth + 4\tabcolsep\relax}|}{Configuración de rangos de calibre de la cooperativa} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Description}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Como} Gestor Técnico de Cooperativa, \textbf{quiero} definir los rangos de calibre en frutos por kilo que emplea la planta de mi organización, \textbf{para} que la proyección de acopio se desglose con la misma clasificación con la que se recibe la aceituna.} \\ \hline
+\multicolumn{4}{|>{\centering\arraybackslash}m{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\textbf{Acceptance Criteria}} \\ \hline
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 1: Registro de los rangos de calibre de la planta}\newline
+\textbf{Given} un gestor técnico con licencia vigente que accede a la configuración de calibres de su organización. \textbf{When} define rangos consecutivos en frutos por kilo (por ejemplo, de 140 a 180, de 181 a 220 y de 221 a 260) y los guarda. \textbf{Then} el sistema registra los rangos para la organización. \textbf{And} la proyección de acopio de la campaña pasa a desglosarse con esos rangos.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Rechazo de rangos superpuestos o invertidos}\newline
+\textbf{Given} un gestor técnico editando los rangos de calibre de su organización. \textbf{When} ingresa un rango cuyo límite inferior supera al superior o que se superpone con otro rango. \textbf{Then} el sistema no guarda la configuración y conserva los rangos vigentes. \textbf{And} señala el rango en conflicto para que el gestor lo corrija.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Proyección sin rangos configurados}\newline
+\textbf{Given} una organización que aún no definió sus rangos de calibre. \textbf{When} el gestor técnico consulta la proyección de acopio. \textbf{Then} el sistema muestra la proyección solo por aceituna verde y negra. \textbf{And} ofrece acceder a la configuración de rangos para habilitar el desglose por calibre.} \\ \hline
+\end{longtable}
+\endgroup
+
 
 
 \clearpage
