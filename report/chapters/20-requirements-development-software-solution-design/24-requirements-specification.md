@@ -1856,7 +1856,9 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Consulta territorial global sin coordenadas GPS}\newline
 \textbf{Given} una solicitud GET sin parámetros de latitud y longitud emitida por un gestor con GPS desactivado. \textbf{When} la API procesa la consulta para la organización. \textbf{Then} la API responde \texttt{200 OK} retornando el mapa general y el semáforo macro de todos los sectores con estado \texttt{locationStatus: GLOBAL}.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por falta de credenciales de gestor técnico}\newline
-\textbf{Given} una petición GET emitida por un usuario no perteneciente al equipo técnico de la cooperativa. \textbf{When} se evalúa la autorización del solicitante. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\ \hline
+\textbf{Given} una petición GET emitida por un usuario no perteneciente al equipo técnico de la cooperativa. \textbf{When} se evalúa la autorización del solicitante. \textbf{Then} la API responde \texttt{403 Forbidden}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Identificación del socio productor de cada parcela}\newline
+\textbf{Given} una solicitud GET a \url{/api/v1/member-plots} autorizada con token de \texttt{ROLE\_TECHNICAL\_MANAGER}. \textbf{When} la API construye cada elemento de la respuesta. \textbf{Then} cada parcela incluye \texttt{producerId}, \texttt{producerName} y \texttt{memberCode} del socio productor. \textbf{And} el detalle de la parcela socia expone los mismos campos, de modo que el cliente rotule al socio sin consultas adicionales.} \\ \hline
 \end{longtable}
 \endgroup
 
