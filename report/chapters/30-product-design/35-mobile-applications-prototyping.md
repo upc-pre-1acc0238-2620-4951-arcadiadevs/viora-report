@@ -41,26 +41,26 @@ En la pestaña de Socios, el gestor administra el padrón de cooperativistas y g
 
 A continuación se presenta el registro visual y el acceso al recurso audiovisual del prototipo de alta fidelidad:
 
-- Enlace del video demostrativo: [https://tinyurl.com/44hdrd42](https://tinyurl.com/44hdrd42)
+- Enlace del video demostrativo: [https://tinyurl.com/f5k5mzyw](https://tinyurl.com/f5k5mzyw)
 
-Como se ilustra en la \autoref{fig:mobile-prototyping}, el prototipo interactivo se reproduce en Figma desde el panel de flujos estructurado por meta de usuario (panel a), abarcando tanto los flujos nominales como las variantes de contingencia (pago rechazado, muestreo offline y desconexión); mientras que la vista panorámica (panel b) exhibe la arquitectura integral de pantallas conectadas para la App Productor (Kotlin) y la App Gestor (Flutter).
+Como se ilustra en la \autoref{fig:mobile-prototyping}, la pantalla de Inicio del productor (panel a) se ejecuta en un dispositivo móvil y muestra el calendario semanal de la Campaña 2026, la tarjeta de cuenta regresiva hacia el aclareo del cuartel seleccionado, el resumen del día y el acceso al asistente Viora; mientras que la vista panorámica (panel b) exhibe la reproducción del video demostrativo sobre Figma, junto con el conjunto de pantallas conectadas de la App Productor (Kotlin) y la App Gestor (Flutter), organizadas por flujos.
 
 \begin{figure}[H]
-\caption{Prototipo Mobile: Reproducción de Flujos y Vista Panorámica en Figma.}
+\caption{Prototipo Mobile: Pantalla de Inicio en Dispositivo y Vista Panorámica de Flujos en Figma.}
 \label{fig:mobile-prototyping}
 \centering
 \begin{minipage}[b]{0.48\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=0.22\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-home-screenshot.png}
-\caption*{(a) Reproducción del Inicio del productor (P10).}
+\includegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-home-screenshot2.jpg}
+\caption*{(a) Pantalla de Inicio del productor ejecutada en dispositivo móvil.}
 \end{minipage}
 \hfill
 \begin{minipage}[b]{0.48\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=0.22\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-panoramic-screenshot.png}
-\caption*{(b) Vista panorámica de flujos en Figma.}
+\includegraphics[width=\linewidth,height=0.30\textheight,keepaspectratio]{report/assets/mobile-prototyping/prototype-panoramic-screenshot2.png}
+\caption*{(b) Reproducción del prototipo y vista panorámica de flujos en Figma.}
 \end{minipage}
-\caption*{\textit{Nota.} Panel de flujos interactivos, variantes de excepción y conexiones entre pantallas en Figma. Elaboración propia.}
+\caption*{\textit{Nota.} Prototipo interactivo en ejecución y panel de flujos de las aplicaciones Productor y Gestor en Figma. Elaboración propia.}
 \end{figure}
 
 \clearpage
