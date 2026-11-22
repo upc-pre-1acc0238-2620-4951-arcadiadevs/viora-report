@@ -1756,7 +1756,11 @@ A continuación, se presentan las Historias Técnicas (\textit{Technical Stories
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Parcela no encontrada en el repositorio (HTTP 404 Not Found)}\newline
 \textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} con un parámetro de ruta \texttt{plotId} inexistente en el sistema. \textbf{When} la API intenta asociar el lote de muestreo al predio. \textbf{Then} la API responde \texttt{404 Not Found} bajo el estándar RFC 7807.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Árboles duplicados o lote en conflicto (HTTP 409 Conflict)}\newline
-\textbf{Given} una solicitud POST con identificadores de árbol duplicados dentro de la ronda o un lote en conflicto. \textbf{When} la API valida la ronda de muestreo. \textbf{Then} la API responde \texttt{409 Conflict}.} \\ \hline
+\textbf{Given} una solicitud POST con identificadores de árbol duplicados dentro de la ronda o un lote en conflicto. \textbf{When} la API valida la ronda de muestreo. \textbf{Then} la API responde \texttt{409 Conflict}.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 5: Registro del calibre de la ronda de muestreo}\newline
+\textbf{Given} una solicitud POST a \url{/api/v1/plots/{plotId}/samplings} que incluye el objeto opcional \texttt{fruitSample} con \texttt{fruitCount} y \texttt{weightGrams}. \textbf{When} la API valida y persiste la ronda de muestreo. \textbf{Then} la API responde \texttt{201 Created} con \texttt{fruitsPerKg} calculado a partir de la muestra. \textbf{And} el valor queda disponible para el desglose por calibre de la proyección de acopio.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 6: Muestra de frutos inválida}\newline
+\textbf{Given} una solicitud POST con \texttt{fruitSample} cuyo \texttt{fruitCount} o \texttt{weightGrams} es cero, negativo o produce un calibre fuera del rango admisible. \textbf{When} la API valida la muestra de frutos. \textbf{Then} la API responde \texttt{400 Bad Request} bajo el estándar RFC 7807 indicando el campo inválido. \textbf{And} no registra la ronda hasta que la muestra se corrija o se omita.} \\ \hline
 \end{longtable}
 \endgroup
 
