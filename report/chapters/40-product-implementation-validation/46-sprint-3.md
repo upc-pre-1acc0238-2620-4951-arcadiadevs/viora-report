@@ -266,7 +266,7 @@ viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{
 #### Execution Evidence for Sprint Review
 &nbsp;
 
-<!-- TODO: resumen de las vistas implementadas en el Sprint 3. -->
+En esta sección se presenta la evidencia de ejecución de los productos digitales mejorados durante el Sprint 3, a partir de los hallazgos de las evaluaciones heurísticas. En la aplicación móvil del productor se incorporaron la detección de la ubicación desactivada, la comparación del área trazada, las alertas críticas fuera de la aplicación, el registro del descarte de cosecha, el ajuste de las fechas de las fases y la explicación de los términos agronómicos. En la aplicación móvil del gestor técnico se incorporaron la identificación del socio productor, la leyenda del semáforo con íconos, la proyección de acopio con nivel de confianza y desglose por calibre, la configuración de rangos de calibre y la presentación legible de los códigos de activación. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
 
 
 \noindent \textbf{Aplicación móvil del productor:}
@@ -275,7 +275,88 @@ viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{
 
 \noindent \textbf{Aplicación móvil del gestor técnico:}
 
-<!-- TODO: figuras de la aplicación Flutter. -->
+En Inicio, la leyenda del semáforo del valle acompaña cada nivel con un ícono y su etiqueta, y las visitas sugeridas identifican al socio productor con su nombre y código de socio (\autoref{fig:exec-manager-home-s3}).
+
+\begin{figure}[H]
+\caption{Inicio con la leyenda del semáforo y el socio en las visitas sugeridas.} \label{fig:exec-manager-home-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/01-home-legend.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/02-home-suggested-visits.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+En Riesgo territorial, cuando no se dispone de la ubicación del gestor, el mapa muestra todo el valle y permite elegir el sector. La vista de lista repite la leyenda con íconos para cada nivel (\autoref{fig:exec-manager-risk-s3}).
+
+\begin{figure}[H]
+\caption{Riesgo territorial sin ubicación y lista con la leyenda del semáforo.} \label{fig:exec-manager-risk-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/03-territorial-risk-map.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/04-territorial-risk-list.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+El detalle del sector ordena las parcelas por prioridad y rotula al socio con su código. Al abrir una parcela, el encabezado identifica al socio productor antes de la carga frutal y la prescripción (\autoref{fig:exec-manager-member-s3}).
+
+\begin{figure}[H]
+\caption{Detalle del sector y parcela con el socio productor identificado.} \label{fig:exec-manager-member-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/05-sector-detail.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/06-member-plot.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+La proyección de acopio muestra su nivel de confianza y la cobertura de muestreo, e indica cuántas parcelas y hectáreas faltan muestrear para alcanzar una confianza alta (\autoref{fig:exec-manager-intake-s3}).
+
+\begin{figure}[H]
+\caption{Proyección de acopio con nivel de confianza y cobertura de muestreo.} \label{fig:exec-manager-intake-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/07-intake-projection.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/08-intake-coverage.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+La proyección se desglosa por los rangos de calibre de la planta. Mientras la cooperativa no los configura, la pantalla de rangos explica que la proyección se muestra solo por aceituna verde y negra (\autoref{fig:exec-manager-caliber-s3}).
+
+\begin{figure}[H]
+\caption{Desglose por calibre y configuración de rangos sin registrar.} \label{fig:exec-manager-caliber-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/09-intake-caliber.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/10-caliber-ranges-empty.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+Al registrar los rangos, el gestor ingresa los límites en frutos por kilo con un teclado numérico, y la aplicación señala el rango incompleto antes de guardar (\autoref{fig:exec-manager-ranges-s3}).
+
+\begin{figure}[H]
+\caption{Edición de rangos de calibre y validación de un rango incompleto.} \label{fig:exec-manager-ranges-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/11-caliber-ranges-edit.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/12-caliber-ranges-error.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+Finalmente, los códigos de activación emitidos se muestran completos en una sola línea, con las opciones para compartirlos o revocarlos (\autoref{fig:exec-manager-codes-s3}).
+
+\begin{figure}[H]
+\caption{Códigos de activación presentados en una sola línea.} \label{fig:exec-manager-codes-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-manager/13-activation-codes.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
 
 \noindent \textbf{Video de navegación del producto:}
 
