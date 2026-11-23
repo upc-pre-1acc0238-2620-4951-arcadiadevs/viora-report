@@ -222,7 +222,13 @@ viora-mobile-flutter & feature/\allowbreak{}manager-\allowbreak{}heuristics-\all
 #### Testing Suite Evidence for Sprint Review
 &nbsp;
 
-<!-- TODO: resumen de la suite de pruebas de aceptación del Sprint 3. -->
+En esta sección se documentan y sustentan las evidencias del aseguramiento de la calidad de software y las pruebas de aceptación automatizadas desarrolladas para el ecosistema Viora a lo largo del Sprint 3. Dichas pruebas se construyen bajo el enfoque de desarrollo guiado por comportamiento (\textit{Behavior-Driven Development}, BDD) empleando la sintaxis formal de Gherkin, y se gestionan a través del repositorio oficial de pruebas de aceptación bajo la organización en GitHub: \texttt{upc-pre-1acc0238-2620-4951-arcadiadevs}. De forma análoga a la sección previa de evidencias de desarrollo, el prefijo de la organización es omitido, identificándose el componente directamente como \texttt{viora-acceptance-tests}.
+
+Durante esta iteración, la suite se amplió a un total de 108 especificaciones de prueba de aceptación (\textit{feature files} de extensión \texttt{.feature}), una por cada historia técnica del Product Backlog. Para ello, se incorporó la especificación nueva de TS108 (rangos de calibre de la cooperativa) y se actualizaron 6 especificaciones existentes (TS24, TS29, TS30, TS39, TS55 y TS60) con los escenarios derivados de las evaluaciones heurísticas, de modo que la suite se mantenga alineada con los criterios de aceptación vigentes. La versión resultante de la suite se publicó en la rama \texttt{main} con la etiqueta \texttt{2.0.0} y la release TB2.
+
+Con el propósito de exhibir la actividad de ingeniería de pruebas durante el sprint, a continuación se presentan los 7 commits registrados en el repositorio \texttt{viora-acceptance-tests}. Para cada registro se especifica la rama de origen, el identificador abreviado del commit (SHA-1), el mensaje principal (\textit{Commit Message}), la descripción técnica de los cambios (\textit{Commit Message Body}) y la fecha formal de asentamiento (\textit{Committed on Date}).
+
+A continuación, en la \autoref{tab:testing-suite-evidence-sprint-3} se expone la matriz detallada de evidencias de la suite de pruebas para el Sprint Review:
 
 \begin{center}
 \small
@@ -245,7 +251,14 @@ viora-mobile-flutter & feature/\allowbreak{}manager-\allowbreak{}heuristics-\all
 \multicolumn{6}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir del historial de control de versiones Git de ArcadiaDevs en GitHub.}} \\
 \endlastfoot
 
-<!-- TODO: filas de la tabla. -->
+% viora-acceptance-tests
+viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{}acceptance-\allowbreak{}tests & 454a21a & feat: add at108 acceptance test &  & 23/11/2026 \\ \hline
+viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{}acceptance-\allowbreak{}tests & 8e0b6f8 & feat: update at60 acceptance test &  & 23/11/2026 \\ \hline
+viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{}acceptance-\allowbreak{}tests & 0573c02 & feat: update at55 acceptance test &  & 23/11/2026 \\ \hline
+viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{}acceptance-\allowbreak{}tests & 39e0f01 & feat: update at39 acceptance test &  & 23/11/2026 \\ \hline
+viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{}acceptance-\allowbreak{}tests & d4e859c & feat: update at30 acceptance test &  & 23/11/2026 \\ \hline
+viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{}acceptance-\allowbreak{}tests & 187c5fa & feat: update at29 acceptance test &  & 23/11/2026 \\ \hline
+viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{}acceptance-\allowbreak{}tests & 8cfd9d2 & feat: update at24 acceptance test &  & 23/11/2026 \\ \hline
 
 \end{longtable}
 \end{center}
