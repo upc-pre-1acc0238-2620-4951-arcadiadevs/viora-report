@@ -488,7 +488,9 @@ A continuación, se presentan las Historias de Usuario desarrolladas para el eco
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 2: Datos insuficientes para evaluación matemática}\newline
 \textbf{Given} una parcela con menos de 3 campañas históricas registradas. \textbf{When} el usuario solicita la métrica de vecería. \textbf{Then} el sistema notifica que la serie histórica es insuficiente y solicita registrar cosechas anteriores sin bloquear la operatividad predial.} \\
 \multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 3: Rechazo por volumen de cosecha negativo o año futuro}\newline
-\textbf{Given} un productor ingresando datos de cosecha. \textbf{When} proporciona un pesaje negativo o un año de campaña futuro que aún no ha tenido lugar. \textbf{Then} el sistema bloquea el registro impidiendo almacenar datos inconsistentes. \textbf{And} notifica los rangos válidos para el año agrícola y los kilogramos cosechados.} \\ \hline
+\textbf{Given} un productor ingresando datos de cosecha. \textbf{When} proporciona un pesaje negativo o un año de campaña futuro que aún no ha tenido lugar. \textbf{Then} el sistema bloquea el registro impidiendo almacenar datos inconsistentes. \textbf{And} notifica los rangos válidos para el año agrícola y los kilogramos cosechados.} \\
+\multicolumn{4}{|p{\dimexpr 0.90\textwidth + 6\tabcolsep\relax}|}{\raggedright\noindent \textbf{Escenario 4: Explicación del índice de alternancia}\newline
+\textbf{Given} un productor que consulta la alternancia de su lote en el detalle de la parcela. \textbf{When} consulta la ayuda asociada al índice de alternancia. \textbf{Then} el sistema explica en lenguaje de campo que la alternancia, también conocida como vecería, compara las cosechas de años buenos y malos del lote. \textbf{And} indica cómo interpretar el valor del índice sin requerir asistencia técnica.} \\ \hline
 \end{longtable}
 \endgroup
 
