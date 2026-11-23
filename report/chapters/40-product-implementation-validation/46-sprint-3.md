@@ -48,42 +48,26 @@ A continuación, en la \autoref{tab:sprint-planning-3} se presenta el cuadro res
 #### Aspect Leaders and Collaborators
 &nbsp;
 
-<!-- TODO: párrafo sobre la matriz LACX del Sprint 3. -->
+Para mantener la coherencia arquitectural y la comunicación interna del equipo ArcadiaDevs durante el Sprint 3, se actualizó la matriz de liderazgo y colaboración o \textit{Leadership-and-Collaboration Matrix} (LACX). Esta matriz asigna un líder responsable (\textit{Leader}, L) y los colaboradores técnicos (\textit{Collaborator}, C) para cada aspecto del proyecto.
+
+A diferencia del Sprint 2, en este ciclo solo se consideran los Bounded Contexts que reciben cambios a partir de las evaluaciones heurísticas: \textit{Subscription} (\textit{Subscr.}, códigos de activación), \textit{Orchard} (delimitación de lotes), \textit{Telemetry} (alertas críticas), \textit{Thinning} (muestreo de calibre), \textit{Harvest} (descarte de cosecha), \textit{Territory} (riesgo territorial, acopio y rangos de calibre) y \textit{Assistant} (resumen del día). Los demás aspectos, como la presencia comercial de la \textit{Landing Page} (\textit{Comm.}), \textit{IAM}, \textit{Profiles}, \textit{Phenology} y \textit{Shared}, no se intervienen en este sprint. La matriz se presenta en la \autoref{tab:lacx-sprint-3}.
 
 \begin{table}[H]
-\caption{Matriz de liderazgo y colaboración (LACX) para el Sprint 3 (parte 1 de 2)} \label{tab:lacx-sprint-3-a}
+\caption{Matriz de liderazgo y colaboración (LACX) para el Sprint 3} \label{tab:lacx-sprint-3}
 \centering
 \small
 \renewcommand{\arraystretch}{1.25}
 \setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{|p{2.5cm}|p{2.62cm}|c|c|c|c|c|c|}
+\begin{tabular}{|p{2.5cm}|p{2.62cm}|c|c|c|c|c|c|c|}
 \hline
-\textbf{Team Member} & \textbf{GitHub User} & \textbf{Comm.} & \textbf{IAM} & \textbf{Profiles} & \textbf{Subscription} & \textbf{Orchard} & \textbf{Telemetry} \\ \hline
-Espada Lazo, Piero Anthony & espadita2510 \newline pieroedeveloper25 &  &  &  &  &  &  \\ \hline
-Li Gayoso, Diana Carolina & peruvianMiau &  &  &  &  &  &  \\ \hline
-Paredes Maza, Víctor Juan de Dios & DaronCameloft &  &  &  &  &  &  \\ \hline
-Santi Guerrero, Fabrizio Alonso & Santi2007939 &  &  &  &  &  &  \\ \hline
-Trinidad León, Jahat Jassiel & trinity-bytes &  &  &  &  &  &  \\ \hline
+\textbf{Team Member} & \textbf{GitHub User} & \textbf{Subscr.} & \textbf{Orchard} & \textbf{Telemetry} & \textbf{Thinning} & \textbf{Harvest} & \textbf{Territory} & \textbf{Assistant} \\ \hline
+Espada Lazo, Piero Anthony & espadita2510 \newline pieroedeveloper25 & C & C & C & \textbf{L} & C & C & C \\ \hline
+Li Gayoso, Diana Carolina & peruvianMiau & C & C & C & C & \textbf{L} & C & C \\ \hline
+Paredes Maza, Víctor Juan de Dios & DaronCameloft & \textbf{L} & C & C & C & C & C & C \\ \hline
+Santi Guerrero, Fabrizio Alonso & Santi2007939 & C & C & C & C & C & \textbf{L} & C \\ \hline
+Trinidad León, Jahat Jassiel & trinity-bytes & C & \textbf{L} & \textbf{L} & C & C & C & \textbf{L} \\ \hline
 \end{tabular}
-\caption*{\textit{Nota.} L = Leader (Líder responsable del aspecto); C = Collaborator (Colaborador técnico). Elaboración propia.}
-\end{table}
-
-\begin{table}[H]
-\caption{Matriz de liderazgo y colaboración (LACX) para el Sprint 3 (parte 2 de 2)} \label{tab:lacx-sprint-3-b}
-\centering
-\small
-\renewcommand{\arraystretch}{1.25}
-\setlength{\tabcolsep}{3.5pt}
-\begin{tabular}{|p{2.5cm}|p{2.62cm}|c|c|c|c|c|c|}
-\hline
-\textbf{Team Member} & \textbf{GitHub User} & \textbf{Phenology} & \textbf{Thinning} & \textbf{Harvest} & \textbf{Territory} & \textbf{Assistant} & \textbf{Shared} \\ \hline
-Espada Lazo, Piero Anthony & espadita2510 \newline pieroedeveloper25 &  &  &  &  &  &  \\ \hline
-Li Gayoso, Diana Carolina & peruvianMiau &  &  &  &  &  &  \\ \hline
-Paredes Maza, Víctor Juan de Dios & DaronCameloft &  &  &  &  &  &  \\ \hline
-Santi Guerrero, Fabrizio Alonso & Santi2007939 &  &  &  &  &  &  \\ \hline
-Trinidad León, Jahat Jassiel & trinity-bytes &  &  &  &  &  &  \\ \hline
-\end{tabular}
-\caption*{\textit{Nota.} L = Leader (Líder responsable del aspecto); C = Collaborator (Colaborador técnico). Elaboración propia.}
+\caption*{\textit{Nota.} L = Leader (líder responsable del aspecto); C = Collaborator (colaborador técnico). Elaboración propia.}
 \end{table}
 
 \clearpage
