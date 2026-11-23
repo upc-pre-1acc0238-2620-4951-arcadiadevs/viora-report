@@ -158,7 +158,15 @@ TS108 & Consulta y actualización de rangos de calibre de la cooperativa & TK01 
 #### Development Evidence for Sprint Review
 &nbsp;
 
-<!-- TODO: resumen de avances por producto (Landing Page, Web Services, Android y Flutter). -->
+En esta sección se explican y presentan los avances técnicos alcanzados en la implementación con relación a los productos que integran la solución del ecosistema Viora según el alcance comprometido para el Sprint 3: los servicios web del backend (\textit{Web Services}), la aplicación móvil nativa Android para el productor olivarero y la aplicación móvil multiplataforma Flutter para el gestor técnico de cooperativa (\textit{Mobile Applications}). La \textit{Landing Page} no registra cambios en este ciclo, ya que quedó culminada en el Sprint 2.
+
+A continuación, se resumen los principales avances consolidados en la implementación de cada producto durante este tercer ciclo de desarrollo:
+
+* **Web Services (\texttt{viora-platform}):** Se incorporaron el código de socio en las parcelas socias y en su detalle, el registro opcional de una muestra de frutos con su calibre en frutos por kilo dentro de la ronda de muestreo, la configuración de rangos de calibre por licencia, el desglose de la proyección de acopio por calibre junto con su nivel de confianza graduado y el muestreo pendiente, el peso de la aceituna de descarte en la liquidación de cosecha y el nombre del lote en la tarjeta de ventana del resumen del día.
+* **Mobile Applications (\texttt{viora-mobile-android}):** Se incorporaron la detección del servicio de ubicación desactivado antes de delimitar un lote, la comparación del área trazada con el área aproximada, la notificación de alertas agroclimáticas críticas fuera de la aplicación, el registro del descarte en la liquidación de cosecha, el conteo del día actual en la ventana de aclareo de Inicio, el ajuste de las fechas de las fases por lote y la explicación de los términos agronómicos donde aparecen.
+* **Mobile Applications (\texttt{viora-mobile-flutter}):** Se incorporaron la presentación de cada código de activación en una sola línea, la identificación del socio productor en Riesgo territorial, la leyenda del semáforo con íconos, la pantalla de configuración de rangos de calibre y la proyección de acopio por calibre con su nivel de confianza.
+
+Para sustentar de manera verificable la actividad de ingeniería de software y el flujo de trabajo colaborativo del equipo ArcadiaDevs, en la \autoref{tab:development-evidence-sprint-3} se presentan los commits significativos de cada repositorio vinculados con las tareas del Sprint Backlog 3. Cada producto se administra en su propio repositorio de GitHub bajo la raíz organizacional común \texttt{upc-pre-1acc0238-2620-4951-arcadiadevs/}, la cual se omite en la primera columna para favorecer la diagramación y legibilidad. Para cada repositorio se detallan la rama de origen, el identificador abreviado (\textit{Commit Id}), el mensaje principal (\textit{Commit Message}), la descripción técnica de los cambios (\textit{Commit Message Body}) y la fecha de asentamiento (\textit{Committed on Date}).
 
 \begin{center}
 \small
@@ -181,7 +189,24 @@ TS108 & Consulta y actualización de rangos de calibre de la cooperativa & TK01 
 \multicolumn{6}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir del historial de control de versiones Git de ArcadiaDevs en GitHub.}} \\
 \endlastfoot
 
-<!-- TODO: filas de la tabla. -->
+% viora-platform
+viora-platform & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & e61ea77 & feat(territory): name the member code of each member plot &  & 22/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & 820b672 & feat(thinning): weigh fruits in a sampling round to know their caliber &  & 22/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & e19175a & feat(territory): keep the caliber ranges of each license &  & 22/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & 7429f07 & feat(territory): split the intake by caliber and grade its confidence &  & 22/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}harvest-\allowbreak{}discard-\allowbreak{}field & 477e4d9 & feat(harvest): include discarded olives in campaign settlement calculations &  & 19/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}daily-\allowbreak{}summary-\allowbreak{}window-\allowbreak{}plot & 1e7c36f & feat(assistant): name the plot of the window card in a field summary &  & 19/11/2026 \\ \hline
+% viora-mobile-android
+viora-mobile-android & feature/\allowbreak{}gps-\allowbreak{}disabled-\allowbreak{}detection & e96c464 & feat(plots): detect a disabled location service before marking a plot &  & 19/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}plot-\allowbreak{}area-\allowbreak{}validation & a3dcba6 & feat(plots): compare the traced area with the approximate area &  & 19/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}critical-\allowbreak{}alert-\allowbreak{}notifications & a5a3fde & feat(alerts): notify critical agroclimatic alerts outside the app &  & 19/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}critical-\allowbreak{}alert-\allowbreak{}notifications & e03a57a & fix(alerts): notify a critical alert again once its snooze ends &  & 19/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}harvest-\allowbreak{}discard-\allowbreak{}olive-\allowbreak{}field & b88d24a & feat(harvest): track discarded olives in settlements &  & 19/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}home-\allowbreak{}window-\allowbreak{}days & 3fd9bbc & fix(home): count today in the thinning window like the daily summary &  & 19/11/2026 \\ \hline
+% viora-mobile-flutter
+viora-mobile-flutter & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & c7c2e77 & fix(codes): keep each issued code whole on one line &  & 23/11/2026 \\ \hline
+viora-mobile-flutter & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & d722316 & feat(risk): name the member of each plot and mark the legend levels with icons &  & 23/11/2026 \\ \hline
+viora-mobile-flutter & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & f4b4e6f & feat(intake): grade the forecast confidence and split it by caliber ranges &  & 23/11/2026 \\ \hline
 
 \end{longtable}
 \end{center}
