@@ -26,7 +26,7 @@ Este documento resume los cambios realizados en `report/chapters/20-requirements
 | TS29 | Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS | Escenarios agregados | 4 |
 | TS30 | Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra | Escenarios agregados | 4, 5 |
 | TS60 | Consulta de resumen agronómico y ficha técnica de parcela en modo supervisión de solo lectura | Escenarios agregados | 4 |
-| TS108 | Consulta y actualización de rangos de calibre de la cooperativa | Nueva | 1, 2, 3, 4 |
+| TS108 | Consulta y actualización de rangos de calibre de la cooperativa | Nueva | 1, 2, 3, 4, 5 |
 
 ## Detalle por historia
 
@@ -123,11 +123,11 @@ Este documento resume los cambios realizados en `report/chapters/20-requirements
 
 **Escenario 5: Registro del calibre de la ronda de muestreo**
 
-**Given** una solicitud POST a `/api/v1/plots/{plotId}/samplings` que incluye el objeto opcional `fruitSample` con `fruitCount` y `weightGrams`. **When** la API valida y persiste la ronda de muestreo. **Then** la API responde `201 Created` con `fruitsPerKg` calculado a partir de la muestra. **And** el valor queda disponible para el desglose por calibre de la proyección de acopio.
+**Given** una solicitud POST a `/api/v1/plots/{plotId}/samplings` que incluye el objeto opcional `fruitSample` con `fruitCount` (de 1 a 1000) y `weightGrams` (mayor que 0 y hasta 10 000). **When** la API valida y persiste la ronda de muestreo. **Then** la API responde `201 Created` con `fruitsPerKg` calculado como `fruitCount` × 1000 / `weightGrams`. **And** el calibre de la última ronda que pesó frutos queda disponible para el desglose por calibre de la proyección de acopio.
 
 **Escenario 6: Muestra de frutos inválida**
 
-**Given** una solicitud POST con `fruitSample` cuyo `fruitCount` o `weightGrams` es cero, negativo o produce un calibre fuera del rango admisible. **When** la API valida la muestra de frutos. **Then** la API responde `400 Bad Request` bajo el estándar RFC 7807 indicando el campo inválido. **And** no registra la ronda hasta que la muestra se corrija o se omita.
+**Given** una solicitud POST con `fruitSample` cuyo `fruitCount` o `weightGrams` está fuera de sus límites o produce un calibre fuera de la escala comercial de 60 a 2000 frutos por kilo. **When** la API valida la muestra de frutos. **Then** la API responde `400 Bad Request` bajo el estándar RFC 7807 indicando el campo inválido. **And** no registra la ronda hasta que la muestra se corrija o se omita.
 
 ### TS29. Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS
 
@@ -138,7 +138,7 @@ Este documento resume los cambios realizados en `report/chapters/20-requirements
 
 **Escenario 4: Identificación del socio productor de cada parcela**
 
-**Given** una solicitud GET a `/api/v1/member-plots` autorizada con token de `ROLE_TECHNICAL_MANAGER`. **When** la API construye cada elemento de la respuesta. **Then** cada parcela incluye `producerId`, `producerName` y `memberCode` del socio productor. **And** el detalle de la parcela socia expone los mismos campos, de modo que el cliente rotule al socio sin consultas adicionales.
+**Given** una solicitud GET a `/api/v1/member-plots` autorizada con token de `ROLE_TECHNICAL_MANAGER`. **When** la API construye cada elemento de la respuesta. **Then** cada parcela incluye `producerId`, `producerName` y `memberCode`, el código de activación que canjeó el socio, enmascarado (por ejemplo, `COOP-••2Q`). **And** el detalle de la parcela socia expone los mismos campos, de modo que el cliente rotule al socio sin consultas adicionales.
 
 ### TS30. Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra
 
@@ -149,11 +149,11 @@ Este documento resume los cambios realizados en `report/chapters/20-requirements
 
 **Escenario 4: Desglose por rangos de calibre en la proyección**
 
-**Given** una solicitud GET a `/api/v1/intake-forecasts/{campaignYear}` de una organización con rangos de calibre configurados. **When** la API calcula la proyección agregada de la campaña. **Then** la respuesta incluye `caliberBreakdown` con las toneladas de aceituna verde y negra por rango (`minFruitsPerKg` y `maxFruitsPerKg`). **And** agrupa como `unsizedTons` el volumen de las parcelas sin muestreo de calibre.
+**Given** una solicitud GET a `/api/v1/intake-forecasts/{campaignYear}` de una organización con rangos de calibre configurados. **When** la API calcula la proyección agregada de la campaña. **Then** la respuesta incluye `caliberBreakdown` con las toneladas de aceituna verde y negra por rango (`minFruitsPerKg` y `maxFruitsPerKg`). **And** agrupa como `unsizedTons` el volumen de las parcelas estimables sin calibre y como `outOfRangeTons` el de las parcelas cuyo calibre no cae en ningún rango; sin rangos configurados, `caliberBreakdown` va vacío y ambos totales son nulos.
 
 **Escenario 5: Nivel de confianza y muestreo pendiente**
 
-**Given** una solicitud GET a `/api/v1/intake-forecasts/{campaignYear}` autorizada para el gestor técnico. **When** la API evalúa la cobertura de parcelas y hectáreas muestreadas. **Then** la respuesta incluye `confidenceLevel` (`LOW`, `MEDIUM` o `HIGH`) junto con `pendingPlots` y `pendingHectares` para alcanzar el siguiente nivel. **And** conserva `status` y `coveragePercent` por compatibilidad con los clientes existentes.
+**Given** una solicitud GET a `/api/v1/intake-forecasts/{campaignYear}` autorizada para el gestor técnico. **When** la API evalúa la menor de dos coberturas, la de parcelas muestreadas y la de hectáreas muestreadas, frente a los umbrales configurables de 50% y 80%. **Then** la respuesta incluye `confidenceLevel` (`LOW`, `MEDIUM` o `HIGH`) junto con `pendingPlots` y `pendingHectares` para alcanzar el siguiente nivel. **And** conserva `status` y `coveragePercent` por compatibilidad con los clientes existentes.
 
 ### TS60. Consulta de resumen agronómico y ficha técnica de parcela en modo supervisión de solo lectura
 
@@ -164,7 +164,7 @@ Este documento resume los cambios realizados en `report/chapters/20-requirements
 
 **Escenario 4: Identificación del socio productor en el detalle de la parcela**
 
-**Given** una solicitud GET a `/api/v1/member-plots/{id}` autorizada con token de `ROLE_TECHNICAL_MANAGER` sobre una parcela de un socio vinculado. **When** la API construye el resumen técnico de la parcela. **Then** la respuesta incluye `producerId`, `producerName` y `memberCode` del socio productor. **And** los mismos valores coinciden con los de la parcela en `/api/v1/member-plots`, de modo que el cliente rotule al socio de forma consistente.
+**Given** una solicitud GET a `/api/v1/member-plots/{id}` autorizada con token de `ROLE_TECHNICAL_MANAGER` sobre una parcela de un socio vinculado. **When** la API construye el resumen técnico de la parcela. **Then** la respuesta incluye `producerId`, `producerName` y `memberCode` del socio productor, este último enmascarado. **And** los mismos valores coinciden con los de la parcela en `/api/v1/member-plots`, de modo que el cliente rotule al socio de forma consistente.
 
 ### TS108. Consulta y actualización de rangos de calibre de la cooperativa
 
@@ -177,11 +177,11 @@ Este documento resume los cambios realizados en `report/chapters/20-requirements
 
 **Escenario 1: Reemplazo exitoso de los rangos de calibre**
 
-**Given** una solicitud PUT a `/api/v1/caliber-ranges` autorizada con token de `ROLE_TECHNICAL_MANAGER` con una lista de rangos (`minFruitsPerKg` y `maxFruitsPerKg`) consecutivos y sin superposición. **When** la API valida y persiste la configuración de la organización. **Then** la API responde `200 OK` con la lista de rangos registrada. **And** las siguientes consultas a `/api/v1/intake-forecasts/{campaignYear}` incluyen el desglose con esos rangos.
+**Given** una solicitud PUT a `/api/v1/caliber-ranges` autorizada con token de `ROLE_TECHNICAL_MANAGER` con una lista de hasta 20 rangos (`minFruitsPerKg` y `maxFruitsPerKg`) ordenados del fruto más grande al más chico, consecutivos, sin superposición ni huecos y dentro de la escala de 60 a 2000 frutos por kilo. **When** la API valida y persiste la configuración de la organización. **Then** la API responde `200 OK` con la lista de rangos registrada. **And** las siguientes consultas a `/api/v1/intake-forecasts/{campaignYear}` incluyen el desglose con esos rangos.
 
 **Escenario 2: Rangos superpuestos o invertidos**
 
-**Given** una solicitud PUT con un rango cuyo mínimo supera al máximo o que se superpone con otro. **When** la API valida la lista de rangos. **Then** la API responde `400 Bad Request` bajo el estándar RFC 7807 indicando el rango en conflicto. **And** conserva la configuración vigente.
+**Given** una solicitud PUT con un rango cuyo mínimo supera al máximo, que se superpone con otro, deja un hueco, sale de la escala o excede los 20 rangos. **When** la API valida la lista de rangos. **Then** la API responde `400 Bad Request` bajo el estándar RFC 7807 con `reason` y `rangeIndex` del rango en conflicto. **And** conserva la configuración vigente.
 
 **Escenario 3: Consulta de los rangos configurados**
 
@@ -190,6 +190,10 @@ Este documento resume los cambios realizados en `report/chapters/20-requirements
 **Escenario 4: Acceso no autorizado**
 
 **Given** una solicitud GET o PUT emitida por un usuario sin rol de gestor técnico. **When** la API evalúa la autorización del solicitante. **Then** la API responde `403 Forbidden`.
+
+**Escenario 5: Eliminación de la configuración con una lista vacía**
+
+**Given** una solicitud PUT a `/api/v1/caliber-ranges` con una lista de rangos vacía. **When** la API procesa la configuración de la organización. **Then** la API responde `200 OK` y elimina los rangos registrados. **And** la proyección de acopio vuelve a mostrarse sin desglose por calibre.
 
 ## Product Backlog
 
