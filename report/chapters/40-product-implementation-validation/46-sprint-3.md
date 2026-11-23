@@ -77,12 +77,12 @@ Trinidad León, Jahat Jassiel & trinity-bytes & C & \textbf{L} & \textbf{L} & C 
 
 El objetivo central del Sprint Backlog 3 es atender las mejoras identificadas en las evaluaciones heurísticas de las aplicaciones móviles durante las entrevistas de validación. Para ello, se comprometen 17 ítems de trabajo (63 Story Points), conformados por 10 Historias de Usuario (US) y 7 Technical Stories (TS) cuyos escenarios se actualizaron a partir de esas evaluaciones, entre ellas la nueva configuración de rangos de calibre de la cooperativa (US55 y TS108). Los ítems se descomponen en 20 tareas técnicas distribuidas entre la aplicación del productor, la aplicación del gestor técnico y los servicios web. Como la mayoría de estas tareas son correcciones y ajustes sobre funcionalidades ya implementadas, su tiempo estimado es menor que el de las tareas de los sprints anteriores.
 
-En la \autoref{tab:sprint-backlog-3} se presenta el detalle de cada tarea, con su estimación, responsable y estado.
+En la \autoref{tab:sprint-backlog-3} se expone el detalle de las 20 tareas técnicas, con su estimación, responsable y estado. El Sprint Backlog, distribuido a través de las columnas de flujo ágil \textit{Goal}, \textit{Stories}, \textit{To-Do}, \textit{In process}, \textit{To Review} y \textit{Done}, se encuentra registrado y disponible en el tablero oficial de gestión ágil de ArcadiaDevs en Trello, accesible mediante el siguiente enlace: \url{https://tinyurl.com/1acc0238-sb3}.
 
 \begin{figure}[H]
 \caption{Vista general del tablero del Sprint Backlog 3} \label{fig:sprint-backlog-3-trello}
 \centering
-% \includegraphics[width=0.85\textwidth]{report/assets/sprint-backlog/sb3.png}
+\includegraphics[width=0.85\textwidth]{report/assets/sprint-backlog/sb3.png}
 \caption*{\textit{Nota.} Tablero de gestión ágil de ArcadiaDevs en Trello: \url{https://tinyurl.com/1acc0238-sb3}}
 \end{figure}
 
@@ -108,7 +108,7 @@ En la \autoref{tab:sprint-backlog-3} se presenta el detalle de cada tarea, con s
 \endfoot
 
 \hline
-\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Detalle de las 20 tareas técnicas de los 17 ítems comprometidos. El Sprint Backlog completo se encuentra disponible en el tablero de Trello: \url{https://tinyurl.com/1acc0238-sb2}. Elaboración propia.}} \\
+\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Detalle de las 20 tareas técnicas de los 17 ítems comprometidos. El Sprint Backlog completo se encuentra disponible en el tablero de Trello: \url{https://tinyurl.com/1acc0238-sb3}. Elaboración propia.}} \\
 \endlastfoot
 
 % US09
@@ -122,7 +122,7 @@ US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en pa
 % US18
 US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & TK02 & Aviso tras posponer una alerta & Volver a notificar la alerta crítica cuando termina el tiempo pospuesto. & 0.5 & Trinidad, Jahat & Done \\ \hline
 % US24
-US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & TK01 & Muestra de frutos en Android & Registrar de forma opcional la cantidad y el peso de los frutos de la ronda y enviar \texttt{fruitSample}. & 1.4 & Espada, Piero & To Do \\ \hline
+US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & TK01 & Muestra de frutos en Android & Registrar de forma opcional la cantidad y el peso de los frutos de la ronda y enviar \texttt{fruitSample}. & 1.4 & Espada, Piero & Done \\ \hline
 % US29
 US29 & Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva & TK01 & Descarte en el registro de cosecha & Agregar los kilos de aceituna de descarte al registro y al balance de la campaña en Android. & 1.4 & Li, Diana & Done \\ \hline
 % US31
