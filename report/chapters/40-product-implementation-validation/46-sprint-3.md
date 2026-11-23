@@ -1,13 +1,13 @@
 ### Sprint 3
 
-<!-- TODO: introducción del Sprint 3: objetivo del ciclo, mejoras de la validación y cierre de la Landing Page. -->
+<!-- TODO: introducción del Sprint 3: objetivo del ciclo y mejoras de la validación. -->
 
 #### Sprint Planning 3
 &nbsp;
 
-<!-- TODO: párrafo de la sesión de planificación (fecha, medio y acuerdos). -->
+En esta sección se detallan los acuerdos alcanzados por el equipo ArcadiaDevs durante la sesión de planificación del Sprint 3, realizada de manera virtual mediante Discord. Con el flujo completo de la solución entregado en el Sprint 2, el equipo decidió dedicar esta iteración a las mejoras identificadas en las evaluaciones heurísticas de las entrevistas de validación. En consecuencia, se comprometieron 63 puntos de historia distribuidos en 17 ítems del Product Backlog: 40 puntos en 10 historias de usuario y 23 puntos en 7 historias técnicas.
 
-A continuación, en la \autoref{tab:sprint-planning-3} se presenta el cuadro resumen del Sprint Planning Meeting.
+A continuación, en la \autoref{tab:sprint-planning-3} se presenta el cuadro resumen del Sprint Planning Meeting, el cual integra la logística de la sesión, los responsables de la documentación, la capacidad comprometida y el Sprint Goal formulado bajo el estándar de Scrum.org.
 
 \begin{center}
 \small
@@ -30,17 +30,17 @@ A continuación, en la \autoref{tab:sprint-planning-3} se presenta el cuadro res
 \endlastfoot
 
 \textbf{Sprint \#} & Sprint 3 \\ \hline
-\textbf{Sprint Planning Background} &  \\ \hline
-\textbf{Date} &  \\ \hline
-\textbf{Time} &  \\ \hline
+\textbf{Sprint Planning Background} & Sesión de planificación virtual para definir los compromisos del tercer incremento de software de Viora. \\ \hline
+\textbf{Date} & 2026-11-13 \\ \hline
+\textbf{Time} & 08:00 PM \\ \hline
 \textbf{Location} & Discord (Virtual) \\ \hline
-\textbf{Prepared By} &  \\ \hline
+\textbf{Prepared By} & Trinidad León, Jahat Jassiel \\ \hline
 \textbf{Attendees (to planning meeting)} & Espada Lazo, Piero Anthony / Li Gayoso, Diana Carolina / Paredes Maza, Víctor Juan de Dios / Santi Guerrero, Fabrizio Alonso / Trinidad León, Jahat Jassiel \\ \hline
-\textbf{Sprint 2 Review Summary} &  \\ \hline
-\textbf{Sprint 2 Retrospective Summary} &  \\ \hline
-\textbf{Sprint 3 Goal} & \textbf{Nuestro enfoque se orienta a}  \\ \hline
-\textbf{Sprint 3 Velocity} &  \\ \hline
-\textbf{Sum of Story Points} &  \\ \hline
+\textbf{Sprint 2 Review Summary} & El Sprint 2 cumplió su objetivo, al completarse los 97 ítems comprometidos (241 puntos de historia). Se incorporaron 70 endpoints a los servicios web, que suman 103 en producción, y quedaron publicadas y culminadas la aplicación Android del productor y la aplicación Flutter del gestor técnico, ambas distribuidas mediante Firebase App Distribution. \\ \hline
+\textbf{Sprint 2 Retrospective Summary} & El equipo valoró haber completado el flujo de la solución con tiempo para validarlo con usuarios reales. Las evaluaciones heurísticas de las entrevistas de validación identificaron ajustes en ambas aplicaciones, por lo que acordó dedicar el Sprint 3 a corregirlos, actualizando primero las historias afectadas. \\ \hline
+\textbf{Sprint 3 Goal} & \textbf{Nuestro enfoque se orienta a} que los datos de Viora reflejen el trabajo real del olivar, de modo que el productor delimite sus lotes aun sin señal de ubicación, registre el descarte de su cosecha y reciba sus alertas críticas fuera de la aplicación, y que el gestor técnico identifique de inmediato al socio de cada parcela y proyecte el acopio con la clasificación por calibre de su planta y un nivel de confianza explícito. \textbf{Creemos que esto entrega} mayor retención y disposición de pago de los productores, al sustentar su suscripción en datos fiables; mayor adopción institucional de las cooperativas, al alinear la proyección con la forma en que reciben la aceituna; y, para el equipo, un producto validado con usuarios reales y listo para su cierre. \textbf{Esto se confirmará cuando} un productor delimite su lote con la ubicación desactivada, registre los kilos de descarte de su campaña y reciba fuera de la aplicación una alerta crítica de helada, y cuando un gestor técnico ubique al socio de una parcela crítica, dicte sus códigos de activación sin errores y consulte la proyección de acopio por rangos de calibre junto con su nivel de confianza y el muestreo pendiente. \\ \hline
+\textbf{Sprint 3 Velocity} & 70 \\ \hline
+\textbf{Sum of Story Points} & 63 \\ \hline
 
 \end{longtable}
 \end{center}
@@ -91,7 +91,9 @@ Trinidad León, Jahat Jassiel & trinity-bytes &  &  &  &  &  &  \\ \hline
 #### Sprint Backlog 3
 &nbsp;
 
-<!-- TODO: párrafo con la cantidad de ítems, story points y tareas del Sprint Backlog 3. -->
+El objetivo central del Sprint Backlog 3 es atender las mejoras identificadas en las evaluaciones heurísticas de las aplicaciones móviles durante las entrevistas de validación. Para ello, se comprometen 17 ítems de trabajo (63 Story Points), conformados por 10 Historias de Usuario (US) y 7 Technical Stories (TS) cuyos escenarios se actualizaron a partir de esas evaluaciones, entre ellas la nueva configuración de rangos de calibre de la cooperativa (US55 y TS108). Los ítems se descomponen en 20 tareas técnicas distribuidas entre la aplicación del productor, la aplicación del gestor técnico y los servicios web. Como la mayoría de estas tareas son correcciones y ajustes sobre funcionalidades ya implementadas, su tiempo estimado es menor que el de las tareas de los sprints anteriores.
+
+En la \autoref{tab:sprint-backlog-3} se presenta el detalle de cada tarea, con su estimación, responsable y estado.
 
 \begin{figure}[H]
 \caption{Vista general del tablero del Sprint Backlog 3} \label{fig:sprint-backlog-3-trello}
@@ -122,10 +124,49 @@ Trinidad León, Jahat Jassiel & trinity-bytes &  &  &  &  &  &  \\ \hline
 \endfoot
 
 \hline
-\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Síntesis representativa de una tarea por requerimiento (US, TS y SPK). El Sprint Backlog completo con la totalidad de las N tareas técnicas desglosadas se encuentra disponible en el tablero de Trello: \url{https://tinyurl.com/1acc0238-sb2}. Elaboración propia.}} \\
+\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Detalle de las 20 tareas técnicas de los 17 ítems comprometidos. El Sprint Backlog completo se encuentra disponible en el tablero de Trello: \url{https://tinyurl.com/1acc0238-sb2}. Elaboración propia.}} \\
 \endlastfoot
 
-<!-- TODO: filas de la tabla. -->
+% US09
+US09 & Delimitación georreferenciada de parcela con GPS y caracterización agronómica inicial & TK01 & Ubicación desactivada en Android & Detectar el servicio de ubicación apagado antes de marcar el lote y ofrecer el trazado manual. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% US09
+US09 & Delimitación georreferenciada de parcela con GPS y caracterización agronómica inicial & TK02 & Área trazada frente al área aproximada & Comparar el área del contorno con la indicada y advertir la diferencia antes de guardar. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% US12
+US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & TK01 & Socio productor en Riesgo territorial & Rotular el nombre y el código de socio en el detalle de la parcela y en las tarjetas. & 0.9 & Santi, Fabrizio & Done \\ \hline
+% US18
+US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & TK01 & Notificación de alertas críticas & Notificar fuera de la aplicación las alertas de helada y de severidad crítica. & 0.9 & Trinidad, Jahat & Done \\ \hline
+% US18
+US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & TK02 & Aviso tras posponer una alerta & Volver a notificar la alerta crítica cuando termina el tiempo pospuesto. & 0.5 & Trinidad, Jahat & Done \\ \hline
+% US24
+US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & TK01 & Muestra de frutos en Android & Registrar de forma opcional la cantidad y el peso de los frutos de la ronda y enviar \texttt{fruitSample}. & 1.4 & Espada, Piero & To Do \\ \hline
+% US29
+US29 & Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva & TK01 & Descarte en el registro de cosecha & Agregar los kilos de aceituna de descarte al registro y al balance de la campaña en Android. & 1.4 & Li, Diana & Done \\ \hline
+% US31
+US31 & Semáforo fenológico reactivo y priorización técnica ante sobrecarga crítica & TK01 & Leyenda del semáforo con íconos & Acompañar cada nivel del semáforo con un ícono y una etiqueta en Flutter. & 0.7 & Paredes, Victor & Done \\ \hline
+% US32
+US32 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra para la cooperativa & TK01 & Calibre y confianza en Acopio & Mostrar el desglose por rangos de calibre y el nivel de confianza con el muestreo pendiente. & 1.4 & Santi, Fabrizio & Done \\ \hline
+% US45
+US45 & Emisión de códigos de patrocinio para socios con asignación de cupo de hectáreas y control de saldo & TK01 & Códigos en una sola línea & Presentar cada código emitido completo en una línea con tipografía de ancho fijo. & 0.5 & Paredes, Victor & Done \\ \hline
+% US54
+US54 & Resumen diario de prioridades del campo & TK01 & Nombre del lote en la ventana de aclareo & Nombrar el lote de la ventana de aclareo en el resumen del día del asistente. & 0.7 & Trinidad, Jahat & Done \\ \hline
+% US54
+US54 & Resumen diario de prioridades del campo & TK02 & Días de la ventana en Inicio & Contar el día actual en la ventana de aclareo igual que el resumen del día. & 0.5 & Trinidad, Jahat & Done \\ \hline
+% US55
+US55 & Configuración de rangos de calibre de la cooperativa & TK01 & Pantalla de rangos de calibre & Construir en Flutter la configuración de rangos con validación de superposición. & 1.4 & Paredes, Victor & Done \\ \hline
+% TS24
+TS24 & Registro y sincronización de muestreos guiados de cuajado en campo & TK01 & Muestra de frutos en el muestreo & Aceptar \texttt{fruitSample} en la ronda y calcular \texttt{fruitsPerKg} con su rango admisible. & 0.9 & Santi, Fabrizio & Done \\ \hline
+% TS29
+TS29 & Consulta de la matriz de riesgo territorial y semáforo sectorial con posicionamiento GPS & TK01 & Código de socio en parcelas socias & Incluir \texttt{memberCode} enmascarado en \url{/api/v1/member-plots}. & 0.7 & Santi, Fabrizio & Done \\ \hline
+% TS30
+TS30 & Proyección agregada temprana de volumen de acopio sustentado de aceituna verde y negra & TK01 & Calibre y confianza en la proyección & Agregar \texttt{caliberBreakdown} y \texttt{confidenceLevel} con el muestreo pendiente. & 1.4 & Santi, Fabrizio & Done \\ \hline
+% TS39
+TS39 & Asentamiento formal y balance de liquidación de cosecha de fin de campaña & TK01 & Descarte en el asentamiento de cosecha & Incluir los kilos de descarte en la validación y el cálculo de la liquidación. & 0.9 & Li, Diana & Done \\ \hline
+% TS55
+TS55 & Consulta detallada de liquidación de cosecha por campaña individual & TK01 & Descarte en el detalle de liquidación & Exponer el peso de descarte en el detalle de la liquidación de la campaña. & 0.5 & Li, Diana & Done \\ \hline
+% TS60
+TS60 & Consulta de resumen agronómico y ficha técnica de parcela en modo supervisión de solo lectura & TK01 & Código de socio en el detalle & Incluir \texttt{memberCode} en \url{/api/v1/member-plots/{id}}. & 0.5 & Paredes, Victor & Done \\ \hline
+% TS108
+TS108 & Consulta y actualización de rangos de calibre de la cooperativa & TK01 & Endpoint de rangos de calibre & Implementar \texttt{GET} y \texttt{PUT} de \url{/api/v1/caliber-ranges} por licencia. & 1.4 & Paredes, Victor & Done \\ \hline
 
 \end{longtable}
 \end{center}
@@ -197,9 +238,6 @@ Trinidad León, Jahat Jassiel & trinity-bytes &  &  &  &  &  &  \\ \hline
 
 <!-- TODO: resumen de las vistas implementadas en el Sprint 3. -->
 
-\noindent \textbf{Landing Page:}
-
-<!-- TODO: figuras de la Landing Page. -->
 
 \noindent \textbf{Aplicación móvil del productor:}
 
