@@ -5,7 +5,7 @@
 #### Sprint Planning 3
 &nbsp;
 
-En esta sección se detallan los acuerdos alcanzados por el equipo ArcadiaDevs durante la sesión de planificación del Sprint 3, realizada de manera virtual mediante Discord. Con el flujo completo de la solución entregado en el Sprint 2, el equipo decidió dedicar esta iteración a las mejoras identificadas en las evaluaciones heurísticas de las entrevistas de validación. En consecuencia, se comprometieron 63 puntos de historia distribuidos en 17 ítems del Product Backlog: 40 puntos en 10 historias de usuario y 23 puntos en 7 historias técnicas.
+En esta sección se detallan los acuerdos alcanzados por el equipo ArcadiaDevs durante la sesión de planificación del Sprint 3, realizada de manera virtual mediante Discord. Con el flujo completo de la solución entregado en el Sprint 2, el equipo decidió dedicar esta iteración a las mejoras identificadas en las evaluaciones heurísticas de las entrevistas de validación. En consecuencia, se comprometieron 73 puntos de historia distribuidos en 19 ítems del Product Backlog: 50 puntos en 12 historias de usuario y 23 puntos en 7 historias técnicas.
 
 A continuación, en la \autoref{tab:sprint-planning-3} se presenta el cuadro resumen del Sprint Planning Meeting, el cual integra la logística de la sesión, los responsables de la documentación, la capacidad comprometida y el Sprint Goal formulado bajo el estándar de Scrum.org.
 
@@ -39,8 +39,8 @@ A continuación, en la \autoref{tab:sprint-planning-3} se presenta el cuadro res
 \textbf{Sprint 2 Review Summary} & El Sprint 2 cumplió su objetivo, al completarse los 97 ítems comprometidos (241 puntos de historia). Se incorporaron 70 endpoints a los servicios web, que suman 103 en producción, y quedaron publicadas y culminadas la aplicación Android del productor y la aplicación Flutter del gestor técnico, ambas distribuidas mediante Firebase App Distribution. \\ \hline
 \textbf{Sprint 2 Retrospective Summary} & El equipo valoró haber completado el flujo de la solución con tiempo para validarlo con usuarios reales. Las evaluaciones heurísticas de las entrevistas de validación identificaron ajustes en ambas aplicaciones, por lo que acordó dedicar el Sprint 3 a corregirlos, actualizando primero las historias afectadas. \\ \hline
 \textbf{Sprint 3 Goal} & \textbf{Nuestro enfoque se orienta a} que los datos de Viora reflejen el trabajo real del olivar, de modo que el productor delimite sus lotes aun sin señal de ubicación, registre el descarte de su cosecha y reciba sus alertas críticas fuera de la aplicación, y que el gestor técnico identifique de inmediato al socio de cada parcela y proyecte el acopio con la clasificación por calibre de su planta y un nivel de confianza explícito. \textbf{Creemos que esto entrega} mayor retención y disposición de pago de los productores, al sustentar su suscripción en datos fiables; mayor adopción institucional de las cooperativas, al alinear la proyección con la forma en que reciben la aceituna; y, para el equipo, un producto validado con usuarios reales y listo para su cierre. \textbf{Esto se confirmará cuando} un productor delimite su lote con la ubicación desactivada, registre los kilos de descarte de su campaña y reciba fuera de la aplicación una alerta crítica de helada, y cuando un gestor técnico ubique al socio de una parcela crítica, dicte sus códigos de activación sin errores y consulte la proyección de acopio por rangos de calibre junto con su nivel de confianza y el muestreo pendiente. \\ \hline
-\textbf{Sprint 3 Velocity} & 70 \\ \hline
-\textbf{Sum of Story Points} & 63 \\ \hline
+\textbf{Sprint 3 Velocity} & 80 \\ \hline
+\textbf{Sum of Story Points} & 73 \\ \hline
 
 \end{longtable}
 \end{center}
@@ -75,9 +75,9 @@ Trinidad León, Jahat Jassiel & trinity-bytes & C & \textbf{L} & \textbf{L} & C 
 #### Sprint Backlog 3
 &nbsp;
 
-El objetivo central del Sprint Backlog 3 es atender las mejoras identificadas en las evaluaciones heurísticas de las aplicaciones móviles durante las entrevistas de validación. Para ello, se comprometen 17 ítems de trabajo (63 Story Points), conformados por 10 Historias de Usuario (US) y 7 Technical Stories (TS) cuyos escenarios se actualizaron a partir de esas evaluaciones, entre ellas la nueva configuración de rangos de calibre de la cooperativa (US55 y TS108). Los ítems se descomponen en 20 tareas técnicas distribuidas entre la aplicación del productor, la aplicación del gestor técnico y los servicios web. Como la mayoría de estas tareas son correcciones y ajustes sobre funcionalidades ya implementadas, su tiempo estimado es menor que el de las tareas de los sprints anteriores.
+El objetivo central del Sprint Backlog 3 es atender las mejoras identificadas en las evaluaciones heurísticas de las aplicaciones móviles durante las entrevistas de validación. Para ello, se comprometen 19 ítems de trabajo (73 Story Points), conformados por 12 Historias de Usuario (US) y 7 Technical Stories (TS) cuyos escenarios se actualizaron a partir de esas evaluaciones, entre ellas la nueva configuración de rangos de calibre de la cooperativa (US55 y TS108). Los ítems se descomponen en 23 tareas técnicas distribuidas entre la aplicación del productor, la aplicación del gestor técnico y los servicios web. Como la mayoría de estas tareas son correcciones y ajustes sobre funcionalidades ya implementadas, su tiempo estimado es menor que el de las tareas de los sprints anteriores.
 
-En la \autoref{tab:sprint-backlog-3} se expone el detalle de las 20 tareas técnicas, con su estimación, responsable y estado. El Sprint Backlog, distribuido a través de las columnas de flujo ágil \textit{Goal}, \textit{Stories}, \textit{To-Do}, \textit{In process}, \textit{To Review} y \textit{Done}, se encuentra registrado y disponible en el tablero oficial de gestión ágil de ArcadiaDevs en Trello, accesible mediante el siguiente enlace: \url{https://tinyurl.com/1acc0238-sb3}.
+En la \autoref{tab:sprint-backlog-3} se expone el detalle de las 23 tareas técnicas, con su estimación, responsable y estado. El Sprint Backlog, distribuido a través de las columnas de flujo ágil \textit{Goal}, \textit{Stories}, \textit{To-Do}, \textit{In process}, \textit{To Review} y \textit{Done}, se encuentra registrado y disponible en el tablero oficial de gestión ágil de ArcadiaDevs en Trello, accesible mediante el siguiente enlace: \url{https://tinyurl.com/1acc0238-sb3}.
 
 \begin{figure}[H]
 \caption{Vista general del tablero del Sprint Backlog 3} \label{fig:sprint-backlog-3-trello}
@@ -108,7 +108,7 @@ En la \autoref{tab:sprint-backlog-3} se expone el detalle de las 20 tareas técn
 \endfoot
 
 \hline
-\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Detalle de las 20 tareas técnicas de los 17 ítems comprometidos. El Sprint Backlog completo se encuentra disponible en el tablero de Trello: \url{https://tinyurl.com/1acc0238-sb3}. Elaboración propia.}} \\
+\multicolumn{8}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Detalle de las 23 tareas técnicas de los 19 ítems comprometidos. El Sprint Backlog completo se encuentra disponible en el tablero de Trello: \url{https://tinyurl.com/1acc0238-sb3}. Elaboración propia.}} \\
 \endlastfoot
 
 % US09
@@ -121,8 +121,14 @@ US12 & Consulta de la matriz de riesgo territorial y semáforo sectorial con pos
 US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & TK01 & Notificación de alertas críticas & Notificar fuera de la aplicación las alertas de helada y de severidad crítica. & 0.9 & Trinidad, Jahat & Done \\ \hline
 % US18
 US18 & Alertas automáticas de estrés hídrico y umbral térmico crítico en parcela & TK02 & Aviso tras posponer una alerta & Volver a notificar la alerta crítica cuando termina el tiempo pospuesto. & 0.5 & Trinidad, Jahat & Done \\ \hline
+% US20
+US20 & Registro retrospectivo de campañas históricas de cosecha y cálculo del Índice de Vecería (BBI) & TK01 & Ayuda del índice de alternancia & Explicar en lenguaje de campo el índice de alternancia en el detalle del lote. & 0.5 & Trinidad, Jahat & Done \\ \hline
 % US24
 US24 & Muestreo guiado de cuajado en campo a pie de árbol con persistencia local offline & TK01 & Muestra de frutos en Android & Registrar de forma opcional la cantidad y el peso de los frutos de la ronda y enviar \texttt{fruitSample}. & 1.4 & Espada, Piero & Done \\ \hline
+% US27
+US27 & Prescripción técnica in-app de porcentaje y ventana fenológica de aclareo & TK01 & Ajuste de fechas de las fases & Permitir corregir por lote la fecha de inicio de cada fase, conservando su orden. & 1.4 & Li, Diana & Done \\ \hline
+% US27
+US27 & Prescripción técnica in-app de porcentaje y ventana fenológica de aclareo & TK02 & Ayuda del término aclareo & Explicar el término aclareo donde aparece, con su equivalente raleo. & 0.5 & Trinidad, Jahat & Done \\ \hline
 % US29
 US29 & Asentamiento formal de cosecha de fin de campaña y balance de estabilización productiva & TK01 & Descarte en el registro de cosecha & Agregar los kilos de aceituna de descarte al registro y al balance de la campaña en Android. & 1.4 & Li, Diana & Done \\ \hline
 % US31
@@ -203,6 +209,8 @@ viora-mobile-android & feature/\allowbreak{}critical-\allowbreak{}alert-\allowbr
 viora-mobile-android & feature/\allowbreak{}critical-\allowbreak{}alert-\allowbreak{}notifications & e03a57a & fix(alerts): notify a critical alert again once its snooze ends &  & 19/11/2026 \\ \hline
 viora-mobile-android & feature/\allowbreak{}harvest-\allowbreak{}discard-\allowbreak{}olive-\allowbreak{}field & b88d24a & feat(harvest): track discarded olives in settlements &  & 19/11/2026 \\ \hline
 viora-mobile-android & feature/\allowbreak{}home-\allowbreak{}window-\allowbreak{}days & 3fd9bbc & fix(home): count today in the thinning window like the daily summary &  & 19/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}phenological-\allowbreak{}calendar-\allowbreak{}customization & e7ade71 & feat(phenology): add producer phase date adjustments to the olive calendar &  & 19/11/2026 \\ \hline
+viora-mobile-android & feature/\allowbreak{}agronomic-\allowbreak{}term-\allowbreak{}help & 97cd009 & feat(glossary): explain agronomic terms where they appear &  & 19/11/2026 \\ \hline
 % viora-mobile-flutter
 viora-mobile-flutter & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & c7c2e77 & fix(codes): keep each issued code whole on one line &  & 23/11/2026 \\ \hline
 viora-mobile-flutter & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & d722316 & feat(risk): name the member of each plot and mark the legend levels with icons &  & 23/11/2026 \\ \hline
