@@ -460,6 +460,39 @@ El video muestra la ejecución de las vistas y los flujos de navegación impleme
 #### Team Collaboration Insights during Sprint
 &nbsp;
 
-<!-- TODO: análisis de Contributors de cada repositorio, sin nombrar integrantes. -->
+En esta sección se analizan las métricas de colaboración del equipo ArcadiaDevs durante el Sprint 3, iniciado el 13 de noviembre, orientado a incorporar en los servicios web y en las aplicaciones móviles las mejoras identificadas en las evaluaciones heurísticas. El desarrollo continuó bajo GitFlow, con ramas de características integradas en `develop` y publicadas en `main` mediante ramas de \textit{release}, y con la convención Conventional Commits para mantener un historial trazable entre los integrantes. Como el Landing Page quedó culminado en el Sprint 2, su repositorio no registra actividad en este ciclo.
+
+Para respaldar la trazabilidad del trabajo colaborativo en los repositorios de la organización en GitHub, a continuación se presentan los analíticos de contribución temporal y autoría de código (\textit{Contributors}) de cada repositorio con cambios, con la ventana de análisis de los últimos tres meses.
+
+En el repositorio `viora-platform` la actividad del Sprint 3 es menor que la de los sprints anteriores y se distribuye en las semanas del 9, 16 y 23 de noviembre (\autoref{fig:contributors-s3}, panel a). Este comportamiento corresponde a ajustes puntuales sobre contextos ya implementados: el descarte en la liquidación de cosecha, el nombre del lote en el resumen del día, y el código de socio, el calibre del muestreo y los rangos de calibre de la proyección de acopio.
+
+En el repositorio `viora-mobile-android` la actividad del Sprint 3 se concentra en la semana del 16 de noviembre (\autoref{fig:contributors-s3}, panel b), en la que se integraron las mejoras de la aplicación del productor: la detección de la ubicación desactivada, la comparación de áreas, las alertas críticas fuera de la aplicación, el descarte de cosecha, el ajuste de las fechas de las fases y la ayuda de términos agronómicos.
+
+En el repositorio `viora-mobile-flutter` la mayor parte del trabajo se realizó en el Sprint 2, por lo que durante el Sprint 3 solo se registra actividad en la semana del 23 de noviembre (\autoref{fig:contributors-s3}, panel c). Este ritmo es coherente con el alcance del ciclo, que se limitó a las correcciones de la aplicación del gestor técnico identificadas en su evaluación heurística.
+
+\begin{figure}[H]
+\caption{Vistas de Contributors de GitHub de los repositorios con cambios en el Sprint 3.} \label{fig:contributors-s3}
+\vspace{0.25cm}
+\centering
+\begin{minipage}[t]{0.32\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.38\textheight,keepaspectratio]{report/assets/sprint-team-collaboration/sprint-3/viora-platform-contributors.png}
+\par\vspace{0.1cm}{\small (a) viora-platform}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.38\textheight,keepaspectratio]{report/assets/sprint-team-collaboration/sprint-3/viora-mobile-android-contributors.png}
+\par\vspace{0.1cm}{\small (b) viora-mobile-android}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.38\textheight,keepaspectratio]{report/assets/sprint-team-collaboration/sprint-3/viora-mobile-flutter-contributors.png}
+\par\vspace{0.1cm}{\small (c) viora-mobile-flutter}
+\end{minipage}
+\caption*{\textit{Nota.} Analíticas de contribuciones en GitHub, con la ventana de los últimos tres meses. Elaboración propia.}
+\end{figure}
+
 
 \clearpage
