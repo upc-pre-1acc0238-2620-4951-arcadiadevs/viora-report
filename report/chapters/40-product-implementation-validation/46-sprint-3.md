@@ -372,7 +372,16 @@ El video muestra la ejecución de las vistas y los flujos de navegación impleme
 #### Services Documentation Evidence for Sprint Review
 &nbsp;
 
-<!-- TODO: resumen de los endpoints incorporados o modificados en el Sprint 3. -->
+En esta sección se presenta la relación de servicios web RESTful incorporados o modificados y documentados bajo el estándar OpenAPI 3.1 para la plataforma Viora (\texttt{viora-platform}) durante el Sprint 3. Sobre la arquitectura guiada por el dominio (Domain-Driven Design, DDD) de los sprints anteriores, el equipo de backend ajustó los contratos de los contextos Territory, Thinning y Harvest para atender los hallazgos de las evaluaciones heurísticas: la identificación del socio de cada parcela, la muestra de frutos con su calibre, los rangos de calibre de la cooperativa, la proyección de acopio por calibre con nivel de confianza y el peso de la aceituna de descarte en la liquidación de cosecha. Las decisiones de diseño de estos cambios se registraron en el ADR-010 del repositorio.
+
+Durante este ciclo se incorporaron 2 endpoints, los de consulta y reemplazo de rangos de calibre, y se ampliaron los contratos de 6 endpoints existentes, de modo que la API alcanza 105 endpoints organizados en 34 grupos de la documentación. En la \autoref{tab:services-documentation-endpoints-sprint-3} se presenta la matriz de los 8 endpoints del Sprint 3; los 105 endpoints se encuentran accesibles y documentados en Swagger UI.
+
+\noindent \textbf{Puntos de acceso a la documentación interactiva (Swagger UI / OpenAPI):}
+\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+    \item \textbf{Entorno desplegado en producción (Render Cloud):} \url{https://viora-platform.onrender.com/swagger-ui/index.html}
+    \item \textbf{Entorno de desarrollo local:} \url{http://localhost:8080/swagger-ui/index.html}
+    \item \textbf{Especificación OpenAPI en formato JSON:} \url{https://viora-platform.onrender.com/v3/api-docs}
+\end{itemize}
 
 \begin{center}
 \footnotesize
@@ -392,13 +401,152 @@ El video muestra la ejecución de las vistas y los flujos de navegación impleme
 \endfoot
 
 \hline
-\multicolumn{5}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Selección representativa de endpoints sobre un total de 103 endpoints desplegados en Render (\url{https://viora-platform.onrender.com/swagger-ui/index.html}) y localmente (\url{http://localhost:8080/swagger-ui/index.html}).}} \\
+\multicolumn{5}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Selección representativa de endpoints sobre un total de 105 endpoints desplegados en Render (\url{https://viora-platform.onrender.com/swagger-ui/index.html}) y localmente (\url{http://localhost:8080/swagger-ui/index.html}).}} \\
 \endlastfoot
 
-<!-- TODO: filas de la tabla. -->
+Consultar rangos de calibre & GET & \url{https://viora-platform.onrender.com/api/v1/caliber-ranges} & Sin parámetros & 200, 401, 403 \\ \hline
+Reemplazar rangos de calibre & PUT & \url{https://viora-platform.onrender.com/api/v1/caliber-ranges} & Body: \texttt{ReplaceCaliberRangesResource} & 200, 400, 401, 403 \\ \hline
+Listar parcelas socias con código de socio & GET & \url{https://viora-platform.onrender.com/api/v1/member-plots} & Query: \texttt{latitude}, \texttt{longitude} & 200, 400, 401, 403 \\ \hline
+Consultar parcela socia & GET & \url{https://viora-platform.onrender.com/api/v1/member-plots/{id}} & Path: \texttt{id} & 200, 401, 403, 404 \\ \hline
+Registrar muestreo con muestra de frutos & POST & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/samplings} & Path: \texttt{plotId}; Body: \texttt{SubmitSamplingResource} & 201, 400, 404, 409 \\ \hline
+Consultar proyección de acopio por calibre & GET & \url{https://viora-platform.onrender.com/api/v1/intake-forecasts/{campaignYear}} & Path: \texttt{campaignYear} & 200, 400, 401, 403, 404 \\ \hline
+Liquidar cosecha con descarte & POST & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/harvest-settlements} & Path: \texttt{plotId}; Header: \texttt{Idempotency-Key}; Body: \texttt{SettleHarvestResource} & 200, 201, 400, 403, 404, 409, 422 \\ \hline
+Consultar liquidación de una campaña & GET & \url{https://viora-platform.onrender.com/api/v1/plots/{plotId}/harvest-settlements/{campaignYear}} & Path: \texttt{plotId}, \texttt{campaignYear} & 200, 400, 403, 404 \\ \hline
 
 \end{longtable}
 \end{center}
+
+\noindent \textbf{Especificación detallada de endpoints representativos del Sprint 3:}
+
+A continuación se detallan 4 endpoints que reflejan las reglas de negocio incorporadas en el Sprint 3. Los ejemplos 2 y 4 corresponden a respuestas obtenidas en producción, y los ejemplos 1 y 3 se construyen a partir de los esquemas documentados en el contrato OpenAPI:
+
+\vspace{0.25cm}
+\noindent \textbf{1. Reemplazar los rangos de calibre de la licencia (\texttt{PUT /\allowbreak{}api/\allowbreak{}v1/\allowbreak{}caliber-ranges}):}
+
+* **Propósito y reglas de negocio:** Permite al gestor técnico definir los rangos de calibre en frutos por kilo con los que su planta clasifica la aceituna. Los rangos van del fruto más grande al más pequeño, son consecutivos, sin superposiciones ni huecos, se ubican dentro de la escala comercial de 60 a 2000 frutos por kilo y son 20 como máximo. Una lista vacía elimina la configuración.
+* **Parámetros de entrada:** Body `ReplaceCaliberRangesResource` (`ranges`: lista de `minFruitsPerKg` y `maxFruitsPerKg`).
+* **Ejemplo de solicitud y respuesta (\texttt{200 OK}):**
+
+```json
+// Solicitud:
+{ "ranges": [
+    { "minFruitsPerKg": 140, "maxFruitsPerKg": 180 },
+    { "minFruitsPerKg": 181, "maxFruitsPerKg": 220 },
+    { "minFruitsPerKg": 221, "maxFruitsPerKg": 260 } ] }
+// Respuesta (200 OK): la lista de rangos registrada
+[ { "minFruitsPerKg": 140, "maxFruitsPerKg": 180 },
+  { "minFruitsPerKg": 181, "maxFruitsPerKg": 220 },
+  { "minFruitsPerKg": 221, "maxFruitsPerKg": 260 } ]
+```
+
+* **Explicación de la respuesta:** El servicio reemplaza por completo la configuración de la licencia y devuelve los rangos vigentes; desde ese momento, la proyección de acopio se desglosa con esos rangos.
+
+\vspace{0.35cm}
+\noindent \textbf{2. Consultar la proyección de acopio por calibre (\texttt{GET /\allowbreak{}api/\allowbreak{}v1/\allowbreak{}intake-forecasts/\allowbreak{}\{campaignYear\}}):}
+
+* **Propósito y reglas de negocio:** Devuelve la proyección agregada de la campaña con su desglose por rango de calibre y un nivel de confianza graduado. La confianza se calcula con la menor de dos coberturas, la de parcelas muestreadas y la de hectáreas muestreadas, frente a umbrales configurables de 50\% y 80\%.
+* **Parámetros de entrada:** Path `campaignYear` (año de la campaña).
+* **Ejemplo de respuesta en producción (\texttt{200 OK}, campos incorporados en el Sprint 3):**
+
+```json
+{
+  "campaignYear": 2026, "status": "SUFFICIENT", "coveragePercent": 50,
+  "confidenceLevel": "MEDIUM", "pendingPlots": 1, "pendingHectares": 1,
+  "caliberBreakdown": [
+    { "minFruitsPerKg": 140, "maxFruitsPerKg": 180, "tons": 0,
+      "greenTons": 0, "blackTons": 0, "unclassifiedTons": 0 } ],
+  "unsizedTons": 20, "outOfRangeTons": 0
+}
+```
+
+* **Explicación de la respuesta:** `caliberBreakdown` reparte las toneladas de cada parcela estimable en el rango de su calibre; `unsizedTons` agrupa las parcelas sin calibre y `outOfRangeTons` las que quedan fuera de todos los rangos. `pendingPlots` y `pendingHectares` indican cuánto falta muestrear para el siguiente nivel, y `status` y `coveragePercent` se mantienen por compatibilidad con los clientes existentes. En la campaña consultada, las 20 toneladas proyectadas figuran como `unsizedTons` porque la parcela estimable aún no registra una muestra de frutos con calibre.
+
+\vspace{0.35cm}
+\noindent \textbf{3. Liquidar la cosecha con aceituna de descarte (\texttt{POST /\allowbreak{}api/\allowbreak{}v1/\allowbreak{}plots/\allowbreak{}\{plotId\}/\allowbreak{}harvest-settlements}):}
+
+* **Propósito y reglas de negocio:** Registra la liquidación formal de la campaña de una parcela. Desde el Sprint 3 acepta el campo opcional `discardOlivesKg`, que se suma al total de cosecha y se conserva en el desglose; si no se informa, se considera cero. Un valor negativo se rechaza con 400.
+* **Parámetros de entrada:** Path `plotId`, Header opcional `Idempotency-Key` y Body `SettleHarvestResource` (`campaignYear`, `greenOlivesKg`, `blackOlivesKg`, `discardOlivesKg`, `commercialFruitsPerKg`, entre otros).
+* **Ejemplo de solicitud y respuesta (\texttt{201 Created}):**
+
+```json
+// Solicitud:
+{ "campaignYear": 2025, "greenOlivesKg": 4200.0,
+  "blackOlivesKg": 8100.0, "discardOlivesKg": 300.0 }
+// Respuesta (201 Created), campos principales:
+{ "campaignYear": 2025, "greenOlivesKg": 4200.0, "blackOlivesKg": 8100.0,
+  "discardOlivesKg": 300.0, "totalYieldKg": 12600.0, "status": "SETTLED" }
+```
+
+* **Explicación de la respuesta:** El total de cosecha (`totalYieldKg`) incluye el descarte, mientras que el desglose conserva por separado la aceituna verde, la negra y la de descarte.
+
+\vspace{0.35cm}
+\noindent \textbf{4. Manejo de errores RFC 7807 en los rangos de calibre (\texttt{PUT /\allowbreak{}api/\allowbreak{}v1/\allowbreak{}caliber-ranges}):}
+
+* **Propósito y reglas de negocio:** Cuando un rango está incompleto, fuera de escala, invertido, superpuesto o deja un hueco, el servicio rechaza la solicitud y conserva la configuración vigente.
+* **Parámetros de entrada:** Body `ReplaceCaliberRangesResource` con un rango en conflicto, por ejemplo 140 a 200 seguido de 180 a 260.
+* **Ejemplo de respuesta en producción (\texttt{400 Bad Request}):**
+
+```json
+{
+  "detail": "Un rango de calibre se superpone con el anterior",
+  "instance": "/api/v1/caliber-ranges", "status": 400,
+  "title": "Bad Request",
+  "type": "https://api.viora.com/errors/validation-error",
+  "code": "VALIDATION_ERROR",
+  "reason": "territory.caliber_range.overlapping", "rangeIndex": 1
+}
+```
+
+* **Explicación de la respuesta:** El manejador global de excepciones devuelve un objeto RFC 7807 con el mensaje localizado en `detail`, la clave del conflicto en `reason` y la posición del rango en `rangeIndex`, desde 0, para que la aplicación del gestor señale el rango que debe corregirse.
+
+\noindent \textbf{Evidencias de interacción con la documentación interactiva (Swagger UI):}
+
+Para comprobar la operatividad de los contratos, se ejecutaron pruebas en vivo sobre la consola interactiva Swagger UI desplegada en Render (\url{https://viora-platform.onrender.com/swagger-ui/index.html}), autenticadas con el token de una cuenta de gestor técnico de demostración. Se priorizaron consultas y errores controlados para no alterar los datos de producción, y en cada captura se aprecia la URL de la solicitud.
+
+Las pruebas cubrieron los siguientes flujos:
+
+\begin{itemize}\setlength{\itemsep}{2pt}\setlength{\parskip}{0pt}
+    \item \textbf{Rangos de calibre (\texttt{GET /api/v1/caliber-ranges}):} Consulta de la configuración de la licencia (\autoref{fig:exec-swagger-caliber-ranges-s3}). Swagger UI confirmó la respuesta \texttt{200 OK} con el rango registrado de 140 a 180 frutos por kilo.
+    \item \textbf{Proyección de acopio (\texttt{GET /api/v1/intake-forecasts/2026}):} Consulta de la campaña 2026 (\autoref{fig:exec-swagger-intake-s3}). La respuesta \texttt{200 OK} devolvió el nivel de confianza \texttt{MEDIUM}, el muestreo pendiente y el desglose por calibre.
+    \item \textbf{Rango superpuesto (\texttt{PUT /api/v1/caliber-ranges}):} Envío de dos rangos superpuestos, de 140 a 200 y de 180 a 260 frutos por kilo (\autoref{fig:exec-swagger-error-rfc7807-s3}). El servicio respondió \texttt{400 Bad Request} bajo el esquema RFC 7807 con \texttt{reason} y \texttt{rangeIndex}, y una nueva consulta confirmó que la configuración vigente no cambió.
+\end{itemize}
+
+\begin{figure}[H]
+\caption{Consulta de los rangos de calibre y respuesta 200 OK en Swagger UI.} \label{fig:exec-swagger-caliber-ranges-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-3/web-services/01-caliber-ranges-200.png}
+\caption*{\textit{Nota.} Captura de la consola interactiva Swagger UI en el entorno de producción (Render). Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Proyección de acopio con nivel de confianza y desglose por calibre en Swagger UI.} \label{fig:exec-swagger-intake-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-3/web-services/02-intake-forecast-200.png}
+\caption*{\textit{Nota.} Captura de la consola interactiva Swagger UI en el entorno de producción (Render). Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Rango de calibre superpuesto y respuesta 400 Bad Request (RFC 7807) en Swagger UI.} \label{fig:exec-swagger-error-rfc7807-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.85\textwidth]{report/assets/execution-evidence/sprint-3/web-services/03-caliber-ranges-400.png}
+\caption*{\textit{Nota.} Captura de la consola interactiva Swagger UI en el entorno de producción (Render). Elaboración propia.}
+\end{figure}
+
+Los resultados verificaron la correspondencia entre las anotaciones OpenAPI del backend y el contrato JSON publicado (\url{https://viora-platform.onrender.com/v3/api-docs}), que la aplicación Flutter del gestor técnico emplea como referencia para integrar los nuevos campos.
+
+\clearpage
+
+\noindent \textbf{Repositorio oficial y trazabilidad de control de versiones:}
+
+La suite completa de Web Services y su documentación OpenAPI residen en el repositorio oficial de GitHub:
+\begin{itemize}\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}
+    \item \textbf{URL del repositorio:} \url{https://github.com/upc-pre-1acc0238-2620-4951-arcadiadevs/viora-platform}
+\end{itemize}
+
+En la \autoref{tab:services-documentation-commits-sprint-3} se listan los commits verificados en el historial del repositorio \texttt{viora-platform}, asociados con controladores REST, contratos y documentación de la API del Sprint 3:
 
 \begin{center}
 \footnotesize
@@ -421,10 +569,18 @@ El video muestra la ejecución de las vistas y los flujos de navegación impleme
 \multicolumn{6}{l}{\parbox{16cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir del historial de control de versiones Git del repositorio \texttt{viora-platform} en GitHub.}} \\
 \endlastfoot
 
-<!-- TODO: filas de la tabla. -->
+viora-platform & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & e61ea77 & feat(territory): name the member code of each member plot &  & 22/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & 820b672 & feat(thinning): weigh fruits in a sampling round to know their caliber &  & 22/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & e19175a & feat(territory): keep the caliber ranges of each license &  & 22/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & 7429f07 & feat(territory): split the intake by caliber and grade its confidence &  & 22/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}manager-\allowbreak{}heuristics-\allowbreak{}fixes & 2c74737 & docs: record the heuristic evaluation changes &  & 22/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}harvest-\allowbreak{}discard-\allowbreak{}field & 7c6bf25 & feat(harvest): add discard olives weight field to settlement resources &  & 19/11/2026 \\ \hline
+viora-platform & feature/\allowbreak{}harvest-\allowbreak{}discard-\allowbreak{}field & 3ac005f & feat(harvest): include discard olives weight in settlement validation and calculations &  & 19/11/2026 \\ \hline
 
 \end{longtable}
 \end{center}
+
+\clearpage
 
 #### Software Deployment Evidence for Sprint Review
 &nbsp;
