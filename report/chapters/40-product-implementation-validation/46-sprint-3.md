@@ -585,7 +585,7 @@ viora-platform & feature/\allowbreak{}harvest-\allowbreak{}discard-\allowbreak{}
 #### Software Deployment Evidence for Sprint Review
 &nbsp;
 
-<!-- TODO: resumen de los despliegues del Sprint 3. -->
+En esta sección se resumen los procesos de despliegue (\textit{deployment}) realizados durante el Sprint 3 para los productos digitales de Viora. Como los productos quedaron publicados y culminados en el Sprint 2, en este ciclo el trabajo se centró en publicar las mejoras derivadas de las evaluaciones heurísticas mediante los mismos mecanismos de despliegue continuo: los servicios web en Render y las aplicaciones móviles Android y Flutter en Firebase App Distribution. El Landing Page no requirió cambios y la base de datos se mantuvo en la misma instancia. En la \autoref{tab:deployment-summary-sprint-3} se resume qué se desplegó, dónde y cómo; a continuación se detallan los servicios web, la base de datos y las aplicaciones móviles con sus evidencias.
 
 \begin{center}
 \small
@@ -608,10 +608,102 @@ viora-platform & feature/\allowbreak{}harvest-\allowbreak{}discard-\allowbreak{}
 \multicolumn{5}{l}{\parbox{15.5cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir de las consolas de Vercel, Render, Filess.io, Firebase y GitHub.}} \\
 \endlastfoot
 
-<!-- TODO: filas de la tabla. -->
+Landing Page & \texttt{viora-landing-page} & Vercel & Sin cambios en el Sprint 3; se mantiene la integración con Git & Publicado y culminado \\ \hline
+Servicios web (API RESTful) & \texttt{viora-platform} & Render (\textit{Web Service} con Docker) & Despliegue automático desde la rama \texttt{main} con los contratos actualizados & Publicado y culminado \\ \hline
+Base de datos & No aplica & Filess.io (PostgreSQL) & Las tablas de rangos de calibre y las nuevas columnas se crean al desplegar los servicios web & Publicado y culminado \\ \hline
+Aplicación móvil Android & \texttt{viora-mobile-android} & Firebase App Distribution & Despliegue continuo con GitHub Actions; APK \textit{release} firmado & Publicado y culminado \\ \hline
+Aplicación móvil Flutter & \texttt{viora-mobile-flutter} & Firebase App Distribution & Despliegue continuo con GitHub Actions; APK \textit{release} firmado & Publicado y culminado \\ \hline
 
 \end{longtable}
 \end{center}
+
+\noindent \textbf{Servicios web de backend (Render):}
+
+La API RESTful `viora-platform` continúa desplegada en Render como \textit{Web Service} con Docker y despliegue automático desde la rama `main`. Durante el Sprint 3, cada integración de una rama de \textit{release} en `main` activó un nuevo despliegue sin intervención manual (\textit{Auto-Deploy}), con lo que se publicaron los ajustes de contratos y los nuevos endpoints de rangos de calibre derivados de las evaluaciones heurísticas. La \autoref{fig:deploy-render-s3} muestra el historial de despliegues automáticos y el servicio en estado \textit{Live} sobre la rama `main`.
+
+\begin{figure}[H]
+\caption{Despliegues automáticos del servicio viora-platform en Render.} \label{fig:deploy-render-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.55\textwidth]{report/assets/sprint-deployment/sprint-3/backend/01-render-auto-deploys.png}
+\caption*{\textit{Nota.} Captura del panel de Render. Elaboración propia.}
+\end{figure}
+
+La documentación de la API se mantiene disponible en el entorno de producción mediante Swagger UI, publicada en \url{https://viora-platform.onrender.com/swagger-ui/index.html}, desde donde se ejecutaron las pruebas de la sección Services Documentation Evidence (\autoref{fig:deploy-swagger-s3}).
+
+\begin{figure}[H]
+\caption{Documentación de Viora Agronomic Platform API en Swagger UI de producción.} \label{fig:deploy-swagger-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-3/backend/02-swagger-production.png}
+\caption*{\textit{Nota.} Captura de Swagger UI del servicio desplegado en Render. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Base de datos en la nube (Filess.io):}
+
+La base de datos PostgreSQL aprovisionada en el Sprint 1 se mantuvo como única instancia de datos de la plataforma. La \autoref{fig:deploy-filess-s3} confirma que `viora_thoughage` sigue activa (\textit{Active}) con PostgreSQL 15 en la región Nürnberg. Las tablas de rangos de calibre y las nuevas columnas incorporadas en este sprint se crean desde el backend al desplegarse, por lo que no fue necesario aprovisionar recursos adicionales.
+
+\begin{figure}[H]
+\caption{Base de datos activa en Filess.io.} \label{fig:deploy-filess-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.55\textwidth]{report/assets/sprint-deployment/sprint-3/database/01-filess-database-active.png}
+\caption*{\textit{Nota.} Captura del panel de Filess.io. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Aplicación móvil Android (Firebase App Distribution):}
+
+La aplicación del productor mantiene el despliegue continuo configurado en los sprints anteriores: al integrarse una rama de \textit{release} en `main`, el flujo de GitHub Actions compila y firma el APK \textit{release} y lo distribuye a los grupos de verificadores. En la \autoref{fig:deploy-android-tester-s3} se observa, desde el dispositivo de un verificador, la versión que incorpora las mejoras del Sprint 3 publicada como la más reciente y disponible para su descarga.
+
+\begin{figure}[H]
+\caption{Versión más reciente de la aplicación del productor en Firebase App Tester.} \label{fig:deploy-android-tester-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.22\textwidth]{report/assets/sprint-deployment/sprint-3/application/02-android-app-tester-releases.png}
+\caption*{\textit{Nota.} Captura de la aplicación Firebase App Tester en el dispositivo de un verificador; se ocultó el correo de contacto. Elaboración propia.}
+\end{figure}
+
+\noindent \textbf{Aplicación móvil Flutter (Firebase App Distribution):}
+
+La aplicación del gestor técnico sigue el mismo esquema. En la consola de Firebase App Distribution, la aplicación Viora Gestor registra las versiones distribuidas durante el sprint, cada una enviada a los verificadores invitados, con el seguimiento de cuántos la aceptaron y descargaron (\autoref{fig:deploy-flutter-versions-s3}).
+
+\begin{figure}[H]
+\caption{Versiones de la aplicación del gestor técnico en la consola de Firebase App Distribution.} \label{fig:deploy-flutter-versions-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-3/application/04-flutter-app-distribution-versions.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution; se ocultó el correo de contacto. Elaboración propia.}
+\end{figure}
+
+Desde el dispositivo de un verificador, la aplicación del gestor técnico (paquete `pe.edu.upc.viora.gestor`) muestra la versión más reciente disponible para su descarga (\autoref{fig:deploy-flutter-tester-s3}).
+
+\begin{figure}[H]
+\caption{Versión más reciente de la aplicación del gestor técnico en Firebase App Tester.} \label{fig:deploy-flutter-tester-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.22\textwidth]{report/assets/sprint-deployment/sprint-3/application/01-flutter-app-tester-releases.png}
+\caption*{\textit{Nota.} Captura de la aplicación Firebase App Tester en el dispositivo de un verificador; se ocultó el correo de contacto. Elaboración propia.}
+\end{figure}
+
+Como novedad del Sprint 3, la aplicación del gestor técnico cuenta con sus propios vínculos de invitación asociados al grupo `viora-client-testers` (\autoref{fig:deploy-flutter-links-s3}). Este grupo reúne a los verificadores externos, entre ellos los participantes de las entrevistas de validación, de modo que acceden a la versión vigente sin una invitación individual (\autoref{fig:deploy-client-testers-s3}).
+
+\begin{figure}[H]
+\caption{Vínculos de invitación de la aplicación del gestor técnico.} \label{fig:deploy-flutter-links-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.55\textwidth]{report/assets/sprint-deployment/sprint-3/application/05-flutter-invitation-links.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution. Elaboración propia.}
+\end{figure}
+
+\begin{figure}[H]
+\caption{Grupo de verificadores viora-client-testers en Firebase App Distribution.} \label{fig:deploy-client-testers-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.50\textwidth]{report/assets/sprint-deployment/sprint-3/application/03-client-testers-group.png}
+\caption*{\textit{Nota.} Captura de la consola de Firebase App Distribution; se ocultaron los nombres y correos de los verificadores. Elaboración propia.}
+\end{figure}
+
+Con este sprint, los servicios web, la base de datos y ambas aplicaciones móviles mantienen su estado de publicados y culminados, ahora con las mejoras derivadas de la validación con usuarios.
 
 #### Team Collaboration Insights during Sprint
 &nbsp;
