@@ -1,6 +1,6 @@
 ### Sprint 3
 
-<!-- TODO: introducción del Sprint 3: objetivo del ciclo y mejoras de la validación. -->
+En este tercer ciclo de desarrollo se registra y sustenta el avance del producto y el trabajo colaborativo del equipo ArcadiaDevs orientado a incorporar en la solución Viora las mejoras identificadas por productores olivareros y gestores técnicos durante las entrevistas de validación. Con el flujo completo entregado en el Sprint 2, esta iteración se centra en corregir los problemas de usabilidad señalados en las evaluaciones heurísticas de las aplicaciones móviles y en ajustar los servicios web que las respaldan. A continuación, se detallan los acuerdos del Sprint Planning 3, la asignación de responsabilidades y el Sprint Backlog, acompañados por las evidencias de desarrollo en GitHub, la suite de pruebas de aceptación, la ejecución de los flujos de las aplicaciones móviles, la documentación OpenAPI y Swagger de los servicios web, el despliegue en la nube de cada producto y las analíticas de colaboración del equipo.
 
 #### Sprint Planning 3
 &nbsp;
