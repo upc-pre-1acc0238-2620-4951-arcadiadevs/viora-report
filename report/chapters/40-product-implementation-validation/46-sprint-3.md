@@ -266,12 +266,94 @@ viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}3-\allowbreak{
 #### Execution Evidence for Sprint Review
 &nbsp;
 
-En esta sección se presenta la evidencia de ejecución de los productos digitales mejorados durante el Sprint 3, a partir de los hallazgos de las evaluaciones heurísticas. En la aplicación móvil del productor se incorporaron la detección de la ubicación desactivada, la comparación del área trazada, las alertas críticas fuera de la aplicación, el registro del descarte de cosecha, el ajuste de las fechas de las fases y la explicación de los términos agronómicos. En la aplicación móvil del gestor técnico se incorporaron la identificación del socio productor, la leyenda del semáforo con íconos, la proyección de acopio con nivel de confianza y desglose por calibre, la configuración de rangos de calibre y la presentación legible de los códigos de activación. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
+En esta sección se presenta la evidencia de ejecución de los productos digitales mejorados durante el Sprint 3, a partir de los hallazgos de las evaluaciones heurísticas. En la aplicación móvil del productor se incorporaron la detección de la ubicación desactivada, la comparación del área trazada, las alertas críticas fuera de la aplicación, el registro del descarte de cosecha, el ajuste de las fechas de las fases, la explicación de los términos agronómicos y la coherencia de la información de Inicio. En la aplicación móvil del gestor técnico se incorporaron la identificación del socio productor, la leyenda del semáforo con íconos, la proyección de acopio con nivel de confianza y desglose por calibre, la configuración de rangos de calibre y la presentación legible de los códigos de activación. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
 
 
 \noindent \textbf{Aplicación móvil del productor:}
 
-<!-- TODO: figuras de la aplicación Android. -->
+Al registrar un lote, la aplicación detecta si la ubicación del dispositivo está desactivada y lo indica en la opción «Caminar el contorno». Al elegirla, un diálogo ofrece activar la ubicación o dibujar el lote directamente en el mapa (\autoref{fig:exec-app-location-s3}).
+
+\begin{figure}[H]
+\caption{Detección de la ubicación desactivada en el registro del lote.} \label{fig:exec-app-location-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/03-location-off-detected.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/04-enable-location-dialog.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+Durante el trazado, el mapa muestra una escala y compara el área trazada con el área declarada del lote. Si ambas no coinciden, la aplicación solicita una confirmación antes de guardar el contorno (\autoref{fig:exec-app-area-s3}).
+
+\begin{figure}[H]
+\caption{Comparación del área trazada con el área declarada.} \label{fig:exec-app-area-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/08-traced-vs-declared-area.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/09-area-mismatch-confirmation.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+En Mi cuenta, el productor activa la preferencia «Alertas críticas» para recibir avisos fuera de la aplicación. Cuando se genera una alerta crítica, llega una notificación de alta prioridad aun con la aplicación cerrada y, al tocarla, se abre el detalle de la alerta (\autoref{fig:exec-app-critical-alerts-s3}).
+
+\begin{figure}[H]
+\caption{Alertas críticas recibidas fuera de la aplicación.} \label{fig:exec-app-critical-alerts-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/12-critical-alerts-preference.jpg}
+\hspace{0.75cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/13-critical-alert-notification.jpg}
+\hspace{0.75cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/14-alert-detail-from-notification.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+El registro de cosecha incorpora un campo opcional para la aceituna de descarte, que se suma al total cosechado del lote (\autoref{fig:exec-app-harvest-s3}).
+
+\begin{figure}[H]
+\caption{Registro de cosecha con la aceituna de descarte.} \label{fig:exec-app-harvest-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/07-harvest-discard-olives.jpg}
+\caption*{\textit{Nota.} Captura de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+El calendario fenológico del lote permite al productor ajustar la fecha de inicio de cada fase según lo observado en su campo, mediante un selector de fecha (\autoref{fig:exec-app-phenology-s3}).
+
+\begin{figure}[H]
+\caption{Calendario fenológico con el ajuste del inicio de fase.} \label{fig:exec-app-phenology-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/01-phenology-calendar.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/02-phase-start-adjustment.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+Los términos agronómicos cuentan con una ayuda «¿Qué significa?» que los explica en lenguaje sencillo, como el aclareo en Inicio y el índice de alternancia en el detalle del lote (\autoref{fig:exec-app-terms-s3}).
+
+\begin{figure}[H]
+\caption{Ayuda de los términos agronómicos.} \label{fig:exec-app-terms-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/05-thinning-term-help.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/06-alternation-index-help.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
+
+Finalmente, la tarjeta principal de Inicio y el «Resumen de hoy» presentan información coherente: ambos indican los días que faltan para la ventana de aclareo, y el resumen nombra el lote al que se refiere sin repetir el texto (\autoref{fig:exec-app-home-s3}).
+
+\begin{figure}[H]
+\caption{Inicio con la ventana de aclareo y el resumen de hoy coherentes.} \label{fig:exec-app-home-s3}
+\vspace{0.25cm}
+\centering
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/10-home-thinning-window.jpg}
+\hspace{1cm}
+\includegraphics[width=0.15\textwidth]{report/assets/execution-evidence/sprint-3/mobile-app-producer/11-daily-summary-plot.jpg}
+\caption*{\textit{Nota.} Capturas de la aplicación móvil en ejecución. Elaboración propia.}
+\end{figure}
 
 \noindent \textbf{Aplicación móvil del gestor técnico:}
 
