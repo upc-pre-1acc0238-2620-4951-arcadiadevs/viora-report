@@ -7,9 +7,9 @@ El video *About the Product* presenta de forma promocional el modelo de negocio 
 \noindent \textbf{Información del registro audiovisual:}
 
 * \textbf{Título del video:} About the Product - Viora, la memoria del olivo
-* \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-ArcadiaDevs-about-the-product-av2.mp4}
+* \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-ArcadiaDevs-about-the-product-tb2.mp4}
 * \textbf{Duración:} 00:03:47
-* \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/26rde5pj}
+* \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/z45adupj}
 * \textbf{Enlace de visualización (YouTube):} \url{https://www.youtube.com/watch?v=beRFJeo_9yI}
 
 \vspace{0.3cm}
@@ -49,7 +49,7 @@ El video *About the Product* presenta de forma promocional el modelo de negocio 
 \vspace{0.25cm}
 \centering
 \includegraphics[height=0.27\textheight,keepaspectratio]{report/assets/videos/about-the-product.png}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/26rde5pj}. Elaboración propia.}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/z45adupj}. Elaboración propia.}
 \end{figure}
 
 \begin{figure}[H]
@@ -57,7 +57,7 @@ El video *About the Product* presenta de forma promocional el modelo de negocio 
 \vspace{0.25cm}
 \centering
 \includegraphics[height=0.27\textheight,keepaspectratio]{report/assets/videos/about-the-product-testimonial.png}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/26rde5pj}. Elaboración propia.}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/z45adupj}. Elaboración propia.}
 \end{figure}
 
 \clearpage
@@ -93,9 +93,9 @@ El video *About the Team* resume el proceso de trabajo del equipo ArcadiaDevs du
 \noindent \textbf{Información del registro audiovisual:}
 
 * \textbf{Título del video:} About the Team - ArcadiaDevs
-* \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-ArcadiaDevs-about-the-team-av2.mp4}
+* \textbf{Nomenclatura oficial:} \texttt{upc-pre-202620-1acc0238-4951-ArcadiaDevs-about-the-team-tb2.mp4}
 * \textbf{Duración:} 00:09:07
-* \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/7dxk7xkn}
+* \textbf{Enlace de visualización (OneDrive):} \url{https://tinyurl.com/4sb5f8zt}
 * \textbf{Enlace de visualización (YouTube):} \url{https://www.youtube.com/watch?v=CgOQZjVvBsY}
 
 \vspace{0.3cm}
@@ -138,7 +138,7 @@ El video *About the Team* resume el proceso de trabajo del equipo ArcadiaDevs du
 \vspace{0.25cm}
 \centering
 \includegraphics[height=0.27\textheight,keepaspectratio]{report/assets/videos/about-the-team.png}
-\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/7dxk7xkn}. Elaboración propia.}
+\caption*{\textit{Nota.} Video disponible en: \url{https://tinyurl.com/4sb5f8zt}. Elaboración propia.}
 \end{figure}
 
 \newpage
