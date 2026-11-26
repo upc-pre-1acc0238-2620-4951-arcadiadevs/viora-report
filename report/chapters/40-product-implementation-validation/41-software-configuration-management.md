@@ -262,7 +262,7 @@ Para la aplicación multiplataforma en `viora-mobile-flutter`, el equipo aplica 
 
 Para garantizar que los productos digitales que integran el ecosistema Viora se publiquen y operen de forma reproducible, resiliente y continua, ArcadiaDevs ha diseñado una infraestructura de despliegue moderna basada en el paradigma de Entrega Continua y en los principios de paridad entre desarrollo y producción. 
 
-La estrategia de despliegue desacopla la arquitectura en cuatro componentes de alojamiento especializados: red de distribución de borde en Vercel para la Landing Page, entorno de ejecución gestionado en Render para los servicios web de backend y el simulador de telemetría, base de datos relacional administrada en Filess.io para la persistencia transaccional, y distribución privada de binarios mediante Firebase App Distribution para las aplicaciones móviles (Android nativo y Flutter). La orquestación de compilación, firma y publicación se automatiza a través de pipelines de integración continua en GitHub Actions, minimizando la intervención manual y garantizando la trazabilidad entre el código fuente auditado en Git y los artefactos desplegados en la nube.
+La estrategia de despliegue desacopla la arquitectura en cuatro componentes de alojamiento especializados: red de distribución de borde en Vercel para la Landing Page, entorno de ejecución gestionado en Render para los servicios web de backend, que incluyen el simulador de telemetría, base de datos relacional administrada en Filess.io para la persistencia transaccional, y distribución privada de binarios mediante Firebase App Distribution para las aplicaciones móviles (Android nativo y Flutter). La orquestación de compilación, firma y publicación se automatiza a través de pipelines de integración continua en GitHub Actions, minimizando la intervención manual y garantizando la trazabilidad entre el código fuente auditado en Git y los artefactos desplegados en la nube.
 
 #### Arquitectura de despliegue de la solución (C4 Model Nivel 4)
 &nbsp;
@@ -272,7 +272,7 @@ La topología de infraestructura física y lógica de Viora se modela mediante e
 En la \autoref{fig:c4-deployment-ch4} se expone la arquitectura global de despliegue del sistema Viora (panel a), complementada por la clave técnica de notación de C4 Model (panel b).
 
 \begin{figure}[H]
-\caption{C4 Model - Nivel 4: Topología de Despliegue y Leyenda de Notación.} \label{fig:c4-deployment-ch4}
+\caption{C4 Model, nivel 4: topología de despliegue y leyenda de notación.} \label{fig:c4-deployment-ch4}
 \centering
 \begin{minipage}[b]{0.64\textwidth}
 \centering
@@ -291,11 +291,12 @@ En la \autoref{fig:c4-deployment-ch4} se expone la arquitectura global de despli
 A partir de la arquitectura ilustrada en la \autoref{fig:c4-deployment-ch4}, se identifican los siguientes nodos de ejecución y roles operativos:
 
 * **Nodo Vercel Edge Network:** Infraestructura distribuida globalmente que aloja la Landing Page como un sitio web estático optimizado. Gestiona la entrega de contenidos a través de servidores de borde (*Edge servers*) con terminación TLS automática, enrutamiento seguro y compresión de recursos estáticos.
-* **Nodo Render Cloud Platform:** Entorno PaaS administrado que aloja la API RESTful de backend en su runtime nativo de Java 21, así como el servicio complementario Telemetry Simulator ejecutándose como proceso en segundo plano (*Background Worker*) independiente.
+* **Nodo Render Cloud Platform:** Entorno PaaS administrado que aloja la API RESTful de backend como servicio web con Docker sobre Java 21, actualizado automáticamente desde la rama `main`. El simulador de los nodos virtuales de telemetría y las tareas programadas (alertas agroclimáticas, alertas de sector y resumen diario del asistente) se ejecutan dentro del mismo servicio.
 * **Nodo Filess.io Managed Cloud:** Servicio DBaaS de base de datos relacional PostgreSQL 15.6 de alta disponibilidad, accesible exclusivamente mediante conexiones cifradas SSL/TLS para salvaguardar la persistencia de datos del negocio.
-* **Nodo Google Firebase App Distribution:** Plataforma de distribución continua que gestiona el versionamiento, control de acceso y entrega inalámbrica (*Over-the-Air*) de los paquetes de aplicación compilados (APK) para Android.
-* **Nodo Dispositivo Móvil Android de Prueba:** Hardware físico de prueba en el que se ejecuta la aplicación móvil nativa dentro del sandbox de Android OS, integrando persistencia local desconectada mediante Room SQLite.
-* **Servicios SaaS Externos:** Nodos de terceros integrados a través de contratos seguros HTTPS: Mapbox (servicios de cartografía satelital y delimitación geoespacial de parcelas), Open-Meteo (suministro de datos agroclimáticos y pronóstico en tiempo real), Brevo (envío de notificaciones transaccionales y correos electrónicos), y Mercado Pago Sandbox (procesamiento transaccional de pagos mediante webhooks firmados).
+* **Nodo Google Firebase App Distribution:** Plataforma de distribución continua que gestiona el versionamiento, control de acceso y entrega inalámbrica (*Over-the-Air*) de los paquetes de aplicación compilados (APK) de la aplicación del productor y de la del gestor técnico, con registros y vínculos de invitación separados.
+* **Nodo dispositivo Android del productor:** Hardware físico de prueba en el que se ejecuta la aplicación nativa del productor dentro del sandbox de Android OS, con persistencia local sin conexión mediante Room sobre SQLite.
+* **Nodo dispositivo Android del gestor técnico:** Hardware físico de prueba en el que se ejecuta la aplicación multiplataforma del gestor sobre el motor Flutter, con su copia local sin conexión mediante Drift sobre SQLite.
+* **Servicios SaaS Externos:** Nodos de terceros integrados a través de contratos seguros HTTPS: Mapbox (servicios de cartografía satelital y delimitación geoespacial de parcelas), Open-Meteo (suministro de datos agroclimáticos y pronóstico en tiempo real), Brevo (envío de correos transaccionales de verificación y recuperación), Groq (modelo de lenguaje, mediante su API compatible con OpenAI, que reformula las respuestas del asistente de campo) y Mercado Pago Sandbox (procesamiento transaccional de pagos mediante webhooks firmados).
 
 #### Despliegue de la aplicación web de presentación (Landing Page)
 &nbsp;
@@ -333,7 +334,7 @@ Se aprovecha el entorno de ejecución nativo de Java ofrecido por Render, lo que
   * `SPRING_DATASOURCE_URL`: cadena de conexión JDBC con protocolo SSL forzado apuntando a Filess.io (`jdbc:postgresql://<host>:<port>/<database>?sslmode=require`).
   * `SPRING_DATASOURCE_USERNAME` y `SPRING_DATASOURCE_PASSWORD`: credenciales seguras de acceso a la base de datos remota.
   * `SECURITY_JWT_SECRET_KEY`: clave criptográfica privada para la firma y validación de tokens de sesión JWT.
-  * Claves de integración de proveedores externos (Mapbox, Open-Meteo, Brevo y Mercado Pago).
+  * Claves de integración de proveedores externos (Mapbox, Open-Meteo, Brevo, Groq y Mercado Pago).
 
 \noindent \textbf{Persistencia y sincronización del esquema en Filess.io:}
 
@@ -345,9 +346,9 @@ spring.jpa.hibernate.ddl-auto=update
 
 Bajo esta modalidad, cada vez que el servicio web de Spring Boot se inicializa en Render, el motor JPA analiza las clases anotadas con `@Entity` en los agregados de dominio y actualiza de manera incremental el esquema relacional en Filess.io (creando tablas nuevas, alterando tipos de datos y agregando claves foráneas o índices), preservando en todo momento la integridad de los datos previamente almacenados.
 
-\noindent \textbf{Despliegue del IoT Telemetry Simulator:}
+\noindent \textbf{Simulador de telemetría IoT:}
 
-El componente `viora-telemetry-simulator` se despliega como un servicio en segundo plano (*Background Worker*) independiente en Render. Este servicio autónomo ejecuta un ciclo programado en Java que genera lecturas sintéticas consistentes de sensores agronómicos (temperatura ambiental, humedad relativa y tensión hídrica de suelo) y las envía periódicamente mediante peticiones HTTP POST con encabezados de autenticación hacia la API RESTful de `viora-platform`.
+El simulador de los nodos virtuales de parcela se ejecuta dentro del propio servicio `viora-platform`, como una tarea programada del contexto de telemetría. Genera lecturas sintéticas etiquetadas de clima y suelo para cada nodo virtual registrado y las guarda junto con su procedencia, por lo que no requiere un servicio aparte en Render.
 
 \noindent \textbf{Punto de acceso en producción de la API:}
 
