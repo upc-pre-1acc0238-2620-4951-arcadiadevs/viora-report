@@ -447,7 +447,7 @@ El video muestra la ejecución de las vistas y los flujos de navegación impleme
 * **Título:** Product Navigation - Sprint 3
 * **Entrega:** Sprint 3
 * **Formato:** MP4
-* **Enlace de visualización (OneDrive):** \textit{Enlace pendiente}
+* **Enlace de visualización (OneDrive):** \url{https://tinyurl.com/product-navigation-tb2}
 
 \clearpage
 
