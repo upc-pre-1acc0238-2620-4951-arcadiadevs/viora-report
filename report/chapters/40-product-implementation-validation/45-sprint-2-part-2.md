@@ -47,7 +47,7 @@ viora-acceptance-tests & feature/\allowbreak{}sprint-\allowbreak{}2-\allowbreak{
 #### Execution Evidence for Sprint Review
 &nbsp;
 
-En esta sección se presenta la evidencia de ejecución de los productos digitales implementados durante el Sprint 2. En la \textit{Landing Page} se incorporaron el canal de cotización del Plan Cooperativa y la primera versión de los videos About the Product y About the Team, incrustados desde YouTube. En la aplicación móvil del productor se incorporó el asistente agronómico en las principales pantallas: el inicio con el resumen del día, la alternancia, el plan de aclareo, las alertas, el clima, el frío invernal y la campaña cerrada. En cada una, el productor elige preguntas sobre sus datos y recibe respuestas con cifras reales, conserva un historial disponible sin conexión y recibe avisos claros ante errores o límites de uso. En la aplicación móvil del gestor técnico, desarrollada en Flutter, se completaron la bienvenida, el inicio con el semáforo del valle, el riesgo territorial por sector, la consulta de los lotes socios con su prescripción y expediente técnico, la proyección de acopio, la administración de socios, sectores y códigos de activación, las alertas y la preferencia de idioma. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
+En esta sección se presenta la evidencia de ejecución de los productos digitales implementados durante el Sprint 2. En la \textit{Landing Page} se incorporaron el canal de cotización del Plan Cooperativa y los videos About the Product y About the Team en su versión final, incrustados desde YouTube. En la aplicación móvil del productor se incorporó el asistente agronómico en las principales pantallas: el inicio con el resumen del día, la alternancia, el plan de aclareo, las alertas, el clima, el frío invernal y la campaña cerrada. En cada una, el productor elige preguntas sobre sus datos y recibe respuestas con cifras reales, conserva un historial disponible sin conexión y recibe avisos claros ante errores o límites de uso. En la aplicación móvil del gestor técnico, desarrollada en Flutter, se completaron la bienvenida, el inicio con el semáforo del valle, el riesgo territorial por sector, la consulta de los lotes socios con su prescripción y expediente técnico, la proyección de acopio, la administración de socios, sectores y códigos de activación, las alertas y la preferencia de idioma. Las capturas de las principales vistas se complementan con un video que muestra la visualización y la navegación logradas.
 
 \noindent \textbf{Landing Page:}
 
@@ -71,7 +71,7 @@ La sección de video presenta un reel construido a partir del video About the Pr
 \caption*{\textit{Nota.} Captura de la Landing Page desplegada. Elaboración propia.}
 \end{figure}
 
-La primera versión del video About the Product se reproduce desde YouTube dentro de la Landing Page, con subtítulos disponibles (\autoref{fig:exec-landing-about-product-s2}). Esta versión se completará en el Sprint 3 con el segmento de entrevistas a gestores técnicos.
+El video About the Product se reproduce desde YouTube dentro de la Landing Page, con subtítulos disponibles (\autoref{fig:exec-landing-about-product-s2}).
 
 \begin{figure}[H]
 \caption{Video About the Product incrustado en la Landing Page.} \label{fig:exec-landing-about-product-s2}
@@ -551,7 +551,7 @@ viora-platform & feature/require-consent-on-redemption & a50bb8f & docs: record 
 #### Software Deployment Evidence for Sprint Review
 &nbsp;
 
-En esta sección se resumen los procesos de despliegue (\textit{deployment}) realizados durante el Sprint 2 para los productos digitales de Viora: el Landing Page, los servicios web con su base de datos en la nube y las aplicaciones móviles en Android nativo y Flutter. A diferencia del Sprint 1, en el que se crearon las cuentas y se configuraron los recursos en cada proveedor, en este sprint el trabajo se centró en mantener el despliegue continuo de cada producto conforme se integraban los nuevos contextos, en habilitar el acceso de los clientes a las aplicaciones móviles mediante un vínculo de invitación y en incorporar la aplicación Flutter al mismo esquema de distribución. Con este sprint los servicios web, la base de datos y ambas aplicaciones móviles quedan publicados y culminados; el Landing Page se mantiene publicado y se culminará en el Sprint 3 con la segunda versión del video About the Product, que incorpora la entrevista al segmento de gestores. En la \autoref{tab:deployment-summary-sprint-2} se resume qué se desplegó, dónde y cómo; a continuación se detalla cada producto con sus evidencias.
+En esta sección se resumen los procesos de despliegue (\textit{deployment}) realizados durante el Sprint 2 para los productos digitales de Viora: el Landing Page, los servicios web con su base de datos en la nube y las aplicaciones móviles en Android nativo y Flutter. A diferencia del Sprint 1, en el que se crearon las cuentas y se configuraron los recursos en cada proveedor, en este sprint el trabajo se centró en mantener el despliegue continuo de cada producto conforme se integraban los nuevos contextos, en habilitar el acceso de los clientes a las aplicaciones móviles mediante un vínculo de invitación y en incorporar la aplicación Flutter al mismo esquema de distribución. Con este sprint los servicios web, la base de datos y ambas aplicaciones móviles quedan publicados y culminados; el Landing Page queda publicado y culminado con la incorporación de los videos About the Product y About the Team. En la \autoref{tab:deployment-summary-sprint-2} se resume qué se desplegó, dónde y cómo; a continuación se detalla cada producto con sus evidencias.
 
 \begin{center}
 \small
@@ -574,7 +574,7 @@ En esta sección se resumen los procesos de despliegue (\textit{deployment}) rea
 \multicolumn{5}{l}{\parbox{15.5cm}{\vspace{0.1cm} \textit{Nota.} Elaboración propia a partir de las consolas de Vercel, Render, Filess.io, Firebase y GitHub.}} \\
 \endlastfoot
 
-Landing Page & \texttt{viora-landing-page} & Vercel & Integración con Git: cada \textit{push} a \texttt{main} publica producción & Publicado \\ \hline
+Landing Page & \texttt{viora-landing-page} & Vercel & Integración con Git: cada \textit{push} a \texttt{main} publica producción & Publicado y culminado \\ \hline
 Servicios web (API RESTful) & \texttt{viora-platform} & Render (\textit{Web Service} con Docker) & Despliegue automático desde la rama \texttt{main} & Publicado y culminado \\ \hline
 Base de datos & No aplica & Filess.io (PostgreSQL) & Instancia del Sprint 1; conexión mediante variables de entorno en Render & Publicado y culminado \\ \hline
 Aplicación móvil Android & \texttt{viora-mobile-android} & Firebase App Distribution & Despliegue continuo con GitHub Actions; APK \textit{release} firmado & Publicado y culminado \\ \hline
@@ -586,7 +586,7 @@ Aplicación móvil Flutter & \texttt{viora-mobile-flutter} & Firebase App Distri
 
 \noindent \textbf{Landing Page (Vercel):}
 
-El Landing Page conserva el despliegue configurado en el Sprint 1: cada integración en la rama `main` genera un despliegue de producción en Vercel. En la \autoref{fig:deploy-vercel-prod-s2} se observa el despliegue vigente en estado \textit{Ready}, publicado desde la rama `main` y servido en el dominio `viora-landing-page-sable.vercel.app`. La rama `develop` cuenta además con un despliegue de vista previa (\textit{Preview}), que permite revisar los cambios antes de integrarlos en producción. El Landing Page se mantiene publicado; se culminará en el Sprint 3 con la publicación de la segunda versión del video About the Product, que incorpora la entrevista al segmento de gestores.
+El Landing Page conserva el despliegue configurado en el Sprint 1: cada integración en la rama `main` genera un despliegue de producción en Vercel. En la \autoref{fig:deploy-vercel-prod-s2} se observa el despliegue vigente en estado \textit{Ready}, publicado desde la rama `main` y servido en el dominio `viora-landing-page-sable.vercel.app`. La rama `develop` cuenta además con un despliegue de vista previa (\textit{Preview}), que permite revisar los cambios antes de integrarlos en producción. Con este sprint, el Landing Page queda publicado y culminado.
 
 \begin{figure}[H]
 \caption{Despliegue de producción del Landing Page en Vercel.} \label{fig:deploy-vercel-prod-s2}
@@ -719,7 +719,7 @@ En el repositorio `viora-mobile-android` la actividad se concentró en la semana
 \caption*{\textit{Nota.} Analíticas de contribuciones en GitHub del repositorio \texttt{viora-mobile-android}. Elaboración propia.}
 \end{figure}
 
-En el repositorio `viora-landing-page` la mayor parte del trabajo se realizó en el Sprint 1, por lo que durante el Sprint 2 solo se registran ajustes puntuales a inicios de noviembre (\autoref{fig:contributors-landing-page-s2}). Este comportamiento es coherente con su estado: el Landing Page se mantiene publicado y se culminará en el Sprint 3 con la segunda versión del video About the Product.
+En el repositorio `viora-landing-page` la mayor parte del trabajo se realizó en el Sprint 1, por lo que durante el Sprint 2 solo se registran ajustes puntuales a inicios de noviembre (\autoref{fig:contributors-landing-page-s2}). Este comportamiento es coherente con su estado: el Landing Page quedó publicado y culminado en el Sprint 2.
 
 \begin{figure}[H]
 \caption{Vista de Contributors de GitHub del repositorio viora-landing-page.} \label{fig:contributors-landing-page-s2}
