@@ -46,6 +46,7 @@ v3.1.0 & 22/11/26 & Santi Guerrero, Fabrizio Alonso & Revisión general del info
 v3.2.0 & 22/11/26 & Espada Lazo, Piero Anthony & Redacción de entrevistas de validación de la aplicación móvil Flutter, evaluación heurística y conclusiones \tabularnewline \hline
 v3.3.0 & 22/11/26 & Santi Guerrero, Fabrizio Alonso & Actualización de historias de usuario y technical stories del gestor técnico según la validación de la aplicación móvil Flutter \tabularnewline \hline
 v3.4.0 & 26/11/26 & Santi Guerrero, Fabrizio Alonso & Redacción del Sprint 3: planificación, Sprint Backlog y evidencias de desarrollo, pruebas, ejecución, documentación de servicios, despliegue y colaboración \tabularnewline \hline
+v3.5.0 & 26/11/26 & Trinidad Leon, Jahat Jassiel & Actualización de los videos About the Product y About the Team a la entrega TB2 \tabularnewline \hline
 \end{longtable}
 
 \newpage
