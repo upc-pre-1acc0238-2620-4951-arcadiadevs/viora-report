@@ -687,15 +687,15 @@ Para representar la arquitectura de software de Viora se aplicó el modelo C4, d
 #### Software Architecture Context Level Diagrams
 &nbsp;
 
-El diagrama de contexto sitúa a Viora frente a sus tres actores humanos y sus cuatro integraciones externas. El Visitante explora la propuesta de valor y los planes de descarga sin necesidad de autenticarse; el Productor Olivícola registra muestras y cosechas, y revisa el asesoramiento y confirma la ejecución del aclareo; el Gestor Técnico Cooperativo administra la membresía y revisa el riesgo de las parcelas afiliadas junto con la proyección de acopio. Del lado de los sistemas externos, Mapbox provee la visualización y delimitación de parcelas, Open-Meteo aporta el histórico y pronóstico horario de variables agroclimáticas que alimentan el cálculo de acumulación de frío, Mercado Pago procesa los pagos de suscripción individual, Brevo despacha los correos de recuperación de contraseña.
+El diagrama de contexto sitúa a Viora frente a sus tres actores humanos y seis sistemas externos. El Visitante explora la propuesta de valor, los planes y las descargas sin necesidad de autenticarse, y descarga las aplicaciones desde Firebase App Distribution. El Productor Olivícola usa la aplicación Android para registrar muestras y cosechas, revisar el asesoramiento, las alertas y el resumen del día, y consultar al asistente de campo. El Gestor Técnico Cooperativo usa la aplicación multiplataforma para patrocinar a los socios y revisar el riesgo territorial, las alertas de sector y la proyección de acopio. Del lado de los sistemas externos, Mapbox provee la visualización y delimitación de parcelas y sectores; Open-Meteo aporta el histórico y el pronóstico horario de las variables agroclimáticas que alimentan el cálculo de frío y el monitoreo; Groq, un servicio de modelos de lenguaje con API compatible con OpenAI, reformula las respuestas del asistente y los resúmenes del día; Mercado Pago procesa los pagos de la suscripción individual, y Brevo envía los correos de verificación y de recuperación de contraseña.
 
 \begin{figure}[H]
-\caption{C4 Model - Nivel 1: Diagrama de Contexto de Viora y Leyenda}
+\caption{C4 Model, nivel 1: diagrama de contexto de Viora y leyenda}
 \centering
 \begin{minipage}[b]{0.68\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/c4-model/viora-system-context.png}
-\caption*{(a) Diagrama de Contexto.}
+\caption*{(a) Diagrama de contexto.}
 \end{minipage}
 \hfill
 \begin{minipage}[b]{0.28\textwidth}
@@ -703,21 +703,21 @@ El diagrama de contexto sitúa a Viora frente a sus tres actores humanos y sus c
 \includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/c4-model/viora-system-context-key.png}
 \caption*{(b) Leyenda.}
 \end{minipage}
-\caption*{\textit{Nota.} Tres actores humanos y cuatro sistemas externos interactuando con Viora. Elaboración propia.}
+\caption*{\textit{Nota.} Tres actores humanos y seis sistemas externos que interactúan con Viora. Elaboración propia.}
 \end{figure}
 
 #### Software Architecture Container Level Diagrams
 &nbsp;
 
-Al descomponer a Viora en contenedores, el sistema queda dividido en dos aplicaciones móviles nativas por plataforma tecnológica (Aplicación Android en Kotlin y Aplicación Cross-platform en Flutter/Dart), cada una con su propia base de datos local (Android Local Database sobre Room/SQLite y Cross-platform Local Database sobre sqflite/SQLite) que cachea los datos autorizados de parcela y encola las muestras pendientes de sincronización en cada instalación. Ambas aplicaciones exponen exactamente las mismas funcionalidades orientadas a rol, captura de campo, asesoría de aclareo, seguimiento de cosecha y vistas cooperativas, y soportan muestreo sin conexión; los actores Productor Olivícola y Gestor Técnico Cooperativo del nivel de contexto interactúan indistintamente con cualquiera de las dos, mientras que el Visitante se limita a una Landing Page (HTML5/CSS3/JavaScript) que presenta la propuesta de valor, los planes y los enlaces de descarga. El Backend API (Java, Spring Boot; REST/OpenAPI) concentra la lógica de dominio modular, la autenticación, la sincronización idempotente, los cálculos de frío y aclareo, los reportes de cosecha y las proyecciones de acopio, persistiendo en una única Viora Database (PostgreSQL) compartida por ambos clientes. Un Telemetry Simulator (Java, aplicación programada) genera lecturas sintéticas etiquetadas de clima y suelo para los nodos virtuales de parcela registrados, sustituyendo al hardware IoT real fuera del alcance del curso. Las cuatro integraciones externas del nivel de contexto se mantienen en este nivel, cada una consumida por el contenedor que efectivamente la requiere: Mapbox y Mercado Pago desde ambas aplicaciones móviles, y Open-Meteo, Brevo y Mercado Pago desde el Backend API.
+Al descomponer a Viora en contenedores, cada segmento cuenta con su propia aplicación móvil. La Aplicación Android (Kotlin, Jetpack Compose) está orientada al Productor Olivícola: parcelas, muestreo sin conexión, asesoría de aclareo, fenología, alertas agroclimáticas y críticas, asistente de campo, liquidación de cosecha y suscripción. La Aplicación Cross-platform (Flutter, Dart) está orientada al Gestor Técnico Cooperativo: licencia y códigos de patrocinio, socios, sectores, riesgo territorial, alertas de sector, rangos de calibre y proyección de acopio. Cada aplicación tiene su base de datos local: la Android Local Database (SQLite con Room) guarda en caché los datos de parcela, las respuestas del asistente y los resúmenes, y encola las muestras, liquidaciones y notas de campo pendientes de sincronizar; la Cross-platform Local Database (SQLite con Drift) conserva la licencia y la última copia de las vistas de la cooperativa para su lectura sin conexión. El Visitante accede a una Landing Page (Vite, con HTML5, CSS3 y JavaScript) que presenta la propuesta de valor, los planes, los videos del producto y los enlaces a las invitaciones de Firebase App Distribution. El Backend API (Java 21, Spring Boot y Spring AI; REST con OpenAPI) es un monolito modular con un bounded context por módulo, que incluye el simulador de los nodos virtuales de telemetría en reemplazo del hardware IoT fuera del alcance del curso, y persiste en una única Viora Database (PostgreSQL). Las integraciones externas se asignan al contenedor que las requiere: Mapbox desde ambas aplicaciones, la apertura del checkout de Mercado Pago desde la aplicación Android, y Open-Meteo, Groq, Mercado Pago y Brevo desde el Backend API.
 
 \begin{figure}[H]
-\caption{C4 Model - Nivel 2: Diagrama de Contenedores de Viora y Leyenda}
+\caption{C4 Model, nivel 2: diagrama de contenedores de Viora y leyenda}
 \centering
 \begin{minipage}[b]{0.68\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/c4-model/viora-container.png}
-\caption*{(a) Diagrama de Contenedores.}
+\caption*{(a) Diagrama de contenedores.}
 \end{minipage}
 \hfill
 \begin{minipage}[b]{0.28\textwidth}
@@ -725,21 +725,21 @@ Al descomponer a Viora en contenedores, el sistema queda dividido en dos aplicac
 \includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/c4-model/viora-container-key.png}
 \caption*{(b) Leyenda.}
 \end{minipage}
-\caption*{\textit{Nota.} Ocho contenedores propios y cuatro sistemas externos del ecosistema Viora. Elaboración propia.}
+\caption*{\textit{Nota.} Siete contenedores propios y seis sistemas externos del ecosistema Viora. Elaboración propia.}
 \end{figure}
 
 #### Software Architecture Component Level Diagrams
 &nbsp;
 
-Dado que Viora despliega dos aplicaciones cliente sobre pilas tecnológicas distintas y un backend compartido, el nivel de componentes se documentó por separado para cada uno de los tres contenedores con lógica propia: la Aplicación Android, la Aplicación Cross-platform y el Backend API.
+Dado que Viora despliega dos aplicaciones cliente, cada una orientada a un segmento y construida sobre una pila tecnológica distinta, y un backend compartido, el nivel de componentes se documentó por separado para la Aplicación Android, la Aplicación Cross-platform y el Backend API.
 
 ##### Android Component Diagram
 &nbsp;
 
-La Aplicación Android organiza su lógica interna en quince componentes bajo el patrón MVVM con Jetpack Compose. El App Navigation selecciona los destinos según sesión y rol, gestiona los enlaces validados de la aplicación y el back stack; seis componentes de interfaz (Account and Profile UI, Plot Management UI, Field Sampling UI, Agronomy and Harvest UI, Cooperative Operations UI y Subscription UI) exponen el estado de pantalla mediante ViewModel y delegan la persistencia en Feature Repositories, que centraliza los contratos de datos de cuenta, parcela, agronomía y cooperativa, y refresca las cachés autorizadas. Local Data Access encapsula los DAOs de Room, las transacciones y la caché con alcance de cuenta sobre la Android Local Database; Sampling Repository conserva localmente las muestras con IDs de operación estables y confirmaciones del servidor por registro; y Sampling Sync programa el trabajo único en segundo plano, drena los lotes pendientes y reintenta las fallas transitorias al reconectar. Backend API Client, sobre Retrofit/OkHttp, encapsula las llamadas REST, DTOs, transferencia de archivos y el refresco tipado de tokens hacia el Backend API; Session Manager gestiona el estado de sesión y persiste las credenciales protegidas mediante cifrado respaldado por Android Keystore. Plot Map Adapter encapsula el Mapbox Maps SDK para el renderizado y edición de polígonos de parcela, devolviendo GeoJSON a la pantalla de parcelas, y Hosted Checkout Coordinator obtiene la URL de checkout creada por el backend, la abre mediante Custom Tabs y revalida el estado de pago al retornar.
+La Aplicación Android organiza su lógica en diecinueve componentes bajo el patrón MVVM con Jetpack Compose, todos al servicio del productor. App Navigation selecciona los destinos según la sesión y gestiona los enlaces validados de la aplicación y el back stack. Diez componentes de interfaz (Home UI, Account and Profile UI, Plot Management UI, Field Sampling UI, Agronomy and Phenology UI, Alerts UI, Field Assistant UI, Logbook UI, Harvest Settlement UI y Subscription UI) exponen el estado de pantalla mediante ViewModel y delegan en Feature Repositories, que centraliza los contratos de datos de cuenta, parcela, agronomía, alertas, asistente, bitácora, cosecha y suscripción, y refresca las cachés autorizadas. Plot Management UI detecta el servicio de ubicación desactivado y compara el área trazada con la declarada, apoyándose en Plot Map Adapter, que encapsula el Mapbox Maps SDK y la ubicación del dispositivo y devuelve GeoJSON. Subscription UI canjea el código de activación cooperativo con su consentimiento y, para la suscripción individual, Hosted Checkout Coordinator abre mediante Custom Tabs el checkout creado por el backend y revalida el pago al retornar. Local Data Access encapsula los DAOs de Room, las transacciones y la caché con alcance de cuenta sobre la Android Local Database. Background Workers, sobre WorkManager, suben las muestras, liquidaciones y notas de campo pendientes, revisan las alertas críticas y el recordatorio del resumen del día, y reintentan al reconectar; Notification Publisher publica las alertas críticas como notificaciones de alta prioridad que abren el detalle de la alerta. Backend API Client, sobre Retrofit y OkHttp, encapsula las llamadas REST, los DTOs, la transferencia de archivos y el refresco de tokens, y Session Manager gestiona el estado de sesión y el almacenamiento protegido de las credenciales.
 
 \begin{figure}[H]
-\caption{C4 Model - Nivel 3: Diagrama de Componentes de Android y Leyenda}
+\caption{C4 Model, nivel 3: diagrama de componentes de Android y leyenda}
 \centering
 \begin{minipage}[b]{0.68\textwidth}
 \centering
@@ -752,16 +752,16 @@ La Aplicación Android organiza su lógica interna en quince componentes bajo el
 \includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/c4-model/viora-android-components-key.png}
 \caption*{(b) Leyenda.}
 \end{minipage}
-\caption*{\textit{Nota.} Quince componentes internos de la app Android (Kotlin, Jetpack Compose). Elaboración propia.}
+\caption*{\textit{Nota.} Diecinueve componentes internos de la aplicación Android del productor (Kotlin, Jetpack Compose). Elaboración propia.}
 \end{figure}
 
 ##### Backend Component Diagram
 &nbsp;
 
-El Backend API se descompone en doce componentes de dominio construidos sobre Spring; cada uno materializa, en el nivel táctico, uno de los bounded contexts delimitados previamente en el mapa de contexto estratégico. Mobile REST API concentra los controladores Spring MVC que validan las solicitudes entrantes y despachan comandos, consultas y lotes offline hacia las interfaces del resto de módulos. Identity and Access emite y valida los JWT, aplica los roles y gestiona la recuperación de contraseña mediante un adaptador de correo hacia Brevo. Orchard and Plot Management valida la geometría GeoJSON, la variedad, la densidad arbórea y la titularidad, autorizando el acceso a la parcela. Agroclimatic Telemetry ingiere las lecturas sintéticas programadas del Telemetry Simulator, importa el histórico horario de clima desde Open-Meteo y registra la fuente y calidad del dato. Phenology and Bearing Analytics es propietario del historial de cosechas y del Biennial Bearing Index, calculando la acumulación de frío invernal y actualizando el potencial floral y el estado de la ventana biológica. Sustainable Load Calculator realiza el cálculo puro de la carga admisible y el objetivo de remoción a partir de los insumos agronómicos validados, y Thinning Advisory coordina la evaluación de carga, emite las prescripciones de aclareo y audita su ejecución contra la ventana biológica. Field Sampling and Sync valida los lotes de campo, deduplica los reintentos y evalúa la representatividad del muestreo. Cooperative Operations administra los miembros, consolida el riesgo de parcela y proyecta el acopio con indicadores de cobertura de muestreo. Subscription and Membership gestiona los planes, las cuotas por hectárea y los códigos cooperativos, verificando y deduplicando los webhooks de pago de Mercado Pago. Harvest Settlement and Reporting cierra los pesos de campaña y compila los expedientes agronómicos reproducibles a partir del BBI que expone Phenology. Profile Management mantiene los datos personales, el país y los canales de contacto del usuario. Todos los componentes leen y escriben sus propios registros en la Viora Database mediante JPA/JDBC sobre TLS, y se comunican entre sí principalmente mediante eventos internos y llamadas Java en proceso.
+El Backend API se descompone en doce componentes construidos sobre Spring: los controladores REST, un componente por cada uno de los diez bounded contexts y los adaptadores de persistencia. REST Controllers valida las solicitudes, obtiene el usuario del JWT y despacha los comandos y consultas a cada contexto, documentados con OpenAPI. Identity and Access gestiona el registro, la verificación de correo, el inicio de sesión, la emisión y rotación de JWT, la recuperación de contraseña y los enlaces de la aplicación, y envía los correos mediante Brevo. Profile Management mantiene los datos personales, el país y el contacto validado. Subscription and Licensing administra los planes, el checkout y los webhooks de Mercado Pago, las licencias cooperativas, los códigos de activación cifrados y su canje con el consentimiento de datos. Orchard and Plot Management valida la geometría GeoJSON, la variedad, la densidad y el acceso a la parcela, y guarda las notas de campo del productor. Agroclimatic Telemetry simula los nodos virtuales de parcela, importa el clima horario y los pronósticos de Open-Meteo y emite de forma programada las alertas de helada y de calor. Phenology and Bearing Analytics es propietario del historial de cosechas, el índice de vecería, el frío invernal y el calendario fenológico con sus ajustes de fecha. Thinning Advisory registra las rondas de muestreo con su calibre, calcula la carga sostenible, emite las prescripciones y audita su ejecución contra la ventana biológica. Harvest Settlement and Reporting liquida las campañas, incluida la aceituna de descarte, y genera los expedientes agronómicos sellados en PDF. Territorial Intelligence gestiona los sectores, las parcelas socias con su código de socio, el semáforo de riesgo, las alertas de sector, los rangos de calibre y la proyección de acopio con confianza graduada. Field Assistant responde las preguntas del productor y arma el resumen diario programado a partir de plantillas, que Groq solo reformula mediante Spring AI. Los contextos colaboran a través de fachadas ACL, sin importar clases de otro contexto, y cada uno lee y escribe solo sus propios registros mediante Persistence Adapters (Spring Data JPA) sobre la Viora Database; en el diagrama se omiten esas flechas para favorecer la legibilidad.
 
 \begin{figure}[H]
-\caption{C4 Model - Nivel 3: Diagrama de Componentes del Backend API y Leyenda}
+\caption{C4 Model, nivel 3: diagrama de componentes del Backend API y leyenda}
 \centering
 \begin{minipage}[b]{0.68\textwidth}
 \centering
@@ -774,16 +774,16 @@ El Backend API se descompone en doce componentes de dominio construidos sobre Sp
 \includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/c4-model/viora-backend-components-key.png}
 \caption*{(b) Leyenda.}
 \end{minipage}
-\caption*{\textit{Nota.} Doce componentes de dominio del Backend API (Spring, Java). Elaboración propia.}
+\caption*{\textit{Nota.} Doce componentes del Backend API: controladores REST, diez bounded contexts y adaptadores de persistencia (Spring, Java). Elaboración propia.}
 \end{figure}
 
 ##### Cross-Platform Component Diagram
 &nbsp;
 
-La Aplicación Cross-platform replica la misma organización interna que la Aplicación Android, los mismos quince componentes con idéntica responsabilidad, materializada sobre el stack Flutter/Dart. App Navigation, basado en go\_router, selecciona los destinos por sesión y rol y dispara deep links; los seis componentes de interfaz (Account and Profile UI, Plot Management UI, Field Sampling UI, Agronomy and Harvest UI, Cooperative Operations UI y Subscription UI) se implementan como widgets Flutter con ChangeNotifier ViewModel y delegan en Feature Repositories. Local Data Access encapsula las transacciones sqflite sobre la Cross-platform Local Database con invalidación explícita de caché; Sampling Repository conserva las muestras con IDs de operación estables, y Sampling Sync coordina la sincronización en primer y segundo plano mediante workmanager y el ciclo de vida de la app, solicitando el reintento tras cada confirmación o reintento del usuario. Backend API Client, sobre Dio, encapsula las llamadas REST, DTOs y transferencias de archivo hacia el Backend API, mientras que Session Manager gestiona el estado de sesión y persiste los tokens protegidos mediante flutter\_secure\_storage. Plot Map Adapter encapsula mapbox\_maps\_flutter para el renderizado y edición de polígonos, devolviendo GeoJSON a la pantalla de parcelas, y Hosted Checkout Coordinator obtiene la URL de checkout alojado por el backend, la abre mediante url\_launcher y revalida el estado de pago al retorno. La equivalencia funcional exacta entre ambos árboles de componentes evidencia que las dos aplicaciones cliente ofrecen paridad de capacidades orientadas a rol, difiriendo únicamente en la tecnología de implementación.
+La Aplicación Cross-platform organiza su lógica en quince componentes orientados al gestor técnico, con Cubits de flutter\_bloc para el estado de pantalla e inyección de dependencias con get\_it. App Navigation, basado en go\_router, define las pestañas de Inicio, Riesgo, Acopio y Socios, abre las rutas de pantalla completa sobre la barra de pestañas y exige una licencia activa antes de mostrar el espacio de trabajo. Nueve componentes de interfaz cubren los flujos del gestor: Account and Profile UI, License Activation UI, Home Dashboard UI (semáforo del valle con leyenda de íconos y visitas sugeridas con el socio), Members and Codes UI (socios patrocinados y códigos de activación), Territorial Risk UI (mapa y lista de sectores, detalle por prioridad y expediente de la parcela socia), Sector Management UI (creación, renombrado y revisión de sectores y asignación de parcelas pendientes), Sector Alerts UI, Intake Projection UI (confianza, muestreo pendiente y desglose por calibre) y Caliber Ranges UI. Sector Map Adapter encapsula mapbox\_maps\_flutter y geolocator para dibujar los sectores y las parcelas. Use Cases and Repositories concentra los casos de uso y repositorios de cada característica y devuelve resultados y fallas tipados; Offline Snapshot Store guarda con Drift la licencia y la última copia de las vistas de la cooperativa en la Cross-platform Local Database; Backend API Client, sobre el paquete http, encapsula las llamadas REST, los DTOs, la descarga de PDF y el refresco de tokens, y Session Manager guarda los tokens con flutter\_secure\_storage y cierra la sesión cuando se revocan. Así, las dos aplicaciones cliente no duplican funciones: cada una se especializa en su segmento.
 
 \begin{figure}[H]
-\caption{C4 Model - Nivel 3: Diagrama de Componentes Cross-platform y Leyenda}
+\caption{C4 Model, nivel 3: diagrama de componentes Cross-platform y leyenda}
 \centering
 \begin{minipage}[b]{0.68\textwidth}
 \centering
@@ -796,22 +796,22 @@ La Aplicación Cross-platform replica la misma organización interna que la Apli
 \includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/c4-model/viora-cross-platform-components-key.png}
 \caption*{(b) Leyenda.}
 \end{minipage}
-\caption*{\textit{Nota.} Quince componentes internos de la app Flutter/Dart. Elaboración propia.}
+\caption*{\textit{Nota.} Quince componentes internos de la aplicación multiplataforma del gestor técnico (Flutter, Dart). Elaboración propia.}
 \end{figure}
 
 #### Software Architecture Deployment Diagrams
 &nbsp;
 
 
-El diagrama de despliegue mapea los ocho contenedores lógicos sobre la infraestructura física de prueba. El dispositivo del Visitante ejecuta un navegador web compatible con HTTPS que solicita y renderiza los recursos de la Landing Page, alojada como sitio estático en Vercel. Firebase App Distribution entrega los APK firmados de Kotlin y de Flutter para su instalación y actualización, manteniendo registros de aplicación separados por plataforma: un dispositivo de prueba Android ejecuta la Aplicación Android dentro de su propio sandbox nativo junto con la Android Local Database, y un segundo dispositivo de prueba Android ejecuta la Aplicación Cross-platform sobre el motor Flutter junto con la Cross-platform Local Database. El Backend API se despliega en Render como servicio web Dockerizado sobre runtime Java/Spring Boot, junto con el Telemetry Simulator como cron job independiente en la misma plataforma. La persistencia recae en un servicio PostgreSQL alojado en Filess.io. Las cuatro integraciones externas se despliegan fuera de la infraestructura propia: Mapbox, Brevo y Open-Meteo como nubes SaaS, y Mercado Pago en su modo de pruebas ("test mode"), notificando los cambios de estado de pago al Backend API mediante un webhook firmado.
+El diagrama de despliegue ubica los siete contenedores en la infraestructura del entorno de validación. El dispositivo del Visitante ejecuta un navegador que solicita los recursos de la Landing Page, alojada como sitio estático en Vercel. Firebase App Distribution entrega los APK firmados del productor y del gestor técnico, con registros de aplicación y vínculos de invitación separados: el dispositivo Android del productor ejecuta la Aplicación Android junto con la Android Local Database, y el dispositivo Android del gestor ejecuta la Aplicación Cross-platform sobre el motor Flutter junto con la Cross-platform Local Database. El Backend API se despliega en Render como servicio web con Docker sobre Java 21 y se actualiza automáticamente desde la rama `main`; el simulador de telemetría y las tareas programadas se ejecutan dentro del mismo servicio. La persistencia recae en un servicio PostgreSQL 15 alojado en Filess.io. Los servicios externos se consumen como nubes de terceros: Mapbox, Open-Meteo, Groq y Brevo como SaaS, y Mercado Pago en su modo de pruebas, que notifica los cambios de estado de pago al Backend API mediante un webhook firmado.
 
 \begin{figure}[H]
-\caption{C4 Model - Nivel 4: Diagrama de Despliegue de Viora y Leyenda}
+\caption{C4 Model, nivel 4: diagrama de despliegue de Viora y leyenda}
 \centering
 \begin{minipage}[b]{0.68\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=0.28\textheight,keepaspectratio]{report/assets/c4-model/viora-deployment.png}
-\caption*{(a) Diagrama de Despliegue.}
+\caption*{(a) Diagrama de despliegue.}
 \end{minipage}
 \hfill
 \begin{minipage}[b]{0.28\textwidth}
